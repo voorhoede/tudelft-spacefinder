@@ -2,21 +2,20 @@
 
 > App to easily find available spaces on the TU Delft Campus.
 
-## Build Setup
+This app is a universal [Vue.js](https://vuejs.org/) app made with [Nuxt.js](https://nuxtjs.org/). The app has multi-language support (English and Dutch) using [Nuxt I18n](https://nuxt-community.github.io/nuxt-i18n/).
 
-``` bash
-# install dependencies
-$ npm run install
+## Development
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+### Scripts
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+This project requires [Node.js](http://nodejs.org/) (>= v8) and [npm](https://npmjs.org/) (comes with Node).
 
-# generate static project
-$ npm run generate
-```
+After installing dependencies using `npm install` the following scripts are available:
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+`npm run ...` | Description
+---|---
+`analyze` | Analyze the bundles created during build.
+`build` | Builds app for production to `dist/`.
+`dev` | Serves app on [`http://localhost:3463`](http://localhost:3463) ("find" in T9) with hot reloading.
+`proxy` | Exposes app on localhost to world wide web for testing on other devices.
+`start` | Serves production version of client app from (`/dist/`) on [`http://localhost:3464`](http://localhost:3464).
