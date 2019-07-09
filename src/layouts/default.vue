@@ -1,5 +1,9 @@
 <template>
   <div>
+    <nav>
+      <nuxt-link hreflang="en" to="/en">en</nuxt-link>
+      <nuxt-link hreflang="nl" to="/nl">nl</nuxt-link>
+    </nav>
     <nuxt />
   </div>
 </template>

@@ -1,17 +1,23 @@
 /* eslint-disable */
-const flattenDeep = require('lodash/flattenDeep')
-const locales = require('./locales.json')
+import flattenDeep from 'lodash/flattenDeep'
+import pagesI18n from '../src/pages.i18n'
+const locales = ['en', 'nl']
 const buildings = {
   en: require('../src/static/data/en/buildings.json'),
   nl: require('../src/static/data/nl/buildings.json')
 }
 
-module.exports = flattenDeep([
+export default flattenDeep([
   '/',
   locales.map(locale => {
-    return buildings[locale].map(building => [
-      `/${locale}/buildings/${building.slug}`,
-      `/${locale}/buildings/${building.slug}/spaces`,
-    ])
-  }),
+    return flattenDeep([
+      pagesI18n['buildings/index'][locale],
+      buildings[locale].map(building => [
+        pagesI18n['buildings/_buildingSlug/index'][locale]
+          .replace(':buildingSlug', building.slug),
+        pagesI18n['buildings/_buildingSlug/spaces/index'][locale]
+          .replace(':buildingSlug', building.slug),
+      ])
+    ]).map(path => `/${locale}${path}`)
+  })
 ])

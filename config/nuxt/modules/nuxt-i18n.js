@@ -1,3 +1,4 @@
+import pages from '../../../src/pages.i18n'
 const locales = ['en', 'nl']
 const defaultLocale = locales[0]
 
@@ -22,6 +23,8 @@ export default [
         name: locale
       }
     }),
+    parsePages: false,
+    pages: pages,
     rootRedirect: defaultLocale,
     strategy: 'prefix',
     vueI18n: {
