@@ -1,20 +1,41 @@
 <template>
   <div class="default-layout">
-    <app-header />
+    <app-header
+      @openAppMenu="openAppMenu"
+      @openFilterMenu="openFilterMenu"
+    />
     <main class="default-layout__main">
       <section class="default-layout__info">
         <nuxt />
       </section>
       <mapbox-map class="default-layout__map"/>
     </main>
+    <app-menu v-if="openedMenu === 'app-menu'" @close="closeMenu" />
+    <filter-menu v-if="openedMenu === 'filter-menu'" @close="closeMenu" />
   </div>
 </template>
 
 <script>
-import { AppHeader, MapboxMap } from '../components'
+import { AppHeader, AppMenu, FilterMenu, MapboxMap } from '../components'
 
 export default {
-  components: { AppHeader, MapboxMap }
+  components: { AppHeader, AppMenu, FilterMenu, MapboxMap },
+  data() {
+    return {
+      openedMenu: undefined,
+    }
+  },
+  methods: {
+    openAppMenu() {
+      this.openedMenu = 'app-menu'
+    },
+    openFilterMenu() {
+      this.openedMenu = 'filter-menu'
+    },
+    closeMenu() {
+      this.openedMenu = undefined
+    }
+  }
 }
 </script>
 
