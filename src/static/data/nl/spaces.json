@@ -1,0 +1,38 @@
+[
+  {
+    "building": {
+      "name": "Bouwkunde",
+      "number": 8,
+      "slug": "8--bouwkunde"
+    },
+    "room": {
+      "id": "01.Mid.010"
+    },
+    "name": "Bibliotheek - ramen links",
+    "slug": "01-mid-010--bibliotheek-ramen-links"
+  },
+  {
+    "building": {
+      "name": "Bouwkunde",
+      "number": 8,
+      "slug": "8--bouwkunde"
+    },
+    "room": {
+      "id": "01.Mid.010"
+    },
+    "name": "Bibliotheek - midden rechts",
+    "slug": "01-mid-010--bibliotheek-midden-rechts"
+  },
+  {
+    "building": {
+      "name": "Aula",
+      "number": 20,
+      "slug": "20--aula"
+    },
+    "room": {
+      "id": "00.[270]"
+    },
+    "name": "Restaurant en bar",
+    "slug": "00-270--restaurant-en-bar"
+  }
+]

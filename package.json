@@ -1,0 +1,45 @@
+{
+  "name": "tudelft-spacefinder",
+  "version": "1.0.0",
+  "description": "App to easily find available spaces on the TU Delft Campus.",
+  "author": "De Voorhoede (https://www.voorhoede.nl)",
+  "private": true,
+  "scripts": {
+    "build": "nuxt generate",
+    "dev": "PORT=3463 nuxt",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "start": "http-server './dist/client/' -c-1 -o -p 3464",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nuxtjs/pwa": "^2.6.0",
+    "nuxt": "^2.0.0",
+    "nuxt-i18n": "^5.12.7"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^0.0.1",
+    "@nuxtjs/eslint-module": "^0.0.1",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "eslint": "^5.15.1",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-standard": ">=12.0.0",
+    "eslint-plugin-import": ">=2.16.0",
+    "eslint-plugin-jest": ">=22.3.0",
+    "eslint-plugin-node": ">=8.0.1",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": ">=4.0.1",
+    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "http-server": "^0.11.1",
+    "jest": "^24.1.0",
+    "lodash": "^4.17.11",
+    "nodemon": "^1.18.9",
+    "prettier": "^1.16.4",
+    "vue-jest": "^3.0.3"
+  }
+}

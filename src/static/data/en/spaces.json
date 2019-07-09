@@ -1,0 +1,38 @@
+[
+  {
+    "building": {
+      "name": "Architecture",
+      "number": 8,
+      "slug": "8--architecture"
+    },
+    "room": {
+      "id": "01.Mid.010"
+    },
+    "name": "Library - windows left",
+    "slug": "01-mid-010--library-windows-left"
+  },
+  {
+    "building": {
+      "name": "Architecture",
+      "number": 8,
+      "slug": "8--architecture"
+    },
+    "room": {
+      "id": "01.Mid.010"
+    },
+    "name": "Library - center right",
+    "slug": "01-mid-010--library-center-right"
+  },
+  {
+    "building": {
+      "name": "Aula",
+      "number": 20,
+      "slug": "20--aula"
+    },
+    "room": {
+      "id": "00.[270]"
+    },
+    "name": "Restaurant and bar",
+    "slug": "00-270--restaurant-and-bar"
+  }
+]
