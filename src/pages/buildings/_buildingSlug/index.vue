@@ -1,5 +1,6 @@
 <template>
   <div>
+    <back-button :to="localePath({ name: 'buildings' })" />
     <h1>{{ $t('building') }}: {{ building.name }}</h1>
     <nuxt-link
       :to="
@@ -15,9 +16,12 @@
 </template>
 
 <script>
+import { BackButton } from '~/components'
 import loadData from '~/lib/load-data'
 
 export default {
+  components: { BackButton },
+
   async asyncData({ app, params }) {
     const { buildingSlug } = params
 

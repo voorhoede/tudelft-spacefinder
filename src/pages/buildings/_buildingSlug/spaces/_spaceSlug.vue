@@ -1,11 +1,23 @@
 <template>
-  <h1>{{ $t('space') }}: {{ space.room.id }}: {{ space.name }}</h1>
+  <div>
+    <back-button
+      :to="
+        localePath({
+          name: 'buildings-buildingSlug-spaces',
+          params: { buildingSlug: building.slug }
+        })
+      " />
+    <h1>{{ $t('space') }}: {{ space.room.id }}: {{ space.name }}</h1>
+  </div>
 </template>
 
 <script>
+import { BackButton } from '~/components'
 import loadData from '~/lib/load-data'
 
 export default {
+  components: { BackButton },
+
   async asyncData({ app, params }) {
     const { locale } = app.i18n
     const { buildingSlug, spaceSlug } = params
