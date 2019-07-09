@@ -6,6 +6,13 @@ This app is a universal [Vue.js](https://vuejs.org/) app made with [Nuxt.js](htt
 
 ## Development
 
+### Getting started
+
+* Clone the repository.
+* Copy `.env.example` to `.env` and set the environment variables. Copy them from the [Netlify build configuration](https://app.netlify.com/sites/spacefinder/settings/deploys#build-environment-variables) or ask a dev team member. 
+* Run app in development mode (`npm run dev`), see [scripts](#scripts).
+* Changes on master trigger a new build and deploy to the [live environment](https://spacefinder.netlify.com).
+
 ### Scripts
 
 This project requires [Node.js](http://nodejs.org/) (>= v8) and [npm](https://npmjs.org/) (comes with Node).
