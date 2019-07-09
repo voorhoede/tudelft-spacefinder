@@ -37,12 +37,14 @@
     "eslint-plugin-promise": ">=4.0.1",
     "eslint-plugin-standard": ">=4.0.0",
     "eslint-plugin-vue": "^5.2.2",
-    "http-server": "^0.11.1",
     "jest": "^24.1.0",
     "lodash": "^4.17.11",
-    "ngrok": "^3.2.1",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.4",
     "vue-jest": "^3.0.3"
+  },
+  "optionalDependencies": {
+    "http-server": "^0.11.1",
+    "ngrok": "^3.2.1"
   }
 }
