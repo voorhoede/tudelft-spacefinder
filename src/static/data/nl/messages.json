@@ -1,6 +1,10 @@
 {
   "building": "gebouw",
   "buildings": "gebouwen",
+  "close": "sluit",
+  "filter": "filter",
+  "map": "kaart",
+  "menu": "menu",
   "space": "ruimte",
   "spaces": "ruimtes"
 }

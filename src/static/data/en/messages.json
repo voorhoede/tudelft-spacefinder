@@ -1,6 +1,10 @@
 {
   "building": "building",
   "buildings": "buildings",
+  "close": "close",
+  "filter": "filter",
+  "map": "map",
+  "menu": "menu",
   "space": "space",
   "spaces": "spaces"
 }

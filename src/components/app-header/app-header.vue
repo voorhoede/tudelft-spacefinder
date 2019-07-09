@@ -1,10 +1,12 @@
 <template>
   <header role="banner" class="app-header">
     TU Delft - Spacefinder
-    <nav>
-      <nuxt-link hreflang="en" to="/en">en</nuxt-link>
-      <nuxt-link hreflang="nl" to="/nl">nl</nuxt-link>
-    </nav>
+    <button type="button" @click="$emit('openFilterMenu')">
+      {{ $t('filter') }}
+    </button>
+    <button type="button" @click="$emit('openAppMenu')">
+      {{ $t('menu') }}
+    </button>
   </header>
 </template>
 
