@@ -1,6 +1,10 @@
 <template>
   <nav>
-    <modal-drawer title="menu" @close="$emit('close')">
+    <modal-drawer
+      :isOpen="isOpen"
+      :title="$t('menu')"
+      @close="$emit('close')"
+    >
       <ul>
         <li>
           <nuxt-link to="/">
@@ -25,6 +29,9 @@
 import ModalDrawer from '../modal-drawer'
 
 export default {
-  components: { ModalDrawer }
+  components: { ModalDrawer },
+  props: {
+    isOpen: Boolean,
+  }
 }
 </script>

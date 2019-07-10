@@ -18,6 +18,7 @@
     </h1>
 
     <button
+      type="button"
       @click="$emit('openFilterMenu')"
       class="app-header__button button button--header"
     >
@@ -31,6 +32,7 @@
     </button>
 
     <button
+      type="button"
       @click="$emit('openAppMenu')"
       class="app-header__button button button--header"
     >

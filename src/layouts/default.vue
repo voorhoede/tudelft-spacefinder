@@ -4,14 +4,18 @@
       @openAppMenu="openAppMenu"
       @openFilterMenu="openFilterMenu"
     />
+
     <main class="default-layout__main">
       <section class="default-layout__info">
         <nuxt />
       </section>
+
       <mapbox-map class="default-layout__map"/>
     </main>
-    <app-menu v-if="openedMenu === 'app-menu'" @close="closeMenu" />
-    <filter-menu v-if="openedMenu === 'filter-menu'" @close="closeMenu" />
+
+    <app-menu :isOpen="openedMenu === 'app-menu'" @close="closeMenu" />
+
+    <filter-menu :isOpen="openedMenu === 'filter-menu'" @close="closeMenu" />
   </div>
 </template>
 
@@ -22,7 +26,7 @@ export default {
   components: { AppHeader, AppMenu, FilterMenu, MapboxMap },
   data() {
     return {
-      openedMenu: undefined,
+      openedMenu: null,
     }
   },
   methods: {
@@ -33,7 +37,7 @@ export default {
       this.openedMenu = 'filter-menu'
     },
     closeMenu() {
-      this.openedMenu = undefined
+      this.openedMenu = null
     }
   }
 }
