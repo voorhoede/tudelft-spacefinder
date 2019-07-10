@@ -1,0 +1,11 @@
+.button {
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.button:hover,
+.button:focus {
+    border: 1px solid var(--text-color);
+}
