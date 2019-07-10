@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Roboto";
+    font-weight: 300;
+    src: url("/fonts/roboto-light.woff") format("woff");
+    font-display: swap;
+}
+  
+@font-face {
+    font-family: "Roboto";
+    font-weight: 500;
+    src: url("/fonts/roboto-medium.woff") format("woff");
+    font-display: swap;
+}
+  

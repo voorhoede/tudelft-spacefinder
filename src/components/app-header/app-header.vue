@@ -12,8 +12,8 @@
 
 <style>
 .app-header {
-  background-color: #27A8D2;
-  color: white;
+  background-color: var(--brand-primary-color);
+  color: var(--background-color);
   padding: .5em;
 }
 </style>

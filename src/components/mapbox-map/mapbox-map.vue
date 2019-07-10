@@ -10,7 +10,7 @@
 .mapbox-map {
   width: 100%;
   height: 100%;
-  background-color: #EEEEEE;
+  background-color: var(--highlight-color);
 }
 
 .mapbox-map__placeholder {
