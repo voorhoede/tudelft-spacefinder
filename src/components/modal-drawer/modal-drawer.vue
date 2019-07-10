@@ -26,21 +26,23 @@ export default {
 </script>
 
 <style>
+@import '../app-core/variables.css';
+
 .modal-drawer {
   height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
   width: 20rem;
-  background-color: white;
-  border: 1px solid black;
+  background-color: var(--background-color);
+  border: 1px solid var(--text-color);
 }
 
 .modal-drawer__header {
   display: flex;
   justify-content: space-between;
-  background-color: #27A8D2;
-  color: white;
+  background-color: var(--brand-primary-color);
+  color: var(--background-color);
   padding: .5em;
 }
 </style>

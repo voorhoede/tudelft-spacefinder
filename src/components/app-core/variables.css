@@ -1,0 +1,39 @@
+:root {
+    /* colors */
+    --brand-primary-color: #00a6d6;
+    --brand-primary-color-light: #a8d4e5;
+    --brand-secondary-color: #8d17ab;
+
+    --text-color: #333333;
+    --highlight-color: #eeeeee;
+    --neutral-color: #f7f7f7;
+    --background-color: #ffffff;
+
+    /* fonts */
+    --font-heading: Roboto, sans-serif;
+    --font-body: Arial, sans-serif;
+
+    --font-size-big: 1.5rem;
+    --font-size-default: 1rem;
+    --font-size-small: .5rem;
+
+    /* spacing */
+    --spacing-default: 1rem;
+    --spacing-half: .5rem;
+
+    /* layers */
+    --layer--raised: 1;
+    --layer--overlay: 5;
+    --layer--popup: 10;
+
+    /* shadows */
+    --shadow-smal: 0 1px 2px rgba(0, 0, 0, .4);
+}
+
+@media (min-width: 700px) {
+    :root {
+        --font-size-big: 1.625rem;
+        --font-size-default: 1.125rem;
+        --font-size-small: .6rem;
+    }
+}
