@@ -7,6 +7,8 @@
 </template>
 
 <style>
+@import '../app-core/variables.css';
+
 .mapbox-map {
   width: 100%;
   height: 100%;

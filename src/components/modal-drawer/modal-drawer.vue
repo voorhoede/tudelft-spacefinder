@@ -26,6 +26,8 @@ export default {
 </script>
 
 <style>
+@import '../app-core/variables.css';
+
 .modal-drawer {
   height: 100vh;
   position: fixed;
