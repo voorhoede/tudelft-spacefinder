@@ -1,27 +1,18 @@
 <template>
   <div class="mapbox-map" ref="map">
-    <div v-if="!map" class="mapbox-map__placeholder">
-      <span>(map)</span>
+    <div v-if="!mapLoaded" class="mapbox-map__placeholder">
+      <span>({{ $t('map') }})</span>
     </div>
   </div>
 </template>
 
 <script>
-import mapboxgl from '~/lib/mapboxgl'
+import { mapState } from 'vuex'
 
 export default {
-  data() {
-    return {
-      map: undefined,
-    }
-  },
+  computed: mapState(['mapLoaded']),
   mounted() {
-    this.map = new mapboxgl.Map({
-      container: this.$refs.map,
-      center: [4.3732876, 51.9997502],
-      zoom: 13,
-      style: 'mapbox://styles/mapbox/streets-v10',
-    })
+    this.$store.dispatch('mountMap', { container: this.$refs.map })
   }
 }
 </script>
@@ -30,7 +21,7 @@ export default {
 .mapbox-map {
   width: 100%;
   height: 100%;
-  background-color: #EEEEEE;
+  background-color: #E4E5E0;
 }
 
 .mapbox-map__placeholder {
