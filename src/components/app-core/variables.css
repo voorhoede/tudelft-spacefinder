@@ -28,6 +28,12 @@
 
     /* shadows */
     --shadow-smal: 0 1px 2px rgba(0, 0, 0, .4);
+
+    /* sizing */
+    --header-height-mobile: 50px;
+    --header-height-desktop: 75px;
+    --column-width-mobile: 300px;
+    --column-width-desktop: 360px;
 }
 
 @media (min-width: 700px) {

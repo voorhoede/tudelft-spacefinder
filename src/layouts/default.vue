@@ -55,8 +55,14 @@ export default {
 }
 
 .default-layout__info {
-  width: 20rem;
+  width: var(--column-width-mobile);
   background-color: #F7F7F7;
+}
+
+@media (min-width: 700px) {
+  .default-layout__info {
+    width: var(--column-width-desktop);
+  }
 }
 
 .default-layout__map {

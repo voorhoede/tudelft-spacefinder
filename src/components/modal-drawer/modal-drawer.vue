@@ -9,10 +9,21 @@
       <h2 id="modal-drawer-title">
         {{ title }}
       </h2>
-      <button type="button" @click="$emit('close')">
+
+      <button
+        @click="$emit('close')"
+        class="button button--header"
+      >
+        <img
+          src="/icons/close-icon.svg"
+          alt=""
+          class="button--header__icon"
+        >
+
         {{ $t('close') }}
       </button>
     </header>
+
     <slot />
   </div>
 </template>
@@ -29,20 +40,34 @@ export default {
 @import '../app-core/variables.css';
 
 .modal-drawer {
-  height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
-  width: 20rem;
+  width: var(--column-width-mobile);
+  height: 100vh;
   background-color: var(--background-color);
-  border: 1px solid var(--text-color);
+}
+
+@media (min-width: 700px) {
+  .modal-drawer {
+    width: var(--column-width-desktop);
+  }
 }
 
 .modal-drawer__header {
   display: flex;
   justify-content: space-between;
+  padding: 0 var(--spacing-default);
+  height: var(--header-height-mobile);
   background-color: var(--brand-primary-color);
+  line-height: var(--header-height-mobile);
   color: var(--background-color);
-  padding: .5em;
+}
+
+@media (min-width: 700px) {
+  .modal-drawer__header {
+    height: var(--header-height-desktop);
+    line-height: var(--header-height-desktop);
+  }
 }
 </style>
