@@ -3,15 +3,15 @@
     role="banner"
     class="app-header"
   >
-    <a
-      href="/"
+    <nuxt-link
+      to="/"
       class="app-header__logo"
     >
       <img
         src="/tu-delft-logo.svg"
         alt="Home"
       >
-    </a>
+    </nuxt-link>
 
     <h1 class="app-header__title">
       {{ $t('title') }}
