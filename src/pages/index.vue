@@ -6,3 +6,11 @@
     </nuxt-link>
   </nav>
 </template>
+
+<script>
+export default {
+  mounted() {
+    this.$store.dispatch('zoomToCampus')
+  }
+}
+</script>

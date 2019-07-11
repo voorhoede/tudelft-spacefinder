@@ -33,6 +33,11 @@ export default {
       })
 
     return { building }
+  },
+
+  mounted() {
+    this.$store.commit('selectBuilding', this.building)
+    this.$store.dispatch('zoomToSelection')
   }
 }
 </script>

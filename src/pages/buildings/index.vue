@@ -25,6 +25,9 @@ export default {
   async asyncData({ app }) {
     const buildings = await loadData(`${app.i18n.locale}/buildings.json`)
     return { buildings }
+  },
+  mounted() {
+    this.$store.dispatch('zoomToCampus')
   }
 }
 </script>
