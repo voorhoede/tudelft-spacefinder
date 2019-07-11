@@ -42,7 +42,7 @@
     "facilities": {
       "type": "object",
       "properties": {
-        "studyPlaces": { "type": "integer" },
+        "seats": { "type": "integer" },
         "tables": { "type": "integer" },
         "adjustableChairs": { "type": "boolean" },
         "studyType": {

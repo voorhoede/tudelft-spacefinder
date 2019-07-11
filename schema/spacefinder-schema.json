@@ -28,7 +28,7 @@
       "type": "object",
       "properties": {
         "spaceType": { "type":"string" },
-        "studyPlaces": { "type": "integer" },
+        "seats": { "type": "integer" },
         "tables": { "type": "integer" },
         "chairsPerTable": { "type": "integer" },
         "adjustableChairs": { "type": "integer" },

@@ -16,7 +16,7 @@ module.exports = {
     null,
     null,
     null,
-    'studyPlaces',
+    'seats',
     'tables',
     null,
     'adjustableChairs',
@@ -51,7 +51,7 @@ function cast(value, context) {
   switch (column) {
     // conversion to integers
     case 'id':
-    case 'studyPlaces':
+    case 'seats':
     case 'tables':
     case 'otherSeats':
     case 'individualStudySeats':

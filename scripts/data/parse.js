@@ -71,7 +71,7 @@ const getRoom = pipe(
 )
 
 const facilities = [
-  'studyPlaces',
+  'seats',
   'tables',
   'adjustableChairs',
   'otherSeats',
