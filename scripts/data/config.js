@@ -15,15 +15,15 @@ module.exports = {
     null,
     null,
     null,
-    'spaceType',
+    null,
     'studyPlaces',
     'tables',
-    'chairsPerTable',
+    null,
     'adjustableChairs',
-    'fixedChairs',
-    'otherSeats',
-    'individualStudySeats',
-    'availableForSelfStudy',
+    null,
+    null,
+    null,
+    'studyType',
     'quietness',
     'bookable',
     'daylit',
@@ -39,7 +39,7 @@ module.exports = {
     'nearPrinter',
     'nearBathroom',
     'claimedByGroup',
-    'notes',
+    null,
     null,
     null,
     'id'
@@ -53,12 +53,8 @@ function cast(value, context) {
     case 'id':
     case 'studyPlaces':
     case 'tables':
-    case 'chairsPerTable':
-    case 'adjustableChairs':
-    case 'fixedChairs':
     case 'otherSeats':
     case 'individualStudySeats':
-    case 'availableForSelfStudy':
       return parseInt(value, 10)
     // conversion to booleans
     case 'bookable':
@@ -83,8 +79,22 @@ function cast(value, context) {
     // power outlets
     case 'powerOutlets':
       return powerOutlets(value)
+    case 'adjustableChairs':
+      return value !== '0'
+    case 'studyType':
+      return studyType(value)
     default:
       return value
+  }
+}
+
+function studyType(value) {
+  if (value === '1') {
+    return 'self'
+  } else if (value === '2') {
+    return 'group'
+  } else {
+    return value
   }
 }
 
@@ -119,11 +129,10 @@ function getFacilities(value = '') {
 function powerOutlets(value) {
   switch (value) {
     case 'ja (<1 pp)':
-      return 'some'
     case 'ja (>/= 1 pp)':
-      return 'all'
+      return true
     case 'nee':
-      return 'none'
+      return false
     default:
       return value
   }

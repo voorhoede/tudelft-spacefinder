@@ -71,15 +71,11 @@ const getRoom = pipe(
 )
 
 const facilities = [
-  'spaceType',
   'studyPlaces',
   'tables',
-  'chairsPerTable',
   'adjustableChairs',
-  'fixedChairs',
   'otherSeats',
-  'individualStudySeats',
-  'availableForSelfStudy',
+  'studyType',
   'quietness',
   'bookable',
   'daylit',
@@ -93,8 +89,7 @@ const facilities = [
   'nearCoffeeMachine',
   'nearPrinter',
   'nearBathroom',
-  'claimedByGroup',
-  'notes'
+  'claimedByGroup'
 ]
 
 const getFacilities = pipe(

@@ -42,25 +42,20 @@
     "facilities": {
       "type": "object",
       "properties": {
-        "spaceType": { "type":"string" },
         "studyPlaces": { "type": "integer" },
         "tables": { "type": "integer" },
-        "chairsPerTable": { "type": "integer" },
-        "adjustableChairs": { "type": "integer" },
-        "fixedChairs": { "type": "integer" },
-        "otherSeats": { "type": "integer" },
-        "individualStudySeats": { "type": "integer" },
-        "availableForSelfStudy": { "type": "integer" },
+        "adjustableChairs": { "type": "boolean" },
+        "studyType": {
+          "type": "string",
+          "enum": ["self", "group"]
+        },
         "quietness": {
           "type": "string",
           "enum": ["silent", "quiet", "noisy"]
         },
         "bookable": { "type": "boolean" },
         "daylit": { "type": "boolean" },
-        "powerOutlets": {
-          "type": "string",
-          "enum": ["none", "all", "some"]
-        },
+        "powerOutlets": { "type": "boolean" },
         "ethernet": { "type": "boolean" },
         "stationaryPC": { "type": "boolean" },
         "otherFacilities": {
@@ -75,8 +70,7 @@
         "nearCoffeeMachine": { "type": "boolean" },
         "nearPrinter": { "type": "boolean" },
         "nearBathroom": { "type": "boolean" },
-        "claimedByGroup": { "type": "boolean" },
-        "notes": { "type": "string" }
+        "claimedByGroup": { "type": "boolean" }
       }
     }
   }
