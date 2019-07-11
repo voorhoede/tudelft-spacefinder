@@ -3,41 +3,43 @@
     role="banner"
     class="app-header"
   >
-    <a
-      href="/"
+    <nuxt-link
+      to="/"
       class="app-header__logo"
     >
       <img
         src="/tu-delft-logo.svg"
         alt="Home"
       >
-    </a>
+    </nuxt-link>
 
     <h1 class="app-header__title">
       {{ $t('title') }}
     </h1>
 
     <button
+      type="button"
       @click="$emit('openFilterMenu')"
-      class="app-header__button button"
+      class="app-header__button button button--header"
     >
       <img
         src="/icons/filter-icon.svg"
         alt=""
-        class="app-header__button-icon"
+        class="button--header__icon"
       >
 
       {{ $t('filter') }}
     </button>
 
     <button
+      type="button"
       @click="$emit('openAppMenu')"
-      class="app-header__button button"
+      class="app-header__button button button--header"
     >
       <img
         src="/icons/menu-icon.svg"
         alt=""
-        class="app-header__button-icon"
+        class="button--header__icon"
       >
 
       {{ $t('menu') }}
@@ -51,19 +53,20 @@
 .app-header {
   display: flex;
   justify-content: space-between;
-  height: 50px;
+  padding: 0 var(--spacing-default);
+  height: var(--header-height-mobile);
   background-color: var(--brand-primary-color);
   color: var(--background-color);
 }
 
 @media (min-width: 700px) {
   .app-header {
-    height: 75px;
+    height: var(--header-height-desktop);
   }
 }
 
 .app-header__logo {
-  margin: 8px 0 8px var(--spacing-default);
+  margin: 8px 0;
 }
 
 .app-header__logo img {
@@ -81,47 +84,22 @@
   margin: 0;
   font-size: var(--font-size-big);
   text-align: center;
-  line-height: 50px;
+  line-height: var(--header-height-mobile);
 }
 
 @media (min-width: 700px) {
   .app-header__title {
-    line-height: 75px;
+    line-height: var(--header-height-desktop);
   }
 }
 
 .app-header__button {
   justify-self: flex-end;
-  margin: 5px 0;
-  font-size: var(--font-size-small);
-  text-transform: uppercase;
-  color: var(--background-color);
-}
-
-.app-header__button:hover,
-.app-header__button:focus {
-  border: 1px solid var(--background-color);
 }
 
 @media (min-width: 700px) {
-  .app-header__button {
-    margin: 10px 0;
-  }
-
   .app-header__button:last-of-type {
-    margin: 10px var(--spacing-default) 10px var(--spacing-half);
-  }
-}
-
-.app-header__button-icon {
-  display: block;
-  margin: 0 auto 3px auto;
-  height: 21px;
-}
-
-@media (min-width: 700px) {
-  .app-header__button-icon {
-    height: 25px;
+    margin-left: var(--spacing-half);
   }
 }
 </style>

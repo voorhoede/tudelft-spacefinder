@@ -1,6 +1,7 @@
 <template>
   <form>
     <modal-drawer
+      :isOpen="isOpen"
       :title="$t('filter')"
       @close="$emit('close')"
     >
@@ -13,6 +14,9 @@
 import ModalDrawer from '../modal-drawer'
 
 export default {
-  components: { ModalDrawer }
+  components: { ModalDrawer },
+  props: {
+    isOpen: Boolean,
+  }
 }
 </script>
