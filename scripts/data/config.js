@@ -80,6 +80,9 @@ function cast(value, context) {
     // noise level
     case 'quietness':
       return quietness(value)
+    // power outlets
+    case 'powerOutlets':
+      return powerOutlets(value)
     default:
       return value
   }
@@ -111,6 +114,19 @@ function getFacilities(value = '') {
     .split(' ')
     .filter(val => !!val)
     .map(val => val.toLowerCase().replace(',', ''))
+}
+
+function powerOutlets(value) {
+  switch (value) {
+    case 'ja (<1 pp)':
+      return 'some'
+    case 'ja (>/= 1 pp)':
+      return 'all'
+    case 'nee':
+      return 'none'
+    default:
+      return value
+  }
 }
 
 function quietness(value) {

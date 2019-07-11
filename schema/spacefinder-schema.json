@@ -3,15 +3,6 @@
   "type": "object",
   "title": "TU Delft spacefinder",
   "description": "An explanation about the purpose of this instance.",
-  "required": [],
-  "properties": {
-    "buildings": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/building"
-      }
-    }
-  },
   "definitions": {
     "timeRange": {
       "type":"string",
@@ -76,10 +67,14 @@
     "space": {
       "type":"object",
       "properties": {
-        "id": { "type": "string" },
+        "slug": { "type": "string" },
         "name": { "type": "string" },
-        "description": { "type": "string" },
-        "roomId": { "type":"string" },
+        "building": {
+          "$ref": "#/definitions/building"
+        },
+        "room": {
+          "$ref": "#/definitions/room"
+        },
         "floor": { "type": "string" },
         "lat": { "type": "number" },
         "lng": { "type": "number" },
@@ -87,14 +82,23 @@
         "facilities": { "$ref": "#/definitions/facilities" }
       }
     },
+    "room": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type":"string",
+          "description": "Room name"
+        }
+      }
+    },
     "building": {
       "type":"object",
       "properties": {
-        "id": {
-          "type":"string"
-        },
         "name": {
           "type":"string"
+        },
+        "number": {
+          "type":"integer"
         },
         "lat": {
           "type":"number"
@@ -102,14 +106,11 @@
         "lng": {
           "type":"number"
         },
+        "slug": {
+          "type": "string"
+        },
         "openingHours": {
           "$ref": "#/definitions/openingHours"
-        },
-        "spaces": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/space"
-          }
         }
       }
     }

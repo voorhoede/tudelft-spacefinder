@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "space.json",
+  "description": "A study space at TU Delft",
+  "$ref": "#/definitions/space",
+  "definitions": {
+    "space": {
+      "type":"object",
+      "properties": {
+        "slug": { "type": "string" },
+        "name": { "type": "string" },
+        "building": {
+          "$ref": "building.json"
+        },
+        "room": {
+          "$ref": "#/definitions/room"
+        },
+        "floor": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "openingHours": { "$ref": "base.json#/definitions/openingHours" },
+        "facilities": { "$ref": "#/definitions/facilities" }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "room",
+        "building",
+        "facilities",
+        "slug"
+      ]
+    },
+    "room": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type":"string",
+          "description": "Room name"
+        }
+      }
+    },
+    "facilities": {
+      "type": "object",
+      "properties": {
+        "spaceType": { "type":"string" },
+        "studyPlaces": { "type": "integer" },
+        "tables": { "type": "integer" },
+        "chairsPerTable": { "type": "integer" },
+        "adjustableChairs": { "type": "integer" },
+        "fixedChairs": { "type": "integer" },
+        "otherSeats": { "type": "integer" },
+        "individualStudySeats": { "type": "integer" },
+        "availableForSelfStudy": { "type": "integer" },
+        "quietness": {
+          "type": "string",
+          "enum": ["silent", "quiet", "noisy"]
+        },
+        "bookable": { "type": "boolean" },
+        "daylit": { "type": "boolean" },
+        "powerOutlets": {
+          "type": "string",
+          "enum": ["none", "all", "some"]
+        },
+        "ethernet": { "type": "boolean" },
+        "stationaryPC": { "type": "boolean" },
+        "otherFacilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "whiteBoard": { "type": "boolean" },
+        "smartBoard": { "type": "boolean" },
+        "presentationScreen": { "type": "boolean" },
+        "nearCoffeeMachine": { "type": "boolean" },
+        "nearPrinter": { "type": "boolean" },
+        "nearBathroom": { "type": "boolean" },
+        "claimedByGroup": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
