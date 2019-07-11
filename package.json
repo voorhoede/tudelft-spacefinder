@@ -6,7 +6,9 @@
   "private": true,
   "scripts": {
     "analyze": "nuxt build --analyze",
+    "prebuild": "npm run data",
     "build": "nuxt generate",
+    "data": "node scripts/data/parse.js",
     "dev": "PORT=3463 nuxt",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
@@ -16,9 +18,13 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^2.6.0",
+    "ajv": "^6.10.1",
+    "csv": "^5.1.1",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
-    "nuxt-i18n": "^5.12.7"
+    "nuxt-i18n": "^5.12.7",
+    "ramda": "^0.26.1",
+    "slugify": "^1.3.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

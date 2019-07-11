@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "building.json",
+  "description": "A building at TU Delft",
+  "$ref": "#/definitions/building",
+  "definitions": {
+    "building": {
+      "type":"object",
+      "properties": {
+        "name": {
+          "type":"string"
+        },
+        "number": {
+          "type":"integer"
+        },
+        "lat": {
+          "type":"number"
+        },
+        "lng": {
+          "type":"number"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "openingHours": {
+          "$ref": "base.json#/definitions/openingHours"
+        }
+      }
+    }
+  }
+}
