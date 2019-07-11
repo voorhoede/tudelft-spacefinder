@@ -9,3 +9,33 @@
 .button:focus {
     border: 1px solid var(--text-color);
 }
+
+.button--header {
+    margin: 5px 0;
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    color: var(--background-color);
+}
+
+.button--header:hover,
+.button--header:focus {
+    border: 1px solid var(--background-color);
+}
+
+@media (min-width: 700px) {
+    .button--header {
+        margin: 10px 0;
+    }
+}
+
+.button--header__icon {
+    display: block;
+    margin: 0 auto 3px auto;
+    height: 21px;
+}
+
+@media (min-width: 700px) {
+    .button--header__icon {
+        height: 25px;
+    }
+}

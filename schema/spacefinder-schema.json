@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "TU Delft spacefinder",
+  "description": "An explanation about the purpose of this instance.",
+  "definitions": {
+    "timeRange": {
+      "type":"string",
+      "pattern": "^\\d{2}:\\d{2}-\\d{2}:\\d{2}$"
+    },
+    "weekDay": {
+      "type": "array",
+      "items": {"$ref":"#/definitions/timeRange"}
+    },
+    "openingHours": {
+      "type":"object",
+      "properties": {
+        "mo": { "$ref": "#/definitions/weekDay" },
+        "tu": { "$ref": "#/definitions/weekDay" },
+        "we": { "$ref": "#/definitions/weekDay" },
+        "th": { "$ref": "#/definitions/weekDay" },
+        "fr": { "$ref": "#/definitions/weekDay" },
+        "sa": { "$ref": "#/definitions/weekDay" },
+        "su": { "$ref": "#/definitions/weekDay" }
+      }
+    },
+    "facilities": {
+      "type": "object",
+      "properties": {
+        "spaceType": { "type":"string" },
+        "seats": { "type": "integer" },
+        "tables": { "type": "integer" },
+        "chairsPerTable": { "type": "integer" },
+        "adjustableChairs": { "type": "integer" },
+        "fixedChairs": { "type": "integer" },
+        "otherSeats": { "type": "integer" },
+        "individualStudySeats": { "type": "integer" },
+        "availableForSelfStudy": { "type": "integer" },
+        "quietness": {
+          "type": "string",
+          "enum": ["silent", "quiet", "busy"]
+        },
+        "bookable": { "type": "boolean" },
+        "daylit": { "type": "boolean" },
+        "powerOutlets": {
+          "type": "string",
+          "enum": ["none", "all", "some"]
+        },
+        "ethernet": { "type": "boolean" },
+        "stationaryPC": { "type": "boolean" },
+        "otherFacilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "whiteBoard": { "type": "boolean" },
+        "smartBoard": { "type": "boolean" },
+        "presentationScreen": { "type": "boolean" },
+        "nearCoffeeMachine": { "type": "boolean" },
+        "nearPrinter": { "type": "boolean" },
+        "nearBathroom": { "type": "boolean" },
+        "claimedByGroup": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "space": {
+      "type":"object",
+      "properties": {
+        "slug": { "type": "string" },
+        "name": { "type": "string" },
+        "building": {
+          "$ref": "#/definitions/building"
+        },
+        "room": {
+          "$ref": "#/definitions/room"
+        },
+        "floor": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "openingHours": { "$ref": "#/definitions/openingHours" },
+        "facilities": { "$ref": "#/definitions/facilities" }
+      }
+    },
+    "room": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type":"string",
+          "description": "Room name"
+        }
+      }
+    },
+    "building": {
+      "type":"object",
+      "properties": {
+        "name": {
+          "type":"string"
+        },
+        "number": {
+          "type":"integer"
+        },
+        "lat": {
+          "type":"number"
+        },
+        "lng": {
+          "type":"number"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "openingHours": {
+          "$ref": "#/definitions/openingHours"
+        }
+      }
+    }
+  }
+}
