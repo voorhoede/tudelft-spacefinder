@@ -31,7 +31,7 @@ module.exports = {
     'ethernet',
     'stationaryPC',
     null,
-    'otherFacilities',
+    null,
     'whiteBoard',
     'smartBoard',
     'presentationScreen',
@@ -70,9 +70,6 @@ function cast(value, context) {
     case 'nearPrinter':
     case 'nearBathroom':
       return distanceToBoolean(value)
-    // list values
-    case 'otherFacilities':
-      return getFacilities(value)
     // noise level
     case 'quietness':
       return quietness(value)
@@ -116,14 +113,6 @@ function maybeDutchBoolean(value) {
   } else {
     return value
   }
-}
-
-function getFacilities(value = '') {
-  return !value ? [] : value
-    .trim()
-    .split(' ')
-    .filter(val => !!val)
-    .map(val => val.toLowerCase().replace(',', ''))
 }
 
 function powerOutlets(value) {

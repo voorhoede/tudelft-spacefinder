@@ -63,12 +63,6 @@
         "powerOutlets": { "type": "boolean" },
         "ethernet": { "type": "boolean" },
         "stationaryPC": { "type": "boolean" },
-        "otherFacilities": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "whiteBoard": { "type": "boolean" },
         "smartBoard": { "type": "boolean" },
         "presentationScreen": { "type": "boolean" },
@@ -87,7 +81,6 @@
         "powerOutlets",
         "ethernet",
         "stationaryPC",
-        "otherFacilities",
         "whiteBoard",
         "smartBoard",
         "presentationScreen",

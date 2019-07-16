@@ -80,7 +80,6 @@ const facilities = [
   'powerOutlets',
   'ethernet',
   'stationaryPC',
-  'otherFacilities',
   'whiteBoard',
   'smartBoard',
   'presentationScreen',
