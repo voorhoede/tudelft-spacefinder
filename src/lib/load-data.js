@@ -1,3 +1,4 @@
+import deepFreeze from 'deep-freeze'
 import fetchJson from './fetch-json'
 
 /**
@@ -11,8 +12,10 @@ import fetchJson from './fetch-json'
 export default function loadData(filename) {
   if (process.client) {
     return fetchJson(`/data/${filename}`)
+            .then(deepFreeze)
   } else {
     return import(`~/static/data/${filename}`)
       .then(response => response.default)
+      .then(deepFreeze)
   }
 }

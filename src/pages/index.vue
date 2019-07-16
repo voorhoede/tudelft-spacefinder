@@ -2,7 +2,7 @@
   <nav>
     <h1>Home: {{ $i18n.locale }}</h1>
 
-    <ul class="flat-list">
+    <ul class="flat-list spaces-list">
       <li
         v-for="space in spaces"
         :key="space.slug"
@@ -11,9 +11,11 @@
           :buildingSlug="space.building.slug"
           :spaceSlug="space.slug"
           :facilities="space.facilities"
-          :faculty="space.building.name"
+          :building="space.building.name"
           :location="space.room.id"
           :title="space.name"
+          :seats="space.seats"
+          :tables="space.tables"
           class="space-card"
         />
       </li>
@@ -37,11 +39,3 @@ export default {
   }
 }
 </script>
-
-<style>
-@import '../components/app-core/variables.css';
-
-.space-card {
-  margin-bottom: var(--spacing-default);
-}
-</style>

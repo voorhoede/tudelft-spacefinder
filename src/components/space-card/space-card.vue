@@ -19,13 +19,13 @@
           v-if="title"
           class="space-card__description"
         >
-          {{ faculty }} - {{ location}}
+          <em>{{ building }}</em> - {{ location}}
         </p>
         <h3
           v-else
           class="space-card__description"
         >
-          {{ faculty }} - {{ location}}
+          <em>{{ building }}</em> - {{ location}}
         </h3>
       </div>
 
@@ -35,10 +35,10 @@
 
       <ul class="flat-list space-card__seating">
         <li>
-          <img src="/icons/seat-icon.svg" alt=""> {{ facilities.seats }}
+          <img src="/icons/seat-icon.svg" alt=""> {{ seats }}
         </li>
         <li>
-          <img src="/icons/table-icon.svg" alt=""> {{ facilities.tables }}
+          <img src="/icons/table-icon.svg" alt=""> {{ tables }}
         </li>
       </ul>
     </div>
@@ -63,12 +63,23 @@
 
       <ul class="flat-list space-card__facilities">
         <li
-          v-for="(facility, index) in this.facilities"
+          v-for="(facility, index) in this.filteredFacilities"
           :key="index"
           class="space-card__facility-item"
         >
           <img
-            src="/icons/building-3me-icon.svg"
+            v-if="facility.name === 'studyType'"
+            :src="`/icons/location-type-${facility.value}-icon.svg`"
+            alt=""
+          >
+          <img
+            v-else-if="facility.name === 'quietness'"
+            :src="`/icons/noise-level-${facility.value}-icon.svg`"
+            alt=""
+          >
+          <img
+            v-else
+            :src="`/icons/facility-${facility.name}-icon.svg`"
             alt=""
           >
         </li>
@@ -83,13 +94,22 @@ export default {
     buildingSlug: String,
     locationisOpen: Boolean,
     facilities: Object,
-    faculty: String,
+    building: String,
     location: String,
     spaceSlug: String,
     title: String,
+    seats: Number,
+    tables: Number,
+  },
+  computed: {
+    filteredFacilities() {
+      return Object.entries(this.facilities).map(([key, value]) => {
+        return { name: key, value }
+      })
+        .filter(obj => Boolean(obj.value))
+    }
   },
 }
-// object.entries()
 </script>
 
 <style>
@@ -111,7 +131,7 @@ export default {
 
 .space-card__info {
   display: flex;
-  margin-bottom: var(--spacing-double);
+  margin-bottom: var(--spacing-default);
 }
 
 .space-card__location {
@@ -127,6 +147,11 @@ export default {
 
 .space-card__description {
   font-size: var(--font-size-smaller);
+}
+
+.space-card__description em {
+  font-weight: bold;
+  font-style: normal;
 }
 
 .space-card__seating {
@@ -151,7 +176,7 @@ export default {
 .space-card__status {
   flex: 0 0 auto;
   order: 2;
-  margin-left: var(--spacing-default);
+  margin: .1rem 0 0 var(--spacing-default);
   font-size: var(--font-size-smaller);
 }
 
