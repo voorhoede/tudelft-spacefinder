@@ -1,34 +1,50 @@
 <template>
   <div>
     <h1>{{ $t('building') }}: {{ building.name }}</h1>
-    <nuxt-link
-      :to="
-        localePath({
-          name: 'buildings-buildingSlug-spaces',
-          params: { buildingSlug: building.slug }
-        })
-      "
-    >
-      {{ $t('spaces') }}
-    </nuxt-link>
+    
+    <ul class="flat-list">
+      <li
+        v-for="space in spaces"
+        :key="space.slug"
+      >
+        <space-card
+          :buildingSlug="space.building.slug"
+          :spaceSlug="space.slug"
+          :facilities="space.facilities"
+          :faculty="space.building.name"
+          :location="space.room.id"
+          :title="space.name"
+          class="space-card"
+        />
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import loadData from '~/lib/load-data'
 
+import { SpaceCard } from '../../../components'
+
 export default {
+  components: { SpaceCard },
   async asyncData({ app, params }) {
+    const { locale } = app.i18n
     const { buildingSlug } = params
 
-    const building = await loadData(`${app.i18n.locale}/buildings.json`)
-      .then((buildings) => {
+    const [building, spaces] = await Promise.all([
+      loadData(`${locale}/buildings.json`).then((buildings) => {
         return buildings.find((building) => {
           return building.slug === buildingSlug
         })
+      }),
+      loadData(`${locale}/spaces.json`).then((spaces) => {
+        return spaces.filter((space) => {
+          return space.building.slug === buildingSlug
+        })
       })
-
-    return { building }
+    ])
+    return { building, spaces }
   },
 
   mounted() {
@@ -37,3 +53,11 @@ export default {
   }
 }
 </script>
+
+<style>
+@import '../../../components/app-core/variables.css';
+
+.space-card {
+  margin-bottom: var(--spacing-default);
+}
+</style>
