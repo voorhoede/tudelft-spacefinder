@@ -16,9 +16,9 @@
           "$ref": "#/definitions/room"
         },
         "floor": { "type": "string" },
-        "latitude": { "type": "number" },
-        "longitude": { "type": "number" },
-        "openingHours": { "$ref": "base.json#/definitions/openingHours" },
+        "latitude": { "type": "number", "description": "@TODO" },
+        "longitude": { "type": "number", "description": "@TODO" },
+        "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "@TODO" },
         "facilities": { "$ref": "#/definitions/facilities" }
       },
       "additionalProperties": false,
@@ -37,7 +37,9 @@
           "type":"string",
           "description": "Room name"
         }
-      }
+      },
+      "additionalProperties": false,
+      "required": ["id"]
     },
     "facilities": {
       "type": "object",
@@ -71,7 +73,28 @@
         "nearPrinter": { "type": "boolean" },
         "nearBathroom": { "type": "boolean" },
         "claimedByGroup": { "type": "boolean" }
-      }
+      },
+      "additionalProperties": false,
+      "required":[
+        "seats",
+        "tables",
+        "adjustableChairs",
+        "studyType",
+        "quietness",
+        "bookable",
+        "daylit",
+        "powerOutlets",
+        "ethernet",
+        "stationaryPC",
+        "otherFacilities",
+        "whiteBoard",
+        "smartBoard",
+        "presentationScreen",
+        "nearCoffeeMachine",
+        "nearPrinter",
+        "nearBathroom",
+        "claimedByGroup"
+      ]
     }
   }
 }
