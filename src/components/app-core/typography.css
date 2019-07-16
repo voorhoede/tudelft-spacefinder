@@ -9,3 +9,13 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 300;
 }
+
+a {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+    color: var(--brand-primary-color-dark);
+}

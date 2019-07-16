@@ -55,12 +55,15 @@ export default {
 .default-layout__main {
   overflow-y: scroll;
   display: flex;
-  flex: 1;
+  flex: 1 1 auto;
 }
 
 .default-layout__info {
+  flex: 0 0 auto;
+  padding: var(--spacing-default);
   width: var(--column-width-mobile);
-  background-color: #F7F7F7;
+  background-color: var(--neutral-color);
+  overflow: auto;
 }
 
 @media (min-width: 700px) {
@@ -70,6 +73,6 @@ export default {
 }
 
 .default-layout__map {
-  flex: 1;
+  flex: 1 1 auto;
 }
 </style>
