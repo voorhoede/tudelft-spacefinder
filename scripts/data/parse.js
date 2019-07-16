@@ -71,8 +71,6 @@ const getRoom = pipe(
 )
 
 const facilities = [
-  'seats',
-  'tables',
   'adjustableChairs',
   'otherSeats',
   'studyType',
@@ -82,7 +80,6 @@ const facilities = [
   'powerOutlets',
   'ethernet',
   'stationaryPC',
-  'otherFacilities',
   'whiteBoard',
   'smartBoard',
   'presentationScreen',
@@ -102,7 +99,7 @@ const getSpaceName = pipe(
   objOf('name')
 )
 
-const getFloor = pick(['floor'])
+const getFloor = pick(['floor', 'seats', 'tables'])
 
 const meld = unapply(reduce(mergeDeepRight, {}))
 

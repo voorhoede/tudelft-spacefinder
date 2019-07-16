@@ -16,15 +16,20 @@
           "$ref": "#/definitions/room"
         },
         "floor": { "type": "string" },
-        "latitude": { "type": "number" },
-        "longitude": { "type": "number" },
-        "openingHours": { "$ref": "base.json#/definitions/openingHours" },
+        "seats": { "type": "integer" },
+        "tables": { "type": "integer" },
+        "latitude": { "type": "number", "description": "@TODO" },
+        "longitude": { "type": "number", "description": "@TODO" },
+        "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "@TODO" },
         "facilities": { "$ref": "#/definitions/facilities" }
       },
       "additionalProperties": false,
       "required": [
         "name",
         "room",
+        "floor",
+        "seats",
+        "tables",
         "building",
         "facilities",
         "slug"
@@ -37,13 +42,13 @@
           "type":"string",
           "description": "Room name"
         }
-      }
+      },
+      "additionalProperties": false,
+      "required": ["id"]
     },
     "facilities": {
       "type": "object",
       "properties": {
-        "seats": { "type": "integer" },
-        "tables": { "type": "integer" },
         "adjustableChairs": { "type": "boolean" },
         "studyType": {
           "type": "string",
@@ -58,12 +63,6 @@
         "powerOutlets": { "type": "boolean" },
         "ethernet": { "type": "boolean" },
         "stationaryPC": { "type": "boolean" },
-        "otherFacilities": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "whiteBoard": { "type": "boolean" },
         "smartBoard": { "type": "boolean" },
         "presentationScreen": { "type": "boolean" },
@@ -71,7 +70,25 @@
         "nearPrinter": { "type": "boolean" },
         "nearBathroom": { "type": "boolean" },
         "claimedByGroup": { "type": "boolean" }
-      }
+      },
+      "additionalProperties": false,
+      "required":[
+        "adjustableChairs",
+        "studyType",
+        "quietness",
+        "bookable",
+        "daylit",
+        "powerOutlets",
+        "ethernet",
+        "stationaryPC",
+        "whiteBoard",
+        "smartBoard",
+        "presentationScreen",
+        "nearCoffeeMachine",
+        "nearPrinter",
+        "nearBathroom",
+        "claimedByGroup"
+      ]
     }
   }
 }
