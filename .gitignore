@@ -85,3 +85,5 @@ sw.*
 
 # Mac OSX
 .DS_Store
+
+src/static/data/*/spaces.json

@@ -16,6 +16,8 @@
           "$ref": "#/definitions/room"
         },
         "floor": { "type": "string" },
+        "seats": { "type": "integer" },
+        "tables": { "type": "integer" },
         "latitude": { "type": "number", "description": "@TODO" },
         "longitude": { "type": "number", "description": "@TODO" },
         "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "@TODO" },
@@ -25,6 +27,9 @@
       "required": [
         "name",
         "room",
+        "floor",
+        "seats",
+        "tables",
         "building",
         "facilities",
         "slug"
@@ -44,8 +49,6 @@
     "facilities": {
       "type": "object",
       "properties": {
-        "seats": { "type": "integer" },
-        "tables": { "type": "integer" },
         "adjustableChairs": { "type": "boolean" },
         "studyType": {
           "type": "string",
@@ -76,8 +79,6 @@
       },
       "additionalProperties": false,
       "required":[
-        "seats",
-        "tables",
         "adjustableChairs",
         "studyType",
         "quietness",
