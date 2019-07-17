@@ -39,8 +39,11 @@ html {
         bottom: var(--spacing-default);
         left: var(--spacing-default);
         right: var(--spacing-default);
+        padding: 0;
         width: auto;
         height: auto;
+        background: none;
+        overflow: visible;
     }
 }
 
