@@ -2,7 +2,7 @@ const { readFileSync, writeFile } = require('fs')
 const csvParser = require('csv-parse/lib/sync')
 const transform = require('./transform')
 const parserOptions = require('./config')
-const fileContents = readFileSync('./data/studieplekken.csv', 'utf8')
+const fileContents = readFileSync('./data/studieplekken-mini.csv', 'utf8')
 const parsed = csvParser(fileContents, parserOptions)
 
 const spaces = transform(parsed)

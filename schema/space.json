@@ -9,6 +9,10 @@
       "properties": {
         "slug": { "type": "string" },
         "name": { "type": "string" },
+        "exchangeId": {
+          "type": "string",
+          "description": "Used to map a room to a calendar in exchange"
+        },
         "building": {
           "$ref": "building.json"
         },

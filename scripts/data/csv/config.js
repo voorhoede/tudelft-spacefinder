@@ -6,15 +6,21 @@ module.exports = {
   delimiter: ';',
   cast,
   columns: [
-    null,
+    'spaceId',
+    'buildingNameNL',
+    'buildingNameEN',
     'buildingId',
+    'buildingAbbreviationNL',
+    'buildingAbbreviationEN',
     'floor',
     'realEstateNumber',
+    'roomNumber',
     'roomId',
-    'roomName',
+    'spaceName',
     null,
-    null,
-    null,
+    'exchangeId',
+    'latitude',
+    'longitude',
     null,
     'seats',
     'tables',
@@ -30,19 +36,13 @@ module.exports = {
     'powerOutlets',
     'ethernet',
     'stationaryPC',
-    null,
-    null,
     'whiteBoard',
     'smartBoard',
     'presentationScreen',
     'nearCoffeeMachine',
     'nearPrinter',
     'nearBathroom',
-    'claimedByGroup',
-    null,
-    null,
-    null,
-    'id'
+    'claimedByGroup'
   ]
 }
 
@@ -56,6 +56,10 @@ function cast(value, context) {
     case 'otherSeats':
     case 'individualStudySeats':
       return parseInt(value, 10)
+    // convert floats: latitude & longitude
+    case 'latitude':
+    case 'longitude':
+      return parseFloat(value)
     // conversion to booleans
     case 'bookable':
     case 'daylit':

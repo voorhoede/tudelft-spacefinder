@@ -33,8 +33,9 @@ const { space: spaceValidator } = require('../schema')
 
 const toString = invoker(0, 'toString')
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
+
 const getSlug = pipe(
-  pick(['id', 'roomId', 'roomName']),
+  pick(['spaceId', 'spaceName']),
   values,
   map(stringSlugify),
   join('--'),
@@ -83,17 +84,26 @@ const facilities = [
   'claimedByGroup'
 ]
 
+const spaceRootProperties = [
+  'exchangeId',
+  'floor',
+  'seats',
+  'tables',
+  'latitude',
+  'longitude'
+]
+
 const getFacilities = pipe(
   pick(facilities),
   objOf('facilities')
 )
 
 const getSpaceName = pipe(
-  prop('roomName'),
+  prop('spaceName'),
   objOf('name')
 )
 
-const getFloor = pick(['floor', 'seats', 'tables'])
+const getRootProperties = pick(spaceRootProperties)
 
 const meld = unapply(reduce(mergeDeepRight, {}))
 
@@ -124,7 +134,7 @@ module.exports = pipe(
       converge(meld, [
         getBuilding,
         getRoom,
-        getFloor,
+        getRootProperties,
         getFacilities,
         getSpaceName,
         getSlug
@@ -134,11 +144,11 @@ module.exports = pipe(
         value: identity,
         errors: getSpaceErrors
       }),
-      // log validation errors to console and return valid spaces only
-      // ifElse(spaceHasErrors, logErrors, identity)
+      // log validation errors to console
       ifElse(spaceHasErrors, logErrors, identity)
     )
   ),
+  // filter out invalid spaces
   filter(pipe(spaceHasErrors, not)),
   map(prop('value'))
 )
