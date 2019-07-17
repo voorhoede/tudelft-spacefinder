@@ -1,5 +1,7 @@
 <template>
-  <h1>{{ $t('space') }}: {{ space.room.id }}: {{ space.name }}</h1>
+  <section class="default-layout__info default-layout__info--space-detail">
+    <h1>{{ $t('space') }}: {{ space.room.id }}: {{ space.name }}</h1>
+  </section>
 </template>
 
 <script>

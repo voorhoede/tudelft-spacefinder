@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="default-layout__info">
     <h1>{{ $t('spaces') }} @ {{ building.name }}</h1>
     <ul>
       <li v-for="space in spaces" :key="space.slug">
@@ -15,7 +15,7 @@
         </nuxt-link>
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script>

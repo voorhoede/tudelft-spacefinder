@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <section class="default-layout__info">
     <h1>Home: {{ $i18n.locale }}</h1>
 
     <ul class="flat-list spaces-list">
@@ -19,7 +19,7 @@
         />
       </li>
     </ul>
-  </nav>
+  </section>
 </template>
 
 <script>

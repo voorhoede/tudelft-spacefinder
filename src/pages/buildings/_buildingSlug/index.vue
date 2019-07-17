@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="default-layout__info">
     <h1>{{ $t('building') }}: {{ building.name }}</h1>
     
     <ul class="flat-list spaces-list">
@@ -19,7 +19,7 @@
         />
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script>
