@@ -3,9 +3,13 @@
   "building": "gebouw",
   "buildings": "gebouwen",
   "close": "sluit",
+  "closed": "gesloten",
+  "facilities": "Faciliteiten",
   "filter": "filter",
   "map": "kaart",
   "menu": "menu",
+  "open": "open",
+  "seating": "Zitplaatsen",
   "space": "ruimte",
   "spaces": "ruimtes"
 }

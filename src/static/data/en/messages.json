@@ -3,9 +3,13 @@
   "building": "building",
   "buildings": "buildings",
   "close": "close",
+  "closed": "closed",
+  "facilities": "Facilities",
   "filter": "filter",
   "map": "map",
   "menu": "menu",
+  "open": "open",
+  "seating": "Seating",
   "space": "space",
   "spaces": "spaces"
 }

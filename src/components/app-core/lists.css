@@ -1,0 +1,13 @@
+.flat-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flat-list li {
+    padding: 0;
+}
+
+.spaces-list > li:not(:last-child) {
+    margin-bottom: var(--spacing-default);
+}

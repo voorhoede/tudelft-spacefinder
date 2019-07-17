@@ -2,7 +2,7 @@
   {
     "name": "Bouwkunde",
     "number": 8,
-    "slug": "8--bouwkunde",
+    "slug": "8-bouwkunde",
     "bounds": {
       "north": 52.006799,
       "west": 4.369299,
@@ -13,7 +13,7 @@
   {
     "name": "Aula",
     "number": 20,
-    "slug": "20--aula",
+    "slug": "20-aula",
     "bounds": {
       "north": 52.002499,
       "west": 4.372443,
