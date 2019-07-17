@@ -221,15 +221,13 @@ export default {
 .space-card__facilities {
   order: 1;
   flex: 1 1 auto;
-  height: 25px;
 }
 
 .space-card__facility-item {
   display: inline-block;
-  height: 25px;
 }
 
 .space-card__facility-item img {
-  height: 100%;
+  height: 25px;
 }
 </style>
