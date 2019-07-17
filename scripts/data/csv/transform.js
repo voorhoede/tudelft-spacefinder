@@ -1,4 +1,3 @@
-const { readFileSync, writeFile } = require('fs')
 const slugify = require('slugify')
 const {
   applySpec,
@@ -29,13 +28,8 @@ const {
   tap,
   zip
 } = require('ramda')
-const csvParser = require('csv-parse/lib/sync')
-const { space: spaceValidator } = require('./schema-validators')
 
-const parserOptions = require('./config')
-
-const fileContents = readFileSync('./data/studieplekken.csv', 'utf8')
-const parsed = csvParser(fileContents, parserOptions)
+const { space: spaceValidator } = require('../schema')
 
 const toString = invoker(0, 'toString')
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
@@ -123,7 +117,7 @@ const logErrors = tap(({ value: { slug }, errors }) => {
   console.warn(errorText.join('\n'))
 })
 
-const getSpaces = pipe(
+module.exports = pipe(
   map(
     pipe(
       // Create the space object
@@ -148,19 +142,3 @@ const getSpaces = pipe(
   filter(pipe(spaceHasErrors, not)),
   map(prop('value'))
 )
-
-const spaces = getSpaces(parsed)
-
-const writeSpaces = (lang, contents) => {
-  const stringifiedData = JSON.stringify(contents, null, 2)
-  return new Promise((resolve, reject) => {
-    writeFile(`./src/static/data/${lang}/spaces.json`, stringifiedData, 'utf8', (err) => {
-      if (err) {
-        return reject(err)
-      }
-      resolve()
-    })
-  })
-}
-
-Promise.all([ writeSpaces('nl', spaces), writeSpaces('en', spaces) ])
