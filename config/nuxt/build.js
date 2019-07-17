@@ -10,5 +10,17 @@ module.exports = {
       },
       'autoprefixer': {}
     },
+    extend (config) {
+      config.module.rules.forEach((rule) => {
+        if (rule.test.toString() === '/\\.(png|jpe?g|gif|svg|webp)$/i') {
+          rule.test = /\\.(png|jpe?g|gif|webp)$/i
+        }
+      })
+
+      config.module.rules.push({
+        test: /\.svg$/,
+        loader: 'vue-svg-loader',
+      })
+    },
   }
   

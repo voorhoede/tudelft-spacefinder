@@ -35,10 +35,10 @@
 
       <ul class="flat-list space-card__seating">
         <li>
-          <img src="/icons/seat-icon.svg" alt=""> {{ seats }}
+          <seat-icon class="space-card__seating-icon" /> {{ seats }}
         </li>
         <li>
-          <img src="/icons/table-icon.svg" alt=""> {{ tables }}
+          <table-icon class="space-card__seating-icon" /> {{ tables }}
         </li>
       </ul>
     </div>
@@ -48,13 +48,13 @@
         v-if="locationisOpen"
         class="space-card__status space-card__status--open"
       >
-        {{ $t('open') }}
+        {{ $t('open') }} <open-icon class="space-card__status-icon" />
       </p>
       <p
         v-else
-        class="space-card__status space-card__status--closed"
+        class="space-card__status"
       >
-        {{ $t('closed') }}
+        {{ $t('closed') }} <closed-icon class="space-card__status-icon" />
       </p>
 
       <h4 class="a11y-sr-only">
@@ -68,13 +68,8 @@
           class="space-card__facility-item"
         >
           <img
-            v-if="facility.name === 'studyType'"
-            :src="`/icons/location-type-${facility.value}-icon.svg`"
-            alt=""
-          >
-          <img
-            v-else-if="facility.name === 'quietness'"
-            :src="`/icons/noise-level-${facility.value}-icon.svg`"
+            v-if="facility.name === 'studyType' || facility.name === 'quietness'"
+            :src="`/icons/facility-${facility.value}-icon.svg`"
             alt=""
           >
           <img
@@ -89,7 +84,13 @@
 </template>
 
 <script>
+import ClosedIcon from '../../static/icons/location-closed-icon.svg'
+import SeatIcon from '../../static/icons/seat-icon.svg'
+import TableIcon from '../../static/icons/table-icon.svg'
+import OpenIcon from '../../static/icons/location-open-icon.svg'
+
 export default {
+  components: { ClosedIcon, SeatIcon, TableIcon, OpenIcon },
   props: {
     buildingSlug: String,
     locationisOpen: Boolean,
@@ -123,10 +124,19 @@ export default {
   text-decoration: none;
 }
 
+.space-card:hover,
+.space-card:focus {
+  border: 1px solid var(--brand-primary-color-dark);
+}
+
 @media (min-width: 700px) {
   .space-card {
     padding: var(--spacing-default);
   }
+}
+
+.space-card svg {
+  fill: var(--text-color);
 }
 
 .space-card__info {
@@ -164,9 +174,14 @@ export default {
   justify-content: space-between;
 }
 
-.space-card__seating img {
+.space-card__seating-icon {
   margin-right: var(--spacing-half);
   width: 15px;
+}
+
+.space-card:hover .space-card__seating-icon,
+.space-card:focus .space-card__seating-icon {
+  fill: var(--brand-primary-color-dark);
 }
 
 .space-card__meta {
@@ -180,35 +195,41 @@ export default {
   font-size: var(--font-size-smaller);
 }
 
-.space-card__status::after {
-  content: '';
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-}
-
 .space-card__status--open {
   color: var(--brand-secondary-color);
 }
 
-.space-card__status--open::after {
-  background: url('/icons/location-open-icon.svg') center no-repeat;
+.space-card:hover .space-card__status--open,
+.space-card:focus .space-card__status--open {
+  color: var(--brand-primary-color-dark);
 }
 
-.space-card__status--closed::after {
-  background: url('/icons/location-closed-icon.svg') center no-repeat;
+.space-card__status-icon {
+  width: 11px;
+  stroke: var(--text-color);
+}
+
+.space-card__status--open .space-card__status-icon {
+  stroke: var(--brand-secondary-color);
+}
+
+.space-card:hover .space-card__status-icon,
+.space-card:focus .space-card__status-icon {
+  stroke: var(--brand-primary-color-dark);
 }
 
 .space-card__facilities {
   order: 1;
   flex: 1 1 auto;
+  height: 25px;
 }
 
 .space-card__facility-item {
   display: inline-block;
+  height: 25px;
 }
 
 .space-card__facility-item img {
-  width: 25px;
+  height: 100%;
 }
 </style>

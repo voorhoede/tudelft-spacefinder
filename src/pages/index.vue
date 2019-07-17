@@ -16,7 +16,6 @@
           :title="space.name"
           :seats="space.seats"
           :tables="space.tables"
-          class="space-card"
         />
       </li>
     </ul>
