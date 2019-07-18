@@ -1,6 +1,7 @@
 const slugify = require('slugify')
 const {
   converge,
+  curry,
   fromPairs,
   invoker,
   lensIndex,

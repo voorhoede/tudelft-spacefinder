@@ -2,7 +2,7 @@
 // See: https://csv.js.org/parse
 module.exports = {
   relax_column_count: true,
-  from_line: 4,
+  from_line: 2,
   delimiter: ';',
   cast,
   columns: [

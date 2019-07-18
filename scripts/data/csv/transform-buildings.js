@@ -1,16 +1,25 @@
 const slugify = require('slugify')
 
 const {
+  adjust,
+  apply,
   chain,
+  concat,
   converge,
   curry,
+  filter,
+  groupBy,
   head,
   identity,
+  isEmpty,
   join,
   last,
   lensProp,
+  lt,
   map,
   mergeDeepRight,
+  mergeDeepLeft,
+  not,
   objOf,
   omit,
   over,
@@ -18,11 +27,13 @@ const {
   pipe,
   prop,
   propEq,
+  reduce,
   toLower,
   transpose,
   values,
   uniqWith,
-  trim
+  trim,
+  tap
 } = require('ramda')
 
 const { splitByHyphen } = require('./lib')
@@ -33,7 +44,9 @@ const buildingProps = [
   'buildingNameEN',
   'buildingAbbreviationNL',
   'buildingAbbreviationEN',
-  'number'
+  'number',
+  'bounds',
+  'image'
 ]
 
 const getBuildingProps = map(pick(buildingProps))
@@ -109,18 +122,38 @@ const removeNamePrefix = over(lensProp('name'), pipe(
   last,
   trim
 ))
+const atLeastOneInList = pipe(prop('length'), lt(2), not)
 
+const joinAndFilter = pipe(
+  apply(concat),
+  groupBy(prop('number')),
+  values,
+  map(filter(atLeastOneInList)),
+  map(reduce(mergeDeepLeft, {})),
+  filter(pipe(isEmpty, not))
+)
+// insert an array with:
+//   0. <array> parsed csv
+//   1. <array> content from dato cms
 const getBuildings = pipe(
-  getUniqueBuildings,
-  getBuildingNumbers,
+  adjust(0, pipe(
+    getUniqueBuildings,
+    getBuildingNumbers
+  )),
+  joinAndFilter,
   getBuildingProps,
   splitByLanguage(translationMap),
   map(map(pipe(
-    getBuildingSlug,
-    removeNamePrefix,
-    removeUnnecessaryProps,
-    removeNamePrefix
-  )))
+    // create or edit properties
+    pipe(
+      getBuildingSlug,
+      removeNamePrefix,
+      removeUnnecessaryProps,
+      removeNamePrefix
+    )
+    // @TODO: validate against json schema
+  ))),
+  tap(v => console.dir(v, { depth: null }))
 )
 
 module.exports = getBuildings
