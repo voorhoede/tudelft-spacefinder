@@ -1,5 +1,5 @@
 {
-  "title": "Spacefinder",
+  "back": "back",
   "building": "building",
   "buildings": "buildings",
   "close": "close",
@@ -12,5 +12,6 @@
   "openingHours": "opening hours",
   "seating": "Seating",
   "space": "space",
-  "spaces": "spaces"
+  "spaces": "spaces",
+  "title": "Spacefinder"
 }

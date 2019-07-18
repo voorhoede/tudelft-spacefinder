@@ -1,5 +1,7 @@
 <template>
   <section class="default-layout__info">
+    <back-button :to="localePath({ name: 'buildings' })" />
+
     <h1>{{ $t('building') }}: {{ building.name }}</h1>
     
     <ul class="flat-list spaces-list">
@@ -23,12 +25,13 @@
 </template>
 
 <script>
+import { BackButton } from '~/components'
 import loadData from '~/lib/load-data'
 
 import { SpaceCard } from '../../../components'
 
 export default {
-  components: { SpaceCard },
+  components: { BackButton, SpaceCard },
   async asyncData({ app, params }) {
     const { locale } = app.i18n
     const { buildingSlug } = params

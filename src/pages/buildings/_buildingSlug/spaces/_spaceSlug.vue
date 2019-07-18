@@ -1,5 +1,14 @@
 <template>
   <section class="default-layout__info default-layout__info--space-detail">
+    <back-button
+      :to="
+        localePath({
+          name: 'buildings-buildingSlug-spaces',
+          params: { buildingSlug: building.slug }
+        })
+      "
+    />
+
     <space-detail-card
       :building="space.building.name"
       :facilities="space.facilities"
@@ -13,12 +22,13 @@
 </template>
 
 <script>
+import { BackButton } from '~/components'
 import loadData from '~/lib/load-data'
 
 import { SpaceDetailCard } from '../../../../components'
 
 export default {
-  components: { SpaceDetailCard },
+  components: { BackButton, SpaceDetailCard },
   async asyncData({ app, params }) {
     const { locale } = app.i18n
     const { buildingSlug, spaceSlug } = params

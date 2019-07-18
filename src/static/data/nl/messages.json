@@ -1,5 +1,5 @@
 {
-  "title": "Spacefinder",
+  "back": "terug",
   "building": "gebouw",
   "buildings": "gebouwen",
   "close": "sluit",
@@ -12,5 +12,6 @@
   "openingHours": "openingstijden",
   "seating": "Zitplaatsen",
   "space": "ruimte",
-  "spaces": "ruimtes"
+  "spaces": "ruimtes",
+  "title": "Spacefinder"
 }
