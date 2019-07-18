@@ -53,7 +53,7 @@
           {{ $t('closed') }} <closed-icon class="space-detail-card__status-icon" />
         </p>
 
-        <button class="button space-detail-card__toggle">
+        <button class="button space-detail-card__toggle mobile-only">
           [{{ $t('openingHours') }} button]
         </button>
       </div>
@@ -284,11 +284,5 @@ export default {
   padding: 0;
   font-size: var(--font-size-smaller);
   text-align: right;
-}
-
-@media (min-width: 700px) {
-  .space-detail-card__toggle {
-    display: none;
-  }
 }
 </style>

@@ -22,7 +22,7 @@
             {{ $t('buildings') }}
           </nuxt-link>
         </li>
-        <li>
+        <li class="mobile-only">
           <nuxt-link
             :to="`/${$i18n.locale}`"
             @click.native="toggleListView"
