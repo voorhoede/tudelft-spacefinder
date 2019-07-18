@@ -3,35 +3,28 @@ const {
   applySpec,
   converge,
   filter,
-  fromPairs,
   ifElse,
-  invoker,
   identity,
   isNil,
   join,
-  lensIndex,
   map,
   mergeDeepRight,
   not,
   objOf,
-  over,
   pick,
   pipe,
   prop,
   reduce,
   replace,
-  split,
   toLower,
   values,
   unapply,
-  unary,
-  tap,
-  zip
+  tap
 } = require('ramda')
 
 const { space: spaceValidator } = require('../schema')
+const { getBuildingDetails, toString } = require('./lib')
 
-const toString = invoker(0, 'toString')
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 
 const getSlug = pipe(
@@ -44,18 +37,7 @@ const getSlug = pipe(
 
 const getBuilding = pipe(
   prop('buildingId'),
-  converge(
-    mergeDeepRight,
-    [
-      pipe(
-        split(' - '),
-        over(lensIndex(0), parseInt),
-        zip(['number', 'name']),
-        fromPairs
-      ),
-      pipe(unary(slugify), toLower, objOf('slug'))
-    ]
-  ),
+  getBuildingDetails,
   objOf('building')
 )
 
