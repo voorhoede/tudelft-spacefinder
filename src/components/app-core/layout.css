@@ -6,3 +6,55 @@
 html {
     box-sizing: border-box;
 }
+
+.default-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.default-layout__main {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    overflow-y: scroll;
+}
+
+.default-layout__info {
+    position: absolute;
+    padding: var(--spacing-default);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--layer--overlay);
+    overflow: auto;
+    background-color: var(--neutral-color);
+}
+
+@media (max-width: 699px) {
+    .default-layout__info--space-detail {
+        top: auto;
+        bottom: var(--spacing-default);
+        left: var(--spacing-default);
+        right: var(--spacing-default);
+        padding: 0;
+        width: auto;
+        height: auto;
+        background: none;
+        overflow: visible;
+    }
+}
+
+@media (min-width: 700px) {
+    .default-layout__info {
+        position: relative;
+        flex: 0 0 auto;
+        width: var(--column-width-desktop);
+    }
+
+    .default-layout__map {
+        flex: 1 1 auto;
+    }
+}

@@ -1,11 +1,24 @@
 <template>
-  <h1>{{ $t('space') }}: {{ space.room.id }}: {{ space.name }}</h1>
+  <section class="default-layout__info default-layout__info--space-detail">
+    <space-detail-card
+      :building="space.building.name"
+      :facilities="space.facilities"
+      :floor="space.floor"
+      :location="space.room.id"
+      :seats="space.seats"
+      :tables="space.tables"
+      :title="space.name"
+    />
+  </section>
 </template>
 
 <script>
 import loadData from '~/lib/load-data'
 
+import { SpaceDetailCard } from '../../../../components'
+
 export default {
+  components: { SpaceDetailCard },
   async asyncData({ app, params }) {
     const { locale } = app.i18n
     const { buildingSlug, spaceSlug } = params

@@ -53,7 +53,7 @@
 .app-header {
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--spacing-default);
+  padding: 0 var(--spacing-quarter) 0 var(--spacing-half);
   height: var(--header-height-mobile);
   background-color: var(--brand-primary-color);
   color: var(--background-color);

@@ -61,24 +61,10 @@
         {{ $t('facilities') }}
       </h4>
 
-      <ul class="flat-list space-card__facilities">
-        <li
-          v-for="(facility, index) in this.filteredFacilities"
-          :key="index"
-          class="space-card__facility-item"
-        >
-          <img
-            v-if="facility.name === 'studyType' || facility.name === 'quietness'"
-            :src="`/icons/facility-${facility.value}-icon.svg`"
-            alt=""
-          >
-          <img
-            v-else
-            :src="`/icons/facility-${facility.name}-icon.svg`"
-            alt=""
-          >
-        </li>
-      </ul>
+      <space-facilities
+        :facilities="facilities"
+        class="space-card__facilities"
+      />
     </div>
   </nuxt-link>
 </template>
@@ -89,8 +75,10 @@ import SeatIcon from '../../static/icons/seat-icon.svg'
 import TableIcon from '../../static/icons/table-icon.svg'
 import OpenIcon from '../../static/icons/location-open-icon.svg'
 
+import { SpaceFacilities } from '../../components'
+
 export default {
-  components: { ClosedIcon, SeatIcon, TableIcon, OpenIcon },
+  components: { ClosedIcon, SeatIcon, SpaceFacilities, TableIcon, OpenIcon },
   props: {
     buildingSlug: String,
     locationisOpen: Boolean,
@@ -101,14 +89,6 @@ export default {
     title: String,
     seats: Number,
     tables: Number,
-  },
-  computed: {
-    filteredFacilities() {
-      return Object.entries(this.facilities).map(([key, value]) => {
-        return { name: key, value }
-      })
-        .filter(obj => Boolean(obj.value))
-    }
   },
 }
 </script>
@@ -172,11 +152,13 @@ export default {
 .space-card__seating li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .space-card__seating-icon {
   margin-right: var(--spacing-half);
   width: 15px;
+  height: 15px;
 }
 
 .space-card:hover .space-card__seating-icon,
@@ -206,6 +188,7 @@ export default {
 
 .space-card__status-icon {
   width: 11px;
+  height: 11px;
   stroke: var(--text-color);
 }
 
@@ -221,13 +204,5 @@ export default {
 .space-card__facilities {
   order: 1;
   flex: 1 1 auto;
-}
-
-.space-card__facility-item {
-  display: inline-block;
-}
-
-.space-card__facility-item img {
-  height: 25px;
 }
 </style>
