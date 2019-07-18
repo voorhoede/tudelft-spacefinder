@@ -152,11 +152,13 @@ export default {
 .space-card__seating li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .space-card__seating-icon {
   margin-right: var(--spacing-half);
   width: 15px;
+  height: 15px;
 }
 
 .space-card:hover .space-card__seating-icon,
@@ -186,6 +188,7 @@ export default {
 
 .space-card__status-icon {
   width: 11px;
+  height: 11px;
   stroke: var(--text-color);
 }
 

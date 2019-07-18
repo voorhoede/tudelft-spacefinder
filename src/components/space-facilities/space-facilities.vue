@@ -41,6 +41,7 @@ export default {
 }
 
 .space-facility__item img {
+  width: 25px;
   height: 25px;
 }
 </style>
