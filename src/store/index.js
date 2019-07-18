@@ -16,6 +16,7 @@ export const state = () => ({
     building: undefined,
     space: undefined
   },
+  showListView: true,
   spaces: []
 })
 
@@ -29,6 +30,9 @@ export const mutations = {
   setMapLoaded(state, { map }) {
     mapLoaded.resolve(map)
     state.mapLoaded = true
+  },
+  toggleListView(state) {
+    state.showListView = !state.showListView
   }
 }
 

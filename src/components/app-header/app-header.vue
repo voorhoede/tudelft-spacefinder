@@ -4,7 +4,7 @@
     class="app-header"
   >
     <nuxt-link
-      to="/"
+      :to="`/${$i18n.locale}`"
       class="app-header__logo"
     >
       <img
