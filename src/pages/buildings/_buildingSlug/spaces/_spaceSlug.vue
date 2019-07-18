@@ -1,23 +1,34 @@
 <template>
-  <div>
+  <section class="default-layout__info default-layout__info--space-detail">
     <back-button
       :to="
         localePath({
           name: 'buildings-buildingSlug-spaces',
           params: { buildingSlug: building.slug }
         })
-      " />
-    <h1>{{ $t('space') }}: {{ space.room.id }}: {{ space.name }}</h1>
-  </div>
+      "
+    />
+
+    <space-detail-card
+      :building="space.building.name"
+      :facilities="space.facilities"
+      :floor="space.floor"
+      :location="space.room.id"
+      :seats="space.seats"
+      :tables="space.tables"
+      :title="space.name"
+    />
+  </section>
 </template>
 
 <script>
 import { BackButton } from '~/components'
 import loadData from '~/lib/load-data'
 
-export default {
-  components: { BackButton },
+import { SpaceDetailCard } from '../../../../components'
 
+export default {
+  components: { BackButton, SpaceDetailCard },
   async asyncData({ app, params }) {
     const { locale } = app.i18n
     const { buildingSlug, spaceSlug } = params

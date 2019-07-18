@@ -6,9 +6,7 @@
     />
 
     <main class="default-layout__main">
-      <section class="default-layout__info">
-        <nuxt />
-      </section>
+      <nuxt />
 
       <mapbox-map class="default-layout__map"/>
     </main>
@@ -42,34 +40,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.default-layout {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.default-layout__main {
-  overflow-y: scroll;
-  display: flex;
-  flex: 1;
-}
-
-.default-layout__info {
-  width: var(--column-width-mobile);
-  background-color: #F7F7F7;
-}
-
-@media (min-width: 700px) {
-  .default-layout__info {
-    width: var(--column-width-desktop);
-  }
-}
-
-.default-layout__map {
-  flex: 1;
-}
-</style>
