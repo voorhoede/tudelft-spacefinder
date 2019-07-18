@@ -207,6 +207,7 @@ export default {
 }
 
 .space-detail-card__opening-hours {
+  flex: 0 1 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
