@@ -9,6 +9,7 @@
   "home": "home",
   "listToggle": "toggle list view",
   "map": "map",
+  "mapLoading": "loading map...",
   "mapToggle": "toggle map view",
   "menu": "menu",
   "open": "open",

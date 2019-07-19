@@ -1,7 +1,7 @@
 <template>
   <div class="mapbox-map" ref="map">
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
-      <span>({{ $t('map') }})</span>
+      <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
     </div>
   </div>
 </template>
@@ -32,5 +32,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.mapbox-map__loading-message {
+  font-size: var(--font-size-default);
 }
 </style>

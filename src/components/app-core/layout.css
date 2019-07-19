@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
 }
-  
+
 html {
     box-sizing: border-box;
 }
@@ -14,11 +14,19 @@ html {
     overflow: hidden;
 }
 
+.default-layout__header {
+    flex: 0 0 auto;
+}
+
 .default-layout__main {
     position: relative;
-    display: flex;
     flex: 1 1 auto;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.default-layout__map {
+    flex: 1 1 100%;
 }
 
 .default-layout__info {
@@ -49,13 +57,14 @@ html {
 
 @media (min-width: 700px) {
     .default-layout__info {
-        position: relative;
         flex: 0 0 auto;
         width: var(--column-width-desktop);
+        height: calc(100vh - var(--header-height-desktop));
     }
 
-    .default-layout__map {
-        flex: 1 1 auto;
+    .default-layout__map.default-layout__map {
+        margin-left: var(--column-width-desktop);
+        width: calc(100% - var(--column-width-desktop));
     }
 
     .mobile-only {
