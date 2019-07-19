@@ -1,0 +1,23 @@
+[{
+  "image": {
+    "url": "https://www.datocms-assets.com/13828/1563280820-20-aula.jpg"
+  },
+  "number": 20,
+  "bounds": {
+    "north": 52.002499,
+    "west": 4.372443,
+    "south": 52.001959,
+    "east": 4.374473
+  }
+}, {
+  "image": {
+    "url": "https://www.datocms-assets.com/13828/1563280150-8-bouwkunde.jpg"
+  },
+  "number": 8,
+  "bounds": {
+    "north": 52.006471,
+    "west": 4.366779,
+    "south": 51.98805,
+    "east": 4.388487
+  }
+}]
