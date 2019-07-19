@@ -57,4 +57,8 @@ html {
     .default-layout__map {
         flex: 1 1 auto;
     }
+
+    .mobile-only {
+      display: none!important;
+    }
 }

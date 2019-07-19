@@ -1,5 +1,8 @@
 <template>
-  <section class="default-layout__info">
+  <section
+    v-if="showListView || !isMobile"
+    class="default-layout__info"
+  >
     <h1>{{ $t('buildings') }}</h1>
     <ul>
       <li v-for="building in buildings" :key="building.slug">
@@ -19,6 +22,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import loadData from '~/lib/load-data'
 
 export default {
@@ -26,6 +30,7 @@ export default {
     const buildings = await loadData(`${app.i18n.locale}/buildings.json`)
     return { buildings }
   },
+  computed: mapState(['showListView', 'isMobile']),
   mounted() {
     this.$store.dispatch('zoomToCampus')
   }

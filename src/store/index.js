@@ -11,11 +11,13 @@ const campusBounds = {
 
 export const state = () => ({
   buildings: [],
+  isMobile: false,
   mapLoaded: false,
   selection: {
     building: undefined,
     space: undefined
   },
+  showListView: true,
   spaces: []
 })
 
@@ -29,6 +31,12 @@ export const mutations = {
   setMapLoaded(state, { map }) {
     mapLoaded.resolve(map)
     state.mapLoaded = true
+  },
+  toggleListView(state) {
+    state.showListView = !state.showListView
+  },
+  setMobileState(state, value) {
+    state.isMobile = value
   }
 }
 

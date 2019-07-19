@@ -1,5 +1,8 @@
 <template>
-  <section class="default-layout__info">
+  <section
+    v-if="showListView || !isMobile"
+    class="default-layout__info"
+  >
     <h1>Home: {{ $i18n.locale }}</h1>
 
     <ul class="flat-list spaces-list">
@@ -23,8 +26,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import loadData from '~/lib/load-data'
-
 import { SpaceCard } from '../components'
 
 export default {
@@ -33,6 +36,7 @@ export default {
     const spaces = await loadData(`${app.i18n.locale}/spaces.json`)
     return { spaces }
   },
+  computed: mapState(['showListView', 'isMobile']),
   mounted() {
     this.$store.dispatch('zoomToCampus')
   }

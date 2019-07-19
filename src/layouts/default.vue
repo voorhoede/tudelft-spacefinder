@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce'
 import { AppHeader, AppMenu, FilterMenu, MapboxMap } from '../components'
 
 export default {
@@ -25,7 +26,15 @@ export default {
   data() {
     return {
       openedMenu: null,
+      onResizeDebounce: debounce(this.onResize, 200)
     }
+  },
+  beforeMount() {
+    this.onResize()
+    window.addEventListener('resize', this.onResizeDebounce, true)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResizeDebounce, true)
   },
   methods: {
     openAppMenu() {
@@ -36,6 +45,13 @@ export default {
     },
     closeMenu() {
       this.openedMenu = null
+    },
+    onResize() {
+      if(window.matchMedia('(min-width: 700px)').matches) {
+        this.$store.commit('setMobileState', false)
+      } else {
+        this.$store.commit('setMobileState', true)
+      }
     }
   }
 }
