@@ -23,6 +23,7 @@ html {
 
 .default-layout__info {
     position: absolute;
+    padding: var(--spacing-default);
     top: 0;
     left: 0;
     width: 100%;

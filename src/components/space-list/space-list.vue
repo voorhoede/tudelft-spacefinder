@@ -48,7 +48,6 @@ export default {
 <style>
 .space-list {
   height: 100%;
-  padding: var(--spacing-default);
 }
 .space-list__item {
   padding-bottom: var(--spacing-default);
