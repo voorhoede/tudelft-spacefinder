@@ -4,8 +4,10 @@ const transformSpaces = require('./transform-spaces')
 const transformBuildings = require('./transform-buildings')
 const parserOptions = require('./config')
 
+// @TODO: make path to CSV file configurable by means of configuration injection.
+
 module.exports = {
-  parse: () => new Promise((resolve, reject) => {
+  getData: () => new Promise((resolve, reject) => {
     readFile('./data/studieplekken-mini.csv', 'utf8', (err, data) => {
       if (err) {
         return reject(err)

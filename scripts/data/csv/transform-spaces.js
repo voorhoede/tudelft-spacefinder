@@ -1,15 +1,9 @@
 const slugify = require('slugify')
 const {
-  applySpec,
   converge,
-  filter,
-  ifElse,
-  identity,
-  isNil,
   join,
   map,
   mergeDeepRight,
-  not,
   objOf,
   pick,
   pipe,
@@ -18,12 +12,18 @@ const {
   replace,
   toLower,
   values,
-  unapply,
-  tap
+  unapply
 } = require('ramda')
 
-const { space: spaceValidator } = require('../schema')
-const { getBuildingDetails, toString } = require('./lib')
+const { space } = require('../schema')
+const {
+  getBuildingDetails,
+  keepValidValues,
+  toString,
+  validate
+} = require('./lib')
+
+const validator = validate(space)
 
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 
@@ -89,26 +89,6 @@ const getRootProperties = pick(spaceRootProperties)
 
 const meld = unapply(reduce(mergeDeepRight, {}))
 
-const getSpaceErrors = (value) => {
-  // validator errors will be stored on the function itself. Validator is run
-  // for side effects only
-  spaceValidator(value)
-  // Errors will be an array or null
-  return spaceValidator.errors
-}
-
-const spaceHasErrors = pipe(prop('errors'), isNil, not)
-
-const logErrors = tap(({ value: { slug }, errors }) => {
-  const errorText = [`${slug} did not pass json schema validation:`]
-    .concat(errors.map((error) => {
-      const { dataPath, message, data } = error
-      return `> ${dataPath || ''} ${message}. Got ${data}`
-    }))
-  /* eslint-disable-next-line no-console */
-  console.warn(errorText.join('\n'))
-})
-
 module.exports = pipe(
   map(
     pipe(
@@ -121,16 +101,10 @@ module.exports = pipe(
         getSpaceName,
         getSlug
       ]),
-      // validate against json schema
-      applySpec({
-        value: identity,
-        errors: getSpaceErrors
-      }),
-      // log validation errors to console
-      ifElse(spaceHasErrors, logErrors, identity)
+      // log & append validation errors, if any
+      validator
     )
   ),
-  // filter out invalid spaces
-  filter(pipe(spaceHasErrors, not)),
-  map(prop('value'))
+  // remove values with errors from the result
+  keepValidValues
 )

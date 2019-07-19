@@ -1,10 +1,10 @@
-const cms = require('./cms')
-const { parse, transform } = require('./csv')
+const getDataFromCms = require('./cms')
+const { getData: getDataFromCsv, transform } = require('./csv')
 
-// Promise.all([ Promise.resolve([]), Promise.resolve([]) ])
-Promise.all([ parse(), cms() ])
+Promise.all([ getDataFromCsv(), getDataFromCms() ])
   .then(transform)
-  // .then(console.log)
+  // @TODO: write data some place sensible
+  .then(r => console.log(r.buildings))
 
 // const writeSpaces = (lang, contents) => {
 //   const stringifiedData = JSON.stringify(contents, null, 2)

@@ -4,8 +4,8 @@
   "description": "A building at TU Delft",
   "$ref": "#/definitions/building",
   "definitions": {
-    "building": {
-      "type":"object",
+    "buildingBase": {
+      "type": "object",
       "properties": {
         "name": {
           "type":"string"
@@ -13,19 +13,70 @@
         "number": {
           "type":"integer"
         },
-        "lat": {
-          "type":"number"
-        },
-        "lng": {
-          "type":"number"
-        },
         "slug": {
           "type": "string"
-        },
-        "openingHours": {
-          "$ref": "base.json#/definitions/openingHours"
         }
-      }
+      },
+      "required": [
+        "name",
+        "number",
+        "slug"
+      ]
+    },
+    "building": {
+      "allOf": [
+        { "$ref": "#/definitions/buildingBase" },
+        {
+          "type":"object",
+          "properties": {
+            "latitude": {
+              "type":"number"
+            },
+            "longitude": {
+              "type":"number"
+            },
+            "openingHours": {
+              "$ref": "base.json#/definitions/openingHours"
+            },
+            "image": {
+              "$ref": "#/definitions/image"
+            },
+            "bounds": {
+              "$ref": "#/definitions/bounds"
+            }
+          },
+          "required": [
+            "image",
+            "bounds"
+          ]
+        }
+      ]
+    },
+    "bounds": {
+      "type": "object",
+      "properties": {
+        "north": { "type": "number" },
+        "west": { "type": "number" },
+        "south": { "type": "number" },
+        "east": { "type": "number" }
+      },
+      "required": [
+        "north",
+        "west",
+        "south",
+        "east"
+      ],
+      "additionalProperties": false
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [ "url" ],
+      "additionalProperties": false
     }
   }
 }

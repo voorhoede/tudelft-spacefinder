@@ -14,8 +14,9 @@ const {
   isEmpty,
   join,
   last,
+  length,
   lensProp,
-  lt,
+  lte,
   map,
   mergeDeepRight,
   mergeDeepLeft,
@@ -33,10 +34,12 @@ const {
   values,
   uniqWith,
   trim,
-  tap
+  zipObj
 } = require('ramda')
 
-const { splitByHyphen } = require('./lib')
+const { building } = require('../schema')
+const { splitByHyphen, keepValidValues, validate } = require('./lib')
+const validator = validate(building)
 
 const buildingProps = [
   'buildingId',
@@ -122,13 +125,13 @@ const removeNamePrefix = over(lensProp('name'), pipe(
   last,
   trim
 ))
-const atLeastOneInList = pipe(prop('length'), lt(2), not)
+const atLeastOneInList = pipe(length, lte(2))
 
 const joinAndFilter = pipe(
   apply(concat),
   groupBy(prop('number')),
   values,
-  map(filter(atLeastOneInList)),
+  filter(atLeastOneInList),
   map(reduce(mergeDeepLeft, {})),
   filter(pipe(isEmpty, not))
 )
@@ -143,17 +146,22 @@ const getBuildings = pipe(
   joinAndFilter,
   getBuildingProps,
   splitByLanguage(translationMap),
-  map(map(pipe(
-    // create or edit properties
+  map(
     pipe(
-      getBuildingSlug,
-      removeNamePrefix,
-      removeUnnecessaryProps,
-      removeNamePrefix
+      map(
+        pipe(
+          // create / edit properties and validate objects
+          getBuildingSlug,
+          removeNamePrefix,
+          removeUnnecessaryProps,
+          removeNamePrefix,
+          validator
+        )
+      ),
+      keepValidValues
     )
-    // @TODO: validate against json schema
-  ))),
-  tap(v => console.dir(v, { depth: null }))
+  ),
+  zipObj(['nl', 'en'])
 )
 
 module.exports = getBuildings

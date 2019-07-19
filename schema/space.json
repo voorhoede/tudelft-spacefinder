@@ -14,7 +14,7 @@
           "description": "Used to map a room to a calendar in exchange"
         },
         "building": {
-          "$ref": "building.json"
+          "$ref": "building.json#/definitions/buildingBase"
         },
         "room": {
           "$ref": "#/definitions/room"
