@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="showListView"
+    v-if="showListView || !isMobile"
     class="default-layout__info"
   >
     <h1>Home: {{ $i18n.locale }}</h1>
@@ -36,7 +36,7 @@ export default {
     const spaces = await loadData(`${app.i18n.locale}/spaces.json`)
     return { spaces }
   },
-  computed: mapState(['showListView']),
+  computed: mapState(['showListView', 'isMobile']),
   mounted() {
     this.$store.dispatch('zoomToCampus')
   }

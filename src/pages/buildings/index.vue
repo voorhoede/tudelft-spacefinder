@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="showListView"
+    v-if="showListView || !isMobile"
     class="default-layout__info"
   >
     <h1>{{ $t('buildings') }}</h1>
@@ -30,7 +30,7 @@ export default {
     const buildings = await loadData(`${app.i18n.locale}/buildings.json`)
     return { buildings }
   },
-  computed: mapState(['showListView']),
+  computed: mapState(['showListView', 'isMobile']),
   mounted() {
     this.$store.dispatch('zoomToCampus')
   }
