@@ -14,6 +14,8 @@ export default {
   loading: { color: '#fff' },
   mode: 'universal',
   modules,
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/virtual-scroller' }
+  ],
   srcDir: 'src/'
 }

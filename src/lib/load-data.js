@@ -10,12 +10,9 @@ import fetchJson from './fetch-json'
  * @returns {object} data
  */
 export default function loadData(filename) {
-  if (process.client) {
-    return fetchJson(`/data/${filename}`)
-            .then(deepFreeze)
-  } else {
-    return import(`~/static/data/${filename}`)
-      .then(response => response.default)
-      .then(deepFreeze)
-  }
+  const fetchOrImportData = (process.client)
+    ? fetchJson(`/data/${filename}`)
+    : import(`~/static/data/${filename}`).then(result => result.default)
+
+  return fetchOrImportData.then(deepFreeze)
 }
