@@ -1,37 +1,18 @@
 <template>
   <section class="default-layout__info">
     <back-button :to="localePath({ name: 'buildings' })" />
-
     <h1>{{ $t('building') }}: {{ building.name }}</h1>
-    
-    <ul class="flat-list spaces-list">
-      <li
-        v-for="space in spaces"
-        :key="space.slug"
-      >
-        <space-card
-          :buildingSlug="space.building.slug"
-          :spaceSlug="space.slug"
-          :facilities="space.facilities"
-          :building="space.building.name"
-          :location="space.room.id"
-          :title="space.name"
-          :seats="space.seats"
-          :tables="space.tables"
-        />
-      </li>
-    </ul>
+    <space-list :spaces="spaces" />
   </section>
 </template>
 
 <script>
 import { BackButton } from '~/components'
 import loadData from '~/lib/load-data'
-
-import { SpaceCard } from '../../../components'
+import { SpaceList } from '../../../components'
 
 export default {
-  components: { BackButton, SpaceCard },
+  components: { BackButton, SpaceList },
   async asyncData({ app, params }) {
     const { locale } = app.i18n
     const { buildingSlug } = params
