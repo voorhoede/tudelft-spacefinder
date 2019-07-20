@@ -24,10 +24,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { BackButton } from '~/components'
+import { BackButton, SpaceDetailCard } from '~/components'
 import loadData from '~/lib/load-data'
-
-import { SpaceDetailCard } from '../../../../components'
 
 export default {
   components: { BackButton, SpaceDetailCard },
