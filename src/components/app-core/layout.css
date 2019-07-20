@@ -23,7 +23,6 @@ html {
 
 .default-layout__info {
     position: absolute;
-    padding: var(--spacing-default);
     top: 0;
     left: 0;
     width: 100%;
@@ -31,6 +30,10 @@ html {
     z-index: var(--layer--overlay);
     overflow: auto;
     background-color: var(--neutral-color);
+}
+
+.default-layout__info--space-detail {
+  padding: var(--spacing-default);
 }
 
 @media (max-width: 699px) {

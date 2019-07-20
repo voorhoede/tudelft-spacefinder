@@ -47,8 +47,11 @@ export default {
 </script>
 
 <style>
+@import '../app-core/variables.css';
+
 .space-list {
   height: 100%;
+  padding: var(--spacing-default);
 }
 .space-list__item {
   padding-bottom: var(--spacing-default);
