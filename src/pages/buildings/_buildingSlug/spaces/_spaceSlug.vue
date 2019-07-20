@@ -10,6 +10,7 @@
     />
 
     <space-detail-card
+      ref="card"
       :building="space.building.name"
       :facilities="space.facilities"
       :floor="space.floor"
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BackButton } from '~/components'
 import loadData from '~/lib/load-data'
 
@@ -29,6 +31,9 @@ import { SpaceDetailCard } from '../../../../components'
 
 export default {
   components: { BackButton, SpaceDetailCard },
+
+  computed: mapState(['isMobile']),
+
   async asyncData({ app, params }) {
     const { locale } = app.i18n
     const { buildingSlug, spaceSlug } = params
@@ -46,6 +51,15 @@ export default {
       })
     ])
     return { building, space }
+  },
+
+  mounted() {
+    const padding = this.isMobile
+      ? { bottom: this.$refs.card.$el.clientHeight + 2 * 20 }
+      : {}
+
+    this.$store.commit('selectBuilding', this.building)
+    this.$store.dispatch('zoomToSelection', { padding })
   }
 }
 </script>
