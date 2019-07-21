@@ -1,5 +1,7 @@
 const getDataFromCms = require('./cms')
-const { getData: getDataFromCsv, transform } = require('./csv')
+const { getData: getDataFromCsv, transform } = require('./csv')({
+  csvPath: './data/studieplekken-mini.csv'
+})
 
 Promise.all([ getDataFromCsv(), getDataFromCms() ])
   .then(transform)

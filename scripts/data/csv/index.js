@@ -6,9 +6,9 @@ const parserOptions = require('./config')
 
 // @TODO: make path to CSV file configurable by means of configuration injection.
 
-module.exports = {
+module.exports = ({ csvPath }) => ({
   getData: () => new Promise((resolve, reject) => {
-    readFile('./data/studieplekken-mini.csv', 'utf8', (err, data) => {
+    readFile(csvPath, 'utf8', (err, data) => {
       if (err) {
         return reject(err)
       }
@@ -21,4 +21,4 @@ module.exports = {
       buildings: transformBuildings([ dataFromCsv, dataFromCms ])
     }
   }
-}
+})
