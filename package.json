@@ -30,7 +30,9 @@
     "ramda": "^0.26.1",
     "slugify": "^1.3.4",
     "vue-svg-loader": "^0.12.0",
-    "vue-virtual-scroller": "^1.0.0-rc.2"
+    "vue-virtual-scroller": "^1.0.0-rc.2",
+    "vuex-map-fields": "^1.3.4",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

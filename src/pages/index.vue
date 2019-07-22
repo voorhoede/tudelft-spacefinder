@@ -11,15 +11,24 @@
 <script>
 import { mapState } from 'vuex'
 import loadData from '~/lib/load-data'
+import filterSpaces from '~/lib/filter-spaces'
 import { SpaceList } from '../components'
 
 export default {
   components: { SpaceList },
   async asyncData({ app }) {
-    const spaces = await loadData(`${app.i18n.locale}/spaces.json`)
-    return { spaces }
+    const allSpaces = await loadData(`${app.i18n.locale}/spaces.json`)
+    return { allSpaces }
   },
-  computed: mapState(['showListView', 'isMobile']),
+  computed: {
+    ...mapState(['filters', 'isMobile', 'showListView']),
+    spaces() { 
+      return filterSpaces({ 
+        filters: this.filters, 
+        spaces: this.allSpaces
+      })
+    }
+  },
   mounted() {
     this.$store.dispatch('zoomToCampus')
   }

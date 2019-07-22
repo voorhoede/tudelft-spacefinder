@@ -15,6 +15,7 @@ export default {
   mode: 'universal',
   modules,
   plugins: [
+    { src: '~/plugins/persist-state', ssr: false },
     { src: '~/plugins/virtual-scroller' }
   ],
   srcDir: 'src/'
