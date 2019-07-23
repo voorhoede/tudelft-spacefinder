@@ -19,10 +19,6 @@ let result
 beforeEach(() => {
   result = translator(data)
 })
-// gracefully handles a mismatch between the languages found in the translation
-// map and matching properties in the data.
-
-// gracefully handles an incomplete translation map
 
 test('adds translations under the i18n property', () => {
   expect(result.hasOwnProperty('i18n')).toBe(true)
