@@ -6,16 +6,16 @@
       @close="$emit('close')"
     >
       <fieldset>
-        <legend>{{ $t('noiseLevel') }}</legend>
-        <label v-for="option in optionsPerFilter.noiseLevel" :key="option">
-          <input type="checkbox" :value="option" v-model="noiseLevel">
-          {{ $t(`noiseLevel.${option}`) }}
+        <legend>{{ $t('quietness') }}</legend>
+        <label v-for="option in optionsPerFilter.quietness" :key="option">
+          <input type="checkbox" :value="option" v-model="quietness">
+          {{ $t(`quietness.${option}`) }}
         </label>
       </fieldset>
       <label>
         <b>Active filters</b>
         <output>
-          noise level: {{ noiseLevel }}
+          noise level: {{ quietness }}
         </output>
       </label>
     </modal-drawer>
@@ -27,7 +27,7 @@ import { mapFields } from 'vuex-map-fields'
 import ModalDrawer from '../modal-drawer'
 
 const optionsPerFilter = Object.freeze({
-  noiseLevel: ['silent', 'quiet', 'noisy']
+  quietness: ['silent', 'quiet', 'noisy']
 })
 
 export default {
@@ -38,7 +38,7 @@ export default {
   computed: {
     ...mapFields([
       'filters.locationType',
-      'filters.noiseLevel'
+      'filters.quietness'
     ]),
     optionsPerFilter() { return optionsPerFilter }
   }

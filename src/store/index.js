@@ -14,7 +14,7 @@ export const state = () => ({
   buildings: [],
   filters: {
     locationType: [],
-    noiseLevel: []
+    quietness: []
   },
   isMobile: false,
   mapLoaded: false,
