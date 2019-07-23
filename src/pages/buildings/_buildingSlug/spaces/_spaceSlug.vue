@@ -22,28 +22,24 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { BackButton, SpaceDetailCard } from '~/components'
-import loadData from '~/lib/load-data'
+
+const isValidSlug = (slug) => /^\d+[a-z0-9\-]+$/.test(slug)
 
 export default {
   components: { BackButton, SpaceDetailCard },
-  async asyncData({ app, params }) {
-    const { locale } = app.i18n
-    const { buildingSlug, spaceSlug } = params
-
-    const [building, space] = await Promise.all([
-      loadData(`${locale}/buildings.json`).then((buildings) => {
-        return buildings.find((building) => {
-          return building.slug === buildingSlug
-        })
-      }),
-      loadData(`${locale}/spaces.json`).then((spaces) => {
-        return spaces.find((space) => {
-          return space.slug === spaceSlug
-        })
-      })
-    ])
-    return { building, space }
-  }
+  validate ({ params }) {
+    return [params.buildingSlug, params.spaceSlug].every(isValidSlug)
+  },
+  computed: {
+    ...mapGetters(['getBuildingBySlug', 'getSpaceBySlug']),
+    building() {
+      return this.getBuildingBySlug(this.$route.params.buildingSlug)
+    },
+    space() {
+      return this.getSpaceBySlug(this.$route.params.spaceSlug)
+    }
+  },
 }
 </script>
