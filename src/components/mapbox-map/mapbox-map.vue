@@ -21,12 +21,15 @@ export default {
 @import '../app-core/variables.css';
 
 .mapbox-map {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #E4E5E0;
+  background-color: var(--highlight-color);
 }
 
 .mapbox-map__placeholder {
+  flex: 1 1 auto;
   width: 100%;
   height: 100%;
   display: flex;
