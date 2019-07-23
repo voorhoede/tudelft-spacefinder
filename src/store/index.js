@@ -1,3 +1,4 @@
+import { getField, updateField } from 'vuex-map-fields'
 import Deferred from '~/lib/deferred'
 import mapboxgl from '~/lib/mapboxgl'
 
@@ -11,6 +12,10 @@ const campusBounds = {
 
 export const state = () => ({
   buildings: [],
+  filters: {
+    locationType: [],
+    quietness: []
+  },
   isMobile: false,
   mapLoaded: false,
   selection: {
@@ -37,7 +42,8 @@ export const mutations = {
   },
   setMobileState(state, value) {
     state.isMobile = value
-  }
+  },
+  updateField
 }
 
 export const actions = {
@@ -82,4 +88,8 @@ export const actions = {
     const bounds = state.selection.building.bounds
     dispatch('zoomToBounds', { bounds, padding })
   }
+}
+
+export const getters = {
+  getField
 }
