@@ -13,8 +13,22 @@ const campusBounds = {
 export const state = () => ({
   buildings: [],
   filters: {
+    adjustableChairs: false,
+    bookable: false,
+    daylit: false,
+    ethernet: false,
     locationType: [],
-    quietness: []
+    nearBathroom: false,
+    nearCoffeeMachine: false,
+    nearPrinter: false,
+    powerOutlets: false,
+    presentationScreen: false,
+    quietness: [],
+    showNearbyLocations: false,
+    showOpenLocations: false,
+    smartBoard: false,
+    stationaryPC: false,
+    whiteBoard: false
   },
   isMobile: false,
   mapLoaded: false,
