@@ -64,20 +64,29 @@ export const actions = {
     map.on('load', () => commit('setMapLoaded', { map }))
   },
 
-  async zoomToBounds({ dispatch }, bounds) {
+  async zoomToBounds({ dispatch }, { bounds, padding }) {
     const map = await dispatch('getMap')
+    const defaultPadding = {
+      top: 20,
+      bottom: 20,
+      left: 20,
+      right: 20
+    }
     map.fitBounds([
       [bounds.west, bounds.south],
       [bounds.east, bounds.north]
-    ], { padding: 20 })
+    ], {
+      padding: { ...defaultPadding, ...padding }
+    })
   },
 
   zoomToCampus({ dispatch }) {
-    dispatch('zoomToBounds', campusBounds)
+    dispatch('zoomToBounds', { bounds: campusBounds })
   },
 
-  zoomToSelection({ dispatch, state }) {
-    dispatch('zoomToBounds', state.selection.building.bounds)
+  zoomToSelection({ dispatch, state }, { padding } = {}) {
+    const bounds = state.selection.building.bounds
+    dispatch('zoomToBounds', { bounds, padding })
   }
 }
 
