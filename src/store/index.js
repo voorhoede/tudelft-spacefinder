@@ -17,7 +17,7 @@ export const state = () => ({
     bookable: false,
     daylit: false,
     ethernet: false,
-    locationType: [],
+    studyType: [],
     nearBathroom: false,
     nearCoffeeMachine: false,
     nearPrinter: false,

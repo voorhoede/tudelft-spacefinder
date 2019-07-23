@@ -14,10 +14,10 @@
       </fieldset>
 
       <fieldset>
-        <legend>{{ $t('locationType') }}</legend>
-        <label v-for="option in optionsPerFilter.locationType" :key="option">
-          <input type="checkbox" :value="option" v-model="locationType">
-          {{ $t(`locationType.${option}`) }}
+        <legend>{{ $t('studyType') }}</legend>
+        <label v-for="option in optionsPerFilter.studyType" :key="option">
+          <input type="checkbox" :value="option" v-model="studyType">
+          {{ $t(`studyType.${option}`) }}
         </label>
         <label>
           <input type="checkbox" :value="bookable" v-model="bookable">
@@ -97,26 +97,6 @@
 
       <button>{{ $t('resetFilters') }}</button>
       <button>{{ $t('showLocations') }}</button>
-
-      <h2>Active filters</h2>
-      <output>
-        noise level: {{ quietness }}<br>
-        location type: {{ locationType }}<br>
-        bookable: {{ bookable }}<br>
-        powerOutlets: {{ powerOutlets }}<br>
-        ethernet: {{ ethernet }}<br>
-        stationaryPC: {{ stationaryPC }}<br>
-        nearPrinter: {{ nearPrinter }}<br>
-        adjustableChairs: {{ adjustableChairs }}<br>
-        nearCoffeeMachine: {{ nearCoffeeMachine }}<br>
-        daylit: {{ daylit }}<br>
-        nearBathroom: {{ nearBathroom }}<br>
-        smartBoard: {{ smartBoard }}<br>
-        whiteBoard: {{ whiteBoard }}<br>
-        presentationScreen: {{ presentationScreen }}<br>
-        showNearbyLocations: {{ showNearbyLocations }}<br>
-        showOpenLocations: {{ showOpenLocations }}
-      </output>
     </modal-drawer>
   </form>
 </template>
@@ -127,7 +107,7 @@ import ModalDrawer from '../modal-drawer'
 
 const optionsPerFilter = Object.freeze({
   quietness: ['silent', 'quiet', 'noisy'],
-  locationType: ['self', 'group']
+  studyType: ['self', 'group']
 })
 
 export default {
@@ -141,7 +121,7 @@ export default {
       'filters.bookable',
       'filters.daylit',
       'filters.ethernet',
-      'filters.locationType',
+      'filters.studyType',
       'filters.nearBathroom',
       'filters.nearCoffeeMachine',
       'filters.nearPrinter',
