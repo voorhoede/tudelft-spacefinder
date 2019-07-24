@@ -5,11 +5,13 @@ const {
   map,
   mergeDeepRight,
   objOf,
+  over,
   pick,
   pipe,
   prop,
   reduce,
   replace,
+  lensProp,
   toLower,
   values,
   unapply
@@ -98,7 +100,10 @@ module.exports = pipe(
         getSlug
       ]),
       // log & append validation errors, if any
-      validator
+      validator,
+      // @NOTICE: temporarily add a slug property to a space that is equal to
+      // the building number
+      over(lensProp('slug'), prop('buildingNumber'))
     )
   ),
   // remove values with errors from the result
