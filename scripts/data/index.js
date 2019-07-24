@@ -1,13 +1,11 @@
+require('dotenv').config()
+
 const { writeFile } = require('fs')
 const getDataFromCms = require('./cms')
-const { getData: getDataFromCsv, transform } = require('./csv')({
-  csvPath: './data/studieplekken-mini.csv'
-})
 
-Promise.all([ getDataFromCsv(), getDataFromCms() ])
-  .then(transform)
-  // @TODO: write data some place sensible
-  .then(r => console.log(r.buildings))
+const { CSV_PATH: csvPath } = process.env
+
+const { getData: getDataFromCsv, transform } = require('./csv')({ csvPath })
 
 const writeFiles = (files = []) => {
   return Promise.all(files.map(({ name, contents }) => {
