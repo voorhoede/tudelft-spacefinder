@@ -1,45 +1,16 @@
-const slugify = require('slugify')
 const {
   applySpec,
-  converge,
   curry,
   filter,
-  fromPairs,
   identity,
   ifElse,
-  invoker,
   isNil,
-  lensIndex,
   map,
-  mergeDeepRight,
   not,
-  objOf,
-  over,
   pipe,
   prop,
-  split,
-  tap,
-  toLower,
-  unary,
-  zip
+  tap
 } = require('ramda')
-
-const hyphenRegex = /\s?-\s?/g
-const toString = invoker(0, 'toString')
-const splitByHyphen = split(hyphenRegex)
-
-const getBuildingDetails = converge(
-  mergeDeepRight,
-  [
-    pipe(
-      split(hyphenRegex),
-      over(lensIndex(0), parseInt),
-      zip(['number', 'name']),
-      fromPairs
-    ),
-    pipe(unary(slugify), toLower, objOf('slug'))
-  ]
-)
 
 const hasValidationErrors = pipe(prop('errors'), isNil, not)
 
@@ -89,10 +60,7 @@ const keepValidValues = pipe(
 
 module.exports = {
   hasValidationErrors,
-  hyphenRegex,
-  getBuildingDetails,
   keepValidValues,
-  splitByHyphen,
   toString,
   validate
 }

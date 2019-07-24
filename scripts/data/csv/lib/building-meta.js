@@ -2,8 +2,8 @@ const {
   allPass,
   always,
   converge,
-  dissoc,
   equals,
+  identity,
   ifElse,
   is,
   isEmpty,
@@ -29,8 +29,8 @@ const slugify = require('slugify')
 const arrayHasTwoItems = pipe(length, equals(2))
 
 const isOkBuildingName = pipe(
-  prop('buildingName'),
-  test(/^\d{2}\s?-\s?[a-zA-Z]+$/)
+  prop('name'),
+  test(/^\d{2}\s?-\s?.+$/)
 )
 const isOkAbbreviation = pipe(
   prop('abbreviation'),
@@ -47,9 +47,9 @@ const isOkData = allPass([ isOkBuildingName, isOkAbbreviation ])
 const getBuildingNameAndNumber = converge(
   mergeDeepRight,
   [
-    dissoc('buildingName'),
+    identity,
     pipe(
-      prop('buildingName'),
+      prop('name'),
       split(/\s?-\s?/g),
       ifElse(
         arrayHasTwoItems,
@@ -66,7 +66,7 @@ const getBuildingNameAndNumber = converge(
 const getBuildingSlug = converge(
   mergeDeepRight,
   [
-    dissoc('abbreviation'),
+    identity,
     pipe(
       pick(['number', 'abbreviation']),
       values,
@@ -81,7 +81,7 @@ const getBuildingSlug = converge(
 module.exports = ifElse(
   isOkData,
   pipe(
-    pick(['abbreviation', 'buildingName']),
+    pick(['abbreviation', 'name']),
     getBuildingNameAndNumber,
     getBuildingSlug
   ),

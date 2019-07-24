@@ -27,7 +27,7 @@ const getPropertiesToRemove = pipe(
   chain(values)
 )
 
-const translateProps = curryN(2, (translations, data) => {
+module.exports = curryN(2, (translations, data) => {
   const languages = getLanguages(translations)
   const propertiesToTranslate = keys(translations)
   const propertiesToRemove = getPropertiesToRemove(translations)
@@ -46,5 +46,3 @@ const translateProps = curryN(2, (translations, data) => {
 
   return mergeDeepRight(omit(propertiesToRemove, data), i18nObject)
 })
-
-module.exports = translateProps

@@ -7,20 +7,16 @@
     "buildingBase": {
       "type": "object",
       "properties": {
-        "name": {
+        "buildingId": {
           "type":"string"
         },
         "number": {
           "type":"integer"
-        },
-        "slug": {
-          "type": "string"
         }
       },
       "required": [
-        "name",
-        "number",
-        "slug"
+        "buildingId",
+        "number"
       ]
     },
     "building": {
@@ -29,12 +25,6 @@
         {
           "type":"object",
           "properties": {
-            "latitude": {
-              "type":"number"
-            },
-            "longitude": {
-              "type":"number"
-            },
             "openingHours": {
               "$ref": "base.json#/definitions/openingHours"
             },
@@ -43,6 +33,22 @@
             },
             "bounds": {
               "$ref": "#/definitions/bounds"
+            },
+            "i18n": {
+              "type": "object",
+              "properties": {
+                "nl": {
+                  "$ref": "#/definitions/dictionary"
+                },
+                "en": {
+                  "$ref": "#/definitions/dictionary"
+                }
+              },
+              "required": [
+                "nl",
+                "en"
+              ],
+              "additionalProperties": false
             }
           },
           "required": [
@@ -51,6 +57,20 @@
           ]
         }
       ]
+    },
+    "dictionary": {
+      "type":"object",
+      "properties": {
+        "name": { "type": "string" },
+        "abbreviation": { "type": "string" },
+        "slug": { "type": "string" }
+      },
+      "required": [
+        "name",
+        "abbreviation",
+        "slug"
+      ],
+      "additionalProperties": false
     },
     "bounds": {
       "type": "object",
