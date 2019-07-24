@@ -17,8 +17,9 @@ const hasValidationErrors = pipe(prop('errors'), isNil, not)
 
 const logErrors = tap(({ value, errors }) => {
   // console.log(value, errors)
-  const { slug } = value
-  const errorText = [`${slug} did not pass json schema validation:`]
+  const { slug, buildingId } = value
+  const name = slug || buildingId || 'unknown'
+  const errorText = [`${name} did not pass json schema validation:`]
     .concat(errors.map((error) => {
       const { dataPath, message, data, params } = error
       // generic display of offending data
