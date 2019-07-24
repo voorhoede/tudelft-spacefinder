@@ -20,6 +20,7 @@
   "studyType.group": "zelfstudie",
   "studyType.self": "groepsstudie",
   "map": "kaart",
+  "mapLoading": "map aan het laden...",
   "mapToggle": "wisselen naar map view",
   "menu": "menu",
   "nearBathroom": "wc",

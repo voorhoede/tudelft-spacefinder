@@ -80,10 +80,8 @@ export default {
     locationisOpen: Boolean,
     seats: Number,
     tables: Number,
-    title: String,
-  },
-  computed: {
-  },
+    title: String
+  }
 }
 </script>
 

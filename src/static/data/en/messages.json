@@ -20,6 +20,7 @@
   "studyType.group": "group study",
   "studyType.self": "self study",
   "map": "map",
+  "mapLoading": "loading map...",
   "mapToggle": "toggle map view",
   "menu": "menu",
   "nearBathroom": "bathroom",

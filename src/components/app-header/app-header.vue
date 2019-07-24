@@ -1,7 +1,7 @@
 <template>
   <header
     role="banner"
-    class="app-header"
+    class="app-header default-layout__header"
   >
     <nuxt-link
       :to="`/${$i18n.locale}`"
@@ -53,7 +53,7 @@
 .app-header {
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--spacing-quarter) 0 var(--spacing-half);
+  padding: 0 var(--spacing-half) 0 var(--spacing-half);
   height: var(--header-height-mobile);
   background-color: var(--brand-primary-color);
   color: var(--background-color);
@@ -61,6 +61,7 @@
 
 @media (min-width: 700px) {
   .app-header {
+    padding: 0 var(--spacing-default);
     height: var(--header-height-desktop);
   }
 }
