@@ -4,6 +4,7 @@ const {
   filter,
   identity,
   ifElse,
+  invoker,
   isNil,
   map,
   not,
@@ -26,6 +27,9 @@ const logErrors = tap(({ value, errors }) => {
       if (params.missingProperty) {
         // error text for missing required property
         errorState = `Object was: \n${JSON.stringify(data, null, 2)}`
+      } else if (params.additionalProperty) {
+        // Too many properties
+        errorState = `Offending property: ${params.additionalProperty}`
       }
 
       return `> ${dataPath || ''} ${message}. ${errorState}`
@@ -57,6 +61,8 @@ const keepValidValues = pipe(
   filter(pipe(hasValidationErrors, not)),
   map(prop('value'))
 )
+
+const toString = invoker(0, 'toString')
 
 module.exports = {
   hasValidationErrors,

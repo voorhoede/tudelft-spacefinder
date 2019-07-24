@@ -23,13 +23,12 @@ const {
   propEq,
   reduce,
   values,
-  uniqWith,
-  tap
+  uniqWith
 } = require('ramda')
 
 const { building } = require('../schema')
 const { keepValidValues, validate } = require('./lib')
-const meta = require('./lib/building-meta')
+const { fromI18n } = require('./lib/building-meta')
 const validator = validate(building)
 
 const buildingProps = [
@@ -58,7 +57,7 @@ const joinAndFilter = pipe(
 )
 
 const getBuildingMeta = pipe(
-  over(lensProp('i18n'), map(meta)),
+  over(lensProp('i18n'), map(fromI18n)),
   converge(mergeDeepRight, [
     pipe(
       path(['i18n', 'en', 'number']),
@@ -78,8 +77,7 @@ const getBuildings = pipe(
   joinAndFilter,
   getBuildingProps,
   map(validator),
-  keepValidValues,
-  tap(v => console.dir(v, { depth: null }))
+  keepValidValues
 )
 
 module.exports = getBuildings

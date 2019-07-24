@@ -30,7 +30,7 @@ module.exports = ({ csvPath }) => ({
     const translatedDataFromCsv = map(translate(translationMap), dataFromCsv)
 
     return {
-      // spaces: transformSpaces(translatedDataFromCsv),
+      spaces: transformSpaces(translatedDataFromCsv),
       buildings: transformBuildings([ translatedDataFromCsv, dataFromCms ])
     }
   }

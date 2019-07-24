@@ -17,11 +17,12 @@ const {
 
 const { space } = require('../schema')
 const {
-  getBuildingDetails,
   keepValidValues,
   toString,
   validate
 } = require('./lib')
+
+const { buildingNumberFromId } = require('./lib/building-meta')
 
 const validator = validate(space)
 
@@ -33,18 +34,6 @@ const getSlug = pipe(
   map(stringSlugify),
   join('--'),
   objOf('slug')
-)
-
-const getBuilding = pipe(
-  prop('buildingId'),
-  getBuildingDetails,
-  objOf('building')
-)
-
-const getRoom = pipe(
-  prop('roomId'),
-  objOf('id'),
-  objOf('room')
 )
 
 const facilities = [
@@ -72,7 +61,9 @@ const spaceRootProperties = [
   'seats',
   'tables',
   'latitude',
-  'longitude'
+  'longitude',
+  'i18n',
+  'roomId'
 ]
 
 const getFacilities = pipe(
@@ -85,6 +76,12 @@ const getSpaceName = pipe(
   objOf('name')
 )
 
+const getBuildingNumber = pipe(
+  prop('buildingId'),
+  buildingNumberFromId,
+  objOf('buildingNumber')
+)
+
 const getRootProperties = pick(spaceRootProperties)
 
 const meld = unapply(reduce(mergeDeepRight, {}))
@@ -94,11 +91,10 @@ module.exports = pipe(
     pipe(
       // Create the space object
       converge(meld, [
-        getBuilding,
-        getRoom,
         getRootProperties,
         getFacilities,
         getSpaceName,
+        getBuildingNumber,
         getSlug
       ]),
       // log & append validation errors, if any

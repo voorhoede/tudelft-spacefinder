@@ -1,15 +1,19 @@
 const {
   allPass,
+  anyPass,
   always,
   converge,
   equals,
+  head,
   identity,
   ifElse,
   is,
   isEmpty,
+  isNil,
   join,
   length,
   lensIndex,
+  match,
   mergeDeepRight,
   not,
   objOf,
@@ -20,6 +24,7 @@ const {
   split,
   test,
   toLower,
+  unary,
   values,
   zipObj
 } = require('ramda')
@@ -27,10 +32,10 @@ const {
 const slugify = require('slugify')
 
 const arrayHasTwoItems = pipe(length, equals(2))
-
+const testBuildingId = test(/^\d{2}\s?-\s?.+$/)
 const isOkBuildingName = pipe(
   prop('name'),
-  test(/^\d{2}\s?-\s?.+$/)
+  testBuildingId
 )
 const isOkAbbreviation = pipe(
   prop('abbreviation'),
@@ -77,8 +82,7 @@ const getBuildingSlug = converge(
     )
   ]
 )
-
-module.exports = ifElse(
+const fromI18n = ifElse(
   isOkData,
   pipe(
     pick(['abbreviation', 'name']),
@@ -87,3 +91,16 @@ module.exports = ifElse(
   ),
   always({})
 )
+
+const isEmptyOrNil = anyPass([isEmpty, isNil])
+
+const buildingNumberFromId = pipe(
+  match(/^\d{2}/),
+  head,
+  ifElse(isEmptyOrNil, always(null), unary(parseInt))
+)
+
+module.exports = {
+  fromI18n,
+  buildingNumberFromId
+}

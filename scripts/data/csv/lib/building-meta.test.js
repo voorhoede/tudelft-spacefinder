@@ -1,30 +1,32 @@
-const buildingMeta = require('./building-meta')
+const { fromI18n, buildingNumberFromId } = require('./building-meta')
 
 const data = {
-  buildingName: '13 - Architecture',
+  someProperty: 'some value',
+  name: '13 - Architecture',
   abbreviation: 'Arch'
 }
 
 test('returns an object with the expected properties', () => {
-  const result = buildingMeta(data)
+  const result = fromI18n(data)
   expect(result.number).toBe(13)
   expect(result.name).toBe('Architecture')
   expect(result.slug).toBe('13-arch')
 })
 
 test('is able to handle bad data', () => {
-  let result = buildingMeta({ foo: 'bar' })
+  let result = fromI18n({ foo: 'bar' })
   expect(result).toEqual({})
 
-  result = buildingMeta({ buildingName: 'foo' })
+  result = fromI18n({ name: 'foo' })
   expect(result).toEqual({})
 
-  result = buildingMeta({ buildingName: '12-bad', abbreviation: '' })
+  result = fromI18n({ name: '12-bad', abbreviation: '' })
   expect(result).toEqual({})
 })
 
-test('result does not contain source properties', () => {
-  const result = buildingMeta(data)
-  expect(result.hasOwnProperty('buildingName')).toBe(false)
-  expect(result.hasOwnProperty('abbreviation')).toBe(false)
+test('parse the building number from a building id', () => {
+  let result = buildingNumberFromId('04 - some building name')
+  expect(result).toBe(4)
+  result = buildingNumberFromId('no building number here')
+  expect(result).toBe(null)
 })
