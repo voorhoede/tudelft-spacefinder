@@ -9,7 +9,7 @@ const { getData: getDataFromCsv, transform } = require('./csv')({ csvPath })
 
 const writeFiles = (files = []) => {
   return Promise.all(files.map(({ name, contents }) => {
-    const stringifiedData = JSON.stringify(contents)
+    const stringifiedData = JSON.stringify(contents, null, 2)
     return new Promise((resolve, reject) => {
       writeFile(`./src/static/data/${name}.json`, stringifiedData, 'utf8', (err) => {
         if (err) {
