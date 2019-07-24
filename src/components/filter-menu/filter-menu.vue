@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent>
     <modal-drawer
       :isOpen="isOpen"
       :title="$t('filter')"
@@ -230,7 +230,10 @@
             {{ $t('resetFilters') }}
           </button>
 
-          <button class="button button--primary">
+          <button
+            class="button button--primary"
+            @click="$emit('close')"
+          >
             {{ $t('showLocations') }}
           </button>
         </div>
