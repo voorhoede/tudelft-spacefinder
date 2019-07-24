@@ -1,7 +1,7 @@
 <template>
   <div class="mapbox-map" ref="map">
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
-      <span>({{ $t('map') }})</span>
+      <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
     </div>
   </div>
 </template>
@@ -21,16 +21,23 @@ export default {
 @import '../app-core/variables.css';
 
 .mapbox-map {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #E4E5E0;
+  background-color: var(--highlight-color);
 }
 
 .mapbox-map__placeholder {
+  flex: 1 1 auto;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.mapbox-map__loading-message {
+  font-size: var(--font-size-default);
 }
 </style>

@@ -51,7 +51,7 @@ export default {
 @import '../app-core/variables.css';
 
 .modal-drawer {
-  z-index: var(--layer--overlay);
+  z-index: var(--layer--popup);
   position: absolute;
   top: 0;
   right: 0;
@@ -69,7 +69,7 @@ export default {
 .modal-drawer__header {
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--spacing-default);
+  padding: 0 var(--spacing-quarter) 0 var(--spacing-default);
   height: var(--header-height-mobile);
   background-color: var(--brand-primary-color);
   line-height: var(--header-height-mobile);
@@ -78,13 +78,14 @@ export default {
 
 @media (min-width: 700px) {
   .modal-drawer__header {
+    padding: 0 var(--spacing-default) 0 1.5rem;
     height: var(--header-height-desktop);
     line-height: var(--header-height-desktop);
   }
 }
 
 .modal-drawer__background {
-  z-index: var(--layer--raised);
+  z-index: var(--layer--overlay);
   position: absolute;
   display: block;
   top: 0;
