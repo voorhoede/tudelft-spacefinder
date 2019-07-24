@@ -226,7 +226,10 @@
             {{ $t('showOpenLocations') }}
           </label>
 
-          <button class="button button--secondary">
+          <button
+            class="button button--secondary"
+            @click="resetFilters"
+          >
             {{ $t('resetFilters') }}
           </button>
 
@@ -294,6 +297,11 @@ export default {
       'filters.whiteBoard'
     ]),
     optionsPerFilter() { return optionsPerFilter }
+  },
+  methods: {
+    resetFilters() {
+      this.$store.commit('resetFilters')
+    }
   }
 }
 </script>
