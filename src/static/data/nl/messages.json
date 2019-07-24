@@ -16,9 +16,6 @@
   "home": "home",
   "listToggle": "wissel naar lijst view",
   "locationFacilities": "Voorzieningen van locatie",
-  "studyType": "Type locatie",
-  "studyType.group": "zelfstudie",
-  "studyType.self": "groepsstudie",
   "map": "kaart",
   "mapLoading": "map aan het laden...",
   "mapToggle": "wisselen naar map view",
@@ -26,6 +23,7 @@
   "nearBathroom": "wc",
   "nearCoffeeMachine": "coffee corner",
   "nearPrinter": "printer",
+  "noFilterResults": "Er zijn geen locaties gevonden",
   "powerOutlets": "stopcontact",
   "quietness": "Geluidsniveau",
   "quietness.silent": "stil",
@@ -43,6 +41,9 @@
   "space": "ruimte",
   "spaces": "ruimtes",
   "stationaryPC": "losse pc",
+  "studyType": "Type locatie",
+  "studyType.group": "zelfstudie",
+  "studyType.self": "groepsstudie",
   "title": "Spacefinder",
   "whiteBoard": "whiteboard"
 }

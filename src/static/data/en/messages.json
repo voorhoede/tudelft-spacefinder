@@ -16,9 +16,6 @@
   "home": "home",
   "listToggle": "toggle list view",
   "locationFacilities": "Location facilities",
-  "studyType": "Location type",
-  "studyType.group": "group study",
-  "studyType.self": "self study",
   "map": "map",
   "mapLoading": "loading map...",
   "mapToggle": "toggle map view",
@@ -26,6 +23,7 @@
   "nearBathroom": "bathroom",
   "nearCoffeeMachine": "coffee corner",
   "nearPrinter": "printer",
+  "noFilterResults": "There are no locations found",
   "powerOutlets": "sockets",
   "quietness": "Noise level",
   "quietness.silent": "silent",
@@ -43,6 +41,9 @@
   "space": "space",
   "spaces": "spaces",
   "stationaryPC": "stationary pc",
+  "studyType": "Location type",
+  "studyType.group": "group study",
+  "studyType.self": "self study",
   "title": "Spacefinder",
   "whiteBoard": "white board"
 }
