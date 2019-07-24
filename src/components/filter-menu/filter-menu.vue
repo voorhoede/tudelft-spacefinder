@@ -354,12 +354,12 @@ export default {
 }
 
 .filter-menu__buttons .button--secondary {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   margin: var(--spacing-default) var(--spacing-half) 0 0;
 }
 
 .filter-menu__buttons .button--primary {
-  flex: 1 1 auto;
-  margin: var(--spacing-default) var(--spacing-half) 0 0;
+  flex: 1 1 0;
+  margin: var(--spacing-default) 0 0 var(--spacing-half);
 }
 </style>
