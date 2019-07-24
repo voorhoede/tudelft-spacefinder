@@ -10,12 +10,28 @@ const campusBounds = {
   east: 4.388487
 }
 
+const getDefaultFilters = () => ({
+  adjustableChairs: false,
+  bookable: false,
+  daylit: false,
+  ethernet: false,
+  studyType: [],
+  nearBathroom: false,
+  nearCoffeeMachine: false,
+  nearPrinter: false,
+  powerOutlets: false,
+  presentationScreen: false,
+  quietness: [],
+  showNearbyLocations: false,
+  showOpenLocations: false,
+  smartBoard: false,
+  stationaryPC: false,
+  whiteBoard: false
+})
+
 export const state = () => ({
   buildings: [],
-  filters: {
-    locationType: [],
-    quietness: []
-  },
+  filters: getDefaultFilters(),
   isMobile: false,
   mapLoaded: false,
   selection: {
@@ -27,6 +43,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  resetFilters(state) {
+    state.filters = getDefaultFilters()
+  },
   selectBuilding(state, building) {
     state.selection = {
       building,

@@ -1,5 +1,6 @@
 <template>
   <DynamicScroller
+    v-if="spaces.length > 0"
     :items="spaces"
     key-field="slug"
     :min-item-size="114"
@@ -31,6 +32,12 @@
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>
+  <div
+    v-else
+    class="space-list__message"
+  >
+    {{ $t('noFilterResults') }}
+  </div>
 </template>
 
 <script>
@@ -53,7 +60,13 @@ export default {
   height: 100%;
   padding: var(--spacing-default);
 }
+
 .space-list__item {
   padding-bottom: var(--spacing-default);
+}
+
+.space-list__message {
+  padding: var(--spacing-default);
+  text-align: center;
 }
 </style>
