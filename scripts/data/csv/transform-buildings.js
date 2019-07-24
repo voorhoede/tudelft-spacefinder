@@ -6,6 +6,7 @@ const {
   dissoc,
   filter,
   groupBy,
+  identity,
   isEmpty,
   length,
   lensProp,
@@ -77,7 +78,16 @@ const getBuildings = pipe(
   joinAndFilter,
   getBuildingProps,
   map(validator),
-  keepValidValues
+  keepValidValues,
+  // @NOTICE: temporarily add a slug property to a building that is equal to
+  // the building number
+  map(converge(mergeDeepRight, [
+    pipe(
+      prop('number'),
+      objOf('slug')
+    ),
+    identity
+  ]))
 )
 
 module.exports = getBuildings

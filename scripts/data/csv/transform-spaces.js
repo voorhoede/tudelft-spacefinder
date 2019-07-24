@@ -1,17 +1,16 @@
 const slugify = require('slugify')
 const {
   converge,
+  identity,
   join,
   map,
   mergeDeepRight,
   objOf,
-  over,
   pick,
   pipe,
   prop,
   reduce,
   replace,
-  lensProp,
   toLower,
   values,
   unapply
@@ -100,12 +99,19 @@ module.exports = pipe(
         getSlug
       ]),
       // log & append validation errors, if any
-      validator,
-      // @NOTICE: temporarily add a slug property to a space that is equal to
-      // the building number
-      over(lensProp('slug'), prop('buildingNumber'))
+      validator
     )
   ),
   // remove values with errors from the result
-  keepValidValues
+  keepValidValues,
+  // @NOTICE: temporarily add a slug property to a space that is equal to
+  // the building number
+  map(converge(mergeDeepRight, [
+    pipe(
+      prop('buildingNumber'),
+      objOf('slug'),
+      objOf('building')
+    ),
+    identity
+  ]))
 )
