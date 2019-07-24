@@ -22,6 +22,9 @@
                 class="a11y-sr-only filter-menu__filter"
               >
               <label :for="`quietness-${option}`">
+                <silent-icon v-if="option === 'silent'" class="filter-menu__filter-icon" />
+                <quiet-icon v-else-if="option === 'quiet'" class="filter-menu__filter-icon" />
+                <noisy-icon v-else class="filter-menu__filter-icon" />
                 {{ $t(`quietness.${option}`) }}
               </label>
             </span>
@@ -42,6 +45,8 @@
                 class="a11y-sr-only filter-menu__filter"
               >
               <label :for="`study-type-${option}`">
+                <group-icon v-if="option === 'group'" class="filter-menu__filter-icon" />
+                <self-icon v-else class="filter-menu__filter-icon" />
                 {{ $t(`studyType.${option}`) }}
               </label>
             </span>
@@ -54,6 +59,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="bookable">
+              <bookable-icon class="filter-menu__filter-icon" />
               {{ $t('bookable') }}
             </label>
           </fieldset>
@@ -69,6 +75,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="power-outlets">
+              <power-outlets-icon class="filter-menu__filter-icon" />
               {{ $t('powerOutlets') }}
             </label>
 
@@ -80,6 +87,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="ethernet">
+              <ethernet-icon class="filter-menu__filter-icon" />
               {{ $t('ethernet') }}
             </label>
 
@@ -91,6 +99,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="stationary-pc">
+              <stationary-pc-icon class="filter-menu__filter-icon" />
               {{ $t('stationaryPC') }}
             </label>
 
@@ -102,6 +111,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="near-printer">
+              <near-printer-icon class="filter-menu__filter-icon" />
               {{ $t('nearPrinter') }}
             </label>
           </fieldset>
@@ -117,6 +127,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="adjustable-chairs">
+              <adjustable-chairs-icon class="filter-menu__filter-icon" />
               {{ $t('adjustableChairs') }}
             </label>
 
@@ -128,6 +139,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="near-coffee-machine">
+              <near-coffee-machine-icon class="filter-menu__filter-icon" />
               {{ $t('nearCoffeeMachine') }}
             </label>
 
@@ -139,6 +151,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="daylit">
+              <daylit-icon class="filter-menu__filter-icon" />
               {{ $t('daylit') }}
             </label>
 
@@ -150,6 +163,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="near-bathroom">
+              <near-bathroom-icon class="filter-menu__filter-icon" />
               {{ $t('nearBathroom') }}
             </label>
           </fieldset>
@@ -165,6 +179,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="smart-board">
+              <smartboard-icon class="filter-menu__filter-icon" />
               {{ $t('smartBoard') }}
             </label>
 
@@ -176,6 +191,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="white-board">
+              <whiteboard-icon class="filter-menu__filter-icon" />
               {{ $t('whiteBoard') }}
             </label>
 
@@ -187,6 +203,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label for="presentation-screen">
+              <presentation-screen-icon class="filter-menu__filter-icon" />
               {{ $t('presentationScreen') }}
             </label>
           </fieldset>
@@ -226,13 +243,31 @@
 import { mapFields } from 'vuex-map-fields'
 import ModalDrawer from '../modal-drawer'
 
+import AdjustableChairsIcon from '../../static/icons/facility-adjustableChairs-icon.svg'
+import BookableIcon from '../../static/icons/facility-bookable-icon.svg'
+import DaylitIcon from '../../static/icons/facility-daylit-icon.svg'
+import EthernetIcon from '../../static/icons/facility-ethernet-icon.svg'
+import GroupIcon from '../../static/icons/facility-group-icon.svg'
+import NearBathroomIcon from '../../static/icons/facility-nearBathroom-icon.svg'
+import NearCoffeeMachineIcon from '../../static/icons/facility-nearCoffeeMachine-icon.svg'
+import NearPrinterIcon from '../../static/icons/facility-nearPrinter-icon.svg'
+import NoisyIcon from '../../static/icons/facility-noisy-icon.svg'
+import SelfIcon from '../../static/icons/facility-self-icon.svg'
+import SilentIcon from '../../static/icons/facility-silent-icon.svg'
+import PowerOutletsIcon from '../../static/icons/facility-powerOutlets-icon.svg'
+import PresentationScreenIcon from '../../static/icons/facility-presentationScreen-icon.svg'
+import QuietIcon from '../../static/icons/facility-quiet-icon.svg'
+import SmartboardIcon from '../../static/icons/facility-smartboard-icon.svg'
+import StationaryPcIcon from '../../static/icons/facility-stationaryPC-icon.svg'
+import WhiteboardIcon from '../../static/icons/facility-whiteboard-icon.svg'
+
 const optionsPerFilter = Object.freeze({
   quietness: ['silent', 'quiet', 'noisy'],
   studyType: ['self', 'group']
 })
 
 export default {
-  components: { ModalDrawer },
+  components: { AdjustableChairsIcon, BookableIcon, DaylitIcon, EthernetIcon, GroupIcon, ModalDrawer, NearBathroomIcon, NearCoffeeMachineIcon, NearPrinterIcon, NoisyIcon, QuietIcon, PowerOutletsIcon, PresentationScreenIcon, SelfIcon, SilentIcon, SmartboardIcon, StationaryPcIcon, WhiteboardIcon },
   props: {
     isOpen: Boolean,
   },
@@ -294,7 +329,7 @@ export default {
 .filter-menu__filter + label {
   display: inline-block;
   margin: 0 var(--spacing-quarter) var(--spacing-half) 0;
-  padding: 0 var(--spacing-default);
+  padding: 0 var(--spacing-default) 0 var(--spacing-half);
   font-size: var(--font-size-smaller);
   background: var(--highlight-color);
   border: 1px solid transparent;
@@ -311,6 +346,13 @@ export default {
 
 .filter-menu__filter:checked + label {
   background: var(--brand-primary-color-light);
+}
+
+.filter-menu__filter-icon {
+  margin-top: -2px;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
 }
 
 .filter-menu__checkbox + label {
