@@ -335,6 +335,15 @@ export default {
   flex: 1 1 auto;
   padding: var(--spacing-default);
   overflow: auto;
+	background:
+		linear-gradient(var(--background-color) 30%, rgba(255, 255, 255, 0)),
+		linear-gradient(rgba(255,255,255,0), var(--background-color) 70%) 0 100%,
+		radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+		radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+	background-repeat: no-repeat;
+	background-color: var(--background-color);
+	background-size: 100% 40px, 100% 40px, 100% 14px, 100% 5px;
+	background-attachment: local, local, scroll, scroll;
 }
 
 .filter-menu__filter + label {
