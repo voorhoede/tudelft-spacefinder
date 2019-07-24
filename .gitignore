@@ -86,5 +86,5 @@ sw.*
 # Mac OSX
 .DS_Store
 
-src/static/data/*/spaces.json
+src/static/data/**/*.json
 .envrc
