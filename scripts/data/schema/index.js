@@ -1,9 +1,9 @@
 const Ajv = require('ajv')
 
 // schema files
-const baseSchema = require('../../schema/base.json')
-const buildingSchema = require('../../schema/building.json')
-const spaceSchema = require('../../schema/space.json')
+const baseSchema = require('../../../schema/base.json')
+const buildingSchema = require('../../../schema/building.json')
+const spaceSchema = require('../../../schema/space.json')
 
 const ajv = new Ajv({
   schemas: [ baseSchema, buildingSchema, spaceSchema ],

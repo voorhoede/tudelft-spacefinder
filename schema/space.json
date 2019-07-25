@@ -9,42 +9,52 @@
       "properties": {
         "slug": { "type": "string" },
         "name": { "type": "string" },
-        "building": {
-          "$ref": "building.json"
+        "exchangeId": {
+          "type": "string",
+          "description": "Used to map a room to a calendar in exchange"
         },
-        "room": {
-          "$ref": "#/definitions/room"
-        },
+        "buildingNumber": { "type":"integer" },
+        "roomId": { "type": "string" },
         "floor": { "type": "string" },
         "seats": { "type": "integer" },
         "tables": { "type": "integer" },
         "latitude": { "type": "number", "description": "@TODO" },
         "longitude": { "type": "number", "description": "@TODO" },
         "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "@TODO" },
-        "facilities": { "$ref": "#/definitions/facilities" }
+        "facilities": { "$ref": "#/definitions/facilities" },
+        "i18n": {
+          "type": "object",
+          "properties": {
+            "nl": {
+              "$ref": "#/definitions/dictionary"
+            },
+            "en": {
+              "$ref": "#/definitions/dictionary"
+            }
+          },
+          "required": [
+            "nl",
+            "en"
+          ],
+          "additionalProperties": false
+        }
       },
       "additionalProperties": false,
       "required": [
         "name",
-        "room",
+        "roomId",
         "floor",
         "seats",
         "tables",
-        "building",
         "facilities",
         "slug"
       ]
     },
-    "room": {
+    "dictionary": {
       "type": "object",
       "properties": {
-        "id": {
-          "type":"string",
-          "description": "Room name"
-        }
-      },
-      "additionalProperties": false,
-      "required": ["id"]
+        "floor": { "type": "string" }
+      }
     },
     "facilities": {
       "type": "object",

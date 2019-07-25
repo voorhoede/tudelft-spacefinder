@@ -22,15 +22,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import loadData from '~/lib/load-data'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
-  async asyncData({ app }) {
-    const buildings = await loadData(`${app.i18n.locale}/buildings.json`)
-    return { buildings }
+  computed: {
+    ...mapGetters(['buildings']),
+    ...mapState(['showListView', 'isMobile']),
   },
-  computed: mapState(['showListView', 'isMobile']),
   mounted() {
     this.$store.dispatch('zoomToCampus')
   }

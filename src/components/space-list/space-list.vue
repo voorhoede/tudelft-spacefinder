@@ -4,7 +4,6 @@
     :items="spaces"
     key-field="slug"
     :min-item-size="114"
-    :prerender="spaces.length"
     class="space-list"
   >
     <template v-slot="{ item, index, active }">
@@ -14,7 +13,7 @@
         :size-dependencies="[
           item.name,
           item.building.name,
-          item.room.id
+          item.roomId
         ]"
         :data-index="index"
         class="space-list__item"
@@ -23,8 +22,8 @@
             :buildingSlug="item.building.slug"
             :spaceSlug="item.slug"
             :facilities="item.facilities"
-            :building="item.building.name"
-            :location="item.room.id"
+            :building="item.building.slug"
+            :location="item.roomId"
             :title="item.name"
             :seats="item.seats"
             :tables="item.tables"

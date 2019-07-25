@@ -1,5 +1,6 @@
 import { getField, updateField } from 'vuex-map-fields'
 import Deferred from '~/lib/deferred'
+import filterSpaces from '~/lib/filter-spaces'
 import mapboxgl from '~/lib/mapboxgl'
 
 const mapLoaded = new Deferred()
@@ -30,7 +31,7 @@ const getDefaultFilters = () => ({
 })
 
 export const state = () => ({
-  buildings: [],
+  buildingsI18n: [],
   filters: getDefaultFilters(),
   isMobile: false,
   mapLoaded: false,
@@ -39,7 +40,7 @@ export const state = () => ({
     space: undefined
   },
   showListView: true,
-  spaces: []
+  spacesI18n: []
 })
 
 export const mutations = {
@@ -52,9 +53,15 @@ export const mutations = {
       space: undefined
     }
   },
+  setBuildings(state, { buildings }) {
+    state.buildingsI18n = buildings
+  },
   setMapLoaded(state, { map }) {
     mapLoaded.resolve(map)
     state.mapLoaded = true
+  },
+  setSpaces(state, { spaces }) {
+    state.spacesI18n = spaces
   },
   toggleListView(state) {
     state.showListView = !state.showListView
@@ -110,5 +117,55 @@ export const actions = {
 }
 
 export const getters = {
-  getField
+  buildings: (state) => {
+    const { locale } = state.i18n
+    return state.buildingsI18n.map((buildingI18n) => {
+      const i18nProps = buildingI18n.i18n[locale]
+      return {
+        ...buildingI18n,
+        ...i18nProps
+      }
+    })
+  },
+  filteredSpaces: (state, getters) => {
+    return filterSpaces({
+      filters: state.filters,
+      spaces: getters.spaces
+    })
+  },
+  getBuildingByNumber: (state, getters) => {
+    return (number) => {
+      return getters.buildings.find((building) => {
+        return building.number === number
+      })
+    }
+  },
+  getBuildingBySlug: (state, getters) => {
+    return (slug) => {
+      return getters.buildings.find((building) => {
+        return building.slug === slug
+      })
+    }
+  },
+  getField,
+  getSpaceBySlug: (state, getters) => {
+    return (slug) => {
+      return getters.spaces.find((space) => {
+        return space.slug === slug
+      })
+    }
+  },
+  spaces: (state, getters) => {
+    const { locale } = state.i18n
+    const noBuilding = {} // spaces must have a building, but until they do, this prevents the app from crashing
+    return state.spacesI18n.map((spaceI18n) => {
+      const building = getters.getBuildingByNumber(spaceI18n.buildingNumber) || noBuilding
+      const i18nProps = spaceI18n.i18n[locale]
+      return {
+        ...spaceI18n,
+        ...i18nProps,
+        building
+      }
+    })
+  }
 }

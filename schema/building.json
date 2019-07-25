@@ -4,28 +4,99 @@
   "description": "A building at TU Delft",
   "$ref": "#/definitions/building",
   "definitions": {
-    "building": {
-      "type":"object",
+    "buildingBase": {
+      "type": "object",
       "properties": {
-        "name": {
+        "buildingId": {
           "type":"string"
         },
         "number": {
           "type":"integer"
-        },
-        "lat": {
-          "type":"number"
-        },
-        "lng": {
-          "type":"number"
-        },
-        "slug": {
-          "type": "string"
-        },
-        "openingHours": {
-          "$ref": "base.json#/definitions/openingHours"
         }
-      }
+      },
+      "required": [
+        "buildingId",
+        "number"
+      ]
+    },
+    "building": {
+      "allOf": [
+        { "$ref": "#/definitions/buildingBase" },
+        {
+          "type":"object",
+          "properties": {
+            "openingHours": {
+              "$ref": "base.json#/definitions/openingHours"
+            },
+            "image": {
+              "$ref": "#/definitions/image"
+            },
+            "bounds": {
+              "$ref": "#/definitions/bounds"
+            },
+            "i18n": {
+              "type": "object",
+              "properties": {
+                "nl": {
+                  "$ref": "#/definitions/dictionary"
+                },
+                "en": {
+                  "$ref": "#/definitions/dictionary"
+                }
+              },
+              "required": [
+                "nl",
+                "en"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "image",
+            "bounds"
+          ]
+        }
+      ]
+    },
+    "dictionary": {
+      "type":"object",
+      "properties": {
+        "name": { "type": "string" },
+        "abbreviation": { "type": "string" },
+        "slug": { "type": "string" }
+      },
+      "required": [
+        "name",
+        "abbreviation",
+        "slug"
+      ],
+      "additionalProperties": false
+    },
+    "bounds": {
+      "type": "object",
+      "properties": {
+        "north": { "type": "number" },
+        "west": { "type": "number" },
+        "south": { "type": "number" },
+        "east": { "type": "number" }
+      },
+      "required": [
+        "north",
+        "west",
+        "south",
+        "east"
+      ],
+      "additionalProperties": false
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [ "url" ],
+      "additionalProperties": false
     }
   }
 }
