@@ -13,7 +13,15 @@ const getBuildings = () => got('https://graphql.datocms.com/', {
   },
   json: true,
   body: {
-    query: '{ allBuildings() { image {url} number, bounds}}',
+    query: `{
+      allBuildings() {
+        image {
+          url
+        }
+        number,
+        bounds
+      }
+    }`,
     variables: null
   }
 }).then(({ body: { data: { allBuildings } } }) => {
