@@ -25,9 +25,5 @@ Promise.all([ getDataFromCsv(), getDataFromCms() ])
   .then(transform)
   .then(({ spaces, buildings }) => writeFiles([
     { name: 'spaces', contents: spaces },
-    { name: 'en/spaces', contents: spaces },
-    { name: 'nl/spaces', contents: spaces },
-    { name: 'buildings', contents: buildings },
-    { name: 'en/buildings', contents: buildings },
-    { name: 'nl/buildings', contents: buildings }
+    { name: 'buildings', contents: buildings }
   ]))

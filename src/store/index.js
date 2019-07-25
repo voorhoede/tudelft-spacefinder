@@ -30,7 +30,7 @@ const getDefaultFilters = () => ({
 })
 
 export const state = () => ({
-  buildings: [],
+  buildingsI18n: [],
   filters: getDefaultFilters(),
   isMobile: false,
   mapLoaded: false,
@@ -39,7 +39,7 @@ export const state = () => ({
     space: undefined
   },
   showListView: true,
-  spaces: []
+  spacesI18n: []
 })
 
 export const mutations = {
@@ -53,14 +53,14 @@ export const mutations = {
     }
   },
   setBuildings(state, { buildings }) {
-    state.buildings = buildings
+    state.buildingsI18n = buildings
   },
   setMapLoaded(state, { map }) {
     mapLoaded.resolve(map)
     state.mapLoaded = true
   },
   setSpaces(state, { spaces }) {
-    state.spaces = spaces
+    state.spacesI18n = spaces
   },
   toggleListView(state) {
     state.showListView = !state.showListView
@@ -116,20 +116,48 @@ export const actions = {
 }
 
 export const getters = {
-  getBuildingBySlug: (state) => {
-    const { i18n: { locale } } = state
+  buildings: (state) => {
+    const { locale } = state.i18n
+    return state.buildingsI18n.map((buildingI18n) => {
+      const i18nProps = buildingI18n.i18n[locale]
+      return {
+        ...buildingI18n,
+        ...i18nProps
+      }
+    })
+  },
+  getBuildingByNumber: (state, getters) => {
+    return (number) => {
+      return getters.buildings.find((building) => {
+        return building.number === number
+      })
+    }
+  },
+  getBuildingBySlug: (state, getters) => {
     return (slug) => {
-      return state.buildings.find((building) => {
-        return building.i18n[locale].slug === slug
+      return getters.buildings.find((building) => {
+        return building.slug === slug
       })
     }
   },
   getField,
-  getSpaceBySlug: (state) => {
+  getSpaceBySlug: (state, getters) => {
     return (slug) => {
-      return state.spaces.find((space) => {
+      return getters.spaces.find((space) => {
         return space.slug === slug
       })
     }
+  },
+  spaces: (state, getters) => {
+    const { locale } = state.i18n
+    return state.spacesI18n.map((spaceI18n) => {
+      const building = getters.getBuildingByNumber(spaceI18n.buildingNumber)
+      const i18nProps = spaceI18n.i18n[locale]
+      return {
+        ...spaceI18n,
+        ...i18nProps,
+        building
+      }
+    })
   }
 }

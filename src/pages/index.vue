@@ -4,28 +4,24 @@
     class="default-layout__info"
   >
     <h1 class="a11y-sr-only">{{ $t('allSpaces') }}</h1>
-    <space-list :spaces="spaces" />
+    <space-list :spaces="filteredSpaces" />
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import loadData from '~/lib/load-data'
+import { mapGetters, mapState } from 'vuex'
+import { SpaceList } from '~/components'
 import filterSpaces from '~/lib/filter-spaces'
-import { SpaceList } from '../components'
 
 export default {
   components: { SpaceList },
-  async asyncData({ app }) {
-    const allSpaces = await loadData(`${app.i18n.locale}/spaces.json`)
-    return { allSpaces }
-  },
   computed: {
+    ...mapGetters(['spaces']),
     ...mapState(['filters', 'isMobile', 'showListView']),
-    spaces() { 
+    filteredSpaces() { 
       return filterSpaces({ 
         filters: this.filters, 
-        spaces: this.allSpaces
+        spaces: this.spaces
       })
     }
   },

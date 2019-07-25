@@ -14,8 +14,8 @@ export default {
   },
   methods: {
     goBack(event) {
-      event.preventDefault()
-      window.history.back()
+      //event.preventDefault()
+      //window.history.back()
     }
   }
 }
