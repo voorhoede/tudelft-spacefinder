@@ -2,7 +2,7 @@
   <section class="default-layout__info">
     <back-button :to="localePath({ name: 'buildings' })" />
     <h1>{{ title }}</h1>
-    <space-list :spaces="[]" />
+    <space-list :spaces="spaces" />
   </section>
 </template>
 
@@ -13,9 +13,13 @@ import { BackButton, SpaceList } from '~/components'
 export default {
   components: { BackButton, SpaceList },
   computed: {
-    ...mapGetters(['getBuildingBySlug']),
+    ...mapGetters(['filteredSpaces', 'getBuildingBySlug']),
     building() {
       return this.getBuildingBySlug(this.$route.params.buildingSlug)
+    },
+    spaces() {
+      return this.filteredSpaces
+        .filter((space) => space.building = this.building)
     },
     title() {
       return `${this.$i18n.t('building')}: ${this.building.name}`

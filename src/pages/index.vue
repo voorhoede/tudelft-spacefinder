@@ -11,19 +11,12 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 import { SpaceList } from '~/components'
-import filterSpaces from '~/lib/filter-spaces'
 
 export default {
   components: { SpaceList },
   computed: {
-    ...mapGetters(['spaces']),
-    ...mapState(['filters', 'isMobile', 'showListView']),
-    filteredSpaces() { 
-      return filterSpaces({ 
-        filters: this.filters, 
-        spaces: this.spaces
-      })
-    }
+    ...mapGetters(['filteredSpaces']),
+    ...mapState(['isMobile', 'showListView']),
   },
   mounted() {
     this.$store.dispatch('zoomToCampus')
