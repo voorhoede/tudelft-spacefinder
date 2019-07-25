@@ -7,7 +7,7 @@
     class="space-list"
   >
     <template v-slot="{ item, index, active }">
-      <DynamicScrollerItem
+      <!-- <DynamicScrollerItem
         :item="item"
         :active="active"
         :size-dependencies="[
@@ -28,7 +28,7 @@
             :seats="item.seats"
             :tables="item.tables"
           />
-      </DynamicScrollerItem>
+      </DynamicScrollerItem> -->
     </template>
   </DynamicScroller>
 </template>

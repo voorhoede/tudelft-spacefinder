@@ -33,9 +33,15 @@ export const mutations = {
       space: undefined
     }
   },
+  setBuildings(state, { buildings }) {
+    state.buildings = buildings
+  },
   setMapLoaded(state, { map }) {
     mapLoaded.resolve(map)
     state.mapLoaded = true
+  },
+  setSpaces(state, { spaces }) {
+    state.spaces = spaces
   },
   toggleListView(state) {
     state.showListView = !state.showListView
@@ -91,5 +97,20 @@ export const actions = {
 }
 
 export const getters = {
-  getField
+  getBuildingBySlug: (state) => {
+    const { i18n: { locale } } = state
+    return (slug) => {
+      return state.buildings.find((building) => {
+        return building.i18n[locale].slug === slug
+      })
+    }
+  },
+  getField,
+  getSpaceBySlug: (state) => {
+    return (slug) => {
+      return state.spaces.find((space) => {
+        return space.slug === slug
+      })
+    }
+  }
 }
