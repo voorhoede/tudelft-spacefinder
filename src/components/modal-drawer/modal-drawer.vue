@@ -43,6 +43,33 @@ export default {
   props: {
     title: String,
     isOpen: Boolean,
+    keydownEventListener: null,
+  },
+  watch: {
+    isOpen(value) {
+      if(value) {
+        this.$nextTick(() => {
+          const focusableElements = this.$el.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), input[type="checkbox"]:not([disabled])')
+          const firstFocusableElement = focusableElements[0]
+          const lastFocusableElement = focusableElements[focusableElements.length - 1]
+
+          this.keydownEventListener = this.$el.addEventListener('keydown', (e) => {
+            if(e.key === 'Tab') {
+              if(e.shiftKey && document.activeElement === firstFocusableElement) {
+                lastFocusableElement.focus()
+                e.preventDefault()
+              } else if(!e.shiftKey && document.activeElement === lastFocusableElement) {
+                firstFocusableElement.focus()
+                e.preventDefault()
+              }
+            }
+          })
+        })
+      }
+    }
+  },
+  beforeDestroy() {
+    this.keydownEventListener = null
   },
   methods: {
     focusCloseButton() {
