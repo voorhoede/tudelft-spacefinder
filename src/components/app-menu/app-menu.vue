@@ -1,11 +1,11 @@
 <template>
-  <nav>
-    <modal-drawer
-      :isOpen="isOpen"
-      :title="$t('menu')"
-      @close="$emit('close')"
-    >
-      <ul class="app-menu flat-list">
+  <modal-drawer
+    :isOpen="isOpen"
+    :title="$t('menu')"
+    @close="$emit('close')"
+  >
+    <nav class="app-menu">
+      <ul class="flat-list">
         <li class="app-menu__item">
           <nuxt-link
             :to="`/${$i18n.locale}`"
@@ -84,8 +84,8 @@
           </nuxt-link>
         </li>
       </ul>
-    </modal-drawer>
-  </nav>
+    </nav>
+  </modal-drawer>
 </template>
 
 <script>

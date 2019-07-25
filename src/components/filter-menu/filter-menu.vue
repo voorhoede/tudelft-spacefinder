@@ -1,248 +1,249 @@
 <template>
-  <form @submit.prevent>
-    <modal-drawer
-      :isOpen="isOpen"
-      :title="$t('filter')"
-      @close="$emit('close')"
+  <modal-drawer
+    :isOpen="isOpen"
+    :title="$t('filter')"
+    @close="$emit('close')"
+  >
+    <form
+      @submit.prevent
+      class="filter-menu"
     >
-      <div class="filter-menu">
-        <div class="filter-menu__filters">
-          <fieldset class="filter-menu__filter-group">
-            <legend class="h3">{{ $t('quietness') }}</legend>
+      <div class="filter-menu__filters">
+        <fieldset class="filter-menu__filter-group">
+          <legend class="h3">{{ $t('quietness') }}</legend>
 
-            <span 
-              v-for="option in optionsPerFilter.quietness"
-              :key="option"
-            >
-              <input
-                v-model="quietness"
-                :value="option"
-                type="checkbox"
-                :id="`quietness-${option}`"
-                class="a11y-sr-only filter-menu__filter"
-              >
-              <label :for="`quietness-${option}`">
-                <silent-icon v-if="option === 'silent'" class="filter-menu__filter-icon" />
-                <quiet-icon v-else-if="option === 'quiet'" class="filter-menu__filter-icon" />
-                <noisy-icon v-else class="filter-menu__filter-icon" />
-                {{ $t(`quietness.${option}`) }}
-              </label>
-            </span>
-          </fieldset>
-
-          <fieldset class="filter-menu__filter-group">
-            <legend class="h3">{{ $t('studyType') }}</legend>
-
-            <span 
-              v-for="option in optionsPerFilter.studyType"
-              :key="option"
-            >
-              <input
-                v-model="studyType"
-                :value="option"
-                type="checkbox"
-                :id="`study-type-${option}`"
-                class="a11y-sr-only filter-menu__filter"
-              >
-              <label :for="`study-type-${option}`">
-                <group-icon v-if="option === 'group'" class="filter-menu__filter-icon" />
-                <self-icon v-else class="filter-menu__filter-icon" />
-                {{ $t(`studyType.${option}`) }}
-              </label>
-            </span>
-
-            <input
-              v-model="bookable"
-              :value="bookable"
-              type="checkbox"
-              id="bookable"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="bookable">
-              <bookable-icon class="filter-menu__filter-icon" />
-              {{ $t('bookable') }}
-            </label>
-          </fieldset>
-
-          <fieldset class="filter-menu__filter-group">
-            <legend class="h3">{{ $t('computerFacilities') }}</legend>
-
-            <input
-              v-model="powerOutlets"
-              :value="powerOutlets"
-              type="checkbox"
-              id="power-outlets"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="power-outlets">
-              <power-outlets-icon class="filter-menu__filter-icon" />
-              {{ $t('powerOutlets') }}
-            </label>
-
-            <input
-              v-model="ethernet"
-              :value="ethernet"
-              type="checkbox"
-              id="ethernet"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="ethernet">
-              <ethernet-icon class="filter-menu__filter-icon" />
-              {{ $t('ethernet') }}
-            </label>
-
-            <input
-              v-model="stationaryPC"
-              :value="stationaryPC"
-              type="checkbox"
-              id="stationary-pc"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="stationary-pc">
-              <stationary-pc-icon class="filter-menu__filter-icon" />
-              {{ $t('stationaryPC') }}
-            </label>
-
-            <input
-              v-model="nearPrinter"
-              :value="nearPrinter"
-              type="checkbox"
-              id="near-printer"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="near-printer">
-              <near-printer-icon class="filter-menu__filter-icon" />
-              {{ $t('nearPrinter') }}
-            </label>
-          </fieldset>
-
-          <fieldset class="filter-menu__filter-group">
-            <legend class="h3">{{ $t('locationFacilities') }}</legend>
-
-            <input
-              v-model="adjustableChairs"
-              :value="adjustableChairs"
-              type="checkbox"
-              id="adjustable-chairs"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="adjustable-chairs">
-              <adjustable-chairs-icon class="filter-menu__filter-icon" />
-              {{ $t('adjustableChairs') }}
-            </label>
-
-            <input
-              v-model="nearCoffeeMachine"
-              :value="nearCoffeeMachine"
-              type="checkbox"
-              id="near-coffee-machine"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="near-coffee-machine">
-              <near-coffee-machine-icon class="filter-menu__filter-icon" />
-              {{ $t('nearCoffeeMachine') }}
-            </label>
-
-            <input
-              v-model="daylit"
-              :value="daylit"
-              type="checkbox"
-              id="daylit"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="daylit">
-              <daylit-icon class="filter-menu__filter-icon" />
-              {{ $t('daylit') }}
-            </label>
-
-            <input
-              v-model="nearBathroom"
-              :value="nearBathroom"
-              type="checkbox"
-              id="near-bathroom"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="near-bathroom">
-              <near-bathroom-icon class="filter-menu__filter-icon" />
-              {{ $t('nearBathroom') }}
-            </label>
-          </fieldset>
-
-          <fieldset class="filter-menu__filter-group">
-            <legend class="h3">{{ $t('collaborationFacilities') }}</legend>
-
-            <input
-              v-model="smartBoard"
-              :value="smartBoard"
-              type="checkbox"
-              id="smart-board"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="smart-board">
-              <smartboard-icon class="filter-menu__filter-icon" />
-              {{ $t('smartBoard') }}
-            </label>
-
-            <input
-              v-model="whiteBoard"
-              :value="whiteBoard"
-              type="checkbox"
-              id="white-board"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="white-board">
-              <whiteboard-icon class="filter-menu__filter-icon" />
-              {{ $t('whiteBoard') }}
-            </label>
-
-            <input
-              v-model="presentationScreen"
-              :value="presentationScreen"
-              type="checkbox"
-              id="presentation-screen"
-              class="a11y-sr-only filter-menu__filter"
-            >
-            <label for="presentation-screen">
-              <presentation-screen-icon class="filter-menu__filter-icon" />
-              {{ $t('presentationScreen') }}
-            </label>
-          </fieldset>
-
-          <fieldset class="filter-menu__filter-group">
-            <legend class="h3">{{ $t('buildings') }}</legend>
-            [...]
-          </fieldset>
-        </div>
-
-        <div class="filter-menu__buttons">
-          <input
-            v-model="showOpenLocations"
-            :value="showOpenLocations"
-            type="checkbox"
-            id="show-open-locations"
-            class="filter-menu__checkbox a11y-sr-only"
+          <span 
+            v-for="option in optionsPerFilter.quietness"
+            :key="option"
           >
-          <label for="show-open-locations">
-            {{ $t('showOpenLocations') }}
+            <input
+              v-model="quietness"
+              :value="option"
+              type="checkbox"
+              :id="`quietness-${option}`"
+              class="a11y-sr-only filter-menu__filter"
+            >
+            <label :for="`quietness-${option}`">
+              <silent-icon v-if="option === 'silent'" class="filter-menu__filter-icon" />
+              <quiet-icon v-else-if="option === 'quiet'" class="filter-menu__filter-icon" />
+              <noisy-icon v-else class="filter-menu__filter-icon" />
+              {{ $t(`quietness.${option}`) }}
+            </label>
+          </span>
+        </fieldset>
+
+        <fieldset class="filter-menu__filter-group">
+          <legend class="h3">{{ $t('studyType') }}</legend>
+
+          <span 
+            v-for="option in optionsPerFilter.studyType"
+            :key="option"
+          >
+            <input
+              v-model="studyType"
+              :value="option"
+              type="checkbox"
+              :id="`study-type-${option}`"
+              class="a11y-sr-only filter-menu__filter"
+            >
+            <label :for="`study-type-${option}`">
+              <group-icon v-if="option === 'group'" class="filter-menu__filter-icon" />
+              <self-icon v-else class="filter-menu__filter-icon" />
+              {{ $t(`studyType.${option}`) }}
+            </label>
+          </span>
+
+          <input
+            v-model="bookable"
+            :value="bookable"
+            type="checkbox"
+            id="bookable"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="bookable">
+            <bookable-icon class="filter-menu__filter-icon" />
+            {{ $t('bookable') }}
+          </label>
+        </fieldset>
+
+        <fieldset class="filter-menu__filter-group">
+          <legend class="h3">{{ $t('computerFacilities') }}</legend>
+
+          <input
+            v-model="powerOutlets"
+            :value="powerOutlets"
+            type="checkbox"
+            id="power-outlets"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="power-outlets">
+            <power-outlets-icon class="filter-menu__filter-icon" />
+            {{ $t('powerOutlets') }}
           </label>
 
-          <button
-            class="button button--secondary"
-            @click="resetFilters"
+          <input
+            v-model="ethernet"
+            :value="ethernet"
+            type="checkbox"
+            id="ethernet"
+            class="a11y-sr-only filter-menu__filter"
           >
-            {{ $t('resetFilters') }}
-          </button>
+          <label for="ethernet">
+            <ethernet-icon class="filter-menu__filter-icon" />
+            {{ $t('ethernet') }}
+          </label>
 
-          <button
-            class="button button--primary"
-            @click="$emit('close')"
+          <input
+            v-model="stationaryPC"
+            :value="stationaryPC"
+            type="checkbox"
+            id="stationary-pc"
+            class="a11y-sr-only filter-menu__filter"
           >
-            {{ $t('showLocations') }}
-          </button>
-        </div>
+          <label for="stationary-pc">
+            <stationary-pc-icon class="filter-menu__filter-icon" />
+            {{ $t('stationaryPC') }}
+          </label>
+
+          <input
+            v-model="nearPrinter"
+            :value="nearPrinter"
+            type="checkbox"
+            id="near-printer"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="near-printer">
+            <near-printer-icon class="filter-menu__filter-icon" />
+            {{ $t('nearPrinter') }}
+          </label>
+        </fieldset>
+
+        <fieldset class="filter-menu__filter-group">
+          <legend class="h3">{{ $t('locationFacilities') }}</legend>
+
+          <input
+            v-model="adjustableChairs"
+            :value="adjustableChairs"
+            type="checkbox"
+            id="adjustable-chairs"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="adjustable-chairs">
+            <adjustable-chairs-icon class="filter-menu__filter-icon" />
+            {{ $t('adjustableChairs') }}
+          </label>
+
+          <input
+            v-model="nearCoffeeMachine"
+            :value="nearCoffeeMachine"
+            type="checkbox"
+            id="near-coffee-machine"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="near-coffee-machine">
+            <near-coffee-machine-icon class="filter-menu__filter-icon" />
+            {{ $t('nearCoffeeMachine') }}
+          </label>
+
+          <input
+            v-model="daylit"
+            :value="daylit"
+            type="checkbox"
+            id="daylit"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="daylit">
+            <daylit-icon class="filter-menu__filter-icon" />
+            {{ $t('daylit') }}
+          </label>
+
+          <input
+            v-model="nearBathroom"
+            :value="nearBathroom"
+            type="checkbox"
+            id="near-bathroom"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="near-bathroom">
+            <near-bathroom-icon class="filter-menu__filter-icon" />
+            {{ $t('nearBathroom') }}
+          </label>
+        </fieldset>
+
+        <fieldset class="filter-menu__filter-group">
+          <legend class="h3">{{ $t('collaborationFacilities') }}</legend>
+
+          <input
+            v-model="smartBoard"
+            :value="smartBoard"
+            type="checkbox"
+            id="smart-board"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="smart-board">
+            <smartboard-icon class="filter-menu__filter-icon" />
+            {{ $t('smartBoard') }}
+          </label>
+
+          <input
+            v-model="whiteBoard"
+            :value="whiteBoard"
+            type="checkbox"
+            id="white-board"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="white-board">
+            <whiteboard-icon class="filter-menu__filter-icon" />
+            {{ $t('whiteBoard') }}
+          </label>
+
+          <input
+            v-model="presentationScreen"
+            :value="presentationScreen"
+            type="checkbox"
+            id="presentation-screen"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="presentation-screen">
+            <presentation-screen-icon class="filter-menu__filter-icon" />
+            {{ $t('presentationScreen') }}
+          </label>
+        </fieldset>
+
+        <fieldset class="filter-menu__filter-group">
+          <legend class="h3">{{ $t('buildings') }}</legend>
+          [...]
+        </fieldset>
       </div>
-    </modal-drawer>
-  </form>
+
+      <div class="filter-menu__buttons">
+        <input
+          v-model="showOpenLocations"
+          :value="showOpenLocations"
+          type="checkbox"
+          id="show-open-locations"
+          class="filter-menu__checkbox a11y-sr-only"
+        >
+        <label for="show-open-locations">
+          {{ $t('showOpenLocations') }}
+        </label>
+
+        <button
+          class="button button--secondary"
+          @click="resetFilters"
+        >
+          {{ $t('resetFilters') }}
+        </button>
+
+        <button
+          class="button button--primary"
+          @click="$emit('close')"
+        >
+          {{ $t('showLocations') }}
+        </button>
+      </div>
+    </form>
+  </modal-drawer>
 </template>
 
 <script>
@@ -310,19 +311,17 @@ export default {
 @import '../app-core/variables.css';
 
 .filter-menu {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  height: calc(100% - var(--header-height-mobile));
-}
-
-@media (min-width: 700px) {
-  .filter-menu {
-    height: calc(100% - var(--header-height-desktop));
-  }
 }
 
 .filter-menu__filter-group {
   margin-bottom: var(--spacing-half);
+}
+
+.filter-menu__filter-group:last-child {
+  margin-bottom: 0;
 }
 
 @media (min-width: 700px) {
@@ -332,7 +331,7 @@ export default {
 }
 
 .filter-menu__filters {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   padding: var(--spacing-default);
   overflow: auto;
 	background:

@@ -3,6 +3,7 @@
     <app-header
       @openAppMenu="openAppMenu"
       @openFilterMenu="openFilterMenu"
+      :openedMenu="openedMenu"
     />
 
     <main class="default-layout__main">
