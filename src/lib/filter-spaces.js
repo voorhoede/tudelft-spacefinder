@@ -1,7 +1,29 @@
 export default function ({ filters, spaces }) {
-  return spaces.filter((space) => {
-    const filterIsInactive = filters.quietness.length === 0
-    const filterIsMatching = filters.quietness.includes(space.facilities.quietness)
-    return filterIsInactive || filterIsMatching
+  const filterKeys = Object.keys(filters)
+  const activeFilterKeys = getActiveFilterKeys(filters, filterKeys)
+
+  return filterSpaces(filters, spaces, activeFilterKeys)
+}
+
+function getActiveFilterKeys(filters, keys) {
+  return keys.filter(key => {
+    const data = filters[key]
+    return Array.isArray(data) ? !!data.length : data
+  })
+}
+
+function filterSpaces(filters, spaces, activeFilterKeys) {
+  return spaces.filter(space => filterSpace(filters, space, activeFilterKeys))
+}
+
+function filterSpace(filters, space, activeFilterKeys) {
+  return activeFilterKeys.every(activeFilterKey => {
+    const facility = space.facilities[activeFilterKey]
+
+    if (Array.isArray(filters[activeFilterKey])) {
+      return filters[activeFilterKey].includes(facility)
+    }
+
+    return facility
   })
 }

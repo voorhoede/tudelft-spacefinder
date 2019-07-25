@@ -10,9 +10,7 @@
   >
     <div class="space-card__info">
       <div class="space-card__location">
-        <h3
-          v-if="title"
-          class="space-card__title">
+        <h3 v-if="title">
           {{ title }}
         </h3>
         <p
@@ -21,10 +19,7 @@
         >
           <em>{{ building }}</em> - {{ location}}
         </p>
-        <h3
-          v-else
-          class="space-card__description"
-        >
+        <h3 v-else>
           <em>{{ building }}</em> - {{ location}}
         </h3>
       </div>
@@ -127,12 +122,6 @@ export default {
 .space-card__location {
   flex: 1 1 auto;
   line-height: 1.3;
-}
-
-.space-card__title {
-  margin-bottom: var(--spacing-quarter);
-  font-size: var(--font-size-default);
-  font-weight: 500;
 }
 
 .space-card__description {
