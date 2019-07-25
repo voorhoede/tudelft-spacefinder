@@ -24,6 +24,8 @@ const writeFiles = (files = []) => {
 Promise.all([ getDataFromCsv(), getDataFromCms() ])
   .then(transform)
   .then(({ spaces, buildings }) => writeFiles([
+    // @NOTICE: writing to language subdirectories for compatibility reasons.
+    // Remove these at some point.
     { name: 'spaces', contents: spaces },
     { name: 'en/spaces', contents: spaces },
     { name: 'nl/spaces', contents: spaces },
