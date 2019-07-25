@@ -237,7 +237,7 @@
             class="button button--primary"
             @click="$emit('close')"
           >
-            {{ $t('showLocations') }}
+            {{ $t('showLocations', { amount: filteredSpaces.length }) }}
           </button>
         </div>
       </div>
@@ -246,6 +246,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { mapFields } from 'vuex-map-fields'
 import ModalDrawer from '../modal-drawer'
 
@@ -296,6 +297,7 @@ export default {
       'filters.stationaryPC',
       'filters.whiteBoard'
     ]),
+    ...mapGetters(['filteredSpaces']),
     optionsPerFilter() { return optionsPerFilter }
   },
   methods: {
@@ -416,12 +418,12 @@ export default {
 }
 
 .filter-menu__buttons .button--secondary {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   margin: var(--spacing-default) var(--spacing-half) 0 0;
 }
 
 .filter-menu__buttons .button--primary {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   margin: var(--spacing-default) 0 0 var(--spacing-half);
 }
 </style>
