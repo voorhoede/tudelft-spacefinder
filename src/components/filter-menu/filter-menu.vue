@@ -237,7 +237,7 @@
             class="button button--primary"
             @click="$emit('close')"
           >
-            {{ $t('showLocations', { amount: filteredSpacesCount }) }}
+            {{ $tc('showLocations', filteredSpacesCount, { amount: filteredSpacesCount }) }}
           </button>
         </div>
       </div>

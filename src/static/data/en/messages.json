@@ -34,7 +34,7 @@
   "presentationScreen": "tv",
   "clearFilters": "clear filters",
   "seating": "Seating",
-  "showLocations": "show {amount} locations",
+  "showLocations": "show 0 locations | show 1 location | show {amount} locations",
   "showNearbyLocations": "only show nearby locations",
   "showOpenLocations": "only show open locations",
   "smartBoard": "smart board",

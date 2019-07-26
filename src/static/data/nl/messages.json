@@ -34,7 +34,7 @@
   "presentationScreen": "tv",
   "clearFilters": "wis filters",
   "seating": "Zitplaatsen",
-  "showLocations": "toon {amount} locaties",
+  "showLocations": "toon 0 locaties | toon 1 locatie  | toon {count} locaties",
   "showNearbyLocations": "toon alleen dichtstbijzijnde locaties",
   "showOpenLocations": "toon alleen open locaties",
   "smartBoard": "smartboard",
