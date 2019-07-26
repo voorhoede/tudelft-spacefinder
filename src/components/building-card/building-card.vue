@@ -19,23 +19,23 @@
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">
-        <li>50 rooms</li>
+        <li>50 locations</li>
         <li>1000 seats</li>
       </ul>
 
-      <p class="building-card__status">
-        closed <open-icon class="space-card__status-icon" /><closed-icon class="space-card__status-icon" />
-      </p>
+      <card-status class="building-card__status" />
     </div>
   </nuxt-link>
 </template>
 
 <script>
+import { CardStatus } from '../../components'
+
 import ClosedIcon from '../../static/icons/location-closed-icon.svg'
 import OpenIcon from '../../static/icons/location-open-icon.svg'
 
 export default {
-  components: { ClosedIcon, OpenIcon },
+  components: { CardStatus, ClosedIcon, OpenIcon },
   props: {
     building: Object
   }
@@ -51,6 +51,11 @@ export default {
   background: var(--background-color);
   border: 1px solid var(--highlight-color);
   text-decoration: none;
+}
+
+.building-card:hover,
+.building-card:focus {
+  border: 1px solid var(--brand-primary-color-dark);
 }
 
 .building-card__header {
@@ -103,7 +108,8 @@ export default {
   margin: 0 var(--spacing-quarter);
 }
 
-.building-card__status {
-
+.building-card:hover .card-status__icon,
+.building-card:focus .card-status__icon {
+  stroke: var(--brand-primary-color-dark);
 }
 </style>
