@@ -56,30 +56,18 @@
         </li>
         <li class="app-menu__item">
           <nuxt-link
-            v-if="$i18n.locale === 'nl'"
-            to="/en"
+            v-for="(locale, index) in $i18n.locales"
+            :key="index"
+            v-if="locale.code !== $i18n.locale"
+            :to="`/${locale.code}`"
             @click.native="$emit('close')"
-            hreflang="en"
+            :hreflang="locale.code"
             class="app-menu__link"
           >
             <world-icon class="app-menu__icon" />
 
             <span class="app-menu__link-name">
-              english
-            </span>
-          </nuxt-link>
-
-          <nuxt-link
-            v-if="$i18n.locale === 'en'"
-            to="/nl"
-            @click.native="$emit('close')"
-            hreflang="nl"
-            class="app-menu__link"
-          >
-            <world-icon class="app-menu__icon" />
-
-            <span class="app-menu__link-name">
-              nederlands
+              {{ languages[locale.code] }}
             </span>
           </nuxt-link>
         </li>
@@ -102,6 +90,14 @@ export default {
   components: { BuildingIcon, HomeIcon, ListIcon, MapIcon, ModalDrawer, WorldIcon },
   props: {
     isOpen: Boolean,
+  },
+  data() {
+    return {
+      languages: {
+        en: 'english',
+        nl: 'nederlands'
+      }
+    }
   },
   computed: mapState(['appLanguage', 'showListView']),
   methods: {
