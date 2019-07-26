@@ -4,6 +4,7 @@
     :items="spaces"
     key-field="slug"
     :min-item-size="114"
+    :prerender="spaces.length"
     class="space-list"
   >
     <template v-slot="{ item, index, active }">

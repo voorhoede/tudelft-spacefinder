@@ -21,6 +21,7 @@
       type="button"
       @click="$emit('openFilterMenu')"
       class="app-header__button button button--header"
+      ref="filterButton"
     >
       <img
         src="/icons/filter-icon.svg"
@@ -35,6 +36,7 @@
       type="button"
       @click="$emit('openAppMenu')"
       class="app-header__button button button--header"
+      ref="menuButton"
     >
       <img
         src="/icons/menu-icon.svg"
@@ -46,6 +48,29 @@
     </button>
   </header>
 </template>
+
+<script>
+export default {
+  props: {
+    openedMenu: String,
+  },
+  data() {
+    return {
+      lastOpenedMenu: null,
+    }
+  },
+  watch: {
+    openedMenu() {
+      if(this.lastOpenedMenu === 'app-menu') {
+        this.$refs.menuButton.focus()
+      } else if(this.lastOpenedMenu === 'filter-menu') {
+        this.$refs.filterButton.focus()
+      }
+      this.lastOpenedMenu = this.openedMenu
+    }
+  }
+}
+</script>
 
 <style>
 @import '../app-core/variables.css';

@@ -1,17 +1,18 @@
 <template>
   <div>
-    <transition name="modal-slide">
-      <div
+    <transition name="modal-slide" @after-enter="focusCloseButton">
+      <section
         v-if="isOpen"
         class="modal-drawer"
       >
-        <header class="modal-drawer__header">
+        <div class="modal-drawer__header">
           <h2>{{ title }}</h2>
 
           <button
             type="button"
             @click="$emit('close')"
             class="button button--header"
+            ref="closeButton"
           >
             <img
               src="/icons/close-icon.svg"
@@ -21,10 +22,10 @@
 
             {{ $t('close') }}
           </button>
-        </header>
+        </div>
 
         <slot />
-      </div>
+      </section>
     </transition>
 
     <transition name="modal-fade">
@@ -34,7 +35,6 @@
         class="modal-drawer__background"
       ></div>
     </transition>
-
   </div>
 </template>
 
@@ -43,6 +43,38 @@ export default {
   props: {
     title: String,
     isOpen: Boolean,
+    keydownEventListener: null,
+  },
+  watch: {
+    isOpen(value) {
+      if(value) {
+        this.$nextTick(() => {
+          const focusableElements = this.$el.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), input[type="checkbox"]:not([disabled])')
+          const firstFocusableElement = focusableElements[0]
+          const lastFocusableElement = focusableElements[focusableElements.length - 1]
+
+          this.keydownEventListener = this.$el.addEventListener('keydown', (e) => {
+            if(e.key === 'Tab') {
+              if(e.shiftKey && document.activeElement === firstFocusableElement) {
+                lastFocusableElement.focus()
+                e.preventDefault()
+              } else if(!e.shiftKey && document.activeElement === lastFocusableElement) {
+                firstFocusableElement.focus()
+                e.preventDefault()
+              }
+            }
+          })
+        })
+      }
+    }
+  },
+  beforeDestroy() {
+    this.keydownEventListener = null
+  },
+  methods: {
+    focusCloseButton() {
+      this.$refs.closeButton.focus()
+    }
   }
 }
 </script>
@@ -53,6 +85,8 @@ export default {
 .modal-drawer {
   z-index: var(--layer--popup);
   position: absolute;
+  display: flex;
+  flex-direction: column;
   top: 0;
   right: 0;
   width: var(--column-width-mobile);
