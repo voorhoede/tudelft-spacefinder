@@ -26,3 +26,15 @@ After installing dependencies using `npm install` the following scripts are avai
 `dev` | Serves app on [`http://localhost:3463`](http://localhost:3463) ("find" in T9) with hot reloading.
 `proxy` | Exposes app on localhost to world wide web for testing on other devices.
 `start` | Serves production version of client app from (`/dist/`) on [`http://localhost:3464`](http://localhost:3464).
+
+### Data
+Until the topdesk api is used as primary data source, we'll read CSV from 
+`data/studieplekken-latest`. When a new version of the data comes in from TU, 
+do the following:
+
+0. convert the incoming file from *xlsx* to *csv*
+0. save to `data` directory as `studieplekken-v<version>.csv`
+0. update the symlink to point to the latest version:
+```sh
+ln -sf studieplekken-v<version>.csv data/studieplekken-latest.csv
+```
