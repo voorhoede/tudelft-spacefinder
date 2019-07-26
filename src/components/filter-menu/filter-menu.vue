@@ -237,7 +237,7 @@
             class="button button--primary"
             @click="$emit('close')"
           >
-            {{ $t('showLocations', { amount: filteredSpaces.length }) }}
+            {{ $t('showLocations', { amount: filteredSpacesCount }) }}
           </button>
         </div>
       </div>
@@ -297,7 +297,7 @@ export default {
       'filters.stationaryPC',
       'filters.whiteBoard'
     ]),
-    ...mapGetters(['filteredSpaces']),
+    ...mapGetters(['filteredSpacesCount']),
     optionsPerFilter() { return optionsPerFilter }
   },
   methods: {
