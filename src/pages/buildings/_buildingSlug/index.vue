@@ -19,7 +19,7 @@ export default {
     },
     spaces() {
       return this.filteredSpaces
-        .filter((space) => space.building = this.building)
+        .filter((space) => space.building === this.building)
     },
     title() {
       return `${this.$i18n.t('building')}: ${this.building.name}`

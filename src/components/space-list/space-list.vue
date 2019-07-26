@@ -23,7 +23,7 @@
             :buildingSlug="item.building.slug"
             :spaceSlug="item.slug"
             :facilities="item.facilities"
-            :building="item.building.slug"
+            :building="item.building.abbreviation"
             :location="item.roomId"
             :title="item.name"
             :seats="item.seats"
