@@ -131,6 +131,15 @@ li.app-menu__item {
   text-decoration: underline;
 }
 
+.app-menu__link-name {
+
+  display: inline-block;
+}
+
+.app-menu__link-name::first-letter {
+  text-transform: uppercase;
+}
+
 .app-menu__icon {
   margin-right: var(--spacing-half);
   width: 20px;
