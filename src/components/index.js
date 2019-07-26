@@ -1,6 +1,7 @@
 export { default as AppHeader } from './app-header'
 export { default as AppMenu } from './app-menu'
 export { default as BackButton } from './back-button'
+export { default as BuildingCard } from './building-card'
 export { default as FilterMenu } from './filter-menu'
 export { default as MapboxMap } from './mapbox-map'
 export { default as ModalDrawer } from './modal-drawer'
