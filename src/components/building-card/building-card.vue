@@ -94,4 +94,8 @@ export default {
   display: inline-block;
   margin: 0 var(--spacing-quarter);
 }
+
+.building-card__status {
+  flex: 0 0 auto;
+}
 </style>

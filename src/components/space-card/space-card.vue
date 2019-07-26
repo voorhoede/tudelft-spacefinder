@@ -138,6 +138,7 @@ export default {
 
 .space-card__status {
   order: 2;
+  flex: 0 0 auto;
 }
 
 .space-card__facilities {

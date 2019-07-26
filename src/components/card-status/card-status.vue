@@ -29,7 +29,6 @@ export default {
 
 <style>
 .card-status {
-  flex: 0 0 auto;
   margin: .1rem 0 0 var(--spacing-default);
   font-size: var(--font-size-smaller);
 }
