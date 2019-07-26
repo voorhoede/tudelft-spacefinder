@@ -6,7 +6,7 @@
         params: { buildingSlug: buildingSlug, spaceSlug: spaceSlug }
       })
     "
-    class="space-card"
+    class="space-card card"
   >
     <div class="space-card__info">
       <div class="space-card__location">
@@ -81,19 +81,6 @@ export default {
 <style>
 @import '../app-core/variables.css';
 
-.space-card {
-  display: block;
-  padding: var(--spacing-half);
-  background: var(--background-color);
-  border: 1px solid var(--highlight-color);
-  text-decoration: none;
-}
-
-.space-card:hover,
-.space-card:focus {
-  border: 1px solid var(--brand-primary-color-dark);
-}
-
 @media (min-width: 700px) {
   .space-card {
     padding: var(--spacing-default);
@@ -151,11 +138,6 @@ export default {
 
 .space-card__status {
   order: 2;
-}
-
-.space-card:hover .card-status__icon,
-.space-card:focus .card-status__icon {
-  stroke: var(--brand-primary-color-dark);
 }
 
 .space-card__facilities {

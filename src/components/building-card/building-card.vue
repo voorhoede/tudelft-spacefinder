@@ -6,7 +6,7 @@
         params: { buildingSlug: building.slug }
       })
     "
-    class="building-card"
+    class="building-card card"
   >
     <h3
       class="building-card__header"
@@ -44,19 +44,6 @@ export default {
 
 <style>
 @import '../app-core/variables.css';
-
-.building-card {
-  display: block;
-  padding: var(--spacing-half);
-  background: var(--background-color);
-  border: 1px solid var(--highlight-color);
-  text-decoration: none;
-}
-
-.building-card:hover,
-.building-card:focus {
-  border: 1px solid var(--brand-primary-color-dark);
-}
 
 .building-card__header {
   position: relative;
@@ -106,10 +93,5 @@ export default {
   content: '|';
   display: inline-block;
   margin: 0 var(--spacing-quarter);
-}
-
-.building-card:hover .card-status__icon,
-.building-card:focus .card-status__icon {
-  stroke: var(--brand-primary-color-dark);
 }
 </style>

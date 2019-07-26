@@ -38,11 +38,6 @@ export default {
   color: var(--brand-secondary-color);
 }
 
-.space-card:hover .card-status--open,
-.space-card:focus .card-status--open {
-  color: var(--brand-primary-color-dark);
-}
-
 .card-status__icon {
   width: 11px;
   height: 11px;
