@@ -44,7 +44,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  resetFilters(state) {
+  clearFilters(state) {
     state.filters = getDefaultFilters()
   },
   selectBuilding(state, building) {
@@ -132,6 +132,9 @@ export const getters = {
       filters: state.filters,
       spaces: getters.spaces
     })
+  },
+  filteredSpacesCount: (state, getters) => {
+    return getters.filteredSpaces.length
   },
   getBuildingByNumber: (state, getters) => {
     return (number) => {

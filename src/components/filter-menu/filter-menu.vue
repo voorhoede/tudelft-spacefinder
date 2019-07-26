@@ -228,16 +228,16 @@
 
           <button
             class="button button--secondary"
-            @click="resetFilters"
+            @click="clearFilters"
           >
-            {{ $t('resetFilters') }}
+            {{ $t('clearFilters') }}
           </button>
 
           <button
             class="button button--primary"
             @click="$emit('close')"
           >
-            {{ $t('showLocations') }}
+            {{ $tc('showLocations', filteredSpacesCount, { amount: filteredSpacesCount }) }}
           </button>
         </div>
       </div>
@@ -246,6 +246,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { mapFields } from 'vuex-map-fields'
 import ModalDrawer from '../modal-drawer'
 
@@ -296,11 +297,12 @@ export default {
       'filters.stationaryPC',
       'filters.whiteBoard'
     ]),
+    ...mapGetters(['filteredSpacesCount']),
     optionsPerFilter() { return optionsPerFilter }
   },
   methods: {
-    resetFilters() {
-      this.$store.commit('resetFilters')
+    clearFilters() {
+      this.$store.commit('clearFilters')
     }
   }
 }
@@ -415,13 +417,15 @@ export default {
   padding: var(--spacing-default);
 }
 
+.filter-menu__buttons > * {
+  flex: 1 1 auto;
+}
+
 .filter-menu__buttons .button--secondary {
-  flex: 1 1 0;
   margin: var(--spacing-default) var(--spacing-half) 0 0;
 }
 
 .filter-menu__buttons .button--primary {
-  flex: 1 1 0;
   margin: var(--spacing-default) 0 0 var(--spacing-half);
 }
 </style>
