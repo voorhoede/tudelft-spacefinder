@@ -32,7 +32,7 @@
   "open": "open",
   "openingHours": "opening hours",
   "presentationScreen": "tv",
-  "resetFilters": "reset filters",
+  "clearFilters": "clear filters",
   "seating": "Seating",
   "showLocations": "show {amount} locations",
   "showNearbyLocations": "only show nearby locations",

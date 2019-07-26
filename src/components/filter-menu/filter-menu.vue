@@ -228,9 +228,9 @@
 
           <button
             class="button button--secondary"
-            @click="resetFilters"
+            @click="clearFilters"
           >
-            {{ $t('resetFilters') }}
+            {{ $t('clearFilters') }}
           </button>
 
           <button
@@ -301,8 +301,8 @@ export default {
     optionsPerFilter() { return optionsPerFilter }
   },
   methods: {
-    resetFilters() {
-      this.$store.commit('resetFilters')
+    clearFilters() {
+      this.$store.commit('clearFilters')
     }
   }
 }

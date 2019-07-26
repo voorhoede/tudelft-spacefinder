@@ -44,7 +44,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  resetFilters(state) {
+  clearFilters(state) {
     state.filters = getDefaultFilters()
   },
   selectBuilding(state, building) {

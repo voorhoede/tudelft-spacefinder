@@ -32,7 +32,7 @@
   "open": "open",
   "openingHours": "openingstijden",
   "presentationScreen": "tv",
-  "resetFilters": "reset filters",
+  "clearFilters": "wis filters",
   "seating": "Zitplaatsen",
   "showLocations": "toon {amount} locaties",
   "showNearbyLocations": "toon alleen dichtstbijzijnde locaties",
