@@ -132,7 +132,6 @@ li.app-menu__item {
 }
 
 .app-menu__link-name {
-
   display: inline-block;
 }
 
