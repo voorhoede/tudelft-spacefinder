@@ -7,11 +7,7 @@ export default {
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'theme-color', content: '#00a6d6' },
-    {
-      hid: 'description',
-      name: 'description',
-      content: process.env.npm_package_description || ''
-    }
+    { name: 'robots', content: 'noindex' } // https://support.google.com/webmasters/answer/93710?hl=en
   ],
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
