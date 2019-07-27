@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="showListView || !isMobile"
+    v-if="isListMode || !isMobile"
     class="default-layout__info"
   >
     <h1>{{ $t('buildings') }}</h1>
@@ -27,7 +27,7 @@ import { mapGetters, mapState } from 'vuex'
 export default {
   computed: {
     ...mapGetters(['buildings']),
-    ...mapState(['showListView', 'isMobile']),
+    ...mapState(['isListMode', 'isMobile']),
   },
   mounted() {
     this.$store.dispatch('zoomToCampus')

@@ -9,6 +9,7 @@ export default ({ store }) => {
     key: 'app-state',
     paths: [
       'filters',
+      'isListMode',
       'selection'
     ]
   })(store)

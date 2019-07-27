@@ -33,13 +33,13 @@ const getDefaultFilters = () => ({
 export const state = () => ({
   buildingsI18n: [],
   filters: getDefaultFilters(),
+  isListMode: true,
   isMobile: false,
   mapLoaded: false,
   selection: {
     building: undefined,
     space: undefined
   },
-  showListView: true,
   spacesI18n: []
 })
 
@@ -64,7 +64,7 @@ export const mutations = {
     state.spacesI18n = spaces
   },
   toggleListView(state) {
-    state.showListView = !state.showListView
+    state.isListMode = !state.isListMode
   },
   setMobileState(state, value) {
     state.isMobile = value

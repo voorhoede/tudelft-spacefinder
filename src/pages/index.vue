@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="showListView || !isMobile"
+    v-if="isListMode || !isMobile"
     class="default-layout__info"
   >
     <h1 class="a11y-sr-only">{{ $t('allSpaces') }}</h1>
@@ -16,7 +16,7 @@ export default {
   components: { SpaceList },
   computed: {
     ...mapGetters(['filteredSpaces']),
-    ...mapState(['isMobile', 'showListView']),
+    ...mapState(['isMobile', 'isListMode']),
   },
   mounted() {
     this.$store.dispatch('zoomToCampus')

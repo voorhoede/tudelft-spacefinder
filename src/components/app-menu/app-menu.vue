@@ -38,7 +38,7 @@
             @click.native="toggleListView"
             class="app-menu__link"
           >
-            <span v-if="showListView">
+            <span v-if="isListMode">
               <map-icon class="app-menu__icon" />
 
               <span class="app-menu__link-name">
@@ -103,7 +103,7 @@ export default {
   props: {
     isOpen: Boolean,
   },
-  computed: mapState(['appLanguage', 'showListView']),
+  computed: mapState(['appLanguage', 'isListMode']),
   methods: {
     toggleListView() {
       this.$store.commit('toggleListView')
