@@ -16,6 +16,7 @@ export default {
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     // all other app icons are generated and added by the @nuxt/pwa module
-    { rel: 'dns-prefetch', href: 'https://api.mapbox.com/' }
+    { rel: 'dns-prefetch', href: 'https://api.mapbox.com/' },
+    { rel: 'dns-prefetch', href: 'https://www.datocms-assets.com/' }
   ]
 }
