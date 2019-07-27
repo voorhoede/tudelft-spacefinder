@@ -4,6 +4,6 @@ import nuxtPwa from './modules/nuxt-pwa'
 /**
  * @see https://nuxtjs.org/api/configuration-modules
  */
-export default [nuxtI18n, nuxtPwa].filter(
+export default [nuxtI18n, nuxtPwa, '@nuxtjs/svg-sprite'].filter(
   Boolean
 )
