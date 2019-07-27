@@ -83,6 +83,21 @@
             </span>
           </nuxt-link>
         </li>
+        <li 
+          v-if="isInstallable"
+           class="app-menu__item"
+        >
+          <button 
+            type="button"
+            class="app-menu__link"
+            @click="installApp"
+          >
+            <span class="app-menu__icon">⊕</span>
+            <span class="app-menu__link-name">
+              {{ $t('addToHomescreen') }}
+            </span>
+          </button>
+        </li>
       </ul>
     </nav>
   </modal-drawer>
@@ -103,8 +118,12 @@ export default {
   props: {
     isOpen: Boolean,
   },
-  computed: mapState(['appLanguage', 'showListView']),
+  computed: mapState(['appLanguage', 'isInstallable', 'showListView']),
   methods: {
+    installApp() {
+      this.$store.dispatch('installApp')
+        .then(() => this.$emit('close'))
+    },
     toggleListView() {
       this.$store.commit('toggleListView')
       this.$emit('close')
