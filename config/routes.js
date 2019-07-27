@@ -23,6 +23,4 @@ const routes = [
   ...buildingRoutes,
 ]
 
-console.log(routes)
-
 export default routes
