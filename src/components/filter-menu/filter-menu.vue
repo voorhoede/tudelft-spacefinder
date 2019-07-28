@@ -386,7 +386,7 @@ export default {
   top: 5px;
   width: 12px;
   height: 12px;
-  background: url('/icons/checkmark-icon.svg') center no-repeat;
+  background: url('~assets/icons/checkmark-icon.svg') center no-repeat;
 }
 
 .filter-menu__buttons {
