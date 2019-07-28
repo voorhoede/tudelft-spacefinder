@@ -8,7 +8,7 @@
       class="app-header__logo"
     >
       <img
-        src="/tu-delft-logo.svg"
+        src="~/assets/tu-delft-logo.svg"
         alt="Home"
       >
     </nuxt-link>
