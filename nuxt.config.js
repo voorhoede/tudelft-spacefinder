@@ -4,6 +4,7 @@ import env from './config/nuxt/env'
 import head from './config/nuxt/head'
 import generate from './config/nuxt/generate'
 import modules from './config/nuxt/modules'
+import render from './config/nuxt/render'
 
 export default {
   build,
@@ -19,5 +20,6 @@ export default {
     { src: '~/plugins/persist-state', ssr: false },
     { src: '~/plugins/virtual-scroller' }
   ],
+  render,
   srcDir: 'src/'
 }
