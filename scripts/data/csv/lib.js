@@ -16,7 +16,6 @@ const {
 const hasValidationErrors = pipe(prop('errors'), isNil, not)
 
 const logErrors = tap(({ value, errors }) => {
-  // console.log(value, errors)
   const { slug, buildingId } = value
   const name = slug || buildingId || 'unknown'
   const errorText = [`${name} did not pass json schema validation:`]

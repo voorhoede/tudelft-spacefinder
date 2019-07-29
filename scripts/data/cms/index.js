@@ -4,7 +4,7 @@ const { DATO_API_TOKEN } = process.env
 
 require('dotenv').config()
 
-const mockDataEnabled = process.env.USE_MOCK_DATA === '1'
+const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === '1'
 
 const getBuildings = () => got('https://graphql.datocms.com/', {
   method: 'POST',
