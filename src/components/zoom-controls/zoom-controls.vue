@@ -1,19 +1,20 @@
 <template>
-  <ul class="zoom-controls">
+  <ul class="flat-list">
     <li
       v-for="action in actions"
       :key="action.event"
       class="zoom-controls__item"
     >
       <button
-        :aria-label="$t(action.text)"
-        class="zoom-controls__button"
+        class="button button--round"
         @click="$emit(action.event)"
       >
         <svg-icon
           :name="`${action.icon}-icon`"
-          class="zoom-controls__icon"
+          class="button--round__icon"
         />
+
+        <span class="a11y-sr-only">{{ $t(action.text) }}</span>
       </button>
     </li>
   </ul>
@@ -34,19 +35,7 @@ export default {
 </script>
 
 <style>
-  .zoom-controls {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .zoom-controls__item {
-    margin-top: 5px;
-  }
-  .zoom-controls__button {
-    background: white;
-  }
-  .zoom-controls__icon {
-    height: 24px;
-    width: 24px;
-  }
+.zoom-controls__item {
+  margin-top: var(--spacing-half);
+}
 </style>
