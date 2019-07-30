@@ -12,7 +12,7 @@
             @click.native="$emit('close')"
             class="app-menu__link"
           >
-            <home-icon class="app-menu__icon" />
+            <svg-icon name="home-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               {{ $t('home') }}
@@ -25,7 +25,7 @@
             @click.native="$emit('close')"
             class="app-menu__link"
           >
-            <building-icon class="app-menu__icon" />
+            <svg-icon name="building-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               {{ $t('buildings') }}
@@ -39,14 +39,14 @@
             class="app-menu__link"
           >
             <span v-if="showListView">
-              <map-icon class="app-menu__icon" />
+              <svg-icon name="map-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
                 {{ $t('mapToggle') }}
               </span>
             </span>
             <span v-else>
-              <list-icon class="app-menu__icon" />
+              <svg-icon name="list-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
                 {{ $t('listToggle') }}
@@ -62,7 +62,7 @@
             hreflang="en"
             class="app-menu__link"
           >
-            <world-icon class="app-menu__icon" />
+            <svg-icon name="world-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               english
@@ -76,7 +76,7 @@
             hreflang="nl"
             class="app-menu__link"
           >
-            <world-icon class="app-menu__icon" />
+            <svg-icon name="world-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               nederlands
@@ -92,14 +92,8 @@
 import { mapState } from 'vuex'
 import ModalDrawer from '../modal-drawer'
 
-import BuildingIcon from '../../static/icons/building-icon.svg'
-import HomeIcon from '../../static/icons/home-icon.svg'
-import ListIcon from '../../static/icons/list-icon.svg'
-import MapIcon from '../../static/icons/map-icon.svg'
-import WorldIcon from '../../static/icons/world-icon.svg'
-
 export default {
-  components: { BuildingIcon, HomeIcon, ListIcon, MapIcon, ModalDrawer, WorldIcon },
+  components: { ModalDrawer },
   props: {
     isOpen: Boolean,
   },

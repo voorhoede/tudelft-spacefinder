@@ -30,10 +30,12 @@
 
       <ul class="flat-list space-card__seating">
         <li>
-          <seat-icon class="space-card__seating-icon" /> {{ seats }}
+          <svg-icon name="seat-icon" class="space-card__seating-icon" />
+          {{ seats }}
         </li>
         <li>
-          <table-icon class="space-card__seating-icon" /> {{ tables }}
+          <svg-icon name="table-icon" class="space-card__seating-icon" />
+          {{ tables }}
         </li>
       </ul>
     </div>
@@ -43,13 +45,15 @@
         v-if="locationisOpen"
         class="space-card__status space-card__status--open"
       >
-        {{ $t('open') }} <open-icon class="space-card__status-icon" />
+        {{ $t('open') }}
+        <svg-icon name="location-open-icon" class="space-card__status-icon" />
       </p>
       <p
         v-else
         class="space-card__status"
       >
-        {{ $t('closed') }} <closed-icon class="space-card__status-icon" />
+        {{ $t('closed') }}
+        <svg-icon name="location-closed-icon" class="space-card__status-icon" />
       </p>
 
       <h4 class="a11y-sr-only">
@@ -65,15 +69,10 @@
 </template>
 
 <script>
-import ClosedIcon from '../../static/icons/location-closed-icon.svg'
-import SeatIcon from '../../static/icons/seat-icon.svg'
-import TableIcon from '../../static/icons/table-icon.svg'
-import OpenIcon from '../../static/icons/location-open-icon.svg'
-
 import { SpaceFacilities } from '../../components'
 
 export default {
-  components: { ClosedIcon, SeatIcon, SpaceFacilities, TableIcon, OpenIcon },
+  components: { SpaceFacilities },
   props: {
     buildingSlug: String,
     locationisOpen: Boolean,
