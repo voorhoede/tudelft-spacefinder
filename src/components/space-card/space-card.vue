@@ -112,6 +112,8 @@ export default {
 .space-card__seating {
   flex: 0 0 auto;
   margin-left: var(--spacing-default);
+  font-size: var(--font-size-smaller);
+  font-weight: bold;
 }
 
 .space-card__seating li {
