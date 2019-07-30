@@ -83,16 +83,17 @@
             </span>
           </nuxt-link>
         </li>
-        <li 
+        <li
           v-if="isInstallable"
-           class="app-menu__item"
+          class="app-menu__item"
         >
           <button 
             type="button"
-            class="app-menu__link"
+            class="app-menu__link app-menu__button button"
             @click="installApp"
           >
-            <span class="app-menu__icon">⊕</span>
+            <plus-icon class="app-menu__icon" />
+
             <span class="app-menu__link-name">
               {{ $t('addToHomescreen') }}
             </span>
@@ -111,10 +112,11 @@ import BuildingIcon from '../../static/icons/building-icon.svg'
 import HomeIcon from '../../static/icons/home-icon.svg'
 import ListIcon from '../../static/icons/list-icon.svg'
 import MapIcon from '../../static/icons/map-icon.svg'
+import PlusIcon from '../../static/icons/plus-icon.svg'
 import WorldIcon from '../../static/icons/world-icon.svg'
 
 export default {
-  components: { BuildingIcon, HomeIcon, ListIcon, MapIcon, ModalDrawer, WorldIcon },
+  components: { BuildingIcon, HomeIcon, ListIcon, MapIcon, ModalDrawer, PlusIcon, WorldIcon },
   props: {
     isOpen: Boolean,
   },
@@ -152,6 +154,18 @@ li.app-menu__item {
 .app-menu__link:hover .app-menu__link-name,
 .app-menu__link:focus .app-menu__link-name {
   text-decoration: underline;
+}
+
+.app-menu__button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+}
+
+.app-menu__button:hover,
+.app-menu__button:focus {
+  border: none;
 }
 
 .app-menu__icon {
