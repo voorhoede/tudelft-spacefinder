@@ -1,7 +1,7 @@
 <template>
   <div
     class="default-layout"
-    ref="layoutWrapper"
+    ref="defaultLayout"
   >
     <app-header
       @openAppMenu="openAppMenu"
@@ -52,7 +52,7 @@ export default {
     },
     onResize() {
       let windowHeight = window.innerHeight * 0.01
-      this.$refs.layoutWrapper.style.setProperty('--window-height', `${windowHeight}px`)
+      this.$refs.defaultLayout.style.setProperty('--window-height', `${windowHeight}px`)
 
       if(window.matchMedia('(min-width: 700px)').matches) {
         this.$store.commit('setMobileState', false)
