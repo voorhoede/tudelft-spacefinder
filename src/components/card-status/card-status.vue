@@ -4,23 +4,19 @@
       v-if="isOpen"
       class="card-status card-status--open"
     >
-      {{ $t('open') }} <open-icon class="card-status__icon" />
+      {{ $t('open') }} <svg-icon name="location-open-icon" class="card-status__icon" />
     </p>
     <p
       v-else
       class="card-status"
     >
-      {{ $t('closed') }} <closed-icon class="card-status__icon" />
+      {{ $t('closed') }} <svg-icon name="location-closed-icon" class="card-status__icon" />
     </p>
   </div>
 </template>
 
 <script>
-import ClosedIcon from '../../static/icons/location-closed-icon.svg'
-import OpenIcon from '../../static/icons/location-open-icon.svg'
-
 export default {
-  components: { ClosedIcon, OpenIcon },
   props: {
     isOpen: Boolean
   }

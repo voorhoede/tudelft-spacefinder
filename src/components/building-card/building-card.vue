@@ -31,11 +31,8 @@
 <script>
 import { CardStatus } from '../../components'
 
-import ClosedIcon from '../../static/icons/location-closed-icon.svg'
-import OpenIcon from '../../static/icons/location-open-icon.svg'
-
 export default {
-  components: { CardStatus, ClosedIcon, OpenIcon },
+  components: { CardStatus },
   props: {
     building: Object
   }

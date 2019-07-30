@@ -30,10 +30,12 @@
 
       <ul class="flat-list space-card__seating">
         <li>
-          <seat-icon class="space-card__seating-icon" /> {{ seats }}
+          <svg-icon name="seat-icon" class="space-card__seating-icon" />
+          {{ seats }}
         </li>
         <li>
-          <table-icon class="space-card__seating-icon" /> {{ tables }}
+          <svg-icon name="table-icon" class="space-card__seating-icon" />
+          {{ tables }}
         </li>
       </ul>
     </div>
@@ -57,13 +59,10 @@
 </template>
 
 <script>
-import SeatIcon from '../../static/icons/seat-icon.svg'
-import TableIcon from '../../static/icons/table-icon.svg'
-
 import { CardStatus, SpaceFacilities } from '../../components'
 
 export default {
-  components: { CardStatus, SeatIcon, SpaceFacilities, TableIcon },
+  components: { CardStatus, SpaceFacilities },
   props: {
     buildingSlug: String,
     locationisOpen: Boolean,
