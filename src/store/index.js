@@ -33,6 +33,8 @@ const getDefaultFilters = () => ({
 export const state = () => ({
   buildingsI18n: [],
   filters: getDefaultFilters(),
+  installPromptEvent: undefined,
+  isInstallable: false,
   isMobile: false,
   mapLoaded: false,
   selection: {
@@ -56,6 +58,10 @@ export const mutations = {
   setBuildings(state, { buildings }) {
     state.buildingsI18n = buildings
   },
+  setInstallPromptEvent(state, event) {
+    state.installPromptEvent = event
+    state.isInstallable = true
+  },
   setMapLoaded(state, { map }) {
     mapLoaded.resolve(map)
     state.mapLoaded = true
@@ -69,12 +75,32 @@ export const mutations = {
   setMobileState(state, value) {
     state.isMobile = value
   },
+  unsetInstallEvent(state) {
+    state.installPromptEvent = undefined
+    state.isInstallable = false
+  },
   updateField
 }
 
 export const actions = {
   getMap() {
     return mapLoaded.promise
+  },
+
+  installApp: ({ commit, state }) => {
+    const { installPromptEvent, isInstallable } = state
+    if (!isInstallable) {
+      return Promise.reject(new Error('Install unavailable'))
+    }
+    installPromptEvent.prompt()
+    return installPromptEvent.userChoice
+      .then((result) => {
+        if (result.outcome === 'accepted') {
+          commit('unsetInstallEvent')
+          return result
+        }
+        return Promise.reject(new Error('User dismissed install'))
+      })
   },
 
   mountMap({ commit }, { container }) {

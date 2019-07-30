@@ -71,6 +71,22 @@
             </span>
           </nuxt-link>
         </li>
+        <li
+          v-if="isInstallable"
+          class="app-menu__item"
+        >
+          <button 
+            type="button"
+            class="app-menu__link app-menu__button button"
+            @click="installApp"
+          >
+            <svg-icon name="plus-icon" class="app-menu__icon" />
+
+            <span class="app-menu__link-name">
+              {{ $t('addToHomescreen') }}
+            </span>
+          </button>
+        </li>
       </ul>
     </nav>
   </modal-drawer>
@@ -93,8 +109,12 @@ export default {
       }
     }
   },
-  computed: mapState(['appLanguage', 'showListView']),
+  computed: mapState(['appLanguage', 'isInstallable', 'showListView']),
   methods: {
+    installApp() {
+      this.$store.dispatch('installApp')
+        .then(() => this.$emit('close'))
+    },
     toggleListView() {
       this.$store.commit('toggleListView')
       this.$emit('close')
@@ -131,6 +151,18 @@ li.app-menu__item {
 
 .app-menu__link-name::first-letter {
   text-transform: uppercase;
+}
+
+.app-menu__button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+}
+
+.app-menu__button:hover,
+.app-menu__button:focus {
+  border: none;
 }
 
 .app-menu__icon {
