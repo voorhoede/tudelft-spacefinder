@@ -9,7 +9,11 @@
       "properties": {
         "slug": { "type": "string" },
         "name": { "type": "string" },
-        "exchangeId": {
+        "exchangeBuildingId": {
+          "type": "string",
+          "description": "Used to map a building to a calendar in exchange"
+        },
+        "exchangeRoomId": {
           "type": "string",
           "description": "Used to map a room to a calendar in exchange"
         },
@@ -41,13 +45,15 @@
       },
       "additionalProperties": false,
       "required": [
+        "facilities",
+        "floor",
+        "latitude",
+        "longitude",
         "name",
         "roomId",
-        "floor",
         "seats",
-        "tables",
-        "facilities",
-        "slug"
+        "slug",
+        "tables"
       ]
     },
     "dictionary": {

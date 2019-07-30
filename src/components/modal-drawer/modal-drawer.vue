@@ -14,11 +14,10 @@
             class="button button--header"
             ref="closeButton"
           >
-            <img
-              src="/icons/close-icon.svg"
-              alt=""
+            <svg-icon
+              name="close-icon"
               class="button--header__icon"
-            >
+            />
 
             {{ $t('close') }}
           </button>
