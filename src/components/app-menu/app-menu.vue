@@ -56,30 +56,18 @@
         </li>
         <li class="app-menu__item">
           <nuxt-link
-            v-if="$i18n.locale === 'nl'"
-            to="/en"
+            v-for="(locale, index) in $i18n.locales"
+            :key="index"
+            v-if="locale.code !== $i18n.locale"
+            :to="`/${locale.code}`"
             @click.native="$emit('close')"
-            hreflang="en"
+            :hreflang="locale.code"
             class="app-menu__link"
           >
             <svg-icon name="world-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
-              english
-            </span>
-          </nuxt-link>
-
-          <nuxt-link
-            v-if="$i18n.locale === 'en'"
-            to="/nl"
-            @click.native="$emit('close')"
-            hreflang="nl"
-            class="app-menu__link"
-          >
-            <svg-icon name="world-icon" class="app-menu__icon" />
-
-            <span class="app-menu__link-name">
-              nederlands
+              {{ languages[locale.code] }}
             </span>
           </nuxt-link>
         </li>
@@ -96,6 +84,14 @@ export default {
   components: { ModalDrawer },
   props: {
     isOpen: Boolean,
+  },
+  data() {
+    return {
+      languages: {
+        en: 'english',
+        nl: 'nederlands'
+      }
+    }
   },
   computed: mapState(['appLanguage', 'showListView']),
   methods: {
@@ -127,6 +123,14 @@ li.app-menu__item {
 .app-menu__link:hover .app-menu__link-name,
 .app-menu__link:focus .app-menu__link-name {
   text-decoration: underline;
+}
+
+.app-menu__link-name {
+  display: inline-block;
+}
+
+.app-menu__link-name::first-letter {
+  text-transform: uppercase;
 }
 
 .app-menu__icon {
