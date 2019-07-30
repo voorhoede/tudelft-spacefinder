@@ -1,0 +1,22 @@
+.card {
+  display: block;
+  padding: var(--spacing-half);
+  background: var(--background-color);
+  border: 1px solid var(--highlight-color);
+  text-decoration: none;
+}
+
+.card:hover,
+.card:focus {
+  border: 1px solid var(--brand-primary-color-dark);
+}
+
+.card:hover .card-status--open,
+.card:focus .card-status--open {
+  color: var(--brand-primary-color-dark);
+}
+
+.card:hover .card-status__icon,
+.card:focus .card-status__icon {
+  stroke: var(--brand-primary-color-dark);
+}

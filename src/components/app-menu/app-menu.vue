@@ -12,7 +12,7 @@
             @click.native="$emit('close')"
             class="app-menu__link"
           >
-            <home-icon class="app-menu__icon" />
+            <svg-icon name="home-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               {{ $t('home') }}
@@ -25,7 +25,7 @@
             @click.native="$emit('close')"
             class="app-menu__link"
           >
-            <building-icon class="app-menu__icon" />
+            <svg-icon name="building-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               {{ $t('buildings') }}
@@ -39,14 +39,14 @@
             class="app-menu__link"
           >
             <span v-if="showListView">
-              <map-icon class="app-menu__icon" />
+              <svg-icon name="map-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
                 {{ $t('mapToggle') }}
               </span>
             </span>
             <span v-else>
-              <list-icon class="app-menu__icon" />
+              <svg-icon name="list-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
                 {{ $t('listToggle') }}
@@ -56,30 +56,18 @@
         </li>
         <li class="app-menu__item">
           <nuxt-link
-            v-if="$i18n.locale === 'nl'"
-            to="/en"
+            v-for="(locale, index) in $i18n.locales"
+            :key="index"
+            v-if="locale.code !== $i18n.locale"
+            :to="`/${locale.code}`"
             @click.native="$emit('close')"
-            hreflang="en"
+            :hreflang="locale.code"
             class="app-menu__link"
           >
-            <world-icon class="app-menu__icon" />
+            <svg-icon name="world-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
-              english
-            </span>
-          </nuxt-link>
-
-          <nuxt-link
-            v-if="$i18n.locale === 'en'"
-            to="/nl"
-            @click.native="$emit('close')"
-            hreflang="nl"
-            class="app-menu__link"
-          >
-            <world-icon class="app-menu__icon" />
-
-            <span class="app-menu__link-name">
-              nederlands
+              {{ languages[locale.code] }}
             </span>
           </nuxt-link>
         </li>
@@ -107,16 +95,18 @@
 import { mapState } from 'vuex'
 import ModalDrawer from '../modal-drawer'
 
-import BuildingIcon from '../../static/icons/building-icon.svg'
-import HomeIcon from '../../static/icons/home-icon.svg'
-import ListIcon from '../../static/icons/list-icon.svg'
-import MapIcon from '../../static/icons/map-icon.svg'
-import WorldIcon from '../../static/icons/world-icon.svg'
-
 export default {
-  components: { BuildingIcon, HomeIcon, ListIcon, MapIcon, ModalDrawer, WorldIcon },
+  components: { ModalDrawer },
   props: {
     isOpen: Boolean,
+  },
+  data() {
+    return {
+      languages: {
+        en: 'english',
+        nl: 'nederlands'
+      }
+    }
   },
   computed: mapState(['appLanguage', 'isInstallable', 'showListView']),
   methods: {
@@ -152,6 +142,14 @@ li.app-menu__item {
 .app-menu__link:hover .app-menu__link-name,
 .app-menu__link:focus .app-menu__link-name {
   text-decoration: underline;
+}
+
+.app-menu__link-name {
+  display: inline-block;
+}
+
+.app-menu__link-name::first-letter {
+  text-transform: uppercase;
 }
 
 .app-menu__icon {

@@ -32,11 +32,13 @@
     display: block;
     margin: 0 auto 3px auto;
     height: 21px;
+    width: 21px;
 }
 
 @media (min-width: 700px) {
     .button--header__icon {
         height: 25px;
+        width: 25px;
     }
 }
 

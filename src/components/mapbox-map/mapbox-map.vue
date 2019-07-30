@@ -25,7 +25,7 @@ export default {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: var(--highlight-color);
+  background-color: var(--mapbox-background-color);
 }
 
 .mapbox-map__placeholder {

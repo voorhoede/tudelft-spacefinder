@@ -57,7 +57,8 @@ const facilities = [
 ]
 
 const spaceRootProperties = [
-  'exchangeId',
+  'exchangeBuildingId',
+  'exchangeRoomId',
   'floor',
   'seats',
   'tables',

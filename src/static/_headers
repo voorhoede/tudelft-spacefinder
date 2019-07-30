@@ -8,3 +8,10 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   X-XSS-Protection: 1; mode=block
+
+# All Nuxt files are hashed and can be cached forever
+# docs: https://nuxtjs.org/api/configuration-build/#filenames
+#       https://www.netlify.com/docs/headers-and-basic-auth/#multi-key-header-rules
+/_nuxt/*
+  Cache-Control: max-age=365000000
+  Cache-Control: immutable
