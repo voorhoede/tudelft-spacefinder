@@ -8,7 +8,7 @@
       class="app-header__logo"
     >
       <img
-        src="/tu-delft-logo.svg"
+        src="~/assets/tu-delft-logo.svg"
         alt="Home"
       >
     </nuxt-link>
@@ -23,12 +23,10 @@
       class="app-header__button button button--header"
       ref="filterButton"
     >
-      <img
-        src="/icons/filter-icon.svg"
-        alt=""
+      <svg-icon
+        name="filter-icon"
         class="button--header__icon"
-      >
-
+      />
       {{ $t('filter') }}
     </button>
 
@@ -38,12 +36,10 @@
       class="app-header__button button button--header"
       ref="menuButton"
     >
-      <img
-        src="/icons/menu-icon.svg"
-        alt=""
+      <svg-icon
+        name="menu-icon"
         class="button--header__icon"
-      >
-
+      />
       {{ $t('menu') }}
     </button>
   </header>

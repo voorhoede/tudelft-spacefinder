@@ -1,7 +1,7 @@
 import { getField, updateField } from 'vuex-map-fields'
 import Deferred from '~/lib/deferred'
 import filterSpaces from '~/lib/filter-spaces'
-import mapboxgl from '~/lib/mapboxgl'
+import loadMapboxgl from '~/lib/mapboxgl/load-async'
 
 const mapLoaded = new Deferred()
 const campusBounds = {
@@ -78,16 +78,18 @@ export const actions = {
   },
 
   mountMap({ commit }, { container }) {
-    const map = new mapboxgl.Map({
-      container,
-      center: [
-        (campusBounds.west + campusBounds.east) / 2,
-        (campusBounds.north + campusBounds.south) / 2
-      ],
-      zoom: 13,
-      style: 'mapbox://styles/mapbox/streets-v10'
+    loadMapboxgl().then((mapboxgl) => {
+      const map = new mapboxgl.Map({
+        container,
+        center: [
+          (campusBounds.west + campusBounds.east) / 2,
+          (campusBounds.north + campusBounds.south) / 2
+        ],
+        zoom: 13,
+        style: 'mapbox://styles/mapbox/streets-v10'
+      })
+      map.on('load', () => commit('setMapLoaded', { map }))
     })
-    map.on('load', () => commit('setMapLoaded', { map }))
   },
 
   async zoomToBounds({ dispatch }, { bounds, padding }) {
