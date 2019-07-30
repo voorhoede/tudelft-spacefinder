@@ -10,7 +10,7 @@
   >
     <h3
       class="building-card__header"
-      :style="`background-image: url('${building.image.url}?&fm=jpg&w=700&auto=quality');`"
+      :style="`background-image: url('${building.image.url}?&fm=jpg&w=700&h=260&fit=crop&auto=quality&auto=format&auto=compress');`"
     >
       <span class="building-card__name">
         {{ building.name }}
