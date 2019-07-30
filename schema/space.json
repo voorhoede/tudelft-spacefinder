@@ -84,8 +84,7 @@
         "presentationScreen": { "type": "boolean" },
         "nearCoffeeMachine": { "type": "boolean" },
         "nearPrinter": { "type": "boolean" },
-        "nearBathroom": { "type": "boolean" },
-        "claimedByGroup": { "type": "boolean" }
+        "nearBathroom": { "type": "boolean" }
       },
       "additionalProperties": false,
       "required":[
@@ -102,8 +101,7 @@
         "presentationScreen",
         "nearCoffeeMachine",
         "nearPrinter",
-        "nearBathroom",
-        "claimedByGroup"
+        "nearBathroom"
       ]
     }
   }

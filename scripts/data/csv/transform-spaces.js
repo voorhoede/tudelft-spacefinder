@@ -51,8 +51,7 @@ const facilities = [
   'presentationScreen',
   'nearCoffeeMachine',
   'nearPrinter',
-  'nearBathroom',
-  'claimedByGroup'
+  'nearBathroom'
 ]
 
 const spaceRootProperties = [
