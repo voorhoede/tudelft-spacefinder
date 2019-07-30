@@ -1,30 +1,23 @@
 <template>
   <section
     v-if="showListView || !isMobile"
-    class="default-layout__info"
+    class="default-layout__info building-overview"
   >
-    <h1>{{ $t('buildings') }}</h1>
-    <ul>
-      <li v-for="building in buildings" :key="building.slug">
-        <nuxt-link
-          :to="
-            localePath({
-              name: 'buildings-buildingSlug',
-              params: { buildingSlug: building.slug }
-            })
-          "
-        >
-          {{ building.name }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <h2 class="a11y-sr-only">{{ $t('buildings') }}</h2>
+
+    <building-card
+      v-for="building in buildings" :key="building.slug"
+      :building="building"
+    />
   </section>
 </template>
 
 <script>
 import { mapGetters, mapState } from 'vuex'
+import { BuildingCard } from '~/components'
 
 export default {
+  components: { BuildingCard },
   computed: {
     ...mapGetters(['buildings']),
     ...mapState(['showListView', 'isMobile']),
@@ -34,3 +27,13 @@ export default {
   }
 }
 </script>
+
+<style>
+.building-overview {
+  padding: var(--spacing-default);
+}
+
+.building-overview .building-card:not(:last-child) {
+  margin-bottom: var(--spacing-default);
+}
+</style>

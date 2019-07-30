@@ -3,7 +3,7 @@
     v-if="showListView || !isMobile"
     class="default-layout__info"
   >
-    <h1 class="a11y-sr-only">{{ $t('allSpaces') }}</h1>
+    <h2 class="a11y-sr-only">{{ $t('allSpaces') }}</h2>
     <space-list :spaces="filteredSpaces" />
   </section>
 </template>
