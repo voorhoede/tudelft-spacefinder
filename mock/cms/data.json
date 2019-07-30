@@ -1,23 +1,182 @@
-[{
-  "image": {
-    "url": "https://www.datocms-assets.com/13828/1563280820-20-aula.jpg"
+[
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564053774-csm3f6a9973editbe4ad8688f.jpg"
+      },
+      "number": 21,
+      "bounds": {
+          "north": 52.0032960149,
+          "west": 4.3743417128,
+          "south": 52.0019937095,
+          "east": 4.3767564343
+      }
   },
-  "number": 20,
-  "bounds": {
-    "north": 52.002499,
-    "west": 4.372443,
-    "south": 52.001959,
-    "east": 4.374473
-  }
-}, {
-  "image": {
-    "url": "https://www.datocms-assets.com/13828/1563280150-8-bouwkunde.jpg"
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054169-31tbmv1.jpg"
+      },
+      "number": 31,
+      "bounds": {
+          "north": 52.0027677951,
+          "west": 4.368231253,
+          "south": 52.0018510302,
+          "east": 4.3701979722
+      }
   },
-  "number": 8,
-  "bounds": {
-    "north": 52.006471,
-    "west": 4.366779,
-    "south": 51.98805,
-    "east": 4.388487
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054981-images.jpeg"
+      },
+      "number": 58,
+      "bounds": {
+          "north": 51.9907160879,
+          "west": 4.3778838955,
+          "south": 51.9892143609,
+          "east": 4.3810456803
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054767-download-3.jpeg"
+      },
+      "number": 62,
+      "bounds": {
+          "north": 51.9911040073,
+          "west": 4.3747155518,
+          "south": 51.9896022933,
+          "east": 4.3763776518
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054826-download-4.jpeg"
+      },
+      "number": 66,
+      "bounds": {
+          "north": 51.9912805734,
+          "west": 4.3769821756,
+          "south": 51.9901848551,
+          "east": 4.3781425872
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564053893-download.jpeg"
+      },
+      "number": 22,
+      "bounds": {
+          "north": 52.0020131509,
+          "west": 4.3732656456,
+          "south": 52.0000597268,
+          "east": 4.3759472829
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564055202-ewi-gebouw-28.png"
+      },
+      "number": 28,
+      "bounds": {
+          "north": 51.9992634816,
+          "west": 4.3776876083,
+          "south": 51.9986114848,
+          "east": 4.3786409542
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054084-download-1.jpeg"
+      },
+      "number": 23,
+      "bounds": {
+          "north": 51.998921844,
+          "west": 4.3751319241,
+          "south": 51.9981202728,
+          "east": 4.3762708755
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054713-download-2.jpeg"
+      },
+      "number": 36,
+      "bounds": {
+          "north": 51.9993421566,
+          "west": 4.3725581704,
+          "south": 51.9971235228,
+          "east": 4.3751305293
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054388-drebbelweg-building35-v3.jpg"
+      },
+      "number": 35,
+      "bounds": {
+          "north": 51.9996799965,
+          "west": 4.3704535845,
+          "south": 51.9986432111,
+          "east": 4.3728409915
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054286-dsc3899.jpeg"
+      },
+      "number": 32,
+      "bounds": {
+          "north": 52.00221152,
+          "west": 4.3684165411,
+          "south": 52.0007962915,
+          "east": 4.3707152571
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564055299-download-5.jpeg"
+      },
+      "number": 33,
+      "bounds": {
+          "north": 52.0019564203,
+          "west": 4.3700460145,
+          "south": 52.0009895581,
+          "east": 4.3723835911
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1564054491-343mev1.jpg"
+      },
+      "number": 34,
+      "bounds": {
+          "north": 52.0001263896,
+          "west": 4.3694809293,
+          "south": 52.0010331143,
+          "east": 4.372628774
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1563280150-8-bouwkunde.jpg"
+      },
+      "number": 8,
+      "bounds": {
+          "north": 52.006799,
+          "west": 4.369299,
+          "south": 52.004619,
+          "east": 4.372258
+      }
+  },
+  {
+      "image": {
+          "url": "https://www.datocms-assets.com/13828/1563280820-20-aula.jpg"
+      },
+      "number": 20,
+      "bounds": {
+          "north": 52.002499,
+          "west": 4.372443,
+          "south": 52.001959,
+          "east": 4.374473
+      }
   }
-}]
+]

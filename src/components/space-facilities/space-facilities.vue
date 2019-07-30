@@ -5,16 +5,10 @@
       :key="index"
       class="space-facility__item"
     >
-      <img
-        v-if="facility.name === 'studyType' || facility.name === 'quietness'"
-        :src="`/icons/facility-${facility.value}-icon.svg`"
-        alt=""
-      >
-      <img
-        v-else
-        :src="`/icons/facility-${facility.name}-icon.svg`"
-        alt=""
-      >
+      <svg-icon
+       :name="getIconName(facility)"
+       class="space-facility__icon"
+      />
     </li>
   </ul>
 </template>
@@ -26,12 +20,18 @@ export default {
   },
   computed: {
     filteredFacilities() {
-      return Object.entries(this.facilities).map(([key, value]) => {
-        return { name: key, value }
-      })
+      return Object.entries(this.facilities)
+        .map(([key, value]) => ({ name: key, value }))
         .filter(obj => Boolean(obj.value))
     }
   },
+  methods: {
+    getIconName(facility) {
+      const valueIsName = ['studyType', 'quietness'].includes(facility.name)
+      const iconName = valueIsName ? facility.value : facility.name
+      return `facility-${iconName}-icon`
+    }
+  }
 }
 </script>
 
@@ -40,7 +40,7 @@ export default {
   display: inline-block;
 }
 
-.space-facility__item img {
+.space-facility__icon {
   width: 25px;
   height: 25px;
 }

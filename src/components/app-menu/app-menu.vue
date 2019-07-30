@@ -1,18 +1,18 @@
 <template>
-  <nav>
-    <modal-drawer
-      :isOpen="isOpen"
-      :title="$t('menu')"
-      @close="$emit('close')"
-    >
-      <ul class="app-menu flat-list">
+  <modal-drawer
+    :isOpen="isOpen"
+    :title="$t('menu')"
+    @close="$emit('close')"
+  >
+    <nav class="app-menu">
+      <ul class="flat-list">
         <li class="app-menu__item">
           <nuxt-link
             :to="`/${$i18n.locale}`"
             @click.native="$emit('close')"
             class="app-menu__link"
           >
-            <home-icon class="app-menu__icon" />
+            <svg-icon name="home-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               {{ $t('home') }}
@@ -25,7 +25,7 @@
             @click.native="$emit('close')"
             class="app-menu__link"
           >
-            <building-icon class="app-menu__icon" />
+            <svg-icon name="building-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               {{ $t('buildings') }}
@@ -39,14 +39,14 @@
             class="app-menu__link"
           >
             <span v-if="showListView">
-              <map-icon class="app-menu__icon" />
+              <svg-icon name="map-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
                 {{ $t('mapToggle') }}
               </span>
             </span>
             <span v-else>
-              <list-icon class="app-menu__icon" />
+              <svg-icon name="list-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
                 {{ $t('listToggle') }}
@@ -64,7 +64,7 @@
             :hreflang="locale.code"
             class="app-menu__link"
           >
-            <world-icon class="app-menu__icon" />
+            <svg-icon name="world-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               {{ languages[locale.code] }}
@@ -72,22 +72,16 @@
           </nuxt-link>
         </li>
       </ul>
-    </modal-drawer>
-  </nav>
+    </nav>
+  </modal-drawer>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import ModalDrawer from '../modal-drawer'
 
-import BuildingIcon from '../../static/icons/building-icon.svg'
-import HomeIcon from '../../static/icons/home-icon.svg'
-import ListIcon from '../../static/icons/list-icon.svg'
-import MapIcon from '../../static/icons/map-icon.svg'
-import WorldIcon from '../../static/icons/world-icon.svg'
-
 export default {
-  components: { BuildingIcon, HomeIcon, ListIcon, MapIcon, ModalDrawer, WorldIcon },
+  components: { ModalDrawer },
   props: {
     isOpen: Boolean,
   },
