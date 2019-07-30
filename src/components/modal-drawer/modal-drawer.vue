@@ -88,8 +88,8 @@ export default {
   flex-direction: column;
   top: 0;
   right: 0;
+  bottom: 0;
   width: var(--column-width-mobile);
-  height: 100vh;
   background: var(--background-color);
 }
 
