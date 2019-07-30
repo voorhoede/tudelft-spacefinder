@@ -1,7 +1,6 @@
 /* eslint-disable */
 import flattenDeep from 'lodash/flattenDeep'
 import pagesI18n from '../src/pages.i18n'
-import { log } from 'util';
 const locales = ['en', 'nl']
 const buildings = require('../src/static/data/buildings.json')
 
