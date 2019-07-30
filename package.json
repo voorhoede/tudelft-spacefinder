@@ -8,7 +8,7 @@
     "analyze": "nuxt build --analyze",
     "prebuild": "touch ./.env && rimraf dist/ && npm run data",
     "build": "nuxt generate",
-    "predev": "rimraf ./.nuxt",
+    "predev": "rimraf ./.nuxt && npm run data",
     "data": "node scripts/data/index.js",
     "dev": "PORT=3463 nuxt",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
