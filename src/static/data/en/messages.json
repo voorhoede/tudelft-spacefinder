@@ -14,6 +14,7 @@
   "ethernet": "ethernet",
   "facilities": "Facilities",
   "filter": "filter",
+  "focusMap": "center map",
   "home": "home",
   "listToggle": "toggle list view",
   "locationFacilities": "Location facilities",
@@ -46,5 +47,7 @@
   "studyType.group": "group study",
   "studyType.self": "self study",
   "title": "Spacefinder",
-  "whiteBoard": "white board"
+  "whiteBoard": "white board",
+  "zoomIn": "zoom in",
+  "zoomOut": "zoom out"
 }

@@ -49,6 +49,12 @@ export const mutations = {
   clearFilters(state) {
     state.filters = getDefaultFilters()
   },
+  clearSelection(state) {
+    state.selection = {
+      building: undefined,
+      space: undefined
+    }
+  },
   selectBuilding(state, building) {
     state.selection = {
       building,
@@ -116,6 +122,23 @@ export const actions = {
       })
       map.on('load', () => commit('setMapLoaded', { map }))
     })
+  },
+
+  zoomAuto({ dispatch, state }) {
+    const zoomAction = state.selection.building
+      ? 'zoomToSelection'
+      : 'zoomToCampus'
+    return dispatch(zoomAction)
+  },
+
+  async zoomIn({ dispatch }) {
+    const map = await dispatch('getMap')
+    map.zoomIn()
+  },
+
+  async zoomOut({ dispatch }) {
+    const map = await dispatch('getMap')
+    map.zoomOut()
   },
 
   async zoomToBounds({ dispatch }, { bounds, padding }) {

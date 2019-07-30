@@ -14,6 +14,7 @@
   "ethernet": "ethernet",
   "facilities": "Voorzieningen",
   "filter": "filter",
+  "focusMap": "centreer kaart",
   "home": "home",
   "listToggle": "toon lijstweergave",
   "locationFacilities": "Voorzieningen van locatie",
@@ -46,5 +47,7 @@
   "studyType.group": "zelfstudie",
   "studyType.self": "groepsstudie",
   "title": "Spacefinder",
-  "whiteBoard": "whiteboard"
+  "whiteBoard": "whiteboard",
+  "zoomIn": "inzoomen",
+  "zoomOut": "uitzoomen"
 }

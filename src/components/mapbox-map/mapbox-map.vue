@@ -3,19 +3,37 @@
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
       <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
     </div>
+    <zoom-controls 
+      v-if="mapLoaded"
+      class="mapbox-map__zoom-controls"
+      v-on:auto-focus="autoFocus"
+      v-on:zoom-in="zoomIn"
+      v-on:zoom-out="zoomOut"
+    />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import ZoomControls from '../zoom-controls'
 
 export default {
+  components: { ZoomControls },
   computed: mapState(['mapLoaded']),
   mounted() {
     this.$store.dispatch('mountMap', { container: this.$refs.map })
-      .then(() => this.fixInsecureLinks())
+      .then((map) => this.fixInsecureLinks())
   },
   methods: {
+    autoFocus() {
+      this.$store.dispatch('zoomAuto')
+    },
+    zoomIn() {
+      this.$store.dispatch('zoomIn')
+    },
+    zoomOut() {
+      this.$store.dispatch('zoomOut')
+    },
     /**
      * Mapbox renders insecure external links.
      * To fix these `[rel="noreferrer"]` is added when the links are rendered.
@@ -62,5 +80,12 @@ export default {
 
 .mapbox-map__loading-message {
   font-size: var(--font-size-default);
+}
+
+.mapbox-map__zoom-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
 }
 </style>
