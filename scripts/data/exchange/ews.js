@@ -7,7 +7,6 @@ module.exports = async (data = {}) => {
   const emails = getEmails(spaces)
   const availability = await getRoomAvailability(emails)
   const roomsToTimesMap = mapRoomsToTimes(emails, availability)
-
-  console.log(roomsToTimesMap)
-  return availability
+  // @TODO: figure it out
+  return 'useful data'
 }
