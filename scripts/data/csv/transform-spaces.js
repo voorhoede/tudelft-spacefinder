@@ -1,7 +1,6 @@
 const slugify = require('slugify')
 const {
   converge,
-  identity,
   join,
   map,
   mergeDeepRight,
@@ -104,15 +103,5 @@ module.exports = pipe(
     )
   ),
   // remove values with errors from the result
-  keepValidValues,
-  // @NOTICE: temporarily add a slug property to a space that is equal to
-  // the building number
-  map(converge(mergeDeepRight, [
-    pipe(
-      prop('buildingNumber'),
-      objOf('slug'),
-      objOf('building')
-    ),
-    identity
-  ]))
+  keepValidValues
 )
