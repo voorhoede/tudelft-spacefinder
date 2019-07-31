@@ -3,36 +3,28 @@
     v-if="useHistory && previousPageUrl"
     :href="previousPageUrl"
     @click.prevent="goBack"
-    class="back-button button button--round"
   >
-    <svg-icon
-      name="back-icon"
-      class="button--round__icon"
-    />
-    <span class="a11y-sr-only">
-      <slot>{{ $t('back') }}</slot>
-    </span>
+    <back-button-content>
+      <slot />
+    </back-button-content>
   </a>
 
-  <nuxt-link 
-    v-else 
+  <nuxt-link
+    v-else
     :to="to"
-    class="back-button button button--round"
   >
-    <svg-icon
-      name="back-icon"
-      class="button--round__icon"
-    />
-    <span class="a11y-sr-only">
-      <slot>{{ $t('back') }}</slot>
-    </span>
+    <back-button-content>
+      <slot />
+    </back-button-content>
   </nuxt-link>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import BackButtonContent from './back-button-content'
 
 export default {
+  components: { BackButtonContent },
   props: {
     to: {
       type: String,
