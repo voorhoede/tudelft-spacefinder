@@ -6,7 +6,7 @@ require('dotenv').config()
 const {
   EWS_USER: username,
   EWS_PASS: password,
-  EWS_HOST: url
+  EWS_ENDPOINT: url
 } = process.env
 const useMockData = process.env.USE_MOCK_DATA_EXCHANGE === '1'
 const time = require('./time')
