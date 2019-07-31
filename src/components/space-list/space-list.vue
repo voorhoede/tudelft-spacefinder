@@ -57,7 +57,7 @@ export default {
 
 .space-list {
   height: 100%;
-  padding: var(--spacing-default);
+  padding: var(--spacing-default) var(--spacing-default) 0 var(--spacing-default);
   -webkit-overflow-scrolling: touch;
 }
 

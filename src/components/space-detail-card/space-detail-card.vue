@@ -40,18 +40,10 @@
       </ul>
 
       <div class="space-detail-card__opening-hours">
-        <p
-          v-if="locationisOpen"
-          class="space-detail-card__status space-detail-card__status--open"
-        >
-          {{ $t('open') }} <svg-icon name="location-open-icon" class="space-detail-card__status-icon" />
-        </p>
-        <p
-          v-else
+        <card-status
+          :isOpen="locationisOpen"
           class="space-detail-card__status"
-        >
-          {{ $t('closed') }} <svg-icon name="location-closed-icon" class="space-detail-card__status-icon" />
-        </p>
+        />
 
         <button class="button space-detail-card__toggle mobile-only">
           [{{ $t('openingHours') }} button]
@@ -63,10 +55,10 @@
 
 <script>
 
-import { SpaceFacilities } from '../../components'
+import { CardStatus, SpaceFacilities } from '../../components'
 
 export default {
-  components: { SpaceFacilities },
+  components: { CardStatus, SpaceFacilities },
   props: {
     building: String,
     facilities: Object,
@@ -246,6 +238,8 @@ export default {
 .space-detail-card__seating {
   flex: 0 0 auto;
   margin-right: var(--spacing-default);
+  font-size: var(--font-size-smaller);
+  font-weight: bold;
 }
 
 @media (min-width: 700px) {
