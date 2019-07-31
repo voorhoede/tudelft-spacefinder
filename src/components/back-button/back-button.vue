@@ -1,16 +1,31 @@
 <template>
-  <a 
-    v-if="previousPageUrl"
+  <a
+    v-if="useHistory && previousPageUrl"
     :href="previousPageUrl"
     @click.prevent="goBack"
+    class="back-button button button--round"
   >
-    <slot>{{ $t('back') }}</slot>
+    <svg-icon
+      name="back-icon"
+      class="button--round__icon"
+    />
+    <span class="a11y-sr-only">
+      <slot>{{ $t('back') }}</slot>
+    </span>
   </a>
+
   <nuxt-link 
     v-else 
     :to="to"
+    class="back-button button button--round"
   >
-    <slot>{{ $t('back') }}</slot>
+    <svg-icon
+      name="back-icon"
+      class="button--round__icon"
+    />
+    <span class="a11y-sr-only">
+      <slot>{{ $t('back') }}</slot>
+    </span>
   </nuxt-link>
 </template>
 
@@ -22,6 +37,10 @@ export default {
     to: {
       type: String,
       required: true
+    },
+    useHistory: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -36,3 +55,21 @@ export default {
   }
 }
 </script>
+
+<style>
+@import '../app-core/variables.css';
+
+.back-button {
+  position: fixed;
+  top: calc(var(--header-height-mobile) + var(--spacing-default));
+  left: var(--spacing-default);
+}
+
+@media (min-width: 700px) {
+  .back-button {
+    top: calc(var(--header-height-desktop) + var(--spacing-default));
+    left: calc(var(--column-width-desktop) + var(--spacing-default));
+  }
+}
+</style>
+
