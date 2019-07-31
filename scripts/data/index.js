@@ -25,7 +25,7 @@ const writeFiles = (files = []) => {
 Promise.all([ getDataFromCsv(), getDataFromCms() ])
   .then(transform)
   .then(addOpeningHours)
-  // .then(({ spaces, buildings }) => writeFiles([
-  //   { name: 'spaces', contents: spaces },
-  //   { name: 'buildings', contents: buildings }
-  // ]))
+  .then(({ spaces, buildings }) => writeFiles([
+    { name: 'spaces', contents: spaces },
+    { name: 'buildings', contents: buildings }
+  ]))
