@@ -34,6 +34,7 @@ const buildingProps = [
   'buildingNameEN',
   'buildingAbbreviationNL',
   'buildingAbbreviationEN',
+  'exchangeBuildingId',
   'number',
   'bounds',
   'image',

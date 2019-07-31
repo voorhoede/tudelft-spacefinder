@@ -3,15 +3,11 @@ const getEmails = require('./get-unique-emails')
 const mapRoomsToTimes = require('./rooms-to-times')
 const openingHours = require('./opening-hours')
 
-module.exports = async (data = {}) => {
-  const { spaces } = data
+module.exports = async ({ spaces, buildings } = {}) => {
   const emails = getEmails(spaces)
   const availability = await getRoomAvailability(emails)
   const roomsToTimesMap = mapRoomsToTimes(emails, availability)
-  const spacesWithOpeningHours = openingHours(roomsToTimesMap, spaces)
+  const { buildings: b, rooms: s } = openingHours(roomsToTimesMap, { rooms: spaces, buildings })
 
-  return {
-    ...data,
-    spaces: spacesWithOpeningHours
-  }
+  return { buildings: b, spaces: s }
 }

@@ -66,7 +66,7 @@ const formatOpeningHours = (ranges = []) => {
   })
 }
 
-const getOpeningHours = (building = [], room = []) => {
+const getOpeningHoursForRooms = (building = [], room = []) => {
   if (!building.length) {
     return []
   }
@@ -89,14 +89,38 @@ const getOpeningHours = (building = [], room = []) => {
   return openingHoursWithDaysFilled
 }
 
-module.exports = (availability, rooms) => {
-  return rooms.map((room) => {
-    const { exchangeBuildingId, exchangeRoomId } = room
+const getOpeningHoursForBuildings = (building = []) => {
+  const buildingOpenRanges = getTimeRanges(ensureArray(building), 'Free')
+    .map(r => Array.of(r))
+
+  const formattedOpeningHours = formatOpeningHours(buildingOpenRanges)
+  const openingHoursWithDaysFilled = fillMissingDays(formattedOpeningHours)
+
+  return openingHoursWithDaysFilled
+}
+
+module.exports = (availability, { buildings = [], rooms = [] }) => {
+  const roomsResult = rooms.map((room) => {
+    const { exchangeBuildingId, exchangeRoomId, ...otherRoomProps } = room
     const buidingAvailability = availability[exchangeBuildingId]
     const roomAvailability = availability[exchangeRoomId]
     return {
-      ...room,
-      openingHours: getOpeningHours(buidingAvailability, roomAvailability)
+      ...otherRoomProps,
+      openingHours: getOpeningHoursForRooms(buidingAvailability, roomAvailability)
     }
   })
+
+  const buildingsResult = buildings.map((building) => {
+    const { exchangeBuildingId, ...otherBuildingProps } = building
+    const buidingAvailability = availability[exchangeBuildingId]
+    return {
+      ...otherBuildingProps,
+      openingHours: getOpeningHoursForBuildings(buidingAvailability)
+    }
+  })
+
+  return {
+    rooms: roomsResult,
+    buildings: buildingsResult
+  }
 }
