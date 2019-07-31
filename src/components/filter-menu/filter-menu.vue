@@ -24,7 +24,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label :for="`quietness-${option}`">
-              <svg-icon :name="`facility-${option}-icon`" class="filter-menu__filter-icon" />
+              <svg-icon :name="`facility-quietness.${option}-icon`" class="filter-menu__filter-icon" />
               {{ $t(`quietness.${option}`) }}
             </label>
           </span>
@@ -45,7 +45,7 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label :for="`study-type-${option}`">
-              <svg-icon :name="`facility-${option}-icon`" class="filter-menu__filter-icon" />
+              <svg-icon :name="`facility-studyType.${option}-icon`" class="filter-menu__filter-icon" />
               {{ $t(`studyType.${option}`) }}
             </label>
           </span>
