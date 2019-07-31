@@ -1,5 +1,8 @@
 <template>
-  <div class="default-layout">
+  <div
+    class="default-layout"
+    ref="defaultLayout"
+  >
     <app-header
       @openAppMenu="openAppMenu"
       @openFilterMenu="openFilterMenu"
@@ -30,7 +33,7 @@ export default {
       onResizeDebounce: debounce(this.onResize, 200)
     }
   },
-  beforeMount() {
+  mounted() {
     this.onResize()
     window.addEventListener('resize', this.onResizeDebounce, true)
   },
@@ -48,6 +51,9 @@ export default {
       this.openedMenu = null
     },
     onResize() {
+      let windowHeight = window.innerHeight * 0.01
+      this.$refs.defaultLayout.style.setProperty('--window-height', `${windowHeight}px`)
+
       if(window.matchMedia('(min-width: 700px)').matches) {
         this.$store.commit('setMobileState', false)
       } else {
