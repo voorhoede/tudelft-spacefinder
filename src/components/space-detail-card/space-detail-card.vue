@@ -76,7 +76,6 @@ export default {
 <style>
 @import '../app-core/variables.css';
 
-
 .space-detail-card {
   --image-width: 100px;
 
@@ -100,6 +99,10 @@ export default {
     background: none;
     box-shadow: none;
   }
+}
+
+.space-detail-card svg {
+  fill: var(--text-color);
 }
 
 .space-detail-card__image {
@@ -254,12 +257,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-@media (min-width: 700px) {
-  .space-detail-card__seating li {
-    justify-content: flex-end;
-  }
 }
 
 .space-detail-card__seating-icon {
