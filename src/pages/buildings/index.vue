@@ -31,6 +31,7 @@ export default {
 <style>
 .building-overview {
   padding: var(--spacing-default);
+  -webkit-overflow-scrolling: touch;
 }
 
 .building-overview .building-card:not(:last-child) {
