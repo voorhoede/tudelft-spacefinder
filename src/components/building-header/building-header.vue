@@ -1,9 +1,7 @@
 <template>
   <div class="building-header">
     <building-image
-      :abbreviation="building.abbreviation"
-      :name="building.name"
-      :url="building.image.url"
+      :building="building"
     />
 
     <h3 class="a11y-sr-only">

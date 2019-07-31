@@ -9,9 +9,7 @@
     class="building-card card"
   >
     <building-image
-      :abbreviation="building.abbreviation"
-      :name="building.name"
-      :url="building.image.url"
+      :building="building"
       class="building-card__image"
     />
 

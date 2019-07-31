@@ -2,10 +2,10 @@
   <div class="building-image">
     <h2
       class="building-image__title"
-      :style="`background-image: url('${url}?&fm=jpg&w=700&h=260&fit=crop&auto=quality&auto=format&auto=compress');`"
+      :style="`background-image: url('${building.image.url}?&fm=jpg&w=700&h=260&fit=crop&auto=quality&auto=format&auto=compress');`"
     >
       <span class="building-image__name">
-        {{ name }} ({{ abbreviation }})
+        {{ building.name }} ({{ building.abbreviation }})
       </span>
     </h2>
   </div>
@@ -14,9 +14,7 @@
 <script>
 export default {
   props: {
-    abbreviation: String,
-    name: String,
-    url: String
+    building: Object
   }
 }
 </script>
