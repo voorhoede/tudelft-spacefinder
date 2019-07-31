@@ -49,7 +49,7 @@ export default {
 <style>
 @media (max-width: 699px) {
   .default-layout__info--space-detail ~ .default-layout__map .mapbox-map__zoom-controls {
-    top: 0;
+    display: none;
   }
 }
 </style>
