@@ -1,10 +1,22 @@
 <template>
-  <nuxt-link :to="to" v-on:click.native="goBack">
+  <a 
+    v-if="previousPageUrl"
+    :href="previousPageUrl"
+    @click.prevent="goBack"
+  >
+    <slot>{{ $t('back') }}</slot>
+  </a>
+  <nuxt-link 
+    v-else 
+    :to="to"
+  >
     <slot>{{ $t('back') }}</slot>
   </nuxt-link>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     to: {
@@ -12,10 +24,14 @@ export default {
       required: true
     }
   },
+  computed: {
+    ...mapGetters({
+      previousPageUrl: 'history/previousPageUrl'
+    })
+  },
   methods: {
-    goBack(event) {
-      //event.preventDefault()
-      //window.history.back()
+    goBack() {
+      this.$store.commit('history/goBack')
     }
   }
 }
