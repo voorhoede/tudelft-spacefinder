@@ -4,32 +4,33 @@
   "definitions": {
     "timeRange": {
       "type":"string",
-      "pattern": "^\\d{2}:\\d{2}-\\d{2}:\\d{2}$"
+      "pattern": "^\\d{2}:\\d{2}$"
     },
     "weekDay": {
-      "type": "array",
-      "items": {"$ref":"#/definitions/timeRange"}
+      "type": "object",
+      "properties": {
+        "day": {
+          "type": "string",
+          "enum": ["mo", "tu", "we", "th", "fr", "sa", "su"]
+        },
+        "time": {
+          "type": "array",
+          "items": {
+            "type":"array",
+            "items": {
+              "$ref": "#/definitions/timeRange"
+            }
+           }
+        }
+      }
     },
     "openingHours": {
-      "type":"object",
-      "properties": {
-        "mo": { "$ref": "#/definitions/weekDay" },
-        "tu": { "$ref": "#/definitions/weekDay" },
-        "we": { "$ref": "#/definitions/weekDay" },
-        "th": { "$ref": "#/definitions/weekDay" },
-        "fr": { "$ref": "#/definitions/weekDay" },
-        "sa": { "$ref": "#/definitions/weekDay" },
-        "su": { "$ref": "#/definitions/weekDay" }
+      "type":"array",
+      "items": {
+        "$ref": "#/definitions/weekDay"
       },
-      "required": [
-        "mo",
-        "tu",
-        "we",
-        "th",
-        "fr",
-        "sa",
-        "su"
-      ]
+      "minItems": 7,
+      "maxItems": 7
     }
   }
 }
