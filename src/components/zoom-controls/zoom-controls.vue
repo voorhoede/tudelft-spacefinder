@@ -35,6 +35,8 @@ export default {
 </script>
 
 <style>
+@import '../app-core/variables.css';
+
 .zoom-controls__item {
   margin-top: var(--spacing-half);
 }

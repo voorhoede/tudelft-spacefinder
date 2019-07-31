@@ -1,7 +1,7 @@
 <template>
   <section class="default-layout__info building-layout">
-    <back-button
-      class="building-layout__back-button"
+    <back-button 
+      :useHistory="false"
       :to="localePath({ name: 'buildings' })"
     />
 
@@ -52,11 +52,6 @@ export default {
 .building-layout {
   display: flex;
   flex-direction: column;
-}
-
-.building-layout__back-button {
-  z-index: var(--layer--overlay);
-  position: absolute;
 }
 
 .building-layout__header {
