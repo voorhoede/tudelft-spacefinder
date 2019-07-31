@@ -1,5 +1,5 @@
 <template>
-  <span class="back-button button button--round">
+  <span class="button button--round">
     <svg-icon
       name="back-icon"
       class="button--round__icon"

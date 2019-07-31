@@ -3,6 +3,7 @@
     v-if="useHistory && previousPageUrl"
     :href="previousPageUrl"
     @click.prevent="goBack"
+    class="back-button"
   >
     <back-button-content>
       <slot />
@@ -12,6 +13,7 @@
   <nuxt-link
     v-else
     :to="to"
+    class="back-button"
   >
     <back-button-content>
       <slot />
