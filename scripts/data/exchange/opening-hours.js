@@ -61,7 +61,7 @@ const formatOpeningHours = (ranges = []) => {
     // Determine the weekday by taking the start property off the first item.
     const [ { start: first } = {} ] = range
     const day = first.format('dd').toLowerCase()
-    const time = range.map(r => [r.start, r.end].map(t => t.format('HH:mm')))
+    const time = range.map(r => [r.start, r.end].map(t => t.utc().format()))
     return { day, time }
   })
 }
