@@ -23,7 +23,9 @@
     /* spacing */
     --spacing-double: 2rem;
     --spacing-default: 1rem;
+    --spacing-default-negative: -1rem;
     --spacing-half: .5rem;
+    --spacing-half-negative: -.5rem;
     --spacing-quarter: .25rem;
 
     /* layers */

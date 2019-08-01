@@ -39,7 +39,7 @@ export default {
 @import '../app-core/variables.css';
 
 .building-card__image {
-  margin: calc(-1 * var(--spacing-half)) calc(-1 * var(--spacing-half)) var(--spacing-half) calc(-1 * var(--spacing-half));
+  margin: var(--spacing-half-negative) var(--spacing-half-negative) var(--spacing-half) var(--spacing-half-negative);
 }
 
 .building-card__meta {

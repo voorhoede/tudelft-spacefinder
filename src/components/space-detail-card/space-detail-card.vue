@@ -117,7 +117,7 @@ export default {
 @media (min-width: 700px) {
   .space-detail-card__image {
     position: relative;
-    margin: calc(-1 * var(--spacing-default)) calc(-1 * var(--spacing-default)) var(--spacing-half) calc(-1 * var(--spacing-default));
+    margin: var(--spacing-default-negative) var(--spacing-default-negative) var(--spacing-half) var(--spacing-default-negative);
     width: calc(100% + 2 * var(--spacing-default));
     height: 150px;
   }
