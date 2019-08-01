@@ -6,7 +6,6 @@ const {
   dissoc,
   filter,
   groupBy,
-  identity,
   isEmpty,
   length,
   lensProp,
@@ -27,10 +26,7 @@ const {
   uniqWith
 } = require('ramda')
 
-const { building } = require('../schema')
-const { keepValidValues, validate } = require('./lib')
 const { fromI18n } = require('./lib/building-meta')
-const validator = validate(building)
 
 const buildingProps = [
   'buildingId',
@@ -38,6 +34,7 @@ const buildingProps = [
   'buildingNameEN',
   'buildingAbbreviationNL',
   'buildingAbbreviationEN',
+  'exchangeBuildingId',
   'number',
   'bounds',
   'image',
@@ -76,18 +73,7 @@ const getBuildings = pipe(
     map(getBuildingMeta)
   )),
   joinAndFilter,
-  getBuildingProps,
-  map(validator),
-  keepValidValues,
-  // @NOTICE: temporarily add a slug property to a building that is equal to
-  // the building number
-  map(converge(mergeDeepRight, [
-    pipe(
-      prop('number'),
-      objOf('slug')
-    ),
-    identity
-  ]))
+  getBuildingProps
 )
 
 module.exports = getBuildings

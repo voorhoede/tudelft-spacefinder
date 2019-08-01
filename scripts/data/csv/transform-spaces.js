@@ -1,7 +1,6 @@
 const slugify = require('slugify')
 const {
   converge,
-  identity,
   join,
   map,
   mergeDeepRight,
@@ -16,16 +15,9 @@ const {
   unapply
 } = require('ramda')
 
-const { space } = require('../schema')
-const {
-  keepValidValues,
-  toString,
-  validate
-} = require('./lib')
+const { toString } = require('./lib')
 
 const { buildingNumberFromId } = require('./lib/building-meta')
-
-const validator = validate(space)
 
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 
@@ -89,30 +81,12 @@ const getRootProperties = pick(spaceRootProperties)
 const meld = unapply(reduce(mergeDeepRight, {}))
 
 module.exports = pipe(
-  map(
-    pipe(
-      // Create the space object
-      converge(meld, [
-        getRootProperties,
-        getFacilities,
-        getSpaceName,
-        getBuildingNumber,
-        getSlug
-      ]),
-      // log & append validation errors, if any
-      validator
-    )
-  ),
-  // remove values with errors from the result
-  keepValidValues,
-  // @NOTICE: temporarily add a slug property to a space that is equal to
-  // the building number
-  map(converge(mergeDeepRight, [
-    pipe(
-      prop('buildingNumber'),
-      objOf('slug'),
-      objOf('building')
-    ),
-    identity
+  // Create the space object
+  map(converge(meld, [
+    getRootProperties,
+    getFacilities,
+    getSpaceName,
+    getBuildingNumber,
+    getSlug
   ]))
 )
