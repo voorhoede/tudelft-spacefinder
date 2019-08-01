@@ -7,15 +7,6 @@
     "space": {
       "type":"object",
       "properties": {
-        "name": { "type": "string" },
-        "exchangeBuildingId": {
-          "type": "string",
-          "description": "Used to map a building to a calendar in exchange"
-        },
-        "exchangeRoomId": {
-          "type": "string",
-          "description": "Used to map a room to a calendar in exchange"
-        },
         "buildingNumber": { "type":"integer" },
         "roomId": { "type": "string" },
         "floor": { "type": "string" },
@@ -49,7 +40,6 @@
         "i18n",
         "latitude",
         "longitude",
-        "name",
         "openingHours",
         "roomId",
         "seats",

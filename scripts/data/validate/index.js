@@ -1,4 +1,5 @@
 const {
+  __,
   applySpec,
   converge,
   curry,
@@ -10,6 +11,7 @@ const {
   mergeDeepRight,
   not,
   objOf,
+  pathOr,
   pipe,
   prop,
   tap
@@ -17,10 +19,13 @@ const {
 
 const validators = require('./schema')
 const hasValidationErrors = pipe(prop('errors'), isNil, not)
+const getEntityIdentifier = pathOr(__, ['i18n', 'nl', 'slug'])
 
 const logErrors = tap(({ value, errors }) => {
-  const { slug, buildingId } = value
-  const name = slug || buildingId || 'unknown'
+  const { roomId, buildingId } = value
+  const defaultName = roomId || buildingId || 'unknown'
+  const name = getEntityIdentifier(defaultName, value)
+
   const errorText = [`${name} did not pass json schema validation:`]
     .concat(errors.map((error) => {
       const { dataPath, message, data, params } = error
