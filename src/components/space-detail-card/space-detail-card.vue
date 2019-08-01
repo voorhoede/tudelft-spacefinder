@@ -72,8 +72,10 @@ export default {
   --image-width: 100px;
 
   padding: var(--spacing-default);
+  max-height: 70vh;
   background: var(--background-color);
   box-shadow: var(--shadow-small);
+  overflow: auto;
 }
 
 @media (min-width: 400px) {
