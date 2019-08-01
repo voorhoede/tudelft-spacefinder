@@ -17,9 +17,7 @@ const {
   reduce,
   replace,
   toLower,
-  values,
-  unapply,
-  tap
+  unapply
 } = require('ramda')
 
 const translate = require('./lib/translate')
@@ -33,27 +31,6 @@ const translationMap = {
     en: 'spaceNameEN'
   }
 }
-
-const createSlugObject = pipe(
-  map(stringSlugify),
-  join('--'),
-  objOf('slug')
-)
-
-/*
-  This function expects the i18n object to be present on spaceData passed in
-*/
-const getSlug = pipe(
-  juxt([ prop('spaceId'), identity ]),
-  apply((id, space) => {
-    return over(lensProp('i18n'), map(pipe(
-      converge(mergeDeepRight, [ identity, pipe(
-        juxt([ always(id), prop('spaceName') ]),
-        createSlugObject
-      )])
-    )), space)
-  })
-)
 
 const facilities = [
   'adjustableChairs',
@@ -84,6 +61,27 @@ const spaceRootProperties = [
   'i18n',
   'roomId'
 ]
+
+const createSlugObject = pipe(
+  map(stringSlugify),
+  join('--'),
+  objOf('slug')
+)
+
+/*
+  This function expects the i18n object to be present on spaceData passed in
+*/
+const getSlug = pipe(
+  juxt([ prop('spaceId'), identity ]),
+  apply((id, space) => {
+    return over(lensProp('i18n'), map(pipe(
+      converge(mergeDeepRight, [ identity, pipe(
+        juxt([ always(id), prop('spaceName') ]),
+        createSlugObject
+      )])
+    )), space)
+  })
+)
 
 const getFacilities = pipe(
   pick(facilities),
