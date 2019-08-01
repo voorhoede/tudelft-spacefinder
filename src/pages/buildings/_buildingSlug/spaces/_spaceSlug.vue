@@ -10,7 +10,7 @@
     />
 
     <social-share
-      :url="$nuxt.$route.path"
+      :url="url"
       class="space-detail-share-button"
     />
 
@@ -33,6 +33,11 @@ import { BackButton, SocialShare, SpaceDetailCard } from '~/components'
 
 export default {
   components: { BackButton, SocialShare, SpaceDetailCard },
+  data() {
+    return {
+      url: undefined
+    }
+  },
   computed: {
     ...mapGetters(['getSpaceBySlug']),
     ...mapState(['isMobile']),
@@ -42,6 +47,8 @@ export default {
     },
   },
   mounted() {
+    this.url = window.location.href
+
     const padding = this.isMobile
       ? { bottom: this.$refs.card.$el.clientHeight + 2 * 20 }
       : {}
