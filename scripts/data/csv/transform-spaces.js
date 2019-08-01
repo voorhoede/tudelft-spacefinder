@@ -3,7 +3,6 @@ const {
   always,
   apply,
   converge,
-  identity,
   join,
   juxt,
   lensProp,

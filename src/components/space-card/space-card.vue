@@ -90,6 +90,11 @@ export default {
   fill: var(--text-color);
 }
 
+.space-card:hover svg,
+.space-card:focus svg {
+  fill: var(--brand-primary-color-dark);
+}
+
 .space-card__info {
   display: flex;
   margin-bottom: var(--spacing-default);
@@ -112,6 +117,8 @@ export default {
 .space-card__seating {
   flex: 0 0 auto;
   margin-left: var(--spacing-default);
+  font-size: var(--font-size-smaller);
+  font-weight: bold;
 }
 
 .space-card__seating li {
@@ -124,11 +131,6 @@ export default {
   margin-right: var(--spacing-half);
   width: 15px;
   height: 15px;
-}
-
-.space-card:hover .space-card__seating-icon,
-.space-card:focus .space-card__seating-icon {
-  fill: var(--brand-primary-color-dark);
 }
 
 .space-card__meta {

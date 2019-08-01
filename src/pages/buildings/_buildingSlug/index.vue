@@ -1,17 +1,28 @@
 <template>
-  <section class="default-layout__info">
-    <back-button :to="localePath({ name: 'buildings' })" />
-    <h1>{{ title }}</h1>
-    <space-list :spaces="spaces" />
+  <section class="default-layout__info building-layout">
+    <back-button 
+      :useHistory="false"
+      :to="localePath({ name: 'buildings' })"
+    />
+
+    <building-header
+      class="building-layout__header"
+      :building="building"
+    />
+
+    <space-list
+      class="building-layout__spaces"
+      :spaces="spaces"
+    />
   </section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { BackButton, SpaceList } from '~/components'
+import { BackButton, BuildingHeader, SpaceList } from '~/components'
 
 export default {
-  components: { BackButton, SpaceList },
+  components: { BackButton, BuildingHeader, SpaceList },
   computed: {
     ...mapGetters(['filteredSpaces', 'getBuildingBySlug']),
     building() {
@@ -36,3 +47,19 @@ export default {
   }
 }
 </script>
+
+<style>
+.building-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.building-layout__header {
+  flex: 0 0 1;
+}
+
+.building-layout__spaces {
+  flex: 1 1 auto;
+  padding-top: 0;
+}
+</style>

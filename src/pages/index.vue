@@ -19,6 +19,7 @@ export default {
     ...mapState(['isMobile', 'showListView']),
   },
   mounted() {
+    this.$store.commit('clearSelection')
     this.$store.dispatch('zoomToCampus')
   }
 }

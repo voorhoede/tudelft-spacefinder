@@ -6,9 +6,13 @@
       class="space-facility__item"
     >
       <svg-icon
-       :name="getIconName(facility)"
-       class="space-facility__icon"
+        :name="getIconName(facility)"
+        class="space-facility__icon"
       />
+
+      <span class="a11y-sr-only">
+        {{ $t(getFacilityValue(facility)) }}
+      </span>
     </li>
   </ul>
 </template>
@@ -27,9 +31,14 @@ export default {
   },
   methods: {
     getIconName(facility) {
-      const valueIsName = ['studyType', 'quietness'].includes(facility.name)
-      const iconName = valueIsName ? facility.value : facility.name
+      const iconName = this.getFacilityValue(facility)
       return `facility-${iconName}-icon`
+    },
+    getFacilityValue(facility) {
+      const valueIsName = ['studyType', 'quietness'].includes(facility.name)
+      const facilityName = valueIsName ? facility.value : facility.name
+      const facilityValue = valueIsName ? `${facility.name}.${facilityName}` : facilityName
+      return facilityValue
     }
   }
 }

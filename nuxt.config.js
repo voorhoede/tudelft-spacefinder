@@ -20,5 +20,8 @@ export default {
     { src: '~/plugins/persist-state', ssr: false },
     { src: '~/plugins/virtual-scroller' }
   ],
+  router: {
+    middleware: ['history']
+  },
   srcDir: 'src/'
 }
