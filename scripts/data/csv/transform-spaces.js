@@ -15,7 +15,7 @@ const {
   unapply
 } = require('ramda')
 
-const { toString } = require('./lib')
+const { toString } = require('./lib/helpers')
 
 const { buildingNumberFromId } = require('./lib/building-meta')
 
