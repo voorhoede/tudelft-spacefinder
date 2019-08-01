@@ -1,6 +1,7 @@
 <template>
   <div class="opening-hours">
     <button
+      v-if="isMobile || showToggleOnDesktop"
       @click="toggleOpeningHours"
       :aria-label="openingHoursAreVisible ? $t('hideOpeningHours') : $t('showOpeningHours')"
       class="opening-hours__toggle button"
@@ -16,7 +17,7 @@
       </span>
     </button>
 
-    <div v-if="openingHoursAreVisible">
+    <div v-if="openingHoursAreVisible || (!isMobile && !showToggleOnDesktop)">
       <h3 class="opening-hours__title">
         {{ $t('comingWeek') }}
       </h3>
@@ -47,14 +48,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   props: {
-    building: Object
+    building: Object,
+    showToggleOnDesktop: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {
       openingHoursAreVisible: false
     }
+  },
+  computed: {
+    ...mapState(['isMobile'])
   },
   methods: {
     toggleOpeningHours() {
@@ -82,7 +92,8 @@ export default {
 }
 
 .opening-hours__toggle {
-  margin: 0 var(--spacing-half-negative) var(--spacing-half) 0;
+  padding-left: var(--spacing-quarter);
+  margin-right: var(--spacing-half-negative);
   overflow: hidden;
 }
 
@@ -91,6 +102,7 @@ export default {
 }
 
 .opening-hours__toggle-icon {
+  margin-right: var(--spacing-quarter-negative);
   width: 20px;
   height: 20px;
   vertical-align: middle;
@@ -103,7 +115,7 @@ export default {
 }
 
 .opening-hours__title {
-  margin-top: var(--spacing-quarter);
+  margin-top: var(--spacing-half);
   text-align: left;
 }
 
