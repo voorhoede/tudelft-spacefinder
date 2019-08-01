@@ -13,7 +13,10 @@
       </span>
     </button>
 
-    <div class="social-share__options">
+    <div
+      class="social-share__options"
+      :aria-hidden="!optionsAreVisible"
+    >
       <a
         v-for="(platform, index) in platforms"
         :key="index"
@@ -33,9 +36,10 @@
 
       <button
         v-if="copyToClipboardIsVisible"
+        @click="copyToClipboard"
+        :aria-hidden="!optionsAreVisible"
         class="social-share__option button button--round"
         :class="{ 'social-share__option--visible' : optionsAreVisible }"
-        @click="copyToClipboard"
         ref="copyButton"
       >
         <svg-icon
@@ -158,10 +162,6 @@ export default {
 
 .social-share__option--visible:nth-child(3) {
   transform: translateY(170px) scale(1);
-}
-
-.social-share__option--visible:nth-child(4) {
-  transform: translateY(230px) scale(1);
 }
 
 .social-share__notification {
