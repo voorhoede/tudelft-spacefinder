@@ -7,7 +7,6 @@
     "space": {
       "type":"object",
       "properties": {
-        "slug": { "type": "string" },
         "name": { "type": "string" },
         "exchangeBuildingId": {
           "type": "string",
@@ -47,20 +46,25 @@
       "required": [
         "facilities",
         "floor",
+        "i18n",
         "latitude",
         "longitude",
         "name",
         "roomId",
         "seats",
-        "slug",
         "tables"
       ]
     },
     "dictionary": {
       "type": "object",
       "properties": {
-        "floor": { "type": "string" }
-      }
+        "spaceName": { "type": "string" },
+        "slug": { "type": "string" }
+      },
+      "required": [
+        "spaceName",
+        "slug"
+      ]
     },
     "facilities": {
       "type": "object",
