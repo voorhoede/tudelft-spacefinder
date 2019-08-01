@@ -36,6 +36,7 @@
         class="social-share__option button button--round"
         :class="{ 'social-share__option--visible' : optionsAreVisible }"
         @click="copyToClipboard"
+        ref="copyButton"
       >
         <svg-icon
           name="copy-icon"
@@ -47,12 +48,15 @@
       </button>
     </div>
 
-    <div
-      class="social-share__notification"
-      :class="{ 'social-share__notification--visible': notificationIsVisible }"
-    >
-      {{ $t('copiedToClipboard') }}
-    </div>
+    <transition name="notification-fade">
+      <div
+        v-if="notificationIsVisible"
+        role="alert"
+        class="social-share__notification"
+      >
+        {{ $t('copiedToClipboard') }}
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -104,6 +108,7 @@ export default {
     },
     showNotification() {
       this.notificationIsVisible = true
+      this.$refs.copyButton.focus()
       window.setTimeout(() => this.notificationIsVisible = false, 2000)
     },
     handleClick() {
@@ -169,11 +174,13 @@ export default {
   font-size: var(--font-size-smaller);
   text-align: center;
   color: var(--background-color);
-  opacity: 0;
-  transition: all .5s ease-in-out;
 }
 
-.social-share__notification--visible {
-  opacity: 1;
+.notification-fade-enter-active, .notification-fade-leave-active {
+  transition: opacity .5s ease-in-out;
+}
+
+.notification-fade-enter, .notification-fade-leave-to {
+  opacity: 0;
 }
 </style>
