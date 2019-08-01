@@ -1,10 +1,16 @@
 const slugify = require('slugify')
 const {
+  always,
+  apply,
   converge,
+  identity,
   join,
+  juxt,
+  lensProp,
   map,
   mergeDeepRight,
   objOf,
+  over,
   pick,
   pipe,
   prop,
@@ -12,28 +18,41 @@ const {
   replace,
   toLower,
   values,
-  unapply
+  unapply,
+  tap
 } = require('ramda')
 
-const { space } = require('../schema')
-const {
-  keepValidValues,
-  toString,
-  validate
-} = require('./lib')
-
+const translate = require('./lib/translate')
+const { toString } = require('./lib')
 const { buildingNumberFromId } = require('./lib/building-meta')
-
-const validator = validate(space)
-
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 
-const getSlug = pipe(
-  pick(['spaceId', 'spaceName']),
-  values,
+const translationMap = {
+  spaceName: {
+    nl: 'spaceNameNL',
+    en: 'spaceNameEN'
+  }
+}
+
+const createSlugObject = pipe(
   map(stringSlugify),
   join('--'),
   objOf('slug')
+)
+
+/*
+  This function expects the i18n object to be present on spaceData passed in
+*/
+const getSlug = pipe(
+  juxt([ prop('spaceId'), identity ]),
+  apply((id, space) => {
+    return over(lensProp('i18n'), map(pipe(
+      converge(mergeDeepRight, [ identity, pipe(
+        juxt([ always(id), prop('spaceName') ]),
+        createSlugObject
+      )])
+    )), space)
+  })
 )
 
 const facilities = [
@@ -71,11 +90,6 @@ const getFacilities = pipe(
   objOf('facilities')
 )
 
-const getSpaceName = pipe(
-  prop('spaceName'),
-  objOf('name')
-)
-
 const getBuildingNumber = pipe(
   prop('buildingId'),
   buildingNumberFromId,
@@ -86,21 +100,15 @@ const getRootProperties = pick(spaceRootProperties)
 
 const meld = unapply(reduce(mergeDeepRight, {}))
 
-module.exports = pipe(
-  map(
-    pipe(
-      // Create the space object
-      converge(meld, [
-        getRootProperties,
-        getFacilities,
-        getSpaceName,
-        getBuildingNumber,
-        getSlug
-      ]),
-      // log & append validation errors, if any
-      validator
-    )
-  ),
-  // remove values with errors from the result
-  keepValidValues
+module.exports = map(
+  pipe(
+    translate(translationMap),
+    getSlug,
+    // Create the space object
+    converge(meld, [
+      getRootProperties,
+      getFacilities,
+      getBuildingNumber
+    ])
+  )
 )

@@ -26,10 +26,19 @@ const {
   uniqWith
 } = require('ramda')
 
-const { building } = require('../schema')
-const { keepValidValues, validate } = require('./lib')
+const translate = require('./lib/translate')
 const { fromI18n } = require('./lib/building-meta')
-const validator = validate(building)
+
+const translationMap = {
+  name: {
+    nl: 'buildingNameNL',
+    en: 'buildingNameEN'
+  },
+  abbreviation: {
+    nl: 'buildingAbbreviationNL',
+    en: 'buildingAbbreviationEN'
+  }
+}
 
 const buildingProps = [
   'buildingId',
@@ -72,12 +81,13 @@ const getBuildingMeta = pipe(
 const getBuildings = pipe(
   adjust(0, pipe(
     getUniqueBuildings,
-    map(getBuildingMeta)
+    map(pipe(
+      translate(translationMap),
+      getBuildingMeta
+    ))
   )),
   joinAndFilter,
-  getBuildingProps,
-  map(validator),
-  keepValidValues
+  getBuildingProps
 )
 
 module.exports = getBuildings
