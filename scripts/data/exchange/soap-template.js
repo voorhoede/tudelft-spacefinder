@@ -18,7 +18,21 @@ module.exports = ({ emails = [], start, end }) => `<?xml version="1.0" encoding=
   <soap:Body>
     <GetUserAvailabilityRequest xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
       <t:TimeZone xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
-        <t:Id>Central Europe Standard Time</t:Id>
+        <t:Bias>-60</t:Bias>
+        <t:StandardTime>
+          <t:Bias>0</t:Bias>
+          <t:Time>03:00:00</t:Time>
+          <t:DayOrder>5</t:DayOrder>
+          <t:Month>10</t:Month>
+          <t:DayOfWeek>Sunday</t:DayOfWeek>
+        </t:StandardTime>
+        <t:DaylightTime>
+          <t:Bias>-60</t:Bias>
+          <t:Time>02:00:00</t:Time>
+          <t:DayOrder>5</t:DayOrder>
+          <t:Month>3</t:Month>
+          <t:DayOfWeek>Sunday</t:DayOfWeek>
+        </t:DaylightTime>
       </t:TimeZone>
       <MailboxDataArray xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
         ${getMailboxData(emails)}
