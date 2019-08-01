@@ -16,30 +16,33 @@
       </span>
     </button>
 
-    <dl
-      v-if="openingHoursAreVisible"
-      class="opening-hours__overview"
-    >
-      <template
-        v-for="openingHour in building.openingHours"
-      >
-        <dt class="opening-hours__day">
-          {{ $t(openingHour.day) }}
-        </dt>
-        <dd class="opening-hours__time">
-          <template v-if="!openingHour.time.length">
-            {{ $t('closed') }}
-          </template>
-          <p
-            v-else
-            v-for="(time, index) in openingHour.time"
-            :key="index"
-          >
-            {{ renderTime(time[0]) }} - {{ renderTime(time[1]) }}
-          </p>
-        </dd>
-      </template>
-    </dl>
+    <div v-if="openingHoursAreVisible">
+      <h3 class="opening-hours__title">
+        {{ $t('comingWeek') }}
+      </h3>
+
+      <dl class="opening-hours__overview">
+        <template
+          v-for="(openingHour, index) in building.openingHours"
+        >
+          <dt class="opening-hours__day">
+            {{ index === 0 ? $t('today') : $t(openingHour.day) }}
+          </dt>
+          <dd class="opening-hours__time">
+            <template v-if="!openingHour.time.length">
+              {{ $t('closed') }}
+            </template>
+            <p
+              v-else
+              v-for="(time, index) in openingHour.time"
+              :key="index"
+            >
+              {{ renderTime(time[0]) }} - {{ renderTime(time[1]) }}
+            </p>
+          </dd>
+        </template>
+      </dl>
+    </div>
   </div>
 </template>
 
@@ -97,6 +100,11 @@ export default {
 
 .opening-hours__toggle--open .opening-hours__toggle-icon {
   transform: rotate(90deg);
+}
+
+.opening-hours__title {
+  margin-top: var(--spacing-quarter);
+  text-align: left;
 }
 
 .opening-hours__day,
