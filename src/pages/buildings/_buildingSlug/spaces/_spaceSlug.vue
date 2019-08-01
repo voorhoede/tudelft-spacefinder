@@ -16,13 +16,7 @@
 
     <space-detail-card
       ref="card"
-      :building="space.building.name"
-      :facilities="space.facilities"
-      :floor="space.floor"
-      :location="space.roomId"
-      :seats="space.seats"
-      :tables="space.tables"
-      :title="space.name"
+      :space="space"
     />
   </section>
 </template>

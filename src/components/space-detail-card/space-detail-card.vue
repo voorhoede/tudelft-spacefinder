@@ -1,74 +1,66 @@
 <template>
   <div
     class="space-detail-card"
-    :class="{ 'space-detail-card--image': imageUrl }"
+    :class="{ 'space-detail-card--image': space.imageUrl }"
   >
     <img
-      v-if="imageUrl"
-      :src="imageUrl"
+      v-if="space.imageUrl"
+      :src="space.imageUrl"
       alt=""
       class="space-detail-card__image"
     >
 
     <div class="space-detail-card__heading">
       <h2 class="space-detail-card__title">
-        {{ title }}
+        {{ space.name }}
       </h2>
 
       <p class="space-detail-card__description">
-        <em>{{ building }}</em> - {{ location }}
+        <em>{{ space.building.name }}</em> - {{ space.roomId }}
       </p>
 
       <p class="space-detail-card__location">
-        {{ floor }}
+        {{ space.floor }}
       </p>
     </div>
 
     <div class="space-detail-card__meta">
       <space-facilities
-        :facilities="facilities"
+        :facilities="space.facilities"
         class="space-detail-card__facilities"
       />
 
       <ul class="flat-list space-detail-card__seating">
         <li>
-          <svg-icon name="seat-icon" class="space-detail-card__seating-icon" /> {{ seats }}
+          <svg-icon name="seat-icon" class="space-detail-card__seating-icon" /> {{ space.seats }}
         </li>
         <li>
-          <svg-icon name="table-icon" class="space-detail-card__seating-icon" /> {{ tables }}
+          <svg-icon name="table-icon" class="space-detail-card__seating-icon" /> {{ space.tables }}
         </li>
       </ul>
 
-      <div class="space-detail-card__opening-hours">
-        <card-status
-          :isOpen="locationisOpen"
-          class="space-detail-card__status"
-        />
+      <card-status
+        :isOpen="space.locationisOpen"
+        class="space-detail-card__open-status"
+      />
 
-        <button class="button space-detail-card__toggle mobile-only">
-          [{{ $t('openingHours') }} button]
-        </button>
-      </div>
+      <opening-hours
+        :building="space.building"
+        :showToggleOnDesktop="false"
+        class="space-detail-card__opening-hours"
+      />
     </div>
   </div>
 </template>
 
 <script>
 
-import { CardStatus, SpaceFacilities } from '../../components'
+import { CardStatus, OpeningHours, SpaceFacilities } from '../../components'
 
 export default {
-  components: { CardStatus, SpaceFacilities },
+  components: { CardStatus, OpeningHours, SpaceFacilities },
   props: {
-    building: String,
-    facilities: Object,
-    floor: String,
-    imageUrl: String,
-    location: String,
-    locationisOpen: Boolean,
-    seats: Number,
-    tables: Number,
-    title: String
+    space: Object
   }
 }
 </script>
@@ -80,8 +72,10 @@ export default {
   --image-width: 100px;
 
   padding: var(--spacing-default);
+  max-height: 70vh;
   background: var(--background-color);
   box-shadow: var(--shadow-small);
+  overflow: auto;
 }
 
 @media (min-width: 400px) {
@@ -117,7 +111,7 @@ export default {
 @media (min-width: 700px) {
   .space-detail-card__image {
     position: relative;
-    margin: calc(-1 * var(--spacing-default)) calc(-1 * var(--spacing-default)) var(--spacing-half) calc(-1 * var(--spacing-default));
+    margin: var(--spacing-default-negative) var(--spacing-default-negative) var(--spacing-half) var(--spacing-default-negative);
     width: calc(100% + 2 * var(--spacing-default));
     height: 150px;
   }
@@ -175,14 +169,6 @@ export default {
   margin-left: var(--image-width);
 }
 
-@media (min-width: 700px) {
-  .space-detail-card--image .space-detail-card__meta,
-  .space-detail-card__meta {
-    flex-wrap: nowrap;
-    margin-left: 0;
-  }
-}
-
 .space-detail-card__facilities {
   flex: 0 0 100%;
   margin: 0 0 var(--spacing-half) 0;
@@ -191,50 +177,36 @@ export default {
 @media (min-width: 700px) {
   .space-detail-card__facilities {
     flex: 1 1 auto;
-    margin: 0;
   }
 }
 
-.space-detail-card__opening-hours {
-  flex: 0 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-@media (min-width: 700px) {
-  .space-detail-card__opening-hours {
-    order: 1;
-  }
-}
-
-.space-detail-card__status {
+.space-detail-card__open-status {
   font-size: var(--font-size-smaller);
 }
 
 @media (min-width: 700px) {
-  .space-detail-card__status {
+  .space-detail-card__open-status {
     position: absolute;
     top: 1.4rem;
     right: var(--spacing-default);
   }
 
-  .space-detail-card--image .space-detail-card__status {
+  .space-detail-card--image .space-detail-card__open-status {
     top: 165px;
   }
 }
 
-.space-detail-card__status--open {
+.space-detail-card__open-status--open {
   color: var(--brand-secondary-color);
 }
 
-.space-detail-card__status-icon {
+.space-detail-card__open-status-icon {
   width: 11px;
   height: 11px;
   stroke: var(--text-color);
 }
 
-.space-detail-card__status--open .space-detail-card__status-icon {
+.space-detail-card__open-status--open .space-detail-card__open-status-icon {
   stroke: var(--brand-secondary-color);
 }
 
@@ -247,9 +219,7 @@ export default {
 
 @media (min-width: 700px) {
   .space-detail-card__seating {
-    order: 2;
-    flex: 0 0 auto;
-    margin: -1.5rem 0 0 var(--spacing-default);
+    margin-right: 0;
   }
 }
 
@@ -265,9 +235,15 @@ export default {
   height: 15px;
 }
 
-.space-detail-card__toggle {
-  padding: 0;
+.space-detail-card__opening-hours {
+  flex: 0 0 100%;
+  margin-top: -1.2rem;
   font-size: var(--font-size-smaller);
-  text-align: right;
+}
+
+@media (min-width: 700px) {
+  .space-detail-card__opening-hours {
+    margin-top: var(--spacing-half);
+  }
 }
 </style>
