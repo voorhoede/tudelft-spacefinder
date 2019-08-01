@@ -49,12 +49,16 @@
                 "en"
               ],
               "additionalProperties": false
-            }
+            },
+            "totalSeats": { "type": "integer" },
+            "totalSpaces": { "type": "integer" }
           },
           "required": [
             "openingHours",
             "image",
-            "bounds"
+            "bounds",
+            "totalSeats",
+            "totalSpaces"
           ]
         }
       ]

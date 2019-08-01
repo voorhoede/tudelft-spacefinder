@@ -3,19 +3,16 @@ const {
   converge,
   join,
   map,
-  mergeDeepRight,
   objOf,
   pick,
   pipe,
   prop,
-  reduce,
   replace,
   toLower,
-  values,
-  unapply
+  values
 } = require('ramda')
 
-const { toString } = require('./lib/helpers')
+const { meld, toString } = require('./lib/helpers')
 
 const { buildingNumberFromId } = require('./lib/building-meta')
 
@@ -77,8 +74,6 @@ const getBuildingNumber = pipe(
 )
 
 const getRootProperties = pick(spaceRootProperties)
-
-const meld = unapply(reduce(mergeDeepRight, {}))
 
 module.exports = pipe(
   // Create the space object
