@@ -47,7 +47,7 @@
       />
 
       <opening-hours
-        :building="space.building"
+        :openingHours="space.openingHours"
         :showToggleOnDesktop="false"
         class="space-detail-card__opening-hours"
       />
@@ -142,6 +142,7 @@ export default {
 }
 
 .space-detail-card__title {
+  line-height: 1.3;
   font-size: var(--font-size-default);
   font-weight: 500;
 }
@@ -189,7 +190,7 @@ export default {
 @media (min-width: 700px) {
   .space-detail-card__open-status {
     position: absolute;
-    top: 1.4rem;
+    top: var(--spacing-default);
     right: var(--spacing-default);
   }
 
