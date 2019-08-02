@@ -15,8 +15,8 @@
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">
-        <li>50 locations</li>
-        <li>1000 seats</li>
+        <li>{{ building.totalSpaces }} locations</li>
+        <li>{{ building.totalSeats }} seats</li>
       </ul>
 
       <card-status class="building-card__status" />

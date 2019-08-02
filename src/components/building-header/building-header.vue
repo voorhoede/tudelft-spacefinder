@@ -12,11 +12,11 @@
       <ul class="flat-list building-header__seating">
         <li>
           <svg-icon name="seat-icon" class="building-header__seating-icon" />
-          1000
+          {{ building.totalSeats }}
         </li>
         <li>
           <svg-icon name="door-icon" class="building-header__seating-icon" />
-          50
+          {{ building.totalSpaces }}
         </li>
       </ul>
 
