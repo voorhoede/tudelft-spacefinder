@@ -18,7 +18,24 @@
 <script>
 export default {
   props: {
-    isOpen: Boolean
+    openingHours: Array
+  },
+  computed: {
+    isOpen() {
+      let isOpen = false
+
+      this.openingHours[0].time.forEach(time => {
+        const currentTime = new Date()
+        const startTime = new Date(time[0])
+        const endTime = new Date(time[1])
+
+        if(currentTime >= startTime && currentTime <= endTime) {
+          isOpen = true
+        }
+      })
+
+      return isOpen
+    }
   }
 }
 </script>
