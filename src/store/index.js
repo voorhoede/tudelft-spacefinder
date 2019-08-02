@@ -14,6 +14,7 @@ const campusBounds = {
 const getDefaultFilters = () => ({
   adjustableChairs: false,
   bookable: false,
+  buildings: [],
   daylit: false,
   ethernet: false,
   studyType: [],

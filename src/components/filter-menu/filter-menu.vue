@@ -210,7 +210,23 @@
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">{{ $t('buildings') }}</legend>
-          [...]
+          
+          <span 
+            v-for="option in optionsPerFilter.buildings"
+            :key="option"
+          >
+            <input
+              v-model="buildings"
+              :value="option"
+              type="checkbox"
+              :id="`buildings-${option}`"
+              class="a11y-sr-only filter-menu__filter"
+            >
+            <label :for="`buildings-${option}`">
+              <svg-icon :name="`buildings.${option}-icon`" class="filter-menu__filter-icon" />
+              {{ $t(`buildings.${option}`) }}
+            </label>
+          </span>
         </fieldset>
       </div>
 
@@ -250,6 +266,7 @@ import { mapFields } from 'vuex-map-fields'
 import ModalDrawer from '../modal-drawer'
 
 const optionsPerFilter = Object.freeze({
+  buildings: ['3me', 'ae', 'arch', 'as', 'as-south', 'aula', 'ceg', 'dw', 'eemcs', 'fels', 'ide', 'lib', 'pulse', 'tbm'],
   quietness: ['silent', 'quiet', 'noisy'],
   studyType: ['self', 'group']
 })
@@ -263,6 +280,7 @@ export default {
     ...mapFields([
       'filters.adjustableChairs',
       'filters.bookable',
+      'filters.buildings',
       'filters.daylit',
       'filters.ethernet',
       'filters.studyType',
