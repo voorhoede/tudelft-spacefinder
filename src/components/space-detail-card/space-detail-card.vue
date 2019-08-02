@@ -32,10 +32,12 @@
 
       <ul class="flat-list space-detail-card__seating">
         <li>
-          <svg-icon name="seat-icon" class="space-detail-card__seating-icon" /> {{ space.seats }}
+          <svg-icon name="seat-icon" class="space-detail-card__seating-icon" />
+          {{ space.seats }}
         </li>
         <li>
-          <svg-icon name="table-icon" class="space-detail-card__seating-icon" /> {{ space.tables }}
+          <svg-icon name="table-icon" class="space-detail-card__seating-icon" />
+          {{ space.tables }}
         </li>
       </ul>
 
