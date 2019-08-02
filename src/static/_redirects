@@ -1,3 +1,11 @@
+# our default language is English, so redirect to it:
 / /en/ 301
-/en/* /en/ 200
-/nl/* /nl/ 200
+
+# a list of spaces is available on the building page, so redirect to it:
+/en/buildings/:buildingSlug/spaces/ /en/buildings/:buildingSlug 302
+/nl/gebouwen/:buildingSlug/ruimtes/ /en/gebouwen/:buildingSlug 302
+
+# all existing routes are pre-generated, so missing routes are non-existing (404):
+/en/* /en/404/ 404
+/nl/* /nl/404/ 404
+/* /en/404/ 404
