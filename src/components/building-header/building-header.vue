@@ -26,7 +26,7 @@
       />
 
       <opening-hours
-        :building="building"
+        :openingHours="building.openingHours"
         class="building-header__opening-hours"
       />
     </div>

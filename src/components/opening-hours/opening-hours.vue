@@ -24,7 +24,7 @@
 
       <dl class="opening-hours__overview">
         <template
-          v-for="(openingHour, index) in building.openingHours"
+          v-for="(openingHour, index) in openingHours"
         >
           <dt class="opening-hours__day">
             {{ index === 0 ? $t('today') : $t(openingHour.day) }}
@@ -52,7 +52,7 @@ import { mapState } from 'vuex'
 
 export default {
   props: {
-    building: Object,
+    openingHours: Array,
     showToggleOnDesktop: {
       type: Boolean,
       default: true
