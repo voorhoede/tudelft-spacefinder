@@ -24,6 +24,7 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 import { BackButton, SpaceDetailCard } from '~/components'
+import metaHead from '~/lib/meta-head'
 
 export default {
   components: { BackButton, SpaceDetailCard },
@@ -31,9 +32,13 @@ export default {
     ...mapGetters(['getSpaceBySlug']),
     ...mapState(['isMobile']),
     building() { return this.space.building },
-    space() {
-      return this.getSpaceBySlug(this.$route.params.spaceSlug)
-    },
+    space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) }
+  },
+  head() {
+    const { building, space } = this
+    return metaHead({ 
+      title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`
+    })
   },
   mounted() {
     const padding = this.isMobile
