@@ -14,14 +14,12 @@ const {
   pick,
   pipe,
   prop,
-  reduce,
   replace,
-  toLower,
-  unapply
+  toLower
 } = require('ramda')
 
+const { meld, toString } = require('./lib/helpers')
 const translate = require('./lib/translate')
-const { toString } = require('./lib')
 const { buildingNumberFromId } = require('./lib/building-meta')
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 
@@ -95,8 +93,6 @@ const getBuildingNumber = pipe(
 )
 
 const getRootProperties = pick(spaceRootProperties)
-
-const meld = unapply(reduce(mergeDeepRight, {}))
 
 module.exports = map(
   pipe(

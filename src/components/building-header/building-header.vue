@@ -12,33 +12,32 @@
       <ul class="flat-list building-header__seating">
         <li>
           <svg-icon name="seat-icon" class="building-header__seating-icon" />
-          1000
+          {{ building.totalSeats }}
         </li>
         <li>
           <svg-icon name="door-icon" class="building-header__seating-icon" />
-          50
+          {{ building.totalSpaces }}
         </li>
       </ul>
 
-      <div class="building-header__opening-hours">
-        <card-status
-          :isOpen="building.isOpen"
-          class="building-header__status"
-        />
+      <card-status
+        :isOpen="building.isOpen"
+        class="building-header__open-status"
+      />
 
-        <button class="building-header__toggle button">
-          [{{ $t('openingHours') }} button]
-        </button>
-      </div>
+      <opening-hours
+        :openingHours="building.openingHours"
+        class="building-header__opening-hours"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { BuildingImage, CardStatus } from '../../components'
+import { BuildingImage, CardStatus, OpeningHours } from '../../components'
 
 export default {
-  components: { BuildingImage, CardStatus },
+  components: { BuildingImage, CardStatus, OpeningHours },
   props: {
     building: Object
   }
@@ -56,6 +55,7 @@ export default {
 .building-header__meta {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: var(--spacing-default);
 }
 
@@ -70,8 +70,14 @@ export default {
   height: 15px;
 }
 
-.building-header__opening-hours {
+.building-header__open-status {
   font-size: var(--font-size-smaller);
   text-align: right;
+}
+
+.building-header__opening-hours {
+  flex: 0 0 100%;
+  margin-top: -1.2rem;
+  font-size: var(--font-size-smaller);
 }
 </style>
