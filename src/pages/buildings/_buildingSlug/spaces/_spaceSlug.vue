@@ -9,10 +9,9 @@
       "
     />
 
-    <social-share
-      :url="shareUrl"
-      class="space-detail-share-button"
-    />
+    <div class="space-detail__share-button">
+      <social-share :url="shareUrl" />
+    </div>
 
     <space-detail-card
       ref="card"
@@ -62,14 +61,14 @@ export default {
   }
 }
 
-.space-detail-share-button {
+.space-detail__share-button {
     position: fixed;
     top: calc(var(--header-height-mobile) + var(--spacing-default));
     right: var(--spacing-default);
   }
 
 @media (min-width: 700px) {
-  .space-detail-share-button {
+  .space-detail__share-button {
     top: calc(var(--header-height-desktop) + var(--spacing-default));
   }
 }
