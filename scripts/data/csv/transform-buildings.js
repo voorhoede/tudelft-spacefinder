@@ -1,7 +1,6 @@
 const {
   adjust,
   apply,
-  call,
   chain,
   concat,
   converge,
@@ -88,7 +87,7 @@ const getBuildingMeta = pipe(
   ])
 )
 
-const setFirstElement = call(set(lensIndex(0)))
+const setFirstElement = set(lensIndex(0))
 const getTotalSeatsObject = pipe(
   map(propOr(0, 'seats')),
   sum,
