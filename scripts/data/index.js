@@ -2,6 +2,8 @@ require('dotenv').config()
 
 const { writeFile } = require('fs')
 const getDataFromCms = require('./cms')
+const { addOpeningHours } = require('./exchange')
+const validate = require('./validate')
 
 const { CSV_PATH: csvPath } = process.env
 
@@ -23,6 +25,8 @@ const writeFiles = (files = []) => {
 
 Promise.all([ getDataFromCsv(), getDataFromCms() ])
   .then(transform)
+  .then(addOpeningHours)
+  .then(validate)
   .then(({ spaces, buildings }) => writeFiles([
     { name: 'spaces', contents: spaces },
     { name: 'buildings', contents: buildings }

@@ -3,7 +3,7 @@
     v-if="showListView || !isMobile"
     class="default-layout__info building-overview"
   >
-    <h2 class="a11y-sr-only">{{ $t('buildings') }}</h2>
+    <h2 class="a11y-sr-only">{{ title }}</h2>
 
     <building-card
       v-for="building in buildings" :key="building.slug"
@@ -15,12 +15,19 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 import { BuildingCard } from '~/components'
+import metaHead from '~/lib/meta-head'
 
 export default {
   components: { BuildingCard },
   computed: {
     ...mapGetters(['buildings']),
     ...mapState(['showListView', 'isMobile']),
+    title() { return this.$i18n.t('buildings') }
+  },
+  head() {
+    return metaHead({
+      title: this.title
+    })
   },
   mounted() {
     this.$store.commit('clearSelection')
