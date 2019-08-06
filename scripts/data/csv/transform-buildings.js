@@ -1,14 +1,18 @@
 const {
   adjust,
   apply,
+  call,
+  chain,
   concat,
   converge,
   dissoc,
   filter,
   groupBy,
+  head,
   identity,
   isEmpty,
   length,
+  lensIndex,
   lensProp,
   lte,
   map,
@@ -21,16 +25,17 @@ const {
   pick,
   pipe,
   prop,
+  propOr,
   propEq,
   reduce,
+  set,
+  sum,
   values,
   uniqWith
 } = require('ramda')
 
-const { building } = require('../schema')
-const { keepValidValues, validate } = require('./lib')
+const { meld } = require('./lib/helpers')
 const { fromI18n } = require('./lib/building-meta')
-const validator = validate(building)
 
 const buildingProps = [
   'buildingId',
@@ -38,10 +43,13 @@ const buildingProps = [
   'buildingNameEN',
   'buildingAbbreviationNL',
   'buildingAbbreviationEN',
+  'exchangeBuildingId',
   'number',
   'bounds',
   'image',
-  'i18n'
+  'i18n',
+  'totalSeats',
+  'totalSpaces'
 ]
 
 const getBuildingProps = map(pick(buildingProps))
@@ -67,27 +75,43 @@ const getBuildingMeta = pipe(
     over(lensProp('i18n'), map(dissoc('number')))
   ])
 )
+
+const setFirstElement = call(set(lensIndex(0)))
+const getTotalSeatsObject = pipe(
+  map(propOr(0, 'seats')),
+  sum,
+  objOf('totalSeats')
+)
+const getTotalSpacesObject = pipe(
+  length,
+  objOf('totalSpaces')
+)
+const mergeHeadWithSeatsAndSpaces = converge(meld, [
+  getTotalSeatsObject,
+  getTotalSpacesObject,
+  head
+])
+
+const getTotalSeatsAndSpaces = pipe(
+  groupBy(prop('buildingId')),
+  values,
+  chain(converge(setFirstElement, [
+    mergeHeadWithSeatsAndSpaces,
+    identity
+  ]))
+)
+
 // insert an array with:
 //   0. <array> parsed csv
 //   1. <array> content from dato cms
 const getBuildings = pipe(
   adjust(0, pipe(
+    getTotalSeatsAndSpaces,
     getUniqueBuildings,
     map(getBuildingMeta)
   )),
   joinAndFilter,
-  getBuildingProps,
-  map(validator),
-  keepValidValues,
-  // @NOTICE: temporarily add a slug property to a building that is equal to
-  // the building number
-  map(converge(mergeDeepRight, [
-    pipe(
-      prop('number'),
-      objOf('slug')
-    ),
-    identity
-  ]))
+  getBuildingProps
 )
 
 module.exports = getBuildings
