@@ -126,7 +126,7 @@ export default {
 @import '../app-core/variables.css';
 
 .social-share {
-  position: relative;;
+  position: relative;
 }
 
 .social-share__options {

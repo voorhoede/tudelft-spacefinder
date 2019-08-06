@@ -42,7 +42,7 @@
       </ul>
 
       <card-status
-        :isOpen="space.locationisOpen"
+        :openingHours="space.openingHours"
         class="space-detail-card__open-status"
       />
 

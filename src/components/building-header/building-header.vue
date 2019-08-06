@@ -21,7 +21,7 @@
       </ul>
 
       <card-status
-        :isOpen="building.isOpen"
+        :openingHours="building.openingHours"
         class="building-header__open-status"
       />
 
