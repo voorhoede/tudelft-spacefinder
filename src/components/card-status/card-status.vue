@@ -24,13 +24,10 @@ export default {
     isOpen() {
       const indexToday = 0
       const openingHoursToday = this.openingHours[indexToday].time
-      const currentTime = new Date()
+      const now = new Date()
 
-      return openingHoursToday.some(openingHour => {
-        let [startTime, endTime] = openingHour
-        startTime = new Date(startTime)
-        endTime = new Date(endTime)
-        return currentTime >= startTime && currentTime <= endTime
+      return openingHoursToday.some(([startTime, endTime]) => {
+        return now >= new Date(startTime) && now <= new Date(endTime)
       })
     }
   }
