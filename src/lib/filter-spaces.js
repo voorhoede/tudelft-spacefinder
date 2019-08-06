@@ -1,3 +1,5 @@
+import slugifyToLowercase from './slugify'
+
 export default function ({ filters, spaces }) {
   const filterKeys = Object.keys(filters)
   const activeFilterKeys = getActiveFilterKeys(filters, filterKeys)
@@ -6,7 +8,7 @@ export default function ({ filters, spaces }) {
 }
 
 function getActiveFilterKeys(filters, keys) {
-  return keys.filter(key => {
+  return keys.filter((key) => {
     const data = filters[key]
     return Array.isArray(data) ? !!data.length : data
   })
@@ -17,11 +19,17 @@ function filterSpaces(filters, spaces, activeFilterKeys) {
 }
 
 function filterSpace(filters, space, activeFilterKeys) {
-  return activeFilterKeys.every(activeFilterKey => {
+  return activeFilterKeys.every((activeFilterKey) => {
     const facility = space.facilities[activeFilterKey]
 
     if (Array.isArray(filters[activeFilterKey])) {
-      return filters[activeFilterKey].includes(facility)
+      let filterValue = facility
+
+      if (activeFilterKey === 'buildings') {
+        filterValue = slugifyToLowercase(space.building.abbreviation)
+      }
+
+      return filters[activeFilterKey].includes(filterValue)
     }
 
     return facility
