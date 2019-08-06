@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <no-ssr placeholder="...">
     <p
       v-if="isOpen"
       class="card-status card-status--open"
@@ -12,7 +12,7 @@
     >
       {{ $t('closed') }} <svg-icon name="location-closed-icon" class="card-status__icon" />
     </p>
-  </div>
+  </no-ssr>
 </template>
 
 <script>
@@ -22,19 +22,16 @@ export default {
   },
   computed: {
     isOpen() {
-      let isOpen = false
+      const indexToday = 0
+      const openingHoursToday = this.openingHours[indexToday].time
+      const currentTime = new Date()
 
-      this.openingHours[0].time.forEach(time => {
-        const currentTime = new Date()
-        const startTime = new Date(time[0])
-        const endTime = new Date(time[1])
-
-        if(currentTime >= startTime && currentTime <= endTime) {
-          isOpen = true
-        }
+      return openingHoursToday.some(openingHour => {
+        let [startTime, endTime] = openingHour
+        startTime = new Date(startTime)
+        endTime = new Date(endTime)
+        return currentTime >= startTime && currentTime <= endTime
       })
-
-      return isOpen
     }
   }
 }
