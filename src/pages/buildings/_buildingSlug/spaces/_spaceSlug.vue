@@ -10,7 +10,7 @@
     />
 
     <social-share
-      :url="url"
+      :url="shareUrl"
       class="space-detail-share-button"
     />
 
@@ -28,16 +28,13 @@ import metaHead from '~/lib/meta-head'
 
 export default {
   components: { BackButton, SocialShare, SpaceDetailCard },
-  data() {
-    return {
-      url: undefined
-    }
-  },
   computed: {
     ...mapGetters(['getSpaceBySlug']),
     ...mapState(['isMobile']),
+    baseUrl() { return process.env.BASE_URL },
     building() { return this.space.building },
-    space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) }
+    shareUrl() { return `${process.env.BASE_URL}/${this.$route.fullPath}` },
+    space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
   },
   head() {
     const { building, space } = this
@@ -46,8 +43,6 @@ export default {
     })
   },
   mounted() {
-    this.url = window.location.href
-
     const padding = this.isMobile
       ? { bottom: this.$refs.card.$el.clientHeight + 2 * 20 }
       : {}
