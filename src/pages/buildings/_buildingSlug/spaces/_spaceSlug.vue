@@ -9,10 +9,9 @@
       "
     />
 
-    <social-share
-      :url="url"
-      class="space-detail-share-button"
-    />
+    <div class="space-detail__share-button">
+      <social-share :url="shareUrl" />
+    </div>
 
     <space-detail-card
       ref="card"
@@ -24,25 +23,25 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 import { BackButton, SocialShare, SpaceDetailCard } from '~/components'
+import metaHead from '~/lib/meta-head'
 
 export default {
   components: { BackButton, SocialShare, SpaceDetailCard },
-  data() {
-    return {
-      url: undefined
-    }
-  },
   computed: {
     ...mapGetters(['getSpaceBySlug']),
     ...mapState(['isMobile']),
+    baseUrl() { return process.env.BASE_URL },
     building() { return this.space.building },
-    space() {
-      return this.getSpaceBySlug(this.$route.params.spaceSlug)
-    },
+    shareUrl() { return `${process.env.BASE_URL}/${this.$route.fullPath}` },
+    space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
+  },
+  head() {
+    const { building, space } = this
+    return metaHead({ 
+      title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`
+    })
   },
   mounted() {
-    this.url = window.location.href
-
     const padding = this.isMobile
       ? { bottom: this.$refs.card.$el.clientHeight + 2 * 20 }
       : {}
@@ -62,14 +61,14 @@ export default {
   }
 }
 
-.space-detail-share-button {
+.space-detail__share-button {
     position: fixed;
     top: calc(var(--header-height-mobile) + var(--spacing-default));
     right: var(--spacing-default);
   }
 
 @media (min-width: 700px) {
-  .space-detail-share-button {
+  .space-detail__share-button {
     top: calc(var(--header-height-desktop) + var(--spacing-default));
   }
 }

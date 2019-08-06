@@ -19,7 +19,10 @@
         <li>{{ building.totalSeats }} {{ $t('seats') }}</li>
       </ul>
 
-      <card-status class="building-card__status" />
+      <card-status
+        :openingHours="building.openingHours"
+        class="building-card__status"
+      />
     </div>
   </nuxt-link>
 </template>

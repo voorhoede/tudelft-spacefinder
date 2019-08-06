@@ -11,7 +11,7 @@ export default [
     defaultLocale,
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: 'i18n_redirected'
+      cookieKey: 'nf_lang' // https://www.netlify.com/docs/redirects/#geoip-and-language-based-redirects
     },
     lazy: true,
     langDir: 'static/data/',
