@@ -2,7 +2,7 @@
   <DynamicScroller
     v-if="spaces.length > 0"
     :items="spaces"
-    key-field="slug"
+    key-field="roomId"
     :min-item-size="114"
     class="space-list"
   >
@@ -13,7 +13,7 @@
         :size-dependencies="[
           item.name,
           item.building.name,
-          item.roomId
+          item.slug
         ]"
         :data-index="index"
         class="space-list__item"

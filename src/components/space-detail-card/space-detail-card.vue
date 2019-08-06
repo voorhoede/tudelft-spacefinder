@@ -43,6 +43,7 @@
 
       <card-status
         :openingHours="space.openingHours"
+        :isOpen="space.locationIsOpen"
         class="space-detail-card__open-status"
       />
 

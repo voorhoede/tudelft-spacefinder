@@ -210,11 +210,14 @@ export const getters = {
     }
   },
   spaces: (state, getters) => {
-    const noBuilding = {} // spaces must have a building, but until they do, this prevents the app from crashing
+    const { locale } = state.i18n
     return state.spacesI18n.map((spaceI18n) => {
-      const building = getters.getBuildingByNumber(spaceI18n.buildingNumber) || noBuilding
+      const { i18n, ...props } = spaceI18n
+      const localizedProps = i18n[locale]
+      const building = getters.getBuildingByNumber(spaceI18n.buildingNumber)
       return {
-        ...spaceI18n,
+        ...localizedProps,
+        ...props,
         building
       }
     })

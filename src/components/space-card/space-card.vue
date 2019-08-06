@@ -43,6 +43,7 @@
     <div class="space-card__meta">
       <card-status
         :openingHours="space.openingHours"
+        :isOpen="locationIsOpen"
         class="space-card__status"
       />
 
@@ -64,8 +65,9 @@ import { CardStatus, SpaceFacilities } from '../../components'
 export default {
   components: { CardStatus, SpaceFacilities },
   props: {
+    locationIsOpen: Boolean,
     space: Object
-  },
+  }
 }
 </script>
 
