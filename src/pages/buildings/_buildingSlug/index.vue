@@ -4,12 +4,10 @@
       :useHistory="false"
       :to="localePath({ name: 'buildings' })"
     />
-
     <building-header
       class="building-layout__header"
       :building="building"
     />
-
     <space-list
       class="building-layout__spaces"
       :spaces="spaces"
@@ -20,6 +18,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { BackButton, BuildingHeader, SpaceList } from '~/components'
+import metaHead from '~/lib/meta-head'
 
 export default {
   components: { BackButton, BuildingHeader, SpaceList },
@@ -31,15 +30,16 @@ export default {
     spaces() {
       return this.filteredSpaces
         .filter((space) => space.building === this.building)
-    },
-    title() {
-      return `${this.$i18n.t('building')}: ${this.building.name}`
     }
   },
   head() {
-    return {
-      title: this.title
-    }
+    const { building } = this
+    return metaHead({
+      title: `${building.name} (${building.abbreviation})`,
+      image: {
+        url: building.image.url
+      }
+    })
   },
   mounted() {
     this.$store.commit('selectBuilding', this.building)
