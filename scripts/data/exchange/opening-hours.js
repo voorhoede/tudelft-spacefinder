@@ -1,5 +1,6 @@
 const { extendMoment } = require('moment-range')
-const moment = extendMoment(require('moment'))
+const moment = extendMoment(require('moment-timezone'))
+moment.tz.setDefault('Europe/Amsterdam')
 
 /*
   Iterate through a list of calendar entries, filtering by Free or Busy
