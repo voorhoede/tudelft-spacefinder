@@ -49,13 +49,14 @@
     "dictionary": {
       "type": "object",
       "properties": {
-        "spaceName": { "type": "string" },
+        "name": { "type": "string" },
         "slug": { "type": "string" }
       },
       "required": [
-        "spaceName",
+        "name",
         "slug"
-      ]
+      ],
+      "additionalProperties": false
     },
     "facilities": {
       "type": "object",

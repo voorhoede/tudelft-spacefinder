@@ -24,7 +24,7 @@ const { buildingNumberFromId } = require('./lib/building-meta')
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 
 const translationMap = {
-  spaceName: {
+  name: {
     nl: 'spaceNameNL',
     en: 'spaceNameEN'
   }
@@ -74,7 +74,7 @@ const getSlug = pipe(
   apply((id, space) => {
     return over(lensProp('i18n'), map(pipe(
       converge(mergeDeepRight, [ identity, pipe(
-        juxt([ always(id), prop('spaceName') ]),
+        juxt([ always(id), prop('name') ]),
         createSlugObject
       )])
     )), space)
