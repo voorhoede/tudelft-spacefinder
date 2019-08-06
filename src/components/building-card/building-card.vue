@@ -15,8 +15,8 @@
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">
-        <li>50 locations</li>
-        <li>1000 seats</li>
+        <li>{{ building.totalSpaces }} locations</li>
+        <li>{{ building.totalSeats }} seats</li>
       </ul>
 
       <card-status class="building-card__status" />
@@ -39,7 +39,7 @@ export default {
 @import '../app-core/variables.css';
 
 .building-card__image {
-  margin: calc(-1 * var(--spacing-half)) calc(-1 * var(--spacing-half)) var(--spacing-half) calc(-1 * var(--spacing-half));
+  margin: var(--spacing-half-negative) var(--spacing-half-negative) var(--spacing-half) var(--spacing-half-negative);
 }
 
 .building-card__meta {

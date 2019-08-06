@@ -18,16 +18,7 @@
         :data-index="index"
         class="space-list__item"
       >
-          <space-card
-            :buildingSlug="item.building.slug"
-            :spaceSlug="item.slug"
-            :facilities="item.facilities"
-            :building="item.building.abbreviation"
-            :location="item.roomId"
-            :title="item.name"
-            :seats="item.seats"
-            :tables="item.tables"
-          />
+        <space-card :space="item" />
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>

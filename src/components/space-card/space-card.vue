@@ -3,24 +3,24 @@
     :to="
       localePath({
         name: 'buildings-buildingSlug-spaces-spaceSlug',
-        params: { buildingSlug: buildingSlug, spaceSlug: spaceSlug }
+        params: { buildingSlug: space.building.slug, spaceSlug: space.slug }
       })
     "
     class="space-card card"
   >
     <div class="space-card__info">
       <div class="space-card__location">
-        <h3 v-if="title">
-          {{ title }}
+        <h3 v-if="space.name">
+          {{ space.name }}
         </h3>
         <p
-          v-if="title"
+          v-if="space.name"
           class="space-card__description"
         >
-          <em>{{ building }}</em> - {{ location}}
+          <em>{{ space.building.abbreviation }}</em> - {{ space.roomId }}
         </p>
         <h3 v-else>
-          <em>{{ building }}</em> - {{ location}}
+          <em>{{ space.building.abbreviation }}</em> - {{ space.roomId }}
         </h3>
       </div>
 
@@ -31,11 +31,11 @@
       <ul class="flat-list space-card__seating">
         <li>
           <svg-icon name="seat-icon" class="space-card__seating-icon" />
-          {{ seats }}
+          {{ space.seats }}
         </li>
         <li>
           <svg-icon name="table-icon" class="space-card__seating-icon" />
-          {{ tables }}
+          {{ space.tables }}
         </li>
       </ul>
     </div>
@@ -51,7 +51,7 @@
       </h4>
 
       <space-facilities
-        :facilities="facilities"
+        :facilities="space.facilities"
         class="space-card__facilities"
       />
     </div>
@@ -64,15 +64,8 @@ import { CardStatus, SpaceFacilities } from '../../components'
 export default {
   components: { CardStatus, SpaceFacilities },
   props: {
-    buildingSlug: String,
     locationisOpen: Boolean,
-    facilities: Object,
-    building: String,
-    location: String,
-    spaceSlug: String,
-    title: String,
-    seats: Number,
-    tables: Number,
+    space: Object
   },
 }
 </script>

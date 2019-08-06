@@ -15,7 +15,8 @@
     "precommit": "npm run lint",
     "proxy": "ngrok http 3463",
     "start": "http-server './dist/client/' -c-1 -o -p 3464",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-beta.16",
@@ -23,9 +24,13 @@
     "ajv": "^6.10.1",
     "csv": "^5.1.1",
     "deep-freeze": "0.0.1",
+    "fast-xml-parser": "^3.12.19",
     "got": "^9.6.0",
+    "httpntlm": "^1.7.6",
     "lodash.debounce": "^4.0.8",
     "mapbox-gl": "^1.1.0",
+    "moment": "^2.24.0",
+    "moment-range": "^4.0.2",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^5.12.7",
@@ -62,6 +67,7 @@
     "postcss-import": "^12.0.1",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
+    "sinon": "^7.3.2",
     "vue-jest": "^3.0.3"
   },
   "optionalDependencies": {

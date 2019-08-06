@@ -1,22 +1,24 @@
 const {
   applySpec,
+  converge,
   curry,
   filter,
   identity,
   ifElse,
-  invoker,
   isNil,
   map,
+  mergeDeepRight,
   not,
+  objOf,
   pipe,
   prop,
   tap
 } = require('ramda')
 
+const validators = require('./schema')
 const hasValidationErrors = pipe(prop('errors'), isNil, not)
 
 const logErrors = tap(({ value, errors }) => {
-  // console.log(value, errors)
   const { slug, buildingId } = value
   const name = slug || buildingId || 'unknown'
   const errorText = [`${name} did not pass json schema validation:`]
@@ -63,11 +65,18 @@ const keepValidValues = pipe(
   map(prop('value'))
 )
 
-const toString = invoker(0, 'toString')
+const validateProperty = curry((propertyName, validator, data) => {
+  return pipe(
+    prop(propertyName),
+    map(validate(validator)),
+    objOf(propertyName)
+  )(data)
+})
 
-module.exports = {
-  hasValidationErrors,
-  keepValidValues,
-  toString,
-  validate
-}
+module.exports = pipe(
+  converge(mergeDeepRight, [
+    validateProperty('buildings', validators.building),
+    validateProperty('spaces', validators.space)
+  ]),
+  map(keepValidValues)
+)
