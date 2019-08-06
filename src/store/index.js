@@ -109,7 +109,7 @@ export const actions = {
       })
   },
 
-  mountMap({ commit }, { container }) {
+  mountMap({ commit, getters, dispatch }, { container }) {
     loadMapboxgl().then((mapboxgl) => {
       const map = new mapboxgl.Map({
         container,
@@ -120,7 +120,18 @@ export const actions = {
         zoom: 13,
         style: 'mapbox://styles/mapbox/streets-v10'
       })
-      map.on('load', () => commit('setMapLoaded', { map }))
+      map.on('load', () => {
+        commit('setMapLoaded', { map })
+
+        getters.filteredSpaces.forEach((marker) => {
+          const el = document.createElement('div')
+          el.className = 'marker'
+
+          new mapboxgl.Marker(el)
+            .setLngLat([marker.longitude, marker.latitude])
+            .addTo(map)
+        })
+      })
     })
   },
 

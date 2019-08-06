@@ -95,4 +95,12 @@ export default {
     right: var(--spacing-default);
   }
 }
+
+.mapbox-map .marker {
+  background-image: url('~assets/icons/map-marker.svg');
+  background-size: 27px 36px;
+  width: 27px;
+  height: 36px;
+  cursor: pointer;
+}
 </style>
