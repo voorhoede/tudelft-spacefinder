@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <no-ssr placeholder="...">
     <p
       v-if="isOpen"
       class="card-status card-status--open"
@@ -12,13 +12,24 @@
     >
       {{ $t('closed') }} <svg-icon name="location-closed-icon" class="card-status__icon" />
     </p>
-  </div>
+  </no-ssr>
 </template>
 
 <script>
 export default {
   props: {
-    isOpen: Boolean
+    openingHours: Array
+  },
+  computed: {
+    isOpen() {
+      const indexToday = 0
+      const openingHoursToday = this.openingHours[indexToday].time
+      const now = new Date()
+
+      return openingHoursToday.some(([startTime, endTime]) => {
+        return now >= new Date(startTime) && now <= new Date(endTime)
+      })
+    }
   }
 }
 </script>
