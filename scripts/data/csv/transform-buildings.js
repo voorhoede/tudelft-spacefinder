@@ -20,7 +20,6 @@ const {
   not,
   objOf,
   over,
-  path,
   pick,
   pipe,
   prop,
@@ -35,7 +34,7 @@ const {
 
 const translate = require('./lib/translate')
 const { meld } = require('./lib/helpers')
-const { fromI18n } = require('./lib/building-meta')
+const { fromI18n, buildingNumberFromId } = require('./lib/building-meta')
 
 const translationMap = {
   name: {
@@ -76,16 +75,19 @@ const joinAndFilter = pipe(
   filter(pipe(isEmpty, not))
 )
 
-const getBuildingMeta = pipe(
-  over(lensProp('i18n'), map(fromI18n)),
-  converge(mergeDeepRight, [
-    pipe(
-      path(['i18n', 'en', 'number']),
-      objOf('number')
-    ),
-    over(lensProp('i18n'), map(dissoc('number')))
-  ])
-)
+const getBuildingId = converge(mergeDeepRight, [
+  identity,
+  pipe(
+    prop('buildingId'),
+    buildingNumberFromId,
+    objOf('number')
+  )
+])
+
+const getBuildingMeta = over(lensProp('i18n'), map(pipe(
+  fromI18n,
+  dissoc('number')
+)))
 
 const setFirstElement = set(lensIndex(0))
 const getTotalSeatsObject = pipe(
@@ -121,6 +123,7 @@ const getBuildings = pipe(
     getUniqueBuildings,
     map(pipe(
       translate(translationMap),
+      getBuildingId,
       getBuildingMeta
     ))
   )),
