@@ -1,6 +1,7 @@
 .env
 .envrc
 node_modules/
+coverage/
 
 # Nuxt related
 .nuxt
