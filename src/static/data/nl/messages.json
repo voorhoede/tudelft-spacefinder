@@ -6,6 +6,7 @@
   "bookable": "reserveerbaar",
   "building": "gebouw",
   "buildings": "Gebouwen",
+  "claimedByGroup": "claimedByGroup",
   "clearFilters": "wis filters",
   "close": "sluit",
   "closed": "gesloten",
