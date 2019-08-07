@@ -59,7 +59,7 @@
             v-for="(locale, index) in $i18n.locales"
             :key="index"
             v-if="locale.code !== $i18n.locale"
-            :to="switchLocalePath(locale.code)"
+            :to="localePath('index', locale.code)"
             @click.native="$emit('close')"
             :hreflang="locale.code"
             class="app-menu__link"
