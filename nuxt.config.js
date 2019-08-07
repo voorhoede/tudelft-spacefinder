@@ -17,6 +17,7 @@ export default {
   plugins: [
     '~/plugins/install-prompt.client',
     '~/plugins/load-data',
+    '~/plugins/locale-path-trailing-slash',
     '~/plugins/persist-state.client',
     '~/plugins/virtual-scroller'
   ],

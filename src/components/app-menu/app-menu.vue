@@ -8,7 +8,7 @@
       <ul class="flat-list">
         <li class="app-menu__item">
           <nuxt-link
-            :to="`/${$i18n.locale}`"
+            :to="localePath('index')"
             @click.native="$emit('close')"
             class="app-menu__link"
           >
@@ -34,7 +34,7 @@
         </li>
         <li class="mobile-only app-menu__item">
           <nuxt-link
-            :to="`/${$i18n.locale}`"
+            :to="localePath('index')"
             @click.native="toggleListView"
             class="app-menu__link"
           >
@@ -59,7 +59,7 @@
             v-for="(locale, index) in $i18n.locales"
             :key="index"
             v-if="locale.code !== $i18n.locale"
-            :to="`/${locale.code}`"
+            :to="switchLocalePath(locale.code)"
             @click.native="$emit('close')"
             :hreflang="locale.code"
             class="app-menu__link"
