@@ -56,7 +56,7 @@ function cast(value, context) {
     case 'tables':
     case 'otherSeats':
     case 'individualStudySeats':
-      return parseInt(value, 10)
+      return parseInt(value, 10) || 0
     // convert floats: latitude & longitude
     case 'latitude':
     case 'longitude':
