@@ -25,9 +25,6 @@
         {
           "type":"object",
           "properties": {
-            "openingHours": {
-              "$ref": "base.json#/definitions/openingHours"
-            },
             "image": {
               "$ref": "#/definitions/image"
             },
@@ -54,7 +51,6 @@
             "totalSpaces": { "type": "integer" }
           },
           "required": [
-            "openingHours",
             "image",
             "bounds",
             "totalSeats",

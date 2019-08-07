@@ -81,7 +81,8 @@ const validateProperty = curry((propertyName, validator, data) => {
 module.exports = pipe(
   converge(mergeDeepRight, [
     validateProperty('buildings', validators.building),
-    validateProperty('spaces', validators.space)
+    validateProperty('spaces', validators.space),
+    validateProperty('openingHours', validators.openingHours),
   ]),
   map(keepValidValues)
 )
