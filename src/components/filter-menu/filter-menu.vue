@@ -209,7 +209,7 @@
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
-          <legend class="h3">{{ $t('buildings') }}</legend>
+          <legend class="h3">{{ $t('buildingTitle') }}</legend>
           
           <span 
             v-for="option in optionsPerFilter.buildings"
@@ -266,7 +266,7 @@ import { mapFields } from 'vuex-map-fields'
 import ModalDrawer from '../modal-drawer'
 
 const optionsPerFilter = Object.freeze({
-  buildings: ['3me', 'ae', 'arch', 'as', 'as-south', 'aula', 'ceg', 'dw', 'eemcs-28', 'eemcs-36', 'fels', 'ide', 'lib', 'pulse', 'tbm'],
+  buildings: ['8', '20', '21', '22', '23', '28', '31', '32', '33', '34', '35', '36', '58', '62', '66'],
   quietness: ['silent', 'quiet', 'noisy'],
   studyType: ['self', 'group']
 })

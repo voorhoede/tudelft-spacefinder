@@ -1,5 +1,3 @@
-import slugifyToLowercase from './slugify'
-
 export default function ({ filters, spaces }) {
   const filterKeys = Object.keys(filters)
   const activeFilterKeys = getActiveFilterKeys(filters, filterKeys)
@@ -26,10 +24,9 @@ function filterSpace(filters, space, activeFilterKeys) {
       let filterValue = facility
 
       if (activeFilterKey === 'buildings') {
-        filterValue = slugifyToLowercase(space.building.abbreviation)
+        filterValue = space.buildingNumber
       }
-
-      return filters[activeFilterKey].includes(filterValue)
+      return filters[activeFilterKey].includes(String(filterValue))
     }
 
     return facility

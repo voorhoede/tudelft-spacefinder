@@ -28,7 +28,7 @@
             <svg-icon name="building-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
-              {{ $t('buildings') }}
+              {{ $t('buildingTitle') }}
             </span>
           </nuxt-link>
         </li>
