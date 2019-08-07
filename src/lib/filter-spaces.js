@@ -33,11 +33,17 @@ function spaceIsOpen(now, openingHours) {
 
 function filterSpace(filters, space, activeFilterKeys) {
   const now = new Date()
+
   return activeFilterKeys.every((activeFilterKey) => {
     const facility = space.facilities[activeFilterKey]
 
     if (Array.isArray(filters[activeFilterKey])) {
-      return filters[activeFilterKey].includes(facility)
+      let filterValue = facility
+
+      if (activeFilterKey === 'buildings') {
+        filterValue = space.buildingNumber
+      }
+      return filters[activeFilterKey].includes(filterValue)
     }
 
     if (activeFilterKey === 'showOpenLocations') {
