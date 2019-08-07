@@ -18,7 +18,7 @@ export default function ({ title, description, image }) {
       { hid: 'og:title', name: 'og:title', content: title },
       description && { hid: 'description', name: 'description', content: description },
       description && { hid: 'og:description', name: 'og:description', content: description },
-      image && { hid: 'og:image', name: 'og:image', content: `${image.url}?auto=format&fm=jpg&auto=quality` },
+      image && { hid: 'og:image', name: 'og:image', content: image.url },
       image && { hid: 'og:image:width', name: 'og:image:width', content: image.width },
       image && { hid: 'og:image:height', name: 'og:image:height', content: image.height }
     ].filter(Boolean)
