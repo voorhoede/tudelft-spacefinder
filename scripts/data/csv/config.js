@@ -16,8 +16,8 @@ module.exports = {
     'realEstateNumber',
     'roomNumber',
     'roomId',
-    'spaceName',
-    null,
+    'spaceNameNL',
+    'spaceNameEN',
     null,
     'exchangeBuildingId',
     'exchangeRoomId',
@@ -43,8 +43,7 @@ module.exports = {
     'presentationScreen',
     'nearCoffeeMachine',
     'nearPrinter',
-    'nearBathroom',
-    'claimedByGroup'
+    'nearBathroom'
   ]
 }
 
@@ -69,7 +68,6 @@ function cast(value, context) {
     case 'whiteBoard':
     case 'smartBoard':
     case 'presentationScreen':
-    case 'claimedByGroup':
     case 'stationaryPC':
       return maybeDutchBoolean(value)
     case 'nearCoffeeMachine':

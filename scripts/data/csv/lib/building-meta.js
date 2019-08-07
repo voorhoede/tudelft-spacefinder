@@ -3,6 +3,7 @@ const {
   anyPass,
   always,
   converge,
+  dissoc,
   equals,
   head,
   identity,
@@ -87,7 +88,8 @@ const fromI18n = ifElse(
   pipe(
     pick(['abbreviation', 'name']),
     getBuildingNameAndNumber,
-    getBuildingSlug
+    getBuildingSlug,
+    dissoc('number')
   ),
   always({})
 )

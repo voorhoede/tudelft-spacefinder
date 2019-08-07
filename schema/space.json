@@ -7,16 +7,6 @@
     "space": {
       "type":"object",
       "properties": {
-        "slug": { "type": "string" },
-        "name": { "type": "string" },
-        "exchangeBuildingId": {
-          "type": "string",
-          "description": "Used to map a building to a calendar in exchange"
-        },
-        "exchangeRoomId": {
-          "type": "string",
-          "description": "Used to map a room to a calendar in exchange"
-        },
         "buildingNumber": { "type":"integer" },
         "roomId": { "type": "string" },
         "floor": { "type": "string" },
@@ -47,21 +37,26 @@
       "required": [
         "facilities",
         "floor",
+        "i18n",
         "latitude",
         "longitude",
-        "name",
         "openingHours",
         "roomId",
         "seats",
-        "slug",
         "tables"
       ]
     },
     "dictionary": {
       "type": "object",
       "properties": {
-        "floor": { "type": "string" }
-      }
+        "name": { "type": "string" },
+        "slug": { "type": "string" }
+      },
+      "required": [
+        "name",
+        "slug"
+      ],
+      "additionalProperties": false
     },
     "facilities": {
       "type": "object",
@@ -85,8 +80,7 @@
         "presentationScreen": { "type": "boolean" },
         "nearCoffeeMachine": { "type": "boolean" },
         "nearPrinter": { "type": "boolean" },
-        "nearBathroom": { "type": "boolean" },
-        "claimedByGroup": { "type": "boolean" }
+        "nearBathroom": { "type": "boolean" }
       },
       "additionalProperties": false,
       "required":[
@@ -103,8 +97,7 @@
         "presentationScreen",
         "nearCoffeeMachine",
         "nearPrinter",
-        "nearBathroom",
-        "claimedByGroup"
+        "nearBathroom"
       ]
     }
   }

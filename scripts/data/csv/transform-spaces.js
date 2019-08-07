@@ -1,30 +1,34 @@
 const slugify = require('slugify')
 const {
+  always,
+  apply,
   converge,
+  identity,
   join,
+  juxt,
+  lensProp,
   map,
+  mergeDeepRight,
   objOf,
+  over,
   pick,
   pipe,
   prop,
   replace,
-  toLower,
-  values
+  toLower
 } = require('ramda')
 
 const { meld, toString } = require('./lib/helpers')
-
+const translate = require('./lib/translate')
 const { buildingNumberFromId } = require('./lib/building-meta')
-
 const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 
-const getSlug = pipe(
-  pick(['spaceId', 'spaceName']),
-  values,
-  map(stringSlugify),
-  join('--'),
-  objOf('slug')
-)
+const translationMap = {
+  name: {
+    nl: 'spaceNameNL',
+    en: 'spaceNameEN'
+  }
+}
 
 const facilities = [
   'adjustableChairs',
@@ -41,8 +45,7 @@ const facilities = [
   'presentationScreen',
   'nearCoffeeMachine',
   'nearPrinter',
-  'nearBathroom',
-  'claimedByGroup'
+  'nearBathroom'
 ]
 
 const spaceRootProperties = [
@@ -57,14 +60,30 @@ const spaceRootProperties = [
   'roomId'
 ]
 
+const createSlugObject = pipe(
+  map(stringSlugify),
+  join('--'),
+  objOf('slug')
+)
+
+/*
+  This function expects the i18n object to be present on spaceData passed in
+*/
+const getSlug = pipe(
+  juxt([ prop('spaceId'), identity ]),
+  apply((id, space) => {
+    return over(lensProp('i18n'), map(pipe(
+      converge(mergeDeepRight, [ identity, pipe(
+        juxt([ always(id), prop('name') ]),
+        createSlugObject
+      )])
+    )), space)
+  })
+)
+
 const getFacilities = pipe(
   pick(facilities),
   objOf('facilities')
-)
-
-const getSpaceName = pipe(
-  prop('spaceName'),
-  objOf('name')
 )
 
 const getBuildingNumber = pipe(
@@ -75,13 +94,15 @@ const getBuildingNumber = pipe(
 
 const getRootProperties = pick(spaceRootProperties)
 
-module.exports = pipe(
-  // Create the space object
-  map(converge(meld, [
-    getRootProperties,
-    getFacilities,
-    getSpaceName,
-    getBuildingNumber,
-    getSlug
-  ]))
+module.exports = map(
+  pipe(
+    translate(translationMap),
+    getSlug,
+    // Create the space object
+    converge(meld, [
+      getRootProperties,
+      getFacilities,
+      getBuildingNumber
+    ])
+  )
 )

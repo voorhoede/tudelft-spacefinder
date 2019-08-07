@@ -27,7 +27,7 @@ const getBuildings = () => got('https://graphql.datocms.com/', {
 
 module.exports = () => {
   if (mockDataEnabled) {
-    console.log('Serving mock data from mock/cms/data.json')
+    console.info('Serving mock data from mock/cms/data.json')
     const mockData = require('../../../mock/cms/data.json')
     return Promise.resolve(mockData)
   }
