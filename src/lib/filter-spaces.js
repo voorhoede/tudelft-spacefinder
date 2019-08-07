@@ -36,12 +36,11 @@ function filterSpace(filters, space, activeFilterKeys) {
 
   return activeFilterKeys.every((activeFilterKey) => {
     const facility = space.facilities[activeFilterKey]
-
     if (Array.isArray(filters[activeFilterKey])) {
       let filterValue = facility
 
       if (activeFilterKey === 'buildings') {
-        filterValue = space.buildingNumber
+        filterValue = space.building.number
       }
       return filters[activeFilterKey].includes(filterValue)
     }
