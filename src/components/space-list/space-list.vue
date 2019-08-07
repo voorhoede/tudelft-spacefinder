@@ -2,7 +2,7 @@
   <DynamicScroller
     v-if="spaces.length > 0"
     :items="spaces"
-    key-field="roomId"
+    key-field="slug"
     :min-item-size="114"
     class="space-list"
   >
