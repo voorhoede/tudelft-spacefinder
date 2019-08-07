@@ -266,7 +266,7 @@ import { mapFields } from 'vuex-map-fields'
 import ModalDrawer from '../modal-drawer'
 
 const optionsPerFilter = Object.freeze({
-  buildings: ['8', '20', '21', '22', '23', '28', '31', '32', '33', '34', '35', '36', '58', '62', '66'],
+  buildings: [8, 20, 21, 22, 23, 28, 31, 32, 33, 34, 35, 36, 58, 62, 66],
   quietness: ['silent', 'quiet', 'noisy'],
   studyType: ['self', 'group']
 })

@@ -26,7 +26,7 @@ function filterSpace(filters, space, activeFilterKeys) {
       if (activeFilterKey === 'buildings') {
         filterValue = space.buildingNumber
       }
-      return filters[activeFilterKey].includes(String(filterValue))
+      return filters[activeFilterKey].includes(filterValue)
     }
 
     return facility
