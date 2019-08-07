@@ -4,7 +4,6 @@ const {
   chain,
   concat,
   converge,
-  dissoc,
   filter,
   groupBy,
   head,
@@ -84,10 +83,7 @@ const getBuildingId = converge(mergeDeepRight, [
   )
 ])
 
-const getBuildingMeta = over(lensProp('i18n'), map(pipe(
-  fromI18n,
-  dissoc('number')
-)))
+const getBuildingMeta = over(lensProp('i18n'), map(fromI18n))
 
 const setFirstElement = set(lensIndex(0))
 const getTotalSeatsObject = pipe(
