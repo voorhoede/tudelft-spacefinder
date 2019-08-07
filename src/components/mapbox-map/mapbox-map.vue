@@ -14,15 +14,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import ZoomControls from '../zoom-controls'
 
 export default {
   components: { ZoomControls },
-  computed: mapState(['mapLoaded']),
+  computed: {
+    ...mapState(['mapLoaded']),
+    ...mapGetters(['filteredSpaces']),
+  },
   mounted() {
     this.$store.dispatch('mountMap', { container: this.$refs.map })
       .then((map) => this.fixInsecureLinks())
+  },
+  watch: {
+    filteredSpaces(newValue, oldValue) {
+      this.$store.dispatch('updateMarkers')
+    }
   },
   methods: {
     autoFocus() {
@@ -94,13 +102,5 @@ export default {
     bottom: var(--spacing-default);
     right: var(--spacing-default);
   }
-}
-
-.mapbox-map .marker {
-  background-image: url('~assets/icons/map-marker.svg');
-  background-size: 27px 36px;
-  width: 27px;
-  height: 36px;
-  cursor: pointer;
 }
 </style>

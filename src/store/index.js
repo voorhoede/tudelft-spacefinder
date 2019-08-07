@@ -109,7 +109,7 @@ export const actions = {
       })
   },
 
-  mountMap({ commit, getters, dispatch }, { container }) {
+  mountMap({ commit, state, getters, dispatch }, { container }) {
     loadMapboxgl().then((mapboxgl) => {
       const map = new mapboxgl.Map({
         container,
@@ -121,18 +121,53 @@ export const actions = {
         style: 'mapbox://styles/mapbox/streets-v10'
       })
       map.on('load', () => {
-        commit('setMapLoaded', { map })
-
-        getters.filteredSpaces.forEach((marker) => {
-          const el = document.createElement('div')
-          el.className = 'marker'
-
-          new mapboxgl.Marker(el)
-            .setLngLat([marker.longitude, marker.latitude])
-            .addTo(map)
+        const mapMarker = require('~/assets/icons/map-marker.png')
+        map.loadImage(mapMarker, (error, image) => {
+          if (error) throw error
+          map.addImage('marker-icon', image)
+          map.addLayer({
+            id: 'points',
+            type: 'symbol',
+            source: {
+              type: 'geojson',
+              data: getters.geoJsonSpaces
+            },
+            layout: {
+              'icon-image': 'marker-icon',
+              'icon-allow-overlap': true
+            }
+          })
+          commit('setMapLoaded', { map })
         })
       })
     })
+  },
+
+  async updateMarkers({ dispatch, state, getters }) {
+    const map = await dispatch('getMap')
+
+    const filters = [
+      ...(state.filters.adjustableChairs ? [['==', 'adjustableChairs', state.filters.adjustableChairs]] : []),
+      ...(state.filters.bookable ? [['==', 'bookable', state.filters.bookable]] : []),
+      ...(state.filters.daylit ? [['==', 'daylit', state.filters.daylit]] : []),
+      ...(state.filters.ethernet ? [['==', 'ethernet', state.filters.ethernet]] : []),
+      ...(state.filters.nearBathroom ? [['==', 'nearBathroom', state.filters.nearBathroom]] : []),
+      ...(state.filters.nearCoffeeMachine ? [['==', 'nearCoffeeMachine', state.filters.nearCoffeeMachine]] : []),
+      ...(state.filters.nearPrinter ? [['==', 'nearPrinter', state.filters.nearPrinter]] : []),
+      ...(state.filters.powerOutlets ? [['==', 'powerOutlets', state.filters.powerOutlets]] : []),
+      ...(state.filters.presentationScreen ? [['==', 'presentationScreen', state.filters.presentationScreen]] : []),
+      ...(state.filters.showNearbyLocations ? [['==', 'showNearbyLocations', state.filters.showNearbyLocations]] : []),
+      ...(state.filters.showOpenLocations ? [['==', 'showOpenLocations', state.filters.showOpenLocations]] : []),
+      ...(state.filters.smartBoard ? [['==', 'smartBoard', state.filters.smartBoard]] : []),
+      ...(state.filters.stationaryPC ? [['==', 'stationaryPC', state.filters.stationaryPC]] : []),
+      ...(state.filters.whiteBoard ? [['==', 'whiteBoard', state.filters.whiteBoard]] : [])
+    ]
+
+    if (filters.length) {
+      map.setFilter('points', ['all', ...filters])
+    } else {
+      map.setFilter('points')
+    }
   },
 
   zoomAuto({ dispatch, state }) {
@@ -229,5 +264,38 @@ export const getters = {
         building
       }
     })
+  },
+  geoJsonSpaces: (state, getters) => {
+    const spaces = getters.spaces.map((space) => {
+      return {
+        type: 'Feature',
+        properties: {
+          icon: 'theatre',
+          adjustableChairs: space.facilities.adjustableChairs,
+          bookable: space.facilities.bookable,
+          daylit: space.facilities.daylit,
+          ethernet: space.facilities.ethernet,
+          nearBathroom: space.facilities.nearBathroom,
+          nearCoffeeMachine: space.facilities.nearCoffeeMachine,
+          nearPrinter: space.facilities.nearPrinter,
+          powerOutlets: space.facilities.powerOutlets,
+          presentationScreen: space.facilities.presentationScreen,
+          showNearbyLocations: space.facilities.showNearbyLocations,
+          showOpenLocations: space.facilities.showOpenLocations,
+          smartBoard: space.facilities.smartBoard,
+          stationaryPC: space.facilities.stationaryPC,
+          whiteBoard: space.facilities.whiteBoard
+        },
+        geometry: {
+          type: 'Point',
+          coordinates: [space.longitude, space.latitude]
+        }
+      }
+    })
+
+    return {
+      type: 'FeatureCollection',
+      features: spaces
+    }
   }
 }
