@@ -17,7 +17,7 @@ export default function ({ space }) {
     `url-${invisibleMarkerUrl}(${bounds.west},${bounds.north}),`,
     `url-${invisibleMarkerUrl}(${bounds.east},${bounds.south})`,
     `/auto`,
-    `/${width}x${height}`,
+    `/${width}x${height}@2x`,
     `?access_token=${process.env.MAPBOX_TOKEN}`
   ].join('')
 
