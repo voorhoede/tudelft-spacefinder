@@ -28,7 +28,7 @@ import metaHead from '~/lib/meta-head'
 export default {
   components: { BackButton, SocialShare, SpaceDetailCard },
   computed: {
-    ...mapGetters(['getSpaceBySlug']),
+    ...mapGetters(['dataLoaded', 'getSpaceBySlug']),
     ...mapState(['isMobile']),
     baseUrl() { return process.env.BASE_URL },
     building() { return this.space.building },
@@ -39,6 +39,19 @@ export default {
     const { building, space } = this
     return metaHead({ 
       title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`
+    })
+  },
+  created() {
+    this.dataLoaded.then(() => {
+      const params = this.$i18n.locales.reduce((params, locale) => {
+        params[locale.code] = {
+          buildingSlug: this.building.i18n[locale.code].slug,
+          spaceSlug: this.space.slug
+        }
+        return params
+      }, {})
+      console.log('params', params)
+      this.$store.dispatch('i18n/setRouteParams', params)
     })
   },
   mounted() {

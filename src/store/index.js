@@ -3,6 +3,8 @@ import Deferred from '~/lib/deferred'
 import filterSpaces from '~/lib/filter-spaces'
 import loadMapboxgl from '~/lib/mapboxgl/load-async'
 
+const spacesLoaded = new Deferred()
+const buildingsLoaded = new Deferred()
 const mapLoaded = new Deferred()
 const campusBounds = {
   north: 52.006471,
@@ -63,6 +65,7 @@ export const mutations = {
   },
   setBuildings(state, { buildings }) {
     state.buildingsI18n = buildings
+    buildingsLoaded.resolve()
   },
   setInstallPromptEvent(state, event) {
     state.installPromptEvent = event
@@ -74,6 +77,7 @@ export const mutations = {
   },
   setSpaces(state, { spaces }) {
     state.spacesI18n = spaces
+    spacesLoaded.resolve()
   },
   toggleListView(state) {
     state.showListView = !state.showListView
@@ -177,6 +181,12 @@ export const getters = {
         ...i18nProps
       }
     })
+  },
+  dataLoaded() {
+    return Promise.all([
+      buildingsLoaded.promise,
+      spacesLoaded.promise
+    ])
   },
   filteredSpaces: (state, getters) => {
     return filterSpaces({

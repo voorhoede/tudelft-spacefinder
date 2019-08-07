@@ -29,6 +29,9 @@ export default [
     strategy: 'prefix',
     vueI18n: {
       fallbackLocale: defaultLocale
+    },
+    vuex: {
+      syncRouteParams: true
     }
   }
 ]
