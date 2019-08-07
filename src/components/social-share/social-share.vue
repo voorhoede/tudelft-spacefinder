@@ -18,6 +18,7 @@
       :aria-hidden="!optionsAreVisible"
     >
       <a
+        :tabindex="optionsAreVisible ? 0 : -1"
         v-for="(platform, index) in platforms"
         :key="index"
         :href="`${platform.link}${encodedUrl}`"
@@ -35,9 +36,9 @@
       </a>
 
       <button
+        :tabindex="optionsAreVisible ? 0 : -1"
         v-if="copyToClipboardIsVisible"
         @click="copyToClipboard"
-        :aria-hidden="!optionsAreVisible"
         class="social-share__option button button--round"
         :class="{ 'social-share__option--visible' : optionsAreVisible }"
         ref="copyButton"
