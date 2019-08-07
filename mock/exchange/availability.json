@@ -10,65 +10,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T05:00:00",
-                "EndTime": "2019-07-30T16:00:00",
+                "StartTime": "2019-08-07T07:00:00",
+                "EndTime": "2019-08-07T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T05:00:00",
-                "EndTime": "2019-07-31T16:00:00",
+                "StartTime": "2019-08-08T07:00:00",
+                "EndTime": "2019-08-08T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T05:00:00",
-                "EndTime": "2019-08-01T16:00:00",
+                "StartTime": "2019-08-09T07:00:00",
+                "EndTime": "2019-08-09T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T05:00:00",
-                "EndTime": "2019-08-02T16:00:00",
+                "StartTime": "2019-08-12T07:00:00",
+                "EndTime": "2019-08-12T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T05:00:00",
-                "EndTime": "2019-08-05T16:00:00",
-                "BusyType": "Free"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T18:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T18:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-08-01T06:00:00",
-                "EndTime": "2019-08-01T18:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-08-02T06:00:00",
-                "EndTime": "2019-08-02T18:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-08-05T06:00:00",
-                "EndTime": "2019-08-05T18:00:00",
+                "StartTime": "2019-08-13T07:00:00",
+                "EndTime": "2019-08-13T18:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -84,38 +47,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T22:00:00",
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T20:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T22:00:00",
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T20:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T06:00:00",
-                "EndTime": "2019-08-01T22:00:00",
+                "StartTime": "2019-08-09T08:00:00",
+                "EndTime": "2019-08-09T20:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T06:00:00",
-                "EndTime": "2019-08-02T22:00:00",
+                "StartTime": "2019-08-12T08:00:00",
+                "EndTime": "2019-08-12T20:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-03T06:00:00",
-                "EndTime": "2019-08-03T22:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-08-04T06:00:00",
-                "EndTime": "2019-08-04T22:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-08-05T06:00:00",
-                "EndTime": "2019-08-05T22:00:00",
+                "StartTime": "2019-08-13T08:00:00",
+                "EndTime": "2019-08-13T20:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -131,28 +84,43 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T05:30:00",
-                "EndTime": "2019-07-30T16:00:00",
+                "StartTime": "2019-08-06T08:00:00",
+                "EndTime": "2019-08-07T00:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T05:30:00",
-                "EndTime": "2019-07-31T16:00:00",
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-08T00:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T05:30:00",
-                "EndTime": "2019-08-01T16:00:00",
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-09T00:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T05:30:00",
-                "EndTime": "2019-08-02T16:00:00",
+                "StartTime": "2019-08-09T08:00:00",
+                "EndTime": "2019-08-10T00:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T05:30:00",
-                "EndTime": "2019-08-05T16:00:00",
+                "StartTime": "2019-08-10T08:00:00",
+                "EndTime": "2019-08-11T00:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-11T08:00:00",
+                "EndTime": "2019-08-12T00:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-12T08:00:00",
+                "EndTime": "2019-08-13T00:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-13T08:00:00",
+                "EndTime": "2019-08-14T00:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -168,33 +136,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T05:00:00",
-                "EndTime": "2019-07-30T21:00:00",
+                "StartTime": "2019-08-07T07:30:00",
+                "EndTime": "2019-08-07T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T05:00:00",
-                "EndTime": "2019-07-31T21:00:00",
+                "StartTime": "2019-08-08T07:30:00",
+                "EndTime": "2019-08-08T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T05:00:00",
-                "EndTime": "2019-08-01T21:00:00",
+                "StartTime": "2019-08-09T07:30:00",
+                "EndTime": "2019-08-09T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T05:00:00",
-                "EndTime": "2019-08-02T21:00:00",
+                "StartTime": "2019-08-12T07:30:00",
+                "EndTime": "2019-08-12T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-03T06:30:00",
-                "EndTime": "2019-08-03T16:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-08-05T05:00:00",
-                "EndTime": "2019-08-05T21:00:00",
+                "StartTime": "2019-08-13T07:30:00",
+                "EndTime": "2019-08-13T18:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -210,28 +173,33 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T04:30:00",
-                "EndTime": "2019-07-30T20:30:00",
+                "StartTime": "2019-08-07T07:00:00",
+                "EndTime": "2019-08-07T23:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T04:30:00",
-                "EndTime": "2019-07-31T20:30:00",
+                "StartTime": "2019-08-08T07:00:00",
+                "EndTime": "2019-08-08T23:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T04:30:00",
-                "EndTime": "2019-08-01T20:30:00",
+                "StartTime": "2019-08-09T07:00:00",
+                "EndTime": "2019-08-09T23:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T04:30:00",
-                "EndTime": "2019-08-02T20:30:00",
+                "StartTime": "2019-08-10T08:30:00",
+                "EndTime": "2019-08-10T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T04:30:00",
-                "EndTime": "2019-08-05T20:30:00",
+                "StartTime": "2019-08-12T07:00:00",
+                "EndTime": "2019-08-12T23:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-13T07:00:00",
+                "EndTime": "2019-08-13T23:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -247,28 +215,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T05:30:00",
-                "EndTime": "2019-07-30T20:30:00",
+                "StartTime": "2019-08-07T06:30:00",
+                "EndTime": "2019-08-07T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T05:30:00",
-                "EndTime": "2019-07-31T20:30:00",
+                "StartTime": "2019-08-08T06:30:00",
+                "EndTime": "2019-08-08T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T05:30:00",
-                "EndTime": "2019-08-01T20:30:00",
+                "StartTime": "2019-08-09T06:30:00",
+                "EndTime": "2019-08-09T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T05:30:00",
-                "EndTime": "2019-08-02T20:30:00",
+                "StartTime": "2019-08-12T06:30:00",
+                "EndTime": "2019-08-12T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T05:30:00",
-                "EndTime": "2019-08-05T20:30:00",
+                "StartTime": "2019-08-13T06:30:00",
+                "EndTime": "2019-08-13T22:30:00",
                 "BusyType": "Free"
               }
             ]
@@ -284,28 +252,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T17:00:00",
+                "StartTime": "2019-08-07T07:30:00",
+                "EndTime": "2019-08-07T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T17:00:00",
+                "StartTime": "2019-08-08T07:30:00",
+                "EndTime": "2019-08-08T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T06:00:00",
-                "EndTime": "2019-08-01T17:00:00",
+                "StartTime": "2019-08-09T07:30:00",
+                "EndTime": "2019-08-09T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T06:00:00",
-                "EndTime": "2019-08-02T17:00:00",
+                "StartTime": "2019-08-12T07:30:00",
+                "EndTime": "2019-08-12T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T06:00:00",
-                "EndTime": "2019-08-05T17:00:00",
+                "StartTime": "2019-08-13T07:30:00",
+                "EndTime": "2019-08-13T22:30:00",
                 "BusyType": "Free"
               }
             ]
@@ -321,38 +289,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T22:00:00",
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T19:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T22:00:00",
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T19:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T06:00:00",
-                "EndTime": "2019-08-01T22:00:00",
+                "StartTime": "2019-08-09T08:00:00",
+                "EndTime": "2019-08-09T19:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T06:00:00",
-                "EndTime": "2019-08-02T22:00:00",
+                "StartTime": "2019-08-12T08:00:00",
+                "EndTime": "2019-08-12T19:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-03T06:00:00",
-                "EndTime": "2019-08-03T22:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-08-04T06:00:00",
-                "EndTime": "2019-08-04T22:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-08-05T06:00:00",
-                "EndTime": "2019-08-05T22:00:00",
+                "StartTime": "2019-08-13T08:00:00",
+                "EndTime": "2019-08-13T19:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -368,28 +326,43 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T17:00:00",
+                "StartTime": "2019-08-06T08:00:00",
+                "EndTime": "2019-08-07T00:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T17:00:00",
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-08T00:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T06:00:00",
-                "EndTime": "2019-08-01T17:00:00",
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-09T00:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T06:00:00",
-                "EndTime": "2019-08-02T17:00:00",
+                "StartTime": "2019-08-09T08:00:00",
+                "EndTime": "2019-08-10T00:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T06:00:00",
-                "EndTime": "2019-08-05T17:00:00",
+                "StartTime": "2019-08-10T08:00:00",
+                "EndTime": "2019-08-11T00:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-11T08:00:00",
+                "EndTime": "2019-08-12T00:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-12T08:00:00",
+                "EndTime": "2019-08-13T00:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-13T08:00:00",
+                "EndTime": "2019-08-14T00:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -405,28 +378,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T05:30:00",
-                "EndTime": "2019-07-30T16:00:00",
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T19:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T05:30:00",
-                "EndTime": "2019-07-31T16:00:00",
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T19:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T05:30:00",
-                "EndTime": "2019-08-01T16:00:00",
+                "StartTime": "2019-08-09T08:00:00",
+                "EndTime": "2019-08-09T19:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T05:30:00",
-                "EndTime": "2019-08-02T16:00:00",
+                "StartTime": "2019-08-12T08:00:00",
+                "EndTime": "2019-08-12T19:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T05:30:00",
-                "EndTime": "2019-08-05T16:00:00",
+                "StartTime": "2019-08-13T08:00:00",
+                "EndTime": "2019-08-13T19:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -442,28 +415,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T04:30:00",
-                "EndTime": "2019-07-30T20:30:00",
+                "StartTime": "2019-08-07T07:30:00",
+                "EndTime": "2019-08-07T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T04:30:00",
-                "EndTime": "2019-07-31T20:30:00",
+                "StartTime": "2019-08-08T07:30:00",
+                "EndTime": "2019-08-08T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T04:30:00",
-                "EndTime": "2019-08-01T20:30:00",
+                "StartTime": "2019-08-09T07:30:00",
+                "EndTime": "2019-08-09T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T04:30:00",
-                "EndTime": "2019-08-02T20:30:00",
+                "StartTime": "2019-08-12T07:30:00",
+                "EndTime": "2019-08-12T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T04:30:00",
-                "EndTime": "2019-08-05T20:30:00",
+                "StartTime": "2019-08-13T07:30:00",
+                "EndTime": "2019-08-13T18:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -479,28 +452,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T05:30:00",
-                "EndTime": "2019-07-30T16:00:00",
+                "StartTime": "2019-08-07T06:30:00",
+                "EndTime": "2019-08-07T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T05:30:00",
-                "EndTime": "2019-07-31T16:00:00",
+                "StartTime": "2019-08-08T06:30:00",
+                "EndTime": "2019-08-08T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T05:30:00",
-                "EndTime": "2019-08-01T16:00:00",
+                "StartTime": "2019-08-09T06:30:00",
+                "EndTime": "2019-08-09T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T05:30:00",
-                "EndTime": "2019-08-02T16:00:00",
+                "StartTime": "2019-08-12T06:30:00",
+                "EndTime": "2019-08-12T22:30:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T05:30:00",
-                "EndTime": "2019-08-05T16:00:00",
+                "StartTime": "2019-08-13T06:30:00",
+                "EndTime": "2019-08-13T22:30:00",
                 "BusyType": "Free"
               }
             ]
@@ -516,28 +489,28 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T05:00:00",
-                "EndTime": "2019-07-30T16:00:00",
+                "StartTime": "2019-08-07T07:30:00",
+                "EndTime": "2019-08-07T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T05:00:00",
-                "EndTime": "2019-07-31T16:00:00",
+                "StartTime": "2019-08-08T07:30:00",
+                "EndTime": "2019-08-08T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T05:00:00",
-                "EndTime": "2019-08-01T16:00:00",
+                "StartTime": "2019-08-09T07:30:00",
+                "EndTime": "2019-08-09T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T05:00:00",
-                "EndTime": "2019-08-02T16:00:00",
+                "StartTime": "2019-08-12T07:30:00",
+                "EndTime": "2019-08-12T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T05:00:00",
-                "EndTime": "2019-08-05T16:00:00",
+                "StartTime": "2019-08-13T07:30:00",
+                "EndTime": "2019-08-13T18:00:00",
                 "BusyType": "Free"
               }
             ]
@@ -553,32 +526,779 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T18:00:00",
+                "StartTime": "2019-08-07T07:00:00",
+                "EndTime": "2019-08-07T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T18:00:00",
+                "StartTime": "2019-08-08T07:00:00",
+                "EndTime": "2019-08-08T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-01T06:00:00",
-                "EndTime": "2019-08-01T18:00:00",
+                "StartTime": "2019-08-09T07:00:00",
+                "EndTime": "2019-08-09T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-02T06:00:00",
-                "EndTime": "2019-08-02T18:00:00",
+                "StartTime": "2019-08-12T07:00:00",
+                "EndTime": "2019-08-12T18:00:00",
                 "BusyType": "Free"
               },
               {
-                "StartTime": "2019-08-05T06:00:00",
-                "EndTime": "2019-08-05T18:00:00",
+                "StartTime": "2019-08-13T07:00:00",
+                "EndTime": "2019-08-13T18:00:00",
                 "BusyType": "Free"
               }
             ]
           }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T20:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T20:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-09T08:00:00",
+                "EndTime": "2019-08-09T20:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-12T08:00:00",
+                "EndTime": "2019-08-12T20:00:00",
+                "BusyType": "Free"
+              },
+              {
+                "StartTime": "2019-08-13T08:00:00",
+                "EndTime": "2019-08-13T20:00:00",
+                "BusyType": "Free"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:45:00",
+                "EndTime": "2019-08-07T18:45:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:45:00",
+                "EndTime": "2019-08-08T18:45:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T09:00:00",
+                "EndTime": "2019-08-07T17:30:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T20:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:45:00",
+                "EndTime": "2019-08-07T18:45:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:45:00",
+                "EndTime": "2019-08-08T18:45:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:45:00",
+                "EndTime": "2019-08-07T18:45:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:45:00",
+                "EndTime": "2019-08-08T18:45:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": {
+              "StartTime": "2019-08-08T10:45:00",
+              "EndTime": "2019-08-08T12:45:00",
+              "BusyType": "Busy"
+            }
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:45:00",
+                "EndTime": "2019-08-07T12:45:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:45:00",
+                "EndTime": "2019-08-08T12:45:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T13:45:00",
+                "EndTime": "2019-08-08T15:45:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T13:45:00",
+                "EndTime": "2019-08-07T17:45:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T13:45:00",
+                "EndTime": "2019-08-08T17:45:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:45:00",
+                "EndTime": "2019-08-07T18:45:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:45:00",
+                "EndTime": "2019-08-08T18:45:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T19:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T19:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy",
+          "CalendarEventArray": {
+            "CalendarEvent": [
+              {
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T23:00:00",
+                "BusyType": "Busy"
+              },
+              {
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T23:00:00",
+                "BusyType": "Busy"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
+        }
+      },
+      {
+        "ResponseMessage": {
+          "ResponseCode": "NoError"
+        },
+        "FreeBusyView": {
+          "FreeBusyViewType": "FreeBusy"
         }
       },
       {
@@ -605,9 +1325,9 @@
           "FreeBusyViewType": "FreeBusy",
           "CalendarEventArray": {
             "CalendarEvent": {
-              "StartTime": "2019-07-31T13:00:00",
-              "EndTime": "2019-07-31T15:30:00",
-              "BusyType": "Busy"
+              "StartTime": "2019-08-13T07:30:00",
+              "EndTime": "2019-08-13T08:00:00",
+              "BusyType": "Free"
             }
           }
         }
@@ -619,56 +1339,11 @@
         "FreeBusyView": {
           "FreeBusyViewType": "FreeBusy",
           "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
+            "CalendarEvent": {
+              "StartTime": "2019-08-13T09:00:00",
+              "EndTime": "2019-08-13T10:00:00",
+              "BusyType": "Busy"
+            }
           }
         }
       },
@@ -689,603 +1364,13 @@
           "CalendarEventArray": {
             "CalendarEvent": [
               {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
+                "StartTime": "2019-08-07T08:00:00",
+                "EndTime": "2019-08-07T22:00:00",
                 "BusyType": "Busy"
               },
               {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T11:45:00",
-                "EndTime": "2019-07-30T15:45:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T11:45:00",
-                "EndTime": "2019-07-31T15:45:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:45:00",
-                "EndTime": "2019-07-30T10:45:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:45:00",
-                "EndTime": "2019-07-31T10:45:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T18:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T18:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T21:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T21:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy"
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T21:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T21:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T21:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T21:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T21:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T21:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T21:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T21:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T05:30:00",
-                "EndTime": "2019-07-30T06:00:00",
-                "BusyType": "Free"
-              },
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-30T07:00:00",
-                "EndTime": "2019-07-30T08:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
-                "BusyType": "Busy"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "ResponseMessage": {
-          "ResponseCode": "NoError"
-        },
-        "FreeBusyView": {
-          "FreeBusyViewType": "FreeBusy",
-          "CalendarEventArray": {
-            "CalendarEvent": [
-              {
-                "StartTime": "2019-07-30T06:00:00",
-                "EndTime": "2019-07-30T20:00:00",
-                "BusyType": "Busy"
-              },
-              {
-                "StartTime": "2019-07-31T06:00:00",
-                "EndTime": "2019-07-31T20:00:00",
+                "StartTime": "2019-08-08T08:00:00",
+                "EndTime": "2019-08-08T22:00:00",
                 "BusyType": "Busy"
               }
             ]
