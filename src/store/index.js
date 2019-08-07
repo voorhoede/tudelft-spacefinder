@@ -210,13 +210,13 @@ export const getters = {
     }
   },
   spaces: (state, getters) => {
+    const { locale } = state.i18n
     return state.spacesI18n.map((spaceI18n) => {
-      const { i18n, buildingNumber, ...props } = spaceI18n
-      const localizedProps = i18n[state.i18n.locale]
-      const building = getters.getBuildingByNumber(buildingNumber)
+      const propsI18n = spaceI18n.i18n[locale]
+      const building = getters.getBuildingByNumber(spaceI18n.buildingNumber)
       return {
-        ...localizedProps,
-        ...props,
+        ...spaceI18n,
+        ...propsI18n,
         building
       }
     })
