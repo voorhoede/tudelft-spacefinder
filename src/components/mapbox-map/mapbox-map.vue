@@ -31,7 +31,7 @@ export default {
       this.setMarkers(filters)
     },
     filteredSpaces(newValue, oldValue) {
-      this.$store.dispatch('updateMarkers')
+      this.updateMarkers()
     }
   },
   mounted() {
