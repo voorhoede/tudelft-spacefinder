@@ -127,6 +127,7 @@ export const actions = {
           map.addImage('marker-icon', image)
           map.addLayer({
             id: 'points',
+            interactive: true,
             type: 'symbol',
             source: {
               type: 'geojson',
@@ -138,6 +139,23 @@ export const actions = {
             }
           })
           commit('setMapLoaded', { map })
+        })
+
+        map.on('click', (e) => {
+          const features = map.queryRenderedFeatures(e.point, { layers: ['points'] })
+
+          if (features.length) {
+            const feature = features[0]
+
+            const url = this.app.localePath({
+              name: 'buildings-buildingSlug-spaces-spaceSlug',
+              params: { buildingSlug: feature.properties.buildingSlug, spaceSlug: feature.properties.roomSlug }
+            })
+
+            map.setFilter('points', ['==', 'roomSlug', feature.properties.roomSlug])
+
+            this.app.router.push(url)
+          }
         })
       })
     })
@@ -270,7 +288,8 @@ export const getters = {
       return {
         type: 'Feature',
         properties: {
-          icon: 'theatre',
+          buildingSlug: space.building.slug,
+          roomSlug: space.slug,
           adjustableChairs: space.facilities.adjustableChairs,
           bookable: space.facilities.bookable,
           daylit: space.facilities.daylit,
