@@ -42,9 +42,10 @@ export default {
     return {
       script: [
         {
-          innerHTML: '(/(MSIE|Trident)/).test(window.navigator.userAgent) ? document.documentElement.className += "old-ie" : null;',
-          type: 'text/javascript',
-          charset: 'utf-8'
+          innerHTML: `
+            var isIE = (/(MSIE|Trident)/).test(window.navigator.userAgent);
+            if (isIE) { document.documentElement.className += " old-ie"; }
+          `
         }
       ],
       __dangerouslyDisableSanitizers: ['script']
