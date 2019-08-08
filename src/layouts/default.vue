@@ -5,7 +5,7 @@
   >
     <notification-bar
       class="default-layout__notification-bar"
-      :message="$t('notification')"
+      :message="$t('ieNotification')"
     />
 
     <app-header
@@ -40,9 +40,14 @@ export default {
   components: { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar },
   head() {
     return {
-      htmlAttrs: {
-        class: process.client && ( (/(MSIE|Trident)/).test(window.navigator.userAgent) ? 'old-ie' : null )
-      }
+      script: [
+        {
+          innerHTML: '(/(MSIE|Trident)/).test(window.navigator.userAgent) ? document.documentElement.className += "old-ie" : null;',
+          type: 'text/javascript',
+          charset: 'utf-8'
+        }
+      ],
+      __dangerouslyDisableSanitizers: ['script']
     }
   },
   data() {
