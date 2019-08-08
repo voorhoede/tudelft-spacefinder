@@ -38,7 +38,7 @@
             @click.native="toggleListView"
             class="app-menu__link"
           >
-            <span v-if="showListView">
+            <span v-if="isMapMode">
               <svg-icon name="map-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
@@ -109,7 +109,7 @@ export default {
       }
     }
   },
-  computed: mapState(['appLanguage', 'isInstallable', 'showListView']),
+  computed: mapState(['appLanguage', 'isInstallable', 'isMapMode']),
   methods: {
     installApp() {
       this.$store.dispatch('installApp')

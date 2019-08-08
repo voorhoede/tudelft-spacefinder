@@ -42,7 +42,7 @@ export const state = () => ({
     building: undefined,
     space: undefined
   },
-  showListView: true,
+  isMapMode: false,
   spacesI18n: []
 })
 
@@ -77,7 +77,7 @@ export const mutations = {
     state.spacesI18n = spaces
   },
   toggleListView(state) {
-    state.showListView = !state.showListView
+    state.isMapMode = !state.isMapMode
   },
   setMobileState(state, value) {
     state.isMobile = value
