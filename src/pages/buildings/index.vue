@@ -6,14 +6,15 @@
     <h2 class="a11y-sr-only">{{ title }}</h2>
 
     <building-card
-      v-for="building in buildings" :key="building.slug"
+      v-for="building in buildings"
+      :key="building.slug"
       :building="building"
     />
   </section>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import { BuildingCard } from '~/components'
 import metaHead from '~/lib/meta-head'
 
@@ -31,7 +32,11 @@ export default {
   },
   mounted() {
     this.$store.commit('clearSelection')
-    this.$store.dispatch('zoomToCampus')
+    this.zoomToCampus()
+    this.updateMarkers()
+  },
+  methods: {
+    ...mapActions(['updateMarkers', 'zoomToCampus']),
   }
 }
 </script>

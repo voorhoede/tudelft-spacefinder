@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState, mapMutations } from 'vuex'
 import { BackButton, SocialShare, SpaceDetailCard } from '~/components'
 import metaHead from '~/lib/meta-head'
 
@@ -30,14 +30,15 @@ export default {
   computed: {
     ...mapGetters(['getSpaceBySlug']),
     ...mapState(['isMobile']),
+
     baseUrl() { return process.env.BASE_URL },
     building() { return this.space.building },
     shareUrl() { return `${process.env.BASE_URL}/${this.$route.fullPath}` },
-    space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
+    space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) }
   },
   head() {
     const { building, space } = this
-    return metaHead({ 
+    return metaHead({
       title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`
     })
   },
@@ -47,7 +48,13 @@ export default {
       : {}
 
     this.$store.commit('selectBuilding', this.building)
-    this.$store.dispatch('zoomToSelection', { padding })
+    this.selectSpace(this.space)
+    this.zoomToSelection()
+    this.updateMarkers()
+  },
+  methods: {
+    ...mapActions(['zoomToSelection', 'updateMarkers']),
+    ...mapMutations(['selectSpace'])
   }
 }
 </script>

@@ -14,25 +14,41 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import ZoomControls from '../zoom-controls'
+import mapMarker from '~/assets/icons/map-marker.png'
 
 export default {
   components: { ZoomControls },
   computed: {
-    ...mapState(['mapLoaded']),
-    ...mapGetters(['filteredSpaces']),
-  },
-  mounted() {
-    this.$store.dispatch('mountMap', { container: this.$refs.map })
-      .then((map) => this.fixInsecureLinks())
+    ...mapState(['mapLoaded', 'activeMarkerFilters']),
+    ...mapGetters(['filteredSpaces', 'geoJsonSpaces'])
   },
   watch: {
+    activeMarkerFilters(filters, oldValue) {
+      this.setMarkers(filters)
+    },
     filteredSpaces(newValue, oldValue) {
       this.$store.dispatch('updateMarkers')
     }
   },
+  mounted() {
+    this.$store.dispatch('mountMap', { container: this.$refs.map })
+      .then((map) => {
+        this.fixInsecureLinks()
+      })
+    this.initMap()
+  },
   methods: {
+    ...mapActions(['getMap']),
+    async setMarkers(filters = []) {
+      const map = await this.getMap()
+      if (filters.length) {
+        map.setFilter('points', ['all', ...filters])
+      } else {
+        map.setFilter('points')
+      }
+    },
     autoFocus() {
       this.$store.dispatch('zoomAuto')
     },
@@ -48,7 +64,7 @@ export default {
      * @see https://developers.google.com/web/tools/lighthouse/audits/noopener
      */
     fixInsecureLinks() {
-      if (!'MutationObserver' in window) { return }
+      if (!('MutationObserver' in window)) { return }
       const selector = `a:not([href^="${window.location.origin}"]):not([rel*="noreferrer"])`
       const observer = new MutationObserver((mutations) => {
         const element = this.$refs.map.querySelector('.mapboxgl-ctrl-attrib')
@@ -61,6 +77,42 @@ export default {
         }
       })
       observer.observe(this.$refs.map, { attributes: false, childList: true, subtree: true })
+    },
+    async initMap() {
+      const map = await this.getMap()
+      map.loadImage(mapMarker, (error, image) => {
+        if (error) throw error
+        map.addImage('marker-icon', image)
+        map.addLayer({
+          id: 'points',
+          interactive: true,
+          type: 'symbol',
+          source: {
+            type: 'geojson',
+            data: this.geoJsonSpaces
+          },
+          layout: {
+            'icon-image': 'marker-icon',
+            'icon-allow-overlap': true
+          }
+        })
+      })
+      map.on('click', (e) => {
+        const features = map.queryRenderedFeatures(e.point, { layers: ['points'] })
+        const { app } = this.$store
+        if (features.length) {
+          const feature = features[0]
+          const url = app.localePath({
+            name: 'buildings-buildingSlug-spaces-spaceSlug',
+            params: { buildingSlug: feature.properties.buildingSlug, spaceSlug: feature.properties.spaceSlug }
+          })
+
+          // map.setFilter('points', ['==', 'spaceSlug', feature.properties.spaceSlug])
+
+          app.router.push(url)
+        }
+      })
+      this.$store.dispatch('updateMarkers')
     }
   }
 }

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { BackButton, BuildingHeader, SpaceList } from '~/components'
 import metaHead from '~/lib/meta-head'
 
@@ -29,7 +29,7 @@ export default {
     },
     spaces() {
       return this.filteredSpaces
-        .filter((space) => space.building === this.building)
+        .filter(space => space.building === this.building)
     }
   },
   head() {
@@ -43,7 +43,11 @@ export default {
   },
   mounted() {
     this.$store.commit('selectBuilding', this.building)
-    this.$store.dispatch('zoomToSelection')
+    this.zoomToSelection()
+    this.updateMarkers()
+  },
+  methods: {
+    ...mapActions(['zoomToSelection', 'updateMarkers'])
   }
 }
 </script>
