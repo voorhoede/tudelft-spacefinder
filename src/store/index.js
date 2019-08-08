@@ -76,7 +76,7 @@ export const mutations = {
   setSpaces(state, { spaces }) {
     state.spacesI18n = spaces
   },
-  toggleListView(state) {
+  toggleMapMode(state) {
     state.isMapMode = !state.isMapMode
   },
   setMobileState(state, value) {
