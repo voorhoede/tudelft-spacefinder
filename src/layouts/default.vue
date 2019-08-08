@@ -3,6 +3,11 @@
     class="default-layout"
     ref="defaultLayout"
   >
+    <notification-bar
+      class="default-layout__notification-bar"
+      :message="$t('notification')"
+    />
+
     <app-header
       @openAppMenu="openAppMenu"
       @openFilterMenu="openFilterMenu"
@@ -15,18 +20,31 @@
       <mapbox-map class="default-layout__map"/>
     </main>
 
-    <app-menu :isOpen="openedMenu === 'app-menu'" @close="closeMenu" />
+    <app-menu
+      :isOpen="openedMenu === 'app-menu'"
+      @close="closeMenu"
+    />
 
-    <filter-menu :isOpen="openedMenu === 'filter-menu'" @close="closeMenu" />
+    <filter-menu
+      :isOpen="openedMenu === 'filter-menu'"
+      @close="closeMenu"
+    />
   </div>
 </template>
 
 <script>
 import debounce from 'lodash.debounce'
-import { AppHeader, AppMenu, FilterMenu, MapboxMap } from '../components'
+import { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar } from '../components'
 
 export default {
-  components: { AppHeader, AppMenu, FilterMenu, MapboxMap },
+  components: { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar },
+  head() {
+    return {
+      htmlAttrs: {
+        class: process.client && ( (/(MSIE|Trident)/).test(window.navigator.userAgent) ? 'old-ie' : null )
+      }
+    }
+  },
   data() {
     return {
       openedMenu: null,
@@ -63,3 +81,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.default-layout__notification-bar {
+  display: none;
+}
+.old-ie .default-layout__notification-bar {
+  display: block;
+}
+</style>

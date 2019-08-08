@@ -50,6 +50,7 @@
   "nearCoffeeMachine": "coffee corner",
   "nearPrinter": "printer",
   "noFilterResults": "There are no locations found",
+  "notification": "The Spacefinder doesn't work in Internet Explorer 11 or older browsers. Open the Spacefinder in a recent browser in order to use the website.",
   "powerOutlets": "sockets",
   "quietness": "Noise level",
   "quietness.silent": "silent",
