@@ -6,11 +6,12 @@ const data = {
   abbreviation: 'Arch'
 }
 
-test('returns an object with the expected properties', () => {
-  const result = fromI18n(data)
-  expect(result.number).toBe(13)
-  expect(result.name).toBe('Architecture')
-  expect(result.slug).toBe('13-arch')
+test('fromI18n returns expected properties', () => {
+  expect(fromI18n(data)).toEqual({
+    'abbreviation': 'Arch',
+    'name': 'Architecture',
+    'slug': '13-arch',
+  })
 })
 
 test('is able to handle bad data', () => {

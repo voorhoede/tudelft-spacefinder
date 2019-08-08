@@ -13,7 +13,7 @@
         :size-dependencies="[
           item.name,
           item.building.name,
-          item.roomId
+          item.slug
         ]"
         :data-index="index"
         class="space-list__item"

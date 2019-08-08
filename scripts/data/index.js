@@ -31,3 +31,7 @@ Promise.all([ getDataFromCsv(), getDataFromCms() ])
     { name: 'spaces', contents: spaces },
     { name: 'buildings', contents: buildings }
   ]))
+  .then(() => console.info('Wrote data for spaces and buildings'))
+  .catch(({ message }) =>
+    console.error(`An error occurred writing data: ${message}`)
+  )

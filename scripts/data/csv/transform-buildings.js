@@ -1,11 +1,9 @@
 const {
   adjust,
   apply,
-  call,
   chain,
   concat,
   converge,
-  dissoc,
   filter,
   groupBy,
   head,
@@ -21,7 +19,6 @@ const {
   not,
   objOf,
   over,
-  path,
   pick,
   pipe,
   prop,
@@ -34,8 +31,20 @@ const {
   uniqWith
 } = require('ramda')
 
+const translate = require('./lib/translate')
 const { meld } = require('./lib/helpers')
-const { fromI18n } = require('./lib/building-meta')
+const { fromI18n, buildingNumberFromId } = require('./lib/building-meta')
+
+const translationMap = {
+  name: {
+    nl: 'buildingNameNL',
+    en: 'buildingNameEN'
+  },
+  abbreviation: {
+    nl: 'buildingAbbreviationNL',
+    en: 'buildingAbbreviationEN'
+  }
+}
 
 const buildingProps = [
   'buildingId',
@@ -65,18 +74,18 @@ const joinAndFilter = pipe(
   filter(pipe(isEmpty, not))
 )
 
-const getBuildingMeta = pipe(
-  over(lensProp('i18n'), map(fromI18n)),
-  converge(mergeDeepRight, [
-    pipe(
-      path(['i18n', 'en', 'number']),
-      objOf('number')
-    ),
-    over(lensProp('i18n'), map(dissoc('number')))
-  ])
-)
+const getBuildingId = converge(mergeDeepRight, [
+  identity,
+  pipe(
+    prop('buildingId'),
+    buildingNumberFromId,
+    objOf('number')
+  )
+])
 
-const setFirstElement = call(set(lensIndex(0)))
+const getBuildingMeta = over(lensProp('i18n'), map(fromI18n))
+
+const setFirstElement = set(lensIndex(0))
 const getTotalSeatsObject = pipe(
   map(propOr(0, 'seats')),
   sum,
@@ -108,7 +117,11 @@ const getBuildings = pipe(
   adjust(0, pipe(
     getTotalSeatsAndSpaces,
     getUniqueBuildings,
-    map(getBuildingMeta)
+    map(pipe(
+      translate(translationMap),
+      getBuildingId,
+      getBuildingMeta
+    ))
   )),
   joinAndFilter,
   getBuildingProps

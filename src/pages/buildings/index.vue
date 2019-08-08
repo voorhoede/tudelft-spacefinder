@@ -22,7 +22,7 @@ export default {
   computed: {
     ...mapGetters(['buildings']),
     ...mapState(['showListView', 'isMobile']),
-    title() { return this.$i18n.t('buildings') }
+    title() { return this.$i18n.t('buildingTitle') }
   },
   head() {
     return metaHead({

@@ -14,6 +14,7 @@ const campusBounds = {
 const getDefaultFilters = () => ({
   adjustableChairs: false,
   bookable: false,
+  buildings: [],
   daylit: false,
   ethernet: false,
   studyType: [],
@@ -233,9 +234,8 @@ export const actions = {
 
 export const getters = {
   buildings: (state) => {
-    const { locale } = state.i18n
     return state.buildingsI18n.map((buildingI18n) => {
-      const i18nProps = buildingI18n.i18n[locale]
+      const i18nProps = buildingI18n.i18n[state.i18n.locale]
       return {
         ...buildingI18n,
         ...i18nProps
@@ -274,11 +274,13 @@ export const getters = {
     }
   },
   spaces: (state, getters) => {
-    const noBuilding = {} // spaces must have a building, but until they do, this prevents the app from crashing
     return state.spacesI18n.map((spaceI18n) => {
-      const building = getters.getBuildingByNumber(spaceI18n.buildingNumber) || noBuilding
+      const { i18n, buildingNumber, ...props } = spaceI18n
+      const localizedProps = i18n[state.i18n.locale]
+      const building = getters.getBuildingByNumber(buildingNumber)
       return {
-        ...spaceI18n,
+        ...localizedProps,
+        ...props,
         building
       }
     })
