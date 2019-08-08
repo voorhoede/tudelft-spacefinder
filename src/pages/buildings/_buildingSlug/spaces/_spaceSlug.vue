@@ -50,10 +50,10 @@ export default {
     this.$store.commit('selectBuilding', this.building)
     this.selectSpace(this.space)
     this.zoomToSelection()
-    this.updateMarkers()
+    this.getMap().then(() => this.updateMarkers())
   },
   methods: {
-    ...mapActions(['zoomToSelection', 'updateMarkers']),
+    ...mapActions(['zoomToSelection', 'updateMarkers', 'getMap']),
     ...mapMutations(['selectSpace'])
   }
 }

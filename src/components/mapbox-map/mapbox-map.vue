@@ -3,7 +3,7 @@
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
       <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
     </div>
-    <zoom-controls 
+    <zoom-controls
       v-if="mapLoaded"
       class="mapbox-map__zoom-controls"
       v-on:auto-focus="autoFocus"
@@ -14,9 +14,11 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 import ZoomControls from '../zoom-controls'
 import mapMarker from '~/assets/icons/map-marker.png'
+import loadMapboxgl from '~/lib/mapboxgl/load-async'
+import campusBounds from '~/lib/campus-bounds'
 
 export default {
   components: { ZoomControls },
@@ -33,14 +35,14 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('mountMap', { container: this.$refs.map })
-      .then((map) => {
-        this.fixInsecureLinks()
-      })
     this.initMap()
+    this.getMap()
+      .then(this.fixInsecureLinks)
+      .then(this.updateMarkers)
   },
   methods: {
-    ...mapActions(['getMap']),
+    ...mapActions(['getMap', 'updateMarkers']),
+    ...mapMutations(['setMapLoaded']),
     async setMarkers(filters = []) {
       const map = await this.getMap()
       if (filters.length) {
@@ -78,41 +80,53 @@ export default {
       })
       observer.observe(this.$refs.map, { attributes: false, childList: true, subtree: true })
     },
-    async initMap() {
-      const map = await this.getMap()
-      map.loadImage(mapMarker, (error, image) => {
-        if (error) throw error
-        map.addImage('marker-icon', image)
-        map.addLayer({
-          id: 'points',
-          interactive: true,
-          type: 'symbol',
-          source: {
-            type: 'geojson',
-            data: this.geoJsonSpaces
-          },
-          layout: {
-            'icon-image': 'marker-icon',
-            'icon-allow-overlap': true
+    initMap() {
+      loadMapboxgl().then((mapboxgl) => {
+        const map = new mapboxgl.Map({
+          container: this.$refs.map,
+          center: [
+            (campusBounds.west + campusBounds.east) / 2,
+            (campusBounds.north + campusBounds.south) / 2
+          ],
+          zoom: 13,
+          style: 'mapbox://styles/mapbox/streets-v10'
+        })
+        map.on('load', () => {
+          map.loadImage(mapMarker, (error, image) => {
+            if (error) {
+              console.error('a mapbox error occurred')
+              return
+            }
+            map.addImage('marker-icon', image)
+            map.addLayer({
+              id: 'points',
+              interactive: true,
+              type: 'symbol',
+              source: {
+                type: 'geojson',
+                data: this.geoJsonSpaces
+              },
+              layout: {
+                'icon-image': 'marker-icon',
+                'icon-allow-overlap': true
+              }
+            })
+            this.setMapLoaded({ map })
+          })
+        })
+        map.on('click', (e) => {
+          const features = map.queryRenderedFeatures(e.point, { layers: ['points'] })
+          const { app } = this.$store
+          if (features.length) {
+            const feature = features[0]
+            const url = app.localePath({
+              name: 'buildings-buildingSlug-spaces-spaceSlug',
+              params: { buildingSlug: feature.properties.buildingSlug, spaceSlug: feature.properties.spaceSlug }
+            })
+            app.router.push(url)
           }
         })
       })
-      map.on('click', (e) => {
-        const features = map.queryRenderedFeatures(e.point, { layers: ['points'] })
-        const { app } = this.$store
-        if (features.length) {
-          const feature = features[0]
-          const url = app.localePath({
-            name: 'buildings-buildingSlug-spaces-spaceSlug',
-            params: { buildingSlug: feature.properties.buildingSlug, spaceSlug: feature.properties.spaceSlug }
-          })
-
-          // map.setFilter('points', ['==', 'spaceSlug', feature.properties.spaceSlug])
-
-          app.router.push(url)
-        }
-      })
-      this.$store.dispatch('updateMarkers')
     }
   }
 }

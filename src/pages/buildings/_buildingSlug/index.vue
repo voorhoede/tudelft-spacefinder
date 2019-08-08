@@ -44,10 +44,10 @@ export default {
   mounted() {
     this.$store.commit('selectBuilding', this.building)
     this.zoomToSelection()
-    this.updateMarkers()
+    this.getMap().then(() => this.updateMarkers())
   },
   methods: {
-    ...mapActions(['zoomToSelection', 'updateMarkers'])
+    ...mapActions(['zoomToSelection', 'updateMarkers', 'getMap'])
   }
 }
 </script>

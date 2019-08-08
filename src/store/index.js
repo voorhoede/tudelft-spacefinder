@@ -1,15 +1,9 @@
 import { getField, updateField } from 'vuex-map-fields'
 import Deferred from '~/lib/deferred'
 import filterSpaces from '~/lib/filter-spaces'
-import loadMapboxgl from '~/lib/mapboxgl/load-async'
+import campusBounds from '~/lib/campus-bounds'
 
 const mapLoaded = new Deferred()
-const campusBounds = {
-  north: 52.006471,
-  west: 4.366779,
-  south: 51.988050,
-  east: 4.388487
-}
 
 const getDefaultFilters = () => ({
   adjustableChairs: false,
@@ -42,6 +36,7 @@ export const state = () => ({
     building: undefined,
     space: undefined
   },
+  activeMarkerFilters: [],
   showListView: true,
   spacesI18n: []
 })
@@ -67,6 +62,9 @@ export const mutations = {
       ...state.selection,
       space
     }
+  },
+  setActiveMarkerFilters(state, filters) {
+    state.activeMarkerFilters = filters
   },
   setBuildings(state, { buildings }) {
     state.buildingsI18n = buildings
@@ -116,31 +114,11 @@ export const actions = {
       })
   },
 
-  mountMap({ commit, state, getters, dispatch }, { container }) {
-    loadMapboxgl().then((mapboxgl) => {
-      const map = new mapboxgl.Map({
-        container,
-        center: [
-          (campusBounds.west + campusBounds.east) / 2,
-          (campusBounds.north + campusBounds.south) / 2
-        ],
-        zoom: 13,
-        style: 'mapbox://styles/mapbox/streets-v10'
-      })
-      map.on('load', () => commit('setMapLoaded', { map }))
-    })
-  },
-
-  async updateMarkers({ dispatch, state, getters }) {
-    const map = await dispatch('getMap')
+  updateMarkers({ state, commit }) {
     const {
       building: { slug: buildingSlug } = {},
       space: { slug: spaceSlug } = {}
     } = state.selection
-
-    if (!map.getLayer('points')) {
-      return
-    }
 
     let filters = []
 
@@ -149,7 +127,6 @@ export const actions = {
     } else if (buildingSlug) {
       filters = [ ['==', 'buildingSlug', buildingSlug] ]
     } else {
-      // @TODO: refactor into separate function
       filters = Object.entries(state.filters).reduce((filters, [ key, value ]) => {
         if (typeof value === 'boolean' && value) {
           return [ ...filters, ['==', key, value] ]
@@ -159,12 +136,7 @@ export const actions = {
         return filters
       }, [])
     }
-
-    if (filters.length) {
-      map.setFilter('points', ['all', ...filters])
-    } else {
-      map.setFilter('points')
-    }
+    commit('setActiveMarkerFilters', filters)
   },
 
   zoomAuto({ dispatch, state }) {

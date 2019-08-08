@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex'
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import { BuildingCard } from '~/components'
 import metaHead from '~/lib/meta-head'
 
@@ -31,12 +31,13 @@ export default {
     })
   },
   mounted() {
-    this.$store.commit('clearSelection')
+    this.clearSelection()
     this.zoomToCampus()
-    this.updateMarkers()
+    this.getMap().then(() => this.updateMarkers())
   },
   methods: {
-    ...mapActions(['updateMarkers', 'zoomToCampus']),
+    ...mapActions(['updateMarkers', 'zoomToCampus', 'getMap']),
+    ...mapMutations(['clearSelection'])
   }
 }
 </script>
