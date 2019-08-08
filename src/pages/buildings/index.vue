@@ -1,8 +1,5 @@
 <template>
-  <section
-    v-if="showListView || !isMobile"
-    class="default-layout__info building-overview"
-  >
+  <section class="default-layout__info building-overview">
     <h2 class="a11y-sr-only">{{ title }}</h2>
 
     <building-card
@@ -21,7 +18,6 @@ export default {
   components: { BuildingCard },
   computed: {
     ...mapGetters(['buildings']),
-    ...mapState(['showListView', 'isMobile']),
     title() { return this.$i18n.t('buildingTitle') }
   },
   head() {
