@@ -7,7 +7,7 @@
   "scripts": {
     "analyze": "nuxt build --analyze",
     "prebuild": "touch ./.env && rimraf dist/ && npm run data",
-    "build": "nuxt generate",
+    "build": "nuxt generate --fail-on-error",
     "predev": "rimraf ./.nuxt && npm run data",
     "data": "node scripts/data/index.js",
     "dev": "PORT=3463 nuxt",
