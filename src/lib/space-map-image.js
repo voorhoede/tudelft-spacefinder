@@ -10,7 +10,7 @@ export default function ({ space }) {
   const invisibleMarkerUrl = encodeURIComponent('https://5d4b289a581fb6255e317d9d--assets-jasper.netlify.com/no-marker.png')
   const width = 800
   const height = width
-  const primaryColor = '#00a6d6'
+  const primaryColor = '#8B2BA7'
   const url = [
     `https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/`,
     `pin-s+${primaryColor.slice(1)}(${space.longitude},${space.latitude}),`,
