@@ -1,6 +1,6 @@
 import { getField, updateField } from 'vuex-map-fields'
 import Deferred from '~/lib/deferred'
-import filterSpaces from '~/lib/filter-spaces'
+import { spaceFilter, spaceIsOpen } from '~/lib/filter-spaces'
 import campusBounds from '~/lib/campus-bounds'
 
 const mapLoaded = new Deferred()
@@ -133,9 +133,11 @@ export const actions = {
       hasSelectedBuilding = true
     }
 
+    // Go through the enabled filters
     const featureFilters = Object.entries(state.filters).reduce((filters, [ key, value ]) => {
       if (typeof value === 'boolean' && value) {
-        return [ ...filters, ['==', key, value] ]
+        const filter = key === 'showOpenLocations' ? 'isOpen' : key
+        return [ ...filters, ['==', filter, value] ]
       } else if (Array.isArray(value) && value.length > 0) {
         if (key === 'buildings' && hasSelectedBuilding) {
           return filters
@@ -208,7 +210,7 @@ export const getters = {
     })
   },
   filteredSpaces: (state, getters) => {
-    return filterSpaces({
+    return spaceFilter({
       filters: state.filters,
       spaces: getters.spaces
     })
@@ -251,6 +253,7 @@ export const getters = {
     })
   },
   geoJsonSpaces: (state, getters) => {
+    const now = new Date()
     const featuresPerSpace = getters.spaces.map((space) => {
       return {
         type: 'Feature',
@@ -258,6 +261,7 @@ export const getters = {
           buildingSlug: space.building.slug,
           spaceSlug: space.slug,
           buildingNumber: space.building.number,
+          isOpen: spaceIsOpen(now, space.openingHours),
           ...space.facilities
         },
         geometry: {
