@@ -121,22 +121,37 @@ export const actions = {
     } = state.selection
 
     let filters = []
+    let hasSelectedBuilding = false
 
     if (spaceSlug) {
-      filters = [ ['==', 'spaceSlug', spaceSlug] ]
+      // All filters are off if a space is selected
+      commit('setActiveMarkerFilters', [ ['==', 'spaceSlug', spaceSlug] ])
+      return
     } else if (buildingSlug) {
+      // If a building is selected, filtering by building should be disabled
       filters = [ ['==', 'buildingSlug', buildingSlug] ]
-    } else {
-      filters = Object.entries(state.filters).reduce((filters, [ key, value ]) => {
-        if (typeof value === 'boolean' && value) {
-          return [ ...filters, ['==', key, value] ]
-        } else if (Array.isArray(value) && value.length > 0) {
-          return [ ...filters, ['in', key, ...value] ]
-        }
-        return filters
-      }, [])
+      hasSelectedBuilding = true
     }
-    commit('setActiveMarkerFilters', filters)
+
+    const featureFilters = Object.entries(state.filters).reduce((filters, [ key, value ]) => {
+      if (typeof value === 'boolean' && value) {
+        return [ ...filters, ['==', key, value] ]
+      } else if (Array.isArray(value) && value.length > 0) {
+        if (key === 'buildings' && hasSelectedBuilding) {
+          return filters
+        }
+
+        if (key === 'buildings') {
+          const buildingFilters = value.map(v => ['==', 'buildingNumber', v])
+          return [ ...filters, [ 'any', ...buildingFilters ] ]
+        }
+
+        return [ ...filters, ['in', key, ...value] ]
+      }
+      return filters
+    }, [])
+
+    commit('setActiveMarkerFilters', [ ...filters, ...featureFilters ])
   },
 
   zoomAuto({ dispatch, state }) {
@@ -242,6 +257,7 @@ export const getters = {
         properties: {
           buildingSlug: space.building.slug,
           spaceSlug: space.slug,
+          buildingNumber: space.building.number,
           ...space.facilities
         },
         geometry: {
