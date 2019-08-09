@@ -253,7 +253,12 @@
           class="button button--primary"
           @click="$emit('close')"
         >
-          {{ $tc('showLocations', filteredSpacesCount, { amount: filteredSpacesCount }) }}
+          <template v-if="isBuildingPage">
+            {{ $tc('showLocations', spacesCount, { amount: spacesCount }) }}
+          </template>
+          <template v-else>
+            {{ $tc('showLocations', filteredSpacesCount, { amount: filteredSpacesCount }) }}
+          </template>
         </button>
       </div>
     </form>
@@ -296,8 +301,18 @@ export default {
       'filters.stationaryPC',
       'filters.whiteBoard'
     ]),
-    ...mapGetters(['filteredSpacesCount']),
-    optionsPerFilter() { return optionsPerFilter }
+    ...mapGetters(['filteredSpaces', 'filteredSpacesCount', 'getBuildingBySlug']),
+    optionsPerFilter() { return optionsPerFilter },
+    buildingSlug() { return this.$route.params.buildingSlug },
+    spaceSlug() { return this.$route.params.spaceSlug },
+    isBuildingPage() {
+      return this.buildingSlug && !this.spaceSlug ? true : false
+    },
+    spacesCount() {
+      return this.filteredSpaces
+        .filter((space) => space.building === this.getBuildingBySlug(this.buildingSlug))
+        .length
+    }
   },
   methods: {
     clearFilters() {
