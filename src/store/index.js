@@ -26,17 +26,18 @@ const getDefaultFilters = () => ({
 })
 
 export const state = () => ({
+  activeMarkerFilters: [],
   buildingsI18n: [],
   filters: getDefaultFilters(),
   installPromptEvent: undefined,
   isInstallable: false,
+  isMapMode: false,
   isMobile: false,
   mapLoaded: false,
   selection: {
     building: undefined,
     space: undefined
   },
-  activeMarkerFilters: [],
   showListView: true,
   spacesI18n: []
 })
@@ -80,8 +81,8 @@ export const mutations = {
   setSpaces(state, { spaces }) {
     state.spacesI18n = spaces
   },
-  toggleListView(state) {
-    state.showListView = !state.showListView
+  toggleMapMode(state) {
+    state.isMapMode = !state.isMapMode
   },
   setMobileState(state, value) {
     state.isMobile = value

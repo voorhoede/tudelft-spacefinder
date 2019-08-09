@@ -35,21 +35,21 @@
         <li class="mobile-only app-menu__item">
           <nuxt-link
             :to="localePath('index')"
-            @click.native="toggleListView"
+            @click.native="toggleMapMode"
             class="app-menu__link"
           >
-            <span v-if="showListView">
-              <svg-icon name="map-icon" class="app-menu__icon" />
-
-              <span class="app-menu__link-name">
-                {{ $t('mapToggle') }}
-              </span>
-            </span>
-            <span v-else>
+            <span v-if="isMapMode">
               <svg-icon name="list-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
                 {{ $t('listToggle') }}
+              </span>
+            </span>
+            <span v-else>
+              <svg-icon name="map-icon" class="app-menu__icon" />
+
+              <span class="app-menu__link-name">
+                {{ $t('mapToggle') }}
               </span>
             </span>
           </nuxt-link>
@@ -109,14 +109,14 @@ export default {
       }
     }
   },
-  computed: mapState(['appLanguage', 'isInstallable', 'showListView']),
+  computed: mapState(['appLanguage', 'isInstallable', 'isMapMode']),
   methods: {
     installApp() {
       this.$store.dispatch('installApp')
         .then(() => this.$emit('close'))
     },
-    toggleListView() {
-      this.$store.commit('toggleListView')
+    toggleMapMode() {
+      this.$store.commit('toggleMapMode')
       this.$emit('close')
     },
   }
