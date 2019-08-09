@@ -28,6 +28,11 @@
         class="button--header__icon"
       />
       {{ $t('filter') }}
+
+      <div
+        v-if="filteredSpacesCount < spaces.length"
+        class="app-header__status-indicator"
+      ></div>
     </button>
 
     <button
@@ -46,6 +51,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     openedMenu: String,
@@ -54,6 +61,9 @@ export default {
     return {
       lastOpenedMenu: null,
     }
+  },
+  computed: {
+    ...mapGetters(['filteredSpacesCount', 'spaces']),
   },
   watch: {
     openedMenu() {
@@ -116,6 +126,7 @@ export default {
 }
 
 .app-header__button {
+  position: relative;
   justify-self: flex-end;
 }
 
@@ -123,5 +134,16 @@ export default {
   .app-header__button:last-of-type {
     margin-left: var(--spacing-half);
   }
+}
+
+.app-header__status-indicator {
+  position: absolute;
+  padding: var(--spacing-quarter);
+  top: 6px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--brand-secondary-color);
+  border-radius: 50%;
 }
 </style>
