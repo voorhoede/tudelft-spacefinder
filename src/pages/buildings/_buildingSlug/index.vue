@@ -1,17 +1,19 @@
 <template>
-  <section class="default-layout__info building-layout">
+  <section>
     <back-button 
       :useHistory="false"
       :to="localePath({ name: 'buildings' })"
     />
-    <building-header
-      class="building-layout__header"
-      :building="building"
-    />
-    <space-list
-      class="building-layout__spaces"
-      :spaces="spaces"
-    />
+    <div class="default-layout__info building-layout">
+      <building-header
+        class="building-layout__header"
+        :building="building"
+      />
+      <space-list
+        class="building-layout__spaces"
+        :spaces="spaces"
+      />
+    </div>
   </section>
 </template>
 
