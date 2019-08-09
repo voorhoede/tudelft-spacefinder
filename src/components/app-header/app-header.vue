@@ -139,7 +139,7 @@ export default {
 .app-header__status-indicator {
   position: absolute;
   padding: var(--spacing-quarter);
-  top: 6px;
+  top: 5px;
   right: 5px;
   width: 12px;
   height: 12px;
