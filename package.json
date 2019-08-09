@@ -12,6 +12,7 @@
     "data": "node scripts/data/index.js",
     "dev": "PORT=3463 nuxt",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "mock:exchange": "node ./scripts/mock/exchange.js",
     "precommit": "npm run lint",
     "proxy": "ngrok http 3463",
     "start": "http-server './dist/client/' -c-1 -o -p 3464",

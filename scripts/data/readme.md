@@ -27,5 +27,5 @@ USE_MOCK_DATA_EXCHANGE=1
 To update mock data for TU Delft Exchange:
 
 ```sh
-node -e "require('./scripts/data/exchange/room-availability')(require('./mock/exchange/emails.json')).then(result => require('fs').writeFileSync('./mock/exchange/availability.json', JSON.stringify(result, null, 2)))"
+npm run mock:exchange
 ```
