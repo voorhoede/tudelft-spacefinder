@@ -23,7 +23,7 @@ const spaceRoutes = flattenDeep(spaces.map(space => {
     const building = buildings.find((building) => building.number === space.buildingNumber)
     const route = pagesI18n['buildings/_buildingSlug/spaces/_spaceSlug'][locale]
       .replace(':buildingSlug', building.i18n[locale].slug)
-      .replace(':spaceSlug', space.slug)
+      .replace(':spaceSlug', space.i18n[locale].slug)
     return `/${locale}${route}`
   })
 }))

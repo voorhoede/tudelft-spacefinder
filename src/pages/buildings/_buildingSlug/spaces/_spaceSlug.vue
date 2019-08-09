@@ -24,6 +24,7 @@
 import { mapActions, mapGetters, mapState, mapMutations } from 'vuex'
 import { BackButton, SocialShare, SpaceDetailCard } from '~/components'
 import metaHead from '~/lib/meta-head'
+import spaceMapImage from '~/lib/space-map-image'
 
 export default {
   components: { BackButton, SocialShare, SpaceDetailCard },
@@ -38,8 +39,14 @@ export default {
   },
   head() {
     const { building, space } = this
+<<<<<<< HEAD
     return metaHead({
       title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`
+=======
+    return metaHead({ 
+      title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`,
+      image: spaceMapImage({ space })
+>>>>>>> master
     })
   },
   mounted() {

@@ -4,7 +4,7 @@
     class="app-header default-layout__header"
   >
     <nuxt-link
-      :to="`/${$i18n.locale}`"
+      :to="localePath('index')"
       class="app-header__logo"
     >
       <img
