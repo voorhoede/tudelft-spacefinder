@@ -37,7 +37,7 @@ export default {
     return metaHead({
       title: `${building.name} (${building.abbreviation})`,
       image: {
-        url: building.image.url
+        url: `${building.image.url}?auto=format&fm=jpg&auto=quality`
       }
     })
   },

@@ -15,12 +15,12 @@ export default function ({ title, description, image }) {
   return {
     title: `${title} • TU Delft Spacefinder`,
     meta: [
-      { hid: 'og:title', name: 'og:title', content: title },
+      { hid: 'og:title', property: 'og:title', content: title },
       description && { hid: 'description', name: 'description', content: description },
-      description && { hid: 'og:description', name: 'og:description', content: description },
-      image && { hid: 'og:image', name: 'og:image', content: `${image.url}?auto=format&fm=jpg&auto=quality` },
-      image && { hid: 'og:image:width', name: 'og:image:width', content: image.width },
-      image && { hid: 'og:image:height', name: 'og:image:height', content: image.height }
+      description && { hid: 'og:description', property: 'og:description', content: description },
+      image && { hid: 'og:image', property: 'og:image', content: image.url },
+      image && { hid: 'og:image:width', property: 'og:image:width', content: image.width },
+      image && { hid: 'og:image:height', property: 'og:image:height', content: image.height }
     ].filter(Boolean)
   }
 }
