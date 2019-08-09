@@ -16,9 +16,10 @@ export default {
   modules,
   plugins: [
     '~/plugins/install-prompt.client',
-    { src: '~/plugins/load-data' },
-    { src: '~/plugins/persist-state', ssr: false },
-    { src: '~/plugins/virtual-scroller' }
+    '~/plugins/load-data',
+    '~/plugins/locale-path-trailing-slash',
+    '~/plugins/persist-state.client',
+    '~/plugins/virtual-scroller'
   ],
   router: {
     middleware: ['history']

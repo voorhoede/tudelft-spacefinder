@@ -21,25 +21,26 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState, mapMutations } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import { BackButton, SocialShare, SpaceDetailCard } from '~/components'
 import metaHead from '~/lib/meta-head'
+import spaceMapImage from '~/lib/space-map-image'
 
 export default {
   components: { BackButton, SocialShare, SpaceDetailCard },
   computed: {
     ...mapGetters(['getSpaceBySlug']),
     ...mapState(['isMobile']),
-
     baseUrl() { return process.env.BASE_URL },
     building() { return this.space.building },
     shareUrl() { return `${process.env.BASE_URL}/${this.$route.fullPath}` },
-    space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) }
+    space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
   },
   head() {
     const { building, space } = this
-    return metaHead({
-      title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`
+    return metaHead({ 
+      title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`,
+      image: spaceMapImage({ space })
     })
   },
   mounted() {
@@ -48,13 +49,7 @@ export default {
       : {}
 
     this.$store.commit('selectBuilding', this.building)
-    this.selectSpace(this.space)
-    this.zoomToSelection()
-    this.getMap().then(() => this.updateMarkers())
-  },
-  methods: {
-    ...mapActions(['zoomToSelection', 'updateMarkers', 'getMap']),
-    ...mapMutations(['selectSpace'])
+    this.$store.dispatch('zoomToSelection', { padding })
   }
 }
 </script>
