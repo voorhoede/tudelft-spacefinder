@@ -39,14 +39,9 @@ export default {
   },
   head() {
     const { building, space } = this
-<<<<<<< HEAD
-    return metaHead({
-      title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`
-=======
     return metaHead({ 
       title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`,
       image: spaceMapImage({ space })
->>>>>>> master
     })
   },
   mounted() {
