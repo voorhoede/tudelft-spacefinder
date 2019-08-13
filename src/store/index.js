@@ -42,7 +42,7 @@ export const state = () => ({
     building: undefined,
     space: undefined
   },
-  showListView: true,
+  isMapMode: false,
   spacesI18n: []
 })
 
@@ -76,8 +76,8 @@ export const mutations = {
   setSpaces(state, { spaces }) {
     state.spacesI18n = spaces
   },
-  toggleListView(state) {
-    state.showListView = !state.showListView
+  toggleMapMode(state) {
+    state.isMapMode = !state.isMapMode
   },
   setMobileState(state, value) {
     state.isMobile = value
@@ -186,6 +186,9 @@ export const getters = {
   },
   filteredSpacesCount: (state, getters) => {
     return getters.filteredSpaces.length
+  },
+  isFiltered: (state, getters) => {
+    return getters.filteredSpacesCount < getters.spaces.length
   },
   getBuildingByNumber: (state, getters) => {
     return (number) => {

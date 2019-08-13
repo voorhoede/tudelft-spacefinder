@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="showListView || !isMobile"
+    v-if="!isMapMode || !isMobile"
     class="default-layout__info"
   >
     <h2 class="a11y-sr-only">{{ $t('allSpaces') }}</h2>
@@ -16,7 +16,7 @@ export default {
   components: { SpaceList },
   computed: {
     ...mapGetters(['filteredSpaces']),
-    ...mapState(['isMobile', 'showListView']),
+    ...mapState(['isMobile', 'isMapMode']),
   },
   mounted() {
     this.$store.commit('clearSelection')
