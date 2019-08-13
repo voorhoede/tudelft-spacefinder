@@ -25,6 +25,7 @@ export default {
     title() { return this.$i18n.t('buildingTitle') }
   },
   head() {
+    throw new Error('Im done')
     return metaHead({
       title: this.title
     })
