@@ -54,7 +54,7 @@ export default {
 @import '../app-core/variables.css';
 
 .back-button {
-  z-index: var(--layer--raised);
+  z-index: var(--layer--popup);
   position: fixed;
   top: calc(var(--header-height-mobile) + var(--spacing-default));
   left: var(--spacing-default);
