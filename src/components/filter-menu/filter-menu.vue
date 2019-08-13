@@ -301,13 +301,10 @@ export default {
       'filters.stationaryPC',
       'filters.whiteBoard'
     ]),
-    ...mapGetters(['filteredSpaces', 'filteredSpacesCount', 'getBuildingBySlug']),
+    ...mapGetters(['filteredSpaces', 'filteredSpacesCount', 'getBuildingBySlug', 'isBuildingPage']),
     optionsPerFilter() { return optionsPerFilter },
     buildingSlug() { return this.$route.params.buildingSlug },
     spaceSlug() { return this.$route.params.spaceSlug },
-    isBuildingPage() {
-      return this.buildingSlug && !this.spaceSlug ? true : false
-    },
     spacesCount() {
       return this.filteredSpaces
         .filter((space) => space.building === this.getBuildingBySlug(this.buildingSlug))

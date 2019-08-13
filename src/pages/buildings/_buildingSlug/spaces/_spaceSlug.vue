@@ -49,6 +49,7 @@ export default {
       : {}
 
     this.$store.commit('selectBuilding', this.building)
+    this.$store.commit('selectSpace', this.space)
     this.$store.dispatch('zoomToSelection', { padding })
   }
 }

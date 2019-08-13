@@ -62,6 +62,9 @@ export const mutations = {
       space: undefined
     }
   },
+  selectSpace(state, space) {
+    state.selection.space = space
+  },
   setBuildings(state, { buildings }) {
     state.buildingsI18n = buildings
   },
@@ -220,5 +223,10 @@ export const getters = {
         building
       }
     })
+  },
+  isBuildingPage: (state) => {
+    console.log('building', state.selection.building)
+    console.log('space', state.selection.space)
+    return state.selection.building && !state.selection.space
   }
 }
