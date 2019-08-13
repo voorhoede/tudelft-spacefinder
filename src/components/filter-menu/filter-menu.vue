@@ -304,7 +304,6 @@ export default {
     ...mapGetters(['filteredSpaces', 'filteredSpacesCount', 'getBuildingBySlug', 'isBuildingPage']),
     optionsPerFilter() { return optionsPerFilter },
     buildingSlug() { return this.$route.params.buildingSlug },
-    spaceSlug() { return this.$route.params.spaceSlug },
     spacesCount() {
       return this.filteredSpaces
         .filter((space) => space.building === this.getBuildingBySlug(this.buildingSlug))
