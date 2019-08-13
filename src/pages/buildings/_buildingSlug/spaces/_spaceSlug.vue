@@ -1,5 +1,5 @@
 <template>
-  <section class="default-layout__info default-layout__info--space-detail">
+  <section>
     <back-button
       :to="
         localePath({
@@ -13,10 +13,12 @@
       <social-share :url="shareUrl" />
     </div>
 
-    <space-detail-card
-      ref="card"
-      :space="space"
-    />
+    <div class="default-layout__info default-layout__info--space-detail">
+      <space-detail-card
+        ref="card"
+        :space="space"
+      />
+    </div>
   </section>
 </template>
 
@@ -64,10 +66,11 @@ export default {
 }
 
 .space-detail__share-button {
-    position: fixed;
-    top: calc(var(--header-height-mobile) + var(--spacing-default));
-    right: var(--spacing-default);
-  }
+  z-index: var(--layer--raised);
+  position: fixed;
+  top: calc(var(--header-height-mobile) + var(--spacing-default));
+  right: var(--spacing-default);
+}
 
 @media (min-width: 700px) {
   .space-detail__share-button {

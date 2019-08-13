@@ -84,15 +84,8 @@ export default {
 
 .mapbox-map__zoom-controls {
   position: absolute;
-  bottom: var(--spacing-half);
-  right: var(--spacing-half);
+  bottom: var(--spacing-default);
+  right: var(--spacing-default);
   z-index: var(--layer--raised);
-}
-
-@media (min-width: 700px) {
-.mapbox-map__zoom-controls {
-    bottom: var(--spacing-default);
-    right: var(--spacing-default);
-  }
 }
 </style>
