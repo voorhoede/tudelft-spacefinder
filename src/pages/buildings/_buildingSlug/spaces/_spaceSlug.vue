@@ -1,5 +1,5 @@
 <template>
-  <section class="default-layout__info default-layout__info--space-detail">
+  <section>
     <back-button
       :to="
         localePath({
@@ -13,15 +13,17 @@
       <social-share :url="shareUrl" />
     </div>
 
-    <space-detail-card
-      ref="card"
-      :space="space"
-    />
+    <div class="default-layout__info default-layout__info--space-detail">
+      <space-detail-card
+        ref="card"
+        :space="space"
+      />
+    </div>
   </section>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import { BackButton, SocialShare, SpaceDetailCard } from '~/components'
 import metaHead from '~/lib/meta-head'
 import spaceMapImage from '~/lib/space-map-image'
@@ -36,9 +38,13 @@ export default {
     shareUrl() { return `${process.env.BASE_URL}/${this.$route.fullPath}` },
     space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
   },
+  methods: {
+    ...mapMutations(['selectBuilding', 'selectSpace']),
+    ...mapActions(['getMap', 'zoomToSelection', 'updateMarkers'])
+  },
   head() {
     const { building, space } = this
-    return metaHead({ 
+    return metaHead({
       title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`,
       image: spaceMapImage({ space })
     })
@@ -48,9 +54,10 @@ export default {
       ? { bottom: this.$refs.card.$el.clientHeight + 2 * 20 }
       : {}
 
-    this.$store.commit('selectBuilding', this.building)
-    this.$store.commit('selectSpace', this.space)
-    this.$store.dispatch('zoomToSelection', { padding })
+    this.selectBuilding(this.building)
+    this.selectSpace(this.space)
+    this.zoomToSelection({ padding })
+    this.getMap().then(() => this.updateMarkers())
   }
 }
 </script>
@@ -65,10 +72,11 @@ export default {
 }
 
 .space-detail__share-button {
-    position: fixed;
-    top: calc(var(--header-height-mobile) + var(--spacing-default));
-    right: var(--spacing-default);
-  }
+  z-index: var(--layer--raised);
+  position: fixed;
+  top: calc(var(--header-height-mobile) + var(--spacing-default));
+  right: var(--spacing-default);
+}
 
 @media (min-width: 700px) {
   .space-detail__share-button {

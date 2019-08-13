@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="showListView || !isMobile"
+    v-if="!isMapMode || !isMobile"
     class="default-layout__info"
   >
     <h2 class="a11y-sr-only">{{ $t('allSpaces') }}</h2>
@@ -9,18 +9,23 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import { SpaceList } from '~/components'
 
 export default {
   components: { SpaceList },
   computed: {
     ...mapGetters(['filteredSpaces']),
-    ...mapState(['isMobile', 'showListView']),
+    ...mapState(['isMobile', 'isMapMode']),
   },
   mounted() {
-    this.$store.commit('clearSelection')
-    this.$store.dispatch('zoomToCampus')
+    this.clearSelection()
+    this.zoomToCampus()
+    this.getMap().then(() => this.updateMarkers())
+  },
+  methods: {
+    ...mapMutations(['clearSelection']),
+    ...mapActions(['zoomToCampus', 'updateMarkers', 'getMap'])
   }
 }
 </script>
