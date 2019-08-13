@@ -139,11 +139,18 @@ export default {
 .app-header__status-indicator {
   position: absolute;
   padding: var(--spacing-quarter);
-  top: 5px;
-  right: 5px;
+  top: 3px;
+  right: 3px;
   width: 12px;
   height: 12px;
   background-color: var(--brand-secondary-color);
   border-radius: 50%;
+}
+
+@media (min-width: 700px) {
+  .app-header__status-indicator {
+    top: 5px;
+    right: 5px;
+  }
 }
 </style>
