@@ -30,7 +30,7 @@
       {{ $t('filter') }}
 
       <div
-        v-if="filteredSpacesCount < spaces.length"
+        v-if="isFiltered"
         class="app-header__status-indicator"
       ></div>
     </button>
@@ -63,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['filteredSpacesCount', 'spaces']),
+    ...mapGetters(['isFiltered']),
   },
   watch: {
     openedMenu() {
