@@ -406,6 +406,7 @@ export default {
   width: 12px;
   height: 12px;
   background: url('~assets/icons/checkmark-icon.svg') center no-repeat;
+  background-size: 12px 12px;
 }
 
 .filter-menu__buttons {
