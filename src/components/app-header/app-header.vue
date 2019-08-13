@@ -28,6 +28,11 @@
         class="button--header__icon"
       />
       {{ $t('filter') }}
+
+      <div
+        v-if="isFiltered"
+        class="app-header__status-indicator"
+      ></div>
     </button>
 
     <button
@@ -46,6 +51,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     openedMenu: String,
@@ -54,6 +61,9 @@ export default {
     return {
       lastOpenedMenu: null,
     }
+  },
+  computed: {
+    ...mapGetters(['isFiltered']),
   },
   watch: {
     openedMenu() {
@@ -116,12 +126,31 @@ export default {
 }
 
 .app-header__button {
+  position: relative;
   justify-self: flex-end;
 }
 
 @media (min-width: 700px) {
   .app-header__button:last-of-type {
     margin-left: var(--spacing-half);
+  }
+}
+
+.app-header__status-indicator {
+  position: absolute;
+  padding: var(--spacing-quarter);
+  top: 3px;
+  right: 3px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--brand-secondary-color);
+  border-radius: 50%;
+}
+
+@media (min-width: 700px) {
+  .app-header__status-indicator {
+    top: 5px;
+    right: 5px;
   }
 }
 </style>

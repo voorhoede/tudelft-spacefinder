@@ -187,6 +187,9 @@ export const getters = {
   filteredSpacesCount: (state, getters) => {
     return getters.filteredSpaces.length
   },
+  isFiltered: (state, getters) => {
+    return getters.filteredSpacesCount < getters.spaces.length
+  },
   getBuildingByNumber: (state, getters) => {
     return (number) => {
       return getters.buildings.find((building) => {
