@@ -3,7 +3,7 @@
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
       <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
     </div>
-    <zoom-controls 
+    <zoom-controls
       v-if="mapLoaded"
       class="mapbox-map__zoom-controls"
       v-on:auto-focus="autoFocus"
@@ -15,8 +15,11 @@
 
 <script>
 import debounce from 'lodash.debounce'
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 import ZoomControls from '../zoom-controls'
+import mapMarker from '~/assets/icons/map-marker.png'
+import loadMapboxgl from '~/lib/mapboxgl/load-async'
+import campusBounds from '~/lib/campus-bounds'
 
 export default {
   components: { ZoomControls },
@@ -25,16 +28,39 @@ export default {
       onResizeDebounce: debounce(this.onResize, 200)
     }
   },
-  computed: mapState(['mapLoaded']),
+  computed: {
+    ...mapState(['mapLoaded', 'activeMarkerFilters']),
+    ...mapGetters(['filteredSpaces', 'geoJsonSpaces'])
+  },
+  watch: {
+    activeMarkerFilters(filters, oldValue) {
+      this.setMarkers(filters)
+    },
+    filteredSpaces(newValue, oldValue) {
+      this.updateMarkers()
+    }
+  },
   mounted() {
-    this.$store.dispatch('mountMap', { container: this.$refs.map })
-      .then((map) => this.fixInsecureLinks())
+    this.initMap()
+    this.getMap()
+      .then(this.fixInsecureLinks)
+      .then(this.updateMarkers)
     window.addEventListener('resize', this.onResizeDebounce, true)
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResizeDebounce, true)
   },
   methods: {
+    ...mapActions(['getMap', 'updateMarkers']),
+    ...mapMutations(['setMapLoaded']),
+    async setMarkers(filters = []) {
+      const map = await this.getMap()
+      if (filters.length) {
+        map.setFilter('points', ['all', ...filters])
+      } else {
+        map.setFilter('points')
+      }
+    },
     autoFocus() {
       this.$store.dispatch('zoomAuto')
     },
@@ -53,7 +79,7 @@ export default {
      * @see https://developers.google.com/web/tools/lighthouse/audits/noopener
      */
     fixInsecureLinks() {
-      if (!'MutationObserver' in window) { return }
+      if (!('MutationObserver' in window)) { return }
       const selector = `a:not([href^="${window.location.origin}"]):not([rel*="noreferrer"])`
       const observer = new MutationObserver((mutations) => {
         const element = this.$refs.map.querySelector('.mapboxgl-ctrl-attrib')
@@ -66,6 +92,54 @@ export default {
         }
       })
       observer.observe(this.$refs.map, { attributes: false, childList: true, subtree: true })
+    },
+    initMap() {
+      loadMapboxgl().then((mapboxgl) => {
+        const map = new mapboxgl.Map({
+          container: this.$refs.map,
+          center: [
+            (campusBounds.west + campusBounds.east) / 2,
+            (campusBounds.north + campusBounds.south) / 2
+          ],
+          zoom: 13,
+          style: 'mapbox://styles/mapbox/streets-v10'
+        })
+        map.on('load', () => {
+          map.loadImage(mapMarker, (error, image) => {
+            if (error) {
+              console.error('a mapbox error occurred')
+              return
+            }
+            map.addImage('marker-icon', image)
+            map.addLayer({
+              id: 'points',
+              interactive: true,
+              type: 'symbol',
+              source: {
+                type: 'geojson',
+                data: this.geoJsonSpaces
+              },
+              layout: {
+                'icon-image': 'marker-icon',
+                'icon-allow-overlap': true
+              }
+            })
+            this.setMapLoaded({ map })
+          })
+        })
+        map.on('click', (e) => {
+          const features = map.queryRenderedFeatures(e.point, { layers: ['points'] })
+          const { app } = this.$store
+          if (features.length) {
+            const feature = features[0]
+            const url = app.localePath({
+              name: 'buildings-buildingSlug-spaces-spaceSlug',
+              params: { buildingSlug: feature.properties.buildingSlug, spaceSlug: feature.properties.spaceSlug }
+            })
+            app.router.push(url)
+          }
+        })
+      })
     }
   }
 }
@@ -97,15 +171,8 @@ export default {
 
 .mapbox-map__zoom-controls {
   position: absolute;
-  bottom: var(--spacing-half);
-  right: var(--spacing-half);
+  bottom: var(--spacing-default);
+  right: var(--spacing-default);
   z-index: var(--layer--raised);
-}
-
-@media (min-width: 700px) {
-.mapbox-map__zoom-controls {
-    bottom: var(--spacing-default);
-    right: var(--spacing-default);
-  }
 }
 </style>

@@ -1,22 +1,24 @@
 <template>
-  <section class="default-layout__info building-layout">
+  <section>
     <back-button 
       :useHistory="false"
       :to="localePath({ name: 'buildings' })"
     />
-    <building-header
-      class="building-layout__header"
-      :building="building"
-    />
-    <space-list
-      class="building-layout__spaces"
-      :spaces="spaces"
-    />
+    <div class="default-layout__info building-layout">
+      <building-header
+        class="building-layout__header"
+        :building="building"
+      />
+      <space-list
+        class="building-layout__spaces"
+        :spaces="spaces"
+      />
+    </div>
   </section>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { BackButton, BuildingHeader, SpaceList } from '~/components'
 import metaHead from '~/lib/meta-head'
 
@@ -29,7 +31,7 @@ export default {
     },
     spaces() {
       return this.filteredSpaces
-        .filter((space) => space.building === this.building)
+        .filter(space => space.building === this.building)
     }
   },
   head() {
@@ -43,7 +45,11 @@ export default {
   },
   mounted() {
     this.$store.commit('selectBuilding', this.building)
-    this.$store.dispatch('zoomToSelection')
+    this.zoomToSelection()
+    this.getMap().then(() => this.updateMarkers())
+  },
+  methods: {
+    ...mapActions(['zoomToSelection', 'updateMarkers', 'getMap'])
   }
 }
 </script>

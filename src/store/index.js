@@ -1,16 +1,10 @@
 import { getField, updateField } from 'vuex-map-fields'
 import Deferred from '~/lib/deferred'
-import filterSpaces from '~/lib/filter-spaces'
-import loadMapboxgl from '~/lib/mapboxgl/load-async'
+import { spaceFilter, spaceIsOpen } from '~/lib/filter-spaces'
+import campusBounds from '~/lib/campus-bounds'
 import delay from '~/lib/delay'
 
 const mapLoaded = new Deferred()
-const campusBounds = {
-  north: 52.006471,
-  west: 4.366779,
-  south: 51.988050,
-  east: 4.388487
-}
 
 const getDefaultFilters = () => ({
   adjustableChairs: false,
@@ -33,17 +27,19 @@ const getDefaultFilters = () => ({
 })
 
 export const state = () => ({
+  activeMarkerFilters: [],
   buildingsI18n: [],
   filters: getDefaultFilters(),
   installPromptEvent: undefined,
   isInstallable: false,
+  isMapMode: false,
   isMobile: false,
   mapLoaded: false,
   selection: {
     building: undefined,
     space: undefined
   },
-  isMapMode: false,
+  showListView: true,
   spacesI18n: []
 })
 
@@ -62,6 +58,15 @@ export const mutations = {
       building,
       space: undefined
     }
+  },
+  selectSpace(state, space) {
+    state.selection = {
+      ...state.selection,
+      space
+    }
+  },
+  setActiveMarkerFilters(state, filters) {
+    state.activeMarkerFilters = filters
   },
   setBuildings(state, { buildings }) {
     state.buildingsI18n = buildings
@@ -111,19 +116,46 @@ export const actions = {
       })
   },
 
-  mountMap({ commit }, { container }) {
-    loadMapboxgl().then((mapboxgl) => {
-      const map = new mapboxgl.Map({
-        container,
-        center: [
-          (campusBounds.west + campusBounds.east) / 2,
-          (campusBounds.north + campusBounds.south) / 2
-        ],
-        zoom: 13,
-        style: 'mapbox://styles/mapbox/streets-v10'
-      })
-      map.on('load', () => commit('setMapLoaded', { map }))
-    })
+  updateMarkers({ state, commit }) {
+    const {
+      building: { slug: buildingSlug } = {},
+      space: { slug: spaceSlug } = {}
+    } = state.selection
+
+    let filters = []
+    let hasSelectedBuilding = false
+
+    if (spaceSlug) {
+      // All filters are off if a space is selected
+      commit('setActiveMarkerFilters', [ ['==', 'spaceSlug', spaceSlug] ])
+      return
+    } else if (buildingSlug) {
+      // If a building is selected, filtering by building should be disabled
+      filters = [ ['==', 'buildingSlug', buildingSlug] ]
+      hasSelectedBuilding = true
+    }
+
+    // Go through the enabled filters
+    const featureFilters = Object.entries(state.filters).reduce((filters, [ key, value ]) => {
+      if (typeof value === 'boolean' && value) {
+        const filter = key === 'showOpenLocations' ? 'isOpen' : key
+        return [ ...filters, ['==', filter, value] ]
+      } else if (Array.isArray(value) && value.length > 0) {
+        if (key === 'buildings' && hasSelectedBuilding) {
+          return filters
+        }
+
+        if (key === 'buildings') {
+          const buildingFilters = value.map(v => ['==', 'buildingNumber', v])
+          return [ ...filters, [ 'any', ...buildingFilters ] ]
+        }
+
+        return [ ...filters, ['in', key, ...value] ]
+      }
+      return filters
+    }, [])
+
+    commit('setActiveMarkerFilters', [ ...filters, ...featureFilters ])
   },
 
   zoomAuto({ dispatch, state }) {
@@ -186,7 +218,7 @@ export const getters = {
     })
   },
   filteredSpaces: (state, getters) => {
-    return filterSpaces({
+    return spaceFilter({
       filters: state.filters,
       spaces: getters.spaces
     })
@@ -230,5 +262,29 @@ export const getters = {
         building
       }
     })
+  },
+  geoJsonSpaces: (state, getters) => {
+    const now = new Date()
+    const featuresPerSpace = getters.spaces.map((space) => {
+      return {
+        type: 'Feature',
+        properties: {
+          buildingSlug: space.building.slug,
+          spaceSlug: space.slug,
+          buildingNumber: space.building.number,
+          isOpen: spaceIsOpen(now, space.openingHours),
+          ...space.facilities
+        },
+        geometry: {
+          type: 'Point',
+          coordinates: [space.longitude, space.latitude]
+        }
+      }
+    })
+
+    return {
+      type: 'FeatureCollection',
+      features: featuresPerSpace
+    }
   }
 }

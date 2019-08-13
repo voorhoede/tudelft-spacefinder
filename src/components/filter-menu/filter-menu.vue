@@ -343,6 +343,7 @@ export default {
 	background-color: var(--background-color);
 	background-size: 100% 40px, 100% 40px, 100% 14px, 100% 5px;
 	background-attachment: local, local, scroll, scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .filter-menu__filter + label {
@@ -405,6 +406,7 @@ export default {
   width: 12px;
   height: 12px;
   background: url('~assets/icons/checkmark-icon.svg') center no-repeat;
+  background-size: 12px 12px;
 }
 
 .filter-menu__buttons {
