@@ -1,6 +1,7 @@
 export { default as NotificationBar } from './notification-bar'
 export { default as AppHeader } from './app-header'
 export { default as AppMenu } from './app-menu'
+export { default as AccordionAnimation } from './accordion-animation'
 export { default as BackButton } from './back-button'
 export { default as OpeningHours } from './opening-hours'
 export { default as CardStatus } from './card-status'

@@ -17,40 +17,45 @@
       </span>
     </button>
 
-    <div v-if="openingHoursAreVisible || (!isMobile && !showToggleOnDesktop)">
-      <h3 class="opening-hours__title">
-        {{ $t('comingWeek') }}
-      </h3>
+    <accordion-animation>
+      <div v-if="openingHoursAreVisible || (!isMobile && !showToggleOnDesktop)">
+        <h3 class="opening-hours__title">
+          {{ $t('comingWeek') }}
+        </h3>
 
-      <dl class="opening-hours__overview">
-        <template
-          v-for="(openingHour, index) in openingHours"
-        >
-          <dt class="opening-hours__day">
-            {{ index === 0 ? $t('today') : $t(openingHour.day) }}
-          </dt>
-          <dd class="opening-hours__time">
-            <template v-if="!openingHour.time.length">
-              {{ $t('closed') }}
-            </template>
-            <p
-              v-else
-              v-for="(time, index) in openingHour.time"
-              :key="index"
-            >
-              {{ renderTime(time[0]) }} - {{ renderTime(time[1]) }}
-            </p>
-          </dd>
-        </template>
-      </dl>
-    </div>
+        <dl class="opening-hours__overview">
+          <template
+            v-for="(openingHour, index) in openingHours"
+          >
+            <dt class="opening-hours__day">
+              {{ index === 0 ? $t('today') : $t(openingHour.day) }}
+            </dt>
+            <dd class="opening-hours__time">
+              <template v-if="!openingHour.time.length">
+                {{ $t('closed') }}
+              </template>
+              <p
+                v-else
+                v-for="(time, index) in openingHour.time"
+                :key="index"
+              >
+                {{ renderTime(time[0]) }} - {{ renderTime(time[1]) }}
+              </p>
+            </dd>
+          </template>
+        </dl>
+      </div>
+    </accordion-animation>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
+import { AccordionAnimation } from '../../components'
+
 export default {
+  components: { AccordionAnimation },
   props: {
     openingHours: Array,
     showToggleOnDesktop: {
