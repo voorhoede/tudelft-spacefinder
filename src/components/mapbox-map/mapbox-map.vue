@@ -1,5 +1,9 @@
 <template>
-  <div class="mapbox-map" ref="map">
+  <div
+    v-resize.debounce="resize"
+    ref="map"
+    class="mapbox-map"
+  >
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
       <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
     </div>
@@ -33,6 +37,9 @@ export default {
     },
     zoomOut() {
       this.$store.dispatch('zoomOut')
+    },
+    resize() {
+      this.$store.dispatch('resizeMap')
     },
     /**
      * Mapbox renders insecure external links.

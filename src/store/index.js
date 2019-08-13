@@ -142,6 +142,11 @@ export const actions = {
     map.zoomOut()
   },
 
+  async resizeMap({ dispatch }) {
+    const map = await dispatch('getMap')
+    map.resize()
+  },
+
   async zoomToBounds({ dispatch }, { bounds, padding }) {
     const map = await dispatch('getMap')
     const defaultPadding = {
