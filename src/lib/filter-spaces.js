@@ -1,4 +1,4 @@
-export default function ({ filters, spaces }) {
+export function spaceFilter({ filters, spaces }) {
   const filterKeys = Object.keys(filters)
   const activeFilterKeys = getActiveFilterKeys(filters, filterKeys)
 
@@ -20,7 +20,7 @@ function filterSpaces(filters, spaces, activeFilterKeys) {
   If the current time falls in any of the time ranges for today, we're in
   business
 */
-function spaceIsOpen(now, openingHours) {
+export function spaceIsOpen(now, openingHours) {
   // first item in openingHours array is today
   const [ { time: timeRanges } ] = openingHours
   return timeRanges

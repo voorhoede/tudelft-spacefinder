@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import { SpaceList } from '~/components'
 
 export default {
@@ -19,8 +19,13 @@ export default {
     ...mapState(['isMobile', 'isMapMode']),
   },
   mounted() {
-    this.$store.commit('clearSelection')
-    this.$store.dispatch('zoomToCampus')
+    this.clearSelection()
+    this.zoomToCampus()
+    this.getMap().then(() => this.updateMarkers())
+  },
+  methods: {
+    ...mapMutations(['clearSelection']),
+    ...mapActions(['zoomToCampus', 'updateMarkers', 'getMap'])
   }
 }
 </script>
