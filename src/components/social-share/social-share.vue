@@ -114,7 +114,7 @@ export default {
     showNotification() {
       this.notificationIsVisible = true
       this.$refs.copyButton.focus()
-      window.setTimeout(() => this.notificationIsVisible = false, 2000)
+      window.setTimeout(() => this.notificationIsVisible = false, 4000)
     },
     handleClick() {
       this.optionsAreVisible = false

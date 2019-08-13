@@ -72,7 +72,7 @@ export default {
 }
 
 .space-detail__share-button {
-  z-index: var(--layer--raised);
+  z-index: var(--layer--popup);
   position: fixed;
   top: calc(var(--header-height-mobile) + var(--spacing-default));
   right: var(--spacing-default);
