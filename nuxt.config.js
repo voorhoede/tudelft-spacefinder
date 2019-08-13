@@ -19,7 +19,6 @@ export default {
     '~/plugins/load-data',
     '~/plugins/locale-path-trailing-slash',
     '~/plugins/persist-state.client',
-    '~/plugins/resize-directive.client',
     '~/plugins/virtual-scroller'
   ],
   router: {

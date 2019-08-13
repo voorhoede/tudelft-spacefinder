@@ -2,6 +2,7 @@ import { getField, updateField } from 'vuex-map-fields'
 import Deferred from '~/lib/deferred'
 import filterSpaces from '~/lib/filter-spaces'
 import loadMapboxgl from '~/lib/mapboxgl/load-async'
+import delay from '~/lib/delay'
 
 const mapLoaded = new Deferred()
 const campusBounds = {
@@ -144,6 +145,7 @@ export const actions = {
 
   async resizeMap({ dispatch }) {
     const map = await dispatch('getMap')
+    await delay(0)
     map.resize()
   },
 

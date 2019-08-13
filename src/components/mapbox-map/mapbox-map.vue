@@ -1,9 +1,5 @@
 <template>
-  <div
-    v-resize.debounce="resize"
-    ref="map"
-    class="mapbox-map"
-  >
+  <div class="mapbox-map" ref="map">
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
       <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
     </div>
@@ -18,15 +14,25 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce'
 import { mapState } from 'vuex'
 import ZoomControls from '../zoom-controls'
 
 export default {
   components: { ZoomControls },
+  data() {
+    return {
+      onResizeDebounce: debounce(this.onResize, 200)
+    }
+  },
   computed: mapState(['mapLoaded']),
   mounted() {
     this.$store.dispatch('mountMap', { container: this.$refs.map })
       .then((map) => this.fixInsecureLinks())
+    window.addEventListener('resize', this.onResizeDebounce, true)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResizeDebounce, true)
   },
   methods: {
     autoFocus() {
@@ -38,7 +44,7 @@ export default {
     zoomOut() {
       this.$store.dispatch('zoomOut')
     },
-    resize() {
+    onResize() {
       this.$store.dispatch('resizeMap')
     },
     /**
