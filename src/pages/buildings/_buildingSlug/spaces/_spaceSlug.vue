@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="space && building">
     <back-button
       :to="
         localePath({
@@ -34,7 +34,7 @@ export default {
     ...mapGetters(['getSpaceBySlug']),
     ...mapState(['isMobile']),
     baseUrl() { return process.env.BASE_URL },
-    building() { return this.space.building },
+    building() { return this.space && this.space.building },
     shareUrl() { return `${process.env.BASE_URL}/${this.$route.fullPath}` },
     space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
   },
@@ -44,6 +44,7 @@ export default {
   },
   head() {
     const { building, space } = this
+    if (!space || !building) return {}
     return metaHead({
       title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`,
       image: spaceMapImage({ space })
