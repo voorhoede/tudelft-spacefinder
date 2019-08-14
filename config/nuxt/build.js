@@ -26,5 +26,14 @@ module.exports = {
       preserve: false
     },
     'autoprefixer': {}
+  },
+  terser: {
+    sourceMap: true
+  },
+  extend(config, { isClient }) {
+    // Extend only webpack config for client-bundle
+    if (isClient) {
+      config.devtool = '#source-map'
+    }
   }
 }
