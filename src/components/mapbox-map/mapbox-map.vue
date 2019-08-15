@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce'
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 import ZoomControls from '../zoom-controls'
 import mapMarker from '~/assets/icons/map-marker.png'
@@ -22,6 +23,11 @@ import campusBounds from '~/lib/campus-bounds'
 
 export default {
   components: { ZoomControls },
+  data() {
+    return {
+      onResizeDebounce: debounce(this.onResize, 200)
+    }
+  },
   computed: {
     ...mapState(['mapLoaded', 'activeMarkerFilters']),
     ...mapGetters(['filteredSpaces', 'geoJsonSpaces'])
@@ -39,6 +45,10 @@ export default {
     this.getMap()
       .then(this.fixInsecureLinks)
       .then(this.updateMarkers)
+    window.addEventListener('resize', this.onResizeDebounce, true)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResizeDebounce, true)
   },
   methods: {
     ...mapActions(['getMap', 'updateMarkers']),
@@ -59,6 +69,9 @@ export default {
     },
     zoomOut() {
       this.$store.dispatch('zoomOut')
+    },
+    onResize() {
+      this.$store.dispatch('resizeMap')
     },
     /**
      * Mapbox renders insecure external links.
@@ -89,6 +102,7 @@ export default {
             (campusBounds.north + campusBounds.south) / 2
           ],
           zoom: 13,
+          trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
           style: 'mapbox://styles/mapbox/streets-v10'
         })
         map.on('load', () => {

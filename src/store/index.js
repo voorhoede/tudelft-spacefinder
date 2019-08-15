@@ -2,6 +2,7 @@ import { getField, updateField } from 'vuex-map-fields'
 import Deferred from '~/lib/deferred'
 import { spaceFilter, spaceIsOpen } from '~/lib/filter-spaces'
 import campusBounds from '~/lib/campus-bounds'
+import delay from '~/lib/delay'
 
 const mapLoaded = new Deferred()
 
@@ -174,6 +175,15 @@ export const actions = {
     map.zoomOut()
   },
 
+  async resizeMap({ dispatch }) {
+    const map = await dispatch('getMap')
+
+    // Wait for the next paint of the browser before resizing the map
+    // This prevents grey areas when resizing the browser
+    await delay(0)
+    map.resize()
+  },
+
   async zoomToBounds({ dispatch }, { bounds, padding }) {
     const map = await dispatch('getMap')
     const defaultPadding = {
@@ -279,5 +289,8 @@ export const getters = {
       type: 'FeatureCollection',
       features: featuresPerSpace
     }
+  },
+  isBuildingPage: (state) => {
+    return state.selection.building && !state.selection.space
   }
 }

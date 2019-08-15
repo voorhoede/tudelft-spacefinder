@@ -41,8 +41,12 @@
 export default {
   props: {
     title: String,
-    isOpen: Boolean,
-    keydownEventListener: null,
+    isOpen: Boolean
+  },
+  data(){
+    return {
+      keydownEventListener: null
+    }
   },
   watch: {
     isOpen(value) {
