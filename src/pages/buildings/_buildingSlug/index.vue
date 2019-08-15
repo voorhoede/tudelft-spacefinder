@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="building">
     <back-button 
       :useHistory="false"
       :to="localePath({ name: 'buildings' })"
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 import { BackButton, BuildingHeader, SpaceList } from '~/components'
 import metaHead from '~/lib/meta-head'
 
@@ -36,6 +36,7 @@ export default {
   },
   head() {
     const { building } = this
+    if (!building) return {}
     return metaHead({
       title: `${building.name} (${building.abbreviation})`,
       image: {
@@ -44,12 +45,14 @@ export default {
     })
   },
   mounted() {
+    this.clearSelection()
     this.$store.commit('selectBuilding', this.building)
     this.zoomToSelection()
     this.getMap().then(() => this.updateMarkers())
   },
   methods: {
-    ...mapActions(['zoomToSelection', 'updateMarkers', 'getMap'])
+    ...mapActions(['zoomToSelection', 'updateMarkers', 'getMap']),
+    ...mapMutations(['clearSelection'])
   }
 }
 </script>

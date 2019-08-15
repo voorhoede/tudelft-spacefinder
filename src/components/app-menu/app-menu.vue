@@ -55,21 +55,7 @@
           </nuxt-link>
         </li>
         <li class="app-menu__item">
-          <nuxt-link
-            v-for="(locale, index) in $i18n.locales"
-            :key="index"
-            v-if="locale.code !== $i18n.locale"
-            :to="localePath('index', locale.code)"
-            @click.native="$emit('close')"
-            :hreflang="locale.code"
-            class="app-menu__link"
-          >
-            <svg-icon name="world-icon" class="app-menu__icon" />
-
-            <span class="app-menu__link-name">
-              {{ languages[locale.code] }}
-            </span>
-          </nuxt-link>
+          <language-selector />
         </li>
         <li
           v-if="isInstallable"
@@ -94,20 +80,13 @@
 
 <script>
 import { mapState } from 'vuex'
+import LanguageSelector from '../language-selector'
 import ModalDrawer from '../modal-drawer'
 
 export default {
-  components: { ModalDrawer },
+  components: { LanguageSelector, ModalDrawer },
   props: {
     isOpen: Boolean,
-  },
-  data() {
-    return {
-      languages: {
-        en: 'english',
-        nl: 'nederlands'
-      }
-    }
   },
   computed: mapState(['appLanguage', 'isInstallable', 'isMapMode']),
   methods: {
