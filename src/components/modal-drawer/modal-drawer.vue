@@ -1,5 +1,13 @@
 <template>
   <div>
+    <transition name="modal-fade">
+      <div
+        v-if="isOpen"
+        @click="$emit('close')"
+        class="modal-drawer__background"
+      ></div>
+    </transition>
+
     <transition name="modal-slide" @after-enter="focusCloseButton">
       <section
         v-if="isOpen"
@@ -25,14 +33,6 @@
 
         <slot />
       </section>
-    </transition>
-
-    <transition name="modal-fade">
-      <div
-        v-if="isOpen"
-        @click="$emit('close')"
-        class="modal-drawer__background"
-      ></div>
     </transition>
   </div>
 </template>
@@ -118,7 +118,7 @@ export default {
 }
 
 .modal-drawer__background {
-  z-index: var(--layer--overlay);
+  z-index: var(--layer--popup);
   position: absolute;
   display: block;
   top: 0;
