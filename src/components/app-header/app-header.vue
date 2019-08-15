@@ -30,7 +30,7 @@
       {{ $t('filter') }}
 
       <div
-        v-if="isFiltered"
+        v-show="isFiltered"
         class="app-header__status-indicator"
       ></div>
     </button>
@@ -63,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['isFiltered']),
+    ...mapGetters(['isFiltered'])
   },
   watch: {
     openedMenu() {
