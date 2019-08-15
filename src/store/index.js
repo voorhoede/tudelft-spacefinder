@@ -289,5 +289,8 @@ export const getters = {
       type: 'FeatureCollection',
       features: featuresPerSpace
     }
+  },
+  isBuildingPage: (state) => {
+    return state.selection.building && !state.selection.space
   }
 }
