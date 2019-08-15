@@ -2,6 +2,9 @@
  * @see https://nuxtjs.org/api/configuration-build
  */
 module.exports = {
+  optimization: {
+    minimize: false
+  },
   html: {
     /**
      * Overwrite default config to skip minification of CSS & JS to speed up build

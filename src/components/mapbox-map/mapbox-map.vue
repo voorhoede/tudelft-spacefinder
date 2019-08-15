@@ -74,7 +74,6 @@ export default {
           observer.disconnect()
           Array.from(element.querySelectorAll(selector)).forEach((insecureLink) => {
             const rel = insecureLink.getAttribute('rel') || ''
-            if (!insecureLink) { return }
             insecureLink.setAttribute('rel', `${rel} noreferrer`)
           })
         }
