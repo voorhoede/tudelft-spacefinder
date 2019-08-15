@@ -102,7 +102,7 @@ export default {
             (campusBounds.north + campusBounds.south) / 2
           ],
           zoom: 13,
-          trackResize: false,
+          trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
           style: 'mapbox://styles/mapbox/streets-v10'
         })
         map.on('load', () => {
