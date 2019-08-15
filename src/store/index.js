@@ -118,20 +118,20 @@ export const actions = {
 
   updateMarkers({ state, commit }) {
     const {
-      building: { slug: buildingSlug } = {},
-      space: { slug: spaceSlug } = {}
+      building: { number: buildingNumber } = {},
+      space: { spaceId } = {}
     } = state.selection
 
     let filters = []
     let hasSelectedBuilding = false
 
-    if (spaceSlug) {
+    if (spaceId) {
       // All filters are off if a space is selected
-      commit('setActiveMarkerFilters', [ ['==', 'spaceSlug', spaceSlug] ])
+      commit('setActiveMarkerFilters', [ ['==', 'spaceId', spaceId] ])
       return
-    } else if (buildingSlug) {
+    } else if (buildingNumber) {
       // If a building is selected, filtering by building should be disabled
-      filters = [ ['==', 'buildingSlug', buildingSlug] ]
+      filters = [ ['==', 'buildingNumber', buildingNumber] ]
       hasSelectedBuilding = true
     }
 
@@ -247,6 +247,13 @@ export const getters = {
     }
   },
   getField,
+  getSpaceById: (state, getters) => {
+    return (id) => {
+      return getters.spaces.find((space) => {
+        return space.spaceId === id
+      })
+    }
+  },
   getSpaceBySlug: (state, getters) => {
     return (slug) => {
       return getters.spaces.find((space) => {
@@ -272,8 +279,7 @@ export const getters = {
       return {
         type: 'Feature',
         properties: {
-          buildingSlug: space.building.slug,
-          spaceSlug: space.slug,
+          spaceId: space.spaceId,
           buildingNumber: space.building.number,
           isOpen: spaceIsOpen(now, space.openingHours),
           ...space.facilities

@@ -20,6 +20,7 @@ import ZoomControls from '../zoom-controls'
 import mapMarker from '~/assets/icons/map-marker.png'
 import loadMapboxgl from '~/lib/mapboxgl/load-async'
 import campusBounds from '~/lib/campus-bounds'
+import i18nSlug from '~/lib/i18n-slug'
 
 export default {
   components: { ZoomControls },
@@ -30,7 +31,7 @@ export default {
   },
   computed: {
     ...mapState(['mapLoaded', 'activeMarkerFilters']),
-    ...mapGetters(['filteredSpaces', 'geoJsonSpaces'])
+    ...mapGetters(['filteredSpaces', 'geoJsonSpaces', 'getSpaceById', 'getBuildingByNumber'])
   },
   watch: {
     activeMarkerFilters(filters, oldValue) {
@@ -132,10 +133,14 @@ export default {
           const features = map.queryRenderedFeatures(e.point, { layers: ['points'] })
           const { app } = this.$store
           if (features.length) {
-            const feature = features[0]
+            const [{ properties: { buildingNumber, spaceId } = {} } = {}] = features
+            if (!buildingNumber || !spaceId) { return }
+            const locale = app.i18n.locale
+            const buildingSlug = i18nSlug(locale, this.getBuildingByNumber(buildingNumber))
+            const spaceSlug = i18nSlug(locale, this.getSpaceById(spaceId))
             const url = app.localePath({
               name: 'buildings-buildingSlug-spaces-spaceSlug',
-              params: { buildingSlug: feature.properties.buildingSlug, spaceSlug: feature.properties.spaceSlug }
+              params: { buildingSlug, spaceSlug }
             })
             app.router.push(url)
           }
