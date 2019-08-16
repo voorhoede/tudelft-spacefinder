@@ -4,12 +4,16 @@ const {
   converge,
   curry,
   filter,
+  head,
   identity,
   ifElse,
   isNil,
+  lensProp,
   map,
   not,
   objOf,
+  of,
+  over,
   pathOr,
   pipe,
   prop,
@@ -78,11 +82,22 @@ const validateProperty = curry((propertyName, validator, data) => {
   )(data)
 })
 
+const validateOpeningHours = pipe(
+  prop('openingHours'),
+  validate(validators.openingHours),
+  of,
+  objOf('openingHours')
+)
+
+const unwrapOpeningHours = over(lensProp('openingHours'), head)
+
 module.exports = pipe(
   converge(meld, [
     validateProperty('buildings', validators.building),
     validateProperty('spaces', validators.space),
-    validateProperty('openingHours', validators.openingHours)
+    // Opening hours is an object, unlike buildings and spaces
+    validateOpeningHours
   ]),
-  map(keepValidValues)
+  map(keepValidValues),
+  unwrapOpeningHours
 )

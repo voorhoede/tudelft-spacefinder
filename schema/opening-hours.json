@@ -27,8 +27,7 @@
     },
     "openingHours": {
       "type":"object",
-      "properties": {
-        "id": { "type": "string" },
+      "additionalProperties": {
         "openingHours": {
           "type":"array",
           "items": {
@@ -37,12 +36,7 @@
           "minItems": 7,
           "maxItems": 7
         }
-      },
-      "required": [
-        "id",
-        "openingHours"
-      ],
-      "additionalItems": false
+      }
     }
   }
 }
