@@ -4,9 +4,13 @@ const mapRoomsToTimes = require('./rooms-to-times')
 const getOpeningHours = require('./opening-hours')
 const removeProps = require('./remove-props')
 
+require('dotenv').config()
+
+const useMockData = process.env.USE_MOCK_DATA_EXCHANGE === '1'
+
 module.exports = async ({ spaces, buildings } = {}) => {
   const emails = getEmails(spaces)
-  const availability = await getRoomAvailability(emails)
+  const availability = await getRoomAvailability(emails, useMockData)
   const roomsToTimesMap = mapRoomsToTimes(emails, availability)
   const openingHours = getOpeningHours(roomsToTimesMap, { rooms: spaces, buildings })
   const cleanedBuildingsAndSpaces = removeProps({ buildings, spaces })

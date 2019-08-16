@@ -1,5 +1,6 @@
 const template = require('./soap-template')
 const client = require('./soap-client')
+const time = require('./time')
 
 require('dotenv').config()
 
@@ -8,10 +9,8 @@ const {
   EWS_PASS: password,
   EWS_ENDPOINT: url
 } = process.env
-const useMockData = process.env.USE_MOCK_DATA_EXCHANGE === '1'
-const time = require('./time')
 
-module.exports = (emailAddresses) => {
+module.exports = (emailAddresses, useMockData = false) => {
   const soapClient = client({ username, password, url })
   const { start, end } = time()
   const soapDocument = template({
@@ -20,7 +19,7 @@ module.exports = (emailAddresses) => {
     end
   })
   if (useMockData) {
-    return require('../../../mock/exchange/availability.json')
+    return Promise.resolve(require('../../../mock/exchange/availability.json'))
   } else {
     return soapClient(soapDocument)
   }
