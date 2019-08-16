@@ -40,7 +40,8 @@ export const state = () => ({
     space: undefined
   },
   showListView: true,
-  spacesI18n: []
+  spacesI18n: [],
+  openingHours: {}
 })
 
 export const mutations = {
@@ -78,6 +79,9 @@ export const mutations = {
   setMapLoaded(state, { map }) {
     mapLoaded.resolve(map)
     state.mapLoaded = true
+  },
+  setOpeningHours(state, { openingHours }) {
+    state.openingHours = openingHours
   },
   setSpaces(state, { spaces }) {
     state.spacesI18n = spaces
@@ -211,12 +215,14 @@ export const actions = {
 }
 
 export const getters = {
-  buildings: (state) => {
+  buildings: (state, getters) => {
     return state.buildingsI18n.map((buildingI18n) => {
       const i18nProps = buildingI18n.i18n[state.i18n.locale]
+      const openingHours = getters.getOpeningHoursById(buildingI18n.buildingId)
       return {
         ...buildingI18n,
-        ...i18nProps
+        ...i18nProps,
+        openingHours
       }
     })
   },
@@ -246,6 +252,11 @@ export const getters = {
       })
     }
   },
+  getOpeningHoursById: (state) => {
+    return (id) => {
+      return state.openingHours[id] || []
+    }
+  },
   getField,
   getSpaceById: (state, getters) => {
     return (id) => {
@@ -266,10 +277,12 @@ export const getters = {
     return state.spacesI18n.map((spaceI18n) => {
       const propsI18n = spaceI18n.i18n[locale]
       const building = getters.getBuildingByNumber(spaceI18n.buildingNumber)
+      const openingHours = getters.getOpeningHoursById(spaceI18n.spaceId)
       return {
         ...spaceI18n,
         ...propsI18n,
-        building
+        building,
+        openingHours
       }
     })
   },

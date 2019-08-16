@@ -10,4 +10,9 @@ export default ({ store }) => {
     .then((spaces) => {
       store.commit('setSpaces', { spaces })
     })
+
+  loadData(`opening-hours.json`)
+    .then((openingHours) => {
+      store.commit('setOpeningHours', { openingHours })
+    })
 }

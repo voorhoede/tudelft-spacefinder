@@ -52,7 +52,10 @@ import { mapState } from 'vuex'
 
 export default {
   props: {
-    openingHours: Array,
+    openingHours: {
+      type: Array,
+      default: () => []
+    },
     showToggleOnDesktop: {
       type: Boolean,
       default: true

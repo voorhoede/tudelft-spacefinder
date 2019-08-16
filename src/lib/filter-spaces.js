@@ -20,7 +20,7 @@ function filterSpaces(filters, spaces, activeFilterKeys) {
   If the current time falls in any of the time ranges for today, we're in
   business
 */
-export function spaceIsOpen(now, openingHours) {
+export function spaceIsOpen(now, openingHours = []) {
   // first item in openingHours array is today
   const [ { time: timeRanges } ] = openingHours
   return timeRanges

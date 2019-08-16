@@ -18,15 +18,19 @@
 <script>
 export default {
   props: {
-    openingHours: Array
+    openingHours: {
+      type: Array,
+      default: () => []
+    }
   },
   computed: {
-    isOpen() {
+    openingHoursToday() {
       const indexToday = 0
-      const openingHoursToday = this.openingHours[indexToday].time
+      return (this.openingHours[indexToday] || {}).time || []
+    },
+    isOpen() {
       const now = new Date()
-
-      return openingHoursToday.some(([startTime, endTime]) => {
+      return this.openingHoursToday.some(([startTime, endTime]) => {
         return now >= new Date(startTime) && now <= new Date(endTime)
       })
     }
