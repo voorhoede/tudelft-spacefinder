@@ -1,6 +1,10 @@
 const sinon = require('sinon')
-const openingHours = require('./opening-hours')
-const { buildingAndRoom } = require('./opening-hours-fixture.json')
+const buildingAndRoomFixture = require('./opening-hours-fixture.json').buildingAndRoom
+const getOpeningHours = require('./opening-hours')
+
+const getOpeningHoursResult = ({ spaces: rooms, availability, buildings } = {}) => {
+  return getOpeningHours(availability, { buildings, rooms })
+}
 
 let clock
 
@@ -14,26 +18,33 @@ afterEach(() => {
 })
 
 describe('space with building and room availability', () => {
-  const { availability, spaces } = buildingAndRoom
+  const result = getOpeningHoursResult(buildingAndRoomFixture)
+  test('returns an array with opening hours for buildings and spaces', () => {
+    expect(Array.isArray(result)).toBe(true)
+    expect(result.length).toBe(2)
+  })
 
-  test('returns an array with an item for each day of the week ahead', () => {
-    const { rooms: [ result ] } = openingHours(availability, { rooms: spaces })
-    const { openingHours: resultOpeningHours } = result
-    expect(Array.isArray(resultOpeningHours)).toBe(true)
-    expect(resultOpeningHours.length).toBe(7)
+  test('result has an item with the building\'s `buidingId` as `id`', () => {
+    const [{ buildingId }] = buildingAndRoomFixture.buildings
+    const hasBuildingId = result.find(({ id }) => id === buildingId)
+    expect(hasBuildingId).toBeTruthy()
+  })
+
+  test('result has an item with the space\'s `spaceId` as `id`', () => {
+    const [{ spaceId }] = buildingAndRoomFixture.spaces
+    const hasSpaceId = result.find(({ id }) => id === spaceId)
+    expect(hasSpaceId).toBeTruthy()
   })
 
   test('starts at the current weekday (forced to tuesday)', () => {
-    const { rooms: [ result ] } = openingHours(availability, { rooms: spaces })
-    const { openingHours: resultOpeningHours } = result
-    const [ { day } ] = resultOpeningHours
+    const result = getOpeningHoursResult(buildingAndRoomFixture)
+    const [ { openingHours: [{ day }] } ] = result
     expect(day).toBe('tu')
   })
 
   test('tuesday contains three time ranges', () => {
-    const { rooms: [ result ] } = openingHours(availability, { rooms: spaces })
-    const { openingHours: resultOpeningHours } = result
-    const [ tuesday ] = resultOpeningHours
-    expect(tuesday.time.length).toBe(3)
+    const result = getOpeningHoursResult(buildingAndRoomFixture)
+    const [ , { openingHours: [{ time }] } ] = result
+    expect(time.length).toBe(3)
   })
 })

@@ -1,8 +1,16 @@
 {
   "buildingAndRoom": {
     "spaces": [{
+      "spaceId": "foo",
+      "buildingId": "foo",
       "exchangeBuildingId": "building@domain.com",
       "exchangeRoomId": "room@domain.com"
+    }],
+    "buildings": [{
+      "spaceId": "bar",
+      "buildingId": "bar",
+      "exchangeBuildingId": "building@domain.com",
+      "exchangeRoomId": ""
     }],
     "availability": {
       "building@domain.com": [{
