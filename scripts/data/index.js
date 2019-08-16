@@ -27,14 +27,11 @@ Promise.all([ getDataFromCsv(), getDataFromCms() ])
   .then(transform)
   .then(addOpeningHours)
   .then(validate)
-  .then(({ spaces, buildings, openingHours }) => {
-    debugger
-    return writeFiles([
-      { name: 'spaces', contents: spaces },
-      { name: 'buildings', contents: buildings },
-      { name: 'opening-hours', contents: openingHours }
-    ])
-  })
+  .then(({ spaces, buildings, openingHours }) => writeFiles([
+    { name: 'spaces', contents: spaces },
+    { name: 'buildings', contents: buildings },
+    { name: 'opening-hours', contents: openingHours }
+  ]))
   .then(() => console.info('Wrote data for spaces, buildings and opening hours'))
   .catch(({ message }) =>
     console.error(`An error occurred writing data: ${message}`)
