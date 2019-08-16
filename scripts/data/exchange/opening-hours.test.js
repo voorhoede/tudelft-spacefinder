@@ -19,32 +19,32 @@ afterEach(() => {
 
 describe('space with building and room availability', () => {
   const result = getOpeningHoursResult(buildingAndRoomFixture)
-  test('returns an array with opening hours for buildings and spaces', () => {
-    expect(Array.isArray(result)).toBe(true)
-    expect(result.length).toBe(2)
+  test('returns an object with opening hours for buildings and spaces', () => {
+    expect(typeof result).toBe('object')
+    expect(Object.keys(result).length).toBe(2)
   })
 
   test('result has an item with the building\'s `buidingId` as `id`', () => {
     const [{ buildingId }] = buildingAndRoomFixture.buildings
-    const hasBuildingId = result.find(({ id }) => id === buildingId)
-    expect(hasBuildingId).toBeTruthy()
+    const hasBuildingId = result.hasOwnProperty(buildingId)
+    expect(hasBuildingId).toBe(true)
   })
 
   test('result has an item with the space\'s `spaceId` as `id`', () => {
     const [{ spaceId }] = buildingAndRoomFixture.spaces
-    const hasSpaceId = result.find(({ id }) => id === spaceId)
-    expect(hasSpaceId).toBeTruthy()
+    const hasSpaceId = result.hasOwnProperty(spaceId)
+    expect(hasSpaceId).toBe(true)
   })
 
   test('starts at the current weekday (forced to tuesday)', () => {
     const result = getOpeningHoursResult(buildingAndRoomFixture)
-    const [ { openingHours: [{ day }] } ] = result
+    const { foo: [{ day }] } = result
     expect(day).toBe('tu')
   })
 
   test('tuesday contains three time ranges', () => {
     const result = getOpeningHoursResult(buildingAndRoomFixture)
-    const [ , { openingHours: [{ time }] } ] = result
+    const { foo: [{ time }] } = result
     expect(time.length).toBe(3)
   })
 })
