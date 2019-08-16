@@ -8,7 +8,6 @@ const {
   ifElse,
   isNil,
   map,
-  mergeDeepRight,
   not,
   objOf,
   pathOr,
@@ -17,13 +16,14 @@ const {
   tap
 } = require('ramda')
 
+const { meld } = require('../csv/lib/helpers')
 const validators = require('./schema')
 const hasValidationErrors = pipe(prop('errors'), isNil, not)
 const getEntityIdentifier = pathOr(__, ['i18n', 'nl', 'slug'])
 
 const logErrors = tap(({ value, errors }) => {
-  const { roomId, buildingId } = value
-  const defaultName = roomId || buildingId || 'unknown'
+  const { roomId, buildingId, id } = value
+  const defaultName = roomId || buildingId || id || 'unknown'
   const name = getEntityIdentifier(defaultName, value)
 
   const errorText = [`${name} did not pass json schema validation:`]
@@ -79,9 +79,10 @@ const validateProperty = curry((propertyName, validator, data) => {
 })
 
 module.exports = pipe(
-  converge(mergeDeepRight, [
+  converge(meld, [
     validateProperty('buildings', validators.building),
-    validateProperty('spaces', validators.space)
+    validateProperty('spaces', validators.space),
+    validateProperty('openingHours', validators.openingHours)
   ]),
   map(keepValidValues)
 )

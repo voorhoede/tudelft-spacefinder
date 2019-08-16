@@ -1,9 +1,11 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "base.json",
+  "$id": "opening-hours.json",
+  "description": "Opening hours for buildings and rooms",
+  "$ref": "#/definitions/openingHours",
   "definitions": {
     "timeRange": {
-      "type":"string"
+      "type": "string"
     },
     "weekDay": {
       "type": "object",
@@ -24,12 +26,23 @@
       }
     },
     "openingHours": {
-      "type":"array",
-      "items": {
-        "$ref": "#/definitions/weekDay"
+      "type":"object",
+      "properties": {
+        "id": { "type": "string" },
+        "openingHours": {
+          "type":"array",
+          "items": {
+            "$ref": "#/definitions/weekDay"
+          },
+          "minItems": 7,
+          "maxItems": 7
+        }
       },
-      "minItems": 7,
-      "maxItems": 7
+      "required": [
+        "id",
+        "openingHours"
+      ],
+      "additionalItems": false
     }
   }
 }

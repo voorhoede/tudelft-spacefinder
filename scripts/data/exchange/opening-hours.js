@@ -101,27 +101,24 @@ const getOpeningHoursForBuildings = (building = []) => {
 }
 
 module.exports = (availability, { buildings = [], rooms = [] }) => {
-  const roomsResult = rooms.map((room) => {
-    const { exchangeBuildingId, exchangeRoomId, ...otherRoomProps } = room
+  const roomOpeningHours = rooms.map((room) => {
+    const { spaceId, exchangeBuildingId, exchangeRoomId } = room
     const buidingAvailability = availability[exchangeBuildingId]
     const roomAvailability = availability[exchangeRoomId]
     return {
-      ...otherRoomProps,
+      id: spaceId,
       openingHours: getOpeningHoursForRooms(buidingAvailability, roomAvailability)
     }
   })
 
-  const buildingsResult = buildings.map((building) => {
-    const { exchangeBuildingId, ...otherBuildingProps } = building
+  const buildingOpeningHours = buildings.map((building) => {
+    const { exchangeBuildingId, buildingId } = building
     const buidingAvailability = availability[exchangeBuildingId]
     return {
-      ...otherBuildingProps,
+      id: buildingId,
       openingHours: getOpeningHoursForBuildings(buidingAvailability)
     }
   })
 
-  return {
-    rooms: roomsResult,
-    buildings: buildingsResult
-  }
+  return [ ...buildingOpeningHours, ...roomOpeningHours ]
 }
