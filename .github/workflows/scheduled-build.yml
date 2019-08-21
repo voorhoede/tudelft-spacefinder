@@ -2,8 +2,7 @@ name: Scheduled build
 
 on:
   schedule:
-  # Run every night at 5:30 AM (POSIX cron syntax)
-  - cron:  '30 5 * * *'
+  - cron:  '47 11 * * *'
 
 jobs:
   build:
