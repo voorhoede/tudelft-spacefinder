@@ -7,7 +7,7 @@ export default [
   {
     // Specify relative path to the dist directory and its content type
     resources: [
-      { path: '_nuxt/fonts/*.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }
+      { path: 'fonts/*.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }
     ]
   }
 ]
