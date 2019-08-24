@@ -13,6 +13,7 @@ export default {
   head,
   loading: { color: '#fff' },
   mode: 'universal',
+  modern: 'client',
   modules,
   plugins: [
     '~/plugins/install-prompt.client',
