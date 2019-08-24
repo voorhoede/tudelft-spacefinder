@@ -15,3 +15,10 @@
 /_nuxt/*
   Cache-Control: max-age=365000000
   Cache-Control: immutable
+
+# Font files need to be in static directory,
+# so filename is not hashed and we can link[rel=preload] them in the head
+# by setting the cache headers here, font files need to be renamed when replaced
+/fonts/*
+  Cache-Control: max-age=365000000
+  Cache-Control: immutable
