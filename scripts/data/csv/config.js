@@ -33,7 +33,6 @@ module.exports = {
     null,
     'studyType',
     'quietness',
-    'bookable',
     'daylit',
     'powerOutlets',
     'ethernet',
@@ -62,15 +61,13 @@ function cast(value, context) {
     case 'longitude':
       return parseFloat(value)
     // conversion to booleans
-    case 'bookable':
     case 'daylit':
-    case 'ethernet':
     case 'whiteBoard':
     case 'smartBoard':
     case 'presentationScreen':
     case 'stationaryPC':
-      return maybeDutchBoolean(value)
     case 'nearCoffeeMachine':
+      return maybeDutchBoolean(value)
     case 'nearPrinter':
     case 'nearBathroom':
       return distanceToBoolean(value)
@@ -79,7 +76,8 @@ function cast(value, context) {
       return quietness(value)
     // power outlets
     case 'powerOutlets':
-      return powerOutlets(value)
+    case 'ethernet':
+      return maybeDutchBooleanAmount(value)
     case 'adjustableChairs':
       return value !== '0'
     case 'studyType':
@@ -119,8 +117,9 @@ function maybeDutchBoolean(value) {
   }
 }
 
-function powerOutlets(value) {
+function maybeDutchBooleanAmount(value) {
   switch (value) {
+    case 'ja':
     case 'ja (<1 pp)':
     case 'ja (>/= 1 pp)':
       return true
