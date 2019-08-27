@@ -3,7 +3,9 @@
     v-if="!isMapMode || !isMobile"
     class="default-layout__info"
   >
-    <h2 class="a11y-sr-only">{{ $t('allSpaces') }}</h2>
+    <h2 class="a11y-sr-only">
+      {{ $t('allSpaces') }}
+    </h2>
     <space-list :spaces="filteredSpaces" />
   </section>
 </template>
@@ -25,7 +27,7 @@ export default {
   },
   methods: {
     ...mapMutations(['clearSelection']),
-    ...mapActions(['zoomToCampus', 'updateMarkers', 'getMap'])
-  }
+    ...mapActions(['zoomToCampus', 'updateMarkers', 'getMap']),
+  },
 }
 </script>

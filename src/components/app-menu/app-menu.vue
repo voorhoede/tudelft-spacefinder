@@ -1,6 +1,6 @@
 <template>
   <modal-drawer
-    :isOpen="isOpen"
+    :is-open="isOpen"
     :title="$t('menu')"
     @close="$emit('close')"
   >
@@ -9,8 +9,8 @@
         <li class="app-menu__item">
           <nuxt-link
             :to="localePath('index')"
-            @click.native="$emit('close')"
             class="app-menu__link"
+            @click.native="$emit('close')"
           >
             <svg-icon name="home-icon" class="app-menu__icon" />
 
@@ -22,8 +22,8 @@
         <li class="app-menu__item">
           <nuxt-link
             :to="localePath({ name: 'buildings' })"
-            @click.native="$emit('close')"
             class="app-menu__link"
+            @click.native="$emit('close')"
           >
             <svg-icon name="building-icon" class="app-menu__icon" />
 
@@ -35,8 +35,8 @@
         <li class="mobile-only app-menu__item">
           <nuxt-link
             :to="localePath('index')"
-            @click.native="toggleMapMode"
             class="app-menu__link"
+            @click.native="toggleMapMode"
           >
             <span v-if="isMapMode">
               <svg-icon name="list-icon" class="app-menu__icon" />
@@ -61,7 +61,7 @@
           v-if="isInstallable"
           class="app-menu__item"
         >
-          <button 
+          <button
             type="button"
             class="app-menu__link app-menu__button button"
             @click="installApp"
@@ -98,7 +98,7 @@ export default {
       this.$store.commit('toggleMapMode')
       this.$emit('close')
     },
-  }
+  },
 }
 </script>
 

@@ -14,7 +14,7 @@ const {
   pathOr,
   pipe,
   prop,
-  tap
+  tap,
 } = require('ramda')
 
 const validators = require('./schema')
@@ -57,7 +57,7 @@ const validate = curry((validator, data) => {
       errors: pipe(
         tap(validator),
         getErrors
-      )
+      ),
     }),
     // log validation errors to console
     ifElse(hasValidationErrors, logErrors, identity)
@@ -81,7 +81,7 @@ const validateProperty = curry((propertyName, validator, data) => {
 module.exports = pipe(
   converge(mergeDeepRight, [
     validateProperty('buildings', validators.building),
-    validateProperty('spaces', validators.space)
+    validateProperty('spaces', validators.space),
   ]),
   map(keepValidValues)
 )

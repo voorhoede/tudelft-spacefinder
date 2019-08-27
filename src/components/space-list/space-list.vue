@@ -37,9 +37,10 @@ export default {
   components: { SpaceCard },
   props: {
     spaces: {
+      type: Array,
       required: true,
-    }
-  }
+    },
+  },
 }
 </script>
 

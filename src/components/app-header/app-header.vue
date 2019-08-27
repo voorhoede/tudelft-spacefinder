@@ -18,10 +18,10 @@
     </h1>
 
     <button
-      type="button"
-      @click="$emit('openFilterMenu')"
-      class="app-header__button button button--header"
       ref="filterButton"
+      type="button"
+      class="app-header__button button button--header"
+      @click="$emit('openFilterMenu')"
     >
       <svg-icon
         name="filter-icon"
@@ -32,14 +32,14 @@
       <div
         v-show="isFiltered"
         class="app-header__status-indicator"
-      ></div>
+      />
     </button>
 
     <button
-      type="button"
-      @click="$emit('openAppMenu')"
-      class="app-header__button button button--header"
       ref="menuButton"
+      type="button"
+      class="app-header__button button button--header"
+      @click="$emit('openAppMenu')"
     >
       <svg-icon
         name="menu-icon"
@@ -55,7 +55,10 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: {
-    openedMenu: String,
+    openedMenu: {
+      default: null,
+      type: String,
+    },
   },
   data() {
     return {
@@ -63,18 +66,18 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['isFiltered'])
+    ...mapGetters(['isFiltered']),
   },
   watch: {
     openedMenu() {
-      if(this.lastOpenedMenu === 'app-menu') {
+      if (this.lastOpenedMenu === 'app-menu') {
         this.$refs.menuButton.focus()
-      } else if(this.lastOpenedMenu === 'filter-menu') {
+      } else if (this.lastOpenedMenu === 'filter-menu') {
         this.$refs.filterButton.focus()
       }
       this.lastOpenedMenu = this.openedMenu
-    }
-  }
+    },
+  },
 }
 </script>
 

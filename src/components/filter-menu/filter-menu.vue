@@ -1,26 +1,28 @@
 <template>
   <modal-drawer
-    :isOpen="isOpen"
+    :is-open="isOpen"
     :title="$t('filter')"
     @close="$emit('close')"
   >
     <form
-      @submit.prevent
       class="filter-menu"
+      @submit.prevent
     >
       <div class="filter-menu__filters">
         <fieldset class="filter-menu__filter-group">
-          <legend class="h3">{{ $t('quietness') }}</legend>
+          <legend class="h3">
+            {{ $t('quietness') }}
+          </legend>
 
-          <span 
+          <span
             v-for="option in optionsPerFilter.quietness"
             :key="option"
           >
             <input
+              :id="`quietness-${option}`"
               v-model="quietness"
               :value="option"
               type="checkbox"
-              :id="`quietness-${option}`"
               class="a11y-sr-only filter-menu__filter"
             >
             <label :for="`quietness-${option}`">
@@ -31,17 +33,19 @@
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
-          <legend class="h3">{{ $t('studyType') }}</legend>
+          <legend class="h3">
+            {{ $t('studyType') }}
+          </legend>
 
-          <span 
+          <span
             v-for="option in optionsPerFilter.studyType"
             :key="option"
           >
             <input
+              :id="`study-type-${option}`"
               v-model="studyType"
               :value="option"
               type="checkbox"
-              :id="`study-type-${option}`"
               class="a11y-sr-only filter-menu__filter"
             >
             <label :for="`study-type-${option}`">
@@ -52,13 +56,15 @@
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
-          <legend class="h3">{{ $t('computerFacilities') }}</legend>
+          <legend class="h3">
+            {{ $t('computerFacilities') }}
+          </legend>
 
           <input
+            id="power-outlets"
             v-model="powerOutlets"
             :value="powerOutlets"
             type="checkbox"
-            id="power-outlets"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="power-outlets">
@@ -67,10 +73,10 @@
           </label>
 
           <input
+            id="ethernet"
             v-model="ethernet"
             :value="ethernet"
             type="checkbox"
-            id="ethernet"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="ethernet">
@@ -79,10 +85,10 @@
           </label>
 
           <input
+            id="stationary-pc"
             v-model="stationaryPC"
             :value="stationaryPC"
             type="checkbox"
-            id="stationary-pc"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="stationary-pc">
@@ -91,10 +97,10 @@
           </label>
 
           <input
+            id="near-printer"
             v-model="nearPrinter"
             :value="nearPrinter"
             type="checkbox"
-            id="near-printer"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="near-printer">
@@ -104,13 +110,15 @@
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
-          <legend class="h3">{{ $t('locationFacilities') }}</legend>
+          <legend class="h3">
+            {{ $t('locationFacilities') }}
+          </legend>
 
           <input
+            id="adjustable-chairs"
             v-model="adjustableChairs"
             :value="adjustableChairs"
             type="checkbox"
-            id="adjustable-chairs"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="adjustable-chairs">
@@ -119,10 +127,10 @@
           </label>
 
           <input
+            id="near-coffee-machine"
             v-model="nearCoffeeMachine"
             :value="nearCoffeeMachine"
             type="checkbox"
-            id="near-coffee-machine"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="near-coffee-machine">
@@ -131,10 +139,10 @@
           </label>
 
           <input
+            id="daylit"
             v-model="daylit"
             :value="daylit"
             type="checkbox"
-            id="daylit"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="daylit">
@@ -143,10 +151,10 @@
           </label>
 
           <input
+            id="near-bathroom"
             v-model="nearBathroom"
             :value="nearBathroom"
             type="checkbox"
-            id="near-bathroom"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="near-bathroom">
@@ -156,13 +164,15 @@
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
-          <legend class="h3">{{ $t('collaborationFacilities') }}</legend>
+          <legend class="h3">
+            {{ $t('collaborationFacilities') }}
+          </legend>
 
           <input
+            id="smart-board"
             v-model="smartBoard"
             :value="smartBoard"
             type="checkbox"
-            id="smart-board"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="smart-board">
@@ -171,10 +181,10 @@
           </label>
 
           <input
+            id="white-board"
             v-model="whiteBoard"
             :value="whiteBoard"
             type="checkbox"
-            id="white-board"
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="white-board">
@@ -183,10 +193,10 @@
           </label>
 
           <input
+            id="presentation-screen"
             v-model="presentationScreen"
             :value="presentationScreen"
             type="checkbox"
-            id="presentation-screen"
             class="a11y-sr-only filter-menu__filter"
           >
 
@@ -197,17 +207,19 @@
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
-          <legend class="h3">{{ $t('buildingTitle') }}</legend>
-          
-          <span 
+          <legend class="h3">
+            {{ $t('buildingTitle') }}
+          </legend>
+
+          <span
             v-for="option in optionsPerFilter.buildings"
             :key="option"
           >
             <input
+              :id="`buildings-${option}`"
               v-model="buildings"
               :value="option"
               type="checkbox"
-              :id="`buildings-${option}`"
               class="a11y-sr-only filter-menu__filter"
             >
             <label :for="`buildings-${option}`">
@@ -219,10 +231,10 @@
 
       <div class="filter-menu__buttons">
         <input
+          id="show-open-locations"
           v-model="showOpenLocations"
           :value="showOpenLocations"
           type="checkbox"
-          id="show-open-locations"
           class="filter-menu__checkbox a11y-sr-only"
         >
         <label for="show-open-locations">
@@ -260,7 +272,7 @@ import ModalDrawer from '../modal-drawer'
 const optionsPerFilter = Object.freeze({
   buildings: [8, 20, 21, 22, 23, 28, 31, 32, 33, 34, 35, 36, 58, 62, 66],
   quietness: ['silent', 'quiet', 'noisy'],
-  studyType: ['self', 'group']
+  studyType: ['self', 'group'],
 })
 
 export default {
@@ -285,22 +297,22 @@ export default {
       'filters.showOpenLocations',
       'filters.smartBoard',
       'filters.stationaryPC',
-      'filters.whiteBoard'
+      'filters.whiteBoard',
     ]),
     ...mapGetters(['filteredSpaces', 'filteredSpacesCount', 'getBuildingBySlug', 'isBuildingPage']),
     optionsPerFilter() { return optionsPerFilter },
     buildingSlug() { return this.$route.params.buildingSlug },
     spacesCount() {
       return this.filteredSpaces
-        .filter((space) => space.building === this.getBuildingBySlug(this.buildingSlug))
+        .filter(space => space.building === this.getBuildingBySlug(this.buildingSlug))
         .length
-    }
+    },
   },
   methods: {
     clearFilters() {
       this.$store.commit('clearFilters')
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -331,15 +343,15 @@ export default {
   flex: 1 1 0;
   padding: var(--spacing-default);
   overflow: auto;
-	background:
-		linear-gradient(var(--background-color) 30%, rgba(255, 255, 255, 0)),
-		linear-gradient(rgba(255,255,255,0), var(--background-color) 70%) 0 100%,
-		radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
-		radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
-	background-repeat: no-repeat;
-	background-color: var(--background-color);
-	background-size: 100% 40px, 100% 40px, 100% 14px, 100% 5px;
-	background-attachment: local, local, scroll, scroll;
+  background:
+    linear-gradient(var(--background-color) 30%, rgba(255, 255, 255, 0)),
+    linear-gradient(rgba(255,255,255,0), var(--background-color) 70%) 0 100%,
+    radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+    radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+  background-repeat: no-repeat;
+  background-color: var(--background-color);
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 5px;
+  background-attachment: local, local, scroll, scroll;
   -webkit-overflow-scrolling: touch;
 }
 

@@ -4,9 +4,9 @@ export default {
     const { buildingSlug } = params
     const url = app.localePath({
       name: 'buildings-buildingSlug',
-      params: { buildingSlug }
+      params: { buildingSlug },
     })
     redirect(url)
-  }
+  },
 }
 </script>

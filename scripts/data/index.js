@@ -29,7 +29,7 @@ Promise.all([ getDataFromCsv(), getDataFromCms() ])
   .then(validate)
   .then(({ spaces, buildings }) => writeFiles([
     { name: 'spaces', contents: spaces },
-    { name: 'buildings', contents: buildings }
+    { name: 'buildings', contents: buildings },
   ]))
   .then(() => console.info('Wrote data for spaces and buildings'))
   .catch(({ message }) =>

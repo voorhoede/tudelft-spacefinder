@@ -1,6 +1,8 @@
 <template>
   <section class="default-layout__info building-overview">
-    <h2 class="a11y-sr-only">{{ title }}</h2>
+    <h2 class="a11y-sr-only">
+      {{ title }}
+    </h2>
 
     <building-card
       v-for="building in buildings"
@@ -11,7 +13,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 import { BuildingCard } from '~/components'
 import metaHead from '~/lib/meta-head'
 
@@ -19,11 +21,11 @@ export default {
   components: { BuildingCard },
   computed: {
     ...mapGetters(['buildings']),
-    title() { return this.$i18n.t('buildingTitle') }
+    title() { return this.$i18n.t('buildingTitle') },
   },
   head() {
     return metaHead({
-      title: this.title
+      title: this.title,
     })
   },
   mounted() {
@@ -33,8 +35,8 @@ export default {
   },
   methods: {
     ...mapActions(['updateMarkers', 'zoomToCampus', 'getMap']),
-    ...mapMutations(['clearSelection'])
-  }
+    ...mapMutations(['clearSelection']),
+  },
 }
 </script>
 

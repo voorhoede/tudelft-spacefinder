@@ -10,16 +10,16 @@ export default [
       background_color: '#00a6d6',
       theme_color: '#00a6d6',
       display: 'standalone',
-      crossorigin: 'use-credentials'
+      crossorigin: 'use-credentials',
     },
     workbox: {
       runtimeCaching: [
         {
           urlPattern: 'https://www.datocms-assets.com/.*',
           handler: 'cacheFirst',
-          method: 'GET'
-        }
-      ]
-    }
-  }
+          method: 'GET',
+        },
+      ],
+    },
+  },
 ]

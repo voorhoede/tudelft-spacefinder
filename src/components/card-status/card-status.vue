@@ -18,7 +18,10 @@
 <script>
 export default {
   props: {
-    openingHours: Array
+    openingHours: {
+      required: true,
+      type: Array,
+    },
   },
   computed: {
     isOpen() {
@@ -29,8 +32,8 @@ export default {
       return openingHoursToday.some(([startTime, endTime]) => {
         return now >= new Date(startTime) && now <= new Date(endTime)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

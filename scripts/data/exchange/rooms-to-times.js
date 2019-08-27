@@ -8,18 +8,18 @@ const {
   pathOr,
   pipe,
   transpose,
-  unapply
+  unapply,
 } = require('ramda')
 
 const getCalendarList = pathOr([], [
   'FreeBusyResponseArray',
-  'FreeBusyResponse'
+  'FreeBusyResponse',
 ])
 
 const getCalendarEvents = map(pathOr(null, [
   'FreeBusyView',
   'CalendarEventArray',
-  'CalendarEvent'
+  'CalendarEvent',
 ]))
 
 const getEvents = pipe(

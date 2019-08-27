@@ -5,5 +5,5 @@ import routes from '../routes'
  */
 export default {
   dir: 'dist/client/',
-  routes
+  routes,
 }

@@ -14,8 +14,11 @@
 <script>
 export default {
   props: {
-    building: Object
-  }
+    building: {
+      required: true,
+      type: Object,
+    },
+  },
 }
 </script>
 

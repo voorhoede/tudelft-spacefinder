@@ -1,7 +1,7 @@
 <template>
   <div
-    class="default-layout"
     ref="defaultLayout"
+    class="default-layout"
   >
     <notification-bar
       class="default-layout__notification-bar"
@@ -9,24 +9,24 @@
     />
 
     <app-header
+      :opened-menu="openedMenu"
       @openAppMenu="openAppMenu"
       @openFilterMenu="openFilterMenu"
-      :openedMenu="openedMenu"
     />
 
     <main class="default-layout__main">
       <nuxt />
 
-      <mapbox-map class="default-layout__map"/>
+      <mapbox-map class="default-layout__map" />
     </main>
 
     <app-menu
-      :isOpen="openedMenu === 'app-menu'"
+      :is-open="openedMenu === 'app-menu'"
       @close="closeMenu"
     />
 
     <filter-menu
-      :isOpen="openedMenu === 'filter-menu'"
+      :is-open="openedMenu === 'filter-menu'"
       @close="closeMenu"
     />
   </div>
@@ -45,16 +45,16 @@ export default {
           innerHTML: `
             var isIE = (/(MSIE|Trident)/).test(window.navigator.userAgent);
             if (isIE) { document.documentElement.className += " old-ie"; }
-          `
-        }
+          `,
+        },
       ],
-      __dangerouslyDisableSanitizers: ['script']
+      __dangerouslyDisableSanitizers: ['script'],
     }
   },
   data() {
     return {
       openedMenu: null,
-      onResizeDebounce: debounce(this.onResize, 200)
+      onResizeDebounce: debounce(this.onResize, 200),
     }
   },
   mounted() {
@@ -75,16 +75,16 @@ export default {
       this.openedMenu = null
     },
     onResize() {
-      let windowHeight = window.innerHeight * 0.01
+      const windowHeight = window.innerHeight * 0.01
       this.$refs.defaultLayout.style.setProperty('--window-height', `${windowHeight}px`)
 
-      if(window.matchMedia('(min-width: 700px)').matches) {
+      if (window.matchMedia('(min-width: 700px)').matches) {
         this.$store.commit('setMobileState', false)
       } else {
         this.$store.commit('setMobileState', true)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -7,9 +7,9 @@ module.exports = config => (xml) => {
     httpntlm.post({
       ...config,
       headers: {
-        'Content-type': 'text/xml'
+        'Content-type': 'text/xml',
       },
-      body: xml
+      body: xml,
     }, (err, res) => {
       if (err) {
         return reject(err)
@@ -22,7 +22,7 @@ module.exports = config => (xml) => {
       const availability = pathOr(null, [
         's:Envelope',
         's:Body',
-        'GetUserAvailabilityResponse'
+        'GetUserAvailabilityResponse',
       ], parsed)
 
       if (availability) {

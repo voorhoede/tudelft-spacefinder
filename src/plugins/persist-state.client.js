@@ -8,7 +8,7 @@ export default ({ store }) => {
   createPersistedState({
     key: 'app-state',
     paths: [
-      'filters'
-    ]
+      'filters',
+    ],
   })(store)
 }

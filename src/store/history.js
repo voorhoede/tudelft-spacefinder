@@ -1,5 +1,5 @@
 export const state = () => ({
-  routes: []
+  routes: [],
 })
 
 export const mutations = {
@@ -10,7 +10,7 @@ export const mutations = {
   goBack(state) {
     state.routes = state.routes.slice(0, -1)
     window.history.back()
-  }
+  },
 }
 
 export const getters = {
@@ -25,5 +25,5 @@ export const getters = {
     if (!getters.hasHistory) return
     const previousRoutePath = state.routes[state.routes.length - 2]
     return previousRoutePath.fullPath
-  }
+  },
 }

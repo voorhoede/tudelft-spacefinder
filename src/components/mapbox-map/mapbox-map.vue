@@ -1,14 +1,14 @@
 <template>
-  <div class="mapbox-map" ref="map">
+  <div ref="map" class="mapbox-map">
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
       <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
     </div>
     <zoom-controls
       v-if="mapLoaded"
       class="mapbox-map__zoom-controls"
-      v-on:auto-focus="autoFocus"
-      v-on:zoom-in="zoomIn"
-      v-on:zoom-out="zoomOut"
+      @auto-focus="autoFocus"
+      @zoom-in="zoomIn"
+      @zoom-out="zoomOut"
     />
   </div>
 </template>
@@ -26,12 +26,12 @@ export default {
   components: { ZoomControls },
   data() {
     return {
-      onResizeDebounce: debounce(this.onResize, 200)
+      onResizeDebounce: debounce(this.onResize, 200),
     }
   },
   computed: {
     ...mapState(['mapLoaded', 'activeMarkerFilters']),
-    ...mapGetters(['filteredSpaces', 'geoJsonSpaces', 'getSpaceById', 'getBuildingByNumber'])
+    ...mapGetters(['filteredSpaces', 'geoJsonSpaces', 'getSpaceById', 'getBuildingByNumber']),
   },
   watch: {
     activeMarkerFilters(filters, oldValue) {
@@ -39,7 +39,7 @@ export default {
     },
     filteredSpaces(newValue, oldValue) {
       this.updateMarkers()
-    }
+    },
   },
   mounted() {
     this.initMap()
@@ -100,11 +100,11 @@ export default {
           container: this.$refs.map,
           center: [
             (campusBounds.west + campusBounds.east) / 2,
-            (campusBounds.north + campusBounds.south) / 2
+            (campusBounds.north + campusBounds.south) / 2,
           ],
           zoom: 13,
           trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
-          style: 'mapbox://styles/mapbox/streets-v10'
+          style: 'mapbox://styles/mapbox/streets-v10',
         })
         map.on('load', () => {
           map.loadImage(mapMarker, (error, image) => {
@@ -119,12 +119,12 @@ export default {
               type: 'symbol',
               source: {
                 type: 'geojson',
-                data: this.geoJsonSpaces
+                data: this.geoJsonSpaces,
               },
               layout: {
                 'icon-image': 'marker-icon',
-                'icon-allow-overlap': true
-              }
+                'icon-allow-overlap': true,
+              },
             })
             this.setMapLoaded({ map })
           })
@@ -140,14 +140,14 @@ export default {
             const spaceSlug = i18nSlug(locale, this.getSpaceById(spaceId))
             const url = app.localePath({
               name: 'buildings-buildingSlug-spaces-spaceSlug',
-              params: { buildingSlug, spaceSlug }
+              params: { buildingSlug, spaceSlug },
             })
             app.router.push(url)
           }
         })
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

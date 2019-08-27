@@ -29,5 +29,5 @@ Vue.mixin({
       const url = _switchLocalePath(locale)
       return enforceTrailingSlash(url)
     }
-  }
+  },
 })

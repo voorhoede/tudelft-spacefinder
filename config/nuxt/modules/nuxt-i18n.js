@@ -11,7 +11,7 @@ export default [
     defaultLocale,
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: 'nf_lang' // https://www.netlify.com/docs/redirects/#geoip-and-language-based-redirects
+      cookieKey: 'nf_lang', // https://www.netlify.com/docs/redirects/#geoip-and-language-based-redirects
     },
     lazy: true,
     langDir: 'static/data/',
@@ -20,7 +20,7 @@ export default [
         code: locale,
         file: `${locale}/messages.json`,
         iso: locale,
-        name: locale
+        name: locale,
       }
     }),
     parsePages: false,
@@ -28,7 +28,7 @@ export default [
     rootRedirect: defaultLocale,
     strategy: 'prefix',
     vueI18n: {
-      fallbackLocale: defaultLocale
-    }
-  }
+      fallbackLocale: defaultLocale,
+    },
+  },
 ]

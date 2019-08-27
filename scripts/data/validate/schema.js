@@ -7,7 +7,7 @@ const spaceSchema = require('../../../schema/space.json')
 
 const ajv = new Ajv({
   schemas: [ baseSchema, buildingSchema, spaceSchema ],
-  verbose: true
+  verbose: true,
 })
 
 // json schema validator function for spaces

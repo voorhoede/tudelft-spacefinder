@@ -2,8 +2,8 @@
   <a
     v-if="useHistory && previousPageUrl"
     :href="previousPageUrl"
-    @click.prevent="goBack"
     class="back-button"
+    @click.prevent="goBack"
   >
     <back-button-content>
       <slot />
@@ -30,23 +30,23 @@ export default {
   props: {
     to: {
       type: String,
-      required: true
+      required: true,
     },
     useHistory: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   computed: {
     ...mapGetters({
-      previousPageUrl: 'history/previousPageUrl'
-    })
+      previousPageUrl: 'history/previousPageUrl',
+    }),
   },
   methods: {
     goBack() {
       this.$store.commit('history/goBack')
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -67,4 +67,3 @@ export default {
   }
 }
 </style>
-

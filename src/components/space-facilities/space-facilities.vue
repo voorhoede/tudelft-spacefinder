@@ -1,7 +1,7 @@
 <template>
   <ul class="flat-list">
     <li
-      v-for="(facility, index) in this.filteredFacilities"
+      v-for="(facility, index) in filteredFacilities"
       :key="index"
       class="space-facility__item"
     >
@@ -20,14 +20,17 @@
 <script>
 export default {
   props: {
-    facilities: Object,
+    facilities: {
+      required: true,
+      type: Object,
+    },
   },
   computed: {
     filteredFacilities() {
       return Object.entries(this.facilities)
         .map(([key, value]) => ({ name: key, value }))
         .filter(obj => Boolean(obj.value))
-    }
+    },
   },
   methods: {
     getIconName(facility) {
@@ -39,8 +42,8 @@ export default {
       const facilityName = valueIsName ? facility.value : facility.name
       const facilityValue = valueIsName ? `${facility.name}.${facilityName}` : facilityName
       return facilityValue
-    }
-  }
+    },
+  },
 }
 </script>
 

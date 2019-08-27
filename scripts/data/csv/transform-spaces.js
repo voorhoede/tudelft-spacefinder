@@ -15,7 +15,7 @@ const {
   pipe,
   prop,
   replace,
-  toLower
+  toLower,
 } = require('ramda')
 
 const { meld, toString } = require('./lib/helpers')
@@ -26,8 +26,8 @@ const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 const translationMap = {
   name: {
     nl: 'spaceNameNL',
-    en: 'spaceNameEN'
-  }
+    en: 'spaceNameEN',
+  },
 }
 
 const facilities = [
@@ -44,7 +44,7 @@ const facilities = [
   'presentationScreen',
   'nearCoffeeMachine',
   'nearPrinter',
-  'nearBathroom'
+  'nearBathroom',
 ]
 
 const spaceRootProperties = [
@@ -57,7 +57,7 @@ const spaceRootProperties = [
   'latitude',
   'longitude',
   'i18n',
-  'roomId'
+  'roomId',
 ]
 
 const createSlugObject = pipe(
@@ -102,7 +102,7 @@ module.exports = map(
     converge(meld, [
       getRootProperties,
       getFacilities,
-      getBuildingNumber
+      getBuildingNumber,
     ])
   )
 )

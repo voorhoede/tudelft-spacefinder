@@ -3,7 +3,7 @@ const { fromI18n, buildingNumberFromId } = require('./building-meta')
 const data = {
   someProperty: 'some value',
   name: '13 - Architecture',
-  abbreviation: 'Arch'
+  abbreviation: 'Arch',
 }
 
 test('fromI18n returns expected properties', () => {

@@ -4,6 +4,6 @@
 export default [
   '@nuxtjs/eslint-module',
   {
-    fix: true
-  }
+    fix: true,
+  },
 ]

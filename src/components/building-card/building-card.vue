@@ -20,7 +20,7 @@
       </ul>
 
       <card-status
-        :openingHours="building.openingHours"
+        :opening-hours="building.openingHours"
         class="building-card__status"
       />
     </div>
@@ -33,8 +33,11 @@ import { BuildingImage, CardStatus } from '../../components'
 export default {
   components: { BuildingImage, CardStatus },
   props: {
-    building: Object
-  }
+    building: {
+      required: true,
+      type: Object,
+    },
+  },
 }
 </script>
 

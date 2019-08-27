@@ -2,7 +2,7 @@ const {
   invoker,
   mergeDeepRight,
   reduce,
-  unapply
+  unapply,
 } = require('ramda')
 
 const meld = unapply(reduce(mergeDeepRight, {}))

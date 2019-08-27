@@ -39,26 +39,16 @@ export default {
   },
   methods: {
     ...mapMutations(['selectBuilding', 'selectSpace']),
-    ...mapActions(['getMap', 'zoomToSelection', 'updateMarkers'])
+    ...mapActions(['getMap', 'zoomToSelection', 'updateMarkers']),
   },
   head() {
     const { building, space } = this
     if (!space || !building) return {}
     return metaHead({
       title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`,
-      image: spaceMapImage({ space })
+      image: spaceMapImage({ space }),
     })
   },
-  mounted() {
-    const padding = this.isMobile
-      ? { bottom: this.$refs.card.$el.clientHeight + 2 * 20 }
-      : {}
-
-    this.selectBuilding(this.building)
-    this.selectSpace(this.space)
-    this.zoomToSelection({ padding })
-    this.getMap().then(() => this.updateMarkers())
-  }
 }
 </script>
 

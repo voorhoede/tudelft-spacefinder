@@ -36,14 +36,14 @@
       </div>
 
       <card-status
-        :openingHours="space.openingHours"
-        :isOpen="space.locationIsOpen"
+        :opening-hours="space.openingHours"
+        :is-open="space.locationIsOpen"
         class="space-detail-card__open-status"
       />
 
       <opening-hours
-        :openingHours="space.openingHours"
-        :showToggleOnDesktop="false"
+        :opening-hours="space.openingHours"
+        :show-toggle-on-desktop="false"
         class="space-detail-card__opening-hours"
       />
     </div>
@@ -57,8 +57,11 @@ import { CardStatus, OpeningHours, SpaceFacilities } from '../../components'
 export default {
   components: { CardStatus, OpeningHours, SpaceFacilities },
   props: {
-    space: Object
-  }
+    space: {
+      required: true,
+      type: Object,
+    },
+  },
 }
 </script>
 

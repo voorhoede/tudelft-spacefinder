@@ -16,15 +16,15 @@ module.exports = {
       removeEmptyAttributes: true,
       removeRedundantAttributes: true,
       trimCustomFragments: true,
-      useShortDoctype: true
-    }
+      useShortDoctype: true,
+    },
   },
   postcss: {
     'postcss-import': {},
     'postcss-custom-properties': {
       importFrom: './src/components/app-core/variables.css',
-      preserve: false
+      preserve: false,
     },
-    'autoprefixer': {}
-  }
+    'autoprefixer': {},
+  },
 }

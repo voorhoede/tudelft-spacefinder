@@ -16,7 +16,7 @@ module.exports = ({ csvPath }) => ({
   transform: ([ dataFromCsv, dataFromCms ]) => {
     return {
       spaces: transformSpaces(dataFromCsv),
-      buildings: transformBuildings([ dataFromCsv, dataFromCms ])
+      buildings: transformBuildings([ dataFromCsv, dataFromCms ]),
     }
-  }
+  },
 })

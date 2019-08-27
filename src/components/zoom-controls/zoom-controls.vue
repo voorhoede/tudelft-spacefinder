@@ -27,10 +27,10 @@ export default {
       actions: [
         { event: 'auto-focus', icon: 'focus', text: 'focusMap' },
         { event: 'zoom-in', icon: 'add', text: 'zoomIn' },
-        { event: 'zoom-out', icon: 'remove', text: 'zoomOut' }
-      ]
+        { event: 'zoom-out', icon: 'remove', text: 'zoomOut' },
+      ],
     }
-  }
+  },
 }
 </script>
 

@@ -3,9 +3,9 @@
     <transition name="modal-fade">
       <div
         v-if="isOpen"
-        @click="$emit('close')"
         class="modal-drawer__background"
-      ></div>
+        @click="$emit('close')"
+      />
     </transition>
 
     <transition name="modal-slide" @after-enter="focusCloseButton">
@@ -17,10 +17,10 @@
           <h2>{{ title }}</h2>
 
           <button
-            type="button"
-            @click="$emit('close')"
-            class="button button--header"
             ref="closeButton"
+            type="button"
+            class="button button--header"
+            @click="$emit('close')"
           >
             <svg-icon
               name="close-icon"
@@ -40,28 +40,31 @@
 <script>
 export default {
   props: {
-    title: String,
-    isOpen: Boolean
+    title: {
+      required: true,
+      type: String,
+    },
+    isOpen: Boolean,
   },
-  data(){
+  data() {
     return {
-      keydownEventListener: null
+      keydownEventListener: null,
     }
   },
   watch: {
     isOpen(value) {
-      if(value) {
+      if (value) {
         this.$nextTick(() => {
           const focusableElements = this.$el.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), input[type="checkbox"]:not([disabled])')
           const firstFocusableElement = focusableElements[0]
           const lastFocusableElement = focusableElements[focusableElements.length - 1]
 
           this.keydownEventListener = this.$el.addEventListener('keydown', (e) => {
-            if(e.key === 'Tab') {
-              if(e.shiftKey && document.activeElement === firstFocusableElement) {
+            if (e.key === 'Tab') {
+              if (e.shiftKey && document.activeElement === firstFocusableElement) {
                 lastFocusableElement.focus()
                 e.preventDefault()
-              } else if(!e.shiftKey && document.activeElement === lastFocusableElement) {
+              } else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
                 firstFocusableElement.focus()
                 e.preventDefault()
               }
@@ -69,7 +72,7 @@ export default {
           })
         })
       }
-    }
+    },
   },
   beforeDestroy() {
     this.keydownEventListener = null
@@ -77,8 +80,8 @@ export default {
   methods: {
     focusCloseButton() {
       this.$refs.closeButton.focus()
-    }
-  }
+    },
+  },
 }
 </script>
 

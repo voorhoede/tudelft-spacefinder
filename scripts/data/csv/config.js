@@ -42,8 +42,8 @@ module.exports = {
     'presentationScreen',
     'nearCoffeeMachine',
     'nearPrinter',
-    'nearBathroom'
-  ]
+    'nearBathroom',
+  ],
 }
 
 function cast(value, context) {

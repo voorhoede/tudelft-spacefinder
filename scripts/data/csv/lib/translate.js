@@ -10,7 +10,7 @@ const {
   reduce,
   uniq,
   values,
-  zipObj
+  zipObj,
 } = require('ramda')
 
 /*

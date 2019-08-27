@@ -6,7 +6,7 @@ require('dotenv').config()
 const {
   EWS_USER: username,
   EWS_PASS: password,
-  EWS_ENDPOINT: url
+  EWS_ENDPOINT: url,
 } = process.env
 const useMockData = process.env.USE_MOCK_DATA_EXCHANGE === '1'
 const time = require('./time')
@@ -17,7 +17,7 @@ module.exports = (emailAddresses) => {
   const soapDocument = template({
     emails: emailAddresses,
     start,
-    end
+    end,
   })
   if (useMockData) {
     return require('../../../mock/exchange/availability.json')

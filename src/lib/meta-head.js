@@ -20,7 +20,7 @@ export default function ({ title, description, image }) {
       description && { hid: 'og:description', property: 'og:description', content: description },
       image && { hid: 'og:image', property: 'og:image', content: image.url },
       image && { hid: 'og:image:width', property: 'og:image:width', content: image.width },
-      image && { hid: 'og:image:height', property: 'og:image:height', content: image.height }
-    ].filter(Boolean)
+      image && { hid: 'og:image:height', property: 'og:image:height', content: image.height },
+    ].filter(Boolean),
   }
 }

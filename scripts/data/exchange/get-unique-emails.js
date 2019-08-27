@@ -13,12 +13,12 @@ const {
   pipe,
   sort,
   uniq,
-  values
+  values,
 } = require('ramda')
 
 const isArrayWithItems = allPass([
   pipe(isEmpty, not),
-  is(Array)
+  is(Array),
 ])
 
 const getExchangeIds = chain(

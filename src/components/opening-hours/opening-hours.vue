@@ -2,10 +2,10 @@
   <div class="opening-hours">
     <button
       v-if="isMobile || showToggleOnDesktop"
-      @click="toggleOpeningHours"
       :aria-label="openingHoursAreVisible ? $t('hideOpeningHours') : $t('showOpeningHours')"
       class="opening-hours__toggle button"
       :class="{ 'opening-hours__toggle--open': openingHoursAreVisible }"
+      @click="toggleOpeningHours"
     >
       <svg-icon
         name="back-icon"
@@ -26,17 +26,17 @@
         <template
           v-for="(openingHour, index) in openingHours"
         >
-          <dt class="opening-hours__day">
+          <dt :key="`hour-entry-${index}`" class="opening-hours__day">
             {{ index === 0 ? $t('today') : $t(openingHour.day) }}
           </dt>
-          <dd class="opening-hours__time">
+          <dd :key="`time-entry-wrapper-${index}`" class="opening-hours__time">
             <template v-if="!openingHour.time.length">
               {{ $t('closed') }}
             </template>
             <p
+              v-for="(time, timeEntryIndex) in openingHour.time"
               v-else
-              v-for="(time, index) in openingHour.time"
-              :key="index"
+              :key="`time-entry-${timeEntryIndex}`"
             >
               {{ renderTime(time[0]) }} - {{ renderTime(time[1]) }}
             </p>
@@ -52,19 +52,22 @@ import { mapState } from 'vuex'
 
 export default {
   props: {
-    openingHours: Array,
+    openingHours: {
+      required: true,
+      type: Array,
+    },
     showToggleOnDesktop: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
-      openingHoursAreVisible: false
+      openingHoursAreVisible: false,
     }
   },
   computed: {
-    ...mapState(['isMobile'])
+    ...mapState(['isMobile']),
   },
   methods: {
     toggleOpeningHours() {
@@ -74,8 +77,8 @@ export default {
       const date = new Date(dateStamp)
       const time = date.toLocaleString('nl-NL', { hour: 'numeric', minute: '2-digit' })
       return time
-    }
-  }
+    },
+  },
 }
 </script>
 

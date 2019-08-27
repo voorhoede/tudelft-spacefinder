@@ -1,7 +1,7 @@
 <template>
   <section v-if="building">
-    <back-button 
-      :useHistory="false"
+    <back-button
+      :use-history="false"
       :to="localePath({ name: 'buildings' })"
     />
     <div class="default-layout__info building-layout">
@@ -32,7 +32,7 @@ export default {
     spaces() {
       return this.filteredSpaces
         .filter(space => space.building === this.building)
-    }
+    },
   },
   head() {
     const { building } = this
@@ -40,8 +40,8 @@ export default {
     return metaHead({
       title: `${building.name} (${building.abbreviation})`,
       image: {
-        url: `${building.image.url}?auto=format&fm=jpg&auto=quality`
-      }
+        url: `${building.image.url}?auto=format&fm=jpg&auto=quality`,
+      },
     })
   },
   mounted() {
@@ -52,8 +52,8 @@ export default {
   },
   methods: {
     ...mapActions(['zoomToSelection', 'updateMarkers', 'getMap']),
-    ...mapMutations(['clearSelection'])
-  }
+    ...mapMutations(['clearSelection']),
+  },
 }
 </script>
 

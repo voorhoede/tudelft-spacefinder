@@ -27,7 +27,7 @@ const {
   toLower,
   unary,
   values,
-  zipObj
+  zipObj,
 } = require('ramda')
 
 const slugify = require('slugify')
@@ -45,7 +45,7 @@ const isOkAbbreviation = pipe(
       isEmpty,
       not
     ),
-    is(String)
+    is(String),
   ])
 )
 const isOkData = allPass([ isOkBuildingName, isOkAbbreviation ])
@@ -65,7 +65,7 @@ const getBuildingNameAndNumber = converge(
         ),
         always({})
       )
-    )
+    ),
   ]
 )
 
@@ -80,7 +80,7 @@ const getBuildingSlug = converge(
       slugify,
       toLower,
       objOf('slug')
-    )
+    ),
   ]
 )
 const fromI18n = ifElse(
@@ -104,5 +104,5 @@ const buildingNumberFromId = pipe(
 
 module.exports = {
   fromI18n,
-  buildingNumberFromId
+  buildingNumberFromId,
 }

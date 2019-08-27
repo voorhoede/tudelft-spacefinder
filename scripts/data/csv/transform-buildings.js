@@ -28,7 +28,7 @@ const {
   set,
   sum,
   values,
-  uniqWith
+  uniqWith,
 } = require('ramda')
 
 const translate = require('./lib/translate')
@@ -38,12 +38,12 @@ const { fromI18n, buildingNumberFromId } = require('./lib/building-meta')
 const translationMap = {
   name: {
     nl: 'buildingNameNL',
-    en: 'buildingNameEN'
+    en: 'buildingNameEN',
   },
   abbreviation: {
     nl: 'buildingAbbreviationNL',
-    en: 'buildingAbbreviationEN'
-  }
+    en: 'buildingAbbreviationEN',
+  },
 }
 
 const buildingProps = [
@@ -58,7 +58,7 @@ const buildingProps = [
   'image',
   'i18n',
   'totalSeats',
-  'totalSpaces'
+  'totalSpaces',
 ]
 
 const getBuildingProps = map(pick(buildingProps))
@@ -80,7 +80,7 @@ const getBuildingId = converge(mergeDeepRight, [
     prop('buildingId'),
     buildingNumberFromId,
     objOf('number')
-  )
+  ),
 ])
 
 const getBuildingMeta = over(lensProp('i18n'), map(fromI18n))
@@ -98,7 +98,7 @@ const getTotalSpacesObject = pipe(
 const mergeHeadWithSeatsAndSpaces = converge(meld, [
   getTotalSeatsObject,
   getTotalSpacesObject,
-  head
+  head,
 ])
 
 const getTotalSeatsAndSpaces = pipe(
@@ -106,7 +106,7 @@ const getTotalSeatsAndSpaces = pipe(
   values,
   chain(converge(setFirstElement, [
     mergeHeadWithSeatsAndSpaces,
-    identity
+    identity,
   ]))
 )
 

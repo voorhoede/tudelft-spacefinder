@@ -107,7 +107,7 @@ module.exports = (availability, { buildings = [], rooms = [] }) => {
     const roomAvailability = availability[exchangeRoomId]
     return {
       ...otherRoomProps,
-      openingHours: getOpeningHoursForRooms(buidingAvailability, roomAvailability)
+      openingHours: getOpeningHoursForRooms(buidingAvailability, roomAvailability),
     }
   })
 
@@ -116,12 +116,12 @@ module.exports = (availability, { buildings = [], rooms = [] }) => {
     const buidingAvailability = availability[exchangeBuildingId]
     return {
       ...otherBuildingProps,
-      openingHours: getOpeningHoursForBuildings(buidingAvailability)
+      openingHours: getOpeningHoursForBuildings(buidingAvailability),
     }
   })
 
   return {
     rooms: roomsResult,
-    buildings: buildingsResult
+    buildings: buildingsResult,
   }
 }

@@ -3,14 +3,14 @@ const translate = require('./translate')
 const translationMap = {
   propertyName: {
     en: 'propertyNameEN',
-    nl: 'propertyNameNL'
-  }
+    nl: 'propertyNameNL',
+  },
 }
 
 const data = {
   propertyNameEN: 'english',
   propertyNameNL: 'nederlands',
-  other: 'unrelated property value'
+  other: 'unrelated property value',
 }
 
 const translator = translate(translationMap)
@@ -49,17 +49,17 @@ test('gracefully handles an incomplete translation map', () => {
   const incompleteTranslationMap = {
     propertyName: {
       en: 'propertyNameEN',
-      nl: 'propertyNameNL'
+      nl: 'propertyNameNL',
     },
     incompletelyTranslated: {
-      nl: 'foobarNL'
-    }
+      nl: 'foobarNL',
+    },
   }
 
   const data = {
     propertyNameEN: 'english',
     propertyNameNL: 'nederlands',
-    foobarNL: 'foo bar'
+    foobarNL: 'foo bar',
   }
 
   const result = translate(incompleteTranslationMap)(data)
@@ -73,7 +73,7 @@ test('gracefully handles incomplete data', () => {
   // If translation columns are not found in data, translator does not crash.
   expect(() => {
     result = translator({
-      incompleteData: 'nothing to see here..'
+      incompleteData: 'nothing to see here..',
     })
   }).not.toThrow()
 

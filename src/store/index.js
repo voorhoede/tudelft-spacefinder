@@ -22,7 +22,7 @@ const getDefaultFilters = () => ({
   showOpenLocations: false,
   smartBoard: false,
   stationaryPC: false,
-  whiteBoard: false
+  whiteBoard: false,
 })
 
 export const state = () => ({
@@ -36,10 +36,10 @@ export const state = () => ({
   mapLoaded: false,
   selection: {
     building: undefined,
-    space: undefined
+    space: undefined,
   },
   showListView: true,
-  spacesI18n: []
+  spacesI18n: [],
 })
 
 export const mutations = {
@@ -49,19 +49,19 @@ export const mutations = {
   clearSelection(state) {
     state.selection = {
       building: undefined,
-      space: undefined
+      space: undefined,
     }
   },
   selectBuilding(state, building) {
     state.selection = {
       building,
-      space: undefined
+      space: undefined,
     }
   },
   selectSpace(state, space) {
     state.selection = {
       ...state.selection,
-      space
+      space,
     }
   },
   setActiveMarkerFilters(state, filters) {
@@ -91,7 +91,7 @@ export const mutations = {
     state.installPromptEvent = undefined
     state.isInstallable = false
   },
-  updateField
+  updateField,
 }
 
 export const actions = {
@@ -118,7 +118,7 @@ export const actions = {
   updateMarkers({ state, commit }) {
     const {
       building: { number: buildingNumber } = {},
-      space: { spaceId } = {}
+      space: { spaceId } = {},
     } = state.selection
 
     let filters = []
@@ -189,13 +189,13 @@ export const actions = {
       top: 20,
       bottom: 20,
       left: 20,
-      right: 20
+      right: 20,
     }
     map.fitBounds([
       [bounds.west, bounds.south],
-      [bounds.east, bounds.north]
+      [bounds.east, bounds.north],
     ], {
-      padding: { ...defaultPadding, ...padding }
+      padding: { ...defaultPadding, ...padding },
     })
   },
 
@@ -206,7 +206,7 @@ export const actions = {
   zoomToSelection({ dispatch, state }, { padding } = {}) {
     const bounds = state.selection.building.bounds
     dispatch('zoomToBounds', { bounds, padding })
-  }
+  },
 }
 
 export const getters = {
@@ -215,14 +215,14 @@ export const getters = {
       const i18nProps = buildingI18n.i18n[state.i18n.locale]
       return {
         ...buildingI18n,
-        ...i18nProps
+        ...i18nProps,
       }
     })
   },
   filteredSpaces: (state, getters) => {
     return spaceFilter({
       filters: state.filters,
-      spaces: getters.spaces
+      spaces: getters.spaces,
     })
   },
   filteredSpacesCount: (state, getters) => {
@@ -268,7 +268,7 @@ export const getters = {
       return {
         ...spaceI18n,
         ...propsI18n,
-        building
+        building,
       }
     })
   },
@@ -281,21 +281,21 @@ export const getters = {
           spaceId: space.spaceId,
           buildingNumber: space.building.number,
           isOpen: spaceIsOpen(now, space.openingHours),
-          ...space.facilities
+          ...space.facilities,
         },
         geometry: {
           type: 'Point',
-          coordinates: [space.longitude, space.latitude]
-        }
+          coordinates: [space.longitude, space.latitude],
+        },
       }
     })
 
     return {
       type: 'FeatureCollection',
-      features: featuresPerSpace
+      features: featuresPerSpace,
     }
   },
   isBuildingPage: (state) => {
     return state.selection.building && !state.selection.space
-  }
+  },
 }

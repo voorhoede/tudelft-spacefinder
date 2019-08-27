@@ -1,8 +1,8 @@
 <template>
   <div class="social-share">
     <button
-      @click="toggleOptions"
       class="button button--round"
+      @click="toggleOptions"
     >
       <svg-icon
         name="share-icon"
@@ -18,31 +18,31 @@
       :aria-hidden="!optionsAreVisible"
     >
       <a
-        :tabindex="optionsAreVisible ? 0 : -1"
-        target="_blank"
         v-for="(platform, index) in platforms"
         :key="index"
+        :tabindex="optionsAreVisible ? 0 : -1"
+        target="_blank"
         :href="`${platform.link}${encodedUrl}`"
-        @click="handleClick"
         class="social-share__option button button--round"
         :class="{ 'social-share__option--visible' : optionsAreVisible }"
+        @click="handleClick"
       >
         <svg-icon
           :name="platform.icon"
           class="button--round__icon"
         />
         <span class="a11y-sr-only">
-          {{ $t(platform.label)}}
+          {{ $t(platform.label) }}
         </span>
       </a>
 
       <button
-        :tabindex="optionsAreVisible ? 0 : -1"
         v-if="copyToClipboardIsVisible"
-        @click="copyToClipboard"
+        ref="copyButton"
+        :tabindex="optionsAreVisible ? 0 : -1"
         class="social-share__option button button--round"
         :class="{ 'social-share__option--visible' : optionsAreVisible }"
-        ref="copyButton"
+        @click="copyToClipboard"
       >
         <svg-icon
           name="copy-icon"
@@ -71,31 +71,34 @@ import platforms from './platforms'
 
 export default {
   props: {
-    url: String
+    url: {
+      required: true,
+      type: String,
+    },
   },
   data() {
     return {
       optionsAreVisible: false,
       copyToClipboardIsVisible: true,
       notificationIsVisible: false,
-      platforms
+      platforms,
     }
   },
   computed: {
     encodedUrl() {
       return encodeURIComponent(this.url)
-    }
+    },
   },
   mounted() {
-    if(navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
       this.copyToClipboardIsVisible = false
     }
   },
   methods: {
     toggleOptions() {
-      if(navigator.share) {
+      if (navigator.share) {
         navigator.share({
-          url: this.url
+          url: this.url,
         })
       } else {
         this.optionsAreVisible = !this.optionsAreVisible
@@ -115,12 +118,12 @@ export default {
     showNotification() {
       this.notificationIsVisible = true
       this.$refs.copyButton.focus()
-      window.setTimeout(() => this.notificationIsVisible = false, 4000)
+      window.setTimeout(() => { this.notificationIsVisible = false }, 4000)
     },
     handleClick() {
       this.optionsAreVisible = false
-    }
-  }
+    },
+  },
 }
 </script>
 

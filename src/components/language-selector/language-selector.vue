@@ -5,9 +5,9 @@
         v-if="locale.code !== $i18n.locale"
         :key="index"
         :to="getLocalePath(locale.code)"
-        @click.native="$emit('close')"
         :hreflang="locale.code"
         class="app-menu__link"
+        @click.native="$emit('close')"
       >
         <svg-icon name="world-icon" class="app-menu__icon" />
         <span class="app-menu__link-name">
@@ -27,7 +27,7 @@ export default {
   computed: {
     languages() { return languages },
     ...mapGetters({ currentPageRoute: 'history/currentPageRoute' }),
-    ...mapState(['selection'])
+    ...mapState(['selection']),
   },
   methods: {
     getLocalePath(locale) {
@@ -38,10 +38,10 @@ export default {
       const spaceSlug = selection.space && selection.space.i18n[locale].slug
       const route = {
         name: genericRouteName,
-        params: { buildingSlug, spaceSlug }
+        params: { buildingSlug, spaceSlug },
       }
       return this.localePath(route, locale)
-    }
+    },
   },
 }
 </script>

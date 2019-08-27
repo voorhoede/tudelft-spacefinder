@@ -19,10 +19,10 @@ export default {
     '~/plugins/load-data',
     '~/plugins/locale-path-trailing-slash',
     '~/plugins/persist-state.client',
-    '~/plugins/virtual-scroller'
+    '~/plugins/virtual-scroller',
   ],
   router: {
-    middleware: ['history']
+    middleware: ['history'],
   },
-  srcDir: 'src/'
+  srcDir: 'src/',
 }
