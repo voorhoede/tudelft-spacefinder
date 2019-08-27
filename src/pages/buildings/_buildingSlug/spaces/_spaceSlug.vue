@@ -76,12 +76,13 @@ export default {
   z-index: var(--layer--popup);
   position: fixed;
   top: calc(var(--header-height-mobile) + var(--spacing-default));
-  right: var(--spacing-default);
+  left: calc(var(--spacing-double) + 50px);
 }
 
 @media (min-width: 700px) {
   .space-detail__share-button {
     top: calc(var(--header-height-desktop) + var(--spacing-default));
+    left: calc(var(--column-width-desktop) + var(--spacing-double) + 50px);
   }
 }
 </style>
