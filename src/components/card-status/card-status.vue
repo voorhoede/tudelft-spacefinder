@@ -36,7 +36,6 @@ export default {
 
 <style>
 .card-status {
-  margin: .1rem 0 0 var(--spacing-default);
   font-size: var(--font-size-smaller);
 }
 

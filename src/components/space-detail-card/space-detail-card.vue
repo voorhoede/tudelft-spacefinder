@@ -30,16 +30,10 @@
         class="space-detail-card__facilities"
       />
 
-      <ul class="flat-list space-detail-card__seating">
-        <li>
-          <svg-icon name="seat-icon" class="space-detail-card__seating-icon" />
-          {{ space.seats }}
-        </li>
-        <li>
-          <svg-icon name="table-icon" class="space-detail-card__seating-icon" />
-          {{ space.tables }}
-        </li>
-      </ul>
+      <div class="flat-list space-detail-card__seating">
+        <svg-icon name="seat-icon" class="space-detail-card__seating-icon" />
+        {{ space.seats }}
+      </div>
 
       <card-status
         :openingHours="space.openingHours"
@@ -174,7 +168,7 @@ export default {
 }
 
 .space-detail-card__facilities {
-  flex: 0 0 100%;
+  flex: 1 1 auto;
   margin: 0 0 var(--spacing-half) 0;
 }
 
@@ -185,12 +179,15 @@ export default {
 }
 
 .space-detail-card__open-status {
+  flex: 0 0 100%;
   font-size: var(--font-size-smaller);
+  text-align: right;
 }
 
 @media (min-width: 700px) {
   .space-detail-card__open-status {
     position: absolute;
+    margin-top: .1rem;
     top: var(--spacing-default);
     right: var(--spacing-default);
   }
@@ -216,7 +213,7 @@ export default {
 
 .space-detail-card__seating {
   flex: 0 0 auto;
-  margin-right: var(--spacing-default);
+  margin-top: 3px;
   font-size: var(--font-size-smaller);
   font-weight: bold;
 }
@@ -234,14 +231,14 @@ export default {
 }
 
 .space-detail-card__seating-icon {
-  margin-right: var(--spacing-half);
-  width: 15px;
-  height: 15px;
+  margin: -2px 1px 0 0;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
 }
 
 .space-detail-card__opening-hours {
   flex: 0 0 100%;
-  margin-top: -1.2rem;
   font-size: var(--font-size-smaller);
 }
 
