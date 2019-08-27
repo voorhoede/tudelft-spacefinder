@@ -223,7 +223,6 @@
               class="a11y-sr-only filter-menu__filter"
             >
             <label :for="`buildings-${option}`">
-              <svg-icon :name="`buildings.${option}-icon`" class="filter-menu__filter-icon" />
               {{ $t(`buildings.${option}`) }}
             </label>
           </span>
@@ -360,7 +359,8 @@ export default {
 .filter-menu__filter + label {
   display: inline-block;
   margin: 0 var(--spacing-quarter) var(--spacing-half) 0;
-  padding: 0 var(--spacing-default) 0 var(--spacing-half);
+  padding-right: var(--spacing-default);
+  padding-left: var(--spacing-default);
   font-size: var(--font-size-smaller);
   background: var(--highlight-color);
   border: 1px solid transparent;
@@ -381,6 +381,7 @@ export default {
 
 .filter-menu__filter-icon {
   margin-top: -2px;
+  margin-left: var(--spacing-half-negative);
   width: 25px;
   height: 25px;
   vertical-align: middle;
