@@ -33,9 +33,8 @@ export default {
   computed: {
     ...mapGetters(['getSpaceBySlug']),
     ...mapState(['isMobile']),
-    baseUrl() { return process.env.BASE_URL },
     building() { return this.space && this.space.building },
-    shareUrl() { return `${process.env.BASE_URL}/${this.$route.fullPath}` },
+    shareUrl() { return `${process.env.BASE_URL}${this.$route.fullPath}` },
     space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
   },
   methods: {
