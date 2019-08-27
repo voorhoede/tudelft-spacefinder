@@ -28,16 +28,10 @@
         {{ $t('seating') }}
       </h4>
 
-      <ul class="flat-list space-card__seating">
-        <li>
-          <svg-icon name="seat-icon" class="space-card__seating-icon" />
-          {{ space.seats }}
-        </li>
-        <li>
-          <svg-icon name="table-icon" class="space-card__seating-icon" />
-          {{ space.tables }}
-        </li>
-      </ul>
+      <div class="flat-list space-card__seating">
+        <svg-icon name="seat-icon" class="space-card__seating-icon" />
+        {{ space.seats }}
+      </div>
     </div>
 
     <div class="space-card__meta">
@@ -122,9 +116,10 @@ export default {
 }
 
 .space-card__seating-icon {
-  margin-right: var(--spacing-half);
-  width: 15px;
-  height: 15px;
+  margin: -2px 1px 0 0;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
 }
 
 .space-card__meta {
@@ -134,6 +129,7 @@ export default {
 .space-card__status {
   order: 2;
   flex: 0 0 auto;
+  margin-top: .1rem;
 }
 
 .space-card__facilities {
