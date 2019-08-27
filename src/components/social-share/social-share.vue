@@ -19,6 +19,7 @@
     >
       <a
         :tabindex="optionsAreVisible ? 0 : -1"
+        target="_blank"
         v-for="(platform, index) in platforms"
         :key="index"
         :href="`${platform.link}${encodedUrl}`"
