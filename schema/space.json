@@ -73,7 +73,6 @@
           "type": "string",
           "enum": ["silent", "quiet", "noisy"]
         },
-        "bookable": { "type": "boolean" },
         "daylit": { "type": "boolean" },
         "powerOutlets": { "type": "boolean" },
         "ethernet": { "type": "boolean" },
@@ -90,7 +89,6 @@
         "adjustableChairs",
         "studyType",
         "quietness",
-        "bookable",
         "daylit",
         "powerOutlets",
         "ethernet",

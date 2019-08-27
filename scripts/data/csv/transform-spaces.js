@@ -35,7 +35,6 @@ const facilities = [
   'otherSeats',
   'studyType',
   'quietness',
-  'bookable',
   'daylit',
   'powerOutlets',
   'ethernet',

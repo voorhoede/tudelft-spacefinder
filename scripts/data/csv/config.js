@@ -33,7 +33,6 @@ module.exports = {
     null,
     'studyType',
     'quietness',
-    'bookable',
     'daylit',
     'powerOutlets',
     'ethernet',
@@ -62,7 +61,6 @@ function cast(value, context) {
     case 'longitude':
       return parseFloat(value)
     // conversion to booleans
-    case 'bookable':
     case 'daylit':
     case 'ethernet':
     case 'whiteBoard':

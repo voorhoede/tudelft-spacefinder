@@ -153,18 +153,6 @@
             <svg-icon name="facility-nearBathroom-icon" class="filter-menu__filter-icon" />
             {{ $t('nearBathroom') }}
           </label>
-
-          <input
-            v-model="bookable"
-            :value="bookable"
-            type="checkbox"
-            id="bookable"
-            class="a11y-sr-only filter-menu__filter"
-          >
-          <label for="bookable">
-            <svg-icon name="facility-bookable-icon" class="filter-menu__filter-icon" />
-            {{ $t('bookable') }}
-          </label>
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
@@ -284,7 +272,6 @@ export default {
   computed: {
     ...mapFields([
       'filters.adjustableChairs',
-      'filters.bookable',
       'filters.buildings',
       'filters.daylit',
       'filters.ethernet',
