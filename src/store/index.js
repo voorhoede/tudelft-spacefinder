@@ -211,13 +211,15 @@ export const actions = {
 
 export const getters = {
   buildings: (state) => {
-    return state.buildingsI18n.map((buildingI18n) => {
-      const i18nProps = buildingI18n.i18n[state.i18n.locale]
-      return {
-        ...buildingI18n,
-        ...i18nProps,
-      }
-    })
+    return state.buildingsI18n
+      .map((buildingI18n) => {
+        const i18nProps = buildingI18n.i18n[state.i18n.locale]
+        return {
+          ...buildingI18n,
+          ...i18nProps,
+        }
+      })
+      .sort((buildingA, buildingB) => buildingA.name > buildingB.name)
   },
   filteredSpaces: (state, getters) => {
     return spaceFilter({
