@@ -1,3 +1,4 @@
+const startPage = '/200.html'
 /**
  * @see https://pwa.nuxtjs.org
  */
@@ -10,9 +11,16 @@ export default [
       background_color: '#00a6d6',
       theme_color: '#00a6d6',
       display: 'standalone',
-      crossorigin: 'use-credentials'
+      crossorigin: 'use-credentials',
+      start_url: `${startPage}?utm_source=homescreen`
+    },
+    meta: {
+      mobileApp: true,
+      mobileAppIOS: true
     },
     workbox: {
+      preCaching: [startPage],
+      offlinePage: startPage,
       runtimeCaching: [
         {
           urlPattern: 'https://www.datocms-assets.com/.*',
