@@ -7,11 +7,11 @@
     >
       <svg-icon
         :name="getIconName(facility)"
-        class="space-facility__icon"
         v-tooltip="{
           content: $t(getFacilityValue(facility)),
           trigger: 'hover click focus'
         }"
+        class="space-facility__icon"
       />
 
       <span class="a11y-sr-only">
