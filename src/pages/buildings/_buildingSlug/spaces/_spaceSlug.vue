@@ -37,6 +37,15 @@ export default {
     shareUrl() { return `${process.env.BASE_URL}${this.$route.fullPath}` },
     space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
   },
+  mounted() {
+    const padding = this.isMobile
+      ? { bottom: this.$refs.card.$el.clientHeight + 2 * 20 }
+      : {}
+    this.selectBuilding(this.building)
+    this.selectSpace(this.space)
+    this.zoomToSelection({ padding })
+    this.getMap().then(() => this.updateMarkers())
+  },
   methods: {
     ...mapMutations(['selectBuilding', 'selectSpace']),
     ...mapActions(['getMap', 'zoomToSelection', 'updateMarkers']),
