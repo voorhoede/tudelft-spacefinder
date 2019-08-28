@@ -66,7 +66,7 @@ export default {
 
 .tooltip {
   display: block;
-  z-index: 10000;
+  z-index: var(--layer--popup);
 }
 
 .tooltip-inner {
