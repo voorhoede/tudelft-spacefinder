@@ -9,7 +9,7 @@
         :name="getIconName(facility)"
         class="space-facility__icon"
         v-tooltip="{
-          content: getFacilityValue(facility),
+          content: $t(getFacilityValue(facility)),
           trigger: 'hover click focus'
         }"
       />
@@ -52,6 +52,8 @@ export default {
 </script>
 
 <style>
+@import '../app-core/variables.css';
+
 .space-facility__item {
   position: relative;
   display: inline-block;
@@ -69,8 +71,9 @@ export default {
 
 .tooltip-inner {
   padding: var(--spacing-quarter) var(--spacing-half);
-  background: black;
-  color: white;
+  background: var(--brand-secondary-color);
+  font-size: var(--font-size-smaller);
+  color: var(--background-color);
 }
 
 .tooltip-arrow {
@@ -80,7 +83,7 @@ export default {
   width: 0;
   height: 0;
   border-style: solid;
-  border-color: black;
+  border-color: var(--brand-secondary-color);
 }
 
 .tooltip[x-placement^="top"] {
@@ -93,8 +96,8 @@ export default {
   bottom: -5px;
   left: calc(50% - 5px);
   border-width: 5px 5px 0 5px;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  border-bottom-color: transparent !important;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
 }
 </style>
