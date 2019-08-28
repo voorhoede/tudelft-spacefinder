@@ -9,10 +9,7 @@ export default [
   'nuxt-i18n',
   {
     defaultLocale,
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'nf_lang', // https://www.netlify.com/docs/redirects/#geoip-and-language-based-redirects
-    },
+    detectBrowserLanguage: false,
     lazy: true,
     langDir: 'static/data/',
     locales: locales.map((locale) => {
