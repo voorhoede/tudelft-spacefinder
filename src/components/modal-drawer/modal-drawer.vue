@@ -14,7 +14,9 @@
         class="modal-drawer"
       >
         <div class="modal-drawer__header">
-          <h2>{{ title }}</h2>
+          <h2 class="model-drawer__title">
+            {{ title }}
+          </h2>
 
           <button
             ref="closeButton"
@@ -122,6 +124,11 @@ export default {
     height: var(--header-height-desktop);
     line-height: var(--header-height-desktop);
   }
+}
+
+.model-drawer__title {
+  margin: 0;
+  font-size: var(--font-size-big);
 }
 
 .modal-drawer__background {

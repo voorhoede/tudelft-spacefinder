@@ -10,11 +10,27 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     font-weight: 300;
 }
 
+h1,
+.h1 {
+    margin: 0 0 var(--spacing-double) 0;
+    font-size: var(--font-size-big);
+}
+
+h2,
+.h2 {
+    margin: 0 0 var(--spacing-half) 0;
+    font-size: var(--font-size-bigger);
+}
+
 h3,
 .h3 {
   margin-bottom: var(--spacing-quarter);
   font-size: var(--font-size-default);
   font-weight: 500;
+}
+
+p:not(:last-child) {
+  margin-bottom: var(--spacing-default);
 }
 
 a {
@@ -25,4 +41,20 @@ a {
 a:hover,
 a:focus {
     color: var(--brand-primary-color-dark);
+}
+
+ul,
+ol {
+  margin-bottom: var(--spacing-default);
+  padding-left: var(--spacing-default);
+}
+
+ul > li,
+ol > li {
+  padding-left: var(--spacing-half);
+}
+
+ul > li:not(:last-child),
+ol > li:not(:last-child) {
+  padding-bottom: var(--spacing-quarter);
 }

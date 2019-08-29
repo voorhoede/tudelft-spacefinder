@@ -48,8 +48,9 @@ export default {
 </script>
 
 <style>
-.space-facility__item {
+ul > li.space-facility__item {
   display: inline-block;
+  padding: 0;
 }
 
 .space-facility__icon {

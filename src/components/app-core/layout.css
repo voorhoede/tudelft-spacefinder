@@ -43,7 +43,11 @@ html {
 }
 
 .default-layout__info--space-detail {
-  padding: var(--spacing-default);
+    padding: var(--spacing-default);
+}
+
+.default-layout__info--info-page {
+    padding: var(--spacing-default);
 }
 
 @media (max-width: 699px) {

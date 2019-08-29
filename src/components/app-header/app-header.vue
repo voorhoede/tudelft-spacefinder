@@ -116,8 +116,6 @@ export default {
 
 .app-header__title {
   flex: 1 1 auto;
-  margin: 0;
-  font-size: var(--font-size-big);
   text-align: center;
   line-height: var(--header-height-mobile);
 }
