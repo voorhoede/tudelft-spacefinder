@@ -10,4 +10,9 @@ export default ({ store }) => {
     .then((spaces) => {
       store.commit('setSpaces', { spaces })
     })
+
+  loadData(`infopage.json`)
+    .then((infoPage) => {
+      store.commit('setInfoPage', { infoPage })
+    })
 }
