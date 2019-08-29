@@ -41,8 +41,7 @@ Promise.all([
   .then(([spaces, buildings, infoPage]) => writeFiles([
     { path: 'spaces', contents: spaces },
     { path: 'buildings', contents: buildings },
-    { path: 'en/infopage', contents: infoPage[0] },
-    { path: 'nl/infopage', contents: infoPage[1] },
+    { path: 'infopage', contents: infoPage },
   ]))
   .then(() => console.info('Wrote data for spaces, buildings and infopage'))
   .catch(({ message }) =>

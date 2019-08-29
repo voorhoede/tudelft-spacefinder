@@ -51,28 +51,24 @@ const getInfoPage = () => got('https://graphql.datocms.com/', {
 })
 
 const convertInfoPage = (info) => {
-  const infoPage = [
-    {
-      en: {
-        title: info._allTitleLocales.find((item) => {
-          return item.locale === 'en'
-        }).value,
-        body: info._allBodyLocales.find((item) => {
-          return item.locale === 'en'
-        }).value,
-      },
+  const infoPage = {
+    nl: {
+      title: info._allTitleLocales.find((item) => {
+        return item.locale === 'nl'
+      }).value,
+      body: info._allBodyLocales.find((item) => {
+        return item.locale === 'nl'
+      }).value,
     },
-    {
-      nl: {
-        title: info._allTitleLocales.find((item) => {
-          return item.locale === 'en'
-        }).value,
-        body: info._allBodyLocales.find((item) => {
-          return item.locale === 'en'
-        }).value,
-      },
+    en: {
+      title: info._allTitleLocales.find((item) => {
+        return item.locale === 'en'
+      }).value,
+      body: info._allBodyLocales.find((item) => {
+        return item.locale === 'en'
+      }).value,
     },
-  ]
+  }
 
   return infoPage
 }
