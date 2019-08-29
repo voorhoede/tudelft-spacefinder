@@ -2,16 +2,23 @@
   <section class="default-layout__info default-layout__info--info-page">
     <h1>{{ title }}</h1>
 
-    <div v-html="body"></div>
+    <div v-html="body" />
   </section>
 </template>
 
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 
-import loadData from '~/lib/load-data'
-
 export default {
+  computed: {
+    ...mapGetters(['getInfoPage']),
+    title() {
+      return this.getInfoPage[this.$i18n.locale].title
+    },
+    body() {
+      return this.getInfoPage[this.$i18n.locale].body
+    },
+  },
   mounted() {
     this.clearSelection()
     this.zoomToCampus()
@@ -21,14 +28,5 @@ export default {
     ...mapMutations(['clearSelection']),
     ...mapActions(['zoomToCampus', 'updateMarkers', 'getMap']),
   },
-  computed: {
-    ...mapGetters(['getInfoPage']),
-    title() {
-      return this.getInfoPage[this.$i18n.locale].title
-    },
-    body() {
-      return this.getInfoPage[this.$i18n.locale].body
-    }
-  }
 }
 </script>

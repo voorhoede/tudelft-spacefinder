@@ -6,11 +6,11 @@
       class="space-facility__item"
     >
       <svg-icon
-        :name="getIconName(facility)"
         v-tooltip="{
           content: $t(getFacilityValue(facility)),
           trigger: 'hover click focus'
         }"
+        :name="getIconName(facility)"
         class="space-facility__icon"
       />
 
