@@ -32,6 +32,19 @@
             </span>
           </nuxt-link>
         </li>
+        <li class="app-menu__item">
+          <nuxt-link
+            :to="localePath({ name: 'tips' })"
+            class="app-menu__link"
+            @click.native="$emit('close')"
+          >
+            <svg-icon name="lightbulb-icon" class="app-menu__icon" />
+
+            <span class="app-menu__link-name">
+              {{ $t('tips') }}
+            </span>
+          </nuxt-link>
+        </li>
         <li class="mobile-only app-menu__item">
           <nuxt-link
             :to="localePath('index')"
