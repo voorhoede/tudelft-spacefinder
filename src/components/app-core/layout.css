@@ -48,6 +48,7 @@ html {
 
 .default-layout__info--info-page {
     padding: var(--spacing-default);
+    font-size: 1rem;
 }
 
 @media (max-width: 699px) {
