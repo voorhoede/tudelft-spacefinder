@@ -146,7 +146,9 @@ export default {
 }
 
 .space-detail-card__description {
+  margin-top: var(--spacing-quarter);
   font-size: var(--font-size-smaller);
+  line-height: 1.3;
 }
 
 .space-detail-card__description em {
