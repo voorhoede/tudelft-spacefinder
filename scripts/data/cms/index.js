@@ -25,11 +25,67 @@ const getBuildings = () => got('https://graphql.datocms.com/', {
   return allBuildings
 })
 
-module.exports = () => {
-  if (mockDataEnabled) {
-    console.info('Serving mock data from mock/cms/data.json')
-    const mockData = require('../../../mock/cms/data.json')
-    return Promise.resolve(mockData)
-  }
-  return getBuildings()
+const getInfoPage = () => got('https://graphql.datocms.com/', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${DATO_API_TOKEN}`,
+  },
+  json: true,
+  body: {
+    query: `{
+      infoPage {
+        _allTitleLocales {
+          locale,
+          value
+        }
+        _allBodyLocales {
+          locale,
+          value
+        }
+      }
+    }`,
+    variables: null,
+  },
+}).then(({ body: { data: { infoPage } } }) => {
+  return infoPage
+})
+
+const convertInfoPage = (info) => {
+  const infoPage = [
+    {
+      en: {
+        title: info._allTitleLocales.find((item) => {
+          return item.locale === 'en'
+        }).value,
+        body: info._allBodyLocales.find((item) => {
+          return item.locale === 'en'
+        }).value,
+      },
+    },
+    {
+      nl: {
+        title: info._allTitleLocales.find((item) => {
+          return item.locale === 'en'
+        }).value,
+        body: info._allBodyLocales.find((item) => {
+          return item.locale === 'en'
+        }).value,
+      },
+    },
+  ]
+
+  return infoPage
+}
+
+module.exports = {
+  getBuildingsDataFromCms: () => {
+    if (mockDataEnabled) {
+      console.info('Serving mock data from mock/cms/data.json')
+      const mockData = require('../../../mock/cms/data.json')
+      return Promise.resolve(mockData)
+    }
+    return getBuildings()
+  },
+  getInfoDataFromCms: getInfoPage,
+  convertInfoPage,
 }
