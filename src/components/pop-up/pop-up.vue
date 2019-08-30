@@ -1,7 +1,7 @@
 <template>
   <transition name="pop-up-fade">
     <div
-      v-if="isOpen"
+      v-if="showOnboarding"
       class="pop-up"
     >
       <div
@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   props: {
     message: {
@@ -47,14 +49,16 @@ export default {
       type: String,
     },
   },
-  data() {
-    return {
-      isOpen: true
+  computed: mapState(['hasSeenOnboarding', 'showOnboarding']),
+  mounted() {
+    if(!this.hasSeenOnboarding) {
+      this.$store.commit('toggleOnboardingVisibility')
+      this.$store.commit('toggleHasSeenOnboarding')
     }
   },
   methods: {
     closePopUp() {
-      this.isOpen = false
+      this.$store.commit('toggleOnboardingVisibility')
     },
   },
 }
