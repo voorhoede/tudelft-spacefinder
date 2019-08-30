@@ -29,6 +29,8 @@ export const state = () => ({
   activeMarkerFilters: [],
   buildingsI18n: [],
   filters: getDefaultFilters(),
+  showOnboarding: false,
+  hasSeenOnboarding: false,
   infoPage: {},
   installPromptEvent: undefined,
   isInstallable: false,
@@ -87,6 +89,12 @@ export const mutations = {
   },
   toggleMapMode(state) {
     state.isMapMode = !state.isMapMode
+  },
+  toggleOnboardingVisibility(state) {
+    state.showOnboarding = !state.showOnboarding
+  },
+  toggleHasSeenOnboarding(state) {
+    state.hasSeenOnboarding = !state.hasSeenOnboarding
   },
   setMobileState(state, value) {
     state.isMobile = value
