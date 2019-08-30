@@ -29,6 +29,7 @@ export const state = () => ({
   activeMarkerFilters: [],
   buildingsI18n: [],
   filters: getDefaultFilters(),
+  infoPage: {},
   installPromptEvent: undefined,
   isInstallable: false,
   isMapMode: false,
@@ -69,6 +70,9 @@ export const mutations = {
   },
   setBuildings(state, { buildings }) {
     state.buildingsI18n = buildings
+  },
+  setInfoPage(state, { infoPage }) {
+    state.infoPage = infoPage
   },
   setInstallPromptEvent(state, event) {
     state.installPromptEvent = event
@@ -232,6 +236,9 @@ export const getters = {
   },
   isFiltered: (state, getters) => {
     return getters.filteredSpacesCount < getters.spaces.length
+  },
+  getInfoPage: (state) => {
+    return state.infoPage
   },
   getBuildingByNumber: (state, getters) => {
     return (number) => {

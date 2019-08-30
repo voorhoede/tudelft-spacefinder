@@ -6,11 +6,11 @@
       class="space-facility__item"
     >
       <svg-icon
-        :name="getIconName(facility)"
         v-tooltip="{
           content: $t(getFacilityValue(facility)),
           trigger: 'hover click focus'
         }"
+        :name="getIconName(facility)"
         class="space-facility__icon"
       />
 
@@ -52,11 +52,10 @@ export default {
 </script>
 
 <style>
-@import '../app-core/variables.css';
-
-.space-facility__item {
+ul > li.space-facility__item {
   position: relative;
   display: inline-block;
+  padding: 0;
 }
 
 .space-facility__icon {
