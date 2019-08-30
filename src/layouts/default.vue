@@ -3,6 +3,11 @@
     ref="defaultLayout"
     class="default-layout"
   >
+    <pop-up
+      title="Welkom!"
+      message="Dit is de beta versie van de Spacefinder. We kunnen jouw input goed gebruiken voor de doorontwikkeling. Laat feedback achter via [linkje naar formulier of e-mailadres]."
+    />
+
     <notification-bar
       class="default-layout__notification-bar"
       :message="$t('ieNotification')"
@@ -34,10 +39,10 @@
 
 <script>
 import debounce from 'lodash.debounce'
-import { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar } from '../components'
+import { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar, PopUp } from '../components'
 
 export default {
-  components: { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar },
+  components: { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar, PopUp },
   head() {
     return {
       script: [

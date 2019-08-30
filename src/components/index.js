@@ -1,4 +1,5 @@
 export { default as NotificationBar } from './notification-bar'
+export { default as PopUp } from './pop-up'
 export { default as AppHeader } from './app-header'
 export { default as AppMenu } from './app-menu'
 export { default as BackButton } from './back-button'
