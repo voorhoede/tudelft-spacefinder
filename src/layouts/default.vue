@@ -3,10 +3,7 @@
     ref="defaultLayout"
     class="default-layout"
   >
-    <pop-up
-      title="Welkom!"
-      message="Dit is de beta versie van de Spacefinder. We kunnen jouw input goed gebruiken voor de doorontwikkeling. Laat feedback achter via [linkje naar formulier of e-mailadres]."
-    />
+    <pop-up />
 
     <notification-bar
       class="default-layout__notification-bar"
