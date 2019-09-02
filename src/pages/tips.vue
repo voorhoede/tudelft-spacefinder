@@ -2,6 +2,7 @@
   <section class="default-layout__info default-layout__info--info-page">
     <h1>{{ title }}</h1>
 
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="body" />
   </section>
 </template>
