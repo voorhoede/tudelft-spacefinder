@@ -29,29 +29,28 @@
           </button>
         </div>
 
-        <p>{{ message }}</p>
+        <p>{{ body }}</p>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-  props: {
-    message: {
-      required: true,
-      type: String,
+  computed: {
+    ...mapGetters(['getOnboarding']),
+    ...mapState(['hasSeenOnboarding', 'showOnboarding']),
+    title() {
+      return this.getOnboarding[this.$i18n.locale].title
     },
-    title: {
-      required: true,
-      type: String,
+    body() {
+      return this.getOnboarding[this.$i18n.locale].body
     },
   },
-  computed: mapState(['hasSeenOnboarding', 'showOnboarding']),
   mounted() {
-    if(!this.hasSeenOnboarding) {
+    if (!this.hasSeenOnboarding) {
       this.$store.commit('toggleOnboardingVisibility')
       this.$store.commit('toggleHasSeenOnboarding')
     }

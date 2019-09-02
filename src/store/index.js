@@ -32,6 +32,7 @@ export const state = () => ({
   showOnboarding: false,
   hasSeenOnboarding: false,
   infoPage: {},
+  onboarding: {},
   installPromptEvent: undefined,
   isInstallable: false,
   isMapMode: false,
@@ -75,6 +76,9 @@ export const mutations = {
   },
   setInfoPage(state, { infoPage }) {
     state.infoPage = infoPage
+  },
+  setOnboarding(state, { onboarding }) {
+    state.onboarding = onboarding
   },
   setInstallPromptEvent(state, event) {
     state.installPromptEvent = event
@@ -247,6 +251,9 @@ export const getters = {
   },
   getInfoPage: (state) => {
     return state.infoPage
+  },
+  getOnboarding: (state) => {
+    return state.onboarding
   },
   getBuildingByNumber: (state, getters) => {
     return (number) => {
