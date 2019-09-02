@@ -12,10 +12,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-    - name: test and lint
-      run: |
-        npm install --no-optional
-        npm test
-        npm run lint -- --max-warnings 0
+
+    - name: install npm dependencies
+      run: npm install --no-optional
       env:
         CI: true
+
+    - name: run unit tests
+      run: npm test
+
+    - name: lint files
+      run: npm run lint -- --max-warnings 0
