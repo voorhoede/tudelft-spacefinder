@@ -1,5 +1,5 @@
 import pages from '../../../src/pages.i18n'
-const locales = ['en', 'nl']
+import locales from '../../locales.js'
 const defaultLocale = locales[0]
 
 /**
