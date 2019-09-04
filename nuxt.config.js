@@ -21,6 +21,7 @@ export default {
     '~/plugins/persist-state.client',
     '~/plugins/tooltip.client',
     '~/plugins/virtual-scroller',
+    '~plugins/i18n.js',
   ],
   router: {
     middleware: ['history'],

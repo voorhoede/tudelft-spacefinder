@@ -3,7 +3,7 @@
     :to="
       localePath({
         name: 'buildings-buildingSlug-spaces-spaceSlug',
-        params: { buildingSlug: space.building.slug, spaceSlug: space.slug }
+        params: { buildingSlug: space.building.i18n.en.slug, spaceSlug: space.slug }
       })
     "
     class="space-card card"

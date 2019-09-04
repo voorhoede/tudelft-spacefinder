@@ -5,6 +5,8 @@ import campusBounds from '~/lib/campus-bounds'
 import delay from '~/lib/delay'
 
 const mapLoaded = new Deferred()
+const spacesLoaded = new Deferred()
+const buildingsLoaded = new Deferred()
 
 const getDefaultFilters = () => ({
   adjustableChairs: false,
@@ -73,6 +75,7 @@ export const mutations = {
   },
   setBuildings(state, { buildings }) {
     state.buildingsI18n = buildings
+    buildingsLoaded.resolve()
   },
   setInfoPage(state, { infoPage }) {
     state.infoPage = infoPage
@@ -90,6 +93,7 @@ export const mutations = {
   },
   setSpaces(state, { spaces }) {
     state.spacesI18n = spaces
+    spacesLoaded.resolve()
   },
   toggleMapMode(state) {
     state.isMapMode = !state.isMapMode
@@ -237,6 +241,12 @@ export const getters = {
       })
       .sort((buildingA, buildingB) => buildingA.name > buildingB.name)
   },
+  dataLoaded: () => {
+    return Promise.all([
+      buildingsLoaded.promise,
+      spacesLoaded.promise,
+    ])
+  },
   filteredSpaces: (state, getters) => {
     return spaceFilter({
       filters: state.filters,
@@ -285,9 +295,8 @@ export const getters = {
     }
   },
   spaces: (state, getters) => {
-    const { locale } = state.i18n
     return state.spacesI18n.map((spaceI18n) => {
-      const propsI18n = spaceI18n.i18n[locale]
+      const propsI18n = spaceI18n.i18n.en
       const building = getters.getBuildingByNumber(spaceI18n.buildingNumber)
       return {
         ...spaceI18n,

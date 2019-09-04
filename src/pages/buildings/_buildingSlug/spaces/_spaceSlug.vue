@@ -31,11 +31,23 @@ import spaceMapImage from '~/lib/space-map-image'
 export default {
   components: { BackButton, SocialShare, SpaceDetailCard },
   computed: {
-    ...mapGetters(['getSpaceBySlug']),
+    ...mapGetters(['dataLoaded', 'getSpaceBySlug']),
     ...mapState(['isMobile']),
     building() { return this.space && this.space.building },
     shareUrl() { return `${process.env.BASE_URL}${this.$route.fullPath}` },
     space() { return this.getSpaceBySlug(this.$route.params.spaceSlug) },
+  },
+  created() {
+    this.dataLoaded.then(() => {
+      const params = this.$i18n.locales.reduce((params, locale) => {
+        params[locale.code] = {
+          buildingSlug: this.building.i18n[locale.code].slug,
+          spaceSlug: this.space.slug,
+        }
+        return params
+      }, {})
+      this.$store.dispatch('i18n/setRouteParams', params)
+    })
   },
   mounted() {
     const padding = this.isMobile

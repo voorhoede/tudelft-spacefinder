@@ -9,7 +9,10 @@ export default [
   'nuxt-i18n',
   {
     defaultLocale,
-    detectBrowserLanguage: false,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'nf_lang', // https://www.netlify.com/docs/redirects/#geoip-and-language-based-redirects
+    },
     lazy: true,
     langDir: 'static/data/',
     locales: locales.map((locale) => {
@@ -26,6 +29,9 @@ export default [
     strategy: 'prefix',
     vueI18n: {
       fallbackLocale: defaultLocale,
+    },
+    vuex: {
+      syncRouteParams: true,
     },
   },
 ]
