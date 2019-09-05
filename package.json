@@ -28,6 +28,7 @@
     "fast-xml-parser": "^3.12.19",
     "got": "^9.6.0",
     "httpntlm": "^1.7.6",
+    "js-cookie": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "mapbox-gl": "^1.1.0",
     "moment-range": "^4.0.2",
