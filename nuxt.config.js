@@ -15,6 +15,7 @@ export default {
   mode: 'universal',
   modules,
   plugins: [
+    '~/plugins/i18n-cookie.client',
     '~/plugins/install-prompt.client',
     '~/plugins/load-data',
     '~/plugins/locale-path-trailing-slash',
