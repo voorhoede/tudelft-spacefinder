@@ -15,4 +15,7 @@ export default {
     { rel: 'dns-prefetch', href: 'https://api.mapbox.com/' },
     { rel: 'dns-prefetch', href: 'https://www.datocms-assets.com/' },
   ],
+  script: [
+    { src: '//siteimproveanalytics.com/js/siteanalyze_6005654.js', defer: true },
+  ],
 }
