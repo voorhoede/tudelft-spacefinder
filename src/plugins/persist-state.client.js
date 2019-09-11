@@ -9,6 +9,8 @@ export default ({ store }) => {
     key: 'app-state',
     paths: [
       'filters',
+      'showOnboarding',
+      'hasSeenOnboarding',
     ],
   })(store)
 }

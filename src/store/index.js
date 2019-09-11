@@ -29,7 +29,10 @@ export const state = () => ({
   activeMarkerFilters: [],
   buildingsI18n: [],
   filters: getDefaultFilters(),
+  showOnboarding: false,
+  hasSeenOnboarding: false,
   infoPage: {},
+  onboarding: {},
   installPromptEvent: undefined,
   isInstallable: false,
   isMapMode: false,
@@ -74,6 +77,9 @@ export const mutations = {
   setInfoPage(state, { infoPage }) {
     state.infoPage = infoPage
   },
+  setOnboarding(state, { onboarding }) {
+    state.onboarding = onboarding
+  },
   setInstallPromptEvent(state, event) {
     state.installPromptEvent = event
     state.isInstallable = true
@@ -87,6 +93,12 @@ export const mutations = {
   },
   toggleMapMode(state) {
     state.isMapMode = !state.isMapMode
+  },
+  toggleOnboardingVisibility(state) {
+    state.showOnboarding = !state.showOnboarding
+  },
+  toggleHasSeenOnboarding(state) {
+    state.hasSeenOnboarding = !state.hasSeenOnboarding
   },
   setMobileState(state, value) {
     state.isMobile = value
@@ -239,6 +251,9 @@ export const getters = {
   },
   getInfoPage: (state) => {
     return state.infoPage
+  },
+  getOnboarding: (state) => {
+    return state.onboarding
   },
   getBuildingByNumber: (state, getters) => {
     return (number) => {

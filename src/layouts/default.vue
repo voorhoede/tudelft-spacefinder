@@ -3,6 +3,8 @@
     ref="defaultLayout"
     class="default-layout"
   >
+    <pop-up />
+
     <notification-bar
       class="default-layout__notification-bar"
       :message="$t('ieNotification')"
@@ -34,10 +36,10 @@
 
 <script>
 import debounce from 'lodash.debounce'
-import { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar } from '../components'
+import { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar, PopUp } from '../components'
 
 export default {
-  components: { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar },
+  components: { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar, PopUp },
   head() {
     return {
       script: [

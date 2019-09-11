@@ -26,7 +26,7 @@ const stringSlugify = pipe(toString, replace(/\./g, '-'), slugify, toLower)
 const translationMap = {
   name: {
     nl: 'spaceNameNL',
-    en: 'spaceNameEN',
+    en: 'spaceNameNL',
   },
 }
 

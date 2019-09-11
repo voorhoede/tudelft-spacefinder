@@ -50,7 +50,32 @@ const getInfoPage = () => got('https://graphql.datocms.com/', {
   return infoPage
 })
 
-const convertInfoPage = (info) => {
+const getOnboarding = () => got('https://graphql.datocms.com/', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${DATO_API_TOKEN}`,
+  },
+  json: true,
+  body: {
+    query: `{
+      onboarding {
+        _allTitleLocales {
+          locale,
+          value
+        }
+        _allBodyLocales {
+          locale,
+          value
+        }
+      }
+    }`,
+    variables: null,
+  },
+}).then(({ body: { data: { onboarding } } }) => {
+  return onboarding
+})
+
+const convertCmsInfo = (info) => {
   const infoPage = {
     nl: {
       title: info._allTitleLocales.find((item) => {
@@ -83,5 +108,6 @@ module.exports = {
     return getBuildings()
   },
   getInfoDataFromCms: getInfoPage,
-  convertInfoPage,
+  getOnboardingDataFromCms: getOnboarding,
+  convertCmsInfo,
 }

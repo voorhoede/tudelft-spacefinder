@@ -15,4 +15,9 @@ export default ({ store }) => {
     .then((infoPage) => {
       store.commit('setInfoPage', { infoPage })
     })
+
+  loadData(`onboarding.json`)
+    .then((onboarding) => {
+      store.commit('setOnboarding', { onboarding })
+    })
 }
