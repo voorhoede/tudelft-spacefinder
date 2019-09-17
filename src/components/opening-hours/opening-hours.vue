@@ -75,8 +75,7 @@ export default {
     },
     renderTime(dateStamp) {
       const date = new Date(dateStamp)
-      const time = date.toLocaleString('nl-NL', { hour: 'numeric', minute: '2-digit' })
-      return time
+      return date.toLocaleString('nl-NL', { hour: 'numeric', minute: '2-digit' })
     },
   },
 }
