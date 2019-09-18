@@ -1,0 +1,52 @@
+{
+  "ci": "netlify",
+  "type": "status",
+  "baseUrl": "{target_url}",
+  "routes": [
+    "/en/",
+    "/en/buildings/",
+    "/en/buildings/8-arch/",
+    "/en/buildings/8-arch/spaces/ssp00041--berlage-instituut/"
+  ],
+  "settings": {
+    "categories": {
+      "performance": 80,
+      "accessibility": 80,
+      "best-practices": 80,
+      "pwa": 80,
+      "seo": 80
+    },
+    "budgets": [
+      {
+        "resourceSizes": [
+          {
+            "resourceType": "script",
+            "budget": 400
+          },
+          {
+            "resourceType": "image",
+            "budget": 400
+          },
+          {
+            "resourceType": "third-party",
+            "budget": 500
+          },
+          {
+            "resourceType": "total",
+            "budget": 1000
+          }
+        ],
+        "resourceCounts": [
+          {
+            "resourceType": "third-party",
+            "budget": 50
+          },
+          {
+            "resourceType": "total",
+            "budget": 50
+          }
+        ]
+      }
+    ]
+  }
+}
