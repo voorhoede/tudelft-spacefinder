@@ -15,8 +15,7 @@ export const mutations = {
 
 export const getters = {
   currentPageRoute: (state) => {
-    const currentRoutePath = state.routes[state.routes.length - 1]
-    return currentRoutePath
+    return state.routes[state.routes.length - 1]
   },
   hasHistory: (state) => {
     return state.routes.length > 1

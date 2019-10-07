@@ -85,9 +85,7 @@ const getOpeningHoursForRooms = (building = [], room = []) => {
   }
 
   const formattedOpeningHours = formatOpeningHours(rangesToFormat)
-  const openingHoursWithDaysFilled = fillMissingDays(formattedOpeningHours)
-
-  return openingHoursWithDaysFilled
+  return fillMissingDays(formattedOpeningHours)
 }
 
 const getOpeningHoursForBuildings = (building = []) => {
@@ -95,9 +93,7 @@ const getOpeningHoursForBuildings = (building = []) => {
     .map(r => Array.of(r))
 
   const formattedOpeningHours = formatOpeningHours(buildingOpenRanges)
-  const openingHoursWithDaysFilled = fillMissingDays(formattedOpeningHours)
-
-  return openingHoursWithDaysFilled
+  return fillMissingDays(formattedOpeningHours)
 }
 
 module.exports = (availability, { buildings = [], rooms = [] }) => {

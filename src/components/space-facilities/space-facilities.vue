@@ -44,8 +44,7 @@ export default {
     getFacilityValue(facility) {
       const valueIsName = ['studyType', 'quietness'].includes(facility.name)
       const facilityName = valueIsName ? facility.value : facility.name
-      const facilityValue = valueIsName ? `${facility.name}.${facilityName}` : facilityName
-      return facilityValue
+      return valueIsName ? `${facility.name}.${facilityName}` : facilityName
     },
   },
 }

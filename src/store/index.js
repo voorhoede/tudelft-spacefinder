@@ -131,7 +131,7 @@ export const actions = {
       })
   },
 
-  updateMarkers({ state, commit }) {
+  updateMarkers({ state, commit }) { // eslint-disable-line sonarjs/cognitive-complexity
     const {
       building: { number: buildingNumber } = {},
       space: { spaceId } = {},

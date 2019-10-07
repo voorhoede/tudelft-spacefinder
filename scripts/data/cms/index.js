@@ -3,80 +3,53 @@ const got = require('got')
 const { DATO_API_TOKEN } = process.env
 const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === '1'
 
-const getBuildings = () => got('https://graphql.datocms.com/', {
+const queryDato = query => got('https://graphql.datocms.com/', {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${DATO_API_TOKEN}`,
   },
   json: true,
-  body: {
-    query: `{
-      allBuildings() {
-        image {
-          url
-        }
-        number,
-        bounds
-      }
-    }`,
-    variables: null,
-  },
-}).then(({ body: { data: { allBuildings } } }) => {
-  return allBuildings
-})
+  body: { query },
+}).then(({ body }) => body.data)
 
-const getInfoPage = () => got('https://graphql.datocms.com/', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${DATO_API_TOKEN}`,
-  },
-  json: true,
-  body: {
-    query: `{
-      infoPage {
-        _allTitleLocales {
-          locale,
-          value
-        }
-        _allBodyLocales {
-          locale,
-          value
-        }
-      }
-    }`,
-    variables: null,
-  },
-}).then(({ body: { data: { infoPage } } }) => {
-  return infoPage
-})
+const getBuildings = () => queryDato(`{
+  allBuildings() {
+    image {
+      url
+    }
+    number,
+    bounds
+  }
+}`).then(data => data.allBuildings)
 
-const getOnboarding = () => got('https://graphql.datocms.com/', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${DATO_API_TOKEN}`,
-  },
-  json: true,
-  body: {
-    query: `{
-      onboarding {
-        _allTitleLocales {
-          locale,
-          value
-        }
-        _allBodyLocales {
-          locale,
-          value
-        }
-      }
-    }`,
-    variables: null,
-  },
-}).then(({ body: { data: { onboarding } } }) => {
-  return onboarding
-})
+const getInfoPage = () => queryDato(`{
+  infoPage {
+    _allTitleLocales {
+      locale,
+      value
+    }
+    _allBodyLocales {
+      locale,
+      value
+    }
+  }
+}`).then(data => data.infoPage)
+
+const getOnboarding = () => queryDato(`{
+  onboarding {
+    _allTitleLocales {
+      locale,
+      value
+    }
+    _allBodyLocales {
+      locale,
+      value
+    }
+  }
+}`).then(data => data.onboarding)
 
 const convertCmsInfo = (info) => {
-  const infoPage = {
+  return {
     nl: {
       title: info._allTitleLocales.find((item) => {
         return item.locale === 'nl'
@@ -94,8 +67,6 @@ const convertCmsInfo = (info) => {
       }).value,
     },
   }
-
-  return infoPage
 }
 
 module.exports = {
