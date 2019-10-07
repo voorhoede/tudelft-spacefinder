@@ -12,11 +12,11 @@ export default function ({ space }) {
   const height = width
   const primaryColor = '#8B2BA7'
   const url = [
-    `https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/`,
+    'https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/',
     `pin-s+${primaryColor.slice(1)}(${space.longitude},${space.latitude}),`,
     `url-${invisibleMarkerUrl}(${bounds.west},${bounds.north}),`,
     `url-${invisibleMarkerUrl}(${bounds.east},${bounds.south})`,
-    `/auto`,
+    '/auto',
     `/${width}x${height}@2x`,
     `?access_token=${process.env.MAPBOX_TOKEN}`,
   ].join('')

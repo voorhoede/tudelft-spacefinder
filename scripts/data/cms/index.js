@@ -6,7 +6,7 @@ const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === '1'
 const getBuildings = () => got('https://graphql.datocms.com/', {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${DATO_API_TOKEN}`,
+    Authorization: `Bearer ${DATO_API_TOKEN}`,
   },
   json: true,
   body: {
@@ -28,7 +28,7 @@ const getBuildings = () => got('https://graphql.datocms.com/', {
 const getInfoPage = () => got('https://graphql.datocms.com/', {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${DATO_API_TOKEN}`,
+    Authorization: `Bearer ${DATO_API_TOKEN}`,
   },
   json: true,
   body: {
@@ -53,7 +53,7 @@ const getInfoPage = () => got('https://graphql.datocms.com/', {
 const getOnboarding = () => got('https://graphql.datocms.com/', {
   method: 'POST',
   headers: {
-    'Authorization': `Bearer ${DATO_API_TOKEN}`,
+    Authorization: `Bearer ${DATO_API_TOKEN}`,
   },
   json: true,
   body: {

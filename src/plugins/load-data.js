@@ -1,22 +1,22 @@
 import loadData from '~/lib/load-data'
 
 export default ({ store }) => {
-  loadData(`buildings.json`)
+  loadData('buildings.json')
     .then((buildings) => {
       store.commit('setBuildings', { buildings })
     })
 
-  loadData(`spaces.json`)
+  loadData('spaces.json')
     .then((spaces) => {
       store.commit('setSpaces', { spaces })
     })
 
-  loadData(`infopage.json`)
+  loadData('infopage.json')
     .then((infoPage) => {
       store.commit('setInfoPage', { infoPage })
     })
 
-  loadData(`onboarding.json`)
+  loadData('onboarding.json')
     .then((onboarding) => {
       store.commit('setOnboarding', { onboarding })
     })

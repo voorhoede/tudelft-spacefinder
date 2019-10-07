@@ -48,7 +48,7 @@ const isOkAbbreviation = pipe(
     is(String),
   ])
 )
-const isOkData = allPass([ isOkBuildingName, isOkAbbreviation ])
+const isOkData = allPass([isOkBuildingName, isOkAbbreviation])
 
 const getBuildingNameAndNumber = converge(
   mergeDeepRight,

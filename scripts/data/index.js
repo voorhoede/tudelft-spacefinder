@@ -41,7 +41,7 @@ Promise.all([
     info,
     onboarding,
   ]))
-  .then(([ { spaces, buildings }, info, onboarding ]) => {
+  .then(([{ spaces, buildings }, info, onboarding]) => {
     const infoPage = convertCmsInfo(info)
     return [spaces, buildings, infoPage, convertCmsInfo(onboarding)]
   })

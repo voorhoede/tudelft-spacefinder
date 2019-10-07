@@ -142,19 +142,19 @@ export const actions = {
 
     if (spaceId) {
       // All filters are off if a space is selected
-      commit('setActiveMarkerFilters', [ ['==', 'spaceId', spaceId] ])
+      commit('setActiveMarkerFilters', [['==', 'spaceId', spaceId]])
       return
     } else if (buildingNumber) {
       // If a building is selected, filtering by building should be disabled
-      filters = [ ['==', 'buildingNumber', buildingNumber] ]
+      filters = [['==', 'buildingNumber', buildingNumber]]
       hasSelectedBuilding = true
     }
 
     // Go through the enabled filters
-    const featureFilters = Object.entries(state.filters).reduce((filters, [ key, value ]) => {
+    const featureFilters = Object.entries(state.filters).reduce((filters, [key, value]) => {
       if (typeof value === 'boolean' && value) {
         const filter = key === 'showOpenLocations' ? 'isOpen' : key
-        return [ ...filters, ['==', filter, value] ]
+        return [...filters, ['==', filter, value]]
       } else if (Array.isArray(value) && value.length > 0) {
         if (key === 'buildings' && hasSelectedBuilding) {
           return filters
@@ -162,15 +162,15 @@ export const actions = {
 
         if (key === 'buildings') {
           const buildingFilters = value.map(v => ['==', 'buildingNumber', v])
-          return [ ...filters, [ 'any', ...buildingFilters ] ]
+          return [...filters, ['any', ...buildingFilters]]
         }
 
-        return [ ...filters, ['in', key, ...value] ]
+        return [...filters, ['in', key, ...value]]
       }
       return filters
     }, [])
 
-    commit('setActiveMarkerFilters', [ ...filters, ...featureFilters ])
+    commit('setActiveMarkerFilters', [...filters, ...featureFilters])
   },
 
   zoomAuto({ dispatch, state }) {

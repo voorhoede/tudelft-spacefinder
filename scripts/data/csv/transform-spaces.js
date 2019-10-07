@@ -70,11 +70,11 @@ const createSlugObject = pipe(
   This function expects the i18n object to be present on spaceData passed in
 */
 const getSlug = pipe(
-  juxt([ prop('spaceId'), identity ]),
+  juxt([prop('spaceId'), identity]),
   apply((id, space) => {
     return over(lensProp('i18n'), map(pipe(
-      converge(mergeDeepRight, [ identity, pipe(
-        juxt([ always(id), prop('name') ]),
+      converge(mergeDeepRight, [identity, pipe(
+        juxt([always(id), prop('name')]),
         createSlugObject
       )])
     )), space)

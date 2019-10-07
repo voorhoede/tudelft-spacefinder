@@ -25,6 +25,6 @@ module.exports = {
       importFrom: './src/components/app-core/variables.css',
       preserve: false,
     },
-    'autoprefixer': {},
+    autoprefixer: {},
   },
 }
