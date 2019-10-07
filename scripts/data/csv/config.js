@@ -33,6 +33,7 @@ module.exports = {
     null,
     'studyType',
     'quietness',
+    null,
     'daylit',
     'powerOutlets',
     'ethernet',
@@ -67,7 +68,7 @@ function cast(value, context) {
     case 'presentationScreen':
     case 'stationaryPC':
     case 'nearCoffeeMachine':
-      return maybeDutchBoolean(value)
+      return distanceToBoolean(value)
     case 'nearPrinter':
     case 'nearBathroom':
       return distanceToBoolean(value)
