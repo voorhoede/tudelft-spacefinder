@@ -103,7 +103,7 @@ function distanceToBoolean(value) {
   } else if (value === '>25m') {
     return false
   } else {
-    return value
+    return maybeDutchBoolean(value)
   }
 }
 
