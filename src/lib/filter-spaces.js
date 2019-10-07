@@ -22,11 +22,11 @@ function filterSpaces(filters, spaces, activeFilterKeys) {
 */
 export function spaceIsOpen(now, openingHours) {
   // first item in openingHours array is today
-  const [ { time: timeRanges } ] = openingHours
+  const [{ time: timeRanges }] = openingHours
   return timeRanges
     // parse to date objects for comparison
     .map(range => range.map(item => new Date(item)))
-    .some(([ start, end ]) => {
+    .some(([start, end]) => {
       return now >= start && now <= end
     })
 }

@@ -8,9 +8,9 @@ const data = {
 
 test('fromI18n returns expected properties', () => {
   expect(fromI18n(data)).toEqual({
-    'abbreviation': 'Arch',
-    'name': 'Architecture',
-    'slug': '13-arch',
+    abbreviation: 'Arch',
+    name: 'Architecture',
+    slug: '13-arch',
   })
 })
 

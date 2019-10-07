@@ -1,3 +1,4 @@
+/* eslint no-prototype-builtins: 0 */
 const translate = require('./translate')
 
 const translationMap = {

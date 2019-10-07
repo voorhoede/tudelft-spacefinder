@@ -33,8 +33,8 @@ const subtractClosingTimes = (buildingRanges, roomRanges = []) => {
     }).reduce((openingHours, gap) => {
       // Result after successful subtraction of a time range, is an array of ranges
       const precedingRanges = openingHours.slice(0, openingHours.length - 1)
-      const [ lastRange ] = openingHours.slice(-1)
-      return [ ...precedingRanges, ...lastRange.subtract(gap) ]
+      const [lastRange] = openingHours.slice(-1)
+      return [...precedingRanges, ...lastRange.subtract(gap)]
     }, Array.of(buildingRange.clone()))
   })
 }
@@ -51,16 +51,16 @@ const fillMissingDays = (openingHours = []) => {
   return days.reduce((acc, weekDay) => {
     const dayFromOpeningHours = openingHours.find(({ day }) => day === weekDay)
     if (!dayFromOpeningHours) {
-      return [ ...acc, { day: weekDay, time: [] } ]
+      return [...acc, { day: weekDay, time: [] }]
     }
-    return [ ...acc, dayFromOpeningHours ]
+    return [...acc, dayFromOpeningHours]
   }, [])
 }
 
 const formatOpeningHours = (ranges = []) => {
   return ranges.map((range) => {
     // Determine the weekday by taking the start property off the first item.
-    const [ { start: first } = {} ] = range
+    const [{ start: first } = {}] = range
     const day = first.format('dd').toLowerCase()
     const time = range.map(r => [r.start, r.end].map(t => t.utc().format()))
     return { day, time }

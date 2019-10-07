@@ -6,7 +6,7 @@ const buildingSchema = require('../../../schema/building.json')
 const spaceSchema = require('../../../schema/space.json')
 
 const ajv = new Ajv({
-  schemas: [ baseSchema, buildingSchema, spaceSchema ],
+  schemas: [baseSchema, buildingSchema, spaceSchema],
   verbose: true,
 })
 
