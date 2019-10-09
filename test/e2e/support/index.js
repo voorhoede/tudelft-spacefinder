@@ -17,6 +17,8 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+// Import axe for cypress
+import 'cypress-axe'
 
 beforeEach(() => {
   cy.noOnboarding()

@@ -4,9 +4,13 @@ describe('TUS-2 see that i am in the tudelft spacefinder', () => {
   beforeEach(() => {
     cy.viewport('iphone-6')
       .visit('/')
+    // Inject the axe-core library
+    cy.injectAxe()
   })
   specify('TUS-2-1 has header-bar in all available routes/pages', () => {
     cy.get('header.app-header')
+    // first a11y test
+    cy.checkA11y('header.app-header')
   })
   specify('TUS-2-2 has TUDelft branding', () => {
     cy.get('header.app-header')

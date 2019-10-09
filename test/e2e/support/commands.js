@@ -7,6 +7,7 @@ Cypress.Commands.add('noOnboarding', () => {
   window.localStorage.setItem('app-state', JSON.stringify(setNoOnboarding))
 })
 
+// Custom command to match app-state in browsers localStorage
 Cypress.Commands.add('filterState', (options = {}) => {
   const adjustableChairs = options.adjustableChairs || false
   const buildings = options.buildings || []
