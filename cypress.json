@@ -2,7 +2,7 @@
   "baseUrl": "http://localhost:3463",
   "integrationFolder": "test/e2e/integration",
   "screenshotsFolder": "test/e2e/screenshots",
-  "supportFile": false,
+  "supportFile": "test/e2e/support/index.js",
   "videosFolder": "test/e2e/videos",
   "pluginsFile": false,
   "fixturesFolder": false,
