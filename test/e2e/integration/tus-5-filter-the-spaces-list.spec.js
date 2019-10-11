@@ -1,12 +1,10 @@
 /* eslint-disable no-undef */
 
 describe('TUS-5 filter the spaces list', () => {
-  beforeEach(() => {
+  specify('TUS-5-1 Check if the filter is accesible and empty', () => {
     cy.viewport('iphone-6')
       .visit('/')
-  })
-  specify('TUS-5-1 Check if the filter is accesible and empty', () => {
-    cy.get('.modal-drawer')
+      .get('.modal-drawer')
       .should('not.exist')
       .get('header.app-header')
       .contains('filter')
@@ -67,5 +65,45 @@ describe('TUS-5 filter the spaces list', () => {
       // check if all spaces are in the list
       .get('.filter-menu button.button--primary')
       .should('contain', ' 398 ')
+  })
+  specify('TUS-5-2 Check filter on open locations', () => {
+    // we set the response to be the spaces.json fixture
+    cy.server()
+      .clock(1570620600000, ['Date']) // set time to openinghours, as documented via var does creates timing bug with animations in cypress. seems to be a react/vue issue: const open = new Date(Date.UTC(2019, 9, 9, 11, 30)).getTime()
+      .route('GET', '/data/spaces.json', 'fixture:spacesFiltersTest.json').as('spacesFilterTest')
+      .viewport('iphone-6')
+      .visit('/')
+      .wait('@spacesFilterTest') // remove the flash of production data
+      .get('.modal-drawer')
+      .should('not.exist')
+      .get('header.app-header')
+      .contains('filter')
+      .click()
+      .wait(300)
+      // filter on open
+      .get('label[for="show-open-locations"]')
+      .click()
+      // check if all spaces are in the list
+      .get('.filter-menu button.button--primary')
+      .should('contain', ' 1 ')
+      // check if only one card in list
+      .get('.modal-drawer')
+      .should('be.visible')
+      .contains('close')
+      .click()
+      .get('.space-list__item:visible')
+      .should('have.length', 1)
+      // reset and see all (2 in the fixture spaces data)
+      .get('header.app-header')
+      .contains('filter')
+      .click()
+      .wait(300)
+      .get('label[for="show-open-locations"]')
+      .click()
+      .get('.modal-drawer')
+      .contains('close')
+      .click()
+      .get('.space-list__item:visible')
+      .should('have.length', 2)
   })
 })

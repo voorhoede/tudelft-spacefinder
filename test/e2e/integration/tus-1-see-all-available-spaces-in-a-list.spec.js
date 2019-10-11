@@ -4,8 +4,8 @@ describe('TUS-1 see all available spaces in a list', () => {
   beforeEach(() => {
     cy.viewport('iphone-6')
       .visit('/')
-    // Inject the axe-core library
-    cy.injectAxe()
+      // Inject the axe-core library
+      .injectAxe()
   })
   specify('TUS-1-1 has a scrollable list on homescreen', () => {
     cy.get('.space-list')

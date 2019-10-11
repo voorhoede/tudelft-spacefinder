@@ -5,6 +5,6 @@
   "supportFile": "test/e2e/support/index.js",
   "videosFolder": "test/e2e/videos",
   "pluginsFile": false,
-  "fixturesFolder": false,
+  "fixturesFolder": "test/e2e/fixtures",
   "video": false
 }

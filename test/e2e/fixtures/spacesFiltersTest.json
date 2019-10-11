@@ -1,0 +1,167 @@
+[
+  {
+    "spaceId": "SSP00001",
+    "floor": "1e verdieping",
+    "seats": 72,
+    "tables": 9,
+    "latitude": 52.001591,
+    "longitude": 4.371567,
+    "i18n": {
+      "nl": {
+        "name": "TEST GANG",
+        "slug": "ssp00001--gang"
+      },
+      "en": {
+        "name": "TEST GANG",
+        "slug": "ssp00001--gang"
+      }
+    },
+    "roomId": "C-1-801",
+    "facilities": {
+      "adjustableChairs": true,
+      "studyType": "group",
+      "quietness": "quiet",
+      "daylit": true,
+      "powerOutlets": true,
+      "ethernet": true,
+      "stationaryPC": true,
+      "whiteBoard": true,
+      "smartBoard": true,
+      "presentationScreen": true,
+      "nearCoffeeMachine": true,
+      "nearPrinter": true,
+      "nearBathroom": true
+    },
+    "buildingNumber": 34,
+    "openingHours": [
+      {
+        "day": "we",
+        "time": [
+          [
+            "2019-10-09T06:00:00Z",
+            "2019-10-09T17:00:00Z"
+          ]
+        ]
+      },
+      {
+        "day": "th",
+        "time": [
+          [
+            "2019-10-10T06:00:00Z",
+            "2019-10-10T17:00:00Z"
+          ]
+        ]
+      },
+      {
+        "day": "fr",
+        "time": [
+          [
+            "2019-10-11T06:00:00Z",
+            "2019-10-11T17:00:00Z"
+          ]
+        ]
+      },
+      {
+        "day": "sa",
+        "time": []
+      },
+      {
+        "day": "su",
+        "time": []
+      },
+      {
+        "day": "mo",
+        "time": [
+          [
+            "2019-10-14T06:00:00Z",
+            "2019-10-14T17:00:00Z"
+          ]
+        ]
+      },
+      {
+        "day": "tu",
+        "time": [
+          [
+            "2019-10-15T06:00:00Z",
+            "2019-10-15T17:00:00Z"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "spaceId": "T2SSP00001",
+    "floor": "1e verdieping",
+    "seats": 72,
+    "tables": 9,
+    "latitude": 52.001591,
+    "longitude": 4.371567,
+    "i18n": {
+      "nl": {
+        "name": "TEST 2 GANG",
+        "slug": "test-2-ssp00001--gang"
+      },
+      "en": {
+        "name": "TEST 2 GANG",
+        "slug": "test-2-ssp00001--gang"
+      }
+    },
+    "roomId": "C-1-801",
+    "facilities": {
+      "adjustableChairs": true,
+      "studyType": "group",
+      "quietness": "quiet",
+      "daylit": true,
+      "powerOutlets": true,
+      "ethernet": true,
+      "stationaryPC": true,
+      "whiteBoard": true,
+      "smartBoard": true,
+      "presentationScreen": true,
+      "nearCoffeeMachine": true,
+      "nearPrinter": true,
+      "nearBathroom": true
+    },
+    "buildingNumber": 34,
+    "openingHours": [
+      {
+        "day": "we",
+        "time": []
+      },
+      {
+        "day": "th",
+        "time": [
+          [
+            "2019-10-10T06:00:00Z",
+            "2019-10-10T17:00:00Z"
+          ]
+        ]
+      },
+      {
+        "day": "fr",
+        "time": [
+          [
+            "2019-10-11T06:00:00Z",
+            "2019-10-11T17:00:00Z"
+          ]
+        ]
+      },
+      {
+        "day": "sa",
+        "time": []
+      },
+      {
+        "day": "su",
+        "time": []
+      },
+      {
+        "day": "mo",
+        "time": []
+      },
+      {
+        "day": "tu",
+        "time": []
+      }
+    ]
+  }
+]
