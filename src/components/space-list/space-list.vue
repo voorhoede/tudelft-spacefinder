@@ -18,9 +18,9 @@
         :data-index="index"
         class="space-list__item"
       >
-        <header class="space-list__header" v-if="index === 0">
-          <h2>{{ $t('spacesTitle')}}</h2>
-          <p>{{ $t('spacesSubTitle')}}</p>
+        <header v-if="index === 0" class="space-list__header">
+          <h2>{{ $t('spacesTitle') }}</h2>
+          <p>{{ $t('spacesSubTitle') }}</p>
         </header>
         <space-card :space="item" />
       </DynamicScrollerItem>
