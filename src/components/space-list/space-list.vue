@@ -18,6 +18,10 @@
         :data-index="index"
         class="space-list__item"
       >
+        <header class="space-list__header" v-if="index === 0">
+          <h2>{{ $t('spacesTitle')}}</h2>
+          <p>{{ $t('spacesSubTitle')}}</p>
+        </header>
         <space-card :space="item" />
       </DynamicScrollerItem>
     </template>
@@ -51,6 +55,10 @@ export default {
   height: 100%;
   padding: var(--spacing-default) var(--spacing-default) 0 var(--spacing-default);
   -webkit-overflow-scrolling: touch;
+}
+
+.space-list__header {
+  padding-bottom: var(--spacing-default);
 }
 
 .space-list__item {
