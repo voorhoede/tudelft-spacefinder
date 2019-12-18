@@ -47,7 +47,7 @@
 
     <div class="space-card__seating">
       <svg-icon name="seat-icon" class="space-card__seating-icon" />
-      {{ space.seats }} {{ $t('seatsDescription') }}
+      {{ space.seats }} {{ $t('seatsDescriptionShort') }}
     </div>
   </nuxt-link>
 </template>
