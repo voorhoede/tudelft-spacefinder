@@ -152,7 +152,7 @@
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="near-bathroom">
-            <svg-icon name="facility-nearBathroom-icon" class="filter-menu__filter-icon"/>
+            <svg-icon name="facility-nearBathroom-icon" class="filter-menu__filter-icon" />
             {{ $t('nearBathroom') }}
           </label>
 
@@ -164,7 +164,7 @@
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="near-coffee-machine">
-            <svg-icon name="facility-nearCoffeeMachine-icon" class="filter-menu__filter-icon"/>
+            <svg-icon name="facility-nearCoffeeMachine-icon" class="filter-menu__filter-icon" />
             {{ $t('nearCoffeeMachine') }}
           </label>
         </fieldset>
