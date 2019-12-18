@@ -62,6 +62,7 @@
   "sa": "Saturday",
   "seating": "Seating",
   "seats": "seats",
+  "seatsDescription": "seats in this space",
   "shareWithTelegram": "Share via Telegram",
   "shareWithWhatsApp": "Share via WhatsApp",
   "showLocations": "show 0 locations | show 1 location | show {amount} locations",
