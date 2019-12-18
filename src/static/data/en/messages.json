@@ -47,6 +47,7 @@
   "menu": "menu",
   "mo": "Monday",
   "nearBathroom": "bathroom",
+  "nearbyFacilities": "Nearby facilities (< 25m)",
   "nearCoffeeMachine": "coffee corner",
   "nearPrinter": "printer",
   "noFilterResults": "There are no locations found",

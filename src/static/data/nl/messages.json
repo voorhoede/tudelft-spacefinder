@@ -47,6 +47,7 @@
   "menu": "menu",
   "mo": "maandag",
   "nearBathroom": "wc",
+  "nearbyFacilities": "Voorzieningen in de buurt (< 25m)",
   "nearCoffeeMachine": "coffee corner",
   "nearPrinter": "printer",
   "noFilterResults": "Er zijn geen locaties gevonden",
