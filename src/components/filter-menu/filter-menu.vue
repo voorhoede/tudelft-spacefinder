@@ -127,18 +127,6 @@
           </label>
 
           <input
-            id="near-coffee-machine"
-            v-model="nearCoffeeMachine"
-            :value="nearCoffeeMachine"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          >
-          <label for="near-coffee-machine">
-            <svg-icon name="facility-nearCoffeeMachine-icon" class="filter-menu__filter-icon" />
-            {{ $t('nearCoffeeMachine') }}
-          </label>
-
-          <input
             id="daylit"
             v-model="daylit"
             :value="daylit"
@@ -149,6 +137,12 @@
             <svg-icon name="facility-daylit-icon" class="filter-menu__filter-icon" />
             {{ $t('daylit') }}
           </label>
+        </fieldset>
+
+        <fieldset class="filter-menu__filter-group">
+          <legend class="h3">
+            {{ $t('nearbyFacilities') }}
+          </legend>
 
           <input
             id="near-bathroom"
@@ -158,8 +152,20 @@
             class="a11y-sr-only filter-menu__filter"
           >
           <label for="near-bathroom">
-            <svg-icon name="facility-nearBathroom-icon" class="filter-menu__filter-icon" />
+            <svg-icon name="facility-nearBathroom-icon" class="filter-menu__filter-icon"/>
             {{ $t('nearBathroom') }}
+          </label>
+
+          <input
+            id="near-coffee-machine"
+            v-model="nearCoffeeMachine"
+            :value="nearCoffeeMachine"
+            type="checkbox"
+            class="a11y-sr-only filter-menu__filter"
+          >
+          <label for="near-coffee-machine">
+            <svg-icon name="facility-nearCoffeeMachine-icon" class="filter-menu__filter-icon"/>
+            {{ $t('nearCoffeeMachine') }}
           </label>
         </fieldset>
 
