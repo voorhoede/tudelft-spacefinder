@@ -51,7 +51,7 @@
             class="app-menu__link"
             @click.native="$emit('close')"
           >
-            <svg-icon name="lightbulb-icon" class="app-menu__icon" />
+            <svg-icon name="feedback-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
               {{ $t('feedback') }}
