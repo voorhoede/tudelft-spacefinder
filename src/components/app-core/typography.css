@@ -29,10 +29,6 @@ h3,
   font-weight: 500;
 }
 
-p:not(:last-child) {
-  margin-bottom: var(--spacing-default);
-}
-
 a {
     color: var(--text-color);
     text-decoration: underline;
