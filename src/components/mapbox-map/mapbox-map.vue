@@ -106,8 +106,8 @@ export default {
           trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
           style: 'mapbox://styles/mapbox/streets-v10',
           maxBounds: [
-            campusBounds.sw,
-            campusBounds.ne,
+            campusBounds.southWest,
+            campusBounds.northEast,
           ],
         })
         map.on('load', () => {
