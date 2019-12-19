@@ -15,4 +15,8 @@ export default {
     en: '/buildings/:buildingSlug/spaces/:spaceSlug',
     nl: '/gebouwen/:buildingSlug/ruimtes/:spaceSlug',
   },
+  help: {
+    en: '/help',
+    nl: '/hulp',
+  },
 }

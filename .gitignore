@@ -14,4 +14,5 @@ src/static/sw.js
 src/static/data/buildings.json
 src/static/data/spaces.json
 src/static/data/infopage.json
+src/static/data/feedbackpage.json
 src/static/data/onboarding.json

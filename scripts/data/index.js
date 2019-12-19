@@ -4,6 +4,7 @@ const { writeFile } = require('fs')
 const {
   getBuildingsDataFromCms,
   getInfoDataFromCms,
+  getFeedbackPageFromCms,
   getOnboardingDataFromCms,
   convertCmsInfo,
 } = require('./cms')
@@ -32,23 +33,27 @@ Promise.all([
   getDataFromCsv(),
   getBuildingsDataFromCms(),
   getInfoDataFromCms(),
+  getFeedbackPageFromCms(),
   getOnboardingDataFromCms(),
 ])
-  .then(([csv, buildings, info, onboarding]) => Promise.all([
+  .then(([csv, buildings, info, feedback, onboarding]) => Promise.all([
     Promise.resolve(transform([csv, buildings]))
       .then(addOpeningHours)
       .then(validate),
     info,
+    feedback,
     onboarding,
   ]))
-  .then(([{ spaces, buildings }, info, onboarding]) => {
+  .then(([{ spaces, buildings }, info, feedback, onboarding]) => {
     const infoPage = convertCmsInfo(info)
-    return [spaces, buildings, infoPage, convertCmsInfo(onboarding)]
+    const feedbackPage = convertCmsInfo(feedback)
+    return [spaces, buildings, infoPage, feedbackPage, convertCmsInfo(onboarding)]
   })
-  .then(([spaces, buildings, infoPage, onboarding]) => writeFiles([
+  .then(([spaces, buildings, infoPage, feedbackPage, onboarding]) => writeFiles([
     { path: 'spaces', contents: spaces },
     { path: 'buildings', contents: buildings },
     { path: 'infopage', contents: infoPage },
+    { path: 'feedbackpage', contents: feedbackPage },
     { path: 'onboarding', contents: onboarding },
   ]))
   .then(() => console.info('Wrote data for spaces, buildings and CMS'))

@@ -32,6 +32,7 @@ export const state = () => ({
   showOnboarding: false,
   hasSeenOnboarding: false,
   infoPage: {},
+  feedbackPage: {},
   onboarding: {},
   installPromptEvent: undefined,
   isInstallable: false,
@@ -76,6 +77,9 @@ export const mutations = {
   },
   setInfoPage(state, { infoPage }) {
     state.infoPage = infoPage
+  },
+  setFeedbackPage(state, { feedbackPage }) {
+    state.feedbackPage = feedbackPage
   },
   setOnboarding(state, { onboarding }) {
     state.onboarding = onboarding
@@ -251,6 +255,9 @@ export const getters = {
   },
   getInfoPage: (state) => {
     return state.infoPage
+  },
+  getFeedbackPage: (state) => {
+    return state.feedbackPage
   },
   getOnboarding: (state) => {
     return state.onboarding

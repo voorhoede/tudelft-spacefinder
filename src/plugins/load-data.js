@@ -16,6 +16,11 @@ export default ({ store }) => {
       store.commit('setInfoPage', { infoPage })
     })
 
+  loadData('feedbackpage.json')
+    .then((feedbackPage) => {
+      store.commit('setFeedbackPage', { feedbackPage })
+    })
+
   loadData('onboarding.json')
     .then((onboarding) => {
       store.commit('setOnboarding', { onboarding })

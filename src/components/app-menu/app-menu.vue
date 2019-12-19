@@ -34,14 +34,27 @@
         </li>
         <li class="app-menu__item">
           <nuxt-link
-            :to="localePath({ name: 'tips' })"
+            :to="localePath({ name: 'help' })"
             class="app-menu__link"
             @click.native="$emit('close')"
           >
-            <svg-icon name="lightbulb-icon" class="app-menu__icon" />
+            <svg-icon name="help-icon" class="app-menu__icon" />
 
             <span class="app-menu__link-name">
-              {{ $t('tips') }}
+              {{ $t('help') }}
+            </span>
+          </nuxt-link>
+        </li>
+        <li class="app-menu__item">
+          <nuxt-link
+            :to="localePath({ name: 'feedback' })"
+            class="app-menu__link"
+            @click.native="$emit('close')"
+          >
+            <svg-icon name="feedback-icon" class="app-menu__icon" />
+
+            <span class="app-menu__link-name">
+              {{ $t('feedback') }}
             </span>
           </nuxt-link>
         </li>
