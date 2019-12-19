@@ -62,6 +62,8 @@
   "sa": "zaterdag",
   "seating": "Zitplaatsen",
   "seats": "zitplaatsen",
+  "seatsDescription": "zitplaatsen op deze locatie",
+  "seatsDescriptionShort": "zitplaatsen",
   "shareWithTelegram": "Deel via Telegram",
   "shareWithWhatsApp": "Deel via WhatsApp",
   "showLocations": "toon 0 locaties | toon 1 locatie  | toon {count} locaties",
