@@ -26,16 +26,17 @@ const ensureArray = (availabilityData) => {
   return availabilityData
 }
 
-const subtractClosingTimes = (buildingRanges, roomRanges = []) => {
-  return buildingRanges.map((buildingRange) => {
-    return roomRanges.filter((roomRange) => {
-      return buildingRange.contains(roomRange)
-    }).reduce((openingHours, gap) => {
-      // Result after successful subtraction of a time range, is an array of ranges
-      const precedingRanges = openingHours.slice(0, openingHours.length - 1)
-      const [lastRange] = openingHours.slice(-1)
-      return [...precedingRanges, ...lastRange.subtract(gap)]
-    }, Array.of(buildingRange.clone()))
+const subtractClosingTimes = (buildingOpenRanges, roomBusyRanges = []) => {
+  const asdf = buildingOpenRanges.map((buildingOpenRange) => {
+    return roomBusyRanges.reduce((ranges, roomBusyRange) => {
+      return [
+        ...ranges,
+        {
+          range: roomBusyRange,
+          busy: buildingOpenRange.contains(roomBusyRange),
+        },
+      ]
+    })
   })
 }
 
@@ -58,12 +59,13 @@ const fillMissingDays = (openingHours = []) => {
 }
 
 const formatOpeningHours = (ranges = []) => {
-  return ranges.map((range) => {
+  return ranges.map((item) => {
     // Determine the weekday by taking the start property off the first item.
-    const [{ start: first } = {}] = range
+    const [{ start: first } = {}] = item.range.times
     const day = first.format('dd').toLowerCase()
-    const time = range.map(r => [r.start, r.end].map(t => t.utc().format()))
-    return { day, time }
+    const time = item.range.times.map(r => [r.start, r.end].map(t => t.utc().format()))
+
+    return { day, time, busy: item.busy }
   })
 }
 
@@ -81,7 +83,11 @@ const getOpeningHoursForRooms = (building = [], room = []) => {
   if (roomBusyRanges.length) {
     rangesToFormat = subtractClosingTimes(buildingOpenRanges, roomBusyRanges)
   } else {
-    rangesToFormat = buildingOpenRanges.map(r => Array.of(r))
+    rangesToFormat = buildingOpenRanges.map(r => ({
+      range: {
+        times: Array.of(r),
+      },
+    }))
   }
 
   const formattedOpeningHours = formatOpeningHours(rangesToFormat)
