@@ -44,11 +44,3 @@
     --column-width-mobile: 310px;
     --column-width-desktop: 360px;
 }
-
-@media (min-width: 700px) {
-    :root {
-        --font-size-big: 1.625rem;
-        --font-size-default: 1.125rem;
-        --font-size-small: .6rem;
-    }
-}
