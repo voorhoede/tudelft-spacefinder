@@ -105,6 +105,10 @@ export default {
           zoom: 13,
           trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
           style: 'mapbox://styles/mapbox/streets-v10',
+          maxBounds: [
+            campusBounds.southWest,
+            campusBounds.northEast,
+          ],
         })
         map.on('load', () => {
           map.loadImage(mapMarker, (error, image) => {
