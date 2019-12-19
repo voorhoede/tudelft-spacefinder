@@ -50,6 +50,31 @@ const getInfoPage = () => got('https://graphql.datocms.com/', {
   return infoPage
 })
 
+const getFeedbackPage = () => got('https://graphql.datocms.com/', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${DATO_API_TOKEN}`,
+  },
+  json: true,
+  body: {
+    query: `{
+      feedbackPage {
+        _allTitleLocales {
+          locale,
+          value
+        }
+        _allBodyLocales {
+          locale,
+          value
+        }
+      }
+    }`,
+    variables: null,
+  },
+}).then(({ body: { data: { feedbackPage } } }) => {
+  return feedbackPage
+})
+
 const getOnboarding = () => got('https://graphql.datocms.com/', {
   method: 'POST',
   headers: {
@@ -108,6 +133,7 @@ module.exports = {
     return getBuildings()
   },
   getInfoDataFromCms: getInfoPage,
+  getFeedbackPageFromCms: getFeedbackPage,
   getOnboardingDataFromCms: getOnboarding,
   convertCmsInfo,
 }
