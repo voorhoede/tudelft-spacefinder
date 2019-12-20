@@ -56,6 +56,10 @@ import { mapState } from 'vuex'
 
 export default {
   props: {
+    openingHoursBuilding: {
+      required: true,
+      type: Array,
+    },
     openingHoursSpace: {
       required: true,
       type: Array,
@@ -73,22 +77,38 @@ export default {
   computed: {
     ...mapState(['isMobile']),
     timeSlots() {
-      console.log('openingHoursSpace', this.openingHoursSpace)
-      const { openingHoursSpace } = this
-      const asdf = openingHoursSpace.map((openingHour) => {
+      const { openingHoursSpace, openingHoursBuilding } = this
+      const newOpeningHours = openingHoursSpace.map((openingHour, index) => {
+        const buildingStart = openingHoursBuilding[index].time[0][0]
+        const buildingEnd = openingHoursBuilding[index].time[0][1]
         const newTimeslots = []
 
         newTimeslots.day = openingHour.day
 
         newTimeslots.times = openingHour.time.reduce((timeslots, timeslot, index) => {
+          // Check if there is a busy slot before the first open time slot
+          if (index === 0 && new Date(timeslot[0]) > new Date(buildingStart)) {
+            const start = buildingStart
+            const end = timeslot[0]
+            timeslots.push({ time: [start, end], busy: false })
+          }
+
+          // Always add open time slot to array
           timeslots.push({ time: timeslot, busy: false })
 
+          // Check if there is a busy slot between to open time slots
           const nextTimeslot = openingHour.time[index + 1]
-
           if (nextTimeslot && new Date(nextTimeslot[0]) > new Date(timeslot[1])) {
             const start = timeslot[1]
             const end = nextTimeslot[0]
             timeslots.push({ time: [start, end], busy: true })
+          }
+
+          // Check if there is a busy slot after the last open time slot
+          if (index === 6 && new Date(buildingEnd) > new Date(timeslot[1])) {
+            const start = timeslot[1]
+            const end = buildingEnd
+            timeslots.push({ time: [start, end], busy: false })
           }
 
           return timeslots
@@ -97,18 +117,10 @@ export default {
         return newTimeslots
       })
 
-      console.log(asdf)
-      return asdf
+      console.log(newOpeningHours)
+      return newOpeningHours
     },
   },
-  // timeSlots.push({ day, time: [start, end], busy: true })
-  // const nextOpeningHour = openingHours[index + 1]
-  // if (nextOpeningHour && nextOpeningHour.time && openingHour.day === nextOpeningHour.day) {
-  //   const startNext = nextOpeningHour.time[0]
-  //   if (new Date(startNext) > new Date(end)) {
-  //     timeSlots.push({ day, time: [end, startNext], busy: false })
-  //   }
-  // }
   methods: {
     toggleOpeningHours() {
       this.openingHoursAreVisible = !this.openingHoursAreVisible
@@ -174,5 +186,11 @@ export default {
 
 .opening-hours__time {
   font-weight: bold;
+  text-align: right;
+}
+
+.opening-hours__busy {
+  text-decoration: line-through;
+  color: var(--text-color-muted);
 }
 </style>

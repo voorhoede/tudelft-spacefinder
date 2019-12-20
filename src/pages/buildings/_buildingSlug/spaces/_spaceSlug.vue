@@ -17,6 +17,7 @@
       <space-detail-card
         ref="card"
         :space="space"
+        :building="building"
       />
     </div>
   </section>

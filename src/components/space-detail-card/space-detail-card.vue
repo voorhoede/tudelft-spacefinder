@@ -44,6 +44,7 @@
       </div>
 
       <opening-hours
+        :opening-hours-building="building.openingHours"
         :opening-hours-space="space.openingHours"
         :show-toggle-on-desktop="false"
         class="space-detail-card__opening-hours"
@@ -59,6 +60,10 @@ import { CardStatus, OpeningHours, SpaceFacilities } from '../../components'
 export default {
   components: { CardStatus, OpeningHours, SpaceFacilities },
   props: {
+    building: {
+      required: true,
+      type: Object,
+    },
     space: {
       required: true,
       type: Object,
