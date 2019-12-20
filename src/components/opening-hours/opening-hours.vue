@@ -79,8 +79,8 @@ export default {
     timeSlots() {
       const { openingHoursSpace, openingHoursBuilding } = this
       const newOpeningHours = openingHoursSpace.map((openingHour, index) => {
-        const buildingStart = openingHoursBuilding[index].time[0][0]
-        const buildingEnd = openingHoursBuilding[index].time[0][1]
+        const buildingStart = openingHoursBuilding[index].time.length ? openingHoursBuilding[index].time[0][0] : []
+        const buildingEnd = openingHoursBuilding[index].time.length ? openingHoursBuilding[index].time[0][1] : []
         const newTimeslots = []
 
         newTimeslots.day = openingHour.day
@@ -117,7 +117,6 @@ export default {
         return newTimeslots
       })
 
-      console.log(newOpeningHours)
       return newOpeningHours
     },
   },
