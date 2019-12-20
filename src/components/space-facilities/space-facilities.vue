@@ -1,5 +1,5 @@
 <template>
-  <ul class="flat-list flex">
+  <ul class="space-facility__list flex">
     <li
       v-for="(facility, index) in filteredFacilities"
       :key="index"
@@ -19,6 +19,9 @@
       </span>
     </li>
     <li v-if="seats" class="space-facility__item space-facility__seating">
+      <h4 class="a11y-sr-only">
+        {{ $t('seating') }}
+      </h4>
       <svg-icon
         v-tooltip="{
           content: seatsDescription,
@@ -27,9 +30,6 @@
         name="seat-icon"
         class="space-facility__seating-icon"
       />
-      <h4 class="a11y-sr-only">
-        {{ $t('seating') }}
-      </h4>
     </li>
   </ul>
 </template>
@@ -77,7 +77,13 @@ export default {
   display: flex;
 }
 
-ul > li.space-facility__item {
+.space-facility__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.space-facility__item {
   position: relative;
   display: inline-block;
   padding: 0;
