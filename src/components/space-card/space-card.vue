@@ -38,17 +38,9 @@
 
     <space-facilities
       :facilities="space.facilities"
+      :seats="space.seats"
       class="space-card__facilities"
     />
-
-    <h4 class="a11y-sr-only">
-      {{ $t('seating') }}
-    </h4>
-
-    <div class="space-card__seating">
-      <svg-icon name="seat-icon" class="space-card__seating-icon" />
-      {{ space.seats }} {{ $t('seatsDescriptionShort') }}
-    </div>
   </nuxt-link>
 </template>
 
@@ -110,16 +102,5 @@ export default {
 
 .space-card__facilities {
   margin-left: -.2rem;
-}
-
-.space-card__seating {
-  font-size: var(--font-size-smaller);
-}
-
-.space-card__seating-icon {
-  margin: -2px 1px 0 0;
-  width: 16px;
-  height: 16px;
-  vertical-align: middle;
 }
 </style>
