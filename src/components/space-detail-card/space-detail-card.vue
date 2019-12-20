@@ -44,7 +44,7 @@
       </div>
 
       <opening-hours
-        :opening-hours="space.openingHours"
+        :opening-hours-space="space.openingHours"
         :show-toggle-on-desktop="false"
         class="space-detail-card__opening-hours"
       />

@@ -24,22 +24,26 @@
 
       <dl class="opening-hours__overview">
         <template
-          v-for="(openingHour, index) in openingHours"
+          v-for="(timeSlot, index) in timeSlots"
         >
           <dt :key="`hour-entry-${index}`" class="opening-hours__day">
-            {{ index === 0 ? $t('today') : $t(openingHour.day) }}
+            {{ index === 0 ? $t('today') : $t(timeSlot.day) }}
           </dt>
           <dd :key="`time-entry-wrapper-${index}`" class="opening-hours__time">
-            <template v-if="!openingHour.time.length">
+            <template v-if="timeSlot.times.length">
+              <p
+                v-for="(time, timeIndex) in timeSlot.times"
+                :key="timeIndex"
+                :class="{
+                  'opening-hours__busy': time.busy
+                }"
+              >
+                {{ renderTime(time.time[0]) }} - {{ renderTime(time.time[1]) }}
+              </p>
+            </template>
+            <template v-else>
               {{ $t('closed') }}
             </template>
-            <p
-              v-for="(time, timeEntryIndex) in openingHour.time"
-              v-else
-              :key="`time-entry-${timeEntryIndex}`"
-            >
-              {{ renderTime(time[0]) }} - {{ renderTime(time[1]) }}
-            </p>
           </dd>
         </template>
       </dl>
@@ -52,7 +56,7 @@ import { mapState } from 'vuex'
 
 export default {
   props: {
-    openingHours: {
+    openingHoursSpace: {
       required: true,
       type: Array,
     },
@@ -68,7 +72,43 @@ export default {
   },
   computed: {
     ...mapState(['isMobile']),
+    timeSlots() {
+      console.log('openingHoursSpace', this.openingHoursSpace)
+      const { openingHoursSpace } = this
+      const asdf = openingHoursSpace.map((openingHour) => {
+        const newTimeslots = []
+
+        newTimeslots.day = openingHour.day
+
+        newTimeslots.times = openingHour.time.reduce((timeslots, timeslot, index) => {
+          timeslots.push({ time: timeslot, busy: false })
+
+          const nextTimeslot = openingHour.time[index + 1]
+
+          if (nextTimeslot && new Date(nextTimeslot[0]) > new Date(timeslot[1])) {
+            const start = timeslot[1]
+            const end = nextTimeslot[0]
+            timeslots.push({ time: [start, end], busy: true })
+          }
+
+          return timeslots
+        }, [])
+
+        return newTimeslots
+      })
+
+      console.log(asdf)
+      return asdf
+    },
   },
+  // timeSlots.push({ day, time: [start, end], busy: true })
+  // const nextOpeningHour = openingHours[index + 1]
+  // if (nextOpeningHour && nextOpeningHour.time && openingHour.day === nextOpeningHour.day) {
+  //   const startNext = nextOpeningHour.time[0]
+  //   if (new Date(startNext) > new Date(end)) {
+  //     timeSlots.push({ day, time: [end, startNext], busy: false })
+  //   }
+  // }
   methods: {
     toggleOpeningHours() {
       this.openingHoursAreVisible = !this.openingHoursAreVisible
