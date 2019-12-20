@@ -1,5 +1,5 @@
 <template>
-  <ul class="space-facility__list flex">
+  <ul class="space-facility__list flat-list">
     <li
       v-for="(facility, index) in filteredFacilities"
       :key="index"
@@ -73,14 +73,8 @@ export default {
 </script>
 
 <style>
-.flex {
-  display: flex;
-}
-
 .space-facility__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  display: flex;
 }
 
 .space-facility__item {
