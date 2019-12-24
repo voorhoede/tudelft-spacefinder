@@ -7,5 +7,5 @@
  * @returns {object} data
  */
 export default function loadData(filename) {
-  return import(`~/static/data/${filename}`)
+  return import(`~/static/data/${filename}`).then(module => module.default)
 }
