@@ -5,14 +5,14 @@
       :key="index"
       class="space-facility__item"
     >
-      <svg-icon
+      <img
         v-tooltip="{
           content: $t(getFacilityValue(facility)),
           trigger: 'hover click focus'
         }"
-        :name="getIconName(facility)"
+        :src="getIconSrc(facility)"
         class="space-facility__icon"
-      />
+      >
 
       <span class="a11y-sr-only">
         {{ $t(getFacilityValue(facility)) }}
@@ -40,6 +40,17 @@ export default {
     getIconName(facility) {
       const iconName = this.getFacilityValue(facility)
       return `facility-${iconName}-icon`
+    },
+    getIconSrc(facility) {
+      try {
+        const iconName = this.getFacilityValue(facility)
+        // require returns the hashed path webpack resolves to
+        const src = require(`../../assets/sprite/svg/facility-${iconName}-icon.svg`)
+
+        return src
+      } catch (error) {
+        console.error(error)
+      }
     },
     getFacilityValue(facility) {
       const valueIsName = ['studyType', 'quietness'].includes(facility.name)
