@@ -77,6 +77,20 @@ export default {
   fill: var(--brand-primary-color-dark);
 }
 
+.space-card:hover .space-facility__icon,
+.space-card:focus .space-facility__icon,
+.space-card:hover .space-facility__seating-icon,
+.space-card:focus .space-facility__seating-icon {
+  display: none;
+}
+
+.space-card:hover .space-facility__icon--hover,
+.space-card:focus .space-facility__icon--hover,
+.space-card:hover .space-facility__seating-icon--hover,
+.space-card:focus .space-facility__seating-icon--hover {
+  display: block;
+}
+
 .space-card__info {
   display: flex;
   margin-bottom: var(--spacing-default);

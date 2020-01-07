@@ -13,6 +13,14 @@
         :src="getIconSrc(facility)"
         class="space-facility__icon"
       >
+      <img
+        v-tooltip="{
+          content: $t(getFacilityValue(facility)),
+          trigger: 'hover click focus'
+        }"
+        :src="getIconSrc(facility, true)"
+        class="space-facility__icon space-facility__icon--hover"
+      >
 
       <span class="a11y-sr-only">
         {{ $t(getFacilityValue(facility)) }}
@@ -29,6 +37,14 @@
         }"
         :src="seatsIconSrc"
         class="space-facility__seating-icon"
+      >
+      <img
+        v-tooltip="{
+          content: seatsDescription,
+          trigger: 'hover click focus'
+        }"
+        :src="seatsIconSrcHovered"
+        class="space-facility__seating-icon space-facility__seating-icon--hover"
       >
     </li>
   </ul>
@@ -59,17 +75,20 @@ export default {
     seatsIconSrc() {
       return require('../../assets/sprite/svg/seat-icon.svg')
     },
+    seatsIconSrcHovered() {
+      return require('../../assets/sprite/svg/seat-icon--blue.svg')
+    },
   },
   methods: {
     getIconName(facility) {
       const iconName = this.getFacilityValue(facility)
       return `facility-${iconName}-icon`
     },
-    getIconSrc(facility) {
+    getIconSrc(facility, hover) {
       try {
         const iconName = this.getFacilityValue(facility)
         // require returns the hashed path webpack resolves to
-        const src = require(`../../assets/sprite/svg/facility-${iconName}-icon.svg`)
+        const src = require(`../../assets/sprite/svg/facility-${iconName}-icon${hover ? '--blue' : ''}.svg`)
 
         return src
       } catch (error) {
@@ -98,6 +117,7 @@ export default {
 }
 
 .space-facility__icon {
+  display: block;
   width: 25px;
   height: 25px;
 }
@@ -108,9 +128,15 @@ export default {
 
 .space-facility__seating-icon {
   margin: 0 1px 0 0;
+  display: block;
   width: 16px;
   height: 16px;
   vertical-align: middle;
+}
+
+.space-facility__icon--hover,
+.space-facility__seating-icon--hover {
+  display: none;
 }
 
 .tooltip {
