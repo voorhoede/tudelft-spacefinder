@@ -22,14 +22,14 @@
       <h4 class="a11y-sr-only">
         {{ $t('seating') }}
       </h4>
-      <svg-icon
+      <img
         v-tooltip="{
           content: seatsDescription,
           trigger: 'hover click focus'
         }"
-        name="seat-icon"
+        :src="seatsIconSrc"
         class="space-facility__seating-icon"
-      />
+      >
     </li>
   </ul>
 </template>
@@ -55,6 +55,9 @@ export default {
     },
     seatsDescription() {
       return `${this.seats} ${this.$t('seatsDescription')}`
+    },
+    seatsIconSrc() {
+      return require('../../assets/sprite/svg/seat-icon.svg')
     },
   },
   methods: {
