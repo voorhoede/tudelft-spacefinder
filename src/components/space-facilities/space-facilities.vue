@@ -1,5 +1,5 @@
 <template>
-  <ul class="flat-list">
+  <ul class="space-facility__list flat-list">
     <li
       v-for="(facility, index) in filteredFacilities"
       :key="index"
@@ -18,6 +18,19 @@
         {{ $t(getFacilityValue(facility)) }}
       </span>
     </li>
+    <li v-if="seats" class="space-facility__item space-facility__seating">
+      <h4 class="a11y-sr-only">
+        {{ $t('seating') }}
+      </h4>
+      <svg-icon
+        v-tooltip="{
+          content: seatsDescription,
+          trigger: 'hover click focus'
+        }"
+        name="seat-icon"
+        class="space-facility__seating-icon"
+      />
+    </li>
   </ul>
 </template>
 
@@ -28,12 +41,20 @@ export default {
       required: true,
       type: Object,
     },
+    seats: {
+      required: false,
+      type: Number,
+      default: null,
+    },
   },
   computed: {
     filteredFacilities() {
       return Object.entries(this.facilities)
         .map(([key, value]) => ({ name: key, value }))
         .filter(obj => Boolean(obj.value))
+    },
+    seatsDescription() {
+      return `${this.seats} ${this.$t('seatsDescription')}`
     },
   },
   methods: {
@@ -63,7 +84,11 @@ export default {
 </script>
 
 <style>
-ul > li.space-facility__item {
+.space-facility__list {
+  display: flex;
+}
+
+.space-facility__item {
   position: relative;
   display: inline-block;
   padding: 0;
@@ -72,6 +97,17 @@ ul > li.space-facility__item {
 .space-facility__icon {
   width: 25px;
   height: 25px;
+}
+
+.space-facility__seating {
+  margin-left: auto;
+}
+
+.space-facility__seating-icon {
+  margin: 0 1px 0 0;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
 }
 
 .tooltip {
