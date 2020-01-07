@@ -24,22 +24,26 @@
 
       <dl class="opening-hours__overview">
         <template
-          v-for="(openingHour, index) in openingHours"
+          v-for="(timeSlot, index) in timeSlots"
         >
           <dt :key="`hour-entry-${index}`" class="opening-hours__day">
-            {{ index === 0 ? $t('today') : $t(openingHour.day) }}
+            {{ index === 0 ? $t('today') : $t(timeSlot.day) }}
           </dt>
           <dd :key="`time-entry-wrapper-${index}`" class="opening-hours__time">
-            <template v-if="!openingHour.time.length">
+            <template v-if="timeSlot.times.length">
+              <p
+                v-for="(time, timeIndex) in timeSlot.times"
+                :key="timeIndex"
+                :class="{
+                  'opening-hours__busy': time.busy
+                }"
+              >
+                {{ renderTime(time.time[0]) }} - {{ renderTime(time.time[1]) }}
+              </p>
+            </template>
+            <template v-else>
               {{ $t('closed') }}
             </template>
-            <p
-              v-for="(time, timeEntryIndex) in openingHour.time"
-              v-else
-              :key="`time-entry-${timeEntryIndex}`"
-            >
-              {{ renderTime(time[0]) }} - {{ renderTime(time[1]) }}
-            </p>
           </dd>
         </template>
       </dl>
@@ -52,7 +56,11 @@ import { mapState } from 'vuex'
 
 export default {
   props: {
-    openingHours: {
+    openingHoursBuilding: {
+      required: true,
+      type: Array,
+    },
+    openingHoursSpace: {
       required: true,
       type: Array,
     },
@@ -68,6 +76,49 @@ export default {
   },
   computed: {
     ...mapState(['isMobile']),
+    timeSlots() {
+      const { openingHoursSpace, openingHoursBuilding } = this
+      const newOpeningHours = openingHoursSpace.map((openingHour, dayIndex) => {
+        const buildingStart = openingHoursBuilding[dayIndex].time.length ? openingHoursBuilding[dayIndex].time[openingHoursBuilding[dayIndex].time.length - 1][0] : []
+        const buildingEnd = openingHoursBuilding[dayIndex].time.length ? openingHoursBuilding[dayIndex].time[openingHoursBuilding[dayIndex].time.length - 1][1] : []
+        const newTimeslots = {}
+
+        newTimeslots.day = openingHour.day
+
+        newTimeslots.times = openingHour.time.reduce((timeslots, timeslot, slotIndex) => {
+          // Check if there is a busy slot before the first open time slot
+          if (slotIndex === 0 && new Date(timeslot[0]) > new Date(buildingStart)) {
+            const start = buildingStart
+            const end = timeslot[0]
+            timeslots.push({ time: [start, end], busy: true })
+          }
+
+          // Always add open time slot to array
+          timeslots.push({ time: timeslot, busy: false })
+
+          // Check if there is a busy slot between two open time slots
+          const nextTimeslot = openingHour.time[slotIndex + 1]
+          if (nextTimeslot && new Date(nextTimeslot[0]) > new Date(timeslot[1])) {
+            const start = timeslot[1]
+            const end = nextTimeslot[0]
+            timeslots.push({ time: [start, end], busy: true })
+          }
+
+          // Check if there is a busy slot after the last open time slot
+          if (slotIndex === openingHour.time.length - 1 && new Date(buildingEnd) > new Date(timeslot[1])) {
+            const start = timeslot[1]
+            const end = buildingEnd
+            timeslots.push({ time: [start, end], busy: true })
+          }
+
+          return timeslots
+        }, [])
+
+        return newTimeslots
+      })
+
+      return newOpeningHours
+    },
   },
   methods: {
     toggleOpeningHours() {
@@ -134,5 +185,11 @@ export default {
 
 .opening-hours__time {
   font-weight: bold;
+  text-align: right;
+}
+
+.opening-hours__busy {
+  text-decoration: line-through;
+  color: var(--text-color-muted);
 }
 </style>
