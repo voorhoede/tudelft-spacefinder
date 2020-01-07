@@ -17,7 +17,6 @@ export default {
   plugins: [
     '~/plugins/i18n-cookie.client',
     '~/plugins/install-prompt.client',
-    '~/plugins/load-data',
     '~/plugins/locale-path-trailing-slash',
     '~/plugins/persist-state.client',
     '~/plugins/tooltip.client',

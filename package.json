@@ -27,7 +27,6 @@
     "@nuxtjs/svg-sprite": "^0.2.1",
     "ajv": "^6.10.1",
     "csv": "^5.1.1",
-    "deep-freeze": "0.0.1",
     "fast-xml-parser": "^3.12.19",
     "got": "^9.6.0",
     "httpntlm": "^1.7.6",

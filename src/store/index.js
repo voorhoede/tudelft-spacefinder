@@ -3,6 +3,7 @@ import Deferred from '~/lib/deferred'
 import { spaceFilter, spaceIsOpen } from '~/lib/filter-spaces'
 import campusBounds from '~/lib/campus-bounds'
 import delay from '~/lib/delay'
+import loadData from '~/lib/load-data'
 
 const mapLoaded = new Deferred()
 
@@ -115,6 +116,28 @@ export const mutations = {
 }
 
 export const actions = {
+  nuxtServerInit({ commit }) {
+    loadData('buildings.json').then((buildings) => {
+      commit('setBuildings', { buildings })
+    })
+
+    loadData('spaces.json').then((spaces) => {
+      commit('setSpaces', { spaces })
+    })
+
+    loadData('infopage.json').then((infoPage) => {
+      commit('setInfoPage', { infoPage })
+    })
+
+    loadData('feedbackpage.json').then((feedbackPage) => {
+      commit('setFeedbackPage', { feedbackPage })
+    })
+
+    loadData('onboarding.json').then((onboarding) => {
+      commit('setOnboarding', { onboarding })
+    })
+  },
+
   getMap() {
     return mapLoaded.promise
   },
