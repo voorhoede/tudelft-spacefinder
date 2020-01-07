@@ -78,26 +78,26 @@ export default {
     ...mapState(['isMobile']),
     timeSlots() {
       const { openingHoursSpace, openingHoursBuilding } = this
-      const newOpeningHours = openingHoursSpace.map((openingHour, index) => {
-        const buildingStart = openingHoursBuilding[index].time.length ? openingHoursBuilding[index].time[0][0] : []
-        const buildingEnd = openingHoursBuilding[index].time.length ? openingHoursBuilding[index].time[0][1] : []
-        const newTimeslots = []
+      const newOpeningHours = openingHoursSpace.map((openingHour, dayIndex) => {
+        const buildingStart = openingHoursBuilding[dayIndex].time.length ? openingHoursBuilding[dayIndex].time[openingHoursBuilding[dayIndex].time.length - 1][0] : []
+        const buildingEnd = openingHoursBuilding[dayIndex].time.length ? openingHoursBuilding[dayIndex].time[openingHoursBuilding[dayIndex].time.length - 1][1] : []
+        const newTimeslots = {}
 
         newTimeslots.day = openingHour.day
 
-        newTimeslots.times = openingHour.time.reduce((timeslots, timeslot, index) => {
+        newTimeslots.times = openingHour.time.reduce((timeslots, timeslot, slotIndex) => {
           // Check if there is a busy slot before the first open time slot
-          if (index === 0 && new Date(timeslot[0]) > new Date(buildingStart)) {
+          if (slotIndex === 0 && new Date(timeslot[0]) > new Date(buildingStart)) {
             const start = buildingStart
             const end = timeslot[0]
-            timeslots.push({ time: [start, end], busy: false })
+            timeslots.push({ time: [start, end], busy: true })
           }
 
           // Always add open time slot to array
           timeslots.push({ time: timeslot, busy: false })
 
-          // Check if there is a busy slot between to open time slots
-          const nextTimeslot = openingHour.time[index + 1]
+          // Check if there is a busy slot between two open time slots
+          const nextTimeslot = openingHour.time[slotIndex + 1]
           if (nextTimeslot && new Date(nextTimeslot[0]) > new Date(timeslot[1])) {
             const start = timeslot[1]
             const end = nextTimeslot[0]
@@ -105,10 +105,10 @@ export default {
           }
 
           // Check if there is a busy slot after the last open time slot
-          if (index === 6 && new Date(buildingEnd) > new Date(timeslot[1])) {
+          if (slotIndex === openingHour.time.length - 1 && new Date(buildingEnd) > new Date(timeslot[1])) {
             const start = timeslot[1]
             const end = buildingEnd
-            timeslots.push({ time: [start, end], busy: false })
+            timeslots.push({ time: [start, end], busy: true })
           }
 
           return timeslots

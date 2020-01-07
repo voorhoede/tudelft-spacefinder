@@ -26,6 +26,7 @@
       />
 
       <opening-hours
+        :opening-hours-building="building.openingHours"
         :opening-hours-space="building.openingHours"
         class="building-header__opening-hours"
       />
