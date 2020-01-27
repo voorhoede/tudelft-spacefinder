@@ -11,6 +11,24 @@
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
+  head() {
+    const i18nSeo = this.$nuxtI18nSeo()
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.$t('title'),
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.$t('title'),
+        },
+        ...i18nSeo.meta,
+      ],
+    }
+  },
   computed: {
     ...mapGetters(['getFeedbackPage']),
     title() {

@@ -42,6 +42,7 @@ export default {
       image: {
         url: `${building.image.url}?auto=format&fm=jpg&auto=quality`,
       },
+      description: `${building.totalSpaces} ${this.$t('spaces')}`,
     })
   },
   mounted() {

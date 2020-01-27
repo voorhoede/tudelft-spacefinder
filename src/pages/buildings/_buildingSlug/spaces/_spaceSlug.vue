@@ -57,6 +57,7 @@ export default {
     return metaHead({
       title: `${space.name} (${space.roomId}) @ ${building.name} (${building.abbreviation})`,
       image: spaceMapImage({ space }),
+      description: `${space.seats} ${this.$t('seatsDescription')}`,
     })
   },
 }

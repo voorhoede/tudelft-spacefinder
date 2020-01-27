@@ -16,6 +16,24 @@ import { SpaceList } from '~/components'
 
 export default {
   components: { SpaceList },
+  head() {
+    const i18nSeo = this.$nuxtI18nSeo()
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.$t('spacesTitle'),
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.$t('spacesTitle'),
+        },
+        ...i18nSeo.meta,
+      ],
+    }
+  },
   computed: {
     ...mapGetters(['filteredSpaces']),
     ...mapState(['isMobile', 'isMapMode']),

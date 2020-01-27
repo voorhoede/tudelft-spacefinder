@@ -24,9 +24,22 @@ export default {
     title() { return this.$i18n.t('buildingTitle') },
   },
   head() {
-    return metaHead({
-      title: this.title,
-    })
+    const i18nSeo = this.$nuxtI18nSeo()
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.title,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.title,
+        },
+        ...i18nSeo.meta,
+      ],
+    }
   },
   mounted() {
     this.clearSelection()
