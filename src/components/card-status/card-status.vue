@@ -1,5 +1,5 @@
 <template>
-  <no-ssr placeholder="...">
+  <client-only placeholder="...">
     <p
       v-if="isOpen"
       class="card-status card-status--open"
@@ -12,7 +12,7 @@
     >
       {{ $t('closed') }} <svg-icon name="location-closed-icon" class="card-status__icon" />
     </p>
-  </no-ssr>
+  </client-only>
 </template>
 
 <script>
