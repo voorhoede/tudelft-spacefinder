@@ -12,6 +12,7 @@
         }"
         :src="getIconSrc(facility)"
         class="space-facility__icon"
+        :alt="$t(getFacilityValue(facility))"
       >
       <img
         v-tooltip="{
@@ -20,6 +21,7 @@
         }"
         :src="getIconSrc(facility, true)"
         class="space-facility__icon space-facility__icon--hover"
+        :alt="$t(getFacilityValue(facility))"
       >
 
       <span class="a11y-sr-only">
@@ -37,6 +39,7 @@
         }"
         :src="seatsIconSrc"
         class="space-facility__seating-icon"
+        :alt="seatsDescription"
       >
       <img
         v-tooltip="{
@@ -45,6 +48,7 @@
         }"
         :src="seatsIconSrcHovered"
         class="space-facility__seating-icon space-facility__seating-icon--hover"
+        :alt="seatsDescription"
       >
     </li>
   </ul>
