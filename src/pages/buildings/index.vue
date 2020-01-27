@@ -15,7 +15,6 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex'
 import { BuildingCard } from '~/components'
-import metaHead from '~/lib/meta-head'
 
 export default {
   components: { BuildingCard },
