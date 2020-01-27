@@ -5,6 +5,6 @@ import nuxtServerPush from './modules/nuxt-server-push'
 /**
  * @see https://nuxtjs.org/api/configuration-modules
  */
-export default [nuxtI18n, nuxtPwa, nuxtServerPush, '@nuxtjs/svg-sprite'].filter(
+export default [nuxtI18n, nuxtPwa, nuxtServerPush, '@nuxtjs/svg-sprite', '@nuxtjs/sitemap'].filter(
   Boolean
 )
