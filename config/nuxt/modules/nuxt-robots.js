@@ -1,9 +1,8 @@
+import env from '../env'
+
 export default [
   '@nuxtjs/robots',
   {
-    options: {
-      UserAgent: '*',
-      Allow: '/',
-    },
+    Sitemap: `${env.BASE_URL}/sitemap.xml`,
   },
 ]
