@@ -20,7 +20,7 @@ export default {
   head() {
     return metaHead({
       title: this.$t('spacesTitle'),
-      description: this.$t('spacesTitle'),
+      description: this.$t('allSpaces'),
     })
   },
   computed: {

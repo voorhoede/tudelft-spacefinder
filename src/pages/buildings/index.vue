@@ -25,7 +25,8 @@ export default {
   },
   head() {
     return metaHead({
-      description: this.title,
+      title: this.title,
+      description: '',
     })
   },
   mounted() {
