@@ -15,6 +15,7 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex'
 import { BuildingCard } from '~/components'
+import metaHead from '~/lib/meta-head'
 
 export default {
   components: { BuildingCard },
@@ -23,22 +24,9 @@ export default {
     title() { return this.$i18n.t('buildingTitle') },
   },
   head() {
-    const i18nSeo = this.$nuxtI18nSeo()
-    return {
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.title,
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: this.title,
-        },
-        ...i18nSeo.meta,
-      ],
-    }
+    return metaHead({
+      description: this.title,
+    })
   },
   mounted() {
     this.clearSelection()

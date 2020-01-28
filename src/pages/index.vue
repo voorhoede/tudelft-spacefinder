@@ -13,26 +13,15 @@
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import { SpaceList } from '~/components'
+import metaHead from '~/lib/meta-head'
 
 export default {
   components: { SpaceList },
   head() {
-    const i18nSeo = this.$nuxtI18nSeo()
-    return {
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.$t('spacesTitle'),
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: this.$t('spacesTitle'),
-        },
-        ...i18nSeo.meta,
-      ],
-    }
+    return metaHead({
+      title: this.$t('spacesTitle'),
+      description: this.$t('spacesTitle'),
+    })
   },
   computed: {
     ...mapGetters(['filteredSpaces']),
