@@ -24,6 +24,7 @@ export default [
     pages: pages,
     rootRedirect: defaultLocale,
     strategy: 'prefix',
+    seo: true,
     vueI18n: {
       fallbackLocale: defaultLocale,
     },

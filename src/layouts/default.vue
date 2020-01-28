@@ -3,7 +3,9 @@
     ref="defaultLayout"
     class="default-layout"
   >
-    <pop-up />
+    <client-only>
+      <pop-up />
+    </client-only>
 
     <notification-bar
       class="default-layout__notification-bar"

@@ -13,9 +13,16 @@
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import { SpaceList } from '~/components'
+import metaHead from '~/lib/meta-head'
 
 export default {
   components: { SpaceList },
+  head() {
+    return metaHead({
+      title: this.$t('spacesTitle'),
+      description: this.$t('allSpaces'),
+    })
+  },
   computed: {
     ...mapGetters(['filteredSpaces']),
     ...mapState(['isMobile', 'isMapMode']),

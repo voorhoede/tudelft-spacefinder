@@ -9,8 +9,15 @@
 
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
+import metaHead from '~/lib/meta-head'
 
 export default {
+  head() {
+    return metaHead({
+      title: this.title,
+      description: '',
+    })
+  },
   computed: {
     ...mapGetters(['getFeedbackPage']),
     title() {
