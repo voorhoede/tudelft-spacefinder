@@ -11,7 +11,7 @@ const getBuildings = () => got('https://graphql.datocms.com/', {
   json: true,
   body: {
     query: `{
-      allBuildings() {
+      allBuildings {
         image {
           url
         }
