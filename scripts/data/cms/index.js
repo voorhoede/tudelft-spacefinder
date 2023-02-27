@@ -132,8 +132,26 @@ module.exports = {
     }
     return getBuildings()
   },
-  getInfoDataFromCms: getInfoPage,
-  getFeedbackPageFromCms: getFeedbackPage,
-  getOnboardingDataFromCms: getOnboarding,
+  getInfoDataFromCms: ()=>{ 
+    if (mockDataEnabled) {
+      const mockData = require('../../../mock/cms/info.json')
+      return Promise.resolve(mockData)
+    }
+    return getInfoPage()
+  },
+  getFeedbackPageFromCms: ()=>{
+    if (mockDataEnabled) {
+      const mockData = require('../../../mock/cms/info.json')
+      return Promise.resolve(mockData)
+    }
+    return getFeedbackPage()
+  },
+  getOnboardingDataFromCms: ()=> {
+    if (mockDataEnabled) {
+      const mockData = require('../../../mock/cms/info.json')
+      return Promise.resolve(mockData)
+    }
+    return getOnboarding()
+  },
   convertCmsInfo,
 }
