@@ -1,5 +1,5 @@
 /* eslint no-prototype-builtins: 0 */
-const translate = require('./translate')
+import translate from './translate'
 
 const translationMap = {
   propertyName: {
