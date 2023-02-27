@@ -7,34 +7,33 @@
   </section>
 </template>
 
-<script>
-import { mapGetters, mapMutations, mapActions } from 'vuex'
-import metaHead from '~/lib/meta-head'
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+import metaHead from "~/lib/meta-head";
+import { useStore } from "~/stores/store";
+import { useMapStore } from "~/stores/map";
+import { usePageContent } from "~/stores/pageContent";
+definePageMeta({
+  alias: "/:locale/hulp",
+});
+const { locale } = useI18n();
+const store = useStore();
+const pageContent = usePageContent();
+const mapStore = useMapStore();
 
-export default {
-  head() {
-    return metaHead({
-      title: this.title,
-      description: '',
-    })
-  },
-  computed: {
-    ...mapGetters(['getInfoPage']),
-    title() {
-      return this.getInfoPage[this.$i18n.locale].title
-    },
-    body() {
-      return this.getInfoPage[this.$i18n.locale].body
-    },
-  },
-  mounted() {
-    this.clearSelection()
-    this.zoomToCampus()
-    this.getMap().then(() => this.updateMarkers())
-  },
-  methods: {
-    ...mapMutations(['clearSelection']),
-    ...mapActions(['zoomToCampus', 'updateMarkers', 'getMap']),
-  },
-}
+const title = computed(() => pageContent.infoPage[locale.value].title);
+const body = computed(() => pageContent.infoPage[locale.value].body);
+
+useHead(() =>
+  metaHead({
+    title: title.value,
+    description: "",
+  })
+);
+
+onMounted(() => {
+  store.clearSelection();
+  mapStore.zoomToCampus();
+  mapStore.getMap().then(() => mapStore.updateMarkers());
+});
 </script>

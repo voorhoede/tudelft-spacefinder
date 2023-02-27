@@ -1,10 +1,7 @@
 <template>
   <nuxt-link
     :to="
-      localePath({
-        name: 'buildings-buildingSlug-spaces-spaceSlug',
-        params: { buildingSlug: space.building.slug, spaceSlug: space.slug }
-      })
+      spaceRoute({ buildingSlug: space.building.slug, spaceSlug: space.slug })
     "
     class="space-card card"
   >
@@ -14,10 +11,7 @@
 
     <div class="space-card__info">
       <div class="space-card__location">
-        <p
-          v-if="space.name"
-          class="space-card__description"
-        >
+        <p v-if="space.name" class="space-card__description">
           <em>{{ space.building.abbreviation }}</em> - {{ space.roomId }}
         </p>
         <h3 v-else>
@@ -33,7 +27,7 @@
     </div>
 
     <h4 class="a11y-sr-only">
-      {{ $t('facilities') }}
+      {{ $t("facilities") }}
     </h4>
 
     <space-facilities
@@ -44,23 +38,14 @@
   </nuxt-link>
 </template>
 
-<script>
-import { CardStatus, SpaceFacilities } from '../../components'
-
-export default {
-  components: { CardStatus, SpaceFacilities },
-  props: {
-    locationIsOpen: Boolean,
-    space: {
-      required: true,
-      type: Object,
-    },
-  },
-}
+<script setup lang="ts">
+import { type Space } from "~/types/Space";
+defineProps<{ locationIsOpen?: boolean; space: Space }>();
+const { spaceRoute } = useLocaleRoute();
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 @media (min-width: 700px) {
   .space-card {
@@ -81,14 +66,7 @@ export default {
 .space-card:focus .space-facility__icon,
 .space-card:hover .space-facility__seating-icon,
 .space-card:focus .space-facility__seating-icon {
-  display: none;
-}
-
-.space-card:hover .space-facility__icon--hover,
-.space-card:focus .space-facility__icon--hover,
-.space-card:hover .space-facility__seating-icon--hover,
-.space-card:focus .space-facility__seating-icon--hover {
-  display: block;
+  /*color: #1e6188;*/
 }
 
 .space-card__info {
@@ -115,6 +93,6 @@ export default {
 }
 
 .space-card__facilities {
-  margin-left: -.2rem;
+  margin-left: -0.2rem;
 }
 </style>

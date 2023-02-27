@@ -1,40 +1,41 @@
 <template>
   <client-only placeholder="...">
     <p
-      v-if="isOpen"
-      class="card-status card-status--open"
-    >
-      {{ $t('open') }} <svg-icon name="location-open-icon" class="card-status__icon" />
-    </p>
-    <p
-      v-else
       class="card-status"
+      :class="{ 'card-status--open': isOpen }"
+      v-bind="$attrs"
     >
-      {{ $t('closed') }} <svg-icon name="location-closed-icon" class="card-status__icon" />
+      <template v-if="isOpen">
+        {{ $t("open") }}
+        <svg-icon name="location-open-icon" class="card-status__icon" />
+      </template>
+      <template v-else>
+        {{ $t("closed") }}
+        <svg-icon name="location-closed-icon" class="card-status__icon" />
+      </template>
     </p>
   </client-only>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  props: {
-    openingHours: {
-      required: true,
-      type: Array,
-    },
-  },
-  computed: {
-    isOpen() {
-      const indexToday = 0
-      const openingHoursToday = this.openingHours[indexToday].time
-      const now = new Date()
+  inheritAttrs: false,
+};
+</script>
 
-      return openingHoursToday.some(([startTime, endTime]) => {
-        return now >= new Date(startTime) && now <= new Date(endTime)
-      })
-    },
-  },
-}
+<script setup lang="ts">
+import type { OpeningHours } from "~/types/OpeningHours";
+
+const props = defineProps<{ openingHours: OpeningHours[] }>();
+const isOpen = computed(() => {
+  const indexToday = 0;
+  const openingHoursToday = props.openingHours[indexToday].time; //TODO: say what
+  const now = new Date();
+
+  return openingHoursToday.some(([startTime, endTime]) => {
+    return now >= new Date(startTime) && now <= new Date(endTime);
+  });
+});
 </script>
 
 <style>

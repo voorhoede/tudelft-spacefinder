@@ -1,13 +1,7 @@
 <template>
   <transition name="pop-up-fade">
-    <div
-      v-if="showOnboarding"
-      class="pop-up"
-    >
-      <div
-        class="pop-up__background"
-        @click="closePopUp"
-      />
+    <div v-if="store.showOnboarding" class="pop-up">
+      <div class="pop-up__background" @click="closePopUp" />
 
       <div class="pop-up__body">
         <div class="pop-up__heading">
@@ -20,12 +14,9 @@
             class="button button--header"
             @click="closePopUp"
           >
-            <svg-icon
-              name="close-icon"
-              class="button--header__icon"
-            />
+            <svg-icon name="close-icon" class="button--header__icon" />
 
-            {{ $t('close') }}
+            {{ $t("close") }}
           </button>
         </div>
 
@@ -35,36 +26,32 @@
   </transition>
 </template>
 
-<script>
-import { mapState, mapGetters } from 'vuex'
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+import { usePageContent } from "~/stores/pageContent";
+import { useStore } from "~/stores/store";
 
-export default {
-  computed: {
-    ...mapGetters(['getOnboarding']),
-    ...mapState(['hasSeenOnboarding', 'showOnboarding']),
-    title() {
-      return this.getOnboarding[this.$i18n.locale].title
-    },
-    body() {
-      return this.getOnboarding[this.$i18n.locale].body
-    },
-  },
-  mounted() {
-    if (!this.hasSeenOnboarding) {
-      this.$store.commit('toggleOnboardingVisibility')
-      this.$store.commit('toggleHasSeenOnboarding')
-    }
-  },
-  methods: {
-    closePopUp() {
-      this.$store.commit('toggleOnboardingVisibility')
-    },
-  },
+const { locale } = useI18n();
+const store = useStore();
+const pageContent = usePageContent();
+
+const title = computed(() => pageContent.onboarding[locale.value].title);
+const body = computed(() => pageContent.onboarding[locale.value].body);
+
+onMounted(() => {
+  if (!store.hasSeenOnboarding) {
+    store.showOnboarding = true;
+    store.hasSeenOnboarding = true;
+  }
+});
+
+function closePopUp() {
+  store.showOnboarding = false;
 }
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .pop-up {
   z-index: var(--layer--popup);
@@ -84,7 +71,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .pop-up__body {
@@ -105,7 +92,8 @@ export default {
 .pop-up__heading {
   display: flex;
   justify-content: space-between;
-  margin: var(--spacing-default-negative) var(--spacing-default-negative) var(--spacing-default) var(--spacing-default-negative);
+  margin: var(--spacing-default-negative) var(--spacing-default-negative)
+    var(--spacing-default) var(--spacing-default-negative);
   padding: 0 var(--spacing-quarter) 0 var(--spacing-default);
   height: var(--header-height-mobile);
   background-color: var(--brand-primary-color);
@@ -125,10 +113,12 @@ export default {
   margin-top: 0;
 }
 
-.pop-up-fade-enter-active, .pop-up-fade-leave-active {
+.pop-up-fade-enter-active,
+.pop-up-fade-leave-active {
   transition: opacity 200ms;
 }
-.pop-up-fade-enter, .pop-up-fade-leave-to {
+.pop-up-fade-enter-from,
+.pop-up-fade-leave-to {
   opacity: 0;
 }
 </style>

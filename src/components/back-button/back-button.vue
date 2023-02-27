@@ -1,57 +1,39 @@
 <template>
   <a
-    v-if="useHistory && previousPageUrl"
-    :href="previousPageUrl"
+    v-if="useHistory && history.previousPageUrl"
+    :href="history.previousPageUrl"
     class="back-button"
-    @click.prevent="goBack"
+    @click.prevent="history.goBack()"
   >
     <back-button-content>
       <slot />
     </back-button-content>
   </a>
 
-  <nuxt-link
-    v-else
-    :to="to"
-    class="back-button"
-  >
+  <nuxt-link v-else :to="to" class="back-button">
     <back-button-content>
       <slot />
     </back-button-content>
   </nuxt-link>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
-import BackButtonContent from './back-button-content'
+<script setup lang="ts">
+import { useHistoryStore } from "~/stores/history";
 
-export default {
-  components: { BackButtonContent },
-  props: {
-    to: {
-      type: String,
-      required: true,
-    },
-    useHistory: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  computed: {
-    ...mapGetters({
-      previousPageUrl: 'history/previousPageUrl',
-    }),
-  },
-  methods: {
-    goBack() {
-      this.$store.commit('history/goBack')
-    },
-  },
+export interface Props {
+  to: string;
+  useHistory?: boolean;
 }
+
+withDefaults(defineProps<Props>(), {
+  useHistory: true,
+});
+
+const history = useHistoryStore();
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .back-button {
   z-index: var(--layer--popup);

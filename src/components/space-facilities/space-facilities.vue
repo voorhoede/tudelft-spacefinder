@@ -1,111 +1,68 @@
 <template>
   <ul class="space-facility__list flat-list">
     <li
-      v-for="(facility, index) in filteredFacilities"
+      v-for="(facility, index) in facilitiesPresent"
       :key="index"
       class="space-facility__item"
     >
-      <img
-        v-tooltip="{
-          content: $t(getFacilityValue(facility)),
-          trigger: 'hover click focus'
-        }"
-        :src="getIconSrc(facility)"
-        class="space-facility__icon"
-        :alt="$t(getFacilityValue(facility))"
-      >
-      <img
-        v-tooltip="{
-          content: $t(getFacilityValue(facility)),
-          trigger: 'hover click focus'
-        }"
-        :src="getIconSrc(facility, true)"
-        class="space-facility__icon space-facility__icon--hover"
-        :alt="$t(getFacilityValue(facility))"
-      >
+      <tooltip delay="0" :instantMove="true">
+        <svg-icon
+          :name="getIconName(facility)"
+          class="space-facility__icon"
+          :alt="$t(facility)"
+        />
+        <template #popper>
+          {{ $t(facility) }}
+          <!-- trigger: 'hover click focus', -->
+        </template>
+      </tooltip>
 
       <span class="a11y-sr-only">
-        {{ $t(getFacilityValue(facility)) }}
+        {{ $t(facility) }}
       </span>
     </li>
     <li v-if="seats" class="space-facility__item space-facility__seating">
       <h4 class="a11y-sr-only">
-        {{ $t('seating') }}
+        {{ $t("seating") }}
       </h4>
-      <img
-        v-tooltip="{
-          content: seatsDescription,
-          trigger: 'hover click focus'
-        }"
-        :src="seatsIconSrc"
-        class="space-facility__seating-icon"
-        :alt="seatsDescription"
-      >
-      <img
-        v-tooltip="{
-          content: seatsDescription,
-          trigger: 'hover click focus'
-        }"
-        :src="seatsIconSrcHovered"
-        class="space-facility__seating-icon space-facility__seating-icon--hover"
-        :alt="seatsDescription"
-      >
+      <tooltip>
+        <svg-icon
+          name="seat-icon"
+          class="space-facility__seating-icon"
+          :alt="seatsDescription"
+        />
+        <template #popper>
+          {{ seatsDescription }}
+          <!-- trigger: 'hover click focus', -->
+        </template>
+      </tooltip>
     </li>
   </ul>
 </template>
 
-<script>
-export default {
-  props: {
-    facilities: {
-      required: true,
-      type: Object,
-    },
-    seats: {
-      required: false,
-      type: Number,
-      default: null,
-    },
-  },
-  computed: {
-    filteredFacilities() {
-      return Object.entries(this.facilities)
-        .map(([key, value]) => ({ name: key, value }))
-        .filter(obj => Boolean(obj.value))
-    },
-    seatsDescription() {
-      return `${this.seats} ${this.$t('seatsDescription')}`
-    },
-    seatsIconSrc() {
-      return require('../../assets/sprite/svg/seat-icon.svg')
-    },
-    seatsIconSrcHovered() {
-      return require('../../assets/sprite/svg/seat-icon--blue.svg')
-    },
-  },
-  methods: {
-    getIconName(facility) {
-      const iconName = this.getFacilityValue(facility)
-      return `facility-${iconName}-icon`
-    },
-    getIconSrc(facility, hover) {
-      try {
-        const iconName = this.getFacilityValue(facility)
-        // require returns the hashed path webpack resolves to
-        const src = require(`../../assets/sprite/svg/facility-${iconName}-icon${hover ? '--blue' : ''}.svg`)
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+import type { SpaceFeatures } from "~/types/Filters";
+import { Tooltip } from "floating-vue";
+import "floating-vue/dist/style.css";
 
-        return src
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    getFacilityValue(facility) {
-      const valueIsName = ['studyType', 'quietness'].includes(facility.name)
-      const facilityName = valueIsName ? facility.value : facility.name
-      const facilityValue = valueIsName ? `${facility.name}.${facilityName}` : facilityName
-      return facilityValue
-    },
-  },
+const props = defineProps<{ facilities: SpaceFeatures; seats?: number }>();
+//TODO: inpredictable order?
+//TODO: these should come as props
+const facilitiesPresent = computed(() =>
+  Object.entries(props.facilities)
+    .filter(([key, value]) => Boolean(value))
+    .map(([key, value]) =>
+      ["studyType", "quietness"].includes(key) ? `${key}.${value}` : key
+    )
+);
+const { t } = useI18n();
+const seatsDescription = computed(
+  () => `${props.seats} ${t("seatsDescription")}`
+);
+
+function getIconName(facilityValue: string) {
+  return `facility-${facilityValue}-icon`;
 }
 </script>
 
@@ -138,9 +95,16 @@ export default {
   vertical-align: middle;
 }
 
-.space-facility__icon--hover,
-.space-facility__seating-icon--hover {
-  display: none;
+.v-popper--theme-tooltip .v-popper__inner {
+  padding: var(--spacing-quarter) var(--spacing-half);
+  background: var(--brand-secondary-color);
+  font-size: var(--font-size-smaller);
+  color: var(--background-color);
+  border-radius: 0;
+}
+
+.v-popper--theme-tooltip .v-popper__arrow-outer {
+  border-color: var(--brand-secondary-color) !important;
 }
 
 .tooltip {

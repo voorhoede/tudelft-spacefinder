@@ -1,11 +1,9 @@
 <template>
   <div class="building-header">
-    <building-image
-      :building="building"
-    />
+    <building-image :building="building" />
 
     <h3 class="a11y-sr-only">
-      {{ $t('seating') }}
+      {{ $t("seating") }}
     </h3>
 
     <div class="building-header__meta">
@@ -24,7 +22,6 @@
         :opening-hours="building.openingHours"
         class="building-header__open-status"
       />
-
       <opening-hours
         :opening-hours-building="building.openingHours"
         :opening-hours-space="building.openingHours"
@@ -34,22 +31,14 @@
   </div>
 </template>
 
-<script>
-import { BuildingImage, CardStatus, OpeningHours } from '../../components'
+<script setup lang="ts">
+import type { Building } from "~/types/Building";
 
-export default {
-  components: { BuildingImage, CardStatus, OpeningHours },
-  props: {
-    building: {
-      required: true,
-      type: Object,
-    },
-  },
-}
+defineProps<{ building: Building }>();
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .building-header__seating {
   font-size: var(--font-size-smaller);

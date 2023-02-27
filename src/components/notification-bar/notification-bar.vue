@@ -4,19 +4,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    message: {
-      required: true,
-      type: String,
-    },
-  },
-}
+<script setup lang="ts">
+defineProps<{ message: string }>();
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .notification-bar {
   z-index: var(--layer--popup);

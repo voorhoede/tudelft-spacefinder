@@ -1,12 +1,6 @@
-<script>
-export default {
-  validate({ app, params, redirect }) {
-    const { buildingSlug } = params
-    const url = app.localePath({
-      name: 'buildings-buildingSlug',
-      params: { buildingSlug },
-    })
-    redirect(url)
-  },
-}
+<script setup lang="ts">
+const route = useRoute();
+const { buildingRoute } = useLocaleRoute();
+const buildingSlug = route.params.buildingSlug as string;
+navigateTo(buildingRoute({ buildingSlug }));
 </script>

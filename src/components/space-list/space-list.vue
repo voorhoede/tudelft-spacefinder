@@ -10,52 +10,40 @@
       <DynamicScrollerItem
         :item="item"
         :active="active"
-        :size-dependencies="[
-          item.name,
-          item.building.name,
-          item.slug
-        ]"
+        :size-dependencies="[item.name, item.building.name, item.slug]"
         :data-index="index"
         class="space-list__item"
       >
         <header v-if="index === 0" class="space-list__header">
-          <h2>{{ $t('spacesTitle') }}</h2>
+          <h2>{{ $t("spacesTitle") }}</h2>
           <p class="space-list__header-text">
-            {{ $t('spacesSubTitle') }}
+            {{ $t("spacesSubTitle") }}
           </p>
         </header>
         <space-card :space="item" />
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>
-  <div
-    v-else
-    class="space-list__message"
-  >
-    {{ $t('noFilterResults') }}
+  <div v-else class="space-list__message">
+    {{ $t("noFilterResults") }}
   </div>
 </template>
 
-<script>
-import SpaceCard from '../space-card'
+<script setup lang="ts">
+import type { Space } from "~/types/Space";
+import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
+import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
-export default {
-  components: { SpaceCard },
-  props: {
-    spaces: {
-      type: Array,
-      required: true,
-    },
-  },
-}
+defineProps<{ spaces: Space[] }>();
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .space-list {
   height: 100%;
-  padding: var(--spacing-default) var(--spacing-default) 0 var(--spacing-default);
+  padding: var(--spacing-default) var(--spacing-default) 0
+    var(--spacing-default);
   -webkit-overflow-scrolling: touch;
 }
 

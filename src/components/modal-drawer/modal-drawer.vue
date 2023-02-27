@@ -1,5 +1,6 @@
+<!-- Pattern based on [Material Design: Modal Drawer](https://material.io/design/components/navigation-drawer.html#modal-drawer). -->
 <template>
-  <div>
+  <div ref="el">
     <transition name="modal-fade">
       <div
         v-if="isOpen"
@@ -9,10 +10,7 @@
     </transition>
 
     <transition name="modal-slide" @after-enter="focusCloseButton">
-      <section
-        v-if="isOpen"
-        class="modal-drawer"
-      >
+      <section v-if="isOpen" class="modal-drawer">
         <div class="modal-drawer__header">
           <h2 class="model-drawer__title">
             {{ title }}
@@ -24,12 +22,9 @@
             class="button button--header"
             @click="$emit('close')"
           >
-            <svg-icon
-              name="close-icon"
-              class="button--header__icon"
-            />
+            <svg-icon name="close-icon" class="button--header__icon" />
 
-            {{ $t('close') }}
+            {{ $t("close") }}
           </button>
         </div>
 
@@ -39,56 +34,56 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      required: true,
-      type: String,
-    },
-    isOpen: Boolean,
-  },
-  data() {
-    return {
-      keydownEventListener: null,
-    }
-  },
-  watch: {
-    isOpen(value) {
-      if (value) {
-        this.$nextTick(() => {
-          const focusableElements = this.$el.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), input[type="checkbox"]:not([disabled])')
-          const firstFocusableElement = focusableElements[0]
-          const lastFocusableElement = focusableElements[focusableElements.length - 1]
+<script setup lang="ts">
+const props = defineProps<{ title: string; isOpen?: boolean }>();
+const el = ref(null as null | HTMLDivElement);
+const closeButton = ref(null as null | HTMLButtonElement);
+let keydownEventListener = null;
+watch(
+  () => props.isOpen,
+  (value) => {
+    if (value) {
+      nextTick(() => {
+        //TODO: get rid of el?
+        const focusableElements = el.value!.querySelectorAll<HTMLElement>(
+          'a[href]:not([disabled]), button:not([disabled]), input[type="checkbox"]:not([disabled])'
+        );
+        const firstFocusableElement = focusableElements[0];
+        const lastFocusableElement =
+          focusableElements[focusableElements.length - 1];
 
-          this.keydownEventListener = this.$el.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-              if (e.shiftKey && document.activeElement === firstFocusableElement) {
-                lastFocusableElement.focus()
-                e.preventDefault()
-              } else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
-                firstFocusableElement.focus()
-                e.preventDefault()
-              }
+        keydownEventListener = el.value!.addEventListener("keydown", (e) => {
+          if (e.key === "Tab") {
+            if (
+              e.shiftKey &&
+              document.activeElement === firstFocusableElement
+            ) {
+              lastFocusableElement.focus();
+              e.preventDefault();
+            } else if (
+              !e.shiftKey &&
+              document.activeElement === lastFocusableElement
+            ) {
+              firstFocusableElement.focus();
+              e.preventDefault();
             }
-          })
-        })
-      }
-    },
-  },
-  beforeDestroy() {
-    this.keydownEventListener = null
-  },
-  methods: {
-    focusCloseButton() {
-      this.$refs.closeButton.focus()
-    },
-  },
+          }
+        });
+      });
+    }
+  }
+);
+onBeforeUnmount(() => {
+  keydownEventListener = null; //TODO: y need that?
+});
+
+function focusCloseButton() {
+  closeButton.value?.focus();
 }
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .modal-drawer {
   z-index: var(--layer--popup);
@@ -139,13 +134,15 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.modal-fade-enter-active, .modal-fade-leave-active {
+.modal-fade-enter-active,
+.modal-fade-leave-active {
   transition: opacity 200ms;
 }
-.modal-fade-enter, .modal-fade-leave-to {
+.modal-fade-enter-from,
+.modal-fade-leave-to {
   opacity: 0;
 }
 
@@ -157,11 +154,13 @@ export default {
   transition: transform 150ms ease-in;
 }
 
-.modal-slide-enter, .modal-slide-leave-to {
+.modal-slide-enter-from,
+.modal-slide-leave-to {
   transform: translateX(100%);
 }
 
-.modal-slide-leave, .modal-slide-enter-to {
+.modal-slide-leave-from,
+.modal-slide-enter-to {
   transform: none;
 }
 </style>

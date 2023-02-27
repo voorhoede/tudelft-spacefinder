@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="root"
     class="space-detail-card"
     :class="{ 'space-detail-card--image': space.imageUrl }"
   >
@@ -8,7 +9,7 @@
       :src="space.imageUrl"
       alt=""
       class="space-detail-card__image"
-    >
+    />
 
     <div class="space-detail-card__heading">
       <h2 class="space-detail-card__title">
@@ -40,7 +41,7 @@
 
       <div class="flat-list space-detail-card__seating">
         <svg-icon name="seat-icon" class="space-detail-card__seating-icon" />
-        {{ space.seats }} {{ $t('seatsDescription') }}
+        {{ space.seats }} {{ $t("seatsDescription") }}
       </div>
 
       <opening-hours
@@ -53,27 +54,20 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import type { Space } from "~/types/Space";
+import type { Building } from "~/types/Building";
+defineProps<{ building: Building; space: Space }>();
 
-import { CardStatus, OpeningHours, SpaceFacilities } from '../../components'
+const root = ref(null as null | HTMLDivElement);
 
-export default {
-  components: { CardStatus, OpeningHours, SpaceFacilities },
-  props: {
-    building: {
-      required: true,
-      type: Object,
-    },
-    space: {
-      required: true,
-      type: Object,
-    },
-  },
-}
+defineExpose({
+  getClientHeight: () => root.value?.clientHeight,
+});
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .space-detail-card {
   --image-width: 100px;
@@ -116,7 +110,8 @@ export default {
 @media (min-width: 700px) {
   .space-detail-card__image {
     position: relative;
-    margin: var(--spacing-default-negative) var(--spacing-default-negative) var(--spacing-half) var(--spacing-default-negative);
+    margin: var(--spacing-default-negative) var(--spacing-default-negative)
+      var(--spacing-half) var(--spacing-default-negative);
     width: calc(100% + var(--spacing-double));
     height: 150px;
   }
@@ -181,7 +176,7 @@ export default {
 }
 
 .space-detail-card__facilities {
-  margin-left: -.2rem;
+  margin-left: -0.2rem;
 }
 
 .space-detail-card__open-status {
