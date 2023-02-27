@@ -1,0 +1,10 @@
+{
+    "_allTitleLocales": [
+      { "locale": "en", "value": "title en" },
+      { "locale": "nl", "value": "title nl" }
+    ],
+    "_allBodyLocales": [
+      { "locale": "en", "value" : "body en"},
+      { "locale": "nl", "value" : "body nl" }
+    ]
+}
