@@ -3,7 +3,7 @@
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
       <span class="mapbox-map__loading-message">{{ $t("mapLoading") }}</span>
     </div>
-    <zoom-controls
+    <ZoomControls
       v-if="mapLoaded"
       class="mapbox-map__zoom-controls"
       @auto-focus="autoFocus"

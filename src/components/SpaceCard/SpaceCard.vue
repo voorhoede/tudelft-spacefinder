@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link
+  <NuxtLink
     :to="
       spaceRoute({ buildingSlug: space.building.slug, spaceSlug: space.slug })
     "
@@ -19,7 +19,7 @@
         </h3>
       </div>
 
-      <card-status
+      <CardStatus
         :opening-hours="space.openingHours"
         :is-open="locationIsOpen"
         class="space-card__status"
@@ -30,12 +30,12 @@
       {{ $t("facilities") }}
     </h4>
 
-    <space-facilities
+    <SpaceFacilities
       :facilities="space.facilities"
       :seats="space.seats"
       class="space-card__facilities"
     />
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">

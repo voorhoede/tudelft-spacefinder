@@ -1,5 +1,5 @@
 <template>
-  <transition name="pop-up-fade">
+  <Transition name="pop-up-fade">
     <div v-if="store.showOnboarding" class="pop-up">
       <div class="pop-up__background" @click="closePopUp" />
 
@@ -14,7 +14,7 @@
             class="button button--header"
             @click="closePopUp"
           >
-            <svg-icon name="close-icon" class="button--header__icon" />
+            <SvgIcon name="close-icon" class="button--header__icon" />
 
             {{ $t("close") }}
           </button>
@@ -23,7 +23,7 @@
         <p>{{ body }}</p>
       </div>
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <script setup lang="ts">

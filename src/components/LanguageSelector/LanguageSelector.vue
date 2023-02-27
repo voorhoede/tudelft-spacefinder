@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="{ locale, name } in languages">
-      <nuxt-link
+      <NuxtLink
         v-if="locale !== $i18n.locale"
         :key="locale"
         :to="getLocalePath(locale)"
@@ -9,11 +9,11 @@
         class="app-menu__link"
         @click="$emit('close')"
       >
-        <svg-icon name="world-icon" class="app-menu__icon" />
+        <SvgIcon name="world-icon" class="app-menu__icon" />
         <span class="app-menu__link-name">
           {{ name }}
         </span>
-      </nuxt-link>
+      </NuxtLink>
     </template>
   </div>
 </template>
@@ -22,7 +22,6 @@
 import { storeToRefs } from "pinia";
 import { useStore } from "~/stores/store";
 import { useHistoryStore } from "~/stores/history";
-import { useI18n } from "vue-i18n";
 
 const languages = [
   { locale: "en", name: "english" },

@@ -20,7 +20,7 @@
             {{ $t("spacesSubTitle") }}
           </p>
         </header>
-        <space-card :space="item" />
+        <SpaceCard :space="item" />
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>

@@ -5,16 +5,16 @@
     class="back-button"
     @click.prevent="history.goBack()"
   >
-    <back-button-content>
+    <BackButtonContent>
       <slot />
-    </back-button-content>
+    </BackButtonContent>
   </a>
 
-  <nuxt-link v-else :to="to" class="back-button">
-    <back-button-content>
+  <NuxtLink v-else :to="to" class="back-button">
+    <BackButtonContent>
       <slot />
-    </back-button-content>
-  </nuxt-link>
+    </BackButtonContent>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">

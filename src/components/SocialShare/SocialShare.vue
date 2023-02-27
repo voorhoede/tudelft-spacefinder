@@ -1,7 +1,7 @@
 <template>
   <div class="social-share">
     <button class="button button--round" @click="toggleOptions">
-      <svg-icon name="share-icon" class="button--round__icon" />
+      <SvgIcon name="share-icon" class="button--round__icon" />
       <span class="a11y-sr-only">
         <slot>{{
           !optionsAreVisible
@@ -22,7 +22,7 @@
         :class="{ 'social-share__option--visible': optionsAreVisible }"
         @click="handleClick"
       >
-        <svg-icon :name="platform.icon" class="button--round__icon" />
+        <SvgIcon :name="platform.icon" class="button--round__icon" />
         <span class="a11y-sr-only">
           {{ $t(platform.label) }}
         </span>
@@ -36,14 +36,14 @@
         :class="{ 'social-share__option--visible': optionsAreVisible }"
         @click="copyToClipboard"
       >
-        <svg-icon name="copy-icon" class="button--round__icon" />
+        <SvgIcon name="copy-icon" class="button--round__icon" />
         <span class="a11y-sr-only">
           {{ $t("copyToClipboard") }}
         </span>
       </button>
     </div>
 
-    <transition name="notification-fade">
+    <Transition name="notification-fade">
       <div
         v-if="notificationIsVisible"
         role="alert"
@@ -51,7 +51,7 @@
       >
         {{ $t("copiedToClipboard") }}
       </div>
-    </transition>
+    </Transition>
   </div>
 </template>
 

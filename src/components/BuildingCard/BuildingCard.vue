@@ -1,9 +1,9 @@
 <template>
-  <nuxt-link
+  <NuxtLink
     :to="buildingRoute({ buildingSlug: building.slug })"
     class="building-card card"
   >
-    <building-image :building="building" class="building-card__image" />
+    <BuildingImage :building="building" class="building-card__image" />
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">
@@ -11,12 +11,12 @@
         <li>{{ building.totalSeats }} {{ $t("seats") }}</li>
       </ul>
 
-      <card-status
+      <CardStatus
         :opening-hours="building.openingHours"
         class="building-card__status"
       />
     </div>
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
