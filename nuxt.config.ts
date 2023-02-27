@@ -11,12 +11,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       maxboxToken: process.env.MAPBOX_TOKEN,
-      baseUrl: process.env.BASE_URL,
+      baseUrl: process.env.URL,
     },
   },
   nitro: {
     prerender: {
-      routes: routes,
+      routes: ["/sitemap.xml", ...routes],
     },
   },
 });
