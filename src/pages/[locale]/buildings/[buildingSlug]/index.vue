@@ -1,12 +1,12 @@
 <template>
   <section v-if="building">
-    <back-button
+    <BackButton
       :use-history="false"
       :to="buildingRoute({ buildingSlug: building.slug })"
     />
     <div class="default-layout__info building-layout">
-      <building-header class="building-layout__header" :building="building" />
-      <space-list class="building-layout__spaces" :spaces="spaces" />
+      <BuildingHeader class="building-layout__header" :building="building" />
+      <SpaceList class="building-layout__spaces" :spaces="spaces" />
     </div>
   </section>
 </template>

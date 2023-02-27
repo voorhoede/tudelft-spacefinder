@@ -4,7 +4,7 @@
       {{ title }}
     </h2>
 
-    <building-card
+    <BuildingCard
       v-for="building in buildings"
       :key="building.slug"
       :building="building"
