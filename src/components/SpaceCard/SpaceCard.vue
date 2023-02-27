@@ -21,7 +21,6 @@
 
       <CardStatus
         :opening-hours="space.openingHours"
-        :is-open="locationIsOpen"
         class="space-card__status"
       />
     </div>
@@ -40,7 +39,7 @@
 
 <script setup lang="ts">
 import { type Space } from "~/types/Space";
-defineProps<{ locationIsOpen?: boolean; space: Space }>();
+defineProps<{ space: Space }>();
 const { spaceRoute } = useLocaleRoute();
 </script>
 

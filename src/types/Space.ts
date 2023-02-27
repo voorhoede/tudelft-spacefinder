@@ -20,5 +20,4 @@ export interface SpaceI18n {
   buildingNumber: number;
   openingHours: OpeningHours[];
   imageUrl?: string | undefined; //TODO: not there
-  locationIsOpen?: boolean; //TODO: not there
 }

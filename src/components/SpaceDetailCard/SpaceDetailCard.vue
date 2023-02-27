@@ -27,7 +27,6 @@
 
         <CardStatus
           :opening-hours="space.openingHours"
-          :is-open="space.locationIsOpen"
           class="space-detail-card__open-status"
         />
       </div>
