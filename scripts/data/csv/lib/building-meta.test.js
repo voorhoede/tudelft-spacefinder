@@ -1,4 +1,4 @@
-const { fromI18n, buildingNumberFromId } = require('./building-meta')
+import { fromI18n, buildingNumberFromId } from './building-meta'
 
 const data = {
   someProperty: 'some value',

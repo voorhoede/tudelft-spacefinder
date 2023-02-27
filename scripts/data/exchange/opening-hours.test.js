@@ -1,16 +1,14 @@
-const sinon = require('sinon')
-const openingHours = require('./opening-hours')
-const { buildingAndRoom } = require('./opening-hours-fixture.json')
-
-let clock
+import openingHours from './opening-hours'
+import { buildingAndRoom } from './opening-hours-fixture.json'
 
 beforeEach(() => {
   // set fake date
-  clock = sinon.useFakeTimers(new Date('2019-07-30'))
+  vi.useFakeTimers()
+  vi.setSystemTime(new Date('2019-07-30'))
 })
 
 afterEach(() => {
-  clock.restore()
+  vi.useRealTimers();
 })
 
 describe('space with building and room availability', () => {
