@@ -8,11 +8,11 @@ coverage/
 dist/
 
 # Service worker
-src/static/sw.js
+src/public/sw.js
 
 # Data related
-src/static/data/buildings.json
-src/static/data/spaces.json
-src/static/data/infopage.json
-src/static/data/feedbackpage.json
-src/static/data/onboarding.json
+src/public/data/buildings.json
+src/public/data/spaces.json
+src/public/data/infopage.json
+src/public/data/feedbackpage.json
+src/public/data/onboarding.json
