@@ -1,7 +1,7 @@
 <template>
   <Transition name="pop-up-fade">
-    <div v-if="store.showOnboarding" class="pop-up">
-      <div class="pop-up__background" @click="closePopUp" />
+    <div v-if="isOpen" class="pop-up">
+      <div class="pop-up__background" @click="close" />
 
       <div class="pop-up__body">
         <div class="pop-up__heading">
@@ -9,11 +9,7 @@
             {{ title }}
           </h1>
 
-          <button
-            type="button"
-            class="button button--header"
-            @click="closePopUp"
-          >
+          <button type="button" class="button button--header" @click="close">
             <SvgIcon name="close-icon" class="button--header__icon" />
 
             {{ $t("close") }}
@@ -37,16 +33,18 @@ const pageContent = usePageContent();
 
 const title = computed(() => pageContent.onboarding[locale.value].title);
 const body = computed(() => pageContent.onboarding[locale.value].body);
+const hasSeenOnboarding = useLocalStorage("hasSeenOnboarding", false);
+const isOpen = ref(false);
 
 onMounted(() => {
-  if (!store.hasSeenOnboarding) {
-    store.showOnboarding = true;
-    store.hasSeenOnboarding = true;
+  if (!hasSeenOnboarding.value) {
+    isOpen.value = true;
+    hasSeenOnboarding.value = true;
   }
 });
 
-function closePopUp() {
-  store.showOnboarding = false;
+function close() {
+  isOpen.value = false;
 }
 </script>
 

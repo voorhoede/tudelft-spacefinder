@@ -1,16 +1,16 @@
 <template>
   <div ref="defaultLayout" class="default-layout">
-    <sprite-map />
-    <client-only>
-      <pop-up />
-    </client-only>
+    <SpriteMap />
+    <ClientOnly>
+      <PopUp />
+    </ClientOnly>
 
-    <notification-bar
+    <NotificationBar
       class="default-layout__notification-bar"
       :message="$t('ieNotification')"
     />
 
-    <app-header
+    <AppHeader
       :opened-menu="openedMenu"
       @openAppMenu="openAppMenu"
       @openFilterMenu="openFilterMenu"
@@ -19,12 +19,12 @@
     <main class="default-layout__main">
       <slot />
 
-      <mapbox-map class="default-layout__map" />
+      <MapboxMap class="default-layout__map" />
     </main>
 
-    <app-menu :is-open="openedMenu === 'app-menu'" @close="closeMenu" />
+    <AppMenu :is-open="openedMenu === 'app-menu'" @close="closeMenu" />
 
-    <filter-menu :is-open="openedMenu === 'filter-menu'" @close="closeMenu" />
+    <FilterMenu :is-open="openedMenu === 'filter-menu'" @close="closeMenu" />
   </div>
 </template>
 
