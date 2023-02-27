@@ -1,37 +1,43 @@
-/* eslint-disable */
-import flattenDeep from 'lodash/flattenDeep'
-import pagesI18n from '../src/pages.i18n'
-const locales = ['en', 'nl']
-const buildings = require('../src/static/data/buildings.json')
-const spaces = require('../src/static/data/spaces.json')
+import buildings from "../src/public/data/buildings.json";
+import spaces from "../src/public/data/spaces.json";
+const buildingMap = {} as Record<number, any>;
+for (const building of buildings) buildingMap[building.number] = building;
 
-const rootRoutes = locales.map(locale => {
-  const route = pagesI18n['buildings/index'][locale]
-  return `/${locale}${route}`
-})
-
-const buildingRoutes = flattenDeep(buildings.map(building => {
-  return locales.map(locale => {
-    const route = pagesI18n['buildings/_buildingSlug/index'][locale]
-      .replace(':buildingSlug', building.i18n[locale].slug)
-    return `/${locale}${route}`
-  })
-}))
-
-const spaceRoutes = flattenDeep(spaces.map(space => {
-  return locales.map(locale => {
-    const building = buildings.find((building) => building.number === space.buildingNumber)
-    const route = pagesI18n['buildings/_buildingSlug/spaces/_spaceSlug'][locale]
-      .replace(':buildingSlug', building.i18n[locale].slug)
-      .replace(':spaceSlug', space.i18n[locale].slug)
-    return `/${locale}${route}`
-  })
-}))
-
+//TODO: rewrite after getting rid of vue-i18n
 const routes = [
-  ...rootRoutes,
-  ...buildingRoutes,
-  ...spaceRoutes
-]
+  "/en/",
+  "/en/buildings/",
+  "/en/help/",
+  "/en/feedback/",
+  "/nl/",
+  "/nl/gebouwen",
+  "/nl/hulp/",
+  "/nl/feedback/",
+];
 
-export default routes
+for (const building of buildings) {
+  routes.push("/en/buildings/" + building.i18n.en.slug + "/");
+  routes.push("/en/buildings/" + building.i18n.en.slug + "/spaces/");
+  routes.push("/nl/gebouwen/" + building.i18n.nl.slug + "/");
+  routes.push("/nl/gebouwen/" + building.i18n.nl.slug + "/ruimtes/");
+}
+
+for (const space of spaces) {
+  const building = buildingMap[space.buildingNumber];
+  routes.push(
+    "/en/buildings/" +
+      building.i18n.en.slug +
+      "/spaces/" +
+      space.i18n.en.slug +
+      "/"
+  );
+  routes.push(
+    "/nl/gebouwen/" +
+      building.i18n.nl.slug +
+      "/ruimtes/" +
+      space.i18n.nl.slug +
+      "/"
+  );
+}
+
+export default routes;

@@ -2,60 +2,55 @@
   <section v-if="building">
     <back-button
       :use-history="false"
-      :to="localePath({ name: 'buildings' })"
+      :to="buildingRoute({ buildingSlug: building.slug })"
     />
     <div class="default-layout__info building-layout">
-      <building-header
-        class="building-layout__header"
-        :building="building"
-      />
-      <space-list
-        class="building-layout__spaces"
-        :spaces="spaces"
-      />
+      <building-header class="building-layout__header" :building="building" />
+      <space-list class="building-layout__spaces" :spaces="spaces" />
     </div>
   </section>
 </template>
 
-<script>
-import { mapActions, mapGetters, mapMutations } from 'vuex'
-import { BackButton, BuildingHeader, SpaceList } from '~/components'
-import metaHead from '~/lib/meta-head'
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+import metaHead from "~/lib/meta-head";
+import { useStore } from "~/stores/store";
+import { useMapStore } from "~/stores/map";
+definePageMeta({
+  alias: "/:locale/gebouwen/:buildingSlug",
+});
 
-export default {
-  components: { BackButton, BuildingHeader, SpaceList },
-  computed: {
-    ...mapGetters(['filteredSpaces', 'getBuildingBySlug']),
-    building() {
-      return this.getBuildingBySlug(this.$route.params.buildingSlug)
+const { t } = useI18n();
+const store = useStore();
+const mapStore = useMapStore();
+const route = useRoute();
+const { buildingRoute } = useLocaleRoute();
+
+const building = computed(() =>
+  store.getBuildingBySlug(route.params.buildingSlug as string)
+);
+
+const spaces = computed(() =>
+  store.filteredSpaces.filter((space) => space.building === building.value)
+); //TODO: rly?
+
+useHead(() => {
+  if (!building.value) return {};
+  return metaHead({
+    title: `${building.value.name} (${building.value.abbreviation})`,
+    description: `${building.value.totalSpaces} ${t("spaces")}`,
+    image: {
+      url: `${building.value.image.url}?auto=format&fm=jpg&auto=quality`,
     },
-    spaces() {
-      return this.filteredSpaces
-        .filter(space => space.building === this.building)
-    },
-  },
-  head() {
-    const { building } = this
-    if (!building) return {}
-    return metaHead({
-      title: `${building.name} (${building.abbreviation})`,
-      image: {
-        url: `${building.image.url}?auto=format&fm=jpg&auto=quality`,
-      },
-      description: `${building.totalSpaces} ${this.$t('spaces')}`,
-    })
-  },
-  mounted() {
-    this.clearSelection()
-    this.$store.commit('selectBuilding', this.building)
-    this.zoomToSelection()
-    this.getMap().then(() => this.updateMarkers())
-  },
-  methods: {
-    ...mapActions(['zoomToSelection', 'updateMarkers', 'getMap']),
-    ...mapMutations(['clearSelection']),
-  },
-}
+  });
+});
+
+onMounted(() => {
+  store.clearSelection();
+  store.selectBuilding(building.value);
+  mapStore.zoomToSelection();
+  mapStore.getMap().then(() => mapStore.updateMarkers());
+});
 </script>
 
 <style>

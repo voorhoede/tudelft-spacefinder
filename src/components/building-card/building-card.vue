@@ -1,22 +1,14 @@
 <template>
   <nuxt-link
-    :to="
-      localePath({
-        name: 'buildings-buildingSlug',
-        params: { buildingSlug: building.slug }
-      })
-    "
+    :to="buildingRoute({ buildingSlug: building.slug })"
     class="building-card card"
   >
-    <building-image
-      :building="building"
-      class="building-card__image"
-    />
+    <building-image :building="building" class="building-card__image" />
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">
-        <li>{{ building.totalSpaces }} {{ $t('locations') }}</li>
-        <li>{{ building.totalSeats }} {{ $t('seats') }}</li>
+        <li>{{ building.totalSpaces }} {{ $t("locations") }}</li>
+        <li>{{ building.totalSeats }} {{ $t("seats") }}</li>
       </ul>
 
       <card-status
@@ -27,25 +19,18 @@
   </nuxt-link>
 </template>
 
-<script>
-import { BuildingImage, CardStatus } from '../../components'
-
-export default {
-  components: { BuildingImage, CardStatus },
-  props: {
-    building: {
-      required: true,
-      type: Object,
-    },
-  },
-}
+<script setup lang="ts">
+import type { Building } from "~/types/Building";
+defineProps<{ building: Building }>();
+const { buildingRoute } = useLocaleRoute();
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .building-card__image {
-  margin: var(--spacing-half-negative) var(--spacing-half-negative) var(--spacing-half) var(--spacing-half-negative);
+  margin: var(--spacing-half-negative) var(--spacing-half-negative)
+    var(--spacing-half) var(--spacing-half-negative);
 }
 
 .building-card__meta {
@@ -59,7 +44,7 @@ export default {
 }
 
 .building-card__seating li:not(:last-child):after {
-  content: '|';
+  content: "|";
   display: inline-block;
   margin: 0 var(--spacing-quarter);
 }

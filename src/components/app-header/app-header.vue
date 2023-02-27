@@ -1,20 +1,11 @@
 <template>
-  <header
-    role="banner"
-    class="app-header default-layout__header"
-  >
-    <nuxt-link
-      :to="localePath('index')"
-      class="app-header__logo"
-    >
-      <img
-        src="~/assets/tu-delft-logo.svg"
-        alt="Home"
-      >
+  <header role="banner" class="app-header default-layout__header">
+    <nuxt-link to="/" class="app-header__logo">
+      <img src="~/assets/tu-delft-logo.svg" alt="Home" />
     </nuxt-link>
 
     <h1 class="app-header__title">
-      {{ $t('title') }}
+      {{ $t("title") }}
     </h1>
 
     <button
@@ -23,16 +14,10 @@
       class="app-header__button button button--header"
       @click="$emit('openFilterMenu')"
     >
-      <svg-icon
-        name="filter-icon"
-        class="button--header__icon"
-      />
-      {{ $t('filter') }}
+      <svg-icon name="filter-icon" class="button--header__icon" />
+      {{ $t("filter") }}
 
-      <div
-        v-show="isFiltered"
-        class="app-header__status-indicator"
-      />
+      <div v-show="isFiltered" class="app-header__status-indicator" />
     </button>
 
     <button
@@ -41,48 +26,37 @@
       class="app-header__button button button--header"
       @click="$emit('openAppMenu')"
     >
-      <svg-icon
-        name="menu-icon"
-        class="button--header__icon"
-      />
-      {{ $t('menu') }}
+      <svg-icon name="menu-icon" class="button--header__icon" />
+      {{ $t("menu") }}
     </button>
   </header>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useStore } from "~/stores/store";
 
-export default {
-  props: {
-    openedMenu: {
-      default: null,
-      type: String,
-    },
-  },
-  data() {
-    return {
-      lastOpenedMenu: null,
+const props = defineProps<{ openedMenu: string | null }>();
+let lastOpenedMenu: string | null = null;
+const store = useStore();
+const { isFiltered } = storeToRefs(store);
+const menuButton = ref(null as null | HTMLButtonElement);
+const filterButton = ref(null as null | HTMLButtonElement);
+watch(
+  () => props.openedMenu,
+  (newValue) => {
+    if (lastOpenedMenu === "app-menu") {
+      menuButton.value?.focus();
+    } else if (lastOpenedMenu === "filter-menu") {
+      filterButton.value?.focus();
     }
-  },
-  computed: {
-    ...mapGetters(['isFiltered']),
-  },
-  watch: {
-    openedMenu() {
-      if (this.lastOpenedMenu === 'app-menu') {
-        this.$refs.menuButton.focus()
-      } else if (this.lastOpenedMenu === 'filter-menu') {
-        this.$refs.filterButton.focus()
-      }
-      this.lastOpenedMenu = this.openedMenu
-    },
-  },
-}
+    lastOpenedMenu = newValue;
+  }
+);
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .app-header {
   display: flex;

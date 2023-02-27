@@ -1,8 +1,6 @@
 <template>
-  <div
-    ref="defaultLayout"
-    class="default-layout"
-  >
+  <div ref="defaultLayout" class="default-layout">
+    <sprite-map />
     <client-only>
       <pop-up />
     </client-only>
@@ -19,77 +17,64 @@
     />
 
     <main class="default-layout__main">
-      <nuxt />
+      <slot />
 
       <mapbox-map class="default-layout__map" />
     </main>
 
-    <app-menu
-      :is-open="openedMenu === 'app-menu'"
-      @close="closeMenu"
-    />
+    <app-menu :is-open="openedMenu === 'app-menu'" @close="closeMenu" />
 
-    <filter-menu
-      :is-open="openedMenu === 'filter-menu'"
-      @close="closeMenu"
-    />
+    <filter-menu :is-open="openedMenu === 'filter-menu'" @close="closeMenu" />
   </div>
 </template>
 
-<script>
-import debounce from 'lodash.debounce'
-import { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar, PopUp } from '../components'
+<script setup lang="ts">
+import debounce from "lodash.debounce";
+import { useStore } from "~/stores/store";
 
-export default {
-  components: { AppHeader, AppMenu, FilterMenu, MapboxMap, NotificationBar, PopUp },
-  head() {
-    return {
-      script: [
-        {
-          innerHTML: `
-            var isIE = (/(MSIE|Trident)/).test(window.navigator.userAgent);
-            if (isIE) { document.documentElement.className += " old-ie"; }
-          `,
-        },
-      ],
-      __dangerouslyDisableSanitizers: ['script'],
-    }
-  },
-  data() {
-    return {
-      openedMenu: null,
-      onResizeDebounce: debounce(this.onResize, 200),
-    }
-  },
-  mounted() {
-    this.onResize()
-    window.addEventListener('resize', this.onResizeDebounce, true)
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.onResizeDebounce, true)
-  },
-  methods: {
-    openAppMenu() {
-      this.openedMenu = 'app-menu'
-    },
-    openFilterMenu() {
-      this.openedMenu = 'filter-menu'
-    },
-    closeMenu() {
-      this.openedMenu = null
-    },
-    onResize() {
-      const windowHeight = window.innerHeight * 0.01
-      this.$refs.defaultLayout.style.setProperty('--window-height', `${windowHeight}px`)
+const store = useStore();
+const defaultLayout = ref<null | HTMLDivElement>(null);
+const openedMenu = ref<null | string>(null);
 
-      if (window.matchMedia('(min-width: 700px)').matches) {
-        this.$store.commit('setMobileState', false)
-      } else {
-        this.$store.commit('setMobileState', true)
-      }
-    },
-  },
+const onResizeDebounce = debounce(onResize, 200);
+
+function openAppMenu() {
+  openedMenu.value = "app-menu";
 }
+function openFilterMenu() {
+  openedMenu.value = "filter-menu";
+}
+function closeMenu() {
+  openedMenu.value = null;
+}
+function onResize() {
+  const windowHeight = window.innerHeight * 0.01;
+  defaultLayout.value!.style.setProperty(
+    "--window-height",
+    `${windowHeight}px`
+  );
+
+  store.isMobile = !window.matchMedia("(min-width: 700px)").matches;
+}
+
+onMounted(() => {
+  onResize();
+  window.addEventListener("resize", onResizeDebounce, true);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", onResizeDebounce, true);
+});
+
+useHead({
+  script: [
+    {
+      innerHTML: `
+        var isIE = (/(MSIE|Trident)/).test(window.navigator.userAgent);
+        if (isIE) { document.documentElement.className += " old-ie"; }`,
+    },
+  ],
+});
 </script>
 
 <style>

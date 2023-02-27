@@ -1,5 +1,5 @@
 const { readFile } = require('fs')
-const csvParser = require('csv-parse/lib/sync')
+const { parse } = require('csv-parse/sync')
 const transformSpaces = require('./transform-spaces')
 const transformBuildings = require('./transform-buildings')
 const parserOptions = require('./config')
@@ -10,7 +10,7 @@ module.exports = ({ csvPath }) => ({
       if (err) {
         return reject(err)
       }
-      resolve(csvParser(data, parserOptions))
+      resolve(parse(data, parserOptions))
     })
   }),
   transform: ([dataFromCsv, dataFromCms]) => {

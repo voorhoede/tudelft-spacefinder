@@ -11,19 +11,14 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    building: {
-      required: true,
-      type: Object,
-    },
-  },
-}
+<script setup lang="ts">
+import type { Building } from "~/types/Building";
+
+defineProps<{ building: Building }>();
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .building-image__title {
   position: relative;
@@ -33,14 +28,14 @@ export default {
 }
 
 .building-image__title:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .building-image__name {

@@ -12,33 +12,36 @@
   </section>
 </template>
 
-<script>
-import { mapActions, mapGetters, mapMutations } from 'vuex'
-import { BuildingCard } from '~/components'
-import metaHead from '~/lib/meta-head'
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useI18n } from "vue-i18n";
+import metaHead from "~/lib/meta-head";
+import { useStore } from "~/stores/store";
+import { useMapStore } from "~/stores/map";
 
-export default {
-  components: { BuildingCard },
-  computed: {
-    ...mapGetters(['buildings']),
-    title() { return this.$i18n.t('buildingTitle') },
-  },
-  head() {
-    return metaHead({
-      title: this.title,
-      description: '',
-    })
-  },
-  mounted() {
-    this.clearSelection()
-    this.zoomToCampus()
-    this.getMap().then(() => this.updateMarkers())
-  },
-  methods: {
-    ...mapActions(['updateMarkers', 'zoomToCampus', 'getMap']),
-    ...mapMutations(['clearSelection']),
-  },
-}
+definePageMeta({
+  alias: "/:locale/gebouwen",
+});
+
+const store = useStore();
+const mapStore = useMapStore();
+const { buildings } = storeToRefs(store);
+const { t } = useI18n();
+
+const title = computed(() => t("buildingTitle"));
+
+useHead(() =>
+  metaHead({
+    title: title.value,
+    description: "",
+  })
+);
+
+onMounted(() => {
+  store.clearSelection();
+  mapStore.zoomToCampus();
+  mapStore.getMap().then(() => mapStore.updateMarkers());
+});
 </script>
 
 <style>

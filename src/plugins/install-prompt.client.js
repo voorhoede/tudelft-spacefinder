@@ -1,10 +1,18 @@
-/**
- * Prevent browsers from automatically prompting users to install the app to homescreen.
- * @see https://developers.google.com/web/fundamentals/app-install-banners/#listen_for_beforeinstallprompt
- */
-export default ({ store }) => {
-  window.addEventListener('beforeinstallprompt', (event) => {
-    event.preventDefault()
-    store.commit('setInstallPromptEvent', event)
-  })
+import { useInstallationStore } from "~/stores/installation";
+
+declare global {
+  interface WindowEventMap {
+    beforeinstallprompt: BeforeInstallPromptEvent;
+  }
 }
+
+export default defineNuxtPlugin(({ vueApp }) => {
+  const installationStore = useInstallationStore();
+  window.addEventListener(
+    "beforeinstallprompt",
+    (event: BeforeInstallPromptEvent) => {
+      event.preventDefault();
+      installationStore.setInstallPromptEvent(event);
+    }
+  );
+});

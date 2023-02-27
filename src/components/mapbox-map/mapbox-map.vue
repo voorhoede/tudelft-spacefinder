@@ -1,7 +1,7 @@
 <template>
-  <div ref="map" class="mapbox-map">
+  <div ref="mapContainer" class="mapbox-map">
     <div v-if="!mapLoaded" class="mapbox-map__placeholder">
-      <span class="mapbox-map__loading-message">{{ $t('mapLoading') }}</span>
+      <span class="mapbox-map__loading-message">{{ $t("mapLoading") }}</span>
     </div>
     <zoom-controls
       v-if="mapLoaded"
@@ -13,150 +13,165 @@
   </div>
 </template>
 
-<script>
-import debounce from 'lodash.debounce'
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
-import ZoomControls from '../zoom-controls'
-import mapMarker from '~/assets/icons/map-marker.png'
-import loadMapboxgl from '~/lib/mapboxgl/load-async'
-import campusBounds from '~/lib/campus-bounds'
-import i18nSlug from '~/lib/i18n-slug'
+<script setup lang="ts">
+import debounce from "lodash.debounce";
+import { storeToRefs } from "pinia";
+import { useStore } from "~/stores/store";
 
-export default {
-  components: { ZoomControls },
-  data() {
-    return {
-      onResizeDebounce: debounce(this.onResize, 200),
+//TODO: https://github.com/nuxt/nuxt/issues/14131
+import mapMarker from "~/assets/icons/map-marker.png";
+import campusBounds from "~/lib/campus-bounds";
+import { i18nSlug } from "~/lib/i18n-slug";
+import { useMapStore } from "~/stores/map";
+import { useI18n } from "vue-i18n";
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from "mapbox-gl";
+
+const runtimeConfig = useRuntimeConfig();
+const { locale, t } = useI18n();
+const router = useRouter();
+const store = useStore();
+const mapStore = useMapStore();
+const { spaceRoute } = useLocaleRoute();
+const { mapLoaded, activeMarkerFilters } = storeToRefs(mapStore);
+
+const mapContainer = ref(null as null | HTMLDivElement);
+
+const onResizeDebounce = debounce(onResize, 200); //TODO: vueUse?
+
+onMounted(() => {
+  initMap(runtimeConfig.public.maxboxToken);
+  mapStore.getMap().then(fixInsecureLinks).then(mapStore.updateMarkers);
+  window.addEventListener("resize", onResizeDebounce, true);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", onResizeDebounce, true);
+});
+
+watch(activeMarkerFilters, async (value) => {
+  const map = await mapStore.getMap();
+  if (value.length) {
+    map.setFilter("points", ["all", ...value]);
+  } else {
+    map.setFilter("points");
+  }
+});
+
+//TODO: move to store
+watch(
+  () => store.filteredSpaces,
+  () => {
+    mapStore.updateMarkers();
+  }
+);
+
+function autoFocus() {
+  mapStore.zoomAuto();
+}
+function zoomIn() {
+  mapStore.zoomIn();
+}
+function zoomOut() {
+  mapStore.zoomOut();
+}
+function onResize() {
+  mapStore.resizeMap();
+}
+
+/**
+ * Mapbox renders insecure external links.
+ * To fix these `[rel="noreferrer"]` is added when the links are rendered.
+ * @see https://developers.google.com/web/tools/lighthouse/audits/noopener
+ */
+function fixInsecureLinks() {
+  if (!("MutationObserver" in window)) {
+    return;
+  }
+  const selector = `a:not([href^="${window.location.origin}"]):not([rel*="noreferrer"])`;
+  const observer = new MutationObserver((mutations) => {
+    const element = mapContainer.value!.querySelector(".mapboxgl-ctrl-attrib");
+    if (element) {
+      observer.disconnect();
+      Array.from(element.querySelectorAll(selector)).forEach((insecureLink) => {
+        const rel = insecureLink.getAttribute("rel") || "";
+        insecureLink.setAttribute("rel", `${rel} noreferrer`);
+      });
     }
-  },
-  computed: {
-    ...mapState(['mapLoaded', 'activeMarkerFilters']),
-    ...mapGetters(['filteredSpaces', 'geoJsonSpaces', 'getSpaceById', 'getBuildingByNumber']),
-  },
-  watch: {
-    activeMarkerFilters(filters, oldValue) {
-      this.setMarkers(filters)
-    },
-    filteredSpaces(newValue, oldValue) {
-      this.updateMarkers()
-    },
-  },
-  mounted() {
-    this.initMap()
-    this.getMap()
-      .then(this.fixInsecureLinks)
-      .then(this.updateMarkers)
-    window.addEventListener('resize', this.onResizeDebounce, true)
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.onResizeDebounce, true)
-  },
-  methods: {
-    ...mapActions(['getMap', 'updateMarkers']),
-    ...mapMutations(['setMapLoaded']),
-    async setMarkers(filters = []) {
-      const map = await this.getMap()
-      if (filters.length) {
-        map.setFilter('points', ['all', ...filters])
-      } else {
-        map.setFilter('points')
+  });
+  observer.observe(mapContainer.value!, {
+    attributes: false,
+    childList: true,
+    subtree: true,
+  });
+}
+
+function initMap(accessToken: string) {
+  mapboxgl.accessToken = accessToken;
+  const map = new mapboxgl.Map({
+    container: mapContainer.value!,
+    center: [
+      (campusBounds.west + campusBounds.east) / 2,
+      (campusBounds.north + campusBounds.south) / 2,
+    ],
+    zoom: 13,
+    trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
+    style: "mapbox://styles/mapbox/streets-v10",
+    maxBounds: [campusBounds.southWest, campusBounds.northEast],
+  });
+  let l: Partial<mapboxgl.LngLatBoundsLike> = {};
+
+  map.on("load", () => {
+    map.loadImage(mapMarker, (error: any, image: any) => {
+      if (error) {
+        console.error("a mapbox error occurred");
+        return;
       }
-    },
-    autoFocus() {
-      this.$store.dispatch('zoomAuto')
-    },
-    zoomIn() {
-      this.$store.dispatch('zoomIn')
-    },
-    zoomOut() {
-      this.$store.dispatch('zoomOut')
-    },
-    onResize() {
-      this.$store.dispatch('resizeMap')
-    },
-    /**
-     * Mapbox renders insecure external links.
-     * To fix these `[rel="noreferrer"]` is added when the links are rendered.
-     * @see https://developers.google.com/web/tools/lighthouse/audits/noopener
-     */
-    fixInsecureLinks() {
-      if (!('MutationObserver' in window)) { return }
-      const selector = `a:not([href^="${window.location.origin}"]):not([rel*="noreferrer"])`
-      const observer = new MutationObserver((mutations) => {
-        const element = this.$refs.map.querySelector('.mapboxgl-ctrl-attrib')
-        if (element) {
-          observer.disconnect()
-          Array.from(element.querySelectorAll(selector)).forEach((insecureLink) => {
-            const rel = insecureLink.getAttribute('rel') || ''
-            insecureLink.setAttribute('rel', `${rel} noreferrer`)
-          })
-        }
-      })
-      observer.observe(this.$refs.map, { attributes: false, childList: true, subtree: true })
-    },
-    initMap() {
-      loadMapboxgl().then((mapboxgl) => {
-        const map = new mapboxgl.Map({
-          container: this.$refs.map,
-          center: [
-            (campusBounds.west + campusBounds.east) / 2,
-            (campusBounds.north + campusBounds.south) / 2,
-          ],
-          zoom: 13,
-          trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
-          style: 'mapbox://styles/mapbox/streets-v10',
-          maxBounds: [
-            campusBounds.southWest,
-            campusBounds.northEast,
-          ],
-        })
-        map.on('load', () => {
-          map.loadImage(mapMarker, (error, image) => {
-            if (error) {
-              console.error('a mapbox error occurred')
-              return
-            }
-            map.addImage('marker-icon', image)
-            map.addLayer({
-              id: 'points',
-              interactive: true,
-              type: 'symbol',
-              source: {
-                type: 'geojson',
-                data: this.geoJsonSpaces,
-              },
-              layout: {
-                'icon-image': 'marker-icon',
-                'icon-allow-overlap': true,
-              },
-            })
-            this.setMapLoaded({ map })
-          })
-        })
-        map.on('click', (e) => {
-          const features = map.queryRenderedFeatures(e.point, { layers: ['points'] })
-          const { app } = this.$store
-          if (features.length) {
-            const [{ properties: { buildingNumber, spaceId } = {} } = {}] = features
-            if (!buildingNumber || !spaceId) { return }
-            const locale = app.i18n.locale
-            const buildingSlug = i18nSlug(locale, this.getBuildingByNumber(buildingNumber))
-            const spaceSlug = i18nSlug(locale, this.getSpaceById(spaceId))
-            const url = app.localePath({
-              name: 'buildings-buildingSlug-spaces-spaceSlug',
-              params: { buildingSlug, spaceSlug },
-            })
-            app.router.push(url)
-          }
-        })
-      })
-    },
-  },
+      map.addImage("marker-icon", image);
+      map.addLayer({
+        id: "points",
+        interactive: true,
+        type: "symbol",
+        source: {
+          type: "geojson",
+          data: mapStore.geoJsonSpaces,
+        },
+        layout: {
+          "icon-image": "marker-icon",
+          "icon-allow-overlap": true,
+        },
+      });
+      mapStore.setMap(map);
+    });
+  });
+  map.on("click", (e: any) => {
+    const features = map.queryRenderedFeatures(e.point, {
+      layers: ["points"],
+    });
+    if (features.length) {
+      const properties = features[0].properties || {};
+      if (!properties.buildingNumber || !properties.spaceId) {
+        return;
+      }
+      const buildingSlug =
+        i18nSlug(
+          locale.value,
+          store.getBuildingByNumber(properties.buildingNumber as number)
+        ) ?? "";
+      const spaceSlug =
+        i18nSlug(
+          locale.value,
+          store.getSpaceById(properties.spaceId as string)
+        ) ?? "";
+      const url = spaceRoute({ buildingSlug, spaceSlug });
+
+      router.push(url);
+    }
+  });
 }
 </script>
 
 <style>
-@import '../app-core/variables.css';
+@import "../app-core/variables.css";
 
 .mapbox-map {
   display: flex;

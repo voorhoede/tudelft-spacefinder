@@ -1,40 +1,32 @@
 <template>
-  <section
-    v-if="!isMapMode || !isMobile"
-    class="default-layout__info"
-  >
+  <section v-if="!isMapMode || !isMobile" class="default-layout__info">
     <h2 class="a11y-sr-only">
-      {{ $t('allSpaces') }}
+      {{ $t("allSpaces") }}
     </h2>
     <space-list :spaces="filteredSpaces" />
   </section>
 </template>
 
-<script>
-import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
-import { SpaceList } from '~/components'
-import metaHead from '~/lib/meta-head'
+<script setup lang="ts">
+import { useStore } from "~/stores/store";
+import { useI18n } from "vue-i18n";
+import metaHead from "~/lib/meta-head";
+import { storeToRefs } from "pinia";
+import { useMapStore } from "~/stores/map";
+const { t } = useI18n();
+const store = useStore();
+const mapStore = useMapStore();
+const { isMobile, isMapMode, filteredSpaces } = storeToRefs(store);
 
-export default {
-  components: { SpaceList },
-  head() {
-    return metaHead({
-      title: this.$t('spacesTitle'),
-      description: this.$t('allSpaces'),
-    })
-  },
-  computed: {
-    ...mapGetters(['filteredSpaces']),
-    ...mapState(['isMobile', 'isMapMode']),
-  },
-  mounted() {
-    this.clearSelection()
-    this.zoomToCampus()
-    this.getMap().then(() => this.updateMarkers())
-  },
-  methods: {
-    ...mapMutations(['clearSelection']),
-    ...mapActions(['zoomToCampus', 'updateMarkers', 'getMap']),
-  },
-}
+useHead(() =>
+  metaHead({
+    title: t("spacesTitle"),
+    description: t("allSpaces"),
+  })
+);
+onMounted(() => {
+  store.clearSelection();
+  mapStore.zoomToCampus();
+  mapStore.getMap().then(() => mapStore.updateMarkers());
+});
 </script>
