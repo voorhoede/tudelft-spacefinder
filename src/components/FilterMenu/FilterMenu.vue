@@ -1,5 +1,5 @@
 <template>
-  <modal-drawer :is-open="isOpen" :title="$t('filter')" @close="$emit('close')">
+  <ModalDrawer :is-open="isOpen" :title="$t('filter')" @close="$emit('close')">
     <form class="filter-menu" @submit.prevent>
       <div class="filter-menu__filters">
         <fieldset class="filter-menu__filter-group">
@@ -16,7 +16,7 @@
               class="a11y-sr-only filter-menu__filter"
             />
             <label :for="`quietness-${option}`">
-              <svg-icon
+              <SvgIcon
                 :name="`facility-quietness.${option}-icon`"
                 class="filter-menu__filter-icon"
               />
@@ -39,7 +39,7 @@
               class="a11y-sr-only filter-menu__filter"
             />
             <label :for="`study-type-${option}`">
-              <svg-icon
+              <SvgIcon
                 :name="`facility-studyType.${option}-icon`"
                 class="filter-menu__filter-icon"
               />
@@ -61,7 +61,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="power-outlets">
-            <svg-icon
+            <SvgIcon
               name="facility-powerOutlets-icon"
               class="filter-menu__filter-icon"
             />
@@ -76,7 +76,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="ethernet">
-            <svg-icon
+            <SvgIcon
               name="facility-ethernet-icon"
               class="filter-menu__filter-icon"
             />
@@ -91,7 +91,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="stationary-pc">
-            <svg-icon
+            <SvgIcon
               name="facility-stationaryPC-icon"
               class="filter-menu__filter-icon"
             />
@@ -106,7 +106,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="near-printer">
-            <svg-icon
+            <SvgIcon
               name="facility-nearPrinter-icon"
               class="filter-menu__filter-icon"
             />
@@ -127,7 +127,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="adjustable-chairs">
-            <svg-icon
+            <SvgIcon
               name="facility-adjustableChairs-icon"
               class="filter-menu__filter-icon"
             />
@@ -142,7 +142,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="daylit">
-            <svg-icon
+            <SvgIcon
               name="facility-daylit-icon"
               class="filter-menu__filter-icon"
             />
@@ -163,7 +163,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="near-bathroom">
-            <svg-icon
+            <SvgIcon
               name="facility-nearBathroom-icon"
               class="filter-menu__filter-icon"
             />
@@ -178,7 +178,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="near-coffee-machine">
-            <svg-icon
+            <SvgIcon
               name="facility-nearCoffeeMachine-icon"
               class="filter-menu__filter-icon"
             />
@@ -199,7 +199,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="smart-board">
-            <svg-icon
+            <SvgIcon
               name="facility-smartBoard-icon"
               class="filter-menu__filter-icon"
             />
@@ -214,7 +214,7 @@
             class="a11y-sr-only filter-menu__filter"
           />
           <label for="white-board">
-            <svg-icon
+            <SvgIcon
               name="facility-whiteBoard-icon"
               class="filter-menu__filter-icon"
             />
@@ -230,7 +230,7 @@
           />
 
           <label for="presentation-screen">
-            <svg-icon
+            <SvgIcon
               name="facility-presentationScreen-icon"
               class="filter-menu__filter-icon"
             />
@@ -284,7 +284,7 @@
         </button>
       </div>
     </form>
-  </modal-drawer>
+  </ModalDrawer>
 </template>
 
 <script setup lang="ts">

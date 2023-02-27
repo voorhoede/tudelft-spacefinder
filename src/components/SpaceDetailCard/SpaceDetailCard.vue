@@ -25,7 +25,7 @@
           <p>{{ space.floor }}</p>
         </div>
 
-        <card-status
+        <CardStatus
           :opening-hours="space.openingHours"
           :is-open="space.locationIsOpen"
           class="space-detail-card__open-status"
@@ -34,17 +34,17 @@
     </div>
 
     <div class="space-detail-card__meta">
-      <space-facilities
+      <SpaceFacilities
         :facilities="space.facilities"
         class="space-detail-card__facilities"
       />
 
       <div class="flat-list space-detail-card__seating">
-        <svg-icon name="seat-icon" class="space-detail-card__seating-icon" />
+        <SvgIcon name="seat-icon" class="space-detail-card__seating-icon" />
         {{ space.seats }} {{ $t("seatsDescription") }}
       </div>
 
-      <opening-hours
+      <OpeningHours
         :opening-hours-building="building.openingHours"
         :opening-hours-space="space.openingHours"
         :show-toggle-on-desktop="false"

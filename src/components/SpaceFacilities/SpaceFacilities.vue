@@ -5,8 +5,8 @@
       :key="index"
       class="space-facility__item"
     >
-      <tooltip delay="0" :instantMove="true">
-        <svg-icon
+      <Tooltip delay="0" :instantMove="true">
+        <SvgIcon
           :name="getIconName(facility)"
           class="space-facility__icon"
           :alt="$t(facility)"
@@ -15,7 +15,7 @@
           {{ $t(facility) }}
           <!-- trigger: 'hover click focus', -->
         </template>
-      </tooltip>
+      </Tooltip>
 
       <span class="a11y-sr-only">
         {{ $t(facility) }}
@@ -25,8 +25,8 @@
       <h4 class="a11y-sr-only">
         {{ $t("seating") }}
       </h4>
-      <tooltip>
-        <svg-icon
+      <Tooltip>
+        <SvgIcon
           name="seat-icon"
           class="space-facility__seating-icon"
           :alt="seatsDescription"
@@ -35,7 +35,7 @@
           {{ seatsDescription }}
           <!-- trigger: 'hover click focus', -->
         </template>
-      </tooltip>
+      </Tooltip>
     </li>
   </ul>
 </template>

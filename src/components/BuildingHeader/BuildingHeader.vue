@@ -1,6 +1,6 @@
 <template>
   <div class="building-header">
-    <building-image :building="building" />
+    <BuildingImage :building="building" />
 
     <h3 class="a11y-sr-only">
       {{ $t("seating") }}
@@ -9,20 +9,20 @@
     <div class="building-header__meta">
       <ul class="flat-list building-header__seating">
         <li>
-          <svg-icon name="seat-icon" class="building-header__seating-icon" />
+          <SvgIcon name="seat-icon" class="building-header__seating-icon" />
           {{ building.totalSeats }}
         </li>
         <li>
-          <svg-icon name="door-icon" class="building-header__seating-icon" />
+          <SvgIcon name="door-icon" class="building-header__seating-icon" />
           {{ building.totalSpaces }}
         </li>
       </ul>
 
-      <card-status
+      <CardStatus
         :opening-hours="building.openingHours"
         class="building-header__open-status"
       />
-      <opening-hours
+      <OpeningHours
         :opening-hours-building="building.openingHours"
         :opening-hours-space="building.openingHours"
         class="building-header__opening-hours"

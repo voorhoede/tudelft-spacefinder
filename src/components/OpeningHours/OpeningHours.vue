@@ -9,7 +9,7 @@
       :class="{ 'opening-hours__toggle--open': openingHoursAreVisible }"
       @click="toggleOpeningHours"
     >
-      <svg-icon name="back-icon" class="opening-hours__toggle-icon" />
+      <SvgIcon name="back-icon" class="opening-hours__toggle-icon" />
 
       <span class="opening-hours__toggle-label">
         {{ $t("openingHours") }}

@@ -1,15 +1,15 @@
 <!-- Pattern based on [Material Design: Modal Drawer](https://material.io/design/components/navigation-drawer.html#modal-drawer). -->
 <template>
   <div ref="el">
-    <transition name="modal-fade">
+    <Transition name="modal-fade">
       <div
         v-if="isOpen"
         class="modal-drawer__background"
         @click="$emit('close')"
       />
-    </transition>
+    </Transition>
 
-    <transition name="modal-slide" @after-enter="focusCloseButton">
+    <Transition name="modal-slide" @after-enter="focusCloseButton">
       <section v-if="isOpen" class="modal-drawer">
         <div class="modal-drawer__header">
           <h2 class="model-drawer__title">
@@ -22,7 +22,7 @@
             class="button button--header"
             @click="$emit('close')"
           >
-            <svg-icon name="close-icon" class="button--header__icon" />
+            <SvgIcon name="close-icon" class="button--header__icon" />
 
             {{ $t("close") }}
           </button>
@@ -30,7 +30,7 @@
 
         <slot />
       </section>
-    </transition>
+    </Transition>
   </div>
 </template>
 

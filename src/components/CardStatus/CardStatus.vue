@@ -1,5 +1,5 @@
 <template>
-  <client-only placeholder="...">
+  <ClientOnly placeholder="...">
     <p
       class="card-status"
       :class="{ 'card-status--open': isOpen }"
@@ -7,14 +7,14 @@
     >
       <template v-if="isOpen">
         {{ $t("open") }}
-        <svg-icon name="location-open-icon" class="card-status__icon" />
+        <SvgIcon name="location-open-icon" class="card-status__icon" />
       </template>
       <template v-else>
         {{ $t("closed") }}
-        <svg-icon name="location-closed-icon" class="card-status__icon" />
+        <SvgIcon name="location-closed-icon" class="card-status__icon" />
       </template>
     </p>
-  </client-only>
+  </ClientOnly>
 </template>
 
 <script lang="ts">

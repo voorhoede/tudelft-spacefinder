@@ -1,8 +1,8 @@
 <template>
   <header role="banner" class="app-header default-layout__header">
-    <nuxt-link to="/" class="app-header__logo">
+    <NuxtLink to="/" class="app-header__logo">
       <img src="~/assets/tu-delft-logo.svg" alt="Home" />
-    </nuxt-link>
+    </NuxtLink>
 
     <h1 class="app-header__title">
       {{ $t("title") }}
@@ -14,7 +14,7 @@
       class="app-header__button button button--header"
       @click="$emit('openFilterMenu')"
     >
-      <svg-icon name="filter-icon" class="button--header__icon" />
+      <SvgIcon name="filter-icon" class="button--header__icon" />
       {{ $t("filter") }}
 
       <div v-show="isFiltered" class="app-header__status-indicator" />
@@ -26,7 +26,7 @@
       class="app-header__button button button--header"
       @click="$emit('openAppMenu')"
     >
-      <svg-icon name="menu-icon" class="button--header__icon" />
+      <SvgIcon name="menu-icon" class="button--header__icon" />
       {{ $t("menu") }}
     </button>
   </header>
