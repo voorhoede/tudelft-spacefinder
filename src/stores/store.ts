@@ -1,13 +1,10 @@
-import { defineStore } from "pinia";
+import { defineStore, skipHydrate } from "pinia";
 import { spaceFilter } from "~/lib/filter-spaces";
 import type { Building, BuildingI18n } from "~/types/Building";
 import type { Filters } from "~/types/filters";
 import type { Space, SpaceI18n } from "~/types/Space";
 
 export const useStore = defineStore("index", () => {
-  const showOnboarding = ref(false);
-  const hasSeenOnboarding = ref(false);
-
   const isMapMode = ref(false);
   const isMobile = ref(false);
 
@@ -53,7 +50,7 @@ export const useStore = defineStore("index", () => {
     whiteBoard: false,
   };
 
-  const filters = ref(defaultFilters);
+  const filters = useLocalStorage("filters", defaultFilters);
 
   function clearFilters() {
     filters.value = defaultFilters; //TODO: check if Vue3 reactivity works like that
@@ -138,8 +135,6 @@ export const useStore = defineStore("index", () => {
 
   return {
     locale,
-    showOnboarding,
-    hasSeenOnboarding,
     isMapMode,
     isMobile,
     selection,
@@ -147,7 +142,7 @@ export const useStore = defineStore("index", () => {
     selectBuilding,
     selectSpace,
     isBuildingPage,
-    filters,
+    filters: skipHydrate(filters),
     setBuildings,
     buildings,
     setSpaces,

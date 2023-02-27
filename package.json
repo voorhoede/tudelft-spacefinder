@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.7",
+    "@vueuse/core": "^9.13.0",
+    "@vueuse/nuxt": "^9.13.0",
     "floating-vue": "^2.0.0-beta.20",
     "js-cookie": "^2.2.1",
     "lodash.debounce": "^4.0.8",
