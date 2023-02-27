@@ -6,6 +6,7 @@ coverage/
 # Nuxt related
 .nuxt
 dist/
+.output
 
 # Service worker
 src/public/sw.js

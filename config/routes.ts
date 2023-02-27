@@ -10,7 +10,7 @@ const routes = [
   "/en/help/",
   "/en/feedback/",
   "/nl/",
-  "/nl/gebouwen",
+  "/nl/gebouwen/",
   "/nl/hulp/",
   "/nl/feedback/",
 ];
