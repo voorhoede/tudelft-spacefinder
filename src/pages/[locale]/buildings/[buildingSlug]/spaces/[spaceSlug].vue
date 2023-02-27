@@ -1,13 +1,13 @@
 <template>
   <section v-if="space && building">
-    <back-button :to="buildingRoute({ buildingSlug: building.slug })" />
+    <BackButton :to="buildingRoute({ buildingSlug: building.slug })" />
 
     <div class="space-detail__share-button">
-      <social-share :url="shareUrl" />
+      <SocialShare :url="shareUrl" />
     </div>
 
     <div class="default-layout__info default-layout__info--space-detail">
-      <space-detail-card ref="card" :space="space" :building="building" />
+      <SpaceDetailCard ref="card" :space="space" :building="building" />
     </div>
   </section>
 </template>
