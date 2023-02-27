@@ -3,7 +3,7 @@
     <h2 class="a11y-sr-only">
       {{ $t("allSpaces") }}
     </h2>
-    <space-list :spaces="filteredSpaces" />
+    <SpaceList :spaces="filteredSpaces" />
   </section>
 </template>
 
