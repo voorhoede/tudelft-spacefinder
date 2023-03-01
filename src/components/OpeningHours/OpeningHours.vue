@@ -57,7 +57,7 @@ import type { OpeningHours } from "~/types/OpeningHours";
 export interface Props {
   openingHoursBuilding: OpeningHours[];
   openingHoursSpace: OpeningHours[];
-  showToggleOnDesktop: boolean;
+  showToggleOnDesktop?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), { showToggleOnDesktop: true });
 const openingHoursAreVisible = ref(false);

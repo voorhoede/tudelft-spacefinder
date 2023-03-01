@@ -55,7 +55,7 @@ onMounted(() => {
   store.selectBuilding(building.value);
   store.selectSpace(space.value);
   mapStore.zoomToSelection(padding);
-  mapStore.getMap().then(() => mapStore.updateMarkers());
+  mapStore.updateMarkers();
 });
 
 useHead(() => {

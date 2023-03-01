@@ -39,7 +39,7 @@ useHead(() =>
 onMounted(() => {
   store.clearSelection();
   mapStore.zoomToCampus();
-  mapStore.getMap().then(() => mapStore.updateMarkers());
+  mapStore.updateMarkers();
 });
 </script>
 

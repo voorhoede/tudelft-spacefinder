@@ -44,7 +44,7 @@ onMounted(() => {
   store.clearSelection();
   store.selectBuilding(building.value);
   mapStore.zoomToSelection();
-  mapStore.getMap().then(() => mapStore.updateMarkers());
+  mapStore.updateMarkers();
 });
 </script>
 
