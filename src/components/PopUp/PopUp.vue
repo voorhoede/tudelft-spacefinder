@@ -6,30 +6,20 @@
       <div class="pop-up__body">
         <div class="pop-up__heading">
           <h1 class="pop-up__title h2">
-            {{ title }}
+            {{ $pageContent("onboarding.title") }}
           </h1>
-
           <button type="button" class="button button--header" @click="close">
             <SvgIcon name="close-icon" class="button--header__icon" />
-
             {{ $t("close") }}
           </button>
         </div>
-
-        <p>{{ body }}</p>
+        <p>{{ $pageContent("onboarding.body") }}</p>
       </div>
     </div>
   </Transition>
 </template>
 
 <script setup lang="ts">
-import { usePageContent } from "~/stores/pageContent";
-
-const { $locale } = useNuxtApp();
-const pageContent = usePageContent();
-
-const title = computed(() => pageContent.onboarding[$locale.value].title);
-const body = computed(() => pageContent.onboarding[$locale.value].body);
 const hasSeenOnboarding = useLocalStorage("hasSeenOnboarding", false);
 const isOpen = ref(false);
 

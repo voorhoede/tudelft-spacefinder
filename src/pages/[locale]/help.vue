@@ -1,9 +1,9 @@
 <template>
   <section class="default-layout__info default-layout__info--info-page">
-    <h1>{{ title }}</h1>
+    <h1>{{ $pageContent("infoPage.title") }}</h1>
 
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-html="body" />
+    <div v-html="$pageContent('infoPage.body')" />
   </section>
 </template>
 
@@ -11,21 +11,16 @@
 import metaHead from "~/lib/meta-head";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
-import { usePageContent } from "~/stores/pageContent";
 definePageMeta({
   alias: "/:locale/hulp",
 });
-const { $locale } = useNuxtApp();
+const { $pageContent } = useNuxtApp();
 const store = useStore();
-const pageContent = usePageContent();
 const mapStore = useMapStore();
-
-const title = computed(() => pageContent.infoPage[$locale.value].title);
-const body = computed(() => pageContent.infoPage[$locale.value].body);
 
 useHead(() =>
   metaHead({
-    title: title.value,
+    title: $pageContent("infoPage.title"),
     description: "",
   })
 );
