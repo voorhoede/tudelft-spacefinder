@@ -33,7 +33,7 @@ const store = useStore();
 const { selection } = storeToRefs(store);
 const { $localePath } = useNuxtApp();
 function getLocalePath(locale: string) {
-  const localisedRouteName = history.currentPageRoute.name;
+  const localisedRouteName = history.currentPageRoute.name; //TODO: use the current path from the router instead
   const genericRouteName = localisedRouteName.split("___")[0];
   const parts = genericRouteName.split("-");
   if (parts.length < 3) return $localePath(`/${parts[1] ?? ""}`, { locale });

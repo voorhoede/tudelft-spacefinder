@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import metaHead from "~/lib/meta-head";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 definePageMeta({
@@ -29,16 +28,19 @@ const spaces = computed(() =>
   store.filteredSpaces.filter((space) => space.building === building.value)
 ); //TODO: rly?
 
-useHead(() => {
-  if (!building.value) return {};
-  return metaHead({
-    title: `${building.value.name} (${building.value.abbreviation})`,
-    description: `${building.value.totalSpaces} ${$t("spaces")}`,
-    image: {
-      url: `${building.value.image.url}?auto=format&fm=jpg&auto=quality`,
-    },
-  });
-});
+useSpacefinderHead(
+  computed(() =>
+    building.value
+      ? {
+          title: `${building.value.name} (${building.value.abbreviation})`,
+          description: `${building.value.totalSpaces} ${$t("spaces")}`,
+          image: {
+            url: `${building.value.image.url}?auto=format&fm=jpg&auto=quality`,
+          },
+        }
+      : { title: "" }
+  )
+);
 
 onMounted(() => {
   store.clearSelection();

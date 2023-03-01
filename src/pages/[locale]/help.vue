@@ -1,6 +1,6 @@
 <template>
   <section class="default-layout__info default-layout__info--info-page">
-    <h1>{{ $pageContent("infoPage.title") }}</h1>
+    <h1>{{ title }}</h1>
 
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div v-html="$pageContent('infoPage.body')" />
@@ -8,22 +8,18 @@
 </template>
 
 <script setup lang="ts">
-import metaHead from "~/lib/meta-head";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
-definePageMeta({
-  alias: "/:locale/hulp",
-});
+
+definePageMeta({ alias: "/:locale/hulp" });
+
 const { $pageContent } = useNuxtApp();
 const store = useStore();
 const mapStore = useMapStore();
 
-useHead(() =>
-  metaHead({
-    title: $pageContent("infoPage.title"),
-    description: "",
-  })
-);
+const title = computed(() => $pageContent("infoPage.title"));
+
+useSpacefinderHead({ title });
 
 onMounted(() => {
   store.clearSelection();
