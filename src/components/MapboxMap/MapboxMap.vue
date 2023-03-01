@@ -76,7 +76,6 @@ function fixInsecureLinks() {
   // - The last link gets fixed but immediately restores its previous "rel" value
   // - Upon initial map render nothing happens (this seems to be fixed now)
   // - In production (on Nuxt 2) nothing works at all
-  console.log("fixInsecureLinks");
   if (!("MutationObserver" in window)) {
     return;
   }
