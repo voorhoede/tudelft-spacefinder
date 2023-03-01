@@ -1,0 +1,10 @@
+{
+  "nl": {
+    "title": "Tips voor gebruik van de Spacefinder",
+    "body": "<h2>Taalkeuze</h2><p>Via het menu is de taalkeuze Engels of Nederlands beschikbaar.<br /><br /></p><h2>Filteren op gebouwen</h2><p>Als je op een gebouwpagina zit, kun je met het filter geen studieplekken vinden in een ander gebouw. Ga naar de beginpagina om je resultaten te bekijken via het TU Delft logo links boven, of via het menu-item &lsquo;home&rsquo;.<br /><br /></p><h2>Weergave studieplekken</h2><p>Wil je op mobiel wisselen naar lijst of kaartweergaven? Selecteer dan in het menu de Campuskaart of Locatielijst.<br /><br /></p><h2>Filters</h2><p>Via het filter rechtsboven kun je aangeven aan welke criteria jouw studieplek moet voldoen. Heb je minder resultaten dan verwacht? Als je rechts bovenin een paars bolletje ziet staan bij &lsquo;filter&rsquo;, dan heb je nog filters ingesteld. Door je filters te wissen kan je een nieuwe zoektocht beginnen.</p>"
+  },
+  "en": {
+    "title": "Tips for using the Spacefinder",
+    "body": "<h2>Language</h2><p>You can switch between English and Dutch via the menu.<br /><br /></p><h2>Filter buildings</h2><p>When you have selected a building, the filter will not show spaces from other buildings. Go back to the home page to view the filtered results. To go back to the home page, you can use the TU Delft logo in the upper left corner, or you can select 'home' in the main menu.<br /><br /></p><h2>Display spaces</h2><p>Are you using your smartphone and you want to switch between the list and the map view? Go to the main menu and select 'Campus map' or 'Location list'.<br /><br /></p><h2>Filters</h2><p>Use the filter in the upper right corner of the screen to filter spaces to your needs. Are there less results than you expected? If you look at the filter button and it has a small pruple circle on it, then there are some filters still in use. By clearing the filters you can start a new search query.</p>"
+  }
+}

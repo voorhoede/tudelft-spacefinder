@@ -12,8 +12,8 @@ dist
 src/public/sw.js
 
 # Data related
-src/public/data/buildings.json
-src/public/data/spaces.json
-src/public/data/infopage.json
-src/public/data/feedbackpage.json
-src/public/data/onboarding.json
+src/data/buildings.json
+src/data/spaces.json
+src/data/infopage.json
+src/data/feedbackpage.json
+src/data/onboarding.json

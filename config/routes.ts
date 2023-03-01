@@ -1,5 +1,5 @@
-import buildings from "../src/public/data/buildings.json";
-import spaces from "../src/public/data/spaces.json";
+import buildings from "../src/data/buildings.json";
+import spaces from "../src/data/spaces.json";
 const buildingMap = {} as Record<number, any>;
 for (const building of buildings) buildingMap[building.number] = building;
 
