@@ -16,14 +16,10 @@ export const useHistoryStore = defineStore("history", () => {
     window.history.back();
   }
 
-  const currentPageRoute = computed(
-    () => routes.value[routes.value.length - 1]
-  );
-  const hasHistory = computed(() => routes.value.length > 1);
   const previousPageUrl = computed(() => {
-    if (!hasHistory.value) return;
+    if (routes.value.length <= 1) return;
     return routes.value[routes.value.length - 2].fullPath;
   });
 
-  return { addRoute, goBack, currentPageRoute, previousPageUrl };
+  return { addRoute, goBack, previousPageUrl };
 });

@@ -21,21 +21,19 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useStore } from "~/stores/store";
-import { useHistoryStore } from "~/stores/history";
 
 const languages = [
   { locale: "en", name: "english" },
   { locale: "nl", name: "nederlands" },
 ];
 
-const history = useHistoryStore();
 const store = useStore();
 const { selection } = storeToRefs(store);
 const { $localePath } = useNuxtApp();
+const { name: routeName } = useRoute();
+
 function getLocalePath(locale: string) {
-  const localisedRouteName = history.currentPageRoute.name; //TODO: use the current path from the router instead
-  const genericRouteName = localisedRouteName.split("___")[0];
-  const parts = genericRouteName.split("-");
+  const parts = (routeName as string).split("-");
   if (parts.length < 3) return $localePath(`/${parts[1] ?? ""}`, { locale });
   const buildingSlug =
     selection.value.building && selection.value.building.i18n[locale].slug;
