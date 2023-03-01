@@ -64,27 +64,24 @@ export const useStore = defineStore("index", () => {
 
   //const locale = ref("en");
 
+  function compareBuildingsByName(a: Building, b: Building) {
+    if (a.name > b.name) return 1;
+    if (a.name < b.name) return -1;
+    return 0;
+  }
+
   const buildings = computed(() => {
     const { $locale } = useNuxtApp();
     // TODO: is it really a good idea to have a computed localized buildings and especially spaces?
-    return (
-      buildingsI18n.value
-        .map((buildingI18n) => {
-          const i18nProps = buildingI18n.i18n[$locale.value];
-          return {
-            ...buildingI18n,
-            ...i18nProps,
-          } as Building;
-        })
-        //TODO: this fixes the behavior from prev version. OK?
-        .sort((buildingA, buildingB) =>
-          buildingA.name > buildingB.name
-            ? 1
-            : buildingA.name < buildingB.name
-            ? -1
-            : 0
-        )
-    );
+    return buildingsI18n.value
+      .map((buildingI18n) => {
+        const i18nProps = buildingI18n.i18n[$locale.value];
+        return {
+          ...buildingI18n,
+          ...i18nProps,
+        } as Building;
+      })
+      .sort(compareBuildingsByName);
   });
 
   const spacesI18n = ref([] as SpaceI18n[]);
