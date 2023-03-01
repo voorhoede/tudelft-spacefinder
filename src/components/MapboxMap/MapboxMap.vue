@@ -31,7 +31,7 @@ const { $locale, $localePath } = useNuxtApp();
 const router = useRouter();
 const store = useStore();
 const mapStore = useMapStore();
-const { mapLoaded, activeMarkerFilters } = storeToRefs(mapStore);
+const { mapLoaded } = storeToRefs(mapStore);
 
 const mapContainer = ref(null as null | HTMLDivElement);
 
@@ -39,28 +39,17 @@ const onResizeDebounce = debounce(onResize, 200); //TODO: vueUse?
 
 onMounted(() => {
   initMap(runtimeConfig.public.maxboxToken);
-  mapStore.getMap().then(fixInsecureLinks).then(mapStore.updateMarkers);
+  mapStore.updateMarkers();
   window.addEventListener("resize", onResizeDebounce, true);
 });
 onBeforeUnmount(() => {
   window.removeEventListener("resize", onResizeDebounce, true);
 });
 
-watch(activeMarkerFilters, async (value) => {
-  const map = await mapStore.getMap();
-  if (value.length) {
-    map.setFilter("points", ["all", ...value]);
-  } else {
-    map.setFilter("points");
-  }
-});
-
 //TODO: move to store
 watch(
   () => store.filteredSpaces,
-  () => {
-    mapStore.updateMarkers();
-  }
+  () => mapStore.updateMarkers()
 );
 
 function autoFocus() {
@@ -82,6 +71,12 @@ function onResize() {
  * @see https://developers.google.com/web/tools/lighthouse/audits/noopener
  */
 function fixInsecureLinks() {
+  //TODO: this doesn't work:
+  // - The leftmost "mapbox" link doesn't get selected to be fixed.
+  // - The last link gets fixed but immediately restores its previous "rel" value
+  // - Upon initial map render nothing happens (this seems to be fixed now)
+  // - In production (on Nuxt 2) nothing works at all
+  console.log("fixInsecureLinks");
   if (!("MutationObserver" in window)) {
     return;
   }
@@ -138,6 +133,7 @@ function initMap(accessToken: string) {
           "icon-allow-overlap": true,
         },
       });
+      fixInsecureLinks();
       mapStore.setMap(map);
     });
   });
