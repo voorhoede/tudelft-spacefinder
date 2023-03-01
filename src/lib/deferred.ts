@@ -8,14 +8,6 @@ interface Deferred<T> {
   reject: (reason?: any) => void;
 }
 
-/*export default function Deferred<T>(this: Deferred<T>) {
-  this.promise = new Promise<T>((resolve, reject) => {
-    this.resolve = resolve;
-    this.reject = reject;
-  });
-  Object.freeze(this);
-}*/
-
 export function deferred<T>() {
   let result: Partial<Deferred<T>> = {};
   result.promise = new Promise<T>((resolve, reject) => {
