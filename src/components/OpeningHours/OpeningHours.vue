@@ -82,10 +82,10 @@ const timeSlots = computed(() => {
 
     const buildingStart = buildingHoursThisDay.length
       ? buildingHoursThisDay[buildingHoursThisDay.length - 1][0]
-      : ""; //TODO: it was [] before and I do not know what it means. Both should throw!
+      : "";
     const buildingEnd = buildingHoursThisDay.length
       ? buildingHoursThisDay[buildingHoursThisDay.length - 1][1]
-      : ""; //TODO: it was [] before and I do not know what it means. Both should throw!
+      : "";
     return {
       day: openingHour.day,
       times: openingHour.time.reduce((timeslots, timeslot, slotIndex) => {
