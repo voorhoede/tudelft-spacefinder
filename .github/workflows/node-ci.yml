@@ -9,11 +9,11 @@ jobs:
       USE_MOCK_DATA_CMS: 1
       CSV_PATH: ./data/studieplekken-latest.csv
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version-file: ".nvmrc"
 
       - name: install npm dependencies
         run: npm install --no-optional --no-audit
