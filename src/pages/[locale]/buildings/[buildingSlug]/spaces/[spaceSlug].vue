@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import metaHead from "~/lib/meta-head";
 import spaceMapImage from "~/lib/space-map-image";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
@@ -58,14 +57,17 @@ onMounted(() => {
   mapStore.updateMarkers();
 });
 
-useHead(() => {
-  if (!space.value || !building.value) return {};
-  return metaHead({
-    title: `${space.value.name} (${space.value.roomId}) @ ${building.value.name} (${building.value.abbreviation})`,
-    description: `${space.value.seats} ${$t("seatsDescription")}`,
-    image: spaceMapImage(space.value, runtimeConfig.public.maxboxToken),
-  });
-});
+useSpacefinderHead(
+  computed(() =>
+    building.value && space.value
+      ? {
+          title: `${space.value.name} (${space.value.roomId}) @ ${building.value.name} (${building.value.abbreviation})`,
+          description: `${space.value.seats} ${$t("seatsDescription")}`,
+          image: spaceMapImage(space.value, runtimeConfig.public.maxboxToken),
+        }
+      : { title: "" }
+  )
+);
 </script>
 
 <style>

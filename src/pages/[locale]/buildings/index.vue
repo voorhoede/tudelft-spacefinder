@@ -14,13 +14,10 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import metaHead from "~/lib/meta-head";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 
-definePageMeta({
-  alias: "/:locale/gebouwen",
-});
+definePageMeta({ alias: "/:locale/gebouwen" });
 
 const store = useStore();
 const mapStore = useMapStore();
@@ -29,12 +26,7 @@ const { $t } = useNuxtApp();
 
 const title = computed(() => $t("buildingTitle"));
 
-useHead(() =>
-  metaHead({
-    title: title.value,
-    description: "",
-  })
-);
+useSpacefinderHead({ title });
 
 onMounted(() => {
   store.clearSelection();
