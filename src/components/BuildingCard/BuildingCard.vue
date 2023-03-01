@@ -1,6 +1,10 @@
 <template>
   <NuxtLink
-    :to="buildingRoute({ buildingSlug: building.slug })"
+    :to="
+      $localePath('/buildings/:buildingSlug', {
+        buildingSlug: building.slug,
+      })
+    "
     class="building-card card"
   >
     <BuildingImage :building="building" class="building-card__image" />
@@ -22,7 +26,6 @@
 <script setup lang="ts">
 import type { Building } from "~/types/Building";
 defineProps<{ building: Building }>();
-const { buildingRoute } = useLocaleRoute();
 </script>
 
 <style>

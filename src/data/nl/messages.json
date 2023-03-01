@@ -72,7 +72,7 @@
   "seatsDescriptionShort": "zitplaatsen",
   "shareWithTelegram": "Deel via Telegram",
   "shareWithWhatsApp": "Deel via WhatsApp",
-  "showLocations": "toon 0 locaties | toon 1 locatie  | toon {count} locaties",
+  "showLocations": "toon 0 locaties | toon 1 locatie  | toon {amount} locaties",
   "showNearbyLocations": "toon alleen dichtstbijzijnde locaties",
   "showOpeningHours": "toon openingstijden",
   "showOpenLocations": "toon alleen open locaties",

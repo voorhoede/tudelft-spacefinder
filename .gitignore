@@ -5,7 +5,7 @@ coverage/
 
 # Nuxt related
 .nuxt
-dist/
+dist
 .output
 
 # Service worker

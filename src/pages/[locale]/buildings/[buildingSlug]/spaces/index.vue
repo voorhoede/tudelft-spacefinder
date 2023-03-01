@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
-const { buildingRoute } = useLocaleRoute();
+const { $localePath } = useNuxtApp();
 const buildingSlug = route.params.buildingSlug as string;
-navigateTo(buildingRoute({ buildingSlug }));
+navigateTo($localePath("/buildings/:buildingSlug", { buildingSlug }));
 </script>

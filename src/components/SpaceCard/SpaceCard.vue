@@ -1,7 +1,10 @@
 <template>
   <NuxtLink
     :to="
-      spaceRoute({ buildingSlug: space.building.slug, spaceSlug: space.slug })
+      $localePath('/buildings/:buildingSlug/spaces/:spaceSlug', {
+        buildingSlug: space.building.slug,
+        spaceSlug: space.slug,
+      })
     "
     class="space-card card"
   >
@@ -40,7 +43,6 @@
 <script setup lang="ts">
 import { type Space } from "~/types/Space";
 defineProps<{ space: Space }>();
-const { spaceRoute } = useLocaleRoute();
 </script>
 
 <style>

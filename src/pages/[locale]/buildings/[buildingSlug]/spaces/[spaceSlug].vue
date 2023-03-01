@@ -1,6 +1,12 @@
 <template>
   <section v-if="space && building">
-    <BackButton :to="buildingRoute({ buildingSlug: building.slug })" />
+    <BackButton
+      :to="
+        $localePath('/buildings/:buildingSlug', {
+          buildingSlug: building.slug,
+        })
+      "
+    />
 
     <div class="space-detail__share-button">
       <SocialShare :url="shareUrl" />
@@ -13,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import metaHead from "~/lib/meta-head";
 import spaceMapImage from "~/lib/space-map-image";
 import { useStore } from "~/stores/store";
@@ -23,11 +28,10 @@ definePageMeta({
   alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug",
 });
 
-const { t } = useI18n();
+const { $t } = useNuxtApp();
 const store = useStore();
 const mapStore = useMapStore();
 const route = useRoute();
-const { buildingRoute } = useLocaleRoute();
 
 //TODO
 const card = ref<InstanceType<typeof SpaceDetailCard> | null>(null);
@@ -58,7 +62,7 @@ useHead(() => {
   if (!space.value || !building.value) return {};
   return metaHead({
     title: `${space.value.name} (${space.value.roomId}) @ ${building.value.name} (${building.value.abbreviation})`,
-    description: `${space.value.seats} ${t("seatsDescription")}`,
+    description: `${space.value.seats} ${$t("seatsDescription")}`,
     image: spaceMapImage(space.value, runtimeConfig.public.maxboxToken),
   });
 });

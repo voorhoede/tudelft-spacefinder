@@ -23,16 +23,14 @@ import mapMarker from "~/assets/icons/map-marker.png";
 import campusBounds from "~/lib/campus-bounds";
 import { i18nSlug } from "~/lib/i18n-slug";
 import { useMapStore } from "~/stores/map";
-import { useI18n } from "vue-i18n";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 
 const runtimeConfig = useRuntimeConfig();
-const { locale, t } = useI18n();
+const { $locale, $localePath } = useNuxtApp();
 const router = useRouter();
 const store = useStore();
 const mapStore = useMapStore();
-const { spaceRoute } = useLocaleRoute();
 const { mapLoaded, activeMarkerFilters } = storeToRefs(mapStore);
 
 const mapContainer = ref(null as null | HTMLDivElement);
@@ -154,16 +152,18 @@ function initMap(accessToken: string) {
       }
       const buildingSlug =
         i18nSlug(
-          locale.value,
+          $locale.value,
           store.getBuildingByNumber(properties.buildingNumber as number)
         ) ?? "";
       const spaceSlug =
         i18nSlug(
-          locale.value,
+          $locale.value,
           store.getSpaceById(properties.spaceId as string)
         ) ?? "";
-      const url = spaceRoute({ buildingSlug, spaceSlug });
-
+      const url = $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+        buildingSlug,
+        spaceSlug,
+      });
       router.push(url);
     }
   });

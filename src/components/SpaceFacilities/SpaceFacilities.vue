@@ -41,7 +41,6 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import type { SpaceFeatures } from "~/types/Filters";
 import { Tooltip } from "floating-vue";
 import "floating-vue/dist/style.css";
@@ -56,9 +55,9 @@ const facilitiesPresent = computed(() =>
       ["studyType", "quietness"].includes(key) ? `${key}.${value}` : key
     )
 );
-const { t } = useI18n();
+const { $t } = useNuxtApp();
 const seatsDescription = computed(
-  () => `${props.seats} ${t("seatsDescription")}`
+  () => `${props.seats} ${$t("seatsDescription")}`
 );
 
 function getIconName(facilityValue: string) {

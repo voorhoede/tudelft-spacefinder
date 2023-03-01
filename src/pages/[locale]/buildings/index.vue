@@ -14,7 +14,6 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useI18n } from "vue-i18n";
 import metaHead from "~/lib/meta-head";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
@@ -26,9 +25,9 @@ definePageMeta({
 const store = useStore();
 const mapStore = useMapStore();
 const { buildings } = storeToRefs(store);
-const { t } = useI18n();
+const { $t } = useNuxtApp();
 
-const title = computed(() => t("buildingTitle"));
+const title = computed(() => $t("buildingTitle"));
 
 useHead(() =>
   metaHead({

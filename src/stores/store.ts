@@ -62,14 +62,15 @@ export const useStore = defineStore("index", () => {
     buildingsI18n.value = buildings;
   }
 
-  const locale = ref("en");
+  //const locale = ref("en");
 
   const buildings = computed(() => {
-    //const { locale } = useI18n();
+    const { $locale } = useNuxtApp();
+    // TODO: is it really a good idea to have a computed localized buildings and especially spaces?
     return (
       buildingsI18n.value
         .map((buildingI18n) => {
-          const i18nProps = buildingI18n.i18n[locale.value];
+          const i18nProps = buildingI18n.i18n[$locale.value];
           return {
             ...buildingI18n,
             ...i18nProps,
@@ -93,9 +94,9 @@ export const useStore = defineStore("index", () => {
   }
 
   const spaces = computed(() => {
-    //const { locale } = useI18n();
+    const { $locale } = useNuxtApp();
     return spacesI18n.value.map((spaceI18n) => {
-      const propsI18n = spaceI18n.i18n[locale.value];
+      const propsI18n = spaceI18n.i18n[$locale.value];
       const building = getBuildingByNumber(spaceI18n.buildingNumber);
       return {
         ...spaceI18n,
@@ -134,7 +135,6 @@ export const useStore = defineStore("index", () => {
   }
 
   return {
-    locale,
     isMapMode,
     isMobile,
     selection,
