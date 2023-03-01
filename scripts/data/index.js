@@ -19,7 +19,7 @@ const writeFiles = (files = []) => {
   return Promise.all(files.map(({ path, contents }) => {
     const stringifiedData = JSON.stringify(contents, null, 2)
     return new Promise((resolve, reject) => {
-      writeFile(`./src/public/data/${path}.json`, stringifiedData, 'utf8', (err) => {
+      writeFile(`./src/data/${path}.json`, stringifiedData, 'utf8', (err) => {
         if (err) {
           return reject(err)
         }
