@@ -15,8 +15,6 @@ export const useMapStore = defineStore("map", () => {
 
   const mapLoaded = ref(false);
 
-  const activeMarkerFilters = ref([] as Filter[]);
-
   const geoJsonSpaces = computed(() => {
     const now = new Date();
     const featuresPerSpace = spaces.value.map((space) => {
@@ -114,7 +112,8 @@ export const useMapStore = defineStore("map", () => {
   type AnyFilter = ["any", ...Array<EqualsFilter>];
   type Filter = EqualsFilter | InFilter | AnyFilter;
 
-  function updateMarkers() {
+  function getActiveMarkerFilters() {
+    const result = [] as Filter[];
     const {
       building: { number: buildingNumber } = {},
       space: { spaceId } = {},
@@ -123,11 +122,8 @@ export const useMapStore = defineStore("map", () => {
     let newValue: Filter[] = [];
     let hasSelectedBuilding = false;
 
-    if (spaceId) {
-      // All filters are off if a space is selected
-      activeMarkerFilters.value = [["==", "spaceId", spaceId]];
-      return;
-    }
+    if (spaceId) return [["==", "spaceId", spaceId]]; // All filters are off if a space is selected
+
     if (buildingNumber) {
       // If a building is selected, filtering by building should be disabled
       newValue = [["==", "buildingNumber", buildingNumber]];
@@ -159,20 +155,28 @@ export const useMapStore = defineStore("map", () => {
       },
       [] as Filter[]
     );
-    activeMarkerFilters.value = [...newValue, ...featureFilters];
+    return [...newValue, ...featureFilters];
+  }
+
+  async function updateMarkers() {
+    const map = await getMap();
+    const activeMarkerFilters = getActiveMarkerFilters();
+    if (activeMarkerFilters.length) {
+      map.setFilter("points", ["all", ...activeMarkerFilters]);
+    } else {
+      map.setFilter("points");
+    }
   }
 
   return {
     mapLoaded,
     setMap,
-    getMap,
     zoomToCampus,
     zoomToSelection,
     zoomIn,
     zoomOut,
     zoomAuto,
     resizeMap,
-    activeMarkerFilters,
     updateMarkers,
     geoJsonSpaces,
   };
