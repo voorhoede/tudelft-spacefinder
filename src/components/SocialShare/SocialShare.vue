@@ -4,9 +4,9 @@
       <SvgIcon name="share-icon" class="button--round__icon" />
       <span class="a11y-sr-only">
         <slot>{{
-          !optionsAreVisible
-            ? $t("showSharingOptions")
-            : $t("hideSharingOptions")
+          optionsAreVisible
+            ? $t("hideSharingOptions")
+            : $t("showSharingOptions")
         }}</slot>
       </span>
     </button>
