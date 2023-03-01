@@ -5,6 +5,22 @@ export default defineNuxtConfig({
   srcDir: "src/",
   modules: ["@pinia/nuxt", "@vueuse/nuxt", "@kevinmarrec/nuxt-pwa"],
   css: ["normalize.css", "@/components/app-core/index.css"],
+  app: {
+    head: {
+      title: "TU Delft Spacefinder",
+      link: [
+        //{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
+        { rel: "dns-prefetch", href: "https://api.mapbox.com/" },
+        { rel: "dns-prefetch", href: "https://www.datocms-assets.com/" },
+      ],
+      script: [
+        {
+          src: "//siteimproveanalytics.com/js/siteanalyze_6005654.js",
+          defer: true,
+        },
+      ],
+    },
+  },
   build: {
     transpile: ["floating-vue"],
   },
