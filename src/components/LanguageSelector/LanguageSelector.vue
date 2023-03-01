@@ -36,7 +36,7 @@ function getLocalePath(locale: string) {
   const localisedRouteName = history.currentPageRoute.name;
   const genericRouteName = localisedRouteName.split("___")[0];
   const parts = genericRouteName.split("-");
-  if (parts.length < 3) return $localePath(`/${parts[1]}`, { locale });
+  if (parts.length < 3) return $localePath(`/${parts[1] ?? ""}`, { locale });
   const buildingSlug =
     selection.value.building && selection.value.building.i18n[locale].slug;
   const spaceSlug =
