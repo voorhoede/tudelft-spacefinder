@@ -1,4 +1,4 @@
 <script setup lang="ts">
-const { rootRoute } = useLocaleRoute();
-navigateTo(rootRoute.value);
+const { $localePath } = useNuxtApp();
+navigateTo($localePath("/"));
 </script>

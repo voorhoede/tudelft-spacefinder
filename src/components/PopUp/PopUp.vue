@@ -23,16 +23,13 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import { usePageContent } from "~/stores/pageContent";
-import { useStore } from "~/stores/store";
 
-const { locale } = useI18n();
-const store = useStore();
+const { $locale } = useNuxtApp();
 const pageContent = usePageContent();
 
-const title = computed(() => pageContent.onboarding[locale.value].title);
-const body = computed(() => pageContent.onboarding[locale.value].body);
+const title = computed(() => pageContent.onboarding[$locale.value].title);
+const body = computed(() => pageContent.onboarding[$locale.value].body);
 const hasSeenOnboarding = useLocalStorage("hasSeenOnboarding", false);
 const isOpen = ref(false);
 

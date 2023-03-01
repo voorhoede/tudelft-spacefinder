@@ -1,9 +1,6 @@
 <template>
   <section v-if="building">
-    <BackButton
-      :use-history="false"
-      :to="buildingRoute({ buildingSlug: building.slug })"
-    />
+    <BackButton :use-history="false" :to="$localePath('/buildings')" />
     <div class="default-layout__info building-layout">
       <BuildingHeader class="building-layout__header" :building="building" />
       <SpaceList class="building-layout__spaces" :spaces="spaces" />
@@ -12,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import metaHead from "~/lib/meta-head";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
@@ -20,11 +16,10 @@ definePageMeta({
   alias: "/:locale/gebouwen/:buildingSlug",
 });
 
-const { t } = useI18n();
+const { $t } = useNuxtApp();
 const store = useStore();
 const mapStore = useMapStore();
 const route = useRoute();
-const { buildingRoute } = useLocaleRoute();
 
 const building = computed(() =>
   store.getBuildingBySlug(route.params.buildingSlug as string)
@@ -38,7 +33,7 @@ useHead(() => {
   if (!building.value) return {};
   return metaHead({
     title: `${building.value.name} (${building.value.abbreviation})`,
-    description: `${building.value.totalSpaces} ${t("spaces")}`,
+    description: `${building.value.totalSpaces} ${$t("spaces")}`,
     image: {
       url: `${building.value.image.url}?auto=format&fm=jpg&auto=quality`,
     },

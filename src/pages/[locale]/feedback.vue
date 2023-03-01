@@ -8,19 +8,18 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import metaHead from "~/lib/meta-head";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 import { usePageContent } from "~/stores/pageContent";
 
-const { locale } = useI18n();
+const { $locale } = useNuxtApp();
 const store = useStore();
 const pageContent = usePageContent();
 const mapStore = useMapStore();
 
-const title = computed(() => pageContent.feedbackPage[locale.value].title);
-const body = computed(() => pageContent.feedbackPage[locale.value].body);
+const title = computed(() => pageContent.feedbackPage[$locale.value].title);
+const body = computed(() => pageContent.feedbackPage[$locale.value].body);
 
 useHead(() =>
   metaHead({

@@ -2,7 +2,7 @@
   <div>
     <template v-for="{ locale, name } in languages">
       <NuxtLink
-        v-if="locale !== $i18n.locale"
+        v-if="locale !== $locale.value"
         :key="locale"
         :to="getLocalePath(locale)"
         :hreflang="locale"
@@ -31,20 +31,27 @@ const languages = [
 const history = useHistoryStore();
 const store = useStore();
 const { selection } = storeToRefs(store);
-const { genericRoute, buildingRoute, spaceRoute } = useLocaleRoute();
+const { $localePath } = useNuxtApp();
 function getLocalePath(locale: string) {
   const localisedRouteName = history.currentPageRoute.name;
   const genericRouteName = localisedRouteName.split("___")[0];
   const parts = genericRouteName.split("-");
-  if (parts.length < 3) return genericRoute(locale, parts[1]);
+  if (parts.length < 3) return $localePath(`/${parts[1]}`, { locale });
   const buildingSlug =
     selection.value.building && selection.value.building.i18n[locale].slug;
   const spaceSlug =
     selection.value.space && selection.value.space.i18n[locale].slug;
 
   if (spaceSlug)
-    return spaceRoute({ buildingSlug: buildingSlug!, spaceSlug, locale });
+    return $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+      buildingSlug: buildingSlug!,
+      spaceSlug,
+      locale,
+    });
 
-  return buildingRoute({ buildingSlug: buildingSlug!, locale });
+  return $localePath("/buildings/:buildingSlug", {
+    buildingSlug: buildingSlug!,
+    locale,
+  });
 }
 </script>

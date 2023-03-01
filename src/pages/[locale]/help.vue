@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import metaHead from "~/lib/meta-head";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
@@ -16,13 +15,13 @@ import { usePageContent } from "~/stores/pageContent";
 definePageMeta({
   alias: "/:locale/hulp",
 });
-const { locale } = useI18n();
+const { $locale } = useNuxtApp();
 const store = useStore();
 const pageContent = usePageContent();
 const mapStore = useMapStore();
 
-const title = computed(() => pageContent.infoPage[locale.value].title);
-const body = computed(() => pageContent.infoPage[locale.value].body);
+const title = computed(() => pageContent.infoPage[$locale.value].title);
+const body = computed(() => pageContent.infoPage[$locale.value].body);
 
 useHead(() =>
   metaHead({

@@ -13,7 +13,7 @@
         </li>
         <li class="app-menu__item">
           <NuxtLink
-            :to="buildingsRoute"
+            :to="$localePath('/buildings')"
             class="app-menu__link"
             @click="$emit('close')"
           >
@@ -26,7 +26,7 @@
         </li>
         <li class="app-menu__item">
           <NuxtLink
-            :to="helpRoute"
+            :to="$localePath('/help')"
             class="app-menu__link"
             @click="$emit('close')"
           >
@@ -39,7 +39,7 @@
         </li>
         <li class="app-menu__item">
           <NuxtLink
-            :to="feedbackRoute"
+            :to="$localePath('/feedback')"
             class="app-menu__link"
             @click="$emit('close')"
           >
@@ -98,7 +98,6 @@ defineProps<{ isOpen?: boolean }>();
 const emit = defineEmits(["close"]);
 const store = useStore();
 const installationStore = useInstallationStore();
-const { helpRoute, feedbackRoute, buildingsRoute } = useLocaleRoute();
 
 const { isInstallable } = storeToRefs(installationStore);
 const { isMapMode } = storeToRefs(store);
