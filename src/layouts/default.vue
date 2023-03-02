@@ -69,8 +69,11 @@ useHead({
   script: [
     {
       innerHTML: `
+      (function(){  
         var isIE = (/(MSIE|Trident)/).test(window.navigator.userAgent);
-        if (isIE) { document.documentElement.className += " old-ie"; }`,
+        if (isIE) { document.documentElement.className += " old-ie"; }
+      })()
+      `,
     },
   ],
 });
