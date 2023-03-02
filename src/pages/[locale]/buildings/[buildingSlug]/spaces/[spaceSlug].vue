@@ -51,7 +51,6 @@ onMounted(() => {
     ? { bottom: card.value!.getClientHeight()! + 2 * 20 }
     : {};
   mapStore.zoomToSelection(padding);
-  mapStore.updateMarkers();
 });
 
 useSpacefinderHead(

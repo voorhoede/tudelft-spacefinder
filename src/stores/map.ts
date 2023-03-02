@@ -18,6 +18,7 @@ export const useMapStore = defineStore("map", () => {
   const geoJsonSpaces = computed(() => {
     const now = new Date();
     const featuresPerSpace = spaces.value.map((space) => {
+      //TODO: use the raw spacesI18n?
       return {
         type: "Feature" as const,
         properties: {
@@ -112,7 +113,7 @@ export const useMapStore = defineStore("map", () => {
   type AnyFilter = ["any", ...Array<EqualsFilter>];
   type Filter = EqualsFilter | InFilter | AnyFilter;
 
-  function getActiveMarkerFilters() {
+  const activeMarkerFilters = computed(() => {
     let newValue: Filter[] = [];
     let hasSelectedBuilding = false;
 
@@ -151,17 +152,18 @@ export const useMapStore = defineStore("map", () => {
       [] as Filter[]
     );
     return [...newValue, ...featureFilters];
-  }
+  });
 
   async function updateMarkers() {
     const map = await getMap();
-    const activeMarkerFilters = getActiveMarkerFilters();
-    if (activeMarkerFilters.length) {
-      map.setFilter("points", ["all", ...activeMarkerFilters]);
+    if (activeMarkerFilters.value.length) {
+      map.setFilter("points", ["all", ...activeMarkerFilters.value]);
     } else {
       map.setFilter("points");
     }
   }
+
+  watch(activeMarkerFilters, () => updateMarkers());
 
   return {
     mapLoaded,

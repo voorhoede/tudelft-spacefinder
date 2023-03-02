@@ -41,7 +41,6 @@ useSpacefinderHead(
 
 onMounted(() => {
   mapStore.zoomToSelection();
-  mapStore.updateMarkers();
 });
 </script>
 

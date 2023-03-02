@@ -43,12 +43,6 @@ onBeforeUnmount(() => {
   window.removeEventListener("resize", onResizeDebounce, true);
 });
 
-//TODO: move to store
-watch(
-  () => store.filteredSpaces,
-  () => mapStore.updateMarkers()
-);
-
 function autoFocus() {
   mapStore.zoomAuto();
 }
