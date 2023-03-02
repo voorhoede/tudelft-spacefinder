@@ -33,23 +33,23 @@ const { $localePath } = useNuxtApp();
 const { name: routeName } = useRoute();
 
 function getLocalePath(locale: string) {
-  const parts = (routeName as string).split("-");
-  if (parts.length < 3) return $localePath(`/${parts[1] ?? ""}`, { locale });
-  const buildingSlug =
-    selection.value.building && selection.value.building.i18n[locale].slug;
-  const spaceSlug =
-    selection.value.space && selection.value.space.i18n[locale].slug;
-
-  if (spaceSlug)
-    return $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+  if (selection.value.building) {
+    const buildingSlug = selection.value.building.i18n[locale].slug;
+    if (selection.value.space) {
+      const spaceSlug = selection.value.space.i18n[locale].slug;
+      return $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+        buildingSlug,
+        spaceSlug,
+        locale,
+      });
+    }
+    return $localePath("/buildings/:buildingSlug", {
       buildingSlug: buildingSlug!,
-      spaceSlug,
       locale,
     });
+  }
 
-  return $localePath("/buildings/:buildingSlug", {
-    buildingSlug: buildingSlug!,
-    locale,
-  });
+  const [, rootSegment] = (routeName as string).split("-");
+  return $localePath(`/${rootSegment ?? ""}`, { locale });
 }
 </script>
