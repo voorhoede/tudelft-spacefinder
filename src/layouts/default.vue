@@ -29,14 +29,13 @@
 </template>
 
 <script setup lang="ts">
-import debounce from "lodash.debounce";
 import { useStore } from "~/stores/store";
 
 const store = useStore();
 const defaultLayout = ref<null | HTMLDivElement>(null);
 const openedMenu = ref<null | string>(null);
 
-const onResizeDebounce = debounce(onResize, 200);
+const onResizeDebounce = useDebounceFn(onResize, 200);
 
 function openAppMenu() {
   openedMenu.value = "app-menu";

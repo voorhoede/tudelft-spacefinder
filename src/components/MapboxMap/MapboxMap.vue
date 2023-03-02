@@ -35,7 +35,7 @@ const { mapLoaded } = storeToRefs(mapStore);
 
 const mapContainer = ref(null as null | HTMLDivElement);
 
-const onResizeDebounce = debounce(onResize, 200); //TODO: vueUse?
+const onResizeDebounce = useDebounceFn(onResize, 200);
 
 onMounted(() => {
   initMap(runtimeConfig.public.maxboxToken);
