@@ -303,7 +303,11 @@ defineProps<{ isOpen?: boolean }>();
 const route = useRoute();
 const store = useStore();
 
-const { isBuildingPage, filters, filteredSpaces } = storeToRefs(store);
+const isBuildingPage = computed(
+  () => route.params.buildingSlug && !route.params.spaceSlug
+);
+
+const { filters, filteredSpaces } = storeToRefs(store);
 
 const spacesCount = computed(
   () =>

@@ -43,7 +43,6 @@ useSpacefinderHead(
 );
 
 onMounted(() => {
-  store.clearSelection();
   store.selectBuilding(building.value);
   mapStore.zoomToSelection();
   mapStore.updateMarkers();

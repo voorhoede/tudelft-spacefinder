@@ -51,8 +51,7 @@ onMounted(() => {
   const padding = store.isMobile
     ? { bottom: card.value!.getClientHeight()! + 2 * 20 }
     : {};
-  store.selectBuilding(building.value);
-  store.selectSpace(space.value);
+  store.selectSpace(building.value, space.value);
   mapStore.zoomToSelection(padding);
   mapStore.updateMarkers();
 });
