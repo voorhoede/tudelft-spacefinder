@@ -21,7 +21,7 @@ import campusBounds from "~/lib/campus-bounds";
 import { i18nSlug } from "~/lib/i18n-slug";
 import { useMapStore } from "~/stores/map";
 import "mapbox-gl/dist/mapbox-gl.css";
-import mapboxgl from "mapbox-gl";
+const mapboxgl = (await import("mapbox-gl")).default;
 
 const runtimeConfig = useRuntimeConfig();
 const { $locale, $localePath } = useNuxtApp();
