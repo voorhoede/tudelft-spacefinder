@@ -28,15 +28,15 @@ const languages = [
 ];
 
 const store = useStore();
-const { selection } = storeToRefs(store);
+const { currentBuilding, currentSpace } = storeToRefs(store);
 const { $localePath } = useNuxtApp();
 const { name: routeName } = useRoute();
 
 function getLocalePath(locale: string) {
-  if (selection.value.building) {
-    const buildingSlug = selection.value.building.i18n[locale].slug;
-    if (selection.value.space) {
-      const spaceSlug = selection.value.space.i18n[locale].slug;
+  if (currentBuilding.value) {
+    const buildingSlug = currentBuilding.value.i18n[locale].slug;
+    if (currentSpace.value) {
+      const spaceSlug = currentSpace.value.i18n[locale].slug;
       return $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
         buildingSlug,
         spaceSlug,

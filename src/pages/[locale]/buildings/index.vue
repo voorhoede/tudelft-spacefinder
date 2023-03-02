@@ -29,7 +29,6 @@ const title = computed(() => $t("buildingTitle"));
 useSpacefinderHead({ title });
 
 onMounted(() => {
-  store.clearSelection();
   mapStore.zoomToCampus();
   mapStore.updateMarkers();
 });

@@ -9,7 +9,7 @@ import { Map } from "mapbox-gl";
 
 export const useMapStore = defineStore("map", () => {
   const store = useStore();
-  const { selection, spaces, filters } = storeToRefs(store);
+  const { currentBuilding, currentSpace, spaces, filters } = storeToRefs(store);
 
   const mapDeferred = deferred<Map>();
 
@@ -49,7 +49,7 @@ export const useMapStore = defineStore("map", () => {
   }
 
   function zoomAuto() {
-    if (selection.value.building) zoomToSelection();
+    if (currentBuilding.value) zoomToSelection();
     else zoomToCampus();
   }
 
@@ -84,7 +84,7 @@ export const useMapStore = defineStore("map", () => {
   }
 
   function zoomToSelection(padding: Partial<Padding> = {}) {
-    const bounds = selection.value.building!.bounds;
+    const bounds = currentBuilding.value!.bounds;
     zoomToBounds(bounds, padding);
   }
 
@@ -113,20 +113,15 @@ export const useMapStore = defineStore("map", () => {
   type Filter = EqualsFilter | InFilter | AnyFilter;
 
   function getActiveMarkerFilters() {
-    const result = [] as Filter[];
-    const {
-      building: { number: buildingNumber } = {},
-      space: { spaceId } = {},
-    } = selection.value;
-
     let newValue: Filter[] = [];
     let hasSelectedBuilding = false;
 
-    if (spaceId) return [["==", "spaceId", spaceId]]; // All filters are off if a space is selected
+    if (currentSpace.value)
+      return [["==", "spaceId", currentSpace.value.spaceId]]; // All filters are off if a space is selected
 
-    if (buildingNumber) {
+    if (currentBuilding.value) {
       // If a building is selected, filtering by building should be disabled
-      newValue = [["==", "buildingNumber", buildingNumber]];
+      newValue = [["==", "buildingNumber", currentBuilding.value.number]];
       hasSelectedBuilding = true;
     }
 

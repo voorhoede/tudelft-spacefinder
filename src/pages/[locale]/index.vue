@@ -24,7 +24,6 @@ useSpacefinderHead({
 });
 
 onMounted(() => {
-  store.clearSelection();
   mapStore.zoomToCampus();
   mapStore.updateMarkers();
 });

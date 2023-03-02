@@ -22,10 +22,9 @@
 import spaceMapImage from "~/lib/space-map-image";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
+import { storeToRefs } from "pinia";
 
-definePageMeta({
-  alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug",
-});
+definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 
 const { $t } = useNuxtApp();
 const store = useStore();
@@ -35,11 +34,11 @@ const route = useRoute();
 //TODO
 const card = ref<InstanceType<typeof SpaceDetailCard> | null>(null);
 
-const space = computed(() =>
-  store.getSpaceBySlug(route.params.spaceSlug as string)
-);
-
-const building = computed(() => space.value?.building);
+const {
+  currentBuilding: building,
+  currentSpace: space,
+  isMobile,
+} = storeToRefs(store);
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -48,10 +47,9 @@ const shareUrl = computed(
 );
 
 onMounted(() => {
-  const padding = store.isMobile
+  const padding = isMobile.value
     ? { bottom: card.value!.getClientHeight()! + 2 * 20 }
     : {};
-  store.selectSpace(building.value, space.value);
   mapStore.zoomToSelection(padding);
   mapStore.updateMarkers();
 });
