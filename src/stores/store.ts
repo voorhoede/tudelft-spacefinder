@@ -16,15 +16,12 @@ export const useStore = defineStore("index", () => {
     currentBuilding.value = undefined;
   }
 
-  function selectBuilding(building: Building | undefined) {
+  function selectBuilding(building: Building) {
     currentSpace.value = undefined;
     currentBuilding.value = building;
   }
 
-  function selectSpace(
-    building: Building | undefined,
-    space: Space | undefined
-  ) {
+  function selectSpace(building: Building, space: Space) {
     currentSpace.value = space;
     currentBuilding.value = building;
   }
