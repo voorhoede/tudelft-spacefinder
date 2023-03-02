@@ -14,12 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import debounce from "lodash.debounce";
 import { storeToRefs } from "pinia";
 import { useStore } from "~/stores/store";
 
 //TODO: https://github.com/nuxt/nuxt/issues/14131
-import mapMarker from "~/assets/icons/map-marker.png";
 import campusBounds from "~/lib/campus-bounds";
 import { i18nSlug } from "~/lib/i18n-slug";
 import { useMapStore } from "~/stores/map";
@@ -113,7 +111,7 @@ function initMap(accessToken: string) {
   let l: Partial<mapboxgl.LngLatBoundsLike> = {};
 
   map.on("load", () => {
-    map.loadImage(mapMarker, (error: any, image: any) => {
+    map.loadImage("/icons/map-marker.png", (error: any, image: any) => {
       if (error) {
         console.error("a mapbox error occurred");
         return;
