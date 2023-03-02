@@ -29,7 +29,7 @@ import type { OpeningHours } from "~/types/OpeningHours";
 const props = defineProps<{ openingHours: OpeningHours[] }>();
 const isOpen = computed(() => {
   const indexToday = 0;
-  const openingHoursToday = props.openingHours[indexToday].time; //TODO: say what
+  const openingHoursToday = props.openingHours[indexToday].time; //TODO: will we still rely on daily deploys to determine the meaning of "today"?
   const now = new Date();
 
   return openingHoursToday.some(([startTime, endTime]) => {
