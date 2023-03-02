@@ -8,13 +8,11 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 
 definePageMeta({ alias: "/:locale/hulp" });
 
 const { $pageContent } = useNuxtApp();
-const store = useStore();
 const mapStore = useMapStore();
 
 const title = computed(() => $pageContent("infoPage.title"));
@@ -22,7 +20,6 @@ const title = computed(() => $pageContent("infoPage.title"));
 useSpacefinderHead({ title });
 
 onMounted(() => {
-  store.clearSelection();
   mapStore.zoomToCampus();
   mapStore.updateMarkers();
 });

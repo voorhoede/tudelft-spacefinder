@@ -8,33 +8,25 @@ export const useStore = defineStore("index", () => {
   const isMapMode = ref(false);
   const isMobile = ref(false);
 
-  const selection = ref({
-    building: undefined as undefined | Building,
-    space: undefined as undefined | Space,
-  });
+  const currentBuilding = ref(undefined as undefined | Building);
+  const currentSpace = ref(undefined as undefined | Space);
 
   function clearSelection() {
-    selection.value = {
-      building: undefined,
-      space: undefined,
-    };
+    currentSpace.value = undefined;
+    currentBuilding.value = undefined;
   }
 
   function selectBuilding(building: Building | undefined) {
-    selection.value = {
-      building,
-      space: undefined,
-    };
+    currentSpace.value = undefined;
+    currentBuilding.value = building;
   }
 
   function selectSpace(
     building: Building | undefined,
     space: Space | undefined
   ) {
-    selection.value = {
-      building,
-      space,
-    };
+    currentSpace.value = space;
+    currentBuilding.value = building;
   }
 
   const defaultFilters: Filters = {
@@ -136,7 +128,8 @@ export const useStore = defineStore("index", () => {
   return {
     isMapMode,
     isMobile,
-    selection,
+    currentBuilding, //TODO: readonly?
+    currentSpace, //TODO: readonly?
     clearSelection,
     selectBuilding,
     selectSpace,

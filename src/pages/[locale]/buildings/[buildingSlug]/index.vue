@@ -11,18 +11,15 @@
 <script setup lang="ts">
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
-definePageMeta({
-  alias: "/:locale/gebouwen/:buildingSlug",
-});
+import { storeToRefs } from "pinia";
+
+definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug" });
 
 const { $t } = useNuxtApp();
 const store = useStore();
 const mapStore = useMapStore();
-const route = useRoute();
 
-const building = computed(() =>
-  store.getBuildingBySlug(route.params.buildingSlug as string)
-);
+const { currentBuilding: building } = storeToRefs(store);
 
 const spaces = computed(() =>
   store.filteredSpaces.filter((space) => space.building === building.value)
@@ -43,7 +40,6 @@ useSpacefinderHead(
 );
 
 onMounted(() => {
-  store.selectBuilding(building.value);
   mapStore.zoomToSelection();
   mapStore.updateMarkers();
 });
