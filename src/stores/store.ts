@@ -27,8 +27,14 @@ export const useStore = defineStore("index", () => {
     };
   }
 
-  function selectSpace(space: Space | undefined) {
-    selection.value.space = space;
+  function selectSpace(
+    building: Building | undefined,
+    space: Space | undefined
+  ) {
+    selection.value = {
+      building,
+      space,
+    };
   }
 
   const defaultFilters: Filters = {
@@ -107,10 +113,6 @@ export const useStore = defineStore("index", () => {
     spaceFilter(spaces.value, filters.value)
   );
 
-  const isBuildingPage = computed(
-    () => !!selection.value.building && !selection.value.space
-  );
-
   const isFiltered = computed(
     () => filteredSpaces.value.length < spaces.value.length
   );
@@ -138,7 +140,6 @@ export const useStore = defineStore("index", () => {
     clearSelection,
     selectBuilding,
     selectSpace,
-    isBuildingPage,
     filters: skipHydrate(filters),
     setBuildings,
     buildings,
