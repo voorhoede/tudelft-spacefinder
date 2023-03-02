@@ -17,7 +17,6 @@
 import { storeToRefs } from "pinia";
 import { useStore } from "~/stores/store";
 
-//TODO: https://github.com/nuxt/nuxt/issues/14131
 import campusBounds from "~/lib/campus-bounds";
 import { i18nSlug } from "~/lib/i18n-slug";
 import { useMapStore } from "~/stores/map";
