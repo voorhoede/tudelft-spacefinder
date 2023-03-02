@@ -3,15 +3,12 @@
     <h1>
       {{ error.statusCode == 404 ? "Page not found" : "An error occurred" }}
     </h1>
-    <button @click="handleError" class="button button--primary" href="~/">
-      Return home
-    </button>
+    <a class="button button--primary" href="/"> Return home </a>
   </section>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ error: { statusCode: number } }>();
-const handleError = () => clearError({ redirect: "/" });
+defineProps<{ error: { statusCode: number } }>();
 </script>
 
 <style>

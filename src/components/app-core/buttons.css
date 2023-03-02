@@ -3,11 +3,13 @@
     border: 1px solid transparent;
     cursor: pointer;
     color: var(--text-color);
+    text-decoration: none;
 }
 
 .button:hover,
 .button:focus {
     border: 1px solid var(--text-color);
+    color: var(--text-color);
 }
 
 .button--header {
@@ -53,6 +55,7 @@
 .button--primary:focus {
   border: 1px solid var(--brand-primary-color-dark);
   background: var(--brand-primary-color-dark);
+  color: var(--background-color);
 }
 
 .button--secondary {
