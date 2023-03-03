@@ -6,7 +6,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "npm run data && nuxt prepare",
+    "prep": "npm run data && nuxt prepare",
+    //"postinstall": "npm run data && nuxt prepare",
     "test": "npm run test:unit",
     "test:e2e": "cypress run",
     "test:unit": "vitest"
