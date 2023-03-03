@@ -22,8 +22,10 @@ const mapStore = useMapStore();
 const { currentBuilding: building } = storeToRefs(store);
 
 const spaces = computed(() =>
-  store.filteredSpaces.filter((space) => space.building === building.value)
-); //TODO: rly?
+  store.filteredSpaces.filter(
+    (space) => space.buildingNumber === building.value!.number
+  )
+);
 
 useSpacefinderHead(
   computed(() =>
