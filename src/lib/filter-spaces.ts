@@ -51,20 +51,14 @@ function filterSpace(
   const now = new Date();
 
   return activeFilterKeys.every((activeFilterKey) => {
-    const facility = space.facilities[activeFilterKey];
-    if (Array.isArray(filters[activeFilterKey])) {
-      let filterValue = facility;
-
-      if (activeFilterKey === "buildings") {
-        filterValue = space.building.number;
-      }
-      return filters[activeFilterKey].includes(filterValue);
-    }
-
-    if (activeFilterKey === "showOpenLocations") {
+    if (activeFilterKey == "showOpenLocations")
       return spaceIsOpen(now, space.openingHours);
-    }
-
-    return facility;
+    if (activeFilterKey == "buildings")
+      return filters.buildings.includes(space.building.number);
+    if (activeFilterKey == "quietness")
+      return filters.quietness.includes(space.facilities.quietness);
+    if (activeFilterKey == "studyType")
+      return filters.studyType.includes(space.facilities.studyType);
+    return space.facilities[activeFilterKey];
   });
 }

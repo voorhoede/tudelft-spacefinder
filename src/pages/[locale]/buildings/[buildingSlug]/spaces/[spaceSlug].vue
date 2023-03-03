@@ -23,6 +23,7 @@ import spaceMapImage from "~/lib/space-map-image";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
+import SpaceDetailCard from "~/components/SpaceDetailCard.vue";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 
@@ -31,7 +32,6 @@ const store = useStore();
 const mapStore = useMapStore();
 const route = useRoute();
 
-//TODO
 const card = ref<InstanceType<typeof SpaceDetailCard> | null>(null);
 
 const {

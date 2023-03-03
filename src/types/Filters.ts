@@ -1,8 +1,7 @@
 export interface Filters extends Facilities {
-  buildings: [];
+  buildings: number[];
   studyType: StudyType[];
   quietness: Quietness[];
-  showNearbyLocations: boolean;
   showOpenLocations: boolean;
 }
 
