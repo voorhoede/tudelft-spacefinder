@@ -1,10 +1,11 @@
-import { Facilities, SpaceFeatures } from "./Filters";
-import { OpeningHours } from "./OpeningHours";
+import type { Facilities, SpaceFeatures } from "./Filters";
+import type { OpeningHours } from "./OpeningHours";
+import type { Building } from "./Building";
 
 export interface Space extends SpaceI18n {
   name: string;
   slug: string;
-  building: any;
+  building: Building;
 }
 
 export interface SpaceI18n {

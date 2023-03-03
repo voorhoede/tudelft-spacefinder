@@ -38,7 +38,6 @@ export const useStore = defineStore("index", () => {
     powerOutlets: false,
     presentationScreen: false,
     quietness: [],
-    showNearbyLocations: false,
     showOpenLocations: false,
     smartBoard: false,
     stationaryPC: false,
