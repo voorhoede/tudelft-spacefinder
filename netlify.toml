@@ -1,4 +1,18 @@
 [build]
-  base = "/"
-  publish = "./dist"
-  command = "npm run generate"
+command = "npm run data && npm run generate"
+publish = "./dist"
+
+[build.environment]
+NODE_ENV = "production"
+NPM_CONFIG_AUDIT = "false"
+NPM_CONFIG_FUND = "false"
+NPM_FLAGS = "--ignore-scripts"
+
+[build.processing.html]
+pretty_urls = true
+
+[[headers]]
+for = "/*"
+[headers.values]
+Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+Referrer-Policy = "no-referrer-when-downgrade"
