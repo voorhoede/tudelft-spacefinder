@@ -38,6 +38,7 @@
 const props = defineProps<{ title: string; isOpen?: boolean }>();
 const el = ref(null as null | HTMLDivElement);
 const closeButton = ref(null as null | HTMLButtonElement);
+// eslint-disable-next-line no-unused-vars
 let keydownEventListener = null;
 watch(
   () => props.isOpen,
