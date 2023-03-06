@@ -23,7 +23,7 @@ import spaceMapImage from "~/lib/space-map-image";
 import { useStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
-import SpaceDetailCard from "~/components/SpaceDetailCard.vue";
+import SpaceDetailCard from "~/components/SpaceDetailCard/SpaceDetailCard.vue";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 
