@@ -16,6 +16,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@kafkajs/confluent-schema-registry": "^3.3.0",
     "@kevinmarrec/nuxt-pwa": "^0.16.2",
     "@nuxtjs/supabase": "^0.3.1",
     "@pinia/nuxt": "^0.4.7",
