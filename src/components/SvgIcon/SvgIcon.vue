@@ -1,6 +1,6 @@
 <template>
   <svg>
-    <use :xlink:href="`#${name}`" />
+    <use :xlink:href="`#${props.name}`" />
   </svg>
 </template>
 
