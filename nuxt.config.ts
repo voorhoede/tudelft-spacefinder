@@ -3,13 +3,17 @@ import routes from "./config/routes";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: "src/",
-  modules: ["@pinia/nuxt", "@vueuse/nuxt", "@kevinmarrec/nuxt-pwa"],
+  modules: [
+    "@pinia/nuxt",
+    "@nuxtjs/supabase",
+    "@vueuse/nuxt",
+    "@kevinmarrec/nuxt-pwa",
+  ],
   css: ["normalize.css", "@/components/app-core/index.css"],
   app: {
     head: {
       title: "TU Delft Spacefinder",
       link: [
-        //{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
         { rel: "dns-prefetch", href: "https://api.mapbox.com/" },
         { rel: "dns-prefetch", href: "https://www.datocms-assets.com/" },
       ],
@@ -44,14 +48,5 @@ export default defineNuxtConfig({
       display: "standalone",
       crossorigin: "use-credentials",
     },
-    // workbox: {
-    //   runtimeCaching: [
-    //     {
-    //       urlPattern: 'https://www.datocms-assets.com/.*',
-    //       handler: 'cacheFirst',
-    //       method: 'GET',
-    //     },
-    //   ],
-    // },
   },
 });
