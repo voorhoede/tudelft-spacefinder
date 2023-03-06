@@ -71,7 +71,7 @@ function fixInsecureLinks() {
     return;
   }
   const selector = `a:not([href^="${window.location.origin}"]):not([rel*="noreferrer"])`;
-  const observer = new MutationObserver((mutations) => {
+  const observer = new MutationObserver(() => {
     const element = mapContainer.value!.querySelector(".mapboxgl-ctrl-attrib");
     if (element) {
       observer.disconnect();
@@ -101,7 +101,6 @@ function initMap(accessToken: string) {
     style: "mapbox://styles/mapbox/streets-v10",
     maxBounds: [campusBounds.southWest, campusBounds.northEast],
   });
-  let l: Partial<mapboxgl.LngLatBoundsLike> = {};
 
   map.on("load", () => {
     map.loadImage("/icons/map-marker.png", (error: any, image: any) => {
