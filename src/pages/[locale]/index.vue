@@ -3,6 +3,7 @@
     <h2 class="a11y-sr-only">
       {{ allSpacesTitle }}
     </h2>
+    <Busyness />
     <SpaceList :spaces="filteredSpaces" />
   </section>
 </template>
