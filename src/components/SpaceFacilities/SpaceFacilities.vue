@@ -5,7 +5,7 @@
       :key="index"
       class="space-facility__item"
     >
-      <Tooltip delay="0" :instantMove="true">
+      <Tooltip :delay="0" :overflowPadding="4" :instantMove="true">
         <SvgIcon
           :name="getIconName(facility)"
           class="space-facility__icon"
@@ -25,7 +25,7 @@
       <h4 class="a11y-sr-only">
         {{ $t("seating") }}
       </h4>
-      <Tooltip>
+      <Tooltip :delay="0" :overflowPadding="4" :instantMove="true">
         <SvgIcon
           name="seat-icon"
           class="space-facility__seating-icon"
