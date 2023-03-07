@@ -50,7 +50,7 @@ const props = defineProps<{ facilities: SpaceFeatures; seats?: number }>();
 //TODO: these should come as props
 const facilitiesPresent = computed(() =>
   Object.entries(props.facilities)
-    .filter(([key, value]) => Boolean(value))
+    .filter(([, value]) => Boolean(value))
     .map(([key, value]) =>
       ["studyType", "quietness"].includes(key) ? `${key}.${value}` : key
     )

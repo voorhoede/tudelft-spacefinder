@@ -10,7 +10,10 @@
     "postinstall": "npm run data && nuxt prepare",
     "test": "npm run test:unit",
     "test:e2e": "cypress run",
-    "test:unit": "vitest"
+    "test:unit": "vitest",
+    "lint": "eslint '**/*.vue'",
+    "lint-staged": "nano-staged",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.16.2",
@@ -22,6 +25,7 @@
     "csv": "^6.2.7",
     "floating-vue": "^2.0.0-beta.20",
     "got": "^9.6.0",
+    "husky": "^8.0.3",
     "js-cookie": "^2.2.1",
     "kafkajs": "^2.2.4",
     "mapbox-gl": "^2.13.0",
@@ -39,11 +43,18 @@
     "@types/js-cookie": "^3.0.3",
     "@types/mapbox-gl": "^2.7.10",
     "@types/node": "^18.14.1",
+    "@typescript-eslint/parser": "^5.54.0",
     "cypress": "^12.7.0",
+    "eslint": "^8.35.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "nano-staged": "^0.8.0",
     "supabase": "^1.41.6",
     "vitest": "^0.29.2"
   },
   "overrides": {
     "vue": "latest"
+  },
+  "nano-staged": {
+    "*.vue": "eslint --fix --max-warnings 0"
   }
 }
