@@ -1,11 +1,6 @@
 <template>
   <NuxtLink
-    :to="
-      $localePath('/buildings/:buildingSlug/spaces/:spaceSlug', {
-        buildingSlug: space.building.slug,
-        spaceSlug: space.slug,
-      })
-    "
+    :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space })"
     class="space-card card"
   >
     <h3 v-if="space.name">

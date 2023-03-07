@@ -1,10 +1,6 @@
 <template>
   <NuxtLink
-    :to="
-      $localePath('/buildings/:buildingSlug', {
-        buildingSlug: building.slug,
-      })
-    "
+    :to="$localePath('/buildings/:buildingSlug', { building })"
     class="building-card card"
   >
     <BuildingImage :building="building" class="building-card__image" />

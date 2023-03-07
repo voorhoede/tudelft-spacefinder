@@ -18,13 +18,12 @@ import { storeToRefs } from "pinia";
 import { useStore } from "~/stores/store";
 
 import campusBounds from "~/lib/campus-bounds";
-import { i18nSlug } from "~/lib/i18n-slug";
 import { useMapStore } from "~/stores/map";
 import "mapbox-gl/dist/mapbox-gl.css";
 const mapboxgl = (await import("mapbox-gl")).default;
 
 const runtimeConfig = useRuntimeConfig();
-const { $locale, $localePath } = useNuxtApp();
+const { $localePath } = useNuxtApp();
 const router = useRouter();
 const store = useStore();
 const mapStore = useMapStore();
@@ -135,21 +134,10 @@ function initMap(accessToken: string) {
       if (!properties.buildingNumber || !properties.spaceId) {
         return;
       }
-      const buildingSlug =
-        i18nSlug(
-          $locale.value,
-          store.getBuildingByNumber(properties.buildingNumber as number)
-        ) ?? "";
-      const spaceSlug =
-        i18nSlug(
-          $locale.value,
-          store.getSpaceById(properties.spaceId as string)
-        ) ?? "";
-      const url = $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
-        buildingSlug,
-        spaceSlug,
-      });
-      router.push(url);
+      const space = store.getSpaceById(properties.spaceId as string);
+      router.push(
+        $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", { space })
+      );
     }
   });
 }
