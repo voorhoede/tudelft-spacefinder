@@ -3,7 +3,7 @@
     <h2 class="a11y-sr-only">
       {{ allSpacesTitle }}
     </h2>
-    <Busyness />
+    <OccupancyIndicator />
     <SpaceList :spaces="filteredSpaces" />
   </section>
 </template>
