@@ -1,7 +1,7 @@
 # tudelft-spacefinder
 > App to easily find available spaces on the TU Delft Campus.
 
-This app is a universal [Vue.js](https://vuejs.org/) app made with [Nuxt.js](https://nuxtjs.org/). The app has multi-language support (English and Dutch) using [Nuxt I18n](https://nuxt-community.github.io/nuxt-i18n/).
+This app is a universal [Vue.js](https://vuejs.org/) app made with [Nuxt](https://nuxt.com/). The app has multi-language support (English and Dutch).
 
 ## Development
 
@@ -36,3 +36,7 @@ do the following:
 ```sh
 ln -sf studieplekken-v<version>.csv data/studieplekken-latest.csv
 ```
+
+### Decision log
+
+Key decisions that are made during the course of the project are documented in [docs/decision-log/](docs/decision-log/). Please read the log so you understand why decisions are made and document key decisions when you make them.
