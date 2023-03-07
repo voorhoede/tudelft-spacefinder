@@ -8,23 +8,35 @@ export const useStore = defineStore("index", () => {
   const isMapMode = ref(false);
   const isMobile = ref(false);
 
-  const currentBuilding = ref(undefined as undefined | Building);
-  const currentSpace = ref(undefined as undefined | Space);
+  const currentBuildingSlug = ref(undefined as undefined | string);
+  const currentSpaceSlug = ref(undefined as undefined | string);
 
   function clearSelection() {
-    currentSpace.value = undefined;
-    currentBuilding.value = undefined;
+    currentSpaceSlug.value = undefined;
+    currentBuildingSlug.value = undefined;
   }
 
-  function selectBuilding(building: Building) {
-    currentSpace.value = undefined;
-    currentBuilding.value = building;
+  function selectBuilding(buildingSlug: string) {
+    currentSpaceSlug.value = undefined;
+    currentBuildingSlug.value = buildingSlug;
   }
 
-  function selectSpace(building: Building, space: Space) {
-    currentSpace.value = space;
-    currentBuilding.value = building;
+  function selectSpace(spaceSlug: string) {
+    currentSpaceSlug.value = spaceSlug;
+    currentBuildingSlug.value = undefined;
   }
+
+  const currentBuilding = computed(() =>
+    currentBuildingSlug.value
+      ? getBuildingBySlug(currentBuildingSlug.value)
+      : currentSpace.value
+      ? currentSpace.value.building
+      : undefined
+  );
+
+  const currentSpace = computed(() =>
+    currentSpaceSlug.value ? getSpaceBySlug(currentSpaceSlug.value) : undefined
+  );
 
   const defaultFilters: Filters = {
     adjustableChairs: false,
@@ -54,6 +66,19 @@ export const useStore = defineStore("index", () => {
 
   function setBuildings(buildings: BuildingI18n[]) {
     buildingsI18n.value = buildings;
+  }
+
+  function bulkSetBuildingOccupancy(data: Record<number, number>) {
+    buildingsI18n.value = buildingsI18n.value.map((building) => {
+      return { ...building, activeDevices: data[building.number] };
+    });
+  }
+
+  function setBuildingOccupancy(buildingNumber: number, activeDevices: number) {
+    const building = buildingsI18n.value.find(
+      (building) => building.number === buildingNumber
+    ); //TODO: extract function back
+    if (building) building.activeDevices = activeDevices;
   }
 
   //const locale = ref("en");
@@ -124,20 +149,23 @@ export const useStore = defineStore("index", () => {
   return {
     isMapMode,
     isMobile,
-    currentBuilding, //TODO: readonly?
-    currentSpace, //TODO: readonly?
+    currentBuildingSlug, //TODO: it sucks to expose them, but otherwise they don't come from the server
+    currentSpaceSlug,
+    currentBuilding,
+    currentSpace,
     clearSelection,
     selectBuilding,
     selectSpace,
     filters: skipHydrate(filters),
     setBuildings,
+    bulkSetBuildingOccupancy,
+    setBuildingOccupancy,
     buildings,
     setSpaces,
     spaces,
     filteredSpaces,
     clearFilters,
     isFiltered,
-    getBuildingByNumber,
     getBuildingBySlug,
     getSpaceById,
     getSpaceBySlug,
