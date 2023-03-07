@@ -1,4 +1,5 @@
 <template>
+  <span hidden>{{ busyness[0].status }}</span>
 </template>
 
 <script setup lang="ts">
