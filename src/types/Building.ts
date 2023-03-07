@@ -18,4 +18,6 @@ export interface BuildingI18n {
   totalSeats: number;
   totalSpaces: number;
   openingHours: OpeningHours[];
+
+  activeDevices?: number;
 }
