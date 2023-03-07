@@ -4,38 +4,35 @@ import type { Building, BuildingI18n } from "~/types/Building";
 import type { Filters } from "~/types/filters";
 import type { Space, SpaceI18n } from "~/types/Space";
 
+export type Selection =
+  | {
+      level: "building";
+      buildingSlug: string;
+    }
+  | {
+      level: "space";
+      spaceSlug: string;
+    }
+  | undefined;
+
 export const useStore = defineStore("index", () => {
   const isMapMode = ref(false);
   const isMobile = ref(false);
 
-  const currentBuildingSlug = ref(undefined as undefined | string);
-  const currentSpaceSlug = ref(undefined as undefined | string);
+  const currentSelection = ref<Selection>(undefined);
 
-  function clearSelection() {
-    currentSpaceSlug.value = undefined;
-    currentBuildingSlug.value = undefined;
-  }
-
-  function selectBuilding(buildingSlug: string) {
-    currentSpaceSlug.value = undefined;
-    currentBuildingSlug.value = buildingSlug;
-  }
-
-  function selectSpace(spaceSlug: string) {
-    currentSpaceSlug.value = spaceSlug;
-    currentBuildingSlug.value = undefined;
-  }
-
-  const currentBuilding = computed(() =>
-    currentBuildingSlug.value
-      ? getBuildingBySlug(currentBuildingSlug.value)
-      : currentSpace.value
-      ? currentSpace.value.building
+  const currentSpace = computed(() =>
+    currentSelection.value && currentSelection.value.level == "space"
+      ? getSpaceBySlug(currentSelection.value.spaceSlug)
       : undefined
   );
 
-  const currentSpace = computed(() =>
-    currentSpaceSlug.value ? getSpaceBySlug(currentSpaceSlug.value) : undefined
+  const currentBuilding = computed(() =>
+    currentSelection.value
+      ? currentSelection.value.level == "building"
+        ? getBuildingBySlug(currentSelection.value.buildingSlug)
+        : currentSpace.value?.building
+      : undefined
   );
 
   const defaultFilters: Filters = {
@@ -149,13 +146,9 @@ export const useStore = defineStore("index", () => {
   return {
     isMapMode,
     isMobile,
-    currentBuildingSlug, //TODO: it sucks to expose them, but otherwise they don't come from the server
-    currentSpaceSlug,
+    currentSelection,
     currentBuilding,
     currentSpace,
-    clearSelection,
-    selectBuilding,
-    selectSpace,
     filters: skipHydrate(filters),
     setBuildings,
     bulkSetBuildingOccupancy,
@@ -166,9 +159,7 @@ export const useStore = defineStore("index", () => {
     filteredSpaces,
     clearFilters,
     isFiltered,
-    getBuildingBySlug,
     getSpaceById,
-    getSpaceBySlug,
     buildingsI18n,
     spacesI18n,
   };
