@@ -44,7 +44,7 @@
       </div>
 
       <OpeningHours
-        :opening-hours-building="building.openingHours"
+        :opening-hours-building="space.building.openingHours"
         :opening-hours-space="space.openingHours"
         :show-toggle-on-desktop="false"
         class="space-detail-card__opening-hours"
@@ -55,8 +55,7 @@
 
 <script setup lang="ts">
 import type { Space } from "~/types/Space";
-import type { Building } from "~/types/Building";
-defineProps<{ building: Building; space: Space }>();
+defineProps<{ space: Space }>();
 
 const root = ref(null as null | HTMLDivElement);
 

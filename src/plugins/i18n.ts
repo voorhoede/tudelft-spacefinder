@@ -3,6 +3,8 @@ import nl from "../data/nl/messages.json";
 import onboarding from "../data/onboarding.json";
 import infoPage from "../data/infopage.json";
 import feedbackPage from "~/data/feedbackpage.json";
+import type { Building } from "../types/Building";
+import type { Space } from "../types/Space";
 
 const messages: Record<string, Record<string, string>> = { en, nl }; //TODO: better typescript
 const content: Record<string, Record<string, string>> = {};
@@ -33,7 +35,22 @@ function pageContent(locale: string, key: string) {
   return localContent[key] ?? key;
 }
 
-function localePath(path: string, params: Record<string, string>) {
+export type PathParams = {
+  building?: Building;
+  space?: Space;
+  locale: string;
+  buildingSlug?: string;
+  spaceSlug?: string;
+};
+
+function hasOwnProperty<X extends {}>(
+  obj: X,
+  prop: string
+): obj is X & Record<string, unknown> {
+  return obj.hasOwnProperty(prop);
+}
+
+function localePath(path: string, params: PathParams) {
   const segments = path.split("/");
   const shouldAddLocalePrefix =
     path.startsWith("/") && !segments.includes(":locale");
@@ -41,7 +58,14 @@ function localePath(path: string, params: Record<string, string>) {
   let url = segments
     .map((segment) => {
       if (!segment) return "";
-      if (segment.startsWith(":")) return params[segment.substring(1)] ?? "";
+      if (segment.startsWith(":")) {
+        const paramKey = segment.substring(1);
+        if (hasOwnProperty(params, paramKey)) {
+          const param = params[paramKey];
+          if (typeof param === "string") return param;
+        }
+        return "";
+      }
       return t(params["locale"], "routes." + segment); //TODO: separate dictionary and different default behavior for routes
     })
     .join("/");
@@ -50,15 +74,30 @@ function localePath(path: string, params: Record<string, string>) {
   return url;
 }
 
-export default defineNuxtPlugin((nuxtApp) => {
+function normalizePathParams(
+  params: Partial<PathParams> | undefined,
+  locale: string
+) {
+  const result = { locale, ...params } as PathParams;
+  if (!result.buildingSlug) {
+    const building = result.building || result.space?.building;
+    if (building) result.buildingSlug = building.i18n[result.locale].slug;
+  }
+  if (!result.spaceSlug && result.space) {
+    result.spaceSlug = result.space.i18n[result.locale].slug;
+  }
+  return result;
+}
+
+export default defineNuxtPlugin(() => {
   const locale = useState(() => "en");
 
   return {
     provide: {
       locale,
       t: (key: string, amount?: number) => t(locale.value, key, amount),
-      localePath: (path: string, params?: Record<string, string>) =>
-        localePath(path, { locale: locale.value, ...params }),
+      localePath: (path: string, params?: Partial<PathParams>) =>
+        localePath(path, normalizePathParams(params, locale.value)),
       pageContent: (key: string) => pageContent(locale.value, key),
     },
   };
