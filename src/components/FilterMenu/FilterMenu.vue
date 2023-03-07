@@ -275,12 +275,7 @@
         </button>
 
         <button class="button button--primary" @click="$emit('close')">
-          <template v-if="isBuildingPage">
-            {{ $t("showLocations", spacesCount) }}
-          </template>
-          <template v-else>
-            {{ $t("showLocations", filteredSpaces.length) }}
-          </template>
+          {{ $t("showLocations", spaceCount) }}
         </button>
       </div>
     </form>
@@ -300,23 +295,17 @@ const optionsPerFilter = Object.freeze({
 
 defineProps<{ isOpen?: boolean }>();
 
-const route = useRoute();
 const store = useStore();
 
-const isBuildingPage = computed(
-  () => route.params.buildingSlug && !route.params.spaceSlug
+const spaceCount = computed(() =>
+  store.currentSelection?.level == "building"
+    ? store.filteredSpaces.filter(
+        (space) => space.buildingNumber === store.currentBuilding!.number
+      ).length
+    : store.filteredSpaces.length
 );
 
-const { filters, filteredSpaces } = storeToRefs(store);
-
-const spacesCount = computed(
-  () =>
-    filteredSpaces.value.filter(
-      (space) =>
-        space.building ===
-        store.getBuildingBySlug(route.params.buildingSlug as string) // TODO: wtf
-    ).length
-);
+const { filters } = storeToRefs(store);
 
 function clearFilters() {
   store.clearFilters();
