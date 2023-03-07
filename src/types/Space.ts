@@ -1,4 +1,4 @@
-import type { Facilities, SpaceFeatures } from "./Filters";
+import type { SpaceFeatures } from "./Filters";
 import type { OpeningHours } from "./OpeningHours";
 import type { Building } from "./Building";
 
@@ -21,4 +21,6 @@ export interface SpaceI18n {
   buildingNumber: number;
   openingHours: OpeningHours[];
   imageUrl?: string | undefined; //TODO: not there
+
+  activeDevices?: number;
 }

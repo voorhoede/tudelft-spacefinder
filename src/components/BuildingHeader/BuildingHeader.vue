@@ -27,6 +27,7 @@
         :opening-hours-space="building.openingHours"
         class="building-header__opening-hours"
       />
+      <OccupancyIndicator :active-devices="building.activeDevices ?? 0" />
     </div>
   </div>
 </template>
