@@ -1,5 +1,7 @@
+import process from "node:process";
 import { Kafka } from "kafkajs";
 import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
+import { serverSupabaseClient } from "#supabase/server";
 
 const { kafkaConfig, schemaRegistry } = useRuntimeConfig();
 
@@ -23,17 +25,74 @@ const registry = new SchemaRegistry({
 });
 
 export default defineEventHandler(async (event) => {
+  const client = serverSupabaseClient(event);
   const consumer = kafka.consumer({ groupId: kafkaConfig.groupId });
 
   await consumer.connect();
   await consumer.subscribe({ topic: kafkaConfig.topic });
 
-  await consumer.run({
-    eachMessage: async ({ message }) => {
-      if (!message.value) return;
+  process.on("SIGINT", async function() {
+    console.log("SIGINT");
+    process.exit();
+  });
 
-      const decodedValue = await registry.decode(message.value);
-      console.log({ message: decodedValue });
+  process.on("SIGTERM", async function() {
+    console.log("SIGTERM");
+    await consumer.disconnect();
+    console.log("disconnected");
+    process.exit();
+  });
+
+  await consumer.run({
+    eachBatch: async ({
+      batch,
+      // resolveOffset,
+      // heartbeat,
+      // commitOffsetsIfNecessary,
+      // uncommittedOffsets,
+      // isRunning,
+      // isStale,
+      // pause,
+    }) => {
+      console.time("parsing");
+      const parsedMessages = await Promise.all(
+        batch.messages
+          .filter((message) => message.value)
+          .map((message) =>
+            registry
+              .decode(message.value)
+              .then((decodedValue) => ({
+                "updated_at": new Date(Number(message.timestamp)).toISOString(),
+                "access_point_name": decodedValue.name,
+                "device_count": decodedValue.clientCount,
+                "building_number": decodedValue.name.split("-").at(1) || 9001,
+                "floor": decodedValue.locationHierarchy.split(">").at(-1).trim(),
+                "map_location": decodedValue.mapLocation,
+              }))
+          )
+      );
+
+      // filter out duplicate older messages
+      const uniqueMessages = parsedMessages
+        .reverse() // put newest messages first
+        .filter((message, index, self) => (
+          index === self.findIndex((loopingMessage) => (
+            loopingMessage.access_point_name === message.access_point_name
+          ))
+        ));
+      console.timeEnd("parsing")
+
+      console.time("upsert");
+      const { error } = await client
+        .from("access_points_latest_states")
+        .upsert(uniqueMessages);
+      console.timeEnd("upsert");
+
+      if (error) {
+        console.error(error);
+      } else {
+        console.info(`upserted ${uniqueMessages.length} messages`);
+      }
     },
   });
 

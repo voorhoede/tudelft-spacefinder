@@ -12,4 +12,3 @@ https://spacefinder.netlify.com/* https://spacefinder.tudelft.nl/:splat 301!
 # all existing routes are pre-generated, so missing routes are non-existing (404):
 /en/* /en/404/ 404
 /nl/* /nl/404/ 404
-/* /en/404/ 404
