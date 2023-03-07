@@ -1,19 +1,13 @@
 <template>
-  <section v-if="space && building">
-    <BackButton
-      :to="
-        $localePath('/buildings/:buildingSlug', {
-          buildingSlug: building.slug,
-        })
-      "
-    />
+  <section v-if="space">
+    <BackButton :to="$localePath('/buildings/:buildingSlug', { space })" />
 
     <div class="space-detail__share-button">
       <SocialShare :url="shareUrl" />
     </div>
 
     <div class="default-layout__info default-layout__info--space-detail">
-      <SpaceDetailCard ref="card" :space="space" :building="building" />
+      <SpaceDetailCard ref="card" :space="space" />
     </div>
   </section>
 </template>
@@ -34,11 +28,7 @@ const route = useRoute();
 
 const card = ref<InstanceType<typeof SpaceDetailCard> | null>(null);
 
-const {
-  currentBuilding: building,
-  currentSpace: space,
-  isMobile,
-} = storeToRefs(store);
+const { currentSpace: space, isMobile } = storeToRefs(store);
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -55,9 +45,9 @@ onMounted(() => {
 
 useSpacefinderHead(
   computed(() =>
-    building.value && space.value
+    space.value
       ? {
-          title: `${space.value.name} (${space.value.roomId}) @ ${building.value.name} (${building.value.abbreviation})`,
+          title: `${space.value.name} (${space.value.roomId}) @ ${space.value.building.name} (${space.value.building.abbreviation})`,
           description: `${space.value.seats} ${$t("seatsDescription")}`,
           image: spaceMapImage(space.value, runtimeConfig.public.maxboxToken),
         }

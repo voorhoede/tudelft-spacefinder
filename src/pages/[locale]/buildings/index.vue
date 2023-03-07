@@ -6,7 +6,7 @@
 
     <BuildingCard
       v-for="building in buildings"
-      :key="building.slug"
+      :key="building.number"
       :building="building"
     />
   </section>

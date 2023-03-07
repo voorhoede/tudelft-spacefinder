@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
 import { useStore } from "~/stores/store";
 
 const languages = [
@@ -28,23 +27,19 @@ const languages = [
 ];
 
 const store = useStore();
-const { currentBuilding, currentSpace } = storeToRefs(store);
 const { $localePath } = useNuxtApp();
 const { name: routeName } = useRoute();
 
 function getLocalePath(locale: string) {
-  if (currentBuilding.value) {
-    const buildingSlug = currentBuilding.value.i18n[locale].slug;
-    if (currentSpace.value) {
-      const spaceSlug = currentSpace.value.i18n[locale].slug;
+  if (store.currentBuilding) {
+    if (store.currentSpace) {
       return $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
-        buildingSlug,
-        spaceSlug,
+        space: store.currentSpace,
         locale,
       });
     }
     return $localePath("/buildings/:buildingSlug", {
-      buildingSlug: buildingSlug!,
+      building: store.currentBuilding,
       locale,
     });
   }
