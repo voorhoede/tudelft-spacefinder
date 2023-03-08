@@ -69,9 +69,7 @@ export const useSpacesStore = defineStore("spaces", () => {
   }
 
   function setBuildingOccupancy(buildingNumber: number, activeDevices: number) {
-    const building = buildingsI18n.value.find(
-      (building) => building.number === buildingNumber
-    ); //TODO: extract function back
+    const building = getBuildingI18nByNumber(buildingNumber);
     if (building) building.activeDevices = activeDevices;
   }
 
@@ -124,6 +122,10 @@ export const useSpacesStore = defineStore("spaces", () => {
 
   function getBuildingByNumber(number: number) {
     return buildings.value.find((building) => building.number === number);
+  }
+
+  function getBuildingI18nByNumber(number: number) {
+    return buildingsI18n.value.find((building) => building.number === number);
   }
 
   function getBuildingBySlug(slug: string) {
