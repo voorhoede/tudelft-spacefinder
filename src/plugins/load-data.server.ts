@@ -1,4 +1,4 @@
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 
 export default defineNuxtPlugin((app) => {
   const spacesStore = useSpacesStore(app.$pinia);

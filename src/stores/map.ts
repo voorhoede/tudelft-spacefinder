@@ -4,7 +4,7 @@ import delay from "~/lib/delay";
 import { spaceIsOpen } from "~/lib/filter-spaces";
 import { Bounds } from "~/types/Bounds";
 import campusBounds from "~/lib/campus-bounds";
-import { useSpacesStore } from "./store";
+import { useSpacesStore } from "./spaces";
 import { Map } from "mapbox-gl";
 
 export const useMapStore = defineStore("map", () => {

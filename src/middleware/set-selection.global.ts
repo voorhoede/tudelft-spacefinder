@@ -1,4 +1,4 @@
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 
 export default defineNuxtRouteMiddleware((to, from) => {
   const nuxtApp = useNuxtApp();
