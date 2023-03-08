@@ -52,7 +52,7 @@
         </li>
         <li class="mobile-only app-menu__item">
           <NuxtLink to="/" class="app-menu__link" @click="toggleMapMode">
-            <span v-if="isMapMode">
+            <span v-if="$isMapMode.value">
               <SvgIcon name="list-icon" class="app-menu__icon" />
 
               <span class="app-menu__link-name">
@@ -97,17 +97,17 @@ import { useInstallationStore } from "~/stores/installation";
 defineProps<{ isOpen?: boolean }>();
 const emit = defineEmits(["close"]);
 const store = useStore();
+const { $isMapMode } = useNuxtApp();
 const installationStore = useInstallationStore();
 
 const { isInstallable } = storeToRefs(installationStore);
-const { isMapMode } = storeToRefs(store);
 
 function installApp() {
   installationStore.installApp().then(() => emit("close"));
 }
 
 function toggleMapMode() {
-  store.isMapMode = !store.isMapMode;
+  $isMapMode.value = !$isMapMode.value;
   emit("close");
 }
 </script>

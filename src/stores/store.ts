@@ -16,9 +16,6 @@ export type Selection =
   | undefined;
 
 export const useStore = defineStore("index", () => {
-  const isMapMode = ref(false);
-  const isMobile = ref(false);
-
   const currentSelection = ref<Selection>(undefined);
 
   const currentSpace = computed(() =>
@@ -77,8 +74,6 @@ export const useStore = defineStore("index", () => {
     ); //TODO: extract function back
     if (building) building.activeDevices = activeDevices;
   }
-
-  //const locale = ref("en");
 
   function compareBuildingsByName(a: Building, b: Building) {
     if (a.name > b.name) return 1;
@@ -144,8 +139,6 @@ export const useStore = defineStore("index", () => {
   }
 
   return {
-    isMapMode,
-    isMobile,
     currentSelection,
     currentBuilding,
     currentSpace,

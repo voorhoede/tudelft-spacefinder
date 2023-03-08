@@ -52,8 +52,6 @@ function onResize() {
     "--window-height",
     `${windowHeight}px`
   );
-
-  store.isMobile = !window.matchMedia("(min-width: 700px)").matches;
 }
 
 onMounted(() => {

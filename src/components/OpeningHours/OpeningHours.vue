@@ -1,12 +1,10 @@
 <template>
   <div class="opening-hours">
     <button
-      v-if="store.isMobile || showToggleOnDesktop"
-      :aria-label="
-        openingHoursAreVisible ? $t('hideOpeningHours') : $t('showOpeningHours')
-      "
+      v-if="$isMobile.value || showToggleOnDesktop"
+      :aria-label="isExpanded ? $t('hideOpeningHours') : $t('showOpeningHours')"
       class="opening-hours__toggle button"
-      :class="{ 'opening-hours__toggle--open': openingHoursAreVisible }"
+      :class="{ 'opening-hours__toggle--open': isExpanded }"
       @click="toggleOpeningHours"
     >
       <SvgIcon name="back-icon" class="opening-hours__toggle-icon" />
@@ -16,9 +14,7 @@
       </span>
     </button>
 
-    <div
-      v-if="openingHoursAreVisible || (!store.isMobile && !showToggleOnDesktop)"
-    >
+    <div v-if="isExpanded || (!$isMobile.value && !showToggleOnDesktop)">
       <h3 class="opening-hours__title">
         {{ $t("comingWeek") }}
       </h3>
@@ -51,7 +47,6 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from "~/stores/store";
 import type { OpeningHours } from "~/types/OpeningHours";
 
 export interface Props {
@@ -60,11 +55,10 @@ export interface Props {
   showToggleOnDesktop?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), { showToggleOnDesktop: true });
-const openingHoursAreVisible = ref(false);
-const store = useStore();
+const isExpanded = ref(false);
 
 function toggleOpeningHours() {
-  openingHoursAreVisible.value = !openingHoursAreVisible.value;
+  isExpanded.value = !isExpanded.value;
 }
 
 function renderTime(dateStamp: string) {
