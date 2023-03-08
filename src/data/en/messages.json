@@ -94,5 +94,7 @@
   "we": "Wednesday",
   "whiteBoard": "white board",
   "zoomIn": "zoom in",
-  "zoomOut": "zoom out"
+  "zoomOut": "zoom out",
+  "amountDevices": "no devices | 1 device | {amount} devices",
+  "activeDevices": "Active devices"
 }

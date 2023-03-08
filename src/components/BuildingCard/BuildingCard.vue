@@ -9,12 +9,15 @@
       <ul class="flat-list building-card__seating">
         <li>{{ building.totalSpaces }} {{ $t("locations") }}</li>
         <li>{{ building.totalSeats }} {{ $t("seats") }}</li>
+        <ClientOnly>
+          <li>{{ $t("amountDevices", building.activeDevices ?? 0) }}</li>
+        </ClientOnly>
       </ul>
 
-      <CardStatus
+      <!-- <CardStatus
         :opening-hours="building.openingHours"
         class="building-card__status"
-      />
+      /> -->
     </div>
   </NuxtLink>
 </template>
