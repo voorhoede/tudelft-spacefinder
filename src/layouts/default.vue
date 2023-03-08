@@ -29,9 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from "~/stores/store";
-
-const store = useStore();
 const defaultLayout = ref<null | HTMLDivElement>(null);
 const openedMenu = ref<null | string>(null);
 

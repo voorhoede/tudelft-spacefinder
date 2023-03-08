@@ -9,20 +9,20 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug" });
 
 const { $t } = useNuxtApp();
-const store = useStore();
+const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 
-const { currentBuilding: building } = storeToRefs(store);
+const { currentBuilding: building } = storeToRefs(spacesStore);
 
 const spaces = computed(() =>
-  store.filteredSpaces.filter(
+  spacesStore.filteredSpaces.filter(
     (space) => space.buildingNumber === building.value!.number
   )
 );

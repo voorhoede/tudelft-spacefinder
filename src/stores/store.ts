@@ -15,7 +15,7 @@ export type Selection =
     }
   | undefined;
 
-export const useStore = defineStore("index", () => {
+export const useSpacesStore = defineStore("spaces", () => {
   const currentSelection = ref<Selection>(undefined);
 
   const currentSpace = computed(() =>

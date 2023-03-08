@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 
 import campusBounds from "~/lib/campus-bounds";
 import { useMapStore } from "~/stores/map";
@@ -25,7 +25,7 @@ const mapboxgl = (await import("mapbox-gl")).default;
 const runtimeConfig = useRuntimeConfig();
 const { $localePath } = useNuxtApp();
 const router = useRouter();
-const store = useStore();
+const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 const { mapLoaded } = storeToRefs(mapStore);
 
@@ -134,7 +134,7 @@ function initMap(accessToken: string) {
       if (!properties.buildingNumber || !properties.spaceId) {
         return;
       }
-      const space = store.getSpaceById(properties.spaceId as string);
+      const space = spacesStore.getSpaceById(properties.spaceId as string);
       router.push(
         $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", { space })
       );

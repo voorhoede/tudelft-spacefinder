@@ -6,15 +6,15 @@
     <h2 class="a11y-sr-only">
       {{ allSpacesTitle }}
     </h2>
-    <SpaceList :spaces="store.filteredSpaces" />
+    <SpaceList :spaces="spacesStore.filteredSpaces" />
   </section>
 </template>
 
 <script setup lang="ts">
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 const { $t } = useNuxtApp();
-const store = useStore();
+const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 
 const allSpacesTitle = computed(() => $t("allSpaces"));
