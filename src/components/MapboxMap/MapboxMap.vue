@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 
 import campusBounds from "~/lib/campus-bounds";
 import { useMapStore } from "~/stores/map";

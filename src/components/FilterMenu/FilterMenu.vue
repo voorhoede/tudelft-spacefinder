@@ -284,7 +284,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 
 //TODO: no need to freeze it and what's that anyway?
 const optionsPerFilter = Object.freeze({

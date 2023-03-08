@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 
 const props = defineProps<{ openedMenu: string | null }>();
 let lastOpenedMenu: string | null = null;
