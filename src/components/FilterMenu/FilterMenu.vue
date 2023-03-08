@@ -284,7 +284,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 
 //TODO: no need to freeze it and what's that anyway?
 const optionsPerFilter = Object.freeze({
@@ -295,20 +295,20 @@ const optionsPerFilter = Object.freeze({
 
 defineProps<{ isOpen?: boolean }>();
 
-const store = useStore();
+const spacesStore = useSpacesStore();
 
 const spaceCount = computed(() =>
-  store.currentSelection?.level == "building"
-    ? store.filteredSpaces.filter(
-        (space) => space.buildingNumber === store.currentBuilding!.number
+  spacesStore.currentSelection?.level == "building"
+    ? spacesStore.filteredSpaces.filter(
+        (space) => space.buildingNumber === spacesStore.currentBuilding!.number
       ).length
-    : store.filteredSpaces.length
+    : spacesStore.filteredSpaces.length
 );
 
-const { filters } = storeToRefs(store);
+const { filters } = storeToRefs(spacesStore);
 
 function clearFilters() {
-  store.clearFilters();
+  spacesStore.clearFilters();
 }
 </script>
 

@@ -91,12 +91,10 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useStore } from "~/stores/store";
 import { useInstallationStore } from "~/stores/installation";
 
 defineProps<{ isOpen?: boolean }>();
 const emit = defineEmits(["close"]);
-const store = useStore();
 const { $isMapMode } = useNuxtApp();
 const installationStore = useInstallationStore();
 

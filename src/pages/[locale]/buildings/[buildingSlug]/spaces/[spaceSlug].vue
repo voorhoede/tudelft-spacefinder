@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import spaceMapImage from "~/lib/space-map-image";
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
 import SpaceDetailCard from "~/components/SpaceDetailCard/SpaceDetailCard.vue";
@@ -22,13 +22,13 @@ import SpaceDetailCard from "~/components/SpaceDetailCard/SpaceDetailCard.vue";
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 
 const { $t, $isMobile } = useNuxtApp();
-const store = useStore();
+const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 const route = useRoute();
 
 const card = ref<InstanceType<typeof SpaceDetailCard> | null>(null);
 
-const { currentSpace: space } = storeToRefs(store);
+const { currentSpace: space } = storeToRefs(spacesStore);
 
 const runtimeConfig = useRuntimeConfig();
 

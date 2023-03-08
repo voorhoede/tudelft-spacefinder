@@ -4,12 +4,13 @@ import delay from "~/lib/delay";
 import { spaceIsOpen } from "~/lib/filter-spaces";
 import { Bounds } from "~/types/Bounds";
 import campusBounds from "~/lib/campus-bounds";
-import { useStore } from "./store";
+import { useSpacesStore } from "./store";
 import { Map } from "mapbox-gl";
 
 export const useMapStore = defineStore("map", () => {
-  const store = useStore();
-  const { currentBuilding, currentSpace, spaces, filters } = storeToRefs(store);
+  const spacesStore = useSpacesStore();
+  const { currentBuilding, currentSpace, spaces, filters } =
+    storeToRefs(spacesStore);
 
   const mapDeferred = deferred<Map>();
 

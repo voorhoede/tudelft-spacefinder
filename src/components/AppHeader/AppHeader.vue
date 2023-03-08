@@ -34,12 +34,12 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 
 const props = defineProps<{ openedMenu: string | null }>();
 let lastOpenedMenu: string | null = null;
-const store = useStore();
-const { isFiltered } = storeToRefs(store);
+const spacesStore = useSpacesStore();
+const { isFiltered } = storeToRefs(spacesStore);
 const menuButton = ref(null as null | HTMLButtonElement);
 const filterButton = ref(null as null | HTMLButtonElement);
 watch(
