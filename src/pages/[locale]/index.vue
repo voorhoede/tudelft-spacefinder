@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
 const { $t } = useNuxtApp();
 const spacesStore = useSpacesStore();

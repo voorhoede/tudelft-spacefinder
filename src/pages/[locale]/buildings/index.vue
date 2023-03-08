@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
 
 definePageMeta({ alias: "/:locale/gebouwen" });

@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import spaceMapImage from "~/lib/space-map-image";
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
 import SpaceDetailCard from "~/components/SpaceDetailCard/SpaceDetailCard.vue";

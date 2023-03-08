@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSpacesStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/spaces";
 
 const languages = [
   { locale: "en", name: "english" },
