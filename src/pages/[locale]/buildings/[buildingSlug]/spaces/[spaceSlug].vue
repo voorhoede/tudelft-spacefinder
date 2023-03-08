@@ -21,14 +21,14 @@ import SpaceDetailCard from "~/components/SpaceDetailCard/SpaceDetailCard.vue";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 
-const { $t } = useNuxtApp();
+const { $t, $isMobile } = useNuxtApp();
 const store = useStore();
 const mapStore = useMapStore();
 const route = useRoute();
 
 const card = ref<InstanceType<typeof SpaceDetailCard> | null>(null);
 
-const { currentSpace: space, isMobile } = storeToRefs(store);
+const { currentSpace: space } = storeToRefs(store);
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -37,7 +37,7 @@ const shareUrl = computed(
 );
 
 onMounted(() => {
-  const padding = isMobile.value
+  const padding = $isMobile.value
     ? { bottom: card.value!.getClientHeight()! + 2 * 20 }
     : {};
   mapStore.zoomToSelection(padding);
