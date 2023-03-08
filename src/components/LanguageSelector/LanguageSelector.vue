@@ -19,27 +19,27 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 
 const languages = [
   { locale: "en", name: "english" },
   { locale: "nl", name: "nederlands" },
 ];
 
-const store = useStore();
+const spacesStore = useSpacesStore();
 const { $localePath } = useNuxtApp();
 const { name: routeName } = useRoute();
 
 function getLocalePath(locale: string) {
-  if (store.currentBuilding) {
-    if (store.currentSpace) {
+  if (spacesStore.currentBuilding) {
+    if (spacesStore.currentSpace) {
       return $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
-        space: store.currentSpace,
+        space: spacesStore.currentSpace,
         locale,
       });
     }
     return $localePath("/buildings/:buildingSlug", {
-      building: store.currentBuilding,
+      building: spacesStore.currentBuilding,
       locale,
     });
   }

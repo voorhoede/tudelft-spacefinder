@@ -5,7 +5,7 @@
     </h2>
 
     <BuildingCard
-      v-for="building in buildings"
+      v-for="building in spacesStore.buildings"
       :key="building.number"
       :building="building"
     />
@@ -13,15 +13,13 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 import { useMapStore } from "~/stores/map";
 
 definePageMeta({ alias: "/:locale/gebouwen" });
 
-const store = useStore();
+const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
-const { buildings } = storeToRefs(store);
 const { $t } = useNuxtApp();
 
 const title = computed(() => $t("buildingTitle"));

@@ -1,11 +1,11 @@
-import { useStore } from "~/stores/store";
+import { useSpacesStore } from "~/stores/store";
 export default defineNuxtPlugin(async (app) => {
-  const store = useStore(app.$pinia);
+  const spacesStore = useSpacesStore(app.$pinia);
   const supabase = useSpacefinderSupabase();
   const activeDevicesPerBuilding =
     await supabase.getBuildingsOccupancyCurrent();
-  store.bulkSetBuildingOccupancy(activeDevicesPerBuilding);
+  spacesStore.bulkSetBuildingOccupancy(activeDevicesPerBuilding);
   supabase.subscribeToBuildingsOccupancy((buildingNumber, deviceCount) =>
-    store.setBuildingOccupancy(buildingNumber, deviceCount)
+    spacesStore.setBuildingOccupancy(buildingNumber, deviceCount)
   );
 });
