@@ -1,5 +1,5 @@
 <template>
-  <ClientOnly> Active devices: {{ activeDevices }} </ClientOnly>
+  <ClientOnly> {{ $t("activeDevices") }}: {{ activeDevices }} </ClientOnly>
 </template>
 
 <script setup lang="ts">
