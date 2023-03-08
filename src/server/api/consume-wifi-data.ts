@@ -72,14 +72,15 @@ export default defineEventHandler(async (event) => {
           )
       );
 
+      const seen = new Set();
       // filter out duplicate older messages
       const uniqueMessages = parsedMessages
         .reverse() // put newest messages first
-        .filter((message, index, self) => (
-          index === self.findIndex((loopingMessage) => (
-            loopingMessage.access_point_name === message.access_point_name
-          ))
-        ));
+        .filter((message) => {
+          const isDuplicate = seen.has(message.access_point_name);
+          seen.add(message.access_point_name);
+          return !isDuplicate;
+        });
       console.timeEnd("parsing")
 
       console.time("upsert");
