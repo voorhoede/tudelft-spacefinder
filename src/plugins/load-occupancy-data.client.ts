@@ -11,7 +11,6 @@ export default defineNuxtPlugin(async (app) => {
   );
 
   const activeDevicesPerSpace = await supabase.getSpacesOccupancyCurrent();
-  console.log(activeDevicesPerSpace);
   spacesStore.bulkSetSpaceOccupancy(activeDevicesPerSpace);
   supabase.subscribeToSpacesOccupancy((buildingNumber, roomId, deviceCount) =>
     spacesStore.setSpaceOccupancy(buildingNumber, roomId, deviceCount)
