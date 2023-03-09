@@ -99,7 +99,26 @@ export const useSpacesStore = defineStore("spaces", () => {
     spacesI18n.value = spaces;
   }
 
+  function bulkSetSpaceOccupancy(data: Record<number, Record<string, number>>) {
+    spacesI18n.value = spacesI18n.value.map((space) => {
+      return {
+        ...space,
+        activeDevices: data[space.buildingNumber]?.[space.roomId],
+      };
+    });
+  }
+
+  function setSpaceOccupancy(
+    buildingNumber: number,
+    roomId: string,
+    activeDevices: number
+  ) {
+    const space = getSpaceI18nByBuildingAndRoom(buildingNumber, roomId);
+    if (space) space.activeDevices = activeDevices;
+  }
+
   const spaces = computed(() => {
+    console.log("Recalculating spaces");
     const { $locale } = useNuxtApp();
     return spacesI18n.value.map((spaceI18n) => {
       const propsI18n = spaceI18n.i18n[$locale.value];
@@ -140,6 +159,16 @@ export const useSpacesStore = defineStore("spaces", () => {
     return spaces.value.find((space) => space.slug === slug);
   }
 
+  function getSpaceI18nByBuildingAndRoom(
+    buildingNumber: number,
+    roomId: string
+  ) {
+    return spacesI18n.value.find(
+      (space) =>
+        space.buildingNumber === buildingNumber && space.roomId === roomId
+    );
+  }
+
   return {
     currentSelection,
     currentBuilding,
@@ -150,6 +179,8 @@ export const useSpacesStore = defineStore("spaces", () => {
     setBuildingOccupancy,
     buildings,
     setSpaces,
+    bulkSetSpaceOccupancy,
+    setSpaceOccupancy,
     spaces,
     filteredSpaces,
     clearFilters,

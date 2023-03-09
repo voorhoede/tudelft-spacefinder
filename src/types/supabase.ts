@@ -12,25 +12,31 @@ export interface Database {
       access_points_latest_states: {
         Row: {
           access_point_name: string
-          building_number: number
+          building_number: number | null
           device_count: number
           floor: string
+          location_hierarchy: string | null
+          map_location: string | null
           room_id: string | null
           updated_at: string
         }
         Insert: {
           access_point_name: string
-          building_number: number
+          building_number?: number | null
           device_count: number
           floor: string
+          location_hierarchy?: string | null
+          map_location?: string | null
           room_id?: string | null
           updated_at: string
         }
         Update: {
           access_point_name?: string
-          building_number?: number
+          building_number?: number | null
           device_count?: number
           floor?: string
+          location_hierarchy?: string | null
+          map_location?: string | null
           room_id?: string | null
           updated_at?: string
         }
