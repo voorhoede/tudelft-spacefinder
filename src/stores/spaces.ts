@@ -118,7 +118,6 @@ export const useSpacesStore = defineStore("spaces", () => {
   }
 
   const spaces = computed(() => {
-    console.log("Recalculating spaces");
     const { $locale } = useNuxtApp();
     return spacesI18n.value.map((spaceI18n) => {
       const propsI18n = spaceI18n.i18n[$locale.value];
