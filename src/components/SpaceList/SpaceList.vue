@@ -20,7 +20,10 @@
             {{ $t("spacesSubTitle") }}
           </p>
         </header>
-        <SpaceCard :space="item" />
+        <SpaceCard
+          :space="item"
+          :show-building-occupancy="showBuildingOccupancy"
+        />
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>
@@ -35,7 +38,7 @@ import type { Space } from "~/types/Space";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
-defineProps<{ spaces: Space[] }>();
+defineProps<{ spaces: Space[]; showBuildingOccupancy: boolean }>();
 </script>
 
 <style>
