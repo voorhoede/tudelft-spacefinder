@@ -43,11 +43,11 @@
           <SvgIcon name="seat-icon" class="space-detail-card__seating-icon" />
           {{ space.seats }} {{ $t("seatsDescription") }}
         </li>
-        <ClientOnly>
+        <!-- <ClientOnly>
           <li>
             <OccupancyIndicator :active-devices="space.activeDevices ?? 0" />
           </li>
-        </ClientOnly>
+        </ClientOnly> -->
       </ul>
 
       <OpeningHours
