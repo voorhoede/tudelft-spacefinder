@@ -3,18 +3,11 @@
     :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space })"
     class="space-card card"
   >
-    <h3 v-if="space.name">
-      {{ space.name }}
-    </h3>
+    <h3>{{ space.name }}</h3>
 
     <div class="space-card__info">
       <div class="space-card__location">
-        <p v-if="space.name" class="space-card__description">
-          <em>{{ space.building.abbreviation }}</em> - {{ space.roomId }}
-        </p>
-        <h3 v-else>
-          <em>{{ space.building.abbreviation }}</em> - {{ space.roomId }}
-        </h3>
+        <em>{{ space.building.abbreviation }}</em> - {{ space.roomId }}
       </div>
       <div v-if="showBuildingOccupancy">
         {{ $t("activeDevicesBuilding") }}:
@@ -62,13 +55,6 @@ defineProps<{ space: Space; showBuildingOccupancy: boolean }>();
   fill: var(--brand-primary-color-dark);
 }
 
-.space-card:hover .space-facility__icon,
-.space-card:focus .space-facility__icon,
-.space-card:hover .space-facility__seating-icon,
-.space-card:focus .space-facility__seating-icon {
-  /*color: #1e6188;*/
-}
-
 .space-card__info {
   display: flex;
   margin-bottom: var(--spacing-default);
@@ -77,13 +63,10 @@ defineProps<{ space: Space; showBuildingOccupancy: boolean }>();
 .space-card__location {
   flex: 1 1 auto;
   line-height: 1.3;
-}
-
-.space-card__description {
   font-size: var(--font-size-smaller);
 }
 
-.space-card__description em {
+.space-card__location em {
   font-weight: bold;
   font-style: normal;
 }

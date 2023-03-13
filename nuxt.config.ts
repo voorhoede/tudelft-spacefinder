@@ -48,5 +48,9 @@ export default defineNuxtConfig({
       display: "standalone",
       crossorigin: "use-credentials",
     },
+    meta: {
+      name: "TU Delft Spacefinder",
+      twitterCard: false,
+    },
   },
 });
