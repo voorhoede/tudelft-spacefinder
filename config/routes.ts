@@ -17,9 +17,7 @@ const routes = [
 
 for (const building of buildings) {
   routes.push(`/en/buildings/${building.i18n.en.slug}/`);
-  routes.push(`/en/buildings/${building.i18n.en.slug}/spaces/`);
   routes.push(`/nl/gebouwen/${building.i18n.nl.slug}/`);
-  routes.push(`/nl/gebouwen/${building.i18n.nl.slug}/ruimtes/`);
 }
 
 for (const space of spaces) {
