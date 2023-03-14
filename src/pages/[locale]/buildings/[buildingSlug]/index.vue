@@ -3,7 +3,11 @@
     <BackButton :use-history="false" :to="$localePath('/buildings')" />
     <div class="default-layout__info building-layout">
       <BuildingHeader class="building-layout__header" :building="building" />
-      <SpaceList class="building-layout__spaces" :spaces="spaces" />
+      <SpaceList
+        class="building-layout__spaces"
+        :spaces="spaces"
+        :show-building-occupancy="false"
+      />
     </div>
   </section>
 </template>

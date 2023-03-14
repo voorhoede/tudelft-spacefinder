@@ -38,10 +38,17 @@
         class="space-detail-card__facilities"
       />
 
-      <div class="flat-list space-detail-card__seating">
-        <SvgIcon name="seat-icon" class="space-detail-card__seating-icon" />
-        {{ space.seats }} {{ $t("seatsDescription") }}
-      </div>
+      <ul class="flat-list space-detail-card__seating">
+        <li>
+          <SvgIcon name="seat-icon" class="space-detail-card__seating-icon" />
+          {{ space.seats }} {{ $t("seatsDescription") }}
+        </li>
+        <!-- <ClientOnly>
+          <li>
+            <OccupancyIndicator :active-devices="space.activeDevices ?? 0" />
+          </li>
+        </ClientOnly> -->
+      </ul>
 
       <OpeningHours
         :opening-hours-building="space.building.openingHours"

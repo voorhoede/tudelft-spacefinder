@@ -9,8 +9,12 @@
       <div class="space-card__location">
         <em>{{ space.building.abbreviation }}</em> - {{ space.roomId }}
       </div>
-
+      <div v-if="showBuildingOccupancy">
+        {{ $t("activeDevicesBuilding") }}:
+        {{ space.building.activeDevices ?? 0 }}
+      </div>
       <CardStatus
+        v-else
         :opening-hours="space.openingHours"
         class="space-card__status"
       />
@@ -30,7 +34,7 @@
 
 <script setup lang="ts">
 import { type Space } from "~/types/Space";
-defineProps<{ space: Space }>();
+defineProps<{ space: Space; showBuildingOccupancy: boolean }>();
 </script>
 
 <style>

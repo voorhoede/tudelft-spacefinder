@@ -96,5 +96,6 @@
   "zoomIn": "inzoomen",
   "zoomOut": "uitzoomen",
   "amountDevices": "geen apparaten | 1 apparaat | {amount} apparaten",
-  "activeDevices": "Actieve apparaten"
+  "activeDevices": "Actieve apparaten",
+  "activeDevicesBuilding": "Apparaten in gebouw"
 }
