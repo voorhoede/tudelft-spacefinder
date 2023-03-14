@@ -6,255 +6,65 @@
           <legend class="h3">
             {{ $t("quietness") }}
           </legend>
-
-          <span v-for="option in optionsPerFilter.quietness" :key="option">
-            <input
-              :id="`quietness-${option}`"
-              v-model="filters.quietness"
-              :value="option"
-              type="checkbox"
-              class="a11y-sr-only filter-menu__filter"
-            />
-            <label :for="`quietness-${option}`">
-              <SvgIcon
-                :name="`facility-quietness.${option}-icon`"
-                class="filter-menu__filter-icon"
-              />
-              {{ $t(`quietness.${option}`) }}
-            </label>
-          </span>
+          <FilterMenuItem name="quietness" option="silent" />
+          <FilterMenuItem name="quietness" option="quiet" />
+          <FilterMenuItem name="quietness" option="noisy" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
             {{ $t("studyType") }}
           </legend>
-
-          <span v-for="option in optionsPerFilter.studyType" :key="option">
-            <input
-              :id="`study-type-${option}`"
-              v-model="filters.studyType"
-              :value="option"
-              type="checkbox"
-              class="a11y-sr-only filter-menu__filter"
-            />
-            <label :for="`study-type-${option}`">
-              <SvgIcon
-                :name="`facility-studyType.${option}-icon`"
-                class="filter-menu__filter-icon"
-              />
-              {{ $t(`studyType.${option}`) }}
-            </label>
-          </span>
+          <FilterMenuItem name="studyType" option="self" />
+          <FilterMenuItem name="studyType" option="group" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
             {{ $t("computerFacilities") }}
           </legend>
-
-          <input
-            id="power-outlets"
-            v-model="filters.powerOutlets"
-            :value="filters.powerOutlets"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="power-outlets">
-            <SvgIcon
-              name="facility-powerOutlets-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("powerOutlets") }}
-          </label>
-
-          <input
-            id="ethernet"
-            v-model="filters.ethernet"
-            :value="filters.ethernet"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="ethernet">
-            <SvgIcon
-              name="facility-ethernet-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("ethernet") }}
-          </label>
-
-          <input
-            id="stationary-pc"
-            v-model="filters.stationaryPC"
-            :value="filters.stationaryPC"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="stationary-pc">
-            <SvgIcon
-              name="facility-stationaryPC-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("stationaryPC") }}
-          </label>
-
-          <input
-            id="near-printer"
-            v-model="filters.nearPrinter"
-            :value="filters.nearPrinter"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="near-printer">
-            <SvgIcon
-              name="facility-nearPrinter-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("nearPrinter") }}
-          </label>
+          <FilterMenuItem name="powerOutlets" />
+          <FilterMenuItem name="ethernet" />
+          <FilterMenuItem name="stationaryPC" />
+          <FilterMenuItem name="nearPrinter" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
             {{ $t("locationFacilities") }}
           </legend>
-
-          <input
-            id="adjustable-chairs"
-            v-model="filters.adjustableChairs"
-            :value="filters.adjustableChairs"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="adjustable-chairs">
-            <SvgIcon
-              name="facility-adjustableChairs-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("adjustableChairs") }}
-          </label>
-
-          <input
-            id="daylit"
-            v-model="filters.daylit"
-            :value="filters.daylit"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="daylit">
-            <SvgIcon
-              name="facility-daylit-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("daylit") }}
-          </label>
+          <FilterMenuItem name="adjustableChairs" />
+          <FilterMenuItem name="daylit" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
             {{ $t("nearbyFacilities") }}
           </legend>
-
-          <input
-            id="near-bathroom"
-            v-model="filters.nearBathroom"
-            :value="filters.nearBathroom"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="near-bathroom">
-            <SvgIcon
-              name="facility-nearBathroom-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("nearBathroom") }}
-          </label>
-
-          <input
-            id="near-coffee-machine"
-            v-model="filters.nearCoffeeMachine"
-            :value="filters.nearCoffeeMachine"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="near-coffee-machine">
-            <SvgIcon
-              name="facility-nearCoffeeMachine-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("nearCoffeeMachine") }}
-          </label>
+          <FilterMenuItem name="nearBathroom" />
+          <FilterMenuItem name="nearCoffeeMachine" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
             {{ $t("collaborationFacilities") }}
           </legend>
-
-          <input
-            id="smart-board"
-            v-model="filters.smartBoard"
-            :value="filters.smartBoard"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="smart-board">
-            <SvgIcon
-              name="facility-smartBoard-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("smartBoard") }}
-          </label>
-
-          <input
-            id="white-board"
-            v-model="filters.whiteBoard"
-            :value="filters.whiteBoard"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-          <label for="white-board">
-            <SvgIcon
-              name="facility-whiteBoard-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("whiteBoard") }}
-          </label>
-
-          <input
-            id="presentation-screen"
-            v-model="filters.presentationScreen"
-            :value="filters.presentationScreen"
-            type="checkbox"
-            class="a11y-sr-only filter-menu__filter"
-          />
-
-          <label for="presentation-screen">
-            <SvgIcon
-              name="facility-presentationScreen-icon"
-              class="filter-menu__filter-icon"
-            />
-            {{ $t("presentationScreen") }}
-          </label>
+          <FilterMenuItem name="smartBoard" />
+          <FilterMenuItem name="whiteBoard" />
+          <FilterMenuItem name="presentationScreen" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
             {{ $t("buildingTitle") }}
           </legend>
-
-          <span v-for="option in optionsPerFilter.buildings" :key="option">
-            <input
-              :id="`buildings-${option}`"
-              v-model="filters.buildings"
-              :value="option"
-              type="checkbox"
-              class="a11y-sr-only filter-menu__filter"
-            />
-            <label :for="`buildings-${option}`">
-              {{ $t(`buildings.${option}`) }}
-            </label>
-          </span>
+          <FilterMenuItem
+            v-for="buildingNumber in buildingNumbers"
+            :key="buildingNumber"
+            name="buildings"
+            :option="buildingNumber"
+            :show-icon="false"
+          />
         </fieldset>
       </div>
 
@@ -286,12 +96,9 @@
 import { storeToRefs } from "pinia";
 import { useSpacesStore } from "~/stores/spaces";
 
-//TODO: no need to freeze it and what's that anyway?
-const optionsPerFilter = Object.freeze({
-  buildings: [8, 20, 21, 22, 23, 28, 31, 32, 33, 34, 35, 36, 58, 62, 66],
-  quietness: ["silent", "quiet", "noisy"],
-  studyType: ["self", "group"],
-});
+const buildingNumbers = [
+  8, 20, 21, 22, 23, 28, 31, 32, 33, 34, 35, 36, 58, 62, 66,
+];
 
 defineProps<{ isOpen?: boolean }>();
 
@@ -360,37 +167,6 @@ function clearFilters() {
   background-size: 100% 40px, 100% 40px, 100% 14px, 100% 5px;
   background-attachment: local, local, scroll, scroll;
   -webkit-overflow-scrolling: touch;
-}
-
-.filter-menu__filter + label {
-  display: inline-block;
-  margin: 0 var(--spacing-quarter) var(--spacing-half) 0;
-  padding-right: var(--spacing-default);
-  padding-left: var(--spacing-default);
-  font-size: var(--font-size-smaller);
-  background: var(--highlight-color);
-  border: 1px solid transparent;
-  border-radius: 1rem;
-  line-height: 2rem;
-  cursor: pointer;
-}
-
-.filter-menu__filter:hover + label,
-.filter-menu__filter:focus + label {
-  color: var(--brand-primary-color-dark);
-  border: 1px solid var(--brand-primary-color-dark);
-}
-
-.filter-menu__filter:checked + label {
-  background: var(--brand-primary-color-light);
-}
-
-.filter-menu__filter-icon {
-  margin-top: -2px;
-  margin-left: var(--spacing-half-negative);
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
 }
 
 .filter-menu__checkbox + label {
