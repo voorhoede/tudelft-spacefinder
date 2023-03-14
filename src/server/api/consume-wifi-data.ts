@@ -32,7 +32,9 @@ let seeked = false;
 
 export default defineEventHandler(async (event) => {
   if (getQuery(event)?.secret !== internalSecret) {
-    return '401'
+    event.node.res.statusCode = 401;
+    event.node.res.end();
+    return;
   }
 
   const client = serverSupabaseClient(event);
