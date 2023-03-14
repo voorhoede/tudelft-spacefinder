@@ -3,7 +3,7 @@ import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
 import { serverSupabaseClient } from "#supabase/server";
 import type { SupabaseClient } from '@supabase/supabase-js';
 
-const { kafkaConfig, schemaRegistry } = useRuntimeConfig();
+const { internalSecret, kafkaConfig, schemaRegistry } = useRuntimeConfig();
 
 console.time("Initialize");
 const kafka = new Kafka({
@@ -31,6 +31,10 @@ console.timeEnd("Initialize");
 let seeked = false;
 
 export default defineEventHandler(async (event) => {
+  if (getQuery(event)?.secret !== internalSecret) {
+    return '401'
+  }
+
   const client = serverSupabaseClient(event);
 
   consumeLastBatch({ client });
