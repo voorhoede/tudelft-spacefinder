@@ -3,18 +3,21 @@
     :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space })"
     class="space-card card"
   >
-    <h3>{{ space.name }}</h3>
-
+    <div class="space-card__header">
+      <h3>{{ space.name }}</h3>
+      <div v-if="showBuildingOccupancy">
+        <OccupancyIndicator
+          :active-devices="space.building.activeDevices ?? 0"
+          :total-seats="space.building.totalSeats"
+          :occupancy="space.building.occupancy ?? 'quiet'"
+        />
+      </div>
+    </div>
     <div class="space-card__info">
       <div class="space-card__location">
         <em>{{ space.building.abbreviation }}</em> - {{ space.roomId }}
       </div>
-      <div v-if="showBuildingOccupancy">
-        {{ $t("activeDevicesBuilding") }}:
-        {{ space.building.activeDevices ?? 0 }}
-      </div>
       <CardStatus
-        v-else
         :opening-hours="space.openingHours"
         class="space-card__status"
       />
@@ -53,6 +56,11 @@ defineProps<{ space: Space; showBuildingOccupancy: boolean }>();
 .space-card:hover svg,
 .space-card:focus svg {
   fill: var(--brand-primary-color-dark);
+}
+
+.space-card__header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .space-card__info {

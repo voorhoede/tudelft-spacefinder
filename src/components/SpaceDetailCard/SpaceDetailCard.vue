@@ -12,9 +12,18 @@
     />
 
     <div class="space-detail-card__heading">
-      <h2 class="space-detail-card__title">
-        {{ space.name }}
-      </h2>
+      <div class="space-detail-card__header">
+        <h2 class="space-detail-card__title">
+          {{ space.name }}
+        </h2>
+        <div>
+          <OccupancyIndicator
+            :active-devices="space.building.activeDevices ?? 0"
+            :total-seats="space.building.totalSeats"
+            :occupancy="space.building.occupancy ?? 'quiet'"
+          />
+        </div>
+      </div>
 
       <div class="space-detail-card__info">
         <div class="space-detail-card__location">
@@ -43,11 +52,6 @@
           <SvgIcon name="seat-icon" class="space-detail-card__seating-icon" />
           {{ space.seats }} {{ $t("seatsDescription") }}
         </li>
-        <!-- <ClientOnly>
-          <li>
-            <OccupancyIndicator :active-devices="space.activeDevices ?? 0" />
-          </li>
-        </ClientOnly> -->
       </ul>
 
       <OpeningHours
@@ -140,6 +144,11 @@ defineExpose({
   .space-detail-card--image .space-detail-card__heading {
     margin-left: 0;
   }
+}
+
+.space-detail-card__header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .space-detail-card__info {

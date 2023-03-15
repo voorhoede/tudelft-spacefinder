@@ -97,5 +97,9 @@
   "zoomOut": "zoom out",
   "amountDevices": "no devices | 1 device | {amount} devices",
   "activeDevices": "Active devices",
-  "activeDevicesBuilding": "Devices in building"
+  "activeDevicesBuilding": "Devices in building",
+  "occupancy": "Occupancy",
+  "occupancy.quiet": "quiet",
+  "occupancy.busy": "busy",
+  "occupancy.crowded": "crowded"
 }

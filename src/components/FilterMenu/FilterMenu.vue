@@ -4,6 +4,26 @@
       <div class="filter-menu__filters">
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
+            {{ $t("occupancy") }}
+          </legend>
+          <FilterMenuItem
+            name="buildingOccupancy"
+            display-key="occupancy"
+            option="quiet"
+          />
+          <FilterMenuItem
+            name="buildingOccupancy"
+            display-key="occupancy"
+            option="busy"
+          />
+          <FilterMenuItem
+            name="buildingOccupancy"
+            display-key="occupancy"
+            option="crowded"
+          />
+        </fieldset>
+        <fieldset class="filter-menu__filter-group">
+          <legend class="h3">
             {{ $t("quietness") }}
           </legend>
           <FilterMenuItem name="quietness" option="silent" />
@@ -59,11 +79,12 @@
             {{ $t("buildingTitle") }}
           </legend>
           <FilterMenuItem
-            v-for="buildingNumber in buildingNumbers"
-            :key="buildingNumber"
+            v-for="building in buildings"
+            :key="building.number"
             name="buildings"
-            :option="buildingNumber"
+            :option="building.number"
             :show-icon="false"
+            :label="building.abbreviation"
           />
         </fieldset>
       </div>
@@ -96,13 +117,11 @@
 import { storeToRefs } from "pinia";
 import { useSpacesStore } from "~/stores/spaces";
 
-const buildingNumbers = [
-  8, 20, 21, 22, 23, 28, 31, 32, 33, 34, 35, 36, 58, 62, 66,
-];
-
 defineProps<{ isOpen?: boolean }>();
 
 const spacesStore = useSpacesStore();
+
+const { filters, buildings } = storeToRefs(spacesStore);
 
 const spaceCount = computed(() =>
   spacesStore.currentSelection?.level == "building"
@@ -111,8 +130,6 @@ const spaceCount = computed(() =>
       ).length
     : spacesStore.filteredSpaces.length
 );
-
-const { filters } = storeToRefs(spacesStore);
 
 function clearFilters() {
   spacesStore.clearFilters();

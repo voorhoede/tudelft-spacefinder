@@ -9,15 +9,19 @@
       <ul class="flat-list building-card__seating">
         <li>{{ building.totalSpaces }} {{ $t("locations") }}</li>
         <li>{{ building.totalSeats }} {{ $t("seats") }}</li>
-        <ClientOnly>
-          <li>{{ $t("amountDevices", building.activeDevices ?? 0) }}</li>
-        </ClientOnly>
       </ul>
 
-      <!-- <CardStatus
+      <CardStatus
         :opening-hours="building.openingHours"
         class="building-card__status"
-      /> -->
+      />
+      <div class="building-card__occupancy">
+        <OccupancyIndicator
+          :active-devices="building.activeDevices ?? 0"
+          :total-seats="building.totalSeats"
+          :occupancy="building.occupancy ?? 'quiet'"
+        />
+      </div>
     </div>
   </NuxtLink>
 </template>
@@ -53,5 +57,11 @@ defineProps<{ building: Building }>();
 
 .building-card__status {
   flex: 0 0 auto;
+}
+
+.building-card__occupancy {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 24px;
 }
 </style>

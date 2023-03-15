@@ -97,5 +97,9 @@
   "zoomOut": "uitzoomen",
   "amountDevices": "geen apparaten | 1 apparaat | {amount} apparaten",
   "activeDevices": "Actieve apparaten",
-  "activeDevicesBuilding": "Apparaten in gebouw"
+  "activeDevicesBuilding": "Apparaten in gebouw",
+  "occupancy": "Drukte",
+  "occupancy.quiet": "rustig",
+  "occupancy.busy": "druk",
+  "occupancy.crowded": "vol"
 }
