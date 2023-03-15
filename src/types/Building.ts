@@ -1,4 +1,5 @@
 import { Bounds } from "./Bounds";
+import type { Occupancy } from "./Filters";
 import type { OpeningHours } from "./OpeningHours";
 
 export interface Building extends BuildingI18n {
@@ -20,4 +21,5 @@ export interface BuildingI18n {
   openingHours: OpeningHours[];
 
   activeDevices?: number;
+  occupancy?: Occupancy;
 }

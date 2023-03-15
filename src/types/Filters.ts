@@ -2,6 +2,7 @@ export interface Filters extends Facilities {
   buildings: number[];
   studyType: StudyType[];
   quietness: Quietness[];
+  buildingOccupancy: Occupancy[];
   showOpenLocations: boolean;
 }
 
@@ -26,3 +27,4 @@ export type SpaceFeatures = Facilities & {
 
 export type StudyType = "group" | "self";
 export type Quietness = "silent" | "quiet" | "noisy";
+export type Occupancy = "quiet" | "busy" | "crowded";

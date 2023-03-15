@@ -1,11 +1,8 @@
 import type { Filters } from "~/types/Filters";
-import type { SpaceI18n } from "~/types/Space";
+import type { Space } from "~/types/Space";
 import { OpeningHours } from "~/types/OpeningHours";
 
-export function spaceFilter<T extends SpaceI18n>(
-  spaces: T[],
-  filters: Filters
-) {
+export function spaceFilter(spaces: Space[], filters: Filters) {
   const filterKeys = Object.keys(filters) as Array<keyof Filters>;
   const activeFilterKeys = getActiveFilterKeys(filters, filterKeys);
 
@@ -19,9 +16,9 @@ function getActiveFilterKeys(filters: Filters, keys: Array<keyof Filters>) {
   });
 }
 
-function filterSpaces<T extends SpaceI18n>(
+function filterSpaces(
   filters: Filters,
-  spaces: T[],
+  spaces: Space[],
   activeFilterKeys: Array<keyof Filters>
 ) {
   return spaces.filter((space) =>
@@ -46,9 +43,9 @@ export function spaceIsOpen(now: Date, openingHours: OpeningHours[]) {
   );
 }
 
-function filterSpace<T extends SpaceI18n>(
+function filterSpace(
   filters: Filters,
-  space: T,
+  space: Space,
   activeFilterKeys: Array<keyof Filters>
 ) {
   const now = new Date();
@@ -62,6 +59,11 @@ function filterSpace<T extends SpaceI18n>(
       return filters.quietness.includes(space.facilities.quietness);
     if (activeFilterKey == "studyType")
       return filters.studyType.includes(space.facilities.studyType);
+    if (activeFilterKey == "buildingOccupancy")
+      return (
+        space.building.occupancy &&
+        filters.buildingOccupancy.includes(space.building.occupancy)
+      );
     return space.facilities[activeFilterKey];
   });
 }

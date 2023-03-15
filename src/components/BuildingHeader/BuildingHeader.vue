@@ -7,16 +7,25 @@
     </h3>
 
     <div class="building-header__meta">
-      <ul class="flat-list building-header__seating">
-        <li>
-          <SvgIcon name="seat-icon" class="building-header__seating-icon" />
-          {{ building.totalSeats }}
-        </li>
-        <li>
-          <SvgIcon name="door-icon" class="building-header__seating-icon" />
-          {{ building.totalSpaces }}
-        </li>
-      </ul>
+      <div class="building-header__spaces">
+        <ul class="flat-list building-header__seating">
+          <li>
+            <SvgIcon name="seat-icon" class="building-header__seating-icon" />
+            {{ building.totalSeats }}
+          </li>
+          <li>
+            <SvgIcon name="door-icon" class="building-header__seating-icon" />
+            {{ building.totalSpaces }}
+          </li>
+        </ul>
+        <div>
+          <OccupancyIndicator
+            :active-devices="building.activeDevices ?? 0"
+            :total-seats="building.totalSeats"
+            :occupancy="building.occupancy ?? 'quiet'"
+          />
+        </div>
+      </div>
 
       <CardStatus
         :opening-hours="building.openingHours"
@@ -27,7 +36,6 @@
         :opening-hours-space="building.openingHours"
         class="building-header__opening-hours"
       />
-      <OccupancyIndicator :active-devices="building.activeDevices ?? 0" />
     </div>
   </div>
 </template>
@@ -44,13 +52,23 @@ defineProps<{ building: Building }>();
 .building-header__seating {
   font-size: var(--font-size-smaller);
   font-weight: bold;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-default);
 }
 
 .building-header__meta {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
   padding: var(--spacing-default);
+}
+
+.building-header__spaces {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-half);
 }
 
 .building-header__seating li {
@@ -66,7 +84,6 @@ defineProps<{ building: Building }>();
 
 .building-header__open-status {
   font-size: var(--font-size-smaller);
-  text-align: right;
 }
 
 .building-header__opening-hours {
