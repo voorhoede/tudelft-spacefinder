@@ -85,6 +85,7 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
                   || 0,
                 "floor": decodedValue.locationHierarchy.split(">").at(-1).trim(),
                 "map_location": decodedValue.mapLocation,
+                "location_hierarchy": decodedValue.locationHierarchy,
               }))
           )
       );
