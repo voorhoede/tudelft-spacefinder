@@ -46,6 +46,7 @@ export default defineNuxtConfig({
     public: {
       maxboxToken: process.env.MAPBOX_TOKEN,
       baseUrl: process.env.URL,
+      hideOpeningHours: process.env.HIDE_OPENING_HOURS,
     },
   },
   nitro: {

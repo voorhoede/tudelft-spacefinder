@@ -1,5 +1,5 @@
 <template>
-  <ClientOnly placeholder="...">
+  <ClientOnly v-if="show" placeholder="...">
     <p
       class="card-status"
       :class="{ 'card-status--open': isOpen }"
@@ -27,6 +27,9 @@ export default {
 import type { OpeningHours } from "~/types/OpeningHours";
 
 const props = defineProps<{ openingHours: OpeningHours[] }>();
+const runtimeConfig = useRuntimeConfig();
+const show = !runtimeConfig.public.hideOpeningHours;
+
 const isOpen = computed(() => {
   const indexToday = 0;
   const openingHoursToday = props.openingHours[indexToday].time; //TODO: will we still rely on daily deploys to determine the meaning of "today"?
