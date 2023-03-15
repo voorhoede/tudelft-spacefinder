@@ -5,7 +5,8 @@ import { spaceIsOpen } from "~/lib/filter-spaces";
 import { Bounds } from "~/types/Bounds";
 import campusBounds from "~/lib/campus-bounds";
 import { useSpacesStore } from "./spaces";
-import { Map } from "mapbox-gl";
+import { GeoJSONSource, Map } from "mapbox-gl";
+import { Occupancy } from "../types/Filters";
 
 export const useMapStore = defineStore("map", () => {
   const spacesStore = useSpacesStore();
@@ -25,6 +26,7 @@ export const useMapStore = defineStore("map", () => {
         properties: {
           spaceId: space.spaceId,
           buildingNumber: space.building.number,
+          buildingOccupancy: space.building.occupancy,
           isOpen: spaceIsOpen(now, space.openingHours),
           ...space.facilities,
         },
@@ -155,6 +157,25 @@ export const useMapStore = defineStore("map", () => {
     return [...newValue, ...featureFilters];
   });
 
+  // This could be used instead of updateData to set data of individual points, but it does not work atm
+  async function setBuildingOccupancy(
+    spaceId: string,
+    buildingOccupancy: Occupancy
+  ) {
+    const map = await getMap();
+    map.setFeatureState(
+      { source: "points", id: spaceId },
+      { buildingOccupancy }
+    );
+  }
+
+  // Updates all data for all points
+  async function updateData() {
+    const map = await getMap();
+    const source = map.getSource("points") as GeoJSONSource;
+    source.setData(geoJsonSpaces.value);
+  }
+
   async function updateMarkers() {
     const map = await getMap();
     if (activeMarkerFilters.value.length) {
@@ -177,5 +198,7 @@ export const useMapStore = defineStore("map", () => {
     resizeMap,
     updateMarkers,
     geoJsonSpaces,
+    setBuildingOccupancy,
+    updateData,
   };
 });

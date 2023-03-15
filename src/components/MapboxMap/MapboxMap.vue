@@ -115,6 +115,7 @@ function initMap(accessToken: string) {
         source: {
           type: "geojson",
           data: mapStore.geoJsonSpaces,
+          promoteId: "spaceId",
         },
         layout: {
           "icon-image": "marker-icon",

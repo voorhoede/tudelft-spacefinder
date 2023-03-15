@@ -1,8 +1,10 @@
 import { defineStore, skipHydrate } from "pinia";
 import { spaceFilter } from "~/lib/filter-spaces";
-import type { Building, BuildingI18n } from "~/types/Building";
+import type { BuildingI18n } from "~/types/Building";
 import type { Filters } from "~/types/filters";
 import type { Space, SpaceI18n } from "~/types/Space";
+import calculateOccupancy from "../lib/calculate-occupancy";
+import { useMapStore } from "./map";
 
 export type Selection =
   | {
@@ -33,6 +35,7 @@ export const useSpacesStore = defineStore("spaces", () => {
   );
 
   const defaultFilters: Filters = {
+    buildingOccupancy: [],
     adjustableChairs: false,
     buildings: [],
     daylit: false,
@@ -50,7 +53,9 @@ export const useSpacesStore = defineStore("spaces", () => {
     whiteBoard: false,
   };
 
-  const filters = useLocalStorage("filters", defaultFilters);
+  const filters = useLocalStorage("filters", defaultFilters, {
+    mergeDefaults: true,
+  });
 
   function clearFilters() {
     filters.value = defaultFilters; //TODO: check if Vue3 reactivity works like that
@@ -59,38 +64,46 @@ export const useSpacesStore = defineStore("spaces", () => {
   const buildingsI18n = ref([] as BuildingI18n[]);
 
   function setBuildings(buildings: BuildingI18n[]) {
-    buildingsI18n.value = buildings;
+    function compareByNumber(a: BuildingI18n, b: BuildingI18n) {
+      if (a.number > b.number) return 1;
+      if (a.number < b.number) return -1;
+      return 0;
+    }
+    buildingsI18n.value = [...buildings].sort(compareByNumber);
   }
 
   function bulkSetBuildingOccupancy(data: Record<number, number>) {
+    const mapStore = useMapStore();
     buildingsI18n.value = buildingsI18n.value.map((building) => {
-      return { ...building, activeDevices: data[building.number] };
+      const activeDevices = data[building.number];
+      const occupancy = calculateOccupancy(activeDevices, building.totalSeats);
+      return { ...building, activeDevices, occupancy };
     });
+    mapStore.updateData();
   }
 
   function setBuildingOccupancy(buildingNumber: number, activeDevices: number) {
     const building = getBuildingI18nByNumber(buildingNumber);
-    if (building) building.activeDevices = activeDevices;
-  }
-
-  function compareBuildingsByName(a: Building, b: Building) {
-    if (a.name > b.name) return 1;
-    if (a.name < b.name) return -1;
-    return 0;
+    if (building) {
+      building.activeDevices = activeDevices;
+      building.occupancy = calculateOccupancy(
+        activeDevices,
+        building.totalSeats
+      );
+      const mapStore = useMapStore();
+      mapStore.updateData();
+    }
   }
 
   const buildings = computed(() => {
     const { $locale } = useNuxtApp();
-    // TODO: is it really a good idea to have a computed localized buildings and especially spaces?
-    return buildingsI18n.value
-      .map((buildingI18n) => {
-        const i18nProps = buildingI18n.i18n[$locale.value];
-        return {
-          ...buildingI18n,
-          ...i18nProps,
-        } as Building;
-      })
-      .sort(compareBuildingsByName);
+    return buildingsI18n.value.map((buildingI18n) => {
+      const i18nProps = buildingI18n.i18n[$locale.value];
+      return {
+        ...buildingI18n,
+        ...i18nProps,
+      };
+    });
   });
 
   const spacesI18n = ref([] as SpaceI18n[]);

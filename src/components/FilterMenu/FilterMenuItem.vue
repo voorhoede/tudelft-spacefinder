@@ -12,7 +12,7 @@
       :name="iconName"
       class="filter-menu__filter-icon"
     />
-    {{ $t(i18nKey) }}
+    {{ label ?? $t(i18nKey) }}
   </label>
 </template>
 
@@ -22,8 +22,15 @@ import type { Filters } from "~/types/Filters";
 
 const props = withDefaults(
   defineProps<{
+    /** The name of the property to bind to in the global filter object */
     name: keyof Filters;
+    /** The value that will be added to the global filter property with this item selected (if the property is an array) */
     option?: string | number;
+    /** Combined with the option, used to determine the i18n key for the labe and the icon name. If not specified, name is used */
+    displayKey?: string;
+    /** Allows to override the label text */
+    label?: string;
+    /** False if you do not want to display an icon */
     showIcon?: boolean;
   }>(),
   { showIcon: true }
@@ -32,12 +39,11 @@ const inputId = computed(() =>
   ["filter-item", props.name, props.option].filter(Boolean).join("-")
 );
 const i18nKey = computed(() =>
-  [props.name, props.option].filter(Boolean).join(".")
+  [props.displayKey ?? props.name, props.option].filter(Boolean).join(".")
 );
 const iconName = computed(() => `facility-${i18nKey.value}-icon`);
 
 const spacesStore = useSpacesStore();
-//const { filters } = storeToRefs(spacesStore);
 </script>
 
 <style>
