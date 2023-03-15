@@ -17,7 +17,7 @@ export default defineNuxtPlugin(async (app) => {
     spacesStore.setBuildingOccupancy(buildingNumber, deviceCount)
   );
 
-  const spacesOccupancy = await supabase.getSpacesOccupancyCurrent();
+  /*const spacesOccupancy = await supabase.getSpacesOccupancyCurrent();
   const activeDevicesPerSpace = asNestedDictionary(
     spacesOccupancy ?? [],
     "building_number",
@@ -27,5 +27,5 @@ export default defineNuxtPlugin(async (app) => {
   spacesStore.bulkSetSpaceOccupancy(activeDevicesPerSpace);
   supabase.subscribeToSpacesOccupancy((buildingNumber, roomId, deviceCount) =>
     spacesStore.setSpaceOccupancy(buildingNumber, roomId, deviceCount)
-  );
+  );*/
 });
