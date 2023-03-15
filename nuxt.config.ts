@@ -31,10 +31,6 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     internalSecret: process.env.INTERNAL_SECRET,
-    supabaseCredentials: {
-      url: process.env.SUPABASE_URL,
-      key: process.env.SUPABASE_KEY,
-    },
     kafkaConfig: {
       url: process.env.KAFKA_URL,
       username: process.env.KAFKA_USERNAME,
