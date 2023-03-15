@@ -7,23 +7,21 @@ This app is a universal [Vue.js](https://vuejs.org/) app made with [Nuxt](https:
 
 ### Getting started
 * Clone the repository.
-* Copy `.env.example` to `.env` and set the environment variables. Copy them from the [Netlify build configuration](https://app.netlify.com/sites/spacefinder/settings/deploys#build-environment-variables) or ask a dev team member. 
 * Run `npm ci` to install the dependencies.
-* Run app in development mode (`npm run dev`), see [scripts](#scripts).
-* Changes on master trigger a new build and deploy to the [live environment](https://spacefinder.netlify.com).
+* Copy `.env.example` to `.env` and set the environment variables. Copy them from the [Netlify settings](https://app.netlify.com/sites/spacefinder/settings/general) or ask a dev team member. 
+* Run app in development mode (`npm run dev`), see all scripts with `npm run`.
 
-### Scripts
-This project requires [Node.js](http://nodejs.org/) (>= v8) and [npm](https://npmjs.org/) (comes with Node).
+#### Local Supabase
+In order to make changes to the database schema a local Supabase instance is needed.
+* Login with `npx supabase login`.
+* Run `npm run supabase:start` to start a local Supabase instance.
+* Use the output API url and key to set the environment variables `SUPABASE_URL` & `SUPABASE_KEY`.
 
-The following scripts are available:
-
-`npm run ...` | Description
----|---
-`analyze` | Analyze the bundles created during build.
-`build` | Builds app for production to `dist/`.
-`dev` | Serves app on [`http://localhost:3463`](http://localhost:3463) ("find" in T9) with hot reloading.
-`proxy` | Exposes app on localhost to world wide web for testing on other devices.
-`start` | Serves production version of client app from (`/dist/`) on [`http://localhost:3464`](http://localhost:3464).
+#### Migration
+* After changing the database schema run `npm run supabase:db:diff` followed by a migration name, e.g. `npm run supabase:db:diff -- create_xyz`.
+* Possibly alter the seeding data to match the schema changes.
+* Reset the local database to ensure everything works with `npm run supabase:db:reset`.
+* Committed migrations that are merged to the main branch are automatically deployed.
 
 ### Data
 Until the topdesk api is used as primary data source, we'll read CSV from 
@@ -38,5 +36,4 @@ ln -sf studieplekken-v<version>.csv data/studieplekken-latest.csv
 ```
 
 ### Decision log
-
 Key decisions that are made during the course of the project are documented in [docs/decision-log/](docs/decision-log/). Please read the log so you understand why decisions are made and document key decisions when you make them.
