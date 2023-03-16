@@ -5,6 +5,10 @@ This app is a universal [Vue.js](https://vuejs.org/) app made with [Nuxt](https:
 
 ## Development
 
+### Requirements
+- [Node.js](http://nodejs.org/)
+- [Docker](https://www.docker.com/) if running Supabase locally
+
 ### Getting started
 * Clone the repository.
 * Run `npm ci` to install the dependencies.
