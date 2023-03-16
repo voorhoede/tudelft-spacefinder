@@ -95,7 +95,8 @@ import { useInstallationStore } from "~/stores/installation";
 
 defineProps<{ isOpen?: boolean }>();
 const emit = defineEmits(["close"]);
-const { $isMapMode } = useNuxtApp();
+//Without local rename $isMapMode overrides the one that is auto-available in the template and since it's a component-local ref it starts being accessible without .value, which is misleading
+const { $isMapMode: isMapMode } = useNuxtApp();
 const installationStore = useInstallationStore();
 
 const { isInstallable } = storeToRefs(installationStore);
@@ -105,7 +106,7 @@ function installApp() {
 }
 
 function toggleMapMode() {
-  $isMapMode.value = !$isMapMode.value;
+  isMapMode.value = !isMapMode.value;
   emit("close");
 }
 </script>
