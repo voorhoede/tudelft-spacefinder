@@ -101,13 +101,37 @@ function initMap(accessToken: string) {
     maxBounds: [campusBounds.southWest, campusBounds.northEast],
   });
 
-  map.on("load", () => {
-    map.loadImage("/icons/map-marker.png", (error: any, image: any) => {
-      if (error) {
-        console.error("a mapbox error occurred");
-        return;
+  // After we settle with nice images we may remove one of the if branches
+  function addMarker(map: mapboxgl.Map, markerName: string, isSvg: boolean) {
+    return new Promise<void>((resolve, reject) => {
+      if (isSvg) {
+        const img = new Image(40, 40);
+        img.onload = () => {
+          map.addImage(markerName, img);
+          resolve();
+        };
+        img.src = `/icons/${markerName}.svg`;
+      } else {
+        map.loadImage(`/icons/${markerName}.png`, (error, image) => {
+          if (error) {
+            console.error("a mapbox error occurred");
+            reject(error);
+            return;
+          }
+          map.addImage(markerName, image!);
+          resolve();
+        });
       }
-      map.addImage("marker-icon", image);
+    });
+  }
+
+  map.on("load", () => {
+    const occupancyValues = ["quiet", "busy", "crowded"];
+    Promise.all(
+      occupancyValues.map((occupancy) =>
+        addMarker(map, `map-marker-${occupancy}`, true)
+      )
+    ).then(() => {
       map.addLayer({
         id: "points",
         interactive: true,
@@ -118,7 +142,18 @@ function initMap(accessToken: string) {
           promoteId: "spaceId",
         },
         layout: {
-          "icon-image": "marker-icon",
+          "icon-image": [
+            "match",
+            ["get", "buildingOccupancy"],
+            "quiet",
+            "map-marker-quiet",
+            "busy",
+            "map-marker-busy",
+            "crowded",
+            "map-marker-crowded",
+            "map-marker", //default
+          ],
+          //"marker-icon",
           "icon-allow-overlap": true,
         },
       });
