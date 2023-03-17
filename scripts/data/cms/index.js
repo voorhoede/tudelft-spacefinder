@@ -1,5 +1,6 @@
-require("dotenv").config();
-const got = require("got");
+import * as dotenv from "dotenv";
+dotenv.config();
+import got from "got";
 const { DATO_API_TOKEN } = process.env;
 const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === "1";
 
@@ -18,7 +19,11 @@ async function getFromDato(query, rootProp) {
   return response.body.data[rootProp];
 }
 
-function getBuildings() {
+export function getBuildingsDataFromCms() {
+  if (mockDataEnabled) {
+    console.info("Serving mock data from mock/cms/data.json");
+    return import("../../../mock/cms/data.json").then((data) => data.default);
+  }
   return getFromDato(
     `{
       allBuildings {
@@ -33,7 +38,10 @@ function getBuildings() {
   );
 }
 
-function getInfoPage() {
+export function getInfoDataFromCms() {
+  if (mockDataEnabled) {
+    return import("../../../mock/cms/info.json").then((info) => info.default);
+  }
   return getFromDato(
     `{
       infoPage {
@@ -51,7 +59,10 @@ function getInfoPage() {
   );
 }
 
-function getFeedbackPage() {
+export function getFeedbackPageFromCms() {
+  if (mockDataEnabled) {
+    return import("../../../mock/cms/info.json").then((info) => info.default);
+  }
   return getFromDato(
     `{
       feedbackPage {
@@ -69,7 +80,10 @@ function getFeedbackPage() {
   );
 }
 
-function getOnboarding() {
+export function getOnboardingDataFromCms() {
+  if (mockDataEnabled) {
+    return import("../../../mock/cms/info.json").then((info) => info.default);
+  }
   return getFromDato(
     `{
       onboarding {
@@ -87,7 +101,7 @@ function getOnboarding() {
   );
 }
 
-function convertCmsInfo(info) {
+export function convertCmsInfo(info) {
   return {
     nl: {
       title: info._allTitleLocales.find((item) => item.locale === "nl").value,
@@ -99,36 +113,3 @@ function convertCmsInfo(info) {
     },
   };
 }
-
-module.exports = {
-  getBuildingsDataFromCms: () => {
-    if (mockDataEnabled) {
-      console.info("Serving mock data from mock/cms/data.json");
-      const mockData = require("../../../mock/cms/data.json");
-      return Promise.resolve(mockData);
-    }
-    return getBuildings();
-  },
-  getInfoDataFromCms: () => {
-    if (mockDataEnabled) {
-      const mockData = require("../../../mock/cms/info.json");
-      return Promise.resolve(mockData);
-    }
-    return getInfoPage();
-  },
-  getFeedbackPageFromCms: () => {
-    if (mockDataEnabled) {
-      const mockData = require("../../../mock/cms/info.json");
-      return Promise.resolve(mockData);
-    }
-    return getFeedbackPage();
-  },
-  getOnboardingDataFromCms: () => {
-    if (mockDataEnabled) {
-      const mockData = require("../../../mock/cms/info.json");
-      return Promise.resolve(mockData);
-    }
-    return getOnboarding();
-  },
-  convertCmsInfo,
-};
