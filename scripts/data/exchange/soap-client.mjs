@@ -1,9 +1,9 @@
-const httpntlm = require("httpntlm");
-const parser = require("fast-xml-parser");
+import { post } from "httpntlm";
+import { parse } from "fast-xml-parser";
 
-module.exports = (config) => (xml) => {
+export default (config) => (xml) => {
   return new Promise((resolve, reject) => {
-    httpntlm.post(
+    post(
       {
         ...config,
         headers: {
@@ -20,7 +20,7 @@ module.exports = (config) => (xml) => {
           );
         }
 
-        const parsed = parser.parse(res.body);
+        const parsed = parse(res.body);
         // Cautiously get user availability response
         const availability =
           parsed?.["s:Envelope"]?.["s:Body"]?.GetUserAvailabilityResponse ??
