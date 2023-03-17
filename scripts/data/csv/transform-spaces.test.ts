@@ -1,4 +1,4 @@
-import { getSpaceI18n, getSpaces } from "./transform-spaces";
+import { getSpaceI18n, getSpaces } from "./transform-spaces.mjs";
 
 describe("Space i18n properties transformation", () => {
   it("works", () => {

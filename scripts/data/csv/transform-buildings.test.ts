@@ -1,4 +1,4 @@
-import { getBuildingI18n } from "./transform-buildings";
+import { getBuildingI18n } from "./transform-buildings.mjs";
 
 describe("Building i18n properties transformation", () => {
   it("works", () => {
