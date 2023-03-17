@@ -1,16 +1,26 @@
-require('dotenv').config()
-const got = require('got')
-const { DATO_API_TOKEN } = process.env
-const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === '1'
+require("dotenv").config();
+const got = require("got");
+const { DATO_API_TOKEN } = process.env;
+const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === "1";
 
-const getBuildings = () => got('https://graphql.datocms.com/', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${DATO_API_TOKEN}`,
-  },
-  json: true,
-  body: {
-    query: `{
+async function getFromDato(query, rootProp) {
+  const response = await got("https://graphql.datocms.com/", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${DATO_API_TOKEN}`,
+    },
+    json: true,
+    body: {
+      query,
+      variables: null,
+    },
+  });
+  return response.body.data[rootProp];
+}
+
+function getBuildings() {
+  return getFromDato(
+    `{
       allBuildings {
         image {
           url
@@ -19,20 +29,13 @@ const getBuildings = () => got('https://graphql.datocms.com/', {
         bounds
       }
     }`,
-    variables: null,
-  },
-}).then(({ body: { data: { allBuildings } } }) => {
-  return allBuildings
-})
+    "allBuildings"
+  );
+}
 
-const getInfoPage = () => got('https://graphql.datocms.com/', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${DATO_API_TOKEN}`,
-  },
-  json: true,
-  body: {
-    query: `{
+function getInfoPage() {
+  return getFromDato(
+    `{
       infoPage {
         _allTitleLocales {
           locale,
@@ -44,20 +47,13 @@ const getInfoPage = () => got('https://graphql.datocms.com/', {
         }
       }
     }`,
-    variables: null,
-  },
-}).then(({ body: { data: { infoPage } } }) => {
-  return infoPage
-})
+    "infoPage"
+  );
+}
 
-const getFeedbackPage = () => got('https://graphql.datocms.com/', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${DATO_API_TOKEN}`,
-  },
-  json: true,
-  body: {
-    query: `{
+function getFeedbackPage() {
+  return getFromDato(
+    `{
       feedbackPage {
         _allTitleLocales {
           locale,
@@ -69,20 +65,13 @@ const getFeedbackPage = () => got('https://graphql.datocms.com/', {
         }
       }
     }`,
-    variables: null,
-  },
-}).then(({ body: { data: { feedbackPage } } }) => {
-  return feedbackPage
-})
+    "feedbackPage"
+  );
+}
 
-const getOnboarding = () => got('https://graphql.datocms.com/', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${DATO_API_TOKEN}`,
-  },
-  json: true,
-  body: {
-    query: `{
+function getOnboarding() {
+  return getFromDato(
+    `{
       onboarding {
         _allTitleLocales {
           locale,
@@ -94,64 +83,52 @@ const getOnboarding = () => got('https://graphql.datocms.com/', {
         }
       }
     }`,
-    variables: null,
-  },
-}).then(({ body: { data: { onboarding } } }) => {
-  return onboarding
-})
+    "onboarding"
+  );
+}
 
-const convertCmsInfo = (info) => {
-  const infoPage = {
+function convertCmsInfo(info) {
+  return {
     nl: {
-      title: info._allTitleLocales.find((item) => {
-        return item.locale === 'nl'
-      }).value,
-      body: info._allBodyLocales.find((item) => {
-        return item.locale === 'nl'
-      }).value,
+      title: info._allTitleLocales.find((item) => item.locale === "nl").value,
+      body: info._allBodyLocales.find((item) => item.locale === "nl").value,
     },
     en: {
-      title: info._allTitleLocales.find((item) => {
-        return item.locale === 'en'
-      }).value,
-      body: info._allBodyLocales.find((item) => {
-        return item.locale === 'en'
-      }).value,
+      title: info._allTitleLocales.find((item) => item.locale === "en").value,
+      body: info._allBodyLocales.find((item) => item.locale === "en").value,
     },
-  }
-
-  return infoPage
+  };
 }
 
 module.exports = {
   getBuildingsDataFromCms: () => {
     if (mockDataEnabled) {
-      console.info('Serving mock data from mock/cms/data.json')
-      const mockData = require('../../../mock/cms/data.json')
-      return Promise.resolve(mockData)
+      console.info("Serving mock data from mock/cms/data.json");
+      const mockData = require("../../../mock/cms/data.json");
+      return Promise.resolve(mockData);
     }
-    return getBuildings()
+    return getBuildings();
   },
-  getInfoDataFromCms: ()=>{ 
+  getInfoDataFromCms: () => {
     if (mockDataEnabled) {
-      const mockData = require('../../../mock/cms/info.json')
-      return Promise.resolve(mockData)
+      const mockData = require("../../../mock/cms/info.json");
+      return Promise.resolve(mockData);
     }
-    return getInfoPage()
+    return getInfoPage();
   },
-  getFeedbackPageFromCms: ()=>{
+  getFeedbackPageFromCms: () => {
     if (mockDataEnabled) {
-      const mockData = require('../../../mock/cms/info.json')
-      return Promise.resolve(mockData)
+      const mockData = require("../../../mock/cms/info.json");
+      return Promise.resolve(mockData);
     }
-    return getFeedbackPage()
+    return getFeedbackPage();
   },
-  getOnboardingDataFromCms: ()=> {
+  getOnboardingDataFromCms: () => {
     if (mockDataEnabled) {
-      const mockData = require('../../../mock/cms/info.json')
-      return Promise.resolve(mockData)
+      const mockData = require("../../../mock/cms/info.json");
+      return Promise.resolve(mockData);
     }
-    return getOnboarding()
+    return getOnboarding();
   },
   convertCmsInfo,
-}
+};
