@@ -2,7 +2,7 @@
   "name": "tudelft-spacefinder",
   "private": true,
   "scripts": {
-    "data": "node scripts/data/index.js",
+    "data": "node scripts/data/index.mjs",
     "prebuild": "npm run data",
     "build": "nuxt build",
     "predev": "npm run data",
