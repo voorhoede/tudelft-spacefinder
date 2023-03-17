@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import { writeFile } from "fs";
-import { getData as getDataFromCsv, transform } from "./csv/index.mjs";
+import { getData as getDataFromCsv, transform } from "./csv/index";
 import {
   getBuildingsDataFromCms,
   getInfoDataFromCms,
@@ -13,12 +13,15 @@ import exchange from "./exchange/index.js";
 import validate from "./validate/index.js";
 
 const { CSV_PATH: csvPath } = process.env;
+if (!csvPath) {
+  throw "CSV_PATH missing in env";
+}
 
-const writeFiles = (files = []) => {
+const writeFiles = (files: { path: string; contents: any }[]) => {
   return Promise.all(
     files.map(({ path, contents }) => {
       const stringifiedData = JSON.stringify(contents, null, 2);
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         writeFile(`./src/data/${path}.json`, stringifiedData, "utf8", (err) => {
           if (err) {
             return reject(err);

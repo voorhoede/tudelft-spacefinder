@@ -2,7 +2,7 @@
   "name": "tudelft-spacefinder",
   "private": true,
   "scripts": {
-    "data": "node scripts/data/index.mjs",
+    "data": "node scripts/data/index.ts",
     "prebuild": "npm run data",
     "build": "nuxt build",
     "predev": "npm run data",
@@ -42,6 +42,7 @@
     "ramda": "^0.26.1",
     "sitemap": "^7.1.1",
     "slugify": "^1.3.4",
+    "tsx": "^3.12.5",
     "vue-virtual-scroller": "^2.0.0-beta.8"
   },
   "devDependencies": {
