@@ -1,42 +1,13 @@
-const {
-  allPass,
-  always,
-  ascend,
-  chain,
-  filter,
-  identity,
-  ifElse,
-  is,
-  isEmpty,
-  not,
-  pick,
-  pipe,
-  sort,
-  uniq,
-  values,
-} = require('ramda')
-
-const isArrayWithItems = allPass([
-  pipe(isEmpty, not),
-  is(Array),
-])
-
-const getExchangeIds = chain(
-  pipe(
-    pick(['exchangeBuildingId', 'exchangeRoomId']),
-    values
-  )
-)
-
-const sortAscending = sort(ascend(identity))
-
-module.exports = ifElse(
-  isArrayWithItems,
-  pipe(
-    getExchangeIds,
-    uniq,
-    filter(pipe(isEmpty, not)),
-    sortAscending
-  ),
-  always([])
-)
+export default function getUniqueEmails(spaces) {
+  if (!spaces || !Array.isArray(spaces)) return [];
+  const uniqueEmailSet = {};
+  for (const space of spaces) {
+    if (space.exchangeBuildingId)
+      uniqueEmailSet[space.exchangeBuildingId] = true;
+    if (space.exchangeRoomId) uniqueEmailSet[space.exchangeRoomId] = true;
+  }
+  console.log(uniqueEmailSet);
+  const uniqueEmails = Object.keys(uniqueEmailSet);
+  uniqueEmails.sort();
+  return uniqueEmails;
+}
