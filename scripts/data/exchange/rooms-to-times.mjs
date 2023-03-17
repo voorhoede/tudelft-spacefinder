@@ -1,4 +1,4 @@
-module.exports = (exchangeIds, availabilityResponse) => {
+export default (exchangeIds, availabilityResponse) => {
   const calendarList =
     availabilityResponse.FreeBusyResponseArray?.FreeBusyResponse ?? [];
   const events = calendarList.map(
