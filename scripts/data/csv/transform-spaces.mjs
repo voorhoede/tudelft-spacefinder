@@ -50,8 +50,8 @@ export function getSpaces(csvData) {
     const space = {
       buildingNumber,
       i18n: {
-        nl: getSpaceI18n(source.spaceId, source.spaceNameNL), //TODO
-        en: getSpaceI18n(source.spaceId, source.spaceNameNL),
+        nl: getSpaceI18n(source.spaceId, source.spaceNameNL),
+        en: getSpaceI18n(source.spaceId, source.spaceNameEN),
       },
       facilities: {},
     };
