@@ -1,6 +1,6 @@
 import slugify from "slugify";
 
-import { buildingNumberFromId } from "./lib/building-meta.mjs";
+import { buildingNumberFromId } from "./lib/building-meta";
 
 const facilities = [
   "adjustableChairs",
@@ -30,13 +30,13 @@ const spaceRootProperties = [
   "roomId",
 ];
 
-function getSpaceSlug(spaceId, name) {
+function getSpaceSlug(spaceId: string, name: string) {
   return [spaceId, name]
     .map((part) => slugify(part.replace(/\./g, "-")).toLowerCase())
     .join("--");
 }
 
-export function getSpaceI18n(spaceId, sourceName) {
+export function getSpaceI18n(spaceId: string, sourceName: string) {
   const name = sourceName.trim();
   return {
     name,
@@ -44,10 +44,10 @@ export function getSpaceI18n(spaceId, sourceName) {
   };
 }
 
-export function getSpaces(csvData) {
+export function getSpaces(csvData: Record<string, any>[]) {
   return csvData.map((source) => {
     const buildingNumber = buildingNumberFromId(source.buildingId);
-    const space = {
+    const space: Record<string, any> = {
       buildingNumber,
       i18n: {
         nl: getSpaceI18n(source.spaceId, source.spaceNameNL),

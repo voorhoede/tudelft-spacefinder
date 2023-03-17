@@ -1,7 +1,11 @@
-import { buildingNumberFromId } from "./lib/building-meta.mjs";
+import { buildingNumberFromId } from "./lib/building-meta";
 import slugify from "slugify";
 
-export function getBuildingI18n(number, sourceName, sourceAbbreviation) {
+export function getBuildingI18n(
+  number: number,
+  sourceName: string,
+  sourceAbbreviation: string
+) {
   const abbreviation = sourceAbbreviation.trim();
   return {
     abbreviation,
@@ -10,19 +14,26 @@ export function getBuildingI18n(number, sourceName, sourceAbbreviation) {
   };
 }
 
-function getBuildingSlug(number, abbreviation) {
+function getBuildingSlug(number: number, abbreviation: string) {
   return slugify([number, abbreviation].join("-")).toLowerCase();
 }
 
-function getBuildingName(sourceName) {
+function getBuildingName(sourceName: string) {
   const dashPos = sourceName.indexOf("-");
   return (dashPos >= 0 ? sourceName.substring(dashPos + 1) : sourceName).trim();
 }
 
-export function getBuildings(csvData, cmsData) {
-  const buildings = {};
+export function getBuildings(
+  csvData: Record<string, any>[],
+  cmsData: Record<string, any>[]
+) {
+  const buildings = {} as Record<string, any>;
   for (const space of csvData) {
     const number = buildingNumberFromId(space.buildingId);
+    if (number == null) {
+      console.error("Invalid buildingId: ", space.buildingId);
+      continue;
+    }
     if (!(number.toString() in buildings))
       buildings[number.toString()] = {
         buildingId: space.buildingId,
