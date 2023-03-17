@@ -1,11 +1,16 @@
-import { config } from "dotenv";
+import * as dotenv from "dotenv";
+dotenv.config();
 import { writeFile } from "fs";
 import { getData as getDataFromCsv, transform } from "./csv/index.mjs";
-import cms from "./cms/index.js";
+import {
+  getBuildingsDataFromCms,
+  getInfoDataFromCms,
+  getFeedbackPageFromCms,
+  getOnboardingDataFromCms,
+  convertCmsInfo,
+} from "./cms/index.mjs";
 import exchange from "./exchange/index.js";
 import validate from "./validate/index.js";
-
-config();
 
 const { CSV_PATH: csvPath } = process.env;
 
@@ -27,10 +32,10 @@ const writeFiles = (files = []) => {
 
 Promise.all([
   getDataFromCsv(csvPath),
-  cms.getBuildingsDataFromCms(),
-  cms.getInfoDataFromCms(),
-  cms.getFeedbackPageFromCms(),
-  cms.getOnboardingDataFromCms(),
+  getBuildingsDataFromCms(),
+  getInfoDataFromCms(),
+  getFeedbackPageFromCms(),
+  getOnboardingDataFromCms(),
 ])
   .then(([csv, buildings, info, feedback, onboarding]) =>
     Promise.all([
@@ -43,14 +48,14 @@ Promise.all([
     ])
   )
   .then(([{ spaces, buildings }, info, feedback, onboarding]) => {
-    const infoPage = cms.convertCmsInfo(info);
-    const feedbackPage = cms.convertCmsInfo(feedback);
+    const infoPage = convertCmsInfo(info);
+    const feedbackPage = convertCmsInfo(feedback);
     return [
       spaces,
       buildings,
       infoPage,
       feedbackPage,
-      cms.convertCmsInfo(onboarding),
+      convertCmsInfo(onboarding),
     ];
   })
   .then(([spaces, buildings, infoPage, feedbackPage, onboarding]) =>
