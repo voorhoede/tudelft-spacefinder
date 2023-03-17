@@ -8,7 +8,7 @@ import {
   getFeedbackPageFromCms,
   getOnboardingDataFromCms,
   convertCmsInfo,
-} from "./cms/index.mjs";
+} from "./cms/index";
 import exchange from "./exchange/index.js";
 import validate from "./validate/index.js";
 

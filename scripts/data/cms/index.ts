@@ -4,7 +4,7 @@ import got from "got";
 const { DATO_API_TOKEN } = process.env;
 const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === "1";
 
-async function getFromDato(query, rootProp) {
+async function getFromDato(query: string, rootProp: string) {
   const response = await got("https://graphql.datocms.com/", {
     method: "POST",
     headers: {
@@ -101,15 +101,29 @@ export function getOnboardingDataFromCms() {
   );
 }
 
-export function convertCmsInfo(info) {
+interface DatoLocalizedContent {
+  locale: "nl" | "en";
+  value: string;
+}
+
+interface DatoInfoPage {
+  _allTitleLocales: DatoLocalizedContent[];
+  _allBodyLocales: DatoLocalizedContent[];
+}
+
+export function convertCmsInfo(info: DatoInfoPage) {
   return {
     nl: {
-      title: info._allTitleLocales.find((item) => item.locale === "nl").value,
-      body: info._allBodyLocales.find((item) => item.locale === "nl").value,
+      title:
+        info._allTitleLocales.find((item) => item.locale === "nl")?.value ?? "",
+      body:
+        info._allBodyLocales.find((item) => item.locale === "nl")?.value ?? "",
     },
     en: {
-      title: info._allTitleLocales.find((item) => item.locale === "en").value,
-      body: info._allBodyLocales.find((item) => item.locale === "en").value,
+      title:
+        info._allTitleLocales.find((item) => item.locale === "en")?.value ?? "",
+      body:
+        info._allBodyLocales.find((item) => item.locale === "en")?.value ?? "",
     },
   };
 }
