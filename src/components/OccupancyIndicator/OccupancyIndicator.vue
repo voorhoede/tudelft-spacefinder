@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { Tooltip } from "floating-vue";
 import "floating-vue/dist/style.css";
-import { Occupancy } from "~/types/Filters";
+import type { Occupancy } from "~/types/Filters";
 
 defineProps<{
   totalSeats: number;
