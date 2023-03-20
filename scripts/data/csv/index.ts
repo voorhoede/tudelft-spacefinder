@@ -35,7 +35,7 @@ export function transform(
 
   for (const source of dataFromCsv) {
     const buildingNumber = buildingNumberFromId(source.buildingId);
-    if (buildingNumber == null) {
+    if (buildingNumber == undefined) {
       console.error("Invalid buildingId: ", source.buildingId);
       continue;
     }

@@ -14,8 +14,12 @@ const useMockData = process.env.USE_MOCK_DATA_EXCHANGE === "1";
 const start = moment().startOf("day").toISOString(true);
 const end = moment().add(6, "days").endOf("day").toISOString(true);
 
-export default (emailAddresses) => {
-  const soapClient = client({ username, password, url });
+export default (emailAddresses: string[]) => {
+  const soapClient = client({
+    username: username!,
+    password: password!,
+    url: url!,
+  });
   const soapDocument = template({
     emails: emailAddresses,
     start,
