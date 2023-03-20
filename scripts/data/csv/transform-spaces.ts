@@ -1,8 +1,8 @@
 import slugify from "slugify";
+import { SpaceFeatures } from "./../../../src/types/Filters";
+import { CsvSpaceData } from "./../../../src/types/Space";
 
-import { buildingNumberFromId } from "./lib/building-meta";
-
-const facilities = [
+const facilityProperties = [
   "adjustableChairs",
   "studyType",
   "quietness",
@@ -16,7 +16,7 @@ const facilities = [
   "nearCoffeeMachine",
   "nearPrinter",
   "nearBathroom",
-];
+] as const;
 
 const spaceRootProperties = [
   "spaceId",
@@ -28,7 +28,7 @@ const spaceRootProperties = [
   "latitude",
   "longitude",
   "roomId",
-];
+] as const;
 
 function getSpaceSlug(spaceId: string, name: string) {
   return [spaceId, name]
@@ -44,19 +44,20 @@ export function getSpaceI18n(spaceId: string, sourceName: string) {
   };
 }
 
-export function getSpaces(csvData: Record<string, any>[]) {
-  return csvData.map((source) => {
-    const buildingNumber = buildingNumberFromId(source.buildingId);
-    const space: Record<string, any> = {
-      buildingNumber,
-      i18n: {
-        nl: getSpaceI18n(source.spaceId, source.spaceNameNL),
-        en: getSpaceI18n(source.spaceId, source.spaceNameEN),
-      },
-      facilities: {},
-    };
-    for (const prop of spaceRootProperties) space[prop] = source[prop];
-    for (const prop of facilities) space.facilities[prop] = source[prop];
-    return space;
-  });
+export function getSpace(
+  buildingNumber: number,
+  source: Record<string, any>
+): CsvSpaceData {
+  const facilities: Partial<SpaceFeatures> = {};
+  for (const prop of facilityProperties) facilities[prop] = source[prop];
+  const space: Partial<CsvSpaceData> = {
+    buildingNumber,
+    i18n: {
+      nl: getSpaceI18n(source.spaceId, source.spaceNameNL),
+      en: getSpaceI18n(source.spaceId, source.spaceNameEN),
+    },
+    facilities: facilities as SpaceFeatures,
+  };
+  for (const prop of spaceRootProperties) space[prop] = source[prop];
+  return space as CsvSpaceData;
 }

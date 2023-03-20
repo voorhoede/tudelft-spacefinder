@@ -1,5 +1,5 @@
-import { buildingNumberFromId } from "./lib/building-meta";
 import slugify from "slugify";
+import { CsvBuildingData } from "./../../../src/types/Building";
 
 export function getBuildingI18n(
   number: number,
@@ -23,45 +23,27 @@ function getBuildingName(sourceName: string) {
   return (dashPos >= 0 ? sourceName.substring(dashPos + 1) : sourceName).trim();
 }
 
-export function getBuildings(
-  csvData: Record<string, any>[],
-  cmsData: Record<string, any>[]
-) {
-  const buildings = {} as Record<string, any>;
-  for (const space of csvData) {
-    const number = buildingNumberFromId(space.buildingId);
-    if (number == null) {
-      console.error("Invalid buildingId: ", space.buildingId);
-      continue;
-    }
-    if (!(number.toString() in buildings))
-      buildings[number.toString()] = {
-        buildingId: space.buildingId,
-        number: number,
-        exchangeBuildingId: space.exchangeBuildingId,
-        i18n: {
-          nl: getBuildingI18n(
-            number,
-            space.buildingNameNL,
-            space.buildingAbbreviationNL
-          ),
-          en: getBuildingI18n(
-            number,
-            space.buildingNameEN,
-            space.buildingAbbreviationEN
-          ),
-        },
-        totalSeats: 0,
-        totalSpaces: 0,
-      };
-    buildings[number.toString()].totalSeats += space.seats;
-    buildings[number.toString()].totalSpaces += 1;
-  }
-  for (const cmsBuilding of cmsData) {
-    const building = buildings[cmsBuilding.number.toString()];
-    if (!building) continue;
-    building.bounds = cmsBuilding.bounds;
-    building.image = cmsBuilding.image;
-  }
-  return Object.values(buildings);
+export function getBuilding(
+  number: number,
+  source: Record<string, any>
+): CsvBuildingData {
+  return {
+    buildingId: source.buildingId,
+    number: number,
+    exchangeBuildingId: source.exchangeBuildingId,
+    i18n: {
+      nl: getBuildingI18n(
+        number,
+        source.buildingNameNL,
+        source.buildingAbbreviationNL
+      ),
+      en: getBuildingI18n(
+        number,
+        source.buildingNameEN,
+        source.buildingAbbreviationEN
+      ),
+    },
+    totalSeats: 0,
+    totalSpaces: 0,
+  };
 }
