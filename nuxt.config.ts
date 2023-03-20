@@ -1,3 +1,4 @@
+import { defineNuxtConfig } from "nuxt/config";
 import routes from "./config/routes";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -7,7 +8,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/supabase",
     "@vueuse/nuxt",
-    "@kevinmarrec/nuxt-pwa",
+    "@vite-pwa/nuxt",
   ],
   css: ["normalize.css", "@/components/app-core/index.css"],
   app: {
@@ -57,17 +58,37 @@ export default defineNuxtConfig({
     },
   },
   pwa: {
+    registerType: "autoUpdate",
+    useCredentials: true,
+    workbox: {
+      globPatterns: ["_nuxt/*"],
+      navigateFallback: null,
+    },
     manifest: {
       name: "TU Delft\nSpacefinder",
       short_name: "Spacefinder",
       background_color: "#00a6d6",
       theme_color: "#00a6d6",
       display: "standalone",
-      crossorigin: "use-credentials",
-    },
-    meta: {
-      name: "TU Delft Spacefinder",
-      twitterCard: false,
+      icons: [
+        {
+          src: "/favicon-192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "/favicon-512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "/favicon-512--maskable.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "maskable",
+        },
+      ],
+
     },
   },
 });
