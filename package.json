@@ -2,7 +2,7 @@
   "name": "tudelft-spacefinder",
   "private": true,
   "scripts": {
-    "data": "node scripts/data/index.ts",
+    "data": "tsx --tsconfig ./tsconfig.data-scripts.json scripts/data/index.ts",
     "prebuild": "npm run data",
     "build": "nuxt build",
     "predev": "npm run data",
