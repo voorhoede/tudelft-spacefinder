@@ -28,15 +28,60 @@ In order to make changes to the database schema a local Supabase instance is nee
 * Committed migrations that are merged to the main branch are automatically deployed.
 
 ### Data
-Until the topdesk api is used as primary data source, we'll read CSV from 
-`data/studieplekken-latest`. When a new version of the data comes in from TU, 
-do the following:
+The Spacefinder combines data from different sources:
 
-0. convert the incoming file from *xlsx* to *csv*
-0. save to `data` directory as `studieplekken-v<version>.csv`
-0. update the symlink to point to the latest version:
-```sh
-ln -sf studieplekken-v<version>.csv data/studieplekken-latest.csv
+* **Locations**: the TU Delft provides a list of locations as a CSV file (`data/studieplekken.csv`). The file is generated from a system of TU Delft Education and Student Affairs (ESA) and emailed to the Spacefinder team. Since new CSV files are rarely received, the location data is stored in the codebase and compiled into useable files (`src/data/buildings.json` and `spaces.json`) during build-time. The TU Delft plans to make the location data available through a TopDesk API in the future, but there is no timeline available.
+* **Content**: a DatoCMS instance is used for enriching building content and managing the rich text content used in the application. The use of a CMS makes this content easily editable by (TU Delft members of) the Spacefinder team. The content data is dumped during build-time (`src/data/*page.json`), so there's no run-time dependency on the CMS.
+* **Opening hours**: the TU Delft provides opening hours for (some) buildings and spaces via a Microsoft Exchange web service. ~~The Spacefinder app was originally developed as a static generated website. Opening hours were therefore also added to the locations during build-time. Since, the Spacefinder does not receive updates on changes in opening hours, a cron job is used to trigger a nightly build (`.github/workflows/scheduled-build.yml`).~~ ❌ The Exchange web service is currently unavailable due to expired credentials. The Spacefinder team is waiting for TU Delft support. The opening hours are therefore hidden in the UI (`HIDE_OPENING_HOURS=1`) and the nightly build has been disabled.
+* **Occupancy data**: the TU Delft provides real-time data on location occupancy via a Kafka stream. The stream contains device counts for wifi access points on the TU Delft campus. Since the data is continuously updated, it's handled during run-time. The Spacefinder consumes this data every 5 minutes via a serverless function and stores it in a Supabase database. The database contains triggers to convert device counts per wifi access point to device counts per space and per building. The client-side Spacefinder app subscribes to the device counts per space and building and displays them in the UI.
+
+The data sources and data flow is visualised in the diagram below:
+
+```mermaid
+%%{
+    init: {
+        'theme': 'base',
+        'themeVariables': {
+            'edgeLabelBackground': '#FFFFFF',
+            'lineColor': '#0000FF',
+            'mainBkg': '#FFFFFF',
+            'primaryBorderColor': '#0000FF',
+            'primaryTextColor': '#000000',
+            'tertiaryColor': '#FFFED9'
+        }
+    }
+}%%
+
+flowchart
+
+    subgraph "Data sources"
+        OccupancyData("<strong>Occupancy data</strong><br>(TU Delft Kafka)")
+        LocationData("<strong>Location data</strong><br>(TU Delft ESA)")
+        SpacefinderCms("<strong>CMS content</strong><br>(DatoCMS instance)")
+        OpeningHours("<strong>Opening hours ❌</strong><br>(TU Delft Exchange)")
+    end
+
+    subgraph "Application run-time"
+        SpacefinderDb("<strong>Spacefinder database</strong><br>(Supabase instance)")
+        DynamicApp("<strong>Dynamic app</strong><br>(in browser)")
+    end
+
+    subgraph "Static deployment"
+        RawLocationFile("<strong>Raw location file</strong><br>(data/studieplekken.csv)")
+        LocationFiles("<strong>Location files</strong><br>(buildings & spaces.json)")
+        ContentFiles("<strong>Content files</strong><br>(src/data/...json)")
+        StaticApp("<strong>Static app</strong><br>(Netlify instance)")
+    end
+
+    LocationData -. "<strong>receive update</strong><br>(via email)" .-> RawLocationFile
+    RawLocationFile -. "<strong>convert data</strong><br>(build-time)" .-> LocationFiles
+    OpeningHours -. "<strong>attach data ❌</strong><br>(build-time)" .-> LocationFiles
+    SpacefinderCms -. "<strong>dump content</strong><br>(build-time)" .-> ContentFiles
+    OccupancyData -- "<strong>consume data</strong><br>(every 5 min)" --> SpacefinderDb
+    SpacefinderDb -- "<strong>subscribe to data</strong><br>(real-time)" --> DynamicApp
+    ContentFiles -. "<strong>import data</strong><br>(build-time)" .-> StaticApp
+    LocationFiles -. "<strong>import data</strong><br>(build-time)" .-> StaticApp
+    StaticApp -- "<strong>visit spacefinder.tudelft.nl</strong><br>(load once)" --> DynamicApp
 ```
 
 ### Decision log
