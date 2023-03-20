@@ -1,4 +1,4 @@
-function getMailboxData(emails) {
+function getMailboxData(emails: string[]) {
   return emails
     .map(
       (email) =>
@@ -11,7 +11,15 @@ function getMailboxData(emails) {
     .join("\n");
 }
 
-export default function soapTemplate({ emails = [], start, end }) {
+export default function soapTemplate({
+  emails = [],
+  start,
+  end,
+}: {
+  emails: string[];
+  start: string;
+  end: string;
+}) {
   return `<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
