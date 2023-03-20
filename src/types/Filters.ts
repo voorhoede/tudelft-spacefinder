@@ -27,4 +27,6 @@ export type SpaceFeatures = Facilities & {
 
 export type StudyType = "group" | "self";
 export type Quietness = "silent" | "quiet" | "noisy";
-export type Occupancy = "quiet" | "busy" | "crowded";
+
+export const OCCUPANCY_RATES = ["quiet", "busy", "crowded"] as const;
+export type Occupancy = typeof OCCUPANCY_RATES[number];

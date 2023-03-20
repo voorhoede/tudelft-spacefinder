@@ -6,7 +6,7 @@ import { Bounds } from "~/types/Bounds";
 import campusBounds from "~/lib/campus-bounds";
 import { useSpacesStore } from "./spaces";
 import { GeoJSONSource, Map } from "mapbox-gl";
-import { Occupancy } from "../types/Filters";
+import type { Occupancy } from "../types/Filters";
 
 export const useMapStore = defineStore("map", () => {
   const spacesStore = useSpacesStore();
