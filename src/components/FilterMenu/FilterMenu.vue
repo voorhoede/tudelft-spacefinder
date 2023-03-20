@@ -7,19 +7,11 @@
             {{ $t("occupancy") }}
           </legend>
           <FilterMenuItem
+            v-for="occupancy in OCCUPANCY_RATES"
             name="buildingOccupancy"
             display-key="occupancy"
-            option="quiet"
-          />
-          <FilterMenuItem
-            name="buildingOccupancy"
-            display-key="occupancy"
-            option="busy"
-          />
-          <FilterMenuItem
-            name="buildingOccupancy"
-            display-key="occupancy"
-            option="crowded"
+            :option="occupancy"
+            :key="occupancy"
           />
         </fieldset>
         <fieldset class="filter-menu__filter-group">
@@ -116,6 +108,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useSpacesStore } from "~/stores/spaces";
+import { OCCUPANCY_RATES } from "~/types/Filters";
 
 defineProps<{ isOpen?: boolean }>();
 

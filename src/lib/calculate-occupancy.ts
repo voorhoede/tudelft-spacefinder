@@ -1,4 +1,4 @@
-import { Occupancy } from "../types/Filters";
+import type { Occupancy } from "../types/Filters";
 
 export default function calculateOccupancy(
   deviceCount: number,

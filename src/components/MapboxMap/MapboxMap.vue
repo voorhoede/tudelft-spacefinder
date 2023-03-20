@@ -20,6 +20,7 @@ import { useSpacesStore } from "~/stores/spaces";
 import campusBounds from "~/lib/campus-bounds";
 import { useMapStore } from "~/stores/map";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { OCCUPANCY_RATES } from "~/types/Filters";
 const mapboxgl = (await import("mapbox-gl")).default;
 
 const runtimeConfig = useRuntimeConfig();
@@ -102,36 +103,26 @@ function initMap(accessToken: string) {
   });
 
   // After we settle with nice images we may remove one of the if branches
-  function addMarker(map: mapboxgl.Map, markerName: string, isSvg: boolean) {
-    return new Promise<void>((resolve, reject) => {
-      if (isSvg) {
-        const img = new Image(40, 40);
-        img.onload = () => {
-          map.addImage(markerName, img);
-          resolve();
-        };
-        img.src = `/icons/${markerName}.svg`;
-      } else {
-        map.loadImage(`/icons/${markerName}.png`, (error, image) => {
-          if (error) {
-            console.error("a mapbox error occurred");
-            reject(error);
-            return;
-          }
-          map.addImage(markerName, image!);
-          resolve();
-        });
-      }
+  function addMarker(map: mapboxgl.Map, markerName: string) {
+    return new Promise<void>((resolve) => {
+      const img = new Image(40, 40);
+      img.onload = () => {
+        map.addImage(markerName, img);
+        resolve();
+      };
+      img.src = `/icons/${markerName}.svg`;
     });
   }
 
   map.on("load", () => {
-    const occupancyValues = ["quiet", "busy", "crowded"];
+    const markerNames = [...OCCUPANCY_RATES, "default"] as const;
     Promise.all(
-      occupancyValues.map((occupancy) =>
-        addMarker(map, `map-marker-${occupancy}`, true)
-      )
+      markerNames.map((occupancy) => addMarker(map, `map-marker-${occupancy}`))
     ).then(() => {
+      const occupancyIconNamePairs = OCCUPANCY_RATES.reduce(
+        (acc, occupancy) => [...acc, occupancy, `map-marker-${occupancy}`],
+        [] as string[]
+      );
       map.addLayer({
         id: "points",
         interactive: true,
@@ -143,17 +134,11 @@ function initMap(accessToken: string) {
         },
         layout: {
           "icon-image": [
-            "match",
-            ["get", "buildingOccupancy"],
-            "quiet",
-            "map-marker-quiet",
-            "busy",
-            "map-marker-busy",
-            "crowded",
-            "map-marker-crowded",
-            "map-marker", //default
+            "match", // A rule to determine the icon for the point...
+            ["get", "buildingOccupancy"], // ... is that if the `buildingOccupancy` property matches...
+            ...occupancyIconNamePairs, // ... the first element of the pair from this (flat) sequence, the second element defines the name of the icon
+            "map-marker-default", //And the final element determines the default icon
           ],
-          //"marker-icon",
           "icon-allow-overlap": true,
         },
       });
