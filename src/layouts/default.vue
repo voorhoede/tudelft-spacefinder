@@ -3,6 +3,7 @@
     ref="defaultLayout"
     class="default-layout"
   >
+    <VitePwaManifest />
     <SpriteMap />
     <ClientOnly>
       <PopUp />
@@ -70,6 +71,12 @@ onBeforeUnmount(() => {
 });
 
 useHead({
+  meta: [
+    {
+      name: "google-site-verification",
+      content: "zpj1hb-uMNGkFLJlxqC96oWE067G1lzXcRFsWM4m_8M",
+    },
+  ],
   script: [
     {
       innerHTML: `
