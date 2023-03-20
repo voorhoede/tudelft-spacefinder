@@ -24,3 +24,8 @@ export interface SpaceI18n {
 
   activeDevices?: number;
 }
+
+export type CsvSpaceData = Omit<
+  SpaceI18n,
+  "openingHours" | "imageUrl" | "activeDevices"
+> & { exchangeBuildingId: string; exchangeRoomId: string };

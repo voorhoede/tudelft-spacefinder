@@ -1,75 +1,58 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-import { writeFile } from "fs";
+import { writeFile as fsWriteFile } from "fs";
 import { getData as getDataFromCsv, transform } from "./csv/index";
 import {
   getBuildingsDataFromCms,
-  getInfoDataFromCms,
-  getFeedbackPageFromCms,
-  getOnboardingDataFromCms,
+  getPageFromCms,
   convertCmsInfo,
 } from "./cms/index";
-import exchange from "./exchange/index.js";
-import validate from "./validate/index.js";
+import addOpeningHours from "./exchange/index";
+import { validateBuildings, validateSpaces } from "./validate/index";
 
 const { CSV_PATH: csvPath } = process.env;
 if (!csvPath) {
   throw "CSV_PATH missing in env";
 }
 
-const writeFiles = (files: { path: string; contents: any }[]) => {
-  return Promise.all(
-    files.map(({ path, contents }) => {
-      const stringifiedData = JSON.stringify(contents, null, 2);
-      return new Promise<void>((resolve, reject) => {
-        writeFile(`./src/data/${path}.json`, stringifiedData, "utf8", (err) => {
-          if (err) {
-            return reject(err);
-          }
-          resolve();
-        });
-      });
+function writeFile(path: string, contents: any) {
+  const stringifiedData = JSON.stringify(contents, null, 2);
+  return new Promise<void>((resolve, reject) => {
+    fsWriteFile(`./src/data/${path}.json`, stringifiedData, "utf8", (err) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve();
+    });
+  });
+}
+
+function prepareSpaces(csvPath: string) {
+  return Promise.all([getDataFromCsv(csvPath), getBuildingsDataFromCms()])
+    .then(([csvData, cmsBuildings]) => {
+      const { spaces, buildings } = transform(csvData, cmsBuildings);
+      return addOpeningHours({ spaces, buildings });
     })
+    .then(({ spaces, buildings }) => {
+      const validatedBuildings = validateBuildings(buildings);
+      const validatedSpaces = validateSpaces(spaces);
+      Promise.all([
+        writeFile("spaces", validatedSpaces),
+        writeFile("buildings", validatedBuildings),
+      ]);
+    });
+}
+
+function preparePage(name: string) {
+  return getPageFromCms(name).then((page) =>
+    writeFile(name.toLowerCase(), convertCmsInfo(page))
   );
-};
+}
 
 Promise.all([
-  getDataFromCsv(csvPath),
-  getBuildingsDataFromCms(),
-  getInfoDataFromCms(),
-  getFeedbackPageFromCms(),
-  getOnboardingDataFromCms(),
+  prepareSpaces(csvPath),
+  ...["infoPage", "feedbackPage", "onboarding"].map(preparePage),
 ])
-  .then(([csv, buildings, info, feedback, onboarding]) =>
-    Promise.all([
-      Promise.resolve(transform(csv, buildings))
-        .then(exchange.addOpeningHours)
-        .then(validate),
-      info,
-      feedback,
-      onboarding,
-    ])
-  )
-  .then(([{ spaces, buildings }, info, feedback, onboarding]) => {
-    const infoPage = convertCmsInfo(info);
-    const feedbackPage = convertCmsInfo(feedback);
-    return [
-      spaces,
-      buildings,
-      infoPage,
-      feedbackPage,
-      convertCmsInfo(onboarding),
-    ];
-  })
-  .then(([spaces, buildings, infoPage, feedbackPage, onboarding]) =>
-    writeFiles([
-      { path: "spaces", contents: spaces },
-      { path: "buildings", contents: buildings },
-      { path: "infopage", contents: infoPage },
-      { path: "feedbackpage", contents: feedbackPage },
-      { path: "onboarding", contents: onboarding },
-    ])
-  )
   .then(() => console.info("Wrote data for spaces, buildings and CMS"))
   .catch(({ message }) =>
     console.error(`An error occurred writing data: ${message}`)

@@ -1,4 +1,4 @@
-import { buildingNumberFromId } from "./building-meta";
+import { buildingNumberFromId } from "./index";
 
 test("parse the building number from a building id", () => {
   let result = buildingNumberFromId("04 - some building name");

@@ -6,7 +6,6 @@ export default function getUniqueEmails(spaces) {
       uniqueEmailSet[space.exchangeBuildingId] = true;
     if (space.exchangeRoomId) uniqueEmailSet[space.exchangeRoomId] = true;
   }
-  console.log(uniqueEmailSet);
   const uniqueEmails = Object.keys(uniqueEmailSet);
   uniqueEmails.sort();
   return uniqueEmails;

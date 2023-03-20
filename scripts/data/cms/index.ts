@@ -38,13 +38,13 @@ export function getBuildingsDataFromCms() {
   );
 }
 
-export function getInfoDataFromCms() {
-  if (mockDataEnabled) {
+export function getPageFromCms(pageName: string): Promise<DatoInfoPage> {
+  if (mockDataEnabled)
     return import("../../../mock/cms/info.json").then((info) => info.default);
-  }
+
   return getFromDato(
     `{
-      infoPage {
+      ${pageName} {
         _allTitleLocales {
           locale,
           value
@@ -55,58 +55,16 @@ export function getInfoDataFromCms() {
         }
       }
     }`,
-    "infoPage"
+    pageName
   );
 }
 
-export function getFeedbackPageFromCms() {
-  if (mockDataEnabled) {
-    return import("../../../mock/cms/info.json").then((info) => info.default);
-  }
-  return getFromDato(
-    `{
-      feedbackPage {
-        _allTitleLocales {
-          locale,
-          value
-        }
-        _allBodyLocales {
-          locale,
-          value
-        }
-      }
-    }`,
-    "feedbackPage"
-  );
-}
-
-export function getOnboardingDataFromCms() {
-  if (mockDataEnabled) {
-    return import("../../../mock/cms/info.json").then((info) => info.default);
-  }
-  return getFromDato(
-    `{
-      onboarding {
-        _allTitleLocales {
-          locale,
-          value
-        }
-        _allBodyLocales {
-          locale,
-          value
-        }
-      }
-    }`,
-    "onboarding"
-  );
-}
-
-interface DatoLocalizedContent {
-  locale: "nl" | "en";
+export interface DatoLocalizedContent {
+  locale: string;
   value: string;
 }
 
-interface DatoInfoPage {
+export interface DatoInfoPage {
   _allTitleLocales: DatoLocalizedContent[];
   _allBodyLocales: DatoLocalizedContent[];
 }
