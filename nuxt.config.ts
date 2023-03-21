@@ -1,4 +1,3 @@
-import { defineNuxtConfig } from "nuxt/config";
 import routes from "./config/routes";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -46,7 +45,9 @@ export default defineNuxtConfig({
     public: {
       maxboxToken: process.env.MAPBOX_TOKEN,
       baseUrl: process.env.URL,
-      isOpeningHoursEnabled: process.env.IS_OPENING_HOURS_ENABLED,
+      isOpeningHoursEnabled:
+        !!process.env.IS_OPENING_HOURS_ENABLED &&
+        process.env.IS_OPENING_HOURS_ENABLED != "0",
     },
   },
   nitro: {
