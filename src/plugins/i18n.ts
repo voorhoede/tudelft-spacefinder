@@ -4,7 +4,7 @@ import onboarding from "../data/onboarding.json";
 import infoPage from "../data/infopage.json";
 import feedbackPage from "~/data/feedbackpage.json";
 import type { Building } from "../types/Building";
-import type { Space, Room } from "../types/Space";
+import type { Space } from "../types/Space";
 
 const messages: Record<string, Record<string, string>> = { en, nl }; //TODO: better typescript
 const content: Record<string, Record<string, string>> = {};
