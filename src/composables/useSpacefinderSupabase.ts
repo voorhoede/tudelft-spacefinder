@@ -32,11 +32,7 @@ export default function useSpacefinderSupabase() {
   }
 
   function subscribeToSpacesOccupancy(
-    callback: (
-      buildingNumber: number,
-      roomId: string,
-      deviceCount: number
-    ) => void
+    callback: (realEstateNumber: string, deviceCount: number) => void
   ) {
     const spacesRealtimeChannel = client
       .channel("spaces")
@@ -45,13 +41,9 @@ export default function useSpacefinderSupabase() {
         { event: "*", schema: "public", table: "spaces_latest_states" },
         ({ eventType, new: newData, old }) => {
           if (eventType == "UPDATE" || eventType == "INSERT") {
-            callback(
-              newData.building_number,
-              newData.room_id,
-              newData.device_count
-            );
+            callback(newData.room_id, newData.device_count);
           } else {
-            callback(old.building_number, old.room_id, 0);
+            callback(old.room_id, 0);
           }
         }
       );
