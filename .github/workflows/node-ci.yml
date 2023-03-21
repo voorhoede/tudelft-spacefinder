@@ -1,26 +1,31 @@
-name: Node CI
+name: Node.js CI
 
-on: [push]
+on: pull_request
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
-    env:
-      USE_MOCK_DATA_CMS: 1
-      CSV_PATH: ./data/studieplekken-latest.csv
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version-file: ".nvmrc"
 
-      - name: install npm dependencies
-        run: npm install --no-optional --no-audit
-        env:
-          CI: true
+      - name: Use dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
 
-      - name: run unit tests
-        run: npm run test
-#      - name: lint files
-#        run: npm run lint -- --max-warnings 0
+      - name: Install dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Lint code
+        run: npm run lint -- --max-warnings 0
