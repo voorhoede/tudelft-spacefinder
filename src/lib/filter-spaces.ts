@@ -1,9 +1,8 @@
 import type { Filters } from "~/types/Filters";
 import type { Space } from "~/types/Space";
-import type { Room } from "~/types/Room";
 import { OpeningHours } from "~/types/OpeningHours";
 
-export function spaceFilter(spaces: (Space | Room)[], filters: Filters) {
+export function spaceFilter(spaces: Space[], filters: Filters) {
   const filterKeys = Object.keys(filters) as Array<keyof Filters>;
   const activeFilterKeys = getActiveFilterKeys(filters, filterKeys);
 
@@ -19,7 +18,7 @@ function getActiveFilterKeys(filters: Filters, keys: Array<keyof Filters>) {
 
 function filterSpaces(
   filters: Filters,
-  spaces: (Space | Room)[],
+  spaces: Space[],
   activeFilterKeys: Array<keyof Filters>
 ) {
   return spaces.filter((space) =>
@@ -46,7 +45,7 @@ export function spaceIsOpen(now: Date, openingHours: OpeningHours[]) {
 
 function filterSpace(
   filters: Filters,
-  space: Space | Room,
+  space: Space,
   activeFilterKeys: Array<keyof Filters>
 ) {
   const now = new Date();

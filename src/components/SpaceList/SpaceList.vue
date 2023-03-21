@@ -34,12 +34,11 @@
 
 <script setup lang="ts">
 import type { Space } from "~/types/Space";
-import type { Room } from "~/types/Room";
 // @ts-ignore
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
-defineProps<{ spaces: (Space | Room)[]; showBuildingOccupancy: boolean }>();
+defineProps<{ spaces: Space[]; showBuildingOccupancy: boolean }>();
 </script>
 
 <style>

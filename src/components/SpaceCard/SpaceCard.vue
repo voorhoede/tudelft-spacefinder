@@ -37,8 +37,7 @@
 
 <script setup lang="ts">
 import { type Space } from "~/types/Space";
-import { type Room } from "~/types/Room";
-defineProps<{ space: Space | Room; showBuildingOccupancy: boolean }>();
+defineProps<{ space: Space; showBuildingOccupancy: boolean }>();
 </script>
 
 <style>
