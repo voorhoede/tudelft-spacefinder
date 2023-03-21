@@ -7,10 +7,7 @@
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">
-        <li>
-          {{ totalSpaces }}
-          {{ $t("locations") }}
-        </li>
+        <li>{{ totalSpaces }} {{ $t("locations") }}</li>
         <li>{{ building.totalSeats }} {{ $t("seats") }}</li>
       </ul>
 
