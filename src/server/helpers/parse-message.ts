@@ -7,6 +7,7 @@ export function parseMessage({ timestamp, decodedValue }) {
       || decodedValue.mapLocation.split(".").at(0)
       || 0,
     "floor": decodedValue.locationHierarchy.split(">").at(-1).trim(),
+    "room_id": decodedValue.mapLocation.split(" ").at(0),
     "map_location": decodedValue.mapLocation,
     "location_hierarchy": decodedValue.locationHierarchy,
   };

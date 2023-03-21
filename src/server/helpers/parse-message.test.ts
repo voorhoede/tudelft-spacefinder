@@ -34,6 +34,7 @@ test("Parse with common valid data", () => {
       "floor": "BG",
       "location_hierarchy": "TUDelft > 23-CITG > BG",
       "map_location": "23.00.00.960 C1A13 CA-29-01 23.00.00.960",
+      "room_id": "23.00.00.960",
       "updated_at": "2023-03-21T12:01:20.000Z",
     }
   `);
@@ -104,5 +105,39 @@ test("Parse floor", () => {
   )
     .toContain({
       "floor": "Root Area",
+    });
+});
+
+test("Parse room id", () => {
+  expect(
+    parseMessage({
+      timestamp: "1679400080000",
+      decodedValue: {
+        clientCount: 20,
+        locationHierarchy: "Root Area > Begane Grond",
+        mapLocation: "23.00.01.960 I2A08 IC-01-07 23.00.01.960",
+        name: "AP003a.7d33.f22c"
+      }
+    }),
+    "from mapLocation with spaces"
+  )
+    .toContain({
+      "room_id": "23.00.01.960",
+    });
+
+  expect(
+    parseMessage({
+      timestamp: "1679400080000",
+      decodedValue: {
+        clientCount: 20,
+        locationHierarchy: "Root Area",
+        mapLocation: "HB-01-AP1",
+        name: "AP003a.7d33.f22c"
+      }
+    }),
+    "from mapLocation no spaces"
+  )
+    .toContain({
+      "room_id": "HB-01-AP1",
     });
 });
