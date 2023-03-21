@@ -4,7 +4,6 @@ import type { BuildingI18n } from "~/types/Building";
 import type { Filters } from "~/types/filters";
 import type { Space, SpaceI18n, Room, RoomI18n } from "~/types/Space";
 import calculateOccupancy from "../lib/calculate-occupancy";
-import { Room, RoomI18n } from "~/types/Room";
 import { useMapStore } from "./map";
 
 export type Selection =

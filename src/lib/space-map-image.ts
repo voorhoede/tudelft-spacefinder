@@ -1,12 +1,11 @@
 import type { Space } from "~/types/Space";
-import type { Room } from "~/types/Room";
 
 /**
  * Create a static map of building map with space marker
  *
  * @return image of building map with space marker
  */
-export default function (space: Space | Room, mapboxToken: string) {
+export default function (space: Space, mapboxToken: string) {
   const { bounds } = space.building;
   // Use invisible markers at the bounds of the building
   // and set zoom to `auto` so map extends exactly to building

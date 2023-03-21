@@ -4,8 +4,7 @@ import onboarding from "../data/onboarding.json";
 import infoPage from "../data/infopage.json";
 import feedbackPage from "~/data/feedbackpage.json";
 import type { Building } from "../types/Building";
-import type { Space } from "../types/Space";
-import type { Room } from "../types/Room";
+import type { Space, Room } from "../types/Space";
 
 const messages: Record<string, Record<string, string>> = { en, nl }; //TODO: better typescript
 const content: Record<string, Record<string, string>> = {};
@@ -38,7 +37,7 @@ function pageContent(locale: string, key: string) {
 
 export type PathParams = {
   building?: Building;
-  space?: Space | Room;
+  space?: Space;
   locale: string;
   buildingSlug?: string;
   spaceSlug?: string;
