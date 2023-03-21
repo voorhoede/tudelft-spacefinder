@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt/config';
+import { defineNuxtConfig } from "nuxt/config";
 import routes from "./config/routes";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -35,8 +35,8 @@ export default defineNuxtConfig({
       url: process.env.KAFKA_URL,
       username: process.env.KAFKA_USERNAME,
       password: process.env.KAFKA_PASSWORD,
-      groupId: 'tud_wifi_jasper_moelker',
-      topic: 'tud_wifi_access_point_details',
+      groupId: "tud_wifi_jasper_moelker",
+      topic: "tud_wifi_access_point_details",
     },
     schemaRegistry: {
       url: process.env.SCHEMA_REGISTRY_URL,
@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     public: {
       maxboxToken: process.env.MAPBOX_TOKEN,
       baseUrl: process.env.URL,
-      hideOpeningHours: process.env.HIDE_OPENING_HOURS,
+      isOpeningHoursEnabled: process.env.IS_OPENING_HOURS_ENABLED,
     },
   },
   nitro: {

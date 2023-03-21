@@ -58,7 +58,7 @@ export const useSpacesStore = defineStore("spaces", () => {
   });
   const runtimeConfig = useRuntimeConfig();
   // To not get a filter applied without the user knowing
-  if (runtimeConfig.public.hideOpeningHours)
+  if (!runtimeConfig.public.isOpeningHoursEnabled)
     filters.value.showOpenLocations = false;
 
   function clearFilters() {

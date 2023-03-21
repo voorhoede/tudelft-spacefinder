@@ -83,14 +83,14 @@
 
       <div class="filter-menu__buttons">
         <input
-          v-if="showOpeningHours"
+          v-if="isOpeningHoursEnabled"
           id="show-open-locations"
           v-model="filters.showOpenLocations"
           :value="filters.showOpenLocations"
           type="checkbox"
           class="filter-menu__checkbox a11y-sr-only"
         />
-        <label v-if="showOpeningHours" for="show-open-locations">
+        <label v-if="isOpeningHoursEnabled" for="show-open-locations">
           {{ $t("showOpenLocations") }}
         </label>
 
@@ -114,7 +114,7 @@ import { OCCUPANCY_RATES } from "~/types/Filters";
 defineProps<{ isOpen?: boolean }>();
 
 const runtimeConfig = useRuntimeConfig();
-const showOpeningHours = !runtimeConfig.public.hideOpeningHours;
+const { isOpeningHoursEnabled } = runtimeConfig.public;
 
 const spacesStore = useSpacesStore();
 
