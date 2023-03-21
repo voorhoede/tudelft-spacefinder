@@ -28,9 +28,10 @@ const spaceRootProperties = [
   "latitude",
   "longitude",
   "roomId",
+  "realEstateNumber",
 ] as const;
 
-function getSpaceSlug(spaceId: string, name: string) {
+export function getSpaceSlug(spaceId: string, name: string) {
   return [spaceId, name]
     .map((part) => slugify(part.replace(/\./g, "-")).toLowerCase())
     .join("--");
@@ -40,7 +41,6 @@ export function getSpaceI18n(spaceId: string, sourceName: string) {
   const name = sourceName.trim();
   return {
     name,
-    slug: getSpaceSlug(spaceId, name),
   };
 }
 
@@ -53,9 +53,10 @@ export function getSpace(
   const space: Partial<CsvSpaceData> = {
     buildingNumber,
     i18n: {
-      nl: getSpaceI18n(source.spaceId, source.spaceNameNL),
-      en: getSpaceI18n(source.spaceId, source.spaceNameEN),
+      nl: { name: source.spaceNameNL.trim() },
+      en: { name: source.spaceNameEN.trim() },
     },
+    slug: getSpaceSlug(source.spaceId, source.spaceNameNL.trim()),
     facilities: facilities as SpaceFeatures,
   };
   for (const prop of spaceRootProperties) space[prop] = source[prop];

@@ -6,25 +6,11 @@ export type Space = Room | RoomZone;
 
 export interface Room extends RoomI18n {
   name: string;
-  slug: string;
   building: Building;
 }
 
-export interface RoomI18n {
-  floor: string;
-  seats: number;
-  tables: number;
+export interface RoomI18n extends RoomBaseRaw {
   spaces: number;
-  latitude: number;
-  longitude: number;
-  roomId: string;
-  realEstateNumber: string;
-  facilities: SpaceFeatures;
-  buildingNumber: number;
-  i18n: Record<string, { name: string }>;
-  openingHours: OpeningHours[];
-  imageUrl?: string | undefined; //TODO: not there
-  activeDevices?: number;
 }
 
 export type CsvRoomData = Omit<
@@ -37,24 +23,27 @@ export type CsvRoomData = Omit<
 
 export interface RoomZone extends SpaceI18n {
   name: string;
-  slug: string;
   building: Building;
 }
 
-export interface SpaceI18n {
+export interface SpaceI18n extends RoomBaseRaw {
   spaceId: string;
+}
+
+export interface RoomBaseRaw {
+  buildingNumber: number;
   floor: string;
-  seats: number;
-  tables: number;
+  roomId: string;
+  realEstateNumber: string;
+  slug: string;
+  i18n: Record<string, { name: string }>;
   latitude: number;
   longitude: number;
-  i18n: Record<string, { name: string; slug: string }>;
-  roomId: string;
+  seats: number;
+  tables: number;
   facilities: SpaceFeatures;
-  buildingNumber: number;
   openingHours: OpeningHours[];
   imageUrl?: string | undefined; //TODO: not there
-
   activeDevices?: number;
 }
 
