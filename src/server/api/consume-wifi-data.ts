@@ -76,6 +76,7 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
           .map((message) =>
             registry
               .decode(message.value)
+              .then((x) => { if (x.clientCount > 0) { console.log(x); } return x; })
               .then((decodedValue) => ({
                 "updated_at": new Date(Number(message.timestamp)).toISOString(),
                 "access_point_name": decodedValue.name,
