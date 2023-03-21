@@ -1,4 +1,4 @@
-import type { SpaceFeatures } from "./Filters";
+import type { SpaceFeatures, Occupancy } from "./Filters";
 import type { OpeningHours } from "./OpeningHours";
 import type { Building } from "./Building";
 
@@ -45,6 +45,7 @@ export interface RoomBaseRaw {
   openingHours: OpeningHours[];
   imageUrl?: string | undefined; //TODO: not there
   activeDevices?: number;
+  occupancy?: Occupancy;
 }
 
 export type CsvSpaceData = Omit<
