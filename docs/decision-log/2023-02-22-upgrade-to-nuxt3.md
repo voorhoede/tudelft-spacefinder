@@ -2,8 +2,9 @@
 
 We decided to upgrade to the latest version of Nuxt to resolve outdated dependencies and leverage the benefits of Nuxt 3 (smaller bundlesize, hybrid rendering, API routes, Vue 3, ES Modules, TypeScript).
 
--   Alternatives Considered: Latest Nuxt 2, Astro with Vue, Vue SPA.
--   Decision Made By: [Jasper](https://github.com/jbmoelker), [Misha](https://github.com/kyrel), [Selwyn](https://github.com/Siilwyn).
+- Date: 2023-02-22
+- Alternatives Considered: Latest Nuxt 2, Astro with Vue, Vue SPA.
+- Decision Made By: [Jasper](https://github.com/jbmoelker), [Misha](https://github.com/kyrel), [Selwyn](https://github.com/Siilwyn).
 
 ## Decision
 

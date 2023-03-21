@@ -2,6 +2,7 @@
 
 We decided to add Supabase to the project stack as it allows us to store relational data sources and provide real-time updates in the Spacefinder app.
 
+- Date: 2023-02-15
 - Alternatives Considered: SQLite, Amazon RDS for PostgreSQL, Firebase.
 - Decision Made By: [Jasper](https://github.com/jbmoelker).
 

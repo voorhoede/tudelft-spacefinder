@@ -11,11 +11,14 @@ You should add an entry to the decision log if you have:
 Save entry as `[YYYY-MM-DD]-[name-slug]` (for example `2022-02-15-deploy-pr-only.md`):
 ```md
 # [Title]
+
 [Brief summary of decision]
 
--   Alternatives Considered: [Alternatives]
--   Decision Made By: [Human]
+- Date: [yyyy-mm-dd]
+- Alternatives Considered: [Alternatives]
+- Decision Made By: [Human]
 
 ## Decision
+
 [Explain the decision in more detail]
 ```

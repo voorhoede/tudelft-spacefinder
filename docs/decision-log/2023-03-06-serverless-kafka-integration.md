@@ -2,8 +2,9 @@
 
 TU Delft provides data on building and space occupancy via a Kafka service. We decided consume the Kafka data and store it in the project's Supabase instance using a serverless integration using Kafka.js, Nuxt and Netlify.
 
--   Alternatives Considered: Node.js server on AWS EC2, AWS Lambda with Kafka, Supabase Edge function.
--   Decision Made By: [Jasper](https://github.com/jbmoelker), [Selwyn](https://github.com/Siilwyn).
+- Date: 2023-03-06
+- Alternatives Considered: Node.js server on AWS EC2, AWS Lambda with Kafka, Supabase Edge function.
+- Decision Made By: [Jasper](https://github.com/jbmoelker), [Selwyn](https://github.com/Siilwyn).
 
 ## Decision
 
