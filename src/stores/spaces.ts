@@ -56,6 +56,10 @@ export const useSpacesStore = defineStore("spaces", () => {
   const filters = useLocalStorage("filters", defaultFilters, {
     mergeDefaults: true,
   });
+  const runtimeConfig = useRuntimeConfig();
+  // To not get a filter applied without the user knowing
+  if (!runtimeConfig.public.isOpeningHoursEnabled)
+    filters.value.showOpenLocations = false;
 
   function clearFilters() {
     filters.value = defaultFilters; //TODO: check if Vue3 reactivity works like that
