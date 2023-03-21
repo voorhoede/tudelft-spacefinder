@@ -7,11 +7,13 @@ export default {
       tables: 1,
       latitude: 50.5,
       longitude: 10.1,
+      slug: "sp1--hal",
       i18n: {
-        en: { name: "corridor", slug: "sp1--hal" },
-        nl: { name: "hal", slug: "sp1--hal" },
+        en: { name: "corridor" },
+        nl: { name: "hal" },
       },
       roomId: "r-1-1",
+      realEstateNumber: "r.1.1",
       facilities: {
         adjustableChairs: true,
         daylit: false,

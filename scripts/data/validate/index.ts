@@ -59,6 +59,6 @@ export function validateSpaces(spaces: SpaceI18n[]) {
   return validateItems(
     spaces,
     validateSpace,
-    (space) => space.i18n?.nl?.slug || space.spaceId
+    (space) => space.slug || space.spaceId
   );
 }
