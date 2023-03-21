@@ -10,6 +10,7 @@
         "buildingNumber": { "type":"integer" },
         "realEstateNumber": { "type":"string" },
         "roomId": { "type": "string" },
+        "slug": { "type": "string" },
         "i18n": {
           "type": "object",
           "properties": {
@@ -45,6 +46,7 @@
         "longitude",
         "openingHours",
         "roomId",
+        "slug",
         "seats",
         "tables",
         "spaces"
