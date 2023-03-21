@@ -15,7 +15,7 @@
           </li>
           <li>
             <SvgIcon name="door-icon" class="building-header__seating-icon" />
-            {{ building.totalSpaces }}
+            {{ totalSpaces }}
           </li>
         </ul>
         <div>
@@ -43,7 +43,13 @@
 <script setup lang="ts">
 import type { Building } from "~/types/Building";
 
-defineProps<{ building: Building }>();
+const props = defineProps<{ building: Building }>();
+const runtimeConfig = useRuntimeConfig();
+const totalSpaces = computed(() =>
+  runtimeConfig.public.spacesMode == "rooms"
+    ? props.building.totalRooms
+    : props.building.totalSpaces
+);
 </script>
 
 <style>

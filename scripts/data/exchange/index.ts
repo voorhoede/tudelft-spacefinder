@@ -7,6 +7,7 @@ import type {
   CsvAndCmsBuildingData,
   BuildingI18n,
 } from "./../../../src/types/Building";
+import { CsvRoomData, RoomI18n } from "../../../src/types/Room";
 
 const placeholderOpeningHours = [
   {
@@ -51,15 +52,21 @@ const placeholderOpeningHours = [
 
 export default ({
   spaces,
+  rooms,
   buildings,
 }: {
   spaces: CsvSpaceData[];
+  rooms: CsvRoomData[];
   buildings: CsvAndCmsBuildingData[];
-}): { spaces: SpaceI18n[]; buildings: BuildingI18n[] } => {
+}): { spaces: SpaceI18n[]; rooms: RoomI18n[]; buildings: BuildingI18n[] } => {
   return {
     buildings: buildings.map((building) => {
       const { exchangeBuildingId, ...otherBuildingProps } = building;
       return { ...otherBuildingProps, openingHours: placeholderOpeningHours };
+    }),
+    rooms: rooms.map((room) => {
+      const { exchangeBuildingId, exchangeRoomId, ...otherRoomProps } = room;
+      return { ...otherRoomProps, openingHours: placeholderOpeningHours };
     }),
     spaces: spaces.map((room) => {
       const { exchangeBuildingId, exchangeRoomId, ...otherRoomProps } = room;

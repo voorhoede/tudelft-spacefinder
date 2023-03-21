@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "room.json",
+  "description": "A room at TU Delft",
+  "$ref": "#/definitions/room",
+  "definitions": {
+    "room": {
+      "type":"object",
+      "properties": {
+        "buildingNumber": { "type":"integer" },
+        "realEstateNumber": { "type":"string" },
+        "roomId": { "type": "string" },
+        "i18n": {
+          "type": "object",
+          "properties": {
+            "nl": {
+              "$ref": "#/definitions/dictionary"
+            },
+            "en": {
+              "$ref": "#/definitions/dictionary"
+            }
+          },
+          "required": [
+            "nl",
+            "en"
+          ],
+          "additionalProperties": false
+        },
+        "floor": { "type": "string" },
+        "seats": { "type": "integer" },
+        "tables": { "type": "integer" },
+        "spaces": { "type": "integer" },
+        "latitude": { "type": "number", "description": "geospatial latitude" },
+        "longitude": { "type": "number", "description": "geospatial longitude" },
+        "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "Opening hours for space" },
+        "facilities": { "$ref": "#/definitions/facilities" }
+      },
+      "additionalProperties": false,
+      "required": [
+        "buildingNumber",
+        "realEstateNumber",
+        "facilities",
+        "floor",
+        "latitude",
+        "longitude",
+        "openingHours",
+        "roomId",
+        "seats",
+        "tables",
+        "spaces"
+      ]
+    },
+    "dictionary": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "facilities": {
+      "type": "object",
+      "properties": {
+        "adjustableChairs": { "type": "boolean" },
+        "studyType": {
+          "type": "string",
+          "enum": ["self", "group"]
+        },
+        "quietness": {
+          "type": "string",
+          "enum": ["silent", "quiet", "noisy"]
+        },
+        "daylit": { "type": "boolean" },
+        "powerOutlets": { "type": "boolean" },
+        "ethernet": { "type": "boolean" },
+        "stationaryPC": { "type": "boolean" },
+        "whiteBoard": { "type": "boolean" },
+        "smartBoard": { "type": "boolean" },
+        "presentationScreen": { "type": "boolean" },
+        "nearCoffeeMachine": { "type": "boolean" },
+        "nearPrinter": { "type": "boolean" },
+        "nearBathroom": { "type": "boolean" }
+      },
+      "additionalProperties": false,
+      "required":[
+        "adjustableChairs",
+        "studyType",
+        "quietness",
+        "daylit",
+        "powerOutlets",
+        "ethernet",
+        "stationaryPC",
+        "whiteBoard",
+        "smartBoard",
+        "presentationScreen",
+        "nearCoffeeMachine",
+        "nearPrinter",
+        "nearBathroom"
+      ]
+    }
+  }
+}

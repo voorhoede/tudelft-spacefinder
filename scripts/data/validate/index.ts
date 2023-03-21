@@ -1,6 +1,7 @@
-import { validateBuilding, validateSpace } from "./schema";
+import { validateBuilding, validateRoom, validateSpace } from "./schema";
 import { BuildingI18n } from "./../../../src/types/Building";
 import { SpaceI18n } from "./../../../src/types/Space";
+import { RoomI18n } from "./../../../src/types/Room";
 import type { ErrorObject, ValidateFunction } from "ajv";
 
 function logErrors(name: string, errors: ErrorObject[]) {
@@ -30,7 +31,7 @@ function validateItems<T>(
   validator: ValidateFunction,
   nameGetter: (item: T) => string | undefined
 ) {
-  const itemsPassed = [];
+  const itemsPassed: T[] = [];
   for (const item of items) {
     const isValid = validator(item);
     if (!isValid) {
@@ -49,6 +50,10 @@ export function validateBuildings(buildings: BuildingI18n[]) {
     validateBuilding,
     (building) => building.i18n?.nl?.slug || building.buildingId
   );
+}
+
+export function validateRooms(rooms: RoomI18n[]) {
+  return validateItems(rooms, validateRoom, (room) => room.realEstateNumber);
 }
 
 export function validateSpaces(spaces: SpaceI18n[]) {
