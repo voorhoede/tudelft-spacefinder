@@ -226,8 +226,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     setRooms,
     bulkSetRoomsOccupancy,
     setRoomOccupancy,
-    //rooms,
-    //filteredRooms,
     setSpaces,
     bulkSetSpaceOccupancy,
     setSpaceOccupancy,
@@ -236,7 +234,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     clearFilters,
     isFiltered,
     getSpaceBySlug,
-    //getSpaceById,
     buildingsI18n, //These need to be exported to be passed as payload from server to client
     roomsI18n,
     spacesI18n,

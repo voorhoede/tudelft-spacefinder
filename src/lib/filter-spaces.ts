@@ -7,7 +7,7 @@ export function spaceFilter(spaces: (Space | Room)[], filters: Filters) {
   const filterKeys = Object.keys(filters) as Array<keyof Filters>;
   const activeFilterKeys = getActiveFilterKeys(filters, filterKeys);
 
-  return filterSpacesOrRooms(filters, spaces, activeFilterKeys);
+  return filterSpaces(filters, spaces, activeFilterKeys);
 }
 
 function getActiveFilterKeys(filters: Filters, keys: Array<keyof Filters>) {
@@ -17,13 +17,13 @@ function getActiveFilterKeys(filters: Filters, keys: Array<keyof Filters>) {
   });
 }
 
-function filterSpacesOrRooms(
+function filterSpaces(
   filters: Filters,
   spaces: (Space | Room)[],
   activeFilterKeys: Array<keyof Filters>
 ) {
   return spaces.filter((space) =>
-    filterSpaceOrRoom(filters, space, activeFilterKeys)
+    filterSpace(filters, space, activeFilterKeys)
   );
 }
 
@@ -44,7 +44,7 @@ export function spaceIsOpen(now: Date, openingHours: OpeningHours[]) {
   );
 }
 
-function filterSpaceOrRoom(
+function filterSpace(
   filters: Filters,
   space: Space | Room,
   activeFilterKeys: Array<keyof Filters>
