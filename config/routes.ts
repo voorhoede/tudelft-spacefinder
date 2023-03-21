@@ -22,12 +22,8 @@ for (const building of buildings) {
 
 for (const space of spaces) {
   const building = buildingMap[space.buildingNumber];
-  routes.push(
-    `/en/buildings/${building.i18n.en.slug}/spaces/${space.i18n.en.slug}/`
-  );
-  routes.push(
-    `/nl/gebouwen/${building.i18n.nl.slug}/ruimtes/${space.i18n.nl.slug}/`
-  );
+  routes.push(`/en/buildings/${building.i18n.en.slug}/spaces/${space.slug}/`);
+  routes.push(`/nl/gebouwen/${building.i18n.nl.slug}/ruimtes/${space.slug}/`);
 }
 
 export default routes;
