@@ -163,7 +163,6 @@ export const useSpacesStore = defineStore("spaces", () => {
         return {
           ...roomI18n,
           ...propsI18n,
-          slug: roomI18n.realEstateNumber,
           building,
         } as Room;
       }) as (Room | Space)[];

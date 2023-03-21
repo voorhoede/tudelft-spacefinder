@@ -2,6 +2,7 @@
   {
     "buildingNumber": 34,
     "floor": "1e verdieping",
+    "slug": "c-1-801",
     "roomId": "C-1-801",
     "realEstateNumber": "34.03.01.801",
     "i18n": {
@@ -91,6 +92,7 @@
   {
     "buildingNumber": 34,
     "floor": "1e verdieping",
+    "slug": "e-1-806",
     "roomId": "E-1-806",
     "realEstateNumber": "34.05.01.806",
     "i18n": {
@@ -180,6 +182,7 @@
   {
     "buildingNumber": 34,
     "floor": "1e verdieping",
+    "slug": "f-1-801",
     "roomId": "F-1-801",
     "realEstateNumber": "34.06.01.801",
     "i18n": {
@@ -269,6 +272,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "a-0-805",
     "roomId": "A-0-805",
     "realEstateNumber": "34.01.00.805",
     "i18n": {
@@ -358,6 +362,7 @@
   {
     "buildingNumber": 34,
     "floor": "4e verdieping",
+    "slug": "c-4-330",
     "roomId": "C-4-330",
     "realEstateNumber": "34.03.04.330",
     "i18n": {
@@ -447,6 +452,7 @@
   {
     "buildingNumber": 34,
     "floor": "4e verdieping",
+    "slug": "c-4-340",
     "roomId": "C-4-340",
     "realEstateNumber": "34.03.04.340",
     "i18n": {
@@ -536,6 +542,7 @@
   {
     "buildingNumber": 34,
     "floor": "4e verdieping",
+    "slug": "e-4-330",
     "roomId": "E-4-330",
     "realEstateNumber": "34.05.04.330",
     "i18n": {
@@ -625,6 +632,7 @@
   {
     "buildingNumber": 34,
     "floor": "4e verdieping",
+    "slug": "e-4-340",
     "roomId": "E-4-340",
     "realEstateNumber": "34.05.04.340",
     "i18n": {
@@ -714,6 +722,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "g-0-080",
     "roomId": "G-0-080",
     "realEstateNumber": "34.07.00.080",
     "i18n": {
@@ -803,6 +812,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "g-0-100",
     "roomId": "G-0-100",
     "realEstateNumber": "34.07.00.100",
     "i18n": {
@@ -892,6 +902,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "g-0-120",
     "roomId": "G-0-120",
     "realEstateNumber": "34.07.00.120",
     "i18n": {
@@ -981,6 +992,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "g-0-140",
     "roomId": "G-0-140",
     "realEstateNumber": "34.07.00.140",
     "i18n": {
@@ -1070,6 +1082,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "g-0-160",
     "roomId": "G-0-160",
     "realEstateNumber": "34.07.00.160",
     "i18n": {
@@ -1159,6 +1172,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "g-0-180",
     "roomId": "G-0-180",
     "realEstateNumber": "34.07.00.180",
     "i18n": {
@@ -1248,6 +1262,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "g-0-050",
     "roomId": "G-0-050",
     "realEstateNumber": "34.07.00.050",
     "i18n": {
@@ -1337,6 +1352,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "e-0-400",
     "roomId": "E-0-400",
     "realEstateNumber": "34.05.00.400",
     "i18n": {
@@ -1426,6 +1442,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "e-0-450",
     "roomId": "E-0-450",
     "realEstateNumber": "34.05.00.450",
     "i18n": {
@@ -1515,6 +1532,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "e-t0-450",
     "roomId": "E-T0-450",
     "realEstateNumber": "34.05.T0.450",
     "i18n": {
@@ -1604,6 +1622,7 @@
   {
     "buildingNumber": 34,
     "floor": "tussenverdieping 1e",
+    "slug": "e-t1-450",
     "roomId": "E-T1-450",
     "realEstateNumber": "34.05.T1.450",
     "i18n": {
@@ -1693,6 +1712,7 @@
   {
     "buildingNumber": 34,
     "floor": "1e verdieping",
+    "slug": "c-1-010",
     "roomId": "C-1-010",
     "realEstateNumber": "34.03.01.010",
     "i18n": {
@@ -1782,6 +1802,7 @@
   {
     "buildingNumber": 34,
     "floor": "1e verdieping",
+    "slug": "e-1-450",
     "roomId": "E-1-450",
     "realEstateNumber": "34.05.01.450",
     "i18n": {
@@ -1871,6 +1892,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "c-0-010",
     "roomId": "C-0-010",
     "realEstateNumber": "34.03.00.010",
     "i18n": {
@@ -1960,6 +1982,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "c-t0-010",
     "roomId": "C-T0-010",
     "realEstateNumber": "34.03.T0.010",
     "i18n": {
@@ -2049,6 +2072,7 @@
   {
     "buildingNumber": 34,
     "floor": "tussenverdieping 1e",
+    "slug": "c-t1-010",
     "roomId": "C-T1-010",
     "realEstateNumber": "34.03.T1.010",
     "i18n": {
@@ -2138,6 +2162,7 @@
   {
     "buildingNumber": 34,
     "floor": "4e verdieping",
+    "slug": "c-4-180",
     "roomId": "C-4-180",
     "realEstateNumber": "34.03.04.180",
     "i18n": {
@@ -2227,6 +2252,7 @@
   {
     "buildingNumber": 34,
     "floor": "4e verdieping",
+    "slug": "e-4-180",
     "roomId": "E-4-180",
     "realEstateNumber": "34.05.04.180",
     "i18n": {
@@ -2316,6 +2342,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "b-0-150",
     "roomId": "B-0-150",
     "realEstateNumber": "34.02.00.150",
     "i18n": {
@@ -2405,6 +2432,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "b-0-170",
     "roomId": "B-0-170",
     "realEstateNumber": "34.02.00.170",
     "i18n": {
@@ -2494,6 +2522,7 @@
   {
     "buildingNumber": 34,
     "floor": "begane grond",
+    "slug": "b-0-180",
     "roomId": "B-0-180",
     "realEstateNumber": "34.02.00.180",
     "i18n": {
@@ -2583,6 +2612,7 @@
   {
     "buildingNumber": 34,
     "floor": "1e verdieping",
+    "slug": "a-1-320",
     "roomId": "A-1-320",
     "realEstateNumber": "34.01.01.320",
     "i18n": {
@@ -2672,6 +2702,7 @@
   {
     "buildingNumber": 20,
     "floor": "begane grond",
+    "slug": "00-180",
     "roomId": "00.180",
     "realEstateNumber": "20.00.00.180",
     "i18n": {
@@ -2761,6 +2792,7 @@
   {
     "buildingNumber": 20,
     "floor": "1e verdieping",
+    "slug": "00-250",
     "roomId": "00.250",
     "realEstateNumber": "20.00.01.250",
     "i18n": {
@@ -2850,6 +2882,7 @@
   {
     "buildingNumber": 20,
     "floor": "begane grond",
+    "slug": "00-400",
     "roomId": "00.400",
     "realEstateNumber": "20.00.00.400",
     "i18n": {
@@ -2939,6 +2972,7 @@
   {
     "buildingNumber": 20,
     "floor": "1e verdieping",
+    "slug": "00-255",
     "roomId": "00.255",
     "realEstateNumber": "20.00.01.255",
     "i18n": {
@@ -3028,6 +3062,7 @@
   {
     "buildingNumber": 20,
     "floor": "1e verdieping",
+    "slug": "00-260",
     "roomId": "00.260",
     "realEstateNumber": "20.00.01.260",
     "i18n": {
@@ -3117,6 +3152,7 @@
   {
     "buildingNumber": 20,
     "floor": "1e verdieping",
+    "slug": "00-270",
     "roomId": "00.270",
     "realEstateNumber": "20.00.01.270",
     "i18n": {
@@ -3206,6 +3242,7 @@
   {
     "buildingNumber": 20,
     "floor": "1e verdieping",
+    "slug": "00-280",
     "roomId": "00.280",
     "realEstateNumber": "20.00.01.280",
     "i18n": {
@@ -3295,6 +3332,7 @@
   {
     "buildingNumber": 20,
     "floor": "begane grond",
+    "slug": "00-270",
     "roomId": "00.270",
     "realEstateNumber": "20.00.00.270",
     "i18n": {
@@ -3384,6 +3422,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-oost-620",
     "roomId": "01.Oost.620",
     "realEstateNumber": "08.02.01.620",
     "i18n": {
@@ -3473,6 +3512,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-mid-010",
     "roomId": "01.Mid.010",
     "realEstateNumber": "08.01.01.010",
     "i18n": {
@@ -3562,6 +3602,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-mid-100",
     "roomId": "01.Mid.100",
     "realEstateNumber": "08.01.01.100",
     "i18n": {
@@ -3651,6 +3692,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-mid-803",
     "roomId": "01.Mid.803",
     "realEstateNumber": "08.01.01.803",
     "i18n": {
@@ -3740,6 +3782,7 @@
   {
     "buildingNumber": 8,
     "floor": "tussenverdieping 1e",
+    "slug": "01-mid-010",
     "roomId": "01.Mid.010",
     "realEstateNumber": "08.01.T1.010",
     "i18n": {
@@ -3829,6 +3872,7 @@
   {
     "buildingNumber": 8,
     "floor": "tussenverdieping 1e",
+    "slug": "01-mid-020",
     "roomId": "01.Mid.020",
     "realEstateNumber": "08.01.T1.020",
     "i18n": {
@@ -3918,6 +3962,7 @@
   {
     "buildingNumber": 8,
     "floor": "tussenverdieping 1e",
+    "slug": "01-mid-030",
     "roomId": "01.Mid.030",
     "realEstateNumber": "08.01.T1.030",
     "i18n": {
@@ -4007,6 +4052,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-west-380",
     "roomId": "02.West.380",
     "realEstateNumber": "08.03.02.380",
     "i18n": {
@@ -4096,6 +4142,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-251",
     "roomId": "BG.Oost.251",
     "realEstateNumber": "08.02.00.251",
     "i18n": {
@@ -4185,6 +4232,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-zuid-310",
     "roomId": "BG.Zuid.310",
     "realEstateNumber": "08.04.00.310",
     "i18n": {
@@ -4274,6 +4322,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-800",
     "roomId": "BG.Oost.800",
     "realEstateNumber": "08.02.00.800",
     "i18n": {
@@ -4363,6 +4412,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-west-200",
     "roomId": "BG.West.200",
     "realEstateNumber": "08.03.00.200",
     "i18n": {
@@ -4452,6 +4502,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-760",
     "roomId": "BG.Oost.760",
     "realEstateNumber": "08.02.00.760",
     "i18n": {
@@ -4541,6 +4592,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-zuid-300",
     "roomId": "BG.Zuid.300",
     "realEstateNumber": "08.04.00.300",
     "i18n": {
@@ -4630,6 +4682,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-zuid-400",
     "roomId": "BG.Zuid.400",
     "realEstateNumber": "08.04.00.400",
     "i18n": {
@@ -4719,6 +4772,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-oost-330",
     "roomId": "01.Oost.330",
     "realEstateNumber": "08.02.01.330",
     "i18n": {
@@ -4808,6 +4862,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-oost-560",
     "roomId": "01.Oost.560",
     "realEstateNumber": "08.02.01.560",
     "i18n": {
@@ -4897,6 +4952,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-west-430",
     "roomId": "01.West.430",
     "realEstateNumber": "08.03.01.430",
     "i18n": {
@@ -4986,6 +5042,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-mid-010",
     "roomId": "02.Mid.010",
     "realEstateNumber": "08.01.02.010",
     "i18n": {
@@ -5075,6 +5132,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-mid-110",
     "roomId": "02.Mid.110",
     "realEstateNumber": "08.01.02.110",
     "i18n": {
@@ -5164,6 +5222,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-oost-010",
     "roomId": "02.Oost.010",
     "realEstateNumber": "08.02.02.010",
     "i18n": {
@@ -5253,6 +5312,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-oost-300",
     "roomId": "02.Oost.300",
     "realEstateNumber": "08.02.02.300",
     "i18n": {
@@ -5342,6 +5402,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-oost-400",
     "roomId": "02.Oost.400",
     "realEstateNumber": "08.02.02.400",
     "i18n": {
@@ -5431,6 +5492,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-oost-470",
     "roomId": "02.Oost.470",
     "realEstateNumber": "08.02.02.470",
     "i18n": {
@@ -5520,6 +5582,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-oost-500",
     "roomId": "02.Oost.500",
     "realEstateNumber": "08.02.02.500",
     "i18n": {
@@ -5609,6 +5672,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-oost-600",
     "roomId": "02.Oost.600",
     "realEstateNumber": "08.02.02.600",
     "i18n": {
@@ -5698,6 +5762,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-oost-700",
     "roomId": "02.Oost.700",
     "realEstateNumber": "08.02.02.700",
     "i18n": {
@@ -5787,6 +5852,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-west-010",
     "roomId": "02.West.010",
     "realEstateNumber": "08.03.02.010",
     "i18n": {
@@ -5876,6 +5942,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-west-100",
     "roomId": "02.West.100",
     "realEstateNumber": "08.03.02.100",
     "i18n": {
@@ -5965,6 +6032,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-west-200",
     "roomId": "02.West.200",
     "realEstateNumber": "08.03.02.200",
     "i18n": {
@@ -6054,6 +6122,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-west-500",
     "roomId": "02.West.500",
     "realEstateNumber": "08.03.02.500",
     "i18n": {
@@ -6143,6 +6212,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-west-600",
     "roomId": "02.West.600",
     "realEstateNumber": "08.03.02.600",
     "i18n": {
@@ -6232,6 +6302,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-west-700",
     "roomId": "02.West.700",
     "realEstateNumber": "08.03.02.700",
     "i18n": {
@@ -6321,6 +6392,7 @@
   {
     "buildingNumber": 8,
     "floor": "2e verdieping",
+    "slug": "02-west-800",
     "roomId": "02.West.800",
     "realEstateNumber": "08.03.02.800",
     "i18n": {
@@ -6410,6 +6482,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-410",
     "roomId": "BG.Oost.410",
     "realEstateNumber": "08.02.00.410",
     "i18n": {
@@ -6499,6 +6572,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-430",
     "roomId": "BG.Oost.430",
     "realEstateNumber": "08.02.00.430",
     "i18n": {
@@ -6588,6 +6662,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-450",
     "roomId": "BG.Oost.450",
     "realEstateNumber": "08.02.00.450",
     "i18n": {
@@ -6677,6 +6752,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-560",
     "roomId": "BG.Oost.560",
     "realEstateNumber": "08.02.00.560",
     "i18n": {
@@ -6766,6 +6842,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-600",
     "roomId": "BG.Oost.600",
     "realEstateNumber": "08.02.00.600",
     "i18n": {
@@ -6855,6 +6932,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-oost-830",
     "roomId": "BG.Oost.830",
     "realEstateNumber": "08.02.00.830",
     "i18n": {
@@ -6944,6 +7022,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-west-370",
     "roomId": "BG.West.370",
     "realEstateNumber": "08.03.00.370",
     "i18n": {
@@ -7033,6 +7112,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-zuid-200",
     "roomId": "BG.Zuid.200",
     "realEstateNumber": "08.04.T0.200",
     "i18n": {
@@ -7122,6 +7202,7 @@
   {
     "buildingNumber": 8,
     "floor": "begane grond",
+    "slug": "bg-zuid-100",
     "roomId": "BG.Zuid.100",
     "realEstateNumber": "08.04.T0.100",
     "i18n": {
@@ -7211,6 +7292,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-oost-010",
     "roomId": "01.Oost.010",
     "realEstateNumber": "08.02.01.010",
     "i18n": {
@@ -7300,6 +7382,7 @@
   {
     "buildingNumber": 8,
     "floor": "1e verdieping",
+    "slug": "01-oost-050",
     "roomId": "01.Oost.050",
     "realEstateNumber": "08.02.01.050",
     "i18n": {
@@ -7389,6 +7472,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "kg-00-070",
     "roomId": "KG 00.070",
     "realEstateNumber": "23.06.00.070",
     "i18n": {
@@ -7478,6 +7562,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-21",
     "roomId": "HG 1.21",
     "realEstateNumber": "23.00.01.210",
     "i18n": {
@@ -7567,6 +7652,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "s3-00-010",
     "roomId": "S3.00.010",
     "realEstateNumber": "23.03.00.010",
     "i18n": {
@@ -7656,6 +7742,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "s3-00-020",
     "roomId": "S3.00.020",
     "realEstateNumber": "23.03.00.020",
     "i18n": {
@@ -7745,6 +7832,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "hg-0-45",
     "roomId": "HG 0.45",
     "realEstateNumber": "23.00.00.450",
     "i18n": {
@@ -7834,6 +7922,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-27",
     "roomId": "HG 1.27",
     "realEstateNumber": "23.00.01.270",
     "i18n": {
@@ -7923,6 +8012,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-81g",
     "roomId": "HG 1.81G",
     "realEstateNumber": "23.00.01.961",
     "i18n": {
@@ -8012,6 +8102,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-81-1",
     "roomId": "HG 1.81.1",
     "realEstateNumber": "23.00.01.720",
     "i18n": {
@@ -8101,6 +8192,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-50",
     "roomId": "HG 2.50",
     "realEstateNumber": "23.00.02.500",
     "i18n": {
@@ -8190,6 +8282,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e  verdieping",
+    "slug": "hg-2-72-1",
     "roomId": "HG 2.72.1",
     "realEstateNumber": "23.00.02.705",
     "i18n": {
@@ -8279,6 +8372,7 @@
   {
     "buildingNumber": 23,
     "floor": "4e verdieping",
+    "slug": "hg-4-03-5",
     "roomId": "HG 4.03.5",
     "realEstateNumber": "23.00.04.260",
     "i18n": {
@@ -8368,6 +8462,7 @@
   {
     "buildingNumber": 23,
     "floor": "4e verdieping",
+    "slug": "hg-4-90-5",
     "roomId": "HG 4.90.5",
     "realEstateNumber": "23.00.04.905",
     "i18n": {
@@ -8457,6 +8552,7 @@
   {
     "buildingNumber": 23,
     "floor": "6e verdieping",
+    "slug": "hg-6-68-5",
     "roomId": "HG 6.68.5",
     "realEstateNumber": "23.00.06.135",
     "i18n": {
@@ -8546,6 +8642,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "s2-0-38-5",
     "roomId": "S2 0.38.5",
     "realEstateNumber": "23.02.00.350",
     "i18n": {
@@ -8635,6 +8732,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "s2-1-50-6",
     "roomId": "S2 1.50.6",
     "realEstateNumber": "23.02.01.360",
     "i18n": {
@@ -8724,6 +8822,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-95",
     "roomId": "HG 1.95",
     "realEstateNumber": "23.00.01.950",
     "i18n": {
@@ -8813,6 +8912,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-04-2",
     "roomId": "HG 2.04.2",
     "realEstateNumber": "23.00.02.062",
     "i18n": {
@@ -8902,6 +9002,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-26",
     "roomId": "HG 2.26",
     "realEstateNumber": "23.00.02.240",
     "i18n": {
@@ -8991,6 +9092,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-39-5",
     "roomId": "HG 2.39.5",
     "realEstateNumber": "23.00.02.506",
     "i18n": {
@@ -9080,6 +9182,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-72-6",
     "roomId": "HG 2.72.6",
     "realEstateNumber": "23.00.02.707",
     "i18n": {
@@ -9169,6 +9272,7 @@
   {
     "buildingNumber": 23,
     "floor": "3e verdieping",
+    "slug": "hg-3-06-2",
     "roomId": "HG 3.06.2",
     "realEstateNumber": "23.00.03.262",
     "i18n": {
@@ -9258,6 +9362,7 @@
   {
     "buildingNumber": 23,
     "floor": "3e verdieping",
+    "slug": "hg-3-26",
     "roomId": "HG 3.26",
     "realEstateNumber": "23.00.03.242",
     "i18n": {
@@ -9347,6 +9452,7 @@
   {
     "buildingNumber": 23,
     "floor": "3e verdieping",
+    "slug": "hg-3-72-1",
     "roomId": "HG 3.72.1",
     "realEstateNumber": "23.00.03.725",
     "i18n": {
@@ -9436,6 +9542,7 @@
   {
     "buildingNumber": 23,
     "floor": "3e verdieping",
+    "slug": "hg-3-92-2",
     "roomId": "HG 3.92.2",
     "realEstateNumber": "23.00.03.904",
     "i18n": {
@@ -9525,6 +9632,7 @@
   {
     "buildingNumber": 23,
     "floor": "4e verdieping",
+    "slug": "hg-4-06-2",
     "roomId": "HG 4.06.2",
     "realEstateNumber": "23.00.04.262",
     "i18n": {
@@ -9614,6 +9722,7 @@
   {
     "buildingNumber": 23,
     "floor": "4e verdieping",
+    "slug": "hg-4-50-7",
     "roomId": "HG 4.50.7",
     "realEstateNumber": "23.00.04.506",
     "i18n": {
@@ -9703,6 +9812,7 @@
   {
     "buildingNumber": 23,
     "floor": "4e verdieping",
+    "slug": "hg-4-72-5",
     "roomId": "HG 4.72.5",
     "realEstateNumber": "23.00.04.704",
     "i18n": {
@@ -9792,6 +9902,7 @@
   {
     "buildingNumber": 23,
     "floor": "6e verdieping",
+    "slug": "hg-6-02-6",
     "roomId": "HG 6.02.6",
     "realEstateNumber": "23.00.06.011",
     "i18n": {
@@ -9881,6 +9992,7 @@
   {
     "buildingNumber": 23,
     "floor": "6e verdieping",
+    "slug": "hg-6-09",
     "roomId": "HG 6.09",
     "realEstateNumber": "23.00.06.100",
     "i18n": {
@@ -9970,6 +10082,7 @@
   {
     "buildingNumber": 23,
     "floor": "6e verdieping",
+    "slug": "hg-6-31",
     "roomId": "HG 6.31",
     "realEstateNumber": "23.00.06.310",
     "i18n": {
@@ -10059,6 +10172,7 @@
   {
     "buildingNumber": 23,
     "floor": "6e verdieping",
+    "slug": "hg-6-34-6",
     "roomId": "HG 6.34.6",
     "realEstateNumber": "23.00.06.372",
     "i18n": {
@@ -10148,6 +10262,7 @@
   {
     "buildingNumber": 23,
     "floor": "6e verdieping",
+    "slug": "hg-6-44-7",
     "roomId": "HG 6.44.7",
     "realEstateNumber": "23.00.06.451",
     "i18n": {
@@ -10237,6 +10352,7 @@
   {
     "buildingNumber": 23,
     "floor": "6e verdieping",
+    "slug": "hg-6-53",
     "roomId": "HG 6.53",
     "realEstateNumber": "23.00.06.530",
     "i18n": {
@@ -10326,6 +10442,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-64-7",
     "roomId": "HG 2.64.7",
     "realEstateNumber": "23.00.02.580",
     "i18n": {
@@ -10415,6 +10532,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "hg-0-20",
     "roomId": "HG 0.20",
     "realEstateNumber": "23.00.00.200",
     "i18n": {
@@ -10504,6 +10622,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "hg-0-72",
     "roomId": "HG 0.72",
     "realEstateNumber": "23.00.00.720",
     "i18n": {
@@ -10593,6 +10712,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "hg-0-72-1",
     "roomId": "HG 0.72.1",
     "realEstateNumber": "23.00.00.740",
     "i18n": {
@@ -10682,6 +10802,7 @@
   {
     "buildingNumber": 23,
     "floor": "begane grond",
+    "slug": "hg-0-72-2",
     "roomId": "HG 0.72.2",
     "realEstateNumber": "23.00.00.741",
     "i18n": {
@@ -10771,6 +10892,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-33",
     "roomId": "HG 1.33",
     "realEstateNumber": "23.00.01.410",
     "i18n": {
@@ -10860,6 +10982,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-55",
     "roomId": "HG 2.55",
     "realEstateNumber": "23.00.02.550",
     "i18n": {
@@ -10949,6 +11072,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-57",
     "roomId": "HG 2.57",
     "realEstateNumber": "23.00.02.570",
     "i18n": {
@@ -11038,6 +11162,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-59",
     "roomId": "HG 2.59",
     "realEstateNumber": "23.00.02.590",
     "i18n": {
@@ -11127,6 +11252,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-61",
     "roomId": "HG 2.61",
     "realEstateNumber": "23.00.02.610",
     "i18n": {
@@ -11216,6 +11342,7 @@
   {
     "buildingNumber": 23,
     "floor": "2e verdieping",
+    "slug": "hg-2-63",
     "roomId": "HG 2.63",
     "realEstateNumber": "23.00.02.630",
     "i18n": {
@@ -11305,6 +11432,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-93",
     "roomId": "HG 1.93",
     "realEstateNumber": "23.00.01.930",
     "i18n": {
@@ -11394,6 +11522,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-97",
     "roomId": "HG 1.97",
     "realEstateNumber": "23.00.01.970",
     "i18n": {
@@ -11483,6 +11612,7 @@
   {
     "buildingNumber": 23,
     "floor": "6e verdieping",
+    "slug": "hg-6-76",
     "roomId": "HG 6.76",
     "realEstateNumber": "23.00.06.760",
     "i18n": {
@@ -11572,6 +11702,7 @@
   {
     "buildingNumber": 23,
     "floor": "tussenverdieping 1e",
+    "slug": "hg-1-39-1",
     "roomId": "HG 1.39.1",
     "realEstateNumber": "23.00.T1.420",
     "i18n": {
@@ -11661,6 +11792,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-77",
     "roomId": "HG 1.77",
     "realEstateNumber": "23.00.01.770",
     "i18n": {
@@ -11750,6 +11882,7 @@
   {
     "buildingNumber": 23,
     "floor": "tussenverdieping 1e",
+    "slug": "hg-1-78",
     "roomId": "HG 1.78",
     "realEstateNumber": "23.00.T1.760",
     "i18n": {
@@ -11839,6 +11972,7 @@
   {
     "buildingNumber": 23,
     "floor": "1e verdieping",
+    "slug": "hg-1-81",
     "roomId": "HG 1.81",
     "realEstateNumber": "23.00.01.722",
     "i18n": {
@@ -11928,6 +12062,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-807",
     "roomId": "1.807",
     "realEstateNumber": "35.00.01.807",
     "i18n": {
@@ -12017,6 +12152,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-070",
     "roomId": "1.070",
     "realEstateNumber": "35.00.01.070",
     "i18n": {
@@ -12106,6 +12242,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-081",
     "roomId": "1.081",
     "realEstateNumber": "35.00.01.081",
     "i18n": {
@@ -12195,6 +12332,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-082",
     "roomId": "1.082",
     "realEstateNumber": "35.00.01.082",
     "i18n": {
@@ -12284,6 +12422,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-090",
     "roomId": "1.090",
     "realEstateNumber": "35.00.01.090",
     "i18n": {
@@ -12373,6 +12512,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-100",
     "roomId": "1.100",
     "realEstateNumber": "35.00.01.100",
     "i18n": {
@@ -12462,6 +12602,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-110",
     "roomId": "1.110",
     "realEstateNumber": "35.00.01.110",
     "i18n": {
@@ -12551,6 +12692,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-120",
     "roomId": "1.120",
     "realEstateNumber": "35.00.01.120",
     "i18n": {
@@ -12640,6 +12782,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-130",
     "roomId": "1.130",
     "realEstateNumber": "35.00.01.130",
     "i18n": {
@@ -12729,6 +12872,7 @@
   {
     "buildingNumber": 35,
     "floor": "begane grond",
+    "slug": "0-010",
     "roomId": "0.010",
     "realEstateNumber": "35.00.00.010",
     "i18n": {
@@ -12818,6 +12962,7 @@
   {
     "buildingNumber": 35,
     "floor": "begane grond",
+    "slug": "0-011",
     "roomId": "0.011",
     "realEstateNumber": "35.00.00.011",
     "i18n": {
@@ -12907,6 +13052,7 @@
   {
     "buildingNumber": 35,
     "floor": "1e verdieping",
+    "slug": "1-800",
     "roomId": "1.800",
     "realEstateNumber": "35.00.01.800",
     "i18n": {
@@ -12996,6 +13142,7 @@
   {
     "buildingNumber": 36,
     "floor": "begane grond",
+    "slug": "hb-00-510",
     "roomId": "HB 00.510",
     "realEstateNumber": "36.01.00.510",
     "i18n": {
@@ -13085,6 +13232,7 @@
   {
     "buildingNumber": 36,
     "floor": "1e verdieping",
+    "slug": "hb-01-513",
     "roomId": "HB 01.513",
     "realEstateNumber": "36.01.01.513",
     "i18n": {
@@ -13174,6 +13322,7 @@
   {
     "buildingNumber": 36,
     "floor": "1e verdieping",
+    "slug": "hb-01-030",
     "roomId": "HB 01.030",
     "realEstateNumber": "36.01.01.030",
     "i18n": {
@@ -13263,6 +13412,7 @@
   {
     "buildingNumber": 36,
     "floor": "begane grond",
+    "slug": "hb-00-130",
     "roomId": "HB 00.130",
     "realEstateNumber": "36.01.00.130",
     "i18n": {
@@ -13352,6 +13502,7 @@
   {
     "buildingNumber": 36,
     "floor": "begane grond",
+    "slug": "hb-00-511",
     "roomId": "HB 00.511",
     "realEstateNumber": "36.01.00.511",
     "i18n": {
@@ -13441,6 +13592,7 @@
   {
     "buildingNumber": 36,
     "floor": "begane grond",
+    "slug": "hb-00-512",
     "roomId": "HB 00.512",
     "realEstateNumber": "36.01.00.512",
     "i18n": {
@@ -13530,6 +13682,7 @@
   {
     "buildingNumber": 36,
     "floor": "2e verdieping",
+    "slug": "hb-02-230",
     "roomId": "HB 02.230",
     "realEstateNumber": "36.01.02.230",
     "i18n": {
@@ -13619,6 +13772,7 @@
   {
     "buildingNumber": 36,
     "floor": "2e verdieping",
+    "slug": "hb-02-240",
     "roomId": "HB 02.240",
     "realEstateNumber": "36.01.02.240",
     "i18n": {
@@ -13708,6 +13862,7 @@
   {
     "buildingNumber": 36,
     "floor": "2e verdieping",
+    "slug": "hb-02-300",
     "roomId": "HB 02.300",
     "realEstateNumber": "36.01.02.300",
     "i18n": {
@@ -13797,6 +13952,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "d-0-120",
     "roomId": "D-0-120",
     "realEstateNumber": "32.04.00.120",
     "i18n": {
@@ -13886,6 +14042,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "d-0-040",
     "roomId": "D-0-040",
     "realEstateNumber": "32.04.00.040",
     "i18n": {
@@ -13975,6 +14132,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "d-0-160",
     "roomId": "D-0-160",
     "realEstateNumber": "32.04.00.160",
     "i18n": {
@@ -14064,6 +14222,7 @@
   {
     "buildingNumber": 32,
     "floor": "1e verdieping",
+    "slug": "b-1-280",
     "roomId": "B-1-280",
     "realEstateNumber": "32.02.01.280",
     "i18n": {
@@ -14153,6 +14312,7 @@
   {
     "buildingNumber": 32,
     "floor": "1e verdieping",
+    "slug": "b-1-360",
     "roomId": "B-1-360",
     "realEstateNumber": "32.02.01.360",
     "i18n": {
@@ -14242,6 +14402,7 @@
   {
     "buildingNumber": 32,
     "floor": "1e verdieping",
+    "slug": "b-1-380",
     "roomId": "B-1-380",
     "realEstateNumber": "32.02.01.380",
     "i18n": {
@@ -14331,6 +14492,7 @@
   {
     "buildingNumber": 32,
     "floor": "tussenverdieping bg",
+    "slug": "a-1-110",
     "roomId": "A-1-110",
     "realEstateNumber": "32.01.01.110",
     "i18n": {
@@ -14420,6 +14582,7 @@
   {
     "buildingNumber": 32,
     "floor": "tussenverdieping bg",
+    "slug": "a-1-190",
     "roomId": "A-1-190",
     "realEstateNumber": "32.01.01.190",
     "i18n": {
@@ -14509,6 +14672,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "a-0-802",
     "roomId": "A-0-802",
     "realEstateNumber": "32.01.00.802",
     "i18n": {
@@ -14598,6 +14762,7 @@
   {
     "buildingNumber": 32,
     "floor": "1e verdieping",
+    "slug": "a-1-801",
     "roomId": "A-1-801",
     "realEstateNumber": "32.01.01.801",
     "i18n": {
@@ -14687,6 +14852,7 @@
   {
     "buildingNumber": 32,
     "floor": "kelder",
+    "slug": "a-k-804",
     "roomId": "A-K-804",
     "realEstateNumber": "32.01.K1.804",
     "i18n": {
@@ -14776,6 +14942,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "a-0-190",
     "roomId": "A-0-190",
     "realEstateNumber": "32.01.00.190",
     "i18n": {
@@ -14865,6 +15032,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "a-0-300",
     "roomId": "A-0-300",
     "realEstateNumber": "32.01.00.300",
     "i18n": {
@@ -14954,6 +15122,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "a-0-600",
     "roomId": "A-0-600",
     "realEstateNumber": "32.01.00.600",
     "i18n": {
@@ -15043,6 +15212,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "a-0-801",
     "roomId": "A-0-801",
     "realEstateNumber": "32.01.00.801",
     "i18n": {
@@ -15132,6 +15302,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "a-0-808",
     "roomId": "A-0-808",
     "realEstateNumber": "32.01.00.808",
     "i18n": {
@@ -15221,6 +15392,7 @@
   {
     "buildingNumber": 32,
     "floor": "begane grond",
+    "slug": "a-0-100",
     "roomId": "A-0-100",
     "realEstateNumber": "32.01.00.100",
     "i18n": {
@@ -15310,6 +15482,7 @@
   {
     "buildingNumber": 32,
     "floor": "kelder",
+    "slug": "c-k-010",
     "roomId": "C-K-010",
     "realEstateNumber": "32.03.K1.010",
     "i18n": {
@@ -15399,6 +15572,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-86",
     "roomId": "2.86",
     "realEstateNumber": "21.00.02.860",
     "i18n": {
@@ -15488,6 +15662,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-05",
     "roomId": "1.05",
     "realEstateNumber": "21.00.01.050",
     "i18n": {
@@ -15577,6 +15752,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-72",
     "roomId": "1.72",
     "realEstateNumber": "21.00.01.720",
     "i18n": {
@@ -15666,6 +15842,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-70",
     "roomId": "1.70",
     "realEstateNumber": "21.00.01.700",
     "i18n": {
@@ -15755,6 +15932,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-20",
     "roomId": "2.20",
     "realEstateNumber": "21.00.02.220",
     "i18n": {
@@ -15844,6 +16022,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-74",
     "roomId": "1.74",
     "realEstateNumber": "21.00.01.740",
     "i18n": {
@@ -15933,6 +16112,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-09",
     "roomId": "1.09",
     "realEstateNumber": "21.00.01.090",
     "i18n": {
@@ -16022,6 +16202,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-01",
     "roomId": "1.01",
     "realEstateNumber": "21.00.01.010",
     "i18n": {
@@ -16111,6 +16292,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-06",
     "roomId": "1.06",
     "realEstateNumber": "21.00.01.060",
     "i18n": {
@@ -16200,6 +16382,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-78",
     "roomId": "1.78",
     "realEstateNumber": "21.00.01.780",
     "i18n": {
@@ -16289,6 +16472,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-78",
     "roomId": "2.78",
     "realEstateNumber": "21.00.02.780",
     "i18n": {
@@ -16378,6 +16562,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-76",
     "roomId": "2.76",
     "realEstateNumber": "21.00.02.760",
     "i18n": {
@@ -16467,6 +16652,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-74",
     "roomId": "2.74",
     "realEstateNumber": "21.00.02.740",
     "i18n": {
@@ -16556,6 +16742,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-72",
     "roomId": "2.72",
     "realEstateNumber": "21.00.02.720",
     "i18n": {
@@ -16645,6 +16832,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-70",
     "roomId": "2.70",
     "realEstateNumber": "21.00.02.700",
     "i18n": {
@@ -16734,6 +16922,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-86",
     "roomId": "1.86",
     "realEstateNumber": "21.00.01.860",
     "i18n": {
@@ -16823,6 +17012,7 @@
   {
     "buildingNumber": 21,
     "floor": "3e verdieping",
+    "slug": "3-01",
     "roomId": "3.01",
     "realEstateNumber": "21.00.03.010",
     "i18n": {
@@ -16912,6 +17102,7 @@
   {
     "buildingNumber": 21,
     "floor": "4e verdieping",
+    "slug": "4-01",
     "roomId": "4.01",
     "realEstateNumber": "21.00.04.010",
     "i18n": {
@@ -17001,6 +17192,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-12",
     "roomId": "1.12",
     "realEstateNumber": "21.00.01.120",
     "i18n": {
@@ -17090,6 +17282,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-95",
     "roomId": "1.95",
     "realEstateNumber": "21.00.01.950",
     "i18n": {
@@ -17179,6 +17372,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-97",
     "roomId": "1.97",
     "realEstateNumber": "21.00.01.970",
     "i18n": {
@@ -17268,6 +17462,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-93",
     "roomId": "1.93",
     "realEstateNumber": "21.00.01.930",
     "i18n": {
@@ -17357,6 +17552,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-96",
     "roomId": "1.96",
     "realEstateNumber": "21.00.01.960",
     "i18n": {
@@ -17446,6 +17642,7 @@
   {
     "buildingNumber": 21,
     "floor": "begane grond",
+    "slug": "0-06",
     "roomId": "0.06",
     "realEstateNumber": "21.00.00.060",
     "i18n": {
@@ -17535,6 +17732,7 @@
   {
     "buildingNumber": 21,
     "floor": "1e verdieping",
+    "slug": "1-82",
     "roomId": "1.82",
     "realEstateNumber": "21.00.01.820",
     "i18n": {
@@ -17624,6 +17822,7 @@
   {
     "buildingNumber": 21,
     "floor": "3e verdieping",
+    "slug": "3-70",
     "roomId": "3.70",
     "realEstateNumber": "21.00.03.700",
     "i18n": {
@@ -17713,6 +17912,7 @@
   {
     "buildingNumber": 21,
     "floor": "3e verdieping",
+    "slug": "3-74",
     "roomId": "3.74",
     "realEstateNumber": "21.00.03.740",
     "i18n": {
@@ -17802,6 +18002,7 @@
   {
     "buildingNumber": 21,
     "floor": "3e verdieping",
+    "slug": "3-78",
     "roomId": "3.78",
     "realEstateNumber": "21.00.03.780",
     "i18n": {
@@ -17891,6 +18092,7 @@
   {
     "buildingNumber": 21,
     "floor": "5e verdieping",
+    "slug": "5-01",
     "roomId": "5.01",
     "realEstateNumber": "21.00.05.010",
     "i18n": {
@@ -17980,6 +18182,7 @@
   {
     "buildingNumber": 21,
     "floor": "6e verdieping",
+    "slug": "6-01",
     "roomId": "6.01",
     "realEstateNumber": "21.00.06.010",
     "i18n": {
@@ -18069,6 +18272,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-80",
     "roomId": "2.80",
     "realEstateNumber": "21.00.02.800",
     "i18n": {
@@ -18158,6 +18362,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-82",
     "roomId": "2.82",
     "realEstateNumber": "21.00.02.820",
     "i18n": {
@@ -18247,6 +18452,7 @@
   {
     "buildingNumber": 21,
     "floor": "2e verdieping",
+    "slug": "2-84",
     "roomId": "2.84",
     "realEstateNumber": "21.00.02.840",
     "i18n": {
@@ -18336,6 +18542,7 @@
   {
     "buildingNumber": 62,
     "floor": "begane grond",
+    "slug": "0-07",
     "roomId": "0.07",
     "realEstateNumber": "62.00.00.070",
     "i18n": {
@@ -18425,6 +18632,7 @@
   {
     "buildingNumber": 62,
     "floor": "1e verdieping",
+    "slug": "gang",
     "roomId": "Gang",
     "realEstateNumber": "62.00.01.800",
     "i18n": {
@@ -18514,6 +18722,7 @@
   {
     "buildingNumber": 62,
     "floor": "begane grond",
+    "slug": "00-800",
     "roomId": "00.800",
     "realEstateNumber": "62.00.00.800",
     "i18n": {
@@ -18603,6 +18812,7 @@
   {
     "buildingNumber": 62,
     "floor": "begane grond",
+    "slug": "nb-05",
     "roomId": "NB 05",
     "realEstateNumber": "62.01.00.005",
     "i18n": {
@@ -18692,6 +18902,7 @@
   {
     "buildingNumber": 62,
     "floor": "begane grond",
+    "slug": "res",
     "roomId": "RES",
     "realEstateNumber": "62.00.01.120",
     "i18n": {
@@ -18781,6 +18992,7 @@
   {
     "buildingNumber": 62,
     "floor": "begane grond",
+    "slug": "0-51",
     "roomId": "0.51",
     "realEstateNumber": "62.00.00.510",
     "i18n": {
@@ -18870,6 +19082,7 @@
   {
     "buildingNumber": 33,
     "floor": "2e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.02.700",
     "i18n": {
@@ -18959,6 +19172,7 @@
   {
     "buildingNumber": 33,
     "floor": "1e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.onbekend.009",
     "i18n": {
@@ -19048,6 +19262,7 @@
   {
     "buildingNumber": 33,
     "floor": "2e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.onbekend.014",
     "i18n": {
@@ -19137,6 +19352,7 @@
   {
     "buildingNumber": 33,
     "floor": "begane grond",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.onbekend.002",
     "i18n": {
@@ -19226,6 +19442,7 @@
   {
     "buildingNumber": 33,
     "floor": "begane grond",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.00.300",
     "i18n": {
@@ -19315,6 +19532,7 @@
   {
     "buildingNumber": 33,
     "floor": "2e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.02.600",
     "i18n": {
@@ -19404,6 +19622,7 @@
   {
     "buildingNumber": 33,
     "floor": "begane grond",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.00.500",
     "i18n": {
@@ -19493,6 +19712,7 @@
   {
     "buildingNumber": 33,
     "floor": "tussenverdieping bg",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.T0.300",
     "i18n": {
@@ -19582,6 +19802,7 @@
   {
     "buildingNumber": 33,
     "floor": "tussenverdieping bg",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.T0.200",
     "i18n": {
@@ -19671,6 +19892,7 @@
   {
     "buildingNumber": 33,
     "floor": "1e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.01.200",
     "i18n": {
@@ -19760,6 +19982,7 @@
   {
     "buildingNumber": 33,
     "floor": "1e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.01.500",
     "i18n": {
@@ -19849,6 +20072,7 @@
   {
     "buildingNumber": 33,
     "floor": "2e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.02.200",
     "i18n": {
@@ -19938,6 +20162,7 @@
   {
     "buildingNumber": 33,
     "floor": "2e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.02.500",
     "i18n": {
@@ -20027,6 +20252,7 @@
   {
     "buildingNumber": 33,
     "floor": "2e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.02.300",
     "i18n": {
@@ -20116,6 +20342,7 @@
   {
     "buildingNumber": 33,
     "floor": "begane grond",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.onbekend.001",
     "i18n": {
@@ -20205,6 +20432,7 @@
   {
     "buildingNumber": 33,
     "floor": "1e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.01.01.400",
     "i18n": {
@@ -20294,6 +20522,7 @@
   {
     "buildingNumber": 33,
     "floor": "tussenverdieping bg",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.onbekend.006",
     "i18n": {
@@ -20383,6 +20612,7 @@
   {
     "buildingNumber": 33,
     "floor": "1e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.onbekend.010",
     "i18n": {
@@ -20472,6 +20702,7 @@
   {
     "buildingNumber": 33,
     "floor": "2e verdieping",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.onbekend.015",
     "i18n": {
@@ -20561,6 +20792,7 @@
   {
     "buildingNumber": 33,
     "floor": "begane grond",
+    "slug": "pulse",
     "roomId": "Pulse",
     "realEstateNumber": "33.onbekend.005",
     "i18n": {
@@ -20650,6 +20882,7 @@
   {
     "buildingNumber": 31,
     "floor": "1e verdieping",
+    "slug": "a1-841",
     "roomId": "A1.841",
     "realEstateNumber": "31.01.01.841",
     "i18n": {
@@ -20739,6 +20972,7 @@
   {
     "buildingNumber": 31,
     "floor": "1e verdieping",
+    "slug": "a1-821",
     "roomId": "A1.821",
     "realEstateNumber": "31.02.01.821",
     "i18n": {
@@ -20828,6 +21062,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-821",
     "roomId": "A0.821",
     "realEstateNumber": "31.02.00.821",
     "i18n": {
@@ -20917,6 +21152,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "b0-060",
     "roomId": "B0.060",
     "realEstateNumber": "31.03.00.060",
     "i18n": {
@@ -21006,6 +21242,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "d0-010",
     "roomId": "D0.010",
     "realEstateNumber": "31.05.00.010",
     "i18n": {
@@ -21095,6 +21332,7 @@
   {
     "buildingNumber": 31,
     "floor": "1e verdieping",
+    "slug": "05-080",
     "roomId": "05.080",
     "realEstateNumber": "31.05.01.080",
     "i18n": {
@@ -21184,6 +21422,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-240",
     "roomId": "A0.240",
     "realEstateNumber": "31.01.00.240",
     "i18n": {
@@ -21273,6 +21512,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-380",
     "roomId": "A0.380",
     "realEstateNumber": "31.01.00.380",
     "i18n": {
@@ -21362,6 +21602,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-390",
     "roomId": "A0.390",
     "realEstateNumber": "31.01.00.390",
     "i18n": {
@@ -21451,6 +21692,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-400",
     "roomId": "A0.400",
     "realEstateNumber": "31.01.00.400",
     "i18n": {
@@ -21540,6 +21782,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-260",
     "roomId": "A0.260",
     "realEstateNumber": "31.01.00.260",
     "i18n": {
@@ -21629,6 +21872,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-280",
     "roomId": "A0.280",
     "realEstateNumber": "31.01.00.280",
     "i18n": {
@@ -21718,6 +21962,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-300",
     "roomId": "A0.300",
     "realEstateNumber": "31.01.00.300",
     "i18n": {
@@ -21807,6 +22052,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-320",
     "roomId": "A0.320",
     "realEstateNumber": "31.01.00.320",
     "i18n": {
@@ -21896,6 +22142,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-330",
     "roomId": "A0.330",
     "realEstateNumber": "31.01.00.330",
     "i18n": {
@@ -21985,6 +22232,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-340",
     "roomId": "A0.340",
     "realEstateNumber": "31.01.00.340",
     "i18n": {
@@ -22074,6 +22322,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-350",
     "roomId": "A0.350",
     "realEstateNumber": "31.01.00.350",
     "i18n": {
@@ -22163,6 +22412,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "a0-370",
     "roomId": "A0.370",
     "realEstateNumber": "31.01.00.370",
     "i18n": {
@@ -22252,6 +22502,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "b0-140",
     "roomId": "B0.140",
     "realEstateNumber": "31.03.00.140",
     "i18n": {
@@ -22341,6 +22592,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "b0-170",
     "roomId": "B0.170",
     "realEstateNumber": "31.03.00.170",
     "i18n": {
@@ -22430,6 +22682,7 @@
   {
     "buildingNumber": 31,
     "floor": "begane grond",
+    "slug": "b0-270",
     "roomId": "B0.270",
     "realEstateNumber": "31.03.00.270",
     "i18n": {
@@ -22519,6 +22772,7 @@
   {
     "buildingNumber": 31,
     "floor": "1e verdieping",
+    "slug": "51-010",
     "roomId": "51.010",
     "realEstateNumber": "31.05.01.010",
     "i18n": {
@@ -22608,6 +22862,7 @@
   {
     "buildingNumber": 31,
     "floor": "1e verdieping",
+    "slug": "05-012",
     "roomId": "05.012",
     "realEstateNumber": "31.05.01.012",
     "i18n": {
@@ -22697,6 +22952,7 @@
   {
     "buildingNumber": 31,
     "floor": "1e verdieping",
+    "slug": "05-013",
     "roomId": "05.013",
     "realEstateNumber": "31.05.01.013",
     "i18n": {
@@ -22786,6 +23042,7 @@
   {
     "buildingNumber": 31,
     "floor": "1e verdieping",
+    "slug": "05-014",
     "roomId": "05.014",
     "realEstateNumber": "31.05.01.014",
     "i18n": {
@@ -22875,6 +23132,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "f-259",
     "roomId": "F 259",
     "realEstateNumber": "22.00.02.590",
     "i18n": {
@@ -22964,6 +23222,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "f-278",
     "roomId": "F 278",
     "realEstateNumber": "22.00.02.780",
     "i18n": {
@@ -23053,6 +23312,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-272",
     "roomId": "A 272",
     "realEstateNumber": "22.01.02.720",
     "i18n": {
@@ -23142,6 +23402,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-207",
     "roomId": "A 207",
     "realEstateNumber": "22.01.02.070",
     "i18n": {
@@ -23231,6 +23492,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-211",
     "roomId": "A 211",
     "realEstateNumber": "22.01.02.110",
     "i18n": {
@@ -23320,6 +23582,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-251",
     "roomId": "A 251",
     "realEstateNumber": "22.01.02.510",
     "i18n": {
@@ -23409,6 +23672,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-257",
     "roomId": "A 257",
     "realEstateNumber": "22.01.02.570",
     "i18n": {
@@ -23498,6 +23762,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-263",
     "roomId": "A 263",
     "realEstateNumber": "22.01.02.630",
     "i18n": {
@@ -23587,6 +23852,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-266",
     "roomId": "A 266",
     "realEstateNumber": "22.01.02.660",
     "i18n": {
@@ -23676,6 +23942,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-203",
     "roomId": "A 203",
     "realEstateNumber": "22.01.02.030",
     "i18n": {
@@ -23765,6 +24032,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-201",
     "roomId": "A 201",
     "realEstateNumber": "22.01.02.010",
     "i18n": {
@@ -23854,6 +24122,7 @@
   {
     "buildingNumber": 22,
     "floor": "4e verdieping",
+    "slug": "f-425",
     "roomId": "F 425",
     "realEstateNumber": "22.00.04.250",
     "i18n": {
@@ -23943,6 +24212,7 @@
   {
     "buildingNumber": 22,
     "floor": "1e verdieping",
+    "slug": "a-150",
     "roomId": "A 150",
     "realEstateNumber": "22.01.01.500",
     "i18n": {
@@ -24032,6 +24302,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "a-250",
     "roomId": "A 250",
     "realEstateNumber": "22.01.02.500",
     "i18n": {
@@ -24121,6 +24392,7 @@
   {
     "buildingNumber": 22,
     "floor": "begane grond",
+    "slug": "a-050",
     "roomId": "A 050",
     "realEstateNumber": "22.01.00.500",
     "i18n": {
@@ -24210,6 +24482,7 @@
   {
     "buildingNumber": 22,
     "floor": "begane grond",
+    "slug": "f-001",
     "roomId": "F 001",
     "realEstateNumber": "22.00.00.010",
     "i18n": {
@@ -24299,6 +24572,7 @@
   {
     "buildingNumber": 22,
     "floor": "begane grond",
+    "slug": "f-050",
     "roomId": "F 050",
     "realEstateNumber": "22.00.00.500",
     "i18n": {
@@ -24388,6 +24662,7 @@
   {
     "buildingNumber": 22,
     "floor": "begane grond",
+    "slug": "f-075",
     "roomId": "F 075",
     "realEstateNumber": "22.00.00.750",
     "i18n": {
@@ -24477,6 +24752,7 @@
   {
     "buildingNumber": 22,
     "floor": "begane grond",
+    "slug": "f-099",
     "roomId": "F 099",
     "realEstateNumber": "22.00.00.990",
     "i18n": {
@@ -24566,6 +24842,7 @@
   {
     "buildingNumber": 22,
     "floor": "1e verdieping",
+    "slug": "f-101",
     "roomId": "F 101",
     "realEstateNumber": "22.00.01.010",
     "i18n": {
@@ -24655,6 +24932,7 @@
   {
     "buildingNumber": 22,
     "floor": "1e verdieping",
+    "slug": "f-125",
     "roomId": "F 125",
     "realEstateNumber": "22.00.01.250",
     "i18n": {
@@ -24744,6 +25022,7 @@
   {
     "buildingNumber": 22,
     "floor": "1e verdieping",
+    "slug": "f-150",
     "roomId": "F 150",
     "realEstateNumber": "22.00.01.500",
     "i18n": {
@@ -24833,6 +25112,7 @@
   {
     "buildingNumber": 22,
     "floor": "1e verdieping",
+    "slug": "f-175",
     "roomId": "F 175",
     "realEstateNumber": "22.00.01.750",
     "i18n": {
@@ -24922,6 +25202,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "f-201",
     "roomId": "F 201",
     "realEstateNumber": "22.00.02.010",
     "i18n": {
@@ -25011,6 +25292,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "f-225",
     "roomId": "F 225",
     "realEstateNumber": "22.00.02.250",
     "i18n": {
@@ -25100,6 +25382,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "f-250",
     "roomId": "F 250",
     "realEstateNumber": "22.00.02.500",
     "i18n": {
@@ -25189,6 +25472,7 @@
   {
     "buildingNumber": 22,
     "floor": "2e verdieping",
+    "slug": "f-275",
     "roomId": "F 275",
     "realEstateNumber": "22.00.02.750",
     "i18n": {
@@ -25278,6 +25562,7 @@
   {
     "buildingNumber": 22,
     "floor": "3e verdieping",
+    "slug": "f-325",
     "roomId": "F 325",
     "realEstateNumber": "22.00.03.250",
     "i18n": {
@@ -25367,6 +25652,7 @@
   {
     "buildingNumber": 22,
     "floor": "3e verdieping",
+    "slug": "f-375",
     "roomId": "F 375",
     "realEstateNumber": "22.00.03.750",
     "i18n": {
@@ -25456,6 +25742,7 @@
   {
     "buildingNumber": 22,
     "floor": "1e verdieping",
+    "slug": "a-102",
     "roomId": "A 102",
     "realEstateNumber": "22.01.01.020",
     "i18n": {
@@ -25545,6 +25832,7 @@
   {
     "buildingNumber": 22,
     "floor": "3e verdieping",
+    "slug": "f-304",
     "roomId": "F 304",
     "realEstateNumber": "22.00.03.040",
     "i18n": {
@@ -25634,6 +25922,7 @@
   {
     "buildingNumber": 22,
     "floor": "3e verdieping",
+    "slug": "f-305",
     "roomId": "F 305",
     "realEstateNumber": "22.00.03.050",
     "i18n": {
@@ -25723,6 +26012,7 @@
   {
     "buildingNumber": 66,
     "floor": "begane grond",
+    "slug": "0-802",
     "roomId": "0.802",
     "realEstateNumber": "62.00.00.802",
     "i18n": {
@@ -25812,6 +26102,7 @@
   {
     "buildingNumber": 66,
     "floor": "1e verdieping",
+    "slug": "0-802",
     "roomId": "0.802",
     "realEstateNumber": "62.00.01.802",
     "i18n": {
@@ -25901,6 +26192,7 @@
   {
     "buildingNumber": 66,
     "floor": "1e verdieping",
+    "slug": "instr",
     "roomId": "INSTR",
     "realEstateNumber": "62.00.01.380",
     "i18n": {
@@ -25990,6 +26282,7 @@
   {
     "buildingNumber": 66,
     "floor": "1e verdieping",
+    "slug": "instr",
     "roomId": "INSTR",
     "realEstateNumber": "62.00.01.440",
     "i18n": {
@@ -26079,6 +26372,7 @@
   {
     "buildingNumber": 66,
     "floor": "1e verdieping",
+    "slug": "1-18",
     "roomId": "1.18",
     "realEstateNumber": "62.00.01.500",
     "i18n": {
@@ -26168,6 +26462,7 @@
   {
     "buildingNumber": 66,
     "floor": "1e verdieping",
+    "slug": "1-14",
     "roomId": "1.14",
     "realEstateNumber": "62.00.01.140",
     "i18n": {
@@ -26257,6 +26552,7 @@
   {
     "buildingNumber": 66,
     "floor": "1e verdieping",
+    "slug": "1-17",
     "roomId": "1.17",
     "realEstateNumber": "62.00.01.450",
     "i18n": {
@@ -26346,6 +26642,7 @@
   {
     "buildingNumber": 66,
     "floor": "1e verdieping",
+    "slug": "1-25",
     "roomId": "1.25",
     "realEstateNumber": "62.00.01.610",
     "i18n": {
@@ -26435,6 +26732,7 @@
   {
     "buildingNumber": 66,
     "floor": "2e verdieping",
+    "slug": "2-24",
     "roomId": "2.24",
     "realEstateNumber": "62.00.02.450",
     "i18n": {
@@ -26524,6 +26822,7 @@
   {
     "buildingNumber": 66,
     "floor": "2e verdieping",
+    "slug": "2-16",
     "roomId": "2.16",
     "realEstateNumber": "62.00.02.610",
     "i18n": {
@@ -26613,6 +26912,7 @@
   {
     "buildingNumber": 66,
     "floor": "begane grond",
+    "slug": "0-13",
     "roomId": "0.13",
     "realEstateNumber": "62.00.00.350",
     "i18n": {
@@ -26702,6 +27002,7 @@
   {
     "buildingNumber": 66,
     "floor": "2e verdieping",
+    "slug": "2-21",
     "roomId": "2.21",
     "realEstateNumber": "62.00.02.400",
     "i18n": {
@@ -26791,6 +27092,7 @@
   {
     "buildingNumber": 66,
     "floor": "begane grond",
+    "slug": "0-15",
     "roomId": "0.15",
     "realEstateNumber": "62.00.00.400",
     "i18n": {
@@ -26880,6 +27182,7 @@
   {
     "buildingNumber": 66,
     "floor": "begane grond",
+    "slug": "0-17",
     "roomId": "0.17",
     "realEstateNumber": "62.00.00.450",
     "i18n": {
@@ -26969,6 +27272,7 @@
   {
     "buildingNumber": 66,
     "floor": "begane grond",
+    "slug": "0-18",
     "roomId": "0.18",
     "realEstateNumber": "62.00.00.540",
     "i18n": {
@@ -27058,6 +27362,7 @@
   {
     "buildingNumber": 66,
     "floor": "begane grond",
+    "slug": "0-25",
     "roomId": "0.25",
     "realEstateNumber": "62.00.00.610",
     "i18n": {
@@ -27147,6 +27452,7 @@
   {
     "buildingNumber": 66,
     "floor": "1e verdieping",
+    "slug": "1-16",
     "roomId": "1.16",
     "realEstateNumber": "62.00.01.350",
     "i18n": {
@@ -27236,6 +27542,7 @@
   {
     "buildingNumber": 66,
     "floor": "2e verdieping",
+    "slug": "2-11",
     "roomId": "2.11",
     "realEstateNumber": "62.00.02.230",
     "i18n": {
@@ -27325,6 +27632,7 @@
   {
     "buildingNumber": 66,
     "floor": "2e verdieping",
+    "slug": "2-25",
     "roomId": "2.25",
     "realEstateNumber": "62.00.02.540",
     "i18n": {
@@ -27414,6 +27722,7 @@
   {
     "buildingNumber": 66,
     "floor": "begane grond",
+    "slug": "0-02",
     "roomId": "0.02",
     "realEstateNumber": "62.00.00.020",
     "i18n": {
@@ -27503,6 +27812,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "b2-100",
     "roomId": "B2.100",
     "realEstateNumber": "58.02.02.100",
     "i18n": {
@@ -27592,6 +27902,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "b2-160",
     "roomId": "B2.160",
     "realEstateNumber": "58.02.02.160",
     "i18n": {
@@ -27681,6 +27992,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "c1-110",
     "roomId": "C1.110",
     "realEstateNumber": "58.03.01.110",
     "i18n": {
@@ -27770,6 +28082,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "c1-150",
     "roomId": "C1.150",
     "realEstateNumber": "58.03.01.150",
     "i18n": {
@@ -27859,6 +28172,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "c1-190",
     "roomId": "C1.190",
     "realEstateNumber": "58.03.01.190",
     "i18n": {
@@ -27948,6 +28262,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "a1-090",
     "roomId": "A1.090",
     "realEstateNumber": "58.01.01.090",
     "i18n": {
@@ -28037,6 +28352,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "a1-150",
     "roomId": "A1.150",
     "realEstateNumber": "58.01.01.150",
     "i18n": {
@@ -28126,6 +28442,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "a2-110",
     "roomId": "A2.110",
     "realEstateNumber": "58.01.02.110",
     "i18n": {
@@ -28215,6 +28532,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "a2-050",
     "roomId": "A2.050",
     "realEstateNumber": "58.01.02.050",
     "i18n": {
@@ -28304,6 +28622,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "a1-010",
     "roomId": "A1.010",
     "realEstateNumber": "58.01.01.010",
     "i18n": {
@@ -28393,6 +28712,7 @@
   {
     "buildingNumber": 58,
     "floor": "begane grond",
+    "slug": "a0-080",
     "roomId": "A0.080",
     "realEstateNumber": "58.01.00.080",
     "i18n": {
@@ -28482,6 +28802,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "b2-150",
     "roomId": "B2.150",
     "realEstateNumber": "58.02.02.150",
     "i18n": {
@@ -28571,6 +28892,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "a1-803",
     "roomId": "A1.803",
     "realEstateNumber": "58.01.01.803",
     "i18n": {
@@ -28660,6 +28982,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "a1-804",
     "roomId": "A1.804",
     "realEstateNumber": "58.01.01.804",
     "i18n": {
@@ -28749,6 +29072,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "a1-805",
     "roomId": "A1.805",
     "realEstateNumber": "58.01.01.805",
     "i18n": {
@@ -28838,6 +29162,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "a1-806",
     "roomId": "A1.806",
     "realEstateNumber": "58.01.01.806",
     "i18n": {
@@ -28927,6 +29252,7 @@
   {
     "buildingNumber": 58,
     "floor": "1e verdieping",
+    "slug": "a1-807",
     "roomId": "A1.807",
     "realEstateNumber": "58.01.01.807",
     "i18n": {
@@ -29016,6 +29342,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "a2-803",
     "roomId": "A2.803",
     "realEstateNumber": "58.01.02.803",
     "i18n": {
@@ -29105,6 +29432,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "a2-804",
     "roomId": "A2.804",
     "realEstateNumber": "58.01.02.804",
     "i18n": {
@@ -29194,6 +29522,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "a2-805",
     "roomId": "A2.805",
     "realEstateNumber": "58.01.02.805",
     "i18n": {
@@ -29283,6 +29612,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "a2-806",
     "roomId": "A2.806",
     "realEstateNumber": "58.01.02.806",
     "i18n": {
@@ -29372,6 +29702,7 @@
   {
     "buildingNumber": 58,
     "floor": "2e verdieping",
+    "slug": "a2-807",
     "roomId": "A2.807",
     "realEstateNumber": "58.01.02.807",
     "i18n": {
@@ -29461,6 +29792,7 @@
   {
     "buildingNumber": 58,
     "floor": "3e verdieping",
+    "slug": "a3-010",
     "roomId": "A3.010",
     "realEstateNumber": "58.01.03.010",
     "i18n": {
@@ -29550,6 +29882,7 @@
   {
     "buildingNumber": 28,
     "floor": "1e verdieping",
+    "slug": "801",
     "roomId": "801",
     "realEstateNumber": "28.00.01.801",
     "i18n": {
@@ -29639,6 +29972,7 @@
   {
     "buildingNumber": 28,
     "floor": "2e verdieping",
+    "slug": "801",
     "roomId": "801",
     "realEstateNumber": "28.00.02.801",
     "i18n": {
@@ -29728,6 +30062,7 @@
   {
     "buildingNumber": 28,
     "floor": "begane grond",
+    "slug": "580",
     "roomId": "580",
     "realEstateNumber": "28.00.00.580",
     "i18n": {
@@ -29817,6 +30152,7 @@
   {
     "buildingNumber": 28,
     "floor": "begane grond",
+    "slug": "140",
     "roomId": "140",
     "realEstateNumber": "28.00.00.140",
     "i18n": {
@@ -29906,6 +30242,7 @@
   {
     "buildingNumber": 28,
     "floor": "begane grond",
+    "slug": "801",
     "roomId": "801",
     "realEstateNumber": "28.00.00.801",
     "i18n": {
@@ -29995,6 +30332,7 @@
   {
     "buildingNumber": 28,
     "floor": "begane grond",
+    "slug": "460",
     "roomId": "460",
     "realEstateNumber": "28.00.00.460",
     "i18n": {
@@ -30084,6 +30422,7 @@
   {
     "buildingNumber": 28,
     "floor": "2e verdieping",
+    "slug": "460",
     "roomId": "460",
     "realEstateNumber": "28.00.02.460",
     "i18n": {
@@ -30173,6 +30512,7 @@
   {
     "buildingNumber": 28,
     "floor": "4e verdieping",
+    "slug": "460",
     "roomId": "460",
     "realEstateNumber": "28.00.04.460",
     "i18n": {
@@ -30262,6 +30602,7 @@
   {
     "buildingNumber": 28,
     "floor": "5e verdieping",
+    "slug": "460",
     "roomId": "460",
     "realEstateNumber": "28.00.05.460",
     "i18n": {
@@ -30351,6 +30692,7 @@
   {
     "buildingNumber": 28,
     "floor": "6e verdieping",
+    "slug": "960",
     "roomId": "960",
     "realEstateNumber": "28.00.06.960",
     "i18n": {

@@ -1,26 +1,8 @@
 import slugify from "slugify";
-import { CsvRoomData } from "./../../../src/types/Room";
+import { CsvRoomData } from "./../../../src/types/Space";
 
-export function getBuildingI18n(
-  number: number,
-  sourceName: string,
-  sourceAbbreviation: string
-) {
-  const abbreviation = sourceAbbreviation.trim();
-  return {
-    abbreviation,
-    name: getBuildingName(sourceName),
-    slug: getBuildingSlug(number, abbreviation),
-  };
-}
-
-function getBuildingSlug(number: number, abbreviation: string) {
-  return slugify([number, abbreviation].join("-")).toLowerCase();
-}
-
-function getBuildingName(sourceName: string) {
-  const dashPos = sourceName.indexOf("-");
-  return (dashPos >= 0 ? sourceName.substring(dashPos + 1) : sourceName).trim();
+export function getRoomSlug(roomId: string) {
+  return slugify(roomId.replace(/\./g, "-")).toLowerCase();
 }
 
 export function getRoom(
@@ -30,7 +12,7 @@ export function getRoom(
   return {
     buildingNumber,
     floor: source.floor,
-
+    slug: getRoomSlug(source.roomId),
     exchangeBuildingId: source.exchangeBuildingId,
     exchangeRoomId: source.exchangeRoomId,
     roomId: source.roomId,

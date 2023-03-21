@@ -1,18 +1,12 @@
-import { getSpaceI18n, getSpace } from "./transform-spaces";
+import { getSpaceSlug, getSpace } from "./transform-spaces";
 
-describe("Space i18n properties transformation", () => {
+describe("Space slugification", () => {
   it("works", () => {
-    expect(getSpaceI18n("SSP00001", "GANG")).toEqual({
-      name: "GANG",
-      slug: "ssp00001--gang",
-    });
+    expect(getSpaceSlug("SSP00001", "GANG")).toEqual("ssp00001--gang");
   });
 
   it("trims", () => {
-    expect(getSpaceI18n(" SSP00001  ", "  GANG ")).toEqual({
-      name: "GANG",
-      slug: "ssp00001--gang",
-    });
+    expect(getSpaceSlug(" SSP00001  ", "  GANG ")).toEqual("ssp00001--gang");
   });
 });
 
@@ -48,14 +42,13 @@ describe("Space transformation", () => {
       })
     ).toEqual({
       buildingNumber: 34,
+      slug: "ssp00001--gang",
       i18n: {
         nl: {
           name: "GANG",
-          slug: "ssp00001--gang",
         },
         en: {
           name: "Study Spot",
-          slug: "ssp00001--study-spot",
         },
       },
       facilities: {
