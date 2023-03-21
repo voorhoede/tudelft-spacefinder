@@ -80,7 +80,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     const mapStore = useMapStore();
     buildingsI18n.value = buildingsI18n.value.map((building) => {
       const activeDevices = data[building.number];
-      const occupancy = calculateOccupancy(activeDevices, building.totalSeats);
+      const occupancy = calculateOccupancy(activeDevices, building.totalSeats, building.occupancyLimit);
       return { ...building, activeDevices, occupancy };
     });
     mapStore.updateData();
@@ -92,7 +92,8 @@ export const useSpacesStore = defineStore("spaces", () => {
       building.activeDevices = activeDevices;
       building.occupancy = calculateOccupancy(
         activeDevices,
-        building.totalSeats
+        building.totalSeats,
+        building.occupancyLimit,
       );
       const mapStore = useMapStore();
       mapStore.updateData();
