@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO key field for room is not slug -->
   <DynamicScroller
     v-if="spaces.length > 0"
     :items="spaces"
@@ -34,11 +35,12 @@
 
 <script setup lang="ts">
 import type { Space } from "~/types/Space";
+import type { Room } from "~/types/Room";
 // @ts-ignore
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
-defineProps<{ spaces: Space[]; showBuildingOccupancy: boolean }>();
+defineProps<{ spaces: (Space | Room)[]; showBuildingOccupancy: boolean }>();
 </script>
 
 <style>

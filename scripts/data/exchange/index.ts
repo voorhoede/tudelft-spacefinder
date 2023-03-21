@@ -12,6 +12,7 @@ import type {
   CsvAndCmsBuildingData,
   BuildingI18n,
 } from "./../../../src/types/Building";
+import { CsvRoomData, RoomI18n } from "../../../src/types/Room";
 
 const placeholderOpeningHours = [
   {
