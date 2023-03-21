@@ -18,6 +18,7 @@ export interface BuildingI18n {
   i18n: Record<string, { name: string; slug: string; abbreviation: string }>;
   totalSeats: number;
   totalSpaces: number;
+  totalRooms: number;
   openingHours: OpeningHours[];
 
   activeDevices?: number;

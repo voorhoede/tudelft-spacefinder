@@ -3,6 +3,7 @@ import Ajv from "ajv";
 // schema files
 import baseSchema from "../../../schema/base.json";
 import buildingSchema from "../../../schema/building.json";
+import roomSchema from "../../../schema/room.json";
 import spaceSchema from "../../../schema/space.json";
 
 const ajv = new Ajv({
@@ -12,6 +13,9 @@ const ajv = new Ajv({
 
 // json schema validator function for spaces
 export const validateSpace = ajv.compile(spaceSchema);
+
+// json schema validator function for rooms
+export const validateRoom = ajv.compile(roomSchema);
 
 // json schema validator function for buildings
 export const validateBuilding = ajv.compile(buildingSchema);

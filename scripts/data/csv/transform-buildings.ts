@@ -45,5 +45,6 @@ export function getBuilding(
     },
     totalSeats: 0,
     totalSpaces: 0,
+    totalRooms: 0,
   };
 }

@@ -5,6 +5,7 @@ import infoPage from "../data/infopage.json";
 import feedbackPage from "~/data/feedbackpage.json";
 import type { Building } from "../types/Building";
 import type { Space } from "../types/Space";
+import type { Room } from "../types/Room";
 
 const messages: Record<string, Record<string, string>> = { en, nl }; //TODO: better typescript
 const content: Record<string, Record<string, string>> = {};
@@ -37,7 +38,7 @@ function pageContent(locale: string, key: string) {
 
 export type PathParams = {
   building?: Building;
-  space?: Space;
+  space?: Space | Room;
   locale: string;
   buildingSlug?: string;
   spaceSlug?: string;
@@ -84,7 +85,9 @@ function normalizePathParams(
     if (building) result.buildingSlug = building.i18n[result.locale].slug;
   }
   if (!result.spaceSlug && result.space) {
-    result.spaceSlug = result.space.i18n[result.locale].slug;
+    const i18n = result.space.i18n[result.locale];
+    if ("slug" in i18n) result.spaceSlug = i18n.slug;
+    else result.spaceSlug = (result.space as Room).slug;
   }
   return result;
 }
