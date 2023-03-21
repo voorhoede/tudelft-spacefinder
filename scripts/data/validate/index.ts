@@ -1,7 +1,6 @@
 import { validateBuilding, validateRoom, validateSpace } from "./schema";
 import { BuildingI18n } from "./../../../src/types/Building";
-import { SpaceI18n } from "./../../../src/types/Space";
-import { RoomI18n } from "./../../../src/types/Room";
+import { SpaceI18n, RoomI18n } from "./../../../src/types/Space";
 import type { ErrorObject, ValidateFunction } from "ajv";
 
 function logErrors(name: string, errors: ErrorObject[]) {
