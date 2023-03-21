@@ -43,11 +43,12 @@ export default defineNuxtConfig({
       password: process.env.SCHEMA_REGISTRY_PASSWORD,
     },
     public: {
-      maxboxToken: process.env.MAPBOX_TOKEN,
+      mapboxToken: process.env.MAPBOX_TOKEN,
       baseUrl: process.env.URL,
       isOpeningHoursEnabled:
         !!process.env.IS_OPENING_HOURS_ENABLED &&
         process.env.IS_OPENING_HOURS_ENABLED != "0",
+      spacesMode: process.env.SPACES_MODE ?? "spaces",
     },
   },
   nitro: {

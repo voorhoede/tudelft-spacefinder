@@ -66,7 +66,8 @@
 
 <script setup lang="ts">
 import type { Space } from "~/types/Space";
-defineProps<{ space: Space }>();
+import type { Room } from "~/types/Room";
+defineProps<{ space: Space | Room }>();
 
 const root = ref(null as null | HTMLDivElement);
 

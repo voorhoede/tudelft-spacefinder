@@ -7,7 +7,10 @@
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">
-        <li>{{ building.totalSpaces }} {{ $t("locations") }}</li>
+        <li>
+          {{ totalSpaces }}
+          {{ $t("locations") }}
+        </li>
         <li>{{ building.totalSeats }} {{ $t("seats") }}</li>
       </ul>
 
@@ -28,7 +31,13 @@
 
 <script setup lang="ts">
 import type { Building } from "~/types/Building";
-defineProps<{ building: Building }>();
+const props = defineProps<{ building: Building }>();
+const runtimeConfig = useRuntimeConfig();
+const totalSpaces = computed(() =>
+  runtimeConfig.public.spacesMode == "rooms"
+    ? props.building.totalRooms
+    : props.building.totalSpaces
+);
 </script>
 
 <style>

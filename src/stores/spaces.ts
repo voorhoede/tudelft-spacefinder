@@ -4,6 +4,7 @@ import type { BuildingI18n } from "~/types/Building";
 import type { Filters } from "~/types/filters";
 import type { Space, SpaceI18n } from "~/types/Space";
 import calculateOccupancy from "../lib/calculate-occupancy";
+import { Room, RoomI18n } from "~/types/Room";
 import { useMapStore } from "./map";
 
 export type Selection =
@@ -110,6 +111,26 @@ export const useSpacesStore = defineStore("spaces", () => {
     });
   });
 
+  const roomsI18n = ref([] as RoomI18n[]);
+
+  function setRooms(rooms: RoomI18n[]) {
+    roomsI18n.value = rooms;
+  }
+
+  function bulkSetRoomsOccupancy(data: Record<number, Record<string, number>>) {
+    roomsI18n.value = roomsI18n.value.map((room) => {
+      return {
+        ...room,
+        activeDevices: data[room.buildingNumber]?.[room.realEstateNumber],
+      };
+    });
+  }
+
+  function setRoomOccupancy(realEstateNumber: string, activeDevices: number) {
+    const room = getSpaceBySlug(realEstateNumber); //TODO
+    if (room) room.activeDevices = activeDevices;
+  }
+
   const spacesI18n = ref([] as SpaceI18n[]);
 
   function setSpaces(spaces: SpaceI18n[]) {
@@ -136,15 +157,27 @@ export const useSpacesStore = defineStore("spaces", () => {
 
   const spaces = computed(() => {
     const { $locale } = useNuxtApp();
-    return spacesI18n.value.map((spaceI18n) => {
-      const propsI18n = spaceI18n.i18n[$locale.value];
-      const building = getBuildingByNumber(spaceI18n.buildingNumber);
-      return {
-        ...spaceI18n,
-        ...propsI18n,
-        building,
-      } as Space;
-    });
+    if (runtimeConfig.public.spacesMode == "rooms")
+      return roomsI18n.value.map((roomI18n) => {
+        const propsI18n = roomI18n.i18n[$locale.value];
+        const building = getBuildingByNumber(roomI18n.buildingNumber);
+        return {
+          ...roomI18n,
+          ...propsI18n,
+          slug: roomI18n.realEstateNumber,
+          building,
+        } as Room;
+      }) as (Room | Space)[];
+    else
+      return spacesI18n.value.map((spaceI18n) => {
+        const propsI18n = spaceI18n.i18n[$locale.value];
+        const building = getBuildingByNumber(spaceI18n.buildingNumber);
+        return {
+          ...spaceI18n,
+          ...propsI18n,
+          building,
+        } as Space;
+      }) as (Room | Space)[];
   });
 
   const filteredSpaces = computed(() =>
@@ -165,10 +198,6 @@ export const useSpacesStore = defineStore("spaces", () => {
 
   function getBuildingBySlug(slug: string) {
     return buildings.value.find((building) => building.slug === slug);
-  }
-
-  function getSpaceById(id: string) {
-    return spaces.value.find((space) => space.spaceId === id);
   }
 
   function getSpaceBySlug(slug: string) {
@@ -194,6 +223,11 @@ export const useSpacesStore = defineStore("spaces", () => {
     bulkSetBuildingOccupancy,
     setBuildingOccupancy,
     buildings,
+    setRooms,
+    bulkSetRoomsOccupancy,
+    setRoomOccupancy,
+    //rooms,
+    //filteredRooms,
     setSpaces,
     bulkSetSpaceOccupancy,
     setSpaceOccupancy,
@@ -201,8 +235,10 @@ export const useSpacesStore = defineStore("spaces", () => {
     filteredSpaces,
     clearFilters,
     isFiltered,
-    getSpaceById,
-    buildingsI18n,
+    getSpaceBySlug,
+    //getSpaceById,
+    buildingsI18n, //These need to be exported to be passed as payload from server to client
+    roomsI18n,
     spacesI18n,
   };
 });
