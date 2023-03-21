@@ -1,5 +1,5 @@
 <template>
-  <ClientOnly v-if="show" placeholder="...">
+  <ClientOnly v-if="isOpeningHoursEnabled" placeholder="...">
     <p
       class="card-status"
       :class="{ 'card-status--open': isOpen }"
@@ -28,7 +28,7 @@ import type { OpeningHours } from "~/types/OpeningHours";
 
 const props = defineProps<{ openingHours: OpeningHours[] }>();
 const runtimeConfig = useRuntimeConfig();
-const show = !runtimeConfig.public.hideOpeningHours;
+const { isOpeningHoursEnabled } = runtimeConfig.public;
 
 const isOpen = computed(() => {
   const indexToday = 0;
