@@ -2,12 +2,16 @@
 // const getEmails = require('./get-unique-emails')
 // const mapRoomsToTimes = require('./rooms-to-times')
 // const openingHours = require('./opening-hours')
-import type { CsvSpaceData, SpaceI18n } from "./../../../src/types/Space";
+import type {
+  CsvSpaceData,
+  SpaceI18n,
+  CsvRoomData,
+  RoomI18n,
+} from "./../../../src/types/Space";
 import type {
   CsvAndCmsBuildingData,
   BuildingI18n,
 } from "./../../../src/types/Building";
-import { CsvRoomData, RoomI18n } from "../../../src/types/Room";
 
 const placeholderOpeningHours = [
   {

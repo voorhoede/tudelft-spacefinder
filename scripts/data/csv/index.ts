@@ -4,8 +4,7 @@ import parserOptions from "./config";
 import { getBuilding } from "./transform-buildings";
 import { getSpace } from "./transform-spaces";
 import { getRoom } from "./transform-rooms";
-import { CsvSpaceData } from "./../../../src/types/Space";
-import { CsvRoomData } from "./../../../src/types/Room";
+import { CsvSpaceData, CsvRoomData } from "./../../../src/types/Space";
 import {
   CsvBuildingData,
   CsvAndCmsBuildingData,
