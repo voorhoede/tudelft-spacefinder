@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO key field for room is not slug -->
   <DynamicScroller
     v-if="spaces.length > 0"
     :items="spaces"
