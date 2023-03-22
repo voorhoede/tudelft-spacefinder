@@ -1,4 +1,4 @@
-import routes from "./config/routes";
+import { generateRoutes } from "./config/routes";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -53,7 +53,19 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ["/sitemap.xml", "/robots.txt", ...routes],
+      routes: ["/sitemap.xml", "/robots.txt"],
+    },
+  },
+  hooks: {
+    "prerender:routes": async ({ routes }) => {
+      const buildings = await import("./src/data/buildings.json");
+      const spaces = await import("./src/data/spaces.json");
+      const generatedRoutes = generateRoutes({ buildings, spaces });
+
+      // routes is of type Set, so we need to add each route individually
+      generatedRoutes.forEach((route) => {
+        routes.add(route);
+      })
     },
   },
   pwa: {

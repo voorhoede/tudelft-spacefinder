@@ -1,3 +1,4 @@
+import { describe, it, expect } from "vitest";
 import { getSpaceSlug, getSpace } from "./transform-spaces";
 
 describe("Space slugification", () => {

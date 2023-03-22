@@ -1,5 +1,10 @@
 import { SitemapStream, streamToPromise } from "sitemap";
-import routes from "../../../config/routes";
+import { generateRoutes } from "../../../config/routes";
+import buildings from "../../data/buildings.json";
+import spaces from "../../data/spaces.json";
+
+const routes = generateRoutes({ buildings, spaces });
+
 export default defineEventHandler(async (event) => {
   const runtimeConfig = useRuntimeConfig();
   const sitemap = new SitemapStream({

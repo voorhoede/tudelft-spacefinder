@@ -1,3 +1,4 @@
+import { describe, test, beforeEach, afterEach, expect, vi } from "vitest";
 import { roomOpeningHours } from "./opening-hours";
 import buildingAndRoom from "./opening-hours-fixture";
 
