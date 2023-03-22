@@ -6,6 +6,7 @@ publish = "./dist"
 NODE_ENV = "production"
 NPM_CONFIG_AUDIT = "false"
 NPM_CONFIG_FUND = "false"
+NPM_FLAGS = "--ignore-scripts"
 
 [build.processing.html]
 pretty_urls = true
