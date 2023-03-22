@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-import { writeFile as fsWriteFile } from "fs";
+import fs from "node:fs/promises";
 import { getData as getDataFromCsv, transform } from "./csv/index";
 import {
   getBuildingsDataFromCms,
@@ -21,14 +21,8 @@ if (!csvPath) {
 
 function writeFile(path: string, contents: any) {
   const stringifiedData = JSON.stringify(contents, null, 2);
-  return new Promise<void>((resolve, reject) => {
-    fsWriteFile(`./src/data/${path}.json`, stringifiedData, "utf8", (err) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve();
-    });
-  });
+
+  return fs.writeFile(`./src/data/${path}.json`, stringifiedData);
 }
 
 function prepareSpaces(csvPath: string) {
