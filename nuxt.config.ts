@@ -63,6 +63,13 @@ export default defineNuxtConfig({
     workbox: {
       globPatterns: ["_nuxt/*"],
       navigateFallback: null,
+      runtimeCaching: [
+        {
+          urlPattern: 'https://www.datocms-assets.com/.*',
+          handler: 'CacheFirst',
+          method: 'GET',
+        },
+      ],
     },
     manifest: {
       name: "TU Delft\nSpacefinder",
