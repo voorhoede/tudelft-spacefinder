@@ -5,8 +5,14 @@
       :key="action.event"
       class="zoom-controls__item"
     >
-      <button class="button button--round" @click="$emit(action.event)">
-        <SvgIcon :name="`${action.icon}-icon`" class="button--round__icon" />
+      <button
+        class="button button--round"
+        @click="$emit(action.event)"
+      >
+        <SvgIcon
+          :name="`${action.icon}-icon`"
+          class="button--round__icon"
+        />
         <span class="a11y-sr-only">{{ $t(action.text) }}</span>
       </button>
     </li>

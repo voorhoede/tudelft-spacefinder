@@ -9,7 +9,10 @@
         class="app-menu__link"
         @click="$emit('close')"
       >
-        <SvgIcon name="world-icon" class="app-menu__icon" />
+        <SvgIcon
+          name="world-icon"
+          class="app-menu__icon"
+        />
         <span class="app-menu__link-name">
           {{ name }}
         </span>

@@ -1,8 +1,14 @@
 <template>
   <section v-if="building">
-    <BackButton :use-history="false" :to="$localePath('/buildings')" />
+    <BackButton
+      :use-history="false"
+      :to="$localePath('/buildings')"
+    />
     <div class="default-layout__info building-layout">
-      <BuildingHeader class="building-layout__header" :building="building" />
+      <BuildingHeader
+        class="building-layout__header"
+        :building="building"
+      />
       <SpaceList
         class="building-layout__spaces"
         :spaces="spaces"

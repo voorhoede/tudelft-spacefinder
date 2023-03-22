@@ -1,15 +1,28 @@
 <template>
   <Transition name="pop-up-fade">
-    <div v-if="isOpen" class="pop-up">
-      <div class="pop-up__background" @click="close" />
+    <div
+      v-if="isOpen"
+      class="pop-up"
+    >
+      <div
+        class="pop-up__background"
+        @click="close"
+      />
 
       <div class="pop-up__body">
         <div class="pop-up__heading">
           <h1 class="pop-up__title h2">
             {{ $pageContent("onboarding.title") }}
           </h1>
-          <button type="button" class="button button--header" @click="close">
-            <SvgIcon name="close-icon" class="button--header__icon" />
+          <button
+            type="button"
+            class="button button--header"
+            @click="close"
+          >
+            <SvgIcon
+              name="close-icon"
+              class="button--header__icon"
+            />
             {{ $t("close") }}
           </button>
         </div>

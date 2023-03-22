@@ -3,7 +3,10 @@
     :to="$localePath('/buildings/:buildingSlug', { building })"
     class="building-card card"
   >
-    <BuildingImage :building="building" class="building-card__image" />
+    <BuildingImage
+      :building="building"
+      class="building-card__image"
+    />
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">

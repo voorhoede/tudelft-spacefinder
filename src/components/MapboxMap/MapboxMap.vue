@@ -1,6 +1,12 @@
 <template>
-  <div ref="mapContainer" class="mapbox-map">
-    <div v-if="!mapLoaded" class="mapbox-map__placeholder">
+  <div
+    ref="mapContainer"
+    class="mapbox-map"
+  >
+    <div
+      v-if="!mapLoaded"
+      class="mapbox-map__placeholder"
+    >
       <span class="mapbox-map__loading-message">{{ $t("mapLoading") }}</span>
     </div>
     <ZoomControls
