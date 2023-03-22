@@ -7,7 +7,10 @@
     </div>
 
     <div class="default-layout__info default-layout__info--space-detail">
-      <SpaceDetailCard ref="card" :space="space" />
+      <SpaceDetailCard
+        ref="card"
+        :space="space"
+      />
     </div>
   </section>
 </template>

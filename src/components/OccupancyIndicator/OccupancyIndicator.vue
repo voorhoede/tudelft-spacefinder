@@ -1,7 +1,11 @@
 <template>
   <ClientOnly>
     <div>
-      <Tooltip :delay="0" :overflowPadding="4" :instantMove="true">
+      <Tooltip
+        :delay="0"
+        :overflow-padding="4"
+        :instant-move="true"
+      >
         <SvgIcon
           :name="`facility-occupancy.${occupancyKey}-icon`"
           class="occupancy-indicator__icon"

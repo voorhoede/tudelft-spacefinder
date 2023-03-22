@@ -9,7 +9,7 @@
       :src="space.imageUrl"
       alt=""
       class="space-detail-card__image"
-    />
+    >
 
     <div class="space-detail-card__heading">
       <div class="space-detail-card__header">
@@ -49,7 +49,10 @@
 
       <ul class="flat-list space-detail-card__seating">
         <li>
-          <SvgIcon name="seat-icon" class="space-detail-card__seating-icon" />
+          <SvgIcon
+            name="seat-icon"
+            class="space-detail-card__seating-icon"
+          />
           {{ space.seats }} {{ $t("seatsDescription") }}
         </li>
       </ul>

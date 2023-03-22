@@ -1,10 +1,21 @@
 <template>
-  <ModalDrawer :is-open="isOpen" :title="$t('menu')" @close="$emit('close')">
+  <ModalDrawer
+    :is-open="isOpen"
+    :title="$t('menu')"
+    @close="$emit('close')"
+  >
     <nav class="app-menu">
       <ul class="flat-list">
         <li class="app-menu__item">
-          <NuxtLink to="/" class="app-menu__link" @click="$emit('close')">
-            <SvgIcon name="home-icon" class="app-menu__icon" />
+          <NuxtLink
+            to="/"
+            class="app-menu__link"
+            @click="$emit('close')"
+          >
+            <SvgIcon
+              name="home-icon"
+              class="app-menu__icon"
+            />
 
             <span class="app-menu__link-name">
               {{ $t("home") }}
@@ -17,7 +28,10 @@
             class="app-menu__link"
             @click="$emit('close')"
           >
-            <SvgIcon name="building-icon" class="app-menu__icon" />
+            <SvgIcon
+              name="building-icon"
+              class="app-menu__icon"
+            />
 
             <span class="app-menu__link-name">
               {{ $t("buildingTitle") }}
@@ -30,7 +44,10 @@
             class="app-menu__link"
             @click="$emit('close')"
           >
-            <SvgIcon name="help-icon" class="app-menu__icon" />
+            <SvgIcon
+              name="help-icon"
+              class="app-menu__icon"
+            />
 
             <span class="app-menu__link-name">
               {{ $t("help") }}
@@ -43,7 +60,10 @@
             class="app-menu__link"
             @click="$emit('close')"
           >
-            <SvgIcon name="feedback-icon" class="app-menu__icon" />
+            <SvgIcon
+              name="feedback-icon"
+              class="app-menu__icon"
+            />
 
             <span class="app-menu__link-name">
               {{ $t("feedback") }}
@@ -51,16 +71,26 @@
           </NuxtLink>
         </li>
         <li class="mobile-only app-menu__item">
-          <NuxtLink to="/" class="app-menu__link" @click="toggleMapMode">
+          <NuxtLink
+            to="/"
+            class="app-menu__link"
+            @click="toggleMapMode"
+          >
             <span v-if="$isMapMode.value">
-              <SvgIcon name="list-icon" class="app-menu__icon" />
+              <SvgIcon
+                name="list-icon"
+                class="app-menu__icon"
+              />
 
               <span class="app-menu__link-name">
                 {{ $t("listToggle") }}
               </span>
             </span>
             <span v-else>
-              <SvgIcon name="map-icon" class="app-menu__icon" />
+              <SvgIcon
+                name="map-icon"
+                class="app-menu__icon"
+              />
 
               <span class="app-menu__link-name">
                 {{ $t("mapToggle") }}
@@ -71,13 +101,19 @@
         <li class="app-menu__item">
           <LanguageSelector @close="$emit('close')" />
         </li>
-        <li v-if="isInstallable" class="app-menu__item">
+        <li
+          v-if="isInstallable"
+          class="app-menu__item"
+        >
           <button
             type="button"
             class="app-menu__link app-menu__button button"
             @click="installApp"
           >
-            <SvgIcon name="plus-icon" class="app-menu__icon" />
+            <SvgIcon
+              name="plus-icon"
+              class="app-menu__icon"
+            />
 
             <span class="app-menu__link-name">
               {{ $t("addToHomescreen") }}

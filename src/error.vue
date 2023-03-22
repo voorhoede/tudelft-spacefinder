@@ -3,7 +3,10 @@
     <h1>
       {{ error.statusCode == 404 ? "Page not found" : "An error occurred" }}
     </h1>
-    <a class="button button--primary" href="/"> Return home </a>
+    <a
+      class="button button--primary"
+      href="/"
+    > Return home </a>
   </section>
 </template>
 

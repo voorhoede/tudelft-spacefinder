@@ -5,7 +5,7 @@
     :value="option"
     type="checkbox"
     class="a11y-sr-only filter-menu__filter"
-  />
+  >
   <label :for="inputId">
     <SvgIcon
       v-if="showIcon"
@@ -33,7 +33,12 @@ const props = withDefaults(
     /** False if you do not want to display an icon */
     showIcon?: boolean;
   }>(),
-  { showIcon: true }
+  {
+    option: undefined,
+    displayKey: undefined,
+    label: undefined,
+    showIcon: true,
+  }
 );
 const inputId = computed(() =>
   ["filter-item", props.name, props.option].filter(Boolean).join("-")

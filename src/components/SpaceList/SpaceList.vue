@@ -6,7 +6,7 @@
     :min-item-size="114"
     class="space-list"
   >
-    <template v-slot="{ item, index, active }">
+    <template #default="{ item, index, active }">
       <DynamicScrollerItem
         :item="item"
         :active="active"
@@ -14,7 +14,10 @@
         :data-index="index"
         class="space-list__item"
       >
-        <header v-if="index === 0" class="space-list__header">
+        <header
+          v-if="index === 0"
+          class="space-list__header"
+        >
           <h2>{{ $t("spacesTitle") }}</h2>
           <p class="space-list__header-text">
             {{ $t("spacesSubTitle") }}
@@ -27,7 +30,10 @@
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>
-  <div v-else class="space-list__message">
+  <div
+    v-else
+    class="space-list__message"
+  >
     {{ $t("noFilterResults") }}
   </div>
 </template>

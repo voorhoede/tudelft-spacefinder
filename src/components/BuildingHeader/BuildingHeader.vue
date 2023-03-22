@@ -10,11 +10,17 @@
       <div class="building-header__spaces">
         <ul class="flat-list building-header__seating">
           <li>
-            <SvgIcon name="seat-icon" class="building-header__seating-icon" />
+            <SvgIcon
+              name="seat-icon"
+              class="building-header__seating-icon"
+            />
             {{ building.totalSeats }}
           </li>
           <li>
-            <SvgIcon name="door-icon" class="building-header__seating-icon" />
+            <SvgIcon
+              name="door-icon"
+              class="building-header__seating-icon"
+            />
             {{ totalSpaces }}
           </li>
         </ul>
