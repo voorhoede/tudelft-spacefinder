@@ -1,22 +1,19 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-import got from "got";
 const { DATO_API_TOKEN } = process.env;
 const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === "1";
 
 async function getFromDato(query: string, rootProp: string) {
-  const response = await got("https://graphql.datocms.com/", {
+  const response = await fetch("https://graphql.datocms.com/", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${DATO_API_TOKEN}`,
     },
-    json: true,
-    body: {
-      query,
-      variables: null,
-    },
-  });
-  return response.body.data[rootProp];
+    body: JSON.stringify({ query }),
+  })
+    .then((response) => response.json());
+
+  return response.data[rootProp];
 }
 
 export function getBuildingsDataFromCms() {

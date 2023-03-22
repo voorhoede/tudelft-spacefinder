@@ -29,7 +29,6 @@
     "ajv": "^6.10.1",
     "csv": "^6.2.7",
     "floating-vue": "^2.0.0-beta.20",
-    "got": "^9.6.0",
     "husky": "^8.0.3",
     "js-cookie": "^2.2.1",
     "kafkajs": "^2.2.4",
@@ -45,7 +44,6 @@
     "vue-virtual-scroller": "^2.0.0-beta.8"
   },
   "devDependencies": {
-    "@types/got": "^9.6.12",
     "@types/js-cookie": "^3.0.3",
     "@types/mapbox-gl": "^2.7.10",
     "@types/node": "^18.14.1",
