@@ -1,4 +1,4 @@
-import { readFile } from "fs";
+import fs from "node:fs/promises";
 import { parse } from "csv-parse/sync";
 import parserOptions from "./config";
 import { getBuilding } from "./transform-buildings";
@@ -18,14 +18,8 @@ export function buildingNumberFromId(buildingId: string) {
 }
 
 export function getData(csvPath: string) {
-  return new Promise<Record<string, any>[]>((resolve, reject) => {
-    readFile(csvPath, "utf8", (err, data) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(parse(data, parserOptions) as Record<string, any>[]);
-    });
-  });
+  return fs.readFile(csvPath)
+    .then((data) => parse(data, parserOptions))
 }
 
 export function transform(
