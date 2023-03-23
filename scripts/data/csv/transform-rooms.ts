@@ -1,8 +1,8 @@
 import slugify from "slugify";
 import { CsvRoomData } from "./../../../src/types/Space";
 
-export function getRoomSlug(roomId: string) {
-  return slugify(roomId.replace(/\./g, "-")).toLowerCase();
+export function getRoomSlug(realEstateNumber: string) {
+  return slugify(realEstateNumber.replace(/\./g, "-")).toLowerCase();
 }
 
 export function getRoom(
@@ -12,14 +12,14 @@ export function getRoom(
   return {
     buildingNumber,
     floor: source.floor,
-    slug: getRoomSlug(source.roomId),
+    slug: getRoomSlug(source.realEstateNumber),
     exchangeBuildingId: source.exchangeBuildingId,
     exchangeRoomId: source.exchangeRoomId,
     roomId: source.roomId,
     realEstateNumber: source.realEstateNumber,
     i18n: {
       nl: { name: source.spaceNameNL.trim() },
-      en: { name: source.spaceNameEN.trim() },
+      en: { name: source.spaceNameNL.trim() },
     },
     facilities: {
       adjustableChairs: false,
