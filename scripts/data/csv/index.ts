@@ -126,6 +126,7 @@ export function transform(
   for (const cmsBuilding of dataFromCms) {
     const building = buildings[cmsBuilding.number] as CsvAndCmsBuildingData;
     if (!building) continue;
+    building.occupancyLimit = cmsBuilding.occupancyLimit;
     building.bounds = cmsBuilding.bounds;
     building.image = cmsBuilding.image;
   }
