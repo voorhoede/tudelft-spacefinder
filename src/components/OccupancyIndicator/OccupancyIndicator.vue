@@ -8,7 +8,7 @@
           :alt="$t(`occupancy.${occupancy}`)"
         />
         <template #popper>
-          {{ $t("activeDevices") }}: {{ activeDevices }}
+          {{ $t("occupancy") }}: {{ $t(`occupancy.${occupancy}`) }}
         </template>
       </Tooltip>
     </div>
