@@ -18,9 +18,9 @@
         </h2>
         <div>
           <OccupancyIndicator
-            :active-devices="space.building.activeDevices ?? 0"
+            :active-devices="space.building.activeDevices"
             :total-seats="space.building.totalSeats"
-            :occupancy="space.building.occupancy ?? 'quiet'"
+            :occupancy="space.building.occupancy"
           />
         </div>
       </div>
