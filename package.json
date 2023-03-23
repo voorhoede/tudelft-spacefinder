@@ -14,7 +14,7 @@
     "supabase:db:reset": "supabase db reset",
     "test": "npm run test:unit",
     "test:e2e": "cypress run",
-    "pretest:unit": "npm run data",
+    "pretest:unit": "npm run data && nuxt prepare",
     "test:unit": "vitest",
     "lint": "eslint '**/*.vue'",
     "lint-staged": "nano-staged",
