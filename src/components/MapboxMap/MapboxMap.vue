@@ -113,7 +113,7 @@ function initMap(accessToken: string) {
   }
 
   map.on("load", () => {
-    const markerNames = [...OCCUPANCY_RATES, "default"] as const;
+    const markerNames = [...OCCUPANCY_RATES, "unknown"] as const;
     Promise.all(
       markerNames.map((occupancy) => addMarker(map, `map-marker-${occupancy}`))
     ).then(() => {
@@ -135,7 +135,7 @@ function initMap(accessToken: string) {
             "match", // A rule to determine the icon for the point...
             ["get", "buildingOccupancy"], // ... is that if the `buildingOccupancy` property matches...
             ...occupancyIconNamePairs, // ... the first element of the pair from this (flat) sequence, the second element defines the name of the icon
-            "map-marker-default", //And the final element determines the default icon
+            "map-marker-unknown", //And the final element determines the default icon
           ],
           "icon-allow-overlap": true,
         },

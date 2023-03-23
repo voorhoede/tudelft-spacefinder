@@ -17,9 +17,9 @@
       />
       <div class="building-card__occupancy">
         <OccupancyIndicator
-          :active-devices="building.activeDevices ?? 0"
+          :active-devices="building.activeDevices"
           :total-seats="building.totalSeats"
-          :occupancy="building.occupancy ?? 'quiet'"
+          :occupancy="building.occupancy"
         />
       </div>
     </div>

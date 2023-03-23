@@ -23,7 +23,7 @@ export interface BuildingI18n {
   openingHours: OpeningHours[];
 
   activeDevices?: number;
-  occupancy?: Occupancy;
+  occupancy?: Occupancy | undefined;
 }
 
 export type CsvAndCmsBuildingData = Omit<

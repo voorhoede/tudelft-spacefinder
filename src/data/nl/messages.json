@@ -101,5 +101,6 @@
   "occupancy": "Drukte",
   "occupancy.quiet": "rustig",
   "occupancy.busy": "druk",
-  "occupancy.crowded": "vol"
+  "occupancy.crowded": "vol",
+  "occupancy.unknown": "onbekend"
 }
