@@ -18,7 +18,3 @@ Referrer-Policy = "no-referrer-when-downgrade"
 X-Content-Type-Options = "nosniff"
 X-Frame-Options = "SAMEORIGIN"
 X-XSS-Protection = "1; mode=block"
-
-[[redirects]]
-  from = "/nl/gebouwen/lr/*"
-  to = "/nl/gebouwen/62-lr/:splat"
