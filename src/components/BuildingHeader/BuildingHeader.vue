@@ -20,9 +20,9 @@
         </ul>
         <div>
           <OccupancyIndicator
-            :active-devices="building.activeDevices ?? 0"
+            :active-devices="building.activeDevices"
             :total-seats="building.totalSeats"
-            :occupancy="building.occupancy ?? 'quiet'"
+            :occupancy="building.occupancy"
           />
         </div>
       </div>

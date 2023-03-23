@@ -45,7 +45,7 @@ export interface RoomBaseRaw {
   openingHours: OpeningHours[];
   imageUrl?: string | undefined; //It is currently not provided by any source, but some frontend code is ready to consume it
   activeDevices?: number;
-  occupancy?: Occupancy;
+  occupancy?: Occupancy | undefined;
 }
 
 export type CsvSpaceData = Omit<

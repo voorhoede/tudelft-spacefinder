@@ -3,9 +3,9 @@
     <div>
       <Tooltip :delay="0" :overflowPadding="4" :instantMove="true">
         <SvgIcon
-          :name="`facility-occupancy.${occupancy}-icon`"
+          :name="`facility-occupancy.${occupancyKey}-icon`"
           class="occupancy-indicator__icon"
-          :alt="$t(`occupancy.${occupancy}`)"
+          :alt="$t(`occupancy.${occupancyKey}`)"
         />
         <template #popper>
           {{ $t("occupancy") }}: {{ $t(`occupancy.${occupancy}`) }}
@@ -20,11 +20,12 @@ import { Tooltip } from "floating-vue";
 import "floating-vue/dist/style.css";
 import type { Occupancy } from "~/types/Filters";
 
-defineProps<{
+const props = defineProps<{
   totalSeats: number;
-  activeDevices: number;
-  occupancy: Occupancy;
+  activeDevices?: number | null | undefined;
+  occupancy?: Occupancy | null | undefined;
 }>();
+const occupancyKey = computed(() => props.occupancy ?? "unknown");
 </script>
 
 <style>
