@@ -27,14 +27,3 @@ describe("Building i18n properties transformation", () => {
     );
   });
 });
-
-// test("is able to handle bad data", () => {
-//   let result = fromI18n({ foo: "bar" });
-//   expect(result).toEqual({});
-
-//   result = fromI18n({ name: "foo" });
-//   expect(result).toEqual({});
-
-//   result = fromI18n({ name: "12-bad", abbreviation: "" });
-//   expect(result).toEqual({});
-// });
