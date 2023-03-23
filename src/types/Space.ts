@@ -43,7 +43,7 @@ export interface RoomBaseRaw {
   tables: number;
   facilities: SpaceFeatures;
   openingHours: OpeningHours[];
-  imageUrl?: string | undefined; //TODO: not there
+  imageUrl?: string | undefined; //It is currently not provided by any source, but some frontend code is ready to consume it
   activeDevices?: number;
   occupancy?: Occupancy;
 }

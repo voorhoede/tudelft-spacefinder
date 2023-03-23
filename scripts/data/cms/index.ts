@@ -26,7 +26,8 @@ export function getBuildingsDataFromCms() {
         image {
           url
         }
-        number,
+        number
+        occupancyLimit
         bounds
       }
     }`,
