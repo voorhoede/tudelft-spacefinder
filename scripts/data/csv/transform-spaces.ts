@@ -54,7 +54,7 @@ export function getSpace(
     buildingNumber,
     i18n: {
       nl: { name: source.spaceNameNL.trim() },
-      en: { name: source.spaceNameEN.trim() },
+      en: { name: source.spaceNameNL.trim() },
     },
     slug: getSpaceSlug(source.spaceId, source.spaceNameNL.trim()),
     facilities: facilities as SpaceFeatures,
