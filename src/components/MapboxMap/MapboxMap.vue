@@ -128,7 +128,7 @@ function initMap(accessToken: string) {
         source: {
           type: "geojson",
           data: mapStore.geoJsonSpaces,
-          promoteId: "slug",
+          promoteId: "spaceSlug",
         },
         layout: {
           "icon-image": [
@@ -150,12 +150,13 @@ function initMap(accessToken: string) {
     });
     if (features.length) {
       const properties = features[0].properties || {};
-      if (!properties.buildingNumber || !properties.slug) {
+      if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
       router.push(
         $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
-          spaceSlug: properties.slug as string,
+          buildingSlug: properties.buildingSlug as string,
+          spaceSlug: properties.spaceSlug as string,
         })
       );
     }
