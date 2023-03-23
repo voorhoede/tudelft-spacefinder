@@ -8,3 +8,4 @@ https://spacefinder.netlify.com/* https://spacefinder.tudelft.nl/:splat 301!
 # a list of spaces is available on the building page, so redirect to it:
 /en/buildings/:buildingSlug/spaces/ /en/buildings/:buildingSlug 302
 /nl/gebouwen/:buildingSlug/ruimtes/ /en/gebouwen/:buildingSlug 302
+/nl/gebouwen/lr/* /nl/gebouwen/62-lr/:splat
