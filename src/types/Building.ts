@@ -11,6 +11,7 @@ export interface Building extends BuildingI18n {
 export interface BuildingI18n {
   buildingId: string;
   number: number;
+  occupancyLimit: number | null;
   bounds: Bounds;
   image: {
     url: string;
@@ -30,6 +31,12 @@ export type CsvAndCmsBuildingData = Omit<
   "openingHours" | "activeDevices" | "occupancy"
 > & { exchangeBuildingId: string };
 
-export type CsvBuildingData = Omit<CsvAndCmsBuildingData, "bounds" | "image">;
+export type CmsBuildingData = Pick<
+  BuildingI18n,
+  "number" | "occupancyLimit" | "bounds" | "image"
+>;
 
-export type CmsBuildingData = Pick<BuildingI18n, "number" | "bounds" | "image">;
+export type CsvBuildingData = Omit<
+  CsvAndCmsBuildingData,
+  "occupancyLimit" | "bounds" | "image"
+>;

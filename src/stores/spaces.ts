@@ -80,7 +80,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     const mapStore = useMapStore();
     buildingsI18n.value = buildingsI18n.value.map((building) => {
       const activeDevices = data[building.number];
-      const occupancy = calculateOccupancy(activeDevices, building.totalSeats, building.occupancyLimit);
+      const occupancy = calculateOccupancy(activeDevices, building);
       return { ...building, activeDevices, occupancy };
     });
     mapStore.updateData();
@@ -90,11 +90,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     const building = getBuildingI18nByNumber(buildingNumber);
     if (building) {
       building.activeDevices = activeDevices;
-      building.occupancy = calculateOccupancy(
-        activeDevices,
-        building.totalSeats,
-        building.occupancyLimit,
-      );
+      building.occupancy = calculateOccupancy(activeDevices, building);
       const mapStore = useMapStore();
       mapStore.updateData();
     }
@@ -126,13 +122,13 @@ export const useSpacesStore = defineStore("spaces", () => {
   function bulkSetRoomOccupancy(data: Record<string, number>) {
     roomsI18n.value = roomsI18n.value.map((room) => {
       const activeDevices = data[room.realEstateNumber];
-      const occupancy = calculateOccupancy(activeDevices, room.seats);
+      const occupancy = calculateOccupancy(activeDevices, room);
       return { ...room, activeDevices, occupancy };
     });
     spacesI18n.value = spacesI18n.value.map((space) => {
       const activeDevices = data[space.realEstateNumber];
       const room = getRoomI18nByRealEstateNumber(space.realEstateNumber)!;
-      const occupancy = calculateOccupancy(activeDevices, room.seats);
+      const occupancy = calculateOccupancy(activeDevices, room);
       return { ...space, activeDevices, occupancy };
     });
   }
@@ -141,7 +137,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     const room = getRoomI18nByRealEstateNumber(realEstateNumber);
     if (room) {
       room.activeDevices = activeDevices;
-      room.occupancy = calculateOccupancy(activeDevices, room.seats);
+      room.occupancy = calculateOccupancy(activeDevices, room);
       const spaces = spacesI18n.value.filter(
         (space) => space.realEstateNumber == realEstateNumber
       );
