@@ -16,7 +16,6 @@ describe("Space transformation", () => {
       getSpace(34, {
         buildingId: "34 - 3mE",
         spaceNameNL: "GANG",
-        spaceNameEN: "Study Spot",
         spaceId: "SSP00001",
         floor: "1e verdieping",
         seats: 72,
@@ -48,7 +47,7 @@ describe("Space transformation", () => {
           name: "GANG",
         },
         en: {
-          name: "Study Spot",
+          name: "GANG",
         },
       },
       facilities: {
