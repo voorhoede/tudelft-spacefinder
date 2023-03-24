@@ -15,8 +15,16 @@ export default defineNuxtConfig({
     head: {
       title: "TU Delft Spacefinder",
       link: [
+        { rel: "icon", href: "/favicon.svg", type: "image/svg+xml", },
+        { rel: "apple-touch-icon", href: "/apple-touch-icon.png", },
         { rel: "dns-prefetch", href: "https://api.mapbox.com/" },
         { rel: "dns-prefetch", href: "https://www.datocms-assets.com/" },
+      ],
+      meta: [
+        {
+          name: "google-site-verification",
+          content: "zpj1hb-uMNGkFLJlxqC96oWE067G1lzXcRFsWM4m_8M",
+        },
       ],
       script: [
         {
@@ -65,9 +73,9 @@ export default defineNuxtConfig({
       navigateFallback: null,
       runtimeCaching: [
         {
-          urlPattern: 'https://www.datocms-assets.com/.*',
-          handler: 'CacheFirst',
-          method: 'GET',
+          urlPattern: "https://www.datocms-assets.com/.*",
+          handler: "CacheFirst",
+          method: "GET",
         },
       ],
     },

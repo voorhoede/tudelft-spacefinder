@@ -71,16 +71,6 @@ onBeforeUnmount(() => {
 });
 
 useHead({
-  link: [
-    { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml', },
-    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', },
-  ],
-  meta: [
-    {
-      name: "google-site-verification",
-      content: "zpj1hb-uMNGkFLJlxqC96oWE067G1lzXcRFsWM4m_8M",
-    },
-  ],
   script: [
     {
       innerHTML: `
