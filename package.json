@@ -2,7 +2,7 @@
   "name": "tudelft-spacefinder",
   "private": true,
   "scripts": {
-    "data": "tsx --tsconfig ./tsconfig.data-scripts.json scripts/data/index.ts",
+    "data": "jiti scripts/data/index.ts",
     "prebuild": "npm run data",
     "build": "nuxt build",
     "predev": "npm run data",
@@ -14,7 +14,7 @@
     "supabase:db:reset": "supabase db reset",
     "test": "npm run test:unit",
     "test:e2e": "cypress run",
-    "pretest:unit": "npm run data && nuxt prepare",
+    "pretest:unit": "nuxt prepare",
     "test:unit": "vitest",
     "lint": "eslint '**/*.vue'",
     "lint-staged": "nano-staged",
@@ -34,6 +34,7 @@
     "got": "^9.6.0",
     "httpntlm": "^1.8.10",
     "husky": "^8.0.3",
+    "jiti": "^1.18.2",
     "js-cookie": "^2.2.1",
     "kafkajs": "^2.2.4",
     "mapbox-gl": "^2.13.0",
@@ -44,7 +45,6 @@
     "pinia": "^2.0.32",
     "sitemap": "^7.1.1",
     "slugify": "^1.3.4",
-    "tsx": "^3.12.5",
     "vue-virtual-scroller": "^2.0.0-beta.8"
   },
   "devDependencies": {
