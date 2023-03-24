@@ -18,13 +18,13 @@ import { useMapStore } from "~/stores/map";
 
 definePageMeta({ alias: "/:locale/gebouwen" });
 
-const { buildings } = useSpacesStore();
+const spacesStore = useSpacesStore();
 
 const mapStore = useMapStore();
 const { $t } = useNuxtApp();
 
 const buildingsOrdered = computed(() =>
-  [...buildings].sort((a, b) => a.name.localeCompare(b.name))
+  [...spacesStore.buildings].sort((a, b) => a.name.localeCompare(b.name))
 );
 
 const title = computed(() => $t("buildingTitle"));
