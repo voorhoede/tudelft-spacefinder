@@ -86,7 +86,10 @@ export const useSpacesStore = defineStore("spaces", () => {
     mapStore.updateData();
   }
 
-  function setBuildingOccupancy(buildingNumber: number, activeDevices: number) {
+  function setBuildingOccupancy(
+    buildingNumber: number,
+    activeDevices: number | undefined
+  ) {
     const building = getBuildingI18nByNumber(buildingNumber);
     if (building) {
       building.activeDevices = activeDevices;
@@ -133,7 +136,10 @@ export const useSpacesStore = defineStore("spaces", () => {
     });
   }
 
-  function setRoomOccupancy(realEstateNumber: string, activeDevices: number) {
+  function setRoomOccupancy(
+    realEstateNumber: string,
+    activeDevices: number | undefined
+  ) {
     const room = getRoomI18nByRealEstateNumber(realEstateNumber);
     if (room) {
       room.activeDevices = activeDevices;
