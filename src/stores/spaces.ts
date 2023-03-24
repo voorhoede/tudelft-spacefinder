@@ -65,6 +65,12 @@ export const useSpacesStore = defineStore("spaces", () => {
     filters.value = defaultFilters; //TODO: check if Vue3 reactivity works like that
   }
 
+  type Timer = ReturnType<typeof setTimeout>;
+  const invalidationTimers = {
+    buildings: {} as Record<number, Timer>,
+    rooms: {} as Record<string, Timer>,
+  };
+
   const buildingsI18n = ref([] as BuildingI18n[]);
 
   function setBuildings(buildings: BuildingI18n[]) {
@@ -76,11 +82,27 @@ export const useSpacesStore = defineStore("spaces", () => {
     buildingsI18n.value = [...buildings].sort(compareByNumber);
   }
 
+  function clearBuildingInvalidationTimer(buildingNumber: number) {
+    const existingTimer = invalidationTimers.buildings[buildingNumber];
+    if (existingTimer) clearTimeout(existingTimer);
+  }
+
+  function setBuildingInvalidationTimer(buildingNumber: number) {
+    clearBuildingInvalidationTimer(buildingNumber);
+    invalidationTimers.buildings[buildingNumber] = setTimeout(
+      () => setBuildingOccupancy(buildingNumber, undefined),
+      30 * 60 * 1000
+    );
+  }
+
   function bulkSetBuildingOccupancy(data: Record<number, number>) {
     const mapStore = useMapStore();
     buildingsI18n.value = buildingsI18n.value.map((building) => {
       const activeDevices = data[building.number];
       const occupancy = calculateOccupancy(activeDevices, building);
+      if (activeDevices != undefined)
+        setBuildingInvalidationTimer(building.number);
+      else clearBuildingInvalidationTimer(building.number);
       return { ...building, activeDevices, occupancy };
     });
     mapStore.updateData();
@@ -94,6 +116,9 @@ export const useSpacesStore = defineStore("spaces", () => {
     if (building) {
       building.activeDevices = activeDevices;
       building.occupancy = calculateOccupancy(activeDevices, building);
+      if (activeDevices != undefined)
+        setBuildingInvalidationTimer(buildingNumber);
+      else clearBuildingInvalidationTimer(buildingNumber);
       const mapStore = useMapStore();
       mapStore.updateData();
     }
@@ -122,10 +147,26 @@ export const useSpacesStore = defineStore("spaces", () => {
     spacesI18n.value = spaces;
   }
 
+  function clearRoomInvalidationTimer(realEstateNumber: string) {
+    const existingTimer = invalidationTimers.rooms[realEstateNumber];
+    if (existingTimer) clearTimeout(existingTimer);
+  }
+
+  function setRoomInvalidationTimer(realEstateNumber: string) {
+    clearRoomInvalidationTimer(realEstateNumber);
+    invalidationTimers.rooms[realEstateNumber] = setTimeout(
+      () => setRoomOccupancy(realEstateNumber, undefined),
+      30 * 60 * 1000
+    );
+  }
+
   function bulkSetRoomOccupancy(data: Record<string, number>) {
     roomsI18n.value = roomsI18n.value.map((room) => {
       const activeDevices = data[room.realEstateNumber];
       const occupancy = calculateOccupancy(activeDevices, room);
+      if (activeDevices != undefined)
+        setRoomInvalidationTimer(room.realEstateNumber);
+      else clearRoomInvalidationTimer(room.realEstateNumber);
       return { ...room, activeDevices, occupancy };
     });
     spacesI18n.value = spacesI18n.value.map((space) => {
@@ -151,6 +192,9 @@ export const useSpacesStore = defineStore("spaces", () => {
         space.activeDevices = activeDevices;
         space.occupancy = room.occupancy;
       }
+      if (activeDevices != undefined)
+        setRoomInvalidationTimer(realEstateNumber);
+      else clearRoomInvalidationTimer(realEstateNumber);
       //const mapStore = useMapStore();
       //mapStore.updateData(); //TODO: DECIDE IF WE NEED TO DO THAT
     }
