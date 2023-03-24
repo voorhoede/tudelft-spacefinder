@@ -1,3 +1,4 @@
+import { describe, it, expect } from "vitest";
 import getEmails from "./get-unique-emails";
 
 describe("Getting unique emails", () => {
