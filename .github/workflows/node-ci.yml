@@ -6,9 +6,6 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env:
-      USE_MOCK_DATA_CMS: 1
-      CSV_PATH: ./data/studieplekken-latest.csv
     steps:
       - uses: actions/checkout@v3
 
