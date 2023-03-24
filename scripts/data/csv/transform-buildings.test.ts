@@ -1,3 +1,4 @@
+import { describe, it, expect } from "vitest";
 import { getBuildingI18n } from "./transform-buildings";
 
 describe("Building i18n properties transformation", () => {
