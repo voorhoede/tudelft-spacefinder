@@ -1,24 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "space.json",
-  "description": "A study space at TU Delft",
-  "$ref": "#/definitions/space",
+  "$id": "room.json",
+  "description": "A room at TU Delft",
+  "$ref": "#/definitions/room",
   "definitions": {
-    "space": {
+    "room": {
       "type":"object",
       "properties": {
-        "spaceId": { "type": "string" },
         "buildingNumber": { "type":"integer" },
-        "realEstateNumber": { "type": "string" },
+        "realEstateNumber": { "type":"string" },
         "roomId": { "type": "string" },
         "slug": { "type": "string" },
-        "floor": { "type": "string" },
-        "seats": { "type": "integer" },
-        "tables": { "type": "integer" },
-        "latitude": { "type": "number", "description": "geospatial latitude" },
-        "longitude": { "type": "number", "description": "geospatial longitude" },
-        "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "Opening hours for space" },
-        "facilities": { "$ref": "#/definitions/facilities" },
         "i18n": {
           "type": "object",
           "properties": {
@@ -34,23 +26,30 @@
             "en"
           ],
           "additionalProperties": false
-        }
+        },
+        "floor": { "type": "string" },
+        "seats": { "type": "integer" },
+        "tables": { "type": "integer" },
+        "spaces": { "type": "integer" },
+        "latitude": { "type": "number", "description": "geospatial latitude" },
+        "longitude": { "type": "number", "description": "geospatial longitude" },
+        "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "Opening hours for space" },
+        "facilities": { "$ref": "#/definitions/facilities" }
       },
       "additionalProperties": false,
       "required": [
-        "spaceId",
         "buildingNumber",
+        "realEstateNumber",
         "facilities",
         "floor",
-        "i18n",
         "latitude",
         "longitude",
         "openingHours",
-        "realEstateNumber",
         "roomId",
         "slug",
         "seats",
-        "tables"
+        "tables",
+        "spaces"
       ]
     },
     "dictionary": {

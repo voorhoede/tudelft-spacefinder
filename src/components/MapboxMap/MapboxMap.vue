@@ -15,7 +15,6 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useSpacesStore } from "~/stores/spaces";
 
 import campusBounds from "~/lib/campus-bounds";
 import { useMapStore } from "~/stores/map";
@@ -26,7 +25,6 @@ const mapboxgl = (await import("mapbox-gl")).default;
 const runtimeConfig = useRuntimeConfig();
 const { $localePath } = useNuxtApp();
 const router = useRouter();
-const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 const { mapLoaded } = storeToRefs(mapStore);
 
@@ -35,7 +33,7 @@ const mapContainer = ref(null as null | HTMLDivElement);
 const onResizeDebounce = useDebounceFn(onResize, 200);
 
 onMounted(() => {
-  initMap(runtimeConfig.public.maxboxToken);
+  initMap(runtimeConfig.public.mapboxToken);
   mapStore.updateMarkers();
   window.addEventListener("resize", onResizeDebounce, true);
 });
@@ -130,7 +128,7 @@ function initMap(accessToken: string) {
         source: {
           type: "geojson",
           data: mapStore.geoJsonSpaces,
-          promoteId: "spaceId",
+          promoteId: "spaceSlug",
         },
         layout: {
           "icon-image": [
@@ -152,12 +150,14 @@ function initMap(accessToken: string) {
     });
     if (features.length) {
       const properties = features[0].properties || {};
-      if (!properties.buildingNumber || !properties.spaceId) {
+      if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
-      const space = spacesStore.getSpaceById(properties.spaceId as string);
       router.push(
-        $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", { space })
+        $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+          buildingSlug: properties.buildingSlug as string,
+          spaceSlug: properties.spaceSlug as string,
+        })
       );
     }
   });

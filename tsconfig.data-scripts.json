@@ -1,9 +1,4 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "types": ["vitest/globals"]
-  },
   // Need this to not have conflicts between `expect` and `assert` from Cypress and Vitest
   // https://github.com/cypress-io/cypress/issues/22059
   "exclude": ["cypress.config.js"]

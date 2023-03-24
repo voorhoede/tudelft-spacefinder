@@ -1,14 +1,26 @@
-const getMailboxData = (emails) => {
-  return emails.map(email =>
-    `<t:MailboxData>
+function getMailboxData(emails: string[]) {
+  return emails
+    .map(
+      (email) =>
+        `<t:MailboxData>
       <t:Email>
         <t:Address>${email}</t:Address>
       </t:Email>
     </t:MailboxData>`
-  ).join('\n')
+    )
+    .join("\n");
 }
 
-module.exports = ({ emails = [], start, end }) => `<?xml version="1.0" encoding="utf-8"?>
+export default function soapTemplate({
+  emails = [],
+  start,
+  end,
+}: {
+  emails: string[];
+  start: string;
+  end: string;
+}) {
+  return `<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:tns="http://schemas.microsoft.com/exchange/services/2006/messages"
@@ -45,4 +57,5 @@ module.exports = ({ emails = [], start, end }) => `<?xml version="1.0" encoding=
       </t:FreeBusyViewOptions>
     </GetUserAvailabilityRequest>
   </soap:Body>
-</soap:Envelope>`
+</soap:Envelope>`;
+}

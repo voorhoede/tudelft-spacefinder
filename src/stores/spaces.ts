@@ -2,7 +2,7 @@ import { defineStore, skipHydrate } from "pinia";
 import { spaceFilter } from "~/lib/filter-spaces";
 import type { BuildingI18n } from "~/types/Building";
 import type { Filters } from "~/types/filters";
-import type { Space, SpaceI18n } from "~/types/Space";
+import type { Space, SpaceI18n, Room, RoomI18n } from "~/types/Space";
 import calculateOccupancy from "../lib/calculate-occupancy";
 import { useMapStore } from "./map";
 
@@ -110,41 +110,71 @@ export const useSpacesStore = defineStore("spaces", () => {
     });
   });
 
+  const roomsI18n = ref([] as RoomI18n[]);
+
+  function setRooms(rooms: RoomI18n[]) {
+    roomsI18n.value = rooms;
+  }
+
   const spacesI18n = ref([] as SpaceI18n[]);
 
   function setSpaces(spaces: SpaceI18n[]) {
     spacesI18n.value = spaces;
   }
 
-  function bulkSetSpaceOccupancy(data: Record<number, Record<string, number>>) {
+  function bulkSetRoomOccupancy(data: Record<string, number>) {
+    roomsI18n.value = roomsI18n.value.map((room) => {
+      const activeDevices = data[room.realEstateNumber];
+      const occupancy = calculateOccupancy(activeDevices, room.seats);
+      return { ...room, activeDevices, occupancy };
+    });
     spacesI18n.value = spacesI18n.value.map((space) => {
-      return {
-        ...space,
-        activeDevices: data[space.buildingNumber]?.[space.roomId],
-      };
+      const activeDevices = data[space.realEstateNumber];
+      const room = getRoomI18nByRealEstateNumber(space.realEstateNumber)!;
+      const occupancy = calculateOccupancy(activeDevices, room.seats);
+      return { ...space, activeDevices, occupancy };
     });
   }
 
-  function setSpaceOccupancy(
-    buildingNumber: number,
-    roomId: string,
-    activeDevices: number
-  ) {
-    const space = getSpaceI18nByBuildingAndRoom(buildingNumber, roomId);
-    if (space) space.activeDevices = activeDevices;
+  function setRoomOccupancy(realEstateNumber: string, activeDevices: number) {
+    const room = getRoomI18nByRealEstateNumber(realEstateNumber);
+    if (room) {
+      room.activeDevices = activeDevices;
+      room.occupancy = calculateOccupancy(activeDevices, room.seats);
+      const spaces = spacesI18n.value.filter(
+        (space) => space.realEstateNumber == realEstateNumber
+      );
+      for (const space of spaces) {
+        space.activeDevices = activeDevices;
+        space.occupancy = room.occupancy;
+      }
+      //const mapStore = useMapStore();
+      //mapStore.updateData(); //TODO: DECIDE IF WE NEED TO DO THAT
+    }
   }
 
   const spaces = computed(() => {
     const { $locale } = useNuxtApp();
-    return spacesI18n.value.map((spaceI18n) => {
-      const propsI18n = spaceI18n.i18n[$locale.value];
-      const building = getBuildingByNumber(spaceI18n.buildingNumber);
-      return {
-        ...spaceI18n,
-        ...propsI18n,
-        building,
-      } as Space;
-    });
+    if (runtimeConfig.public.spacesMode == "rooms")
+      return roomsI18n.value.map((roomI18n) => {
+        const propsI18n = roomI18n.i18n[$locale.value];
+        const building = getBuildingByNumber(roomI18n.buildingNumber);
+        return {
+          ...roomI18n,
+          ...propsI18n,
+          building,
+        } as Room;
+      }) as (Room | Space)[];
+    else
+      return spacesI18n.value.map((spaceI18n) => {
+        const propsI18n = spaceI18n.i18n[$locale.value];
+        const building = getBuildingByNumber(spaceI18n.buildingNumber);
+        return {
+          ...spaceI18n,
+          ...propsI18n,
+          building,
+        } as Space;
+      }) as (Room | Space)[];
   });
 
   const filteredSpaces = computed(() =>
@@ -167,22 +197,14 @@ export const useSpacesStore = defineStore("spaces", () => {
     return buildings.value.find((building) => building.slug === slug);
   }
 
-  function getSpaceById(id: string) {
-    return spaces.value.find((space) => space.spaceId === id);
+  function getRoomI18nByRealEstateNumber(realEstateNumber: string) {
+    return roomsI18n.value.find(
+      (room) => room.realEstateNumber === realEstateNumber
+    );
   }
 
   function getSpaceBySlug(slug: string) {
     return spaces.value.find((space) => space.slug === slug);
-  }
-
-  function getSpaceI18nByBuildingAndRoom(
-    buildingNumber: number,
-    roomId: string
-  ) {
-    return spacesI18n.value.find(
-      (space) =>
-        space.buildingNumber === buildingNumber && space.roomId === roomId
-    );
   }
 
   return {
@@ -194,15 +216,16 @@ export const useSpacesStore = defineStore("spaces", () => {
     bulkSetBuildingOccupancy,
     setBuildingOccupancy,
     buildings,
+    setRooms,
     setSpaces,
-    bulkSetSpaceOccupancy,
-    setSpaceOccupancy,
+    bulkSetRoomOccupancy,
+    setRoomOccupancy,
     spaces,
     filteredSpaces,
     clearFilters,
     isFiltered,
-    getSpaceById,
-    buildingsI18n,
+    buildingsI18n, //These need to be exported to be passed as payload from server to client
+    roomsI18n,
     spacesI18n,
   };
 });

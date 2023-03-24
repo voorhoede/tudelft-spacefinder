@@ -1,26 +1,54 @@
-import type { SpaceFeatures } from "./Filters";
+import type { SpaceFeatures, Occupancy } from "./Filters";
 import type { OpeningHours } from "./OpeningHours";
 import type { Building } from "./Building";
 
-export interface Space extends SpaceI18n {
+export type Space = Room | RoomZone;
+
+export interface Room extends RoomI18n {
   name: string;
-  slug: string;
   building: Building;
 }
 
-export interface SpaceI18n {
+export interface RoomI18n extends RoomBaseRaw {
+  spaces: number;
+}
+
+export type CsvRoomData = Omit<
+  RoomI18n,
+  "openingHours" | "imageUrl" | "activeDevices"
+> & {
+  exchangeBuildingId: string;
+  exchangeRoomId: string;
+};
+
+export interface RoomZone extends SpaceI18n {
+  name: string;
+  building: Building;
+}
+
+export interface SpaceI18n extends RoomBaseRaw {
   spaceId: string;
+}
+
+export interface RoomBaseRaw {
+  buildingNumber: number;
   floor: string;
-  seats: number;
-  tables: number;
+  roomId: string;
+  realEstateNumber: string;
+  slug: string;
+  i18n: Record<string, { name: string }>;
   latitude: number;
   longitude: number;
-  i18n: Record<string, { name: string; slug: string }>;
-  roomId: string;
+  seats: number;
+  tables: number;
   facilities: SpaceFeatures;
-  buildingNumber: number;
   openingHours: OpeningHours[];
   imageUrl?: string | undefined; //TODO: not there
-
   activeDevices?: number;
+  occupancy?: Occupancy;
 }
+
+export type CsvSpaceData = Omit<
+  SpaceI18n,
+  "openingHours" | "imageUrl" | "activeDevices"
+> & { exchangeBuildingId: string; exchangeRoomId: string };

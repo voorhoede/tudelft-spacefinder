@@ -19,6 +19,9 @@ import { storeToRefs } from "pinia";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug" });
 
+const runtimeConfig = useRuntimeConfig();
+const { spacesMode } = runtimeConfig.public;
+
 const { $t } = useNuxtApp();
 const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
@@ -36,7 +39,11 @@ useSpacefinderHead(
     building.value
       ? {
           title: `${building.value.name} (${building.value.abbreviation})`,
-          description: `${building.value.totalSpaces} ${$t("spaces")}`,
+          description: `${
+            spacesMode == "rooms"
+              ? building.value.totalRooms
+              : building.value.totalSpaces
+          } ${$t("spaces")}`,
           image: {
             url: `${building.value.image.url}?auto=format&fm=jpg&auto=quality`,
           },

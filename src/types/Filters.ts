@@ -6,19 +6,23 @@ export interface Filters extends Facilities {
   showOpenLocations: boolean;
 }
 
-export interface Facilities {
-  adjustableChairs: boolean;
-  daylit: boolean;
-  powerOutlets: boolean;
-  ethernet: boolean;
-  stationaryPC: boolean;
-  whiteBoard: boolean;
-  smartBoard: boolean;
-  presentationScreen: boolean;
-  nearCoffeeMachine: boolean;
-  nearPrinter: boolean;
-  nearBathroom: boolean;
-}
+export const FACILITIES = [
+  "adjustableChairs",
+  "daylit",
+  "powerOutlets",
+  "ethernet",
+  "stationaryPC",
+  "whiteBoard",
+  "smartBoard",
+  "presentationScreen",
+  "nearCoffeeMachine",
+  "nearPrinter",
+  "nearBathroom",
+] as const;
+
+export type Facilities = {
+  [P in typeof FACILITIES[number]]: boolean;
+};
 
 export type SpaceFeatures = Facilities & {
   studyType: StudyType;
