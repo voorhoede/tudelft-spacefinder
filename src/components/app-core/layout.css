@@ -8,6 +8,10 @@ html {
     background-color: var(--mapbox-background-color);
 }
 
+body {
+    overflow-y: hidden;
+}
+
 .default-layout {
     display: flex;
     flex-direction: column;
