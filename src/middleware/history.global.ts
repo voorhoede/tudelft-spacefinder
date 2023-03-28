@@ -3,6 +3,6 @@ import { useHistoryStore } from "~/stores/history";
 
 export default defineNuxtRouteMiddleware((to, from) => {
   const nuxtApp = useNuxtApp();
-  const historyStore = useHistoryStore(nuxtApp.$pinia as Pinia); //https://github.com/vuejs/pinia/issues/2071
+  const historyStore = useHistoryStore(nuxtApp.$pinia as Pinia);
   historyStore.addRoute(to);
 });
