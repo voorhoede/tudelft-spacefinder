@@ -1,12 +1,15 @@
 import { SitemapStream, streamToPromise } from "sitemap";
 import { generateRoutes } from "../../../config/routes";
-import buildings from "../../data/buildings.json";
-import spaces from "../../data/spaces.json";
-import rooms from "../../data/rooms.json";
-
-const routes = generateRoutes({ buildings, spaces, rooms });
+import { loadBuildings, loadRooms, loadSpaces } from "../../data/load-data";
 
 export default defineEventHandler(async (event) => {
+  const routes = await Promise.all([
+    loadBuildings(),
+    loadSpaces(),
+    loadRooms(),
+  ]).then(([buildings, spaces, rooms]) =>
+    generateRoutes({ buildings, spaces, rooms })
+  );
   const runtimeConfig = useRuntimeConfig();
   const sitemap = new SitemapStream({
     hostname: runtimeConfig.public.baseUrl,

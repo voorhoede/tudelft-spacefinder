@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from "nuxt/config";
 import { generateRoutes } from "./config/routes";
+import { loadBuildings, loadRooms, loadSpaces } from "./src/data/load-data";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -15,8 +16,8 @@ export default defineNuxtConfig({
     head: {
       title: "TU Delft Spacefinder",
       link: [
-        { rel: "icon", href: "/favicon.svg", type: "image/svg+xml", },
-        { rel: "apple-touch-icon", href: "/apple-touch-icon.png", },
+        { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+        { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
         { rel: "dns-prefetch", href: "https://api.mapbox.com/" },
         { rel: "dns-prefetch", href: "https://www.datocms-assets.com/" },
       ],
@@ -67,15 +68,17 @@ export default defineNuxtConfig({
   },
   hooks: {
     "prerender:routes": async ({ routes }) => {
-      const buildings = await import("./src/data/buildings.json");
-      const spaces = await import("./src/data/spaces.json");
-      const rooms = await import("./src/data/rooms.json");
-      const generatedRoutes = generateRoutes({ buildings, spaces, rooms });
-
+      const generatedRoutes = await Promise.all([
+        loadBuildings(),
+        loadSpaces(),
+        loadRooms(),
+      ]).then(([buildings, spaces, rooms]) =>
+        generateRoutes({ buildings, spaces, rooms })
+      );
       // routes is of type Set, so we need to add each route individually
       generatedRoutes.forEach((route) => {
         routes.add(route);
-      })
+      });
     },
   },
   pwa: {
@@ -116,7 +119,6 @@ export default defineNuxtConfig({
           purpose: "maskable",
         },
       ],
-
     },
   },
 });
