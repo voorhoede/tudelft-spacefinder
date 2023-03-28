@@ -1,8 +1,9 @@
+import type { Pinia } from "pinia";
 import { useSpacesStore } from "~/stores/spaces";
 import { asDictionary } from "../lib/collection-utils";
 
 export default defineNuxtPlugin(async (app) => {
-  const spacesStore = useSpacesStore(app.$pinia);
+  const spacesStore = useSpacesStore(app.$pinia as Pinia); //https://github.com/vuejs/pinia/issues/2071
   const supabase = useSpacefinderSupabase();
 
   const buildingsOccupancy = await supabase.getBuildingsOccupancyCurrent();
