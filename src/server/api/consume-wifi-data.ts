@@ -43,14 +43,16 @@ export default defineEventHandler(async (event) => {
   consumeLastBatch({ client });
 
   // Close consumer connection within function time limit
-  await new Promise((resolve) => setTimeout(async () => {
-    console.time("Consumer disconnect");
-    await consumer.disconnect();
-    console.timeEnd("Consumer disconnect");
-    event.node.res.statusCode = 202;
-    event.node.res.end();
-    resolve(null);
-  }, 20000));
+  await new Promise((resolve) =>
+    setTimeout(async () => {
+      console.time("Consumer disconnect");
+      await consumer.disconnect();
+      console.timeEnd("Consumer disconnect");
+      event.node.res.statusCode = 202;
+      event.node.res.end();
+      resolve(null);
+    }, 20000)
+  );
 });
 
 async function consumeLastBatch({ client }: { client: SupabaseClient }) {
@@ -75,12 +77,12 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
         batch.messages
           .filter((message) => message.value)
           .map((message) =>
-            registry
-              .decode(message.value)
-              .then((decodedValue) => parseMessage({
+            registry.decode(message.value!).then((decodedValue) =>
+              parseMessage({
                 timestamp: message.timestamp,
                 decodedValue,
-              }))
+              })
+            )
           )
       );
       console.timeEnd("Parse messages");
