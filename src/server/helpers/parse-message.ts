@@ -1,6 +1,6 @@
 export function parseMessage(
   { timestamp, decodedValue }:
-  { timestamp: string, decodedValue: Record<string, any> }
+  { timestamp: string; decodedValue: Record<string, any> }
 ) {
   return {
     "updated_at": new Date(Number(timestamp)).toISOString(),

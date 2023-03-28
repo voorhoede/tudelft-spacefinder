@@ -3,7 +3,8 @@ import type { RoomI18n, SpaceI18n } from "../src/types/Space";
 
 export function generateRoutes(
   { buildings, spaces, rooms }:
-  { buildings: BuildingI18n[]; spaces: SpaceI18n[]; rooms: RoomI18n[] }) {
+  { buildings: BuildingI18n[]; spaces: SpaceI18n[]; rooms: RoomI18n[] }
+) {
   const buildingMap = {} as Record<number, any>;
 
   for (const building of buildings) buildingMap[building.number] = building;
