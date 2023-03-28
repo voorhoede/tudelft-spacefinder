@@ -1,14 +1,12 @@
+import type { Pinia } from "pinia";
 import { useSpacesStore } from "~/stores/spaces";
+import { loadBuildings, loadRooms, loadSpaces } from "~/data/load-data";
 
-export default defineNuxtPlugin((app) => {
-  const spacesStore = useSpacesStore(app.$pinia);
-  import("~/data/buildings.json").then((buildings) => {
-    spacesStore.setBuildings(buildings.default as any);
-  });
-  import("~/data/rooms.json").then((rooms) => {
-    spacesStore.setRooms(rooms.default as any);
-  });
-  import("~/data/spaces.json").then((spaces) => {
-    spacesStore.setSpaces(spaces.default as any);
-  });
+export default defineNuxtPlugin(async (app) => {
+  const spacesStore = useSpacesStore(app.$pinia as Pinia);
+  await Promise.all([
+    loadBuildings().then(spacesStore.setBuildings),
+    loadRooms().then(spacesStore.setRooms),
+    loadSpaces().then(spacesStore.setSpaces),
+  ]);
 });

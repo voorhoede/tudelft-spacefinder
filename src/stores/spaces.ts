@@ -1,7 +1,7 @@
 import { defineStore, skipHydrate } from "pinia";
 import { spaceFilter } from "~/lib/filter-spaces";
 import type { BuildingI18n } from "~/types/Building";
-import type { Filters } from "~/types/filters";
+import type { Filters } from "~/types/Filters";
 import type { Space, SpaceI18n, Room, RoomI18n } from "~/types/Space";
 import calculateOccupancy from "../lib/calculate-occupancy";
 import { useMapStore } from "./map";

@@ -76,7 +76,7 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
           .filter((message) => message.value)
           .map((message) =>
             registry
-              .decode(message.value)
+              .decode(message.value!)
               .then((decodedValue) => parseMessage({
                 timestamp: message.timestamp,
                 decodedValue,

@@ -1,6 +1,9 @@
+import type { BuildingI18n } from "../src/types/Building";
+import type { RoomI18n, SpaceI18n } from "../src/types/Space";
+
 export function generateRoutes(
   { buildings, spaces, rooms }:
-  { buildings: unknown, spaces: unknown, rooms: unknown }
+  { buildings: BuildingI18n[]; spaces: SpaceI18n[]; rooms: RoomI18n[] }
 ) {
   const buildingMap = {} as Record<number, any>;
 

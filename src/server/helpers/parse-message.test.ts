@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { parseMessage } from "./parse-message.mjs";
+import { parseMessage } from "./parse-message";
 
 test("Parse with common valid data", () => {
   expect(parseMessage({

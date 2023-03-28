@@ -1,4 +1,7 @@
-export function parseMessage({ timestamp, decodedValue }) {
+export function parseMessage(
+  { timestamp, decodedValue }:
+  { timestamp: string; decodedValue: Record<string, any> }
+) {
   return {
     "updated_at": new Date(Number(timestamp)).toISOString(),
     "access_point_name": decodedValue.name,
