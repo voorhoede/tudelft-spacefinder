@@ -1,6 +1,12 @@
 <template>
-  <div ref="mapContainer" class="mapbox-map">
-    <div v-if="!mapLoaded" class="mapbox-map__placeholder">
+  <div
+    ref="mapContainer"
+    class="mapbox-map"
+  >
+    <div
+      v-if="!mapLoaded"
+      class="mapbox-map__placeholder"
+    >
       <span class="mapbox-map__loading-message">{{ $t("mapLoading") }}</span>
     </div>
     <ZoomControls
@@ -15,7 +21,6 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { useSpacesStore } from "~/stores/spaces";
 
 import campusBounds from "~/lib/campus-bounds";
 import { useMapStore } from "~/stores/map";
@@ -26,7 +31,6 @@ const mapboxgl = (await import("mapbox-gl")).default;
 const runtimeConfig = useRuntimeConfig();
 const { $localePath } = useNuxtApp();
 const router = useRouter();
-const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 const { mapLoaded } = storeToRefs(mapStore);
 
@@ -35,7 +39,7 @@ const mapContainer = ref(null as null | HTMLDivElement);
 const onResizeDebounce = useDebounceFn(onResize, 200);
 
 onMounted(() => {
-  initMap(runtimeConfig.public.maxboxToken);
+  initMap(runtimeConfig.public.mapboxToken);
   mapStore.updateMarkers();
   window.addEventListener("resize", onResizeDebounce, true);
 });
@@ -115,7 +119,7 @@ function initMap(accessToken: string) {
   }
 
   map.on("load", () => {
-    const markerNames = [...OCCUPANCY_RATES, "default"] as const;
+    const markerNames = [...OCCUPANCY_RATES, "unknown"] as const;
     Promise.all(
       markerNames.map((occupancy) => addMarker(map, `map-marker-${occupancy}`))
     ).then(() => {
@@ -130,14 +134,14 @@ function initMap(accessToken: string) {
         source: {
           type: "geojson",
           data: mapStore.geoJsonSpaces,
-          promoteId: "spaceId",
+          promoteId: "spaceSlug",
         },
         layout: {
           "icon-image": [
             "match", // A rule to determine the icon for the point...
             ["get", "buildingOccupancy"], // ... is that if the `buildingOccupancy` property matches...
             ...occupancyIconNamePairs, // ... the first element of the pair from this (flat) sequence, the second element defines the name of the icon
-            "map-marker-default", //And the final element determines the default icon
+            "map-marker-unknown", //And the final element determines the default icon
           ],
           "icon-allow-overlap": true,
         },
@@ -152,12 +156,14 @@ function initMap(accessToken: string) {
     });
     if (features.length) {
       const properties = features[0].properties || {};
-      if (!properties.buildingNumber || !properties.spaceId) {
+      if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
-      const space = spacesStore.getSpaceById(properties.spaceId as string);
       router.push(
-        $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", { space })
+        $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+          buildingSlug: properties.buildingSlug as string,
+          spaceSlug: properties.spaceSlug as string,
+        })
       );
     }
   });

@@ -5,7 +5,11 @@
       :key="index"
       class="space-facility__item"
     >
-      <Tooltip :delay="0" :overflowPadding="4" :instantMove="true">
+      <Tooltip
+        :delay="0"
+        :overflow-padding="4"
+        :instant-move="true"
+      >
         <SvgIcon
           :name="getIconName(facility)"
           class="space-facility__icon"
@@ -21,11 +25,18 @@
         {{ $t(facility) }}
       </span>
     </li>
-    <li v-if="seats" class="space-facility__item space-facility__seating">
+    <li
+      v-if="seats"
+      class="space-facility__item space-facility__seating"
+    >
       <h4 class="a11y-sr-only">
         {{ $t("seating") }}
       </h4>
-      <Tooltip :delay="0" :overflowPadding="4" :instantMove="true">
+      <Tooltip
+        :delay="0"
+        :overflow-padding="4"
+        :instant-move="true"
+      >
         <SvgIcon
           name="seat-icon"
           class="space-facility__seating-icon"

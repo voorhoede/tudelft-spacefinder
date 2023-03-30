@@ -1,5 +1,8 @@
 <template>
-  <ClientOnly placeholder="...">
+  <ClientOnly
+    v-if="isOpeningHoursEnabled"
+    placeholder="..."
+  >
     <p
       class="card-status"
       :class="{ 'card-status--open': isOpen }"
@@ -7,11 +10,17 @@
     >
       <template v-if="isOpen">
         {{ $t("open") }}
-        <SvgIcon name="location-open-icon" class="card-status__icon" />
+        <SvgIcon
+          name="location-open-icon"
+          class="card-status__icon"
+        />
       </template>
       <template v-else>
         {{ $t("closed") }}
-        <SvgIcon name="location-closed-icon" class="card-status__icon" />
+        <SvgIcon
+          name="location-closed-icon"
+          class="card-status__icon"
+        />
       </template>
     </p>
   </ClientOnly>
@@ -27,6 +36,9 @@ export default {
 import type { OpeningHours } from "~/types/OpeningHours";
 
 const props = defineProps<{ openingHours: OpeningHours[] }>();
+const runtimeConfig = useRuntimeConfig();
+const { isOpeningHoursEnabled } = runtimeConfig.public;
+
 const isOpen = computed(() => {
   const indexToday = 0;
   const openingHoursToday = props.openingHours[indexToday].time; //TODO: will we still rely on daily deploys to determine the meaning of "today"?

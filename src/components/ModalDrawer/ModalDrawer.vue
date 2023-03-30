@@ -9,8 +9,14 @@
       />
     </Transition>
 
-    <Transition name="modal-slide" @after-enter="focusCloseButton">
-      <section v-if="isOpen" class="modal-drawer">
+    <Transition
+      name="modal-slide"
+      @after-enter="focusCloseButton"
+    >
+      <section
+        v-if="isOpen"
+        class="modal-drawer"
+      >
         <div class="modal-drawer__header">
           <h2 class="model-drawer__title">
             {{ title }}
@@ -22,7 +28,10 @@
             class="button button--header"
             @click="$emit('close')"
           >
-            <SvgIcon name="close-icon" class="button--header__icon" />
+            <SvgIcon
+              name="close-icon"
+              class="button--header__icon"
+            />
 
             {{ $t("close") }}
           </button>

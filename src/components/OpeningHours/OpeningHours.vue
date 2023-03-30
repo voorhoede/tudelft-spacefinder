@@ -1,5 +1,8 @@
 <template>
-  <div class="opening-hours">
+  <div
+    class="opening-hours"
+    v-if="isOpeningHoursEnabled"
+  >
     <button
       v-if="$isMobile.value || showToggleOnDesktop"
       :aria-label="isExpanded ? $t('hideOpeningHours') : $t('showOpeningHours')"
@@ -7,7 +10,10 @@
       :class="{ 'opening-hours__toggle--open': isExpanded }"
       @click="toggleOpeningHours"
     >
-      <SvgIcon name="back-icon" class="opening-hours__toggle-icon" />
+      <SvgIcon
+        name="back-icon"
+        class="opening-hours__toggle-icon"
+      />
 
       <span class="opening-hours__toggle-label">
         {{ $t("openingHours") }}
@@ -20,7 +26,10 @@
       </h3>
 
       <dl class="opening-hours__overview">
-        <template v-for="(timeSlot, index) in timeSlots" :key="index">
+        <template
+          v-for="(timeSlot, index) in timeSlots"
+          :key="index"
+        >
           <dt class="opening-hours__day">
             {{ index === 0 ? $t("today") : $t(timeSlot.day) }}
           </dt>
@@ -55,6 +64,9 @@ export interface Props {
   showToggleOnDesktop?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), { showToggleOnDesktop: true });
+const runtimeConfig = useRuntimeConfig();
+const { isOpeningHoursEnabled } = runtimeConfig.public;
+
 const isExpanded = ref(false);
 
 function toggleOpeningHours() {

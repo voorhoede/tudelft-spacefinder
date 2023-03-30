@@ -1,6 +1,13 @@
 <template>
-  <ModalDrawer :is-open="isOpen" :title="$t('filter')" @close="$emit('close')">
-    <form class="filter-menu" @submit.prevent>
+  <ModalDrawer
+    :is-open="isOpen"
+    :title="$t('filter')"
+    @close="$emit('close')"
+  >
+    <form
+      class="filter-menu"
+      @submit.prevent
+    >
       <div class="filter-menu__filters">
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
@@ -18,17 +25,32 @@
           <legend class="h3">
             {{ $t("quietness") }}
           </legend>
-          <FilterMenuItem name="quietness" option="silent" />
-          <FilterMenuItem name="quietness" option="quiet" />
-          <FilterMenuItem name="quietness" option="noisy" />
+          <FilterMenuItem
+            name="quietness"
+            option="silent"
+          />
+          <FilterMenuItem
+            name="quietness"
+            option="quiet"
+          />
+          <FilterMenuItem
+            name="quietness"
+            option="noisy"
+          />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
             {{ $t("studyType") }}
           </legend>
-          <FilterMenuItem name="studyType" option="self" />
-          <FilterMenuItem name="studyType" option="group" />
+          <FilterMenuItem
+            name="studyType"
+            option="self"
+          />
+          <FilterMenuItem
+            name="studyType"
+            option="group"
+          />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
@@ -83,21 +105,31 @@
 
       <div class="filter-menu__buttons">
         <input
+          v-if="isOpeningHoursEnabled"
           id="show-open-locations"
           v-model="filters.showOpenLocations"
           :value="filters.showOpenLocations"
           type="checkbox"
           class="filter-menu__checkbox a11y-sr-only"
-        />
-        <label for="show-open-locations">
+        >
+        <label
+          v-if="isOpeningHoursEnabled"
+          for="show-open-locations"
+        >
           {{ $t("showOpenLocations") }}
         </label>
 
-        <button class="button button--secondary" @click="clearFilters">
+        <button
+          class="button button--secondary"
+          @click="clearFilters"
+        >
           {{ $t("clearFilters") }}
         </button>
 
-        <button class="button button--primary" @click="$emit('close')">
+        <button
+          class="button button--primary"
+          @click="$emit('close')"
+        >
           {{ $t("showLocations", spaceCount) }}
         </button>
       </div>
@@ -111,6 +143,9 @@ import { useSpacesStore } from "~/stores/spaces";
 import { OCCUPANCY_RATES } from "~/types/Filters";
 
 defineProps<{ isOpen?: boolean }>();
+
+const runtimeConfig = useRuntimeConfig();
+const { isOpeningHoursEnabled } = runtimeConfig.public;
 
 const spacesStore = useSpacesStore();
 
@@ -184,6 +219,7 @@ function clearFilters() {
   position: relative;
   font-size: var(--font-size-smaller);
   cursor: pointer;
+  margin-bottom: var(--spacing-default);
 }
 
 .filter-menu__checkbox + label:before {
@@ -225,10 +261,10 @@ function clearFilters() {
 }
 
 .filter-menu__buttons .button--secondary {
-  margin: var(--spacing-default) var(--spacing-half) 0 0;
+  margin: 0 var(--spacing-half) 0 0;
 }
 
 .filter-menu__buttons .button--primary {
-  margin: var(--spacing-default) 0 0 var(--spacing-half);
+  margin: 0 0 0 var(--spacing-half);
 }
 </style>

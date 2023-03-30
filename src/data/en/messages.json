@@ -101,5 +101,6 @@
   "occupancy": "Occupancy",
   "occupancy.quiet": "quiet",
   "occupancy.busy": "busy",
-  "occupancy.crowded": "crowded"
+  "occupancy.crowded": "crowded",
+  "occupancy.unknown": "unknown"
 }

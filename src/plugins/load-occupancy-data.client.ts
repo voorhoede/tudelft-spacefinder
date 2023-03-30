@@ -1,8 +1,9 @@
+import type { Pinia } from "pinia";
 import { useSpacesStore } from "~/stores/spaces";
-import { asDictionary, asNestedDictionary } from "../lib/collection-utils";
+import { asDictionary } from "../lib/collection-utils";
 
 export default defineNuxtPlugin(async (app) => {
-  const spacesStore = useSpacesStore(app.$pinia);
+  const spacesStore = useSpacesStore(app.$pinia as Pinia);
   const supabase = useSpacefinderSupabase();
 
   const buildingsOccupancy = await supabase.getBuildingsOccupancyCurrent();
@@ -17,15 +18,14 @@ export default defineNuxtPlugin(async (app) => {
     spacesStore.setBuildingOccupancy(buildingNumber, deviceCount)
   );
 
-  /*const spacesOccupancy = await supabase.getSpacesOccupancyCurrent();
-  const activeDevicesPerSpace = asNestedDictionary(
-    spacesOccupancy ?? [],
-    "building_number",
+  const roomOccupancy = await supabase.getSpacesOccupancyCurrent();
+  const activeDevicesPerRoom = asDictionary(
+    roomOccupancy ?? [],
     "room_id",
     "device_count"
   );
-  spacesStore.bulkSetSpaceOccupancy(activeDevicesPerSpace);
-  supabase.subscribeToSpacesOccupancy((buildingNumber, roomId, deviceCount) =>
-    spacesStore.setSpaceOccupancy(buildingNumber, roomId, deviceCount)
-  );*/
+  spacesStore.bulkSetRoomOccupancy(activeDevicesPerRoom);
+  supabase.subscribeToSpacesOccupancy((realEstateNumber, deviceCount) =>
+    spacesStore.setRoomOccupancy(realEstateNumber, deviceCount)
+  );
 });

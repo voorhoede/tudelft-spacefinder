@@ -1,8 +1,14 @@
 <template>
   <section v-if="building">
-    <BackButton :use-history="false" :to="$localePath('/buildings')" />
+    <BackButton
+      :use-history="false"
+      :to="$localePath('/buildings')"
+    />
     <div class="default-layout__info building-layout">
-      <BuildingHeader class="building-layout__header" :building="building" />
+      <BuildingHeader
+        class="building-layout__header"
+        :building="building"
+      />
       <SpaceList
         class="building-layout__spaces"
         :spaces="spaces"
@@ -18,6 +24,9 @@ import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug" });
+
+const runtimeConfig = useRuntimeConfig();
+const { spacesMode } = runtimeConfig.public;
 
 const { $t } = useNuxtApp();
 const spacesStore = useSpacesStore();
@@ -36,7 +45,11 @@ useSpacefinderHead(
     building.value
       ? {
           title: `${building.value.name} (${building.value.abbreviation})`,
-          description: `${building.value.totalSpaces} ${$t("spaces")}`,
+          description: `${
+            spacesMode == "rooms"
+              ? building.value.totalRooms
+              : building.value.totalSpaces
+          } ${$t("spaces")}`,
           image: {
             url: `${building.value.image.url}?auto=format&fm=jpg&auto=quality`,
           },

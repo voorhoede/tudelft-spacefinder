@@ -9,7 +9,9 @@
       "properties": {
         "spaceId": { "type": "string" },
         "buildingNumber": { "type":"integer" },
+        "realEstateNumber": { "type": "string" },
         "roomId": { "type": "string" },
+        "slug": { "type": "string" },
         "floor": { "type": "string" },
         "seats": { "type": "integer" },
         "tables": { "type": "integer" },
@@ -44,7 +46,9 @@
         "latitude",
         "longitude",
         "openingHours",
+        "realEstateNumber",
         "roomId",
+        "slug",
         "seats",
         "tables"
       ]
@@ -52,12 +56,10 @@
     "dictionary": {
       "type": "object",
       "properties": {
-        "name": { "type": "string" },
-        "slug": { "type": "string" }
+        "name": { "type": "string" }
       },
       "required": [
-        "name",
-        "slug"
+        "name"
       ],
       "additionalProperties": false
     },

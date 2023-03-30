@@ -1,7 +1,13 @@
 <template>
   <div class="social-share">
-    <button class="button button--round" @click="toggleOptions">
-      <SvgIcon name="share-icon" class="button--round__icon" />
+    <button
+      class="button button--round"
+      @click="toggleOptions"
+    >
+      <SvgIcon
+        name="share-icon"
+        class="button--round__icon"
+      />
       <span class="a11y-sr-only">
         <slot>{{
           optionsAreVisible
@@ -11,7 +17,10 @@
       </span>
     </button>
 
-    <div class="social-share__options" :aria-hidden="!optionsAreVisible">
+    <div
+      class="social-share__options"
+      :aria-hidden="!optionsAreVisible"
+    >
       <a
         v-for="(platform, index) in platforms"
         :key="index"
@@ -22,7 +31,10 @@
         :class="{ 'social-share__option--visible': optionsAreVisible }"
         @click="handleClick"
       >
-        <SvgIcon :name="platform.icon" class="button--round__icon" />
+        <SvgIcon
+          :name="platform.icon"
+          class="button--round__icon"
+        />
         <span class="a11y-sr-only">
           {{ $t(platform.label) }}
         </span>
@@ -36,7 +48,10 @@
         :class="{ 'social-share__option--visible': optionsAreVisible }"
         @click="copyToClipboard"
       >
-        <SvgIcon name="copy-icon" class="button--round__icon" />
+        <SvgIcon
+          name="copy-icon"
+          class="button--round__icon"
+        />
         <span class="a11y-sr-only">
           {{ $t("copyToClipboard") }}
         </span>

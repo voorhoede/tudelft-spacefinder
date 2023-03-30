@@ -7,7 +7,10 @@
     </div>
 
     <div class="default-layout__info default-layout__info--space-detail">
-      <SpaceDetailCard ref="card" :space="space" />
+      <SpaceDetailCard
+        ref="card"
+        :space="space"
+      />
     </div>
   </section>
 </template>
@@ -49,7 +52,7 @@ useSpacefinderHead(
       ? {
           title: `${space.value.name} (${space.value.roomId}) @ ${space.value.building.name} (${space.value.building.abbreviation})`,
           description: `${space.value.seats} ${$t("seatsDescription")}`,
-          image: spaceMapImage(space.value, runtimeConfig.public.maxboxToken),
+          image: spaceMapImage(space.value, runtimeConfig.public.mapboxToken),
         }
       : { title: "" }
   )

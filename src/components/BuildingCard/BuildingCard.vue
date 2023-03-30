@@ -3,11 +3,14 @@
     :to="$localePath('/buildings/:buildingSlug', { building })"
     class="building-card card"
   >
-    <BuildingImage :building="building" class="building-card__image" />
+    <BuildingImage
+      :building="building"
+      class="building-card__image"
+    />
 
     <div class="building-card__meta">
       <ul class="flat-list building-card__seating">
-        <li>{{ building.totalSpaces }} {{ $t("locations") }}</li>
+        <li>{{ totalSpaces }} {{ $t("locations") }}</li>
         <li>{{ building.totalSeats }} {{ $t("seats") }}</li>
       </ul>
 
@@ -17,9 +20,9 @@
       />
       <div class="building-card__occupancy">
         <OccupancyIndicator
-          :active-devices="building.activeDevices ?? 0"
+          :active-devices="building.activeDevices"
           :total-seats="building.totalSeats"
-          :occupancy="building.occupancy ?? 'quiet'"
+          :occupancy="building.occupancy"
         />
       </div>
     </div>
@@ -28,7 +31,13 @@
 
 <script setup lang="ts">
 import type { Building } from "~/types/Building";
-defineProps<{ building: Building }>();
+const props = defineProps<{ building: Building }>();
+const runtimeConfig = useRuntimeConfig();
+const totalSpaces = computed(() =>
+  runtimeConfig.public.spacesMode == "rooms"
+    ? props.building.totalRooms
+    : props.building.totalSpaces
+);
 </script>
 
 <style>
