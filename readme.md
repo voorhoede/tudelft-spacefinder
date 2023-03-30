@@ -32,7 +32,7 @@ The Spacefinder combines data from different sources:
 
 * **Locations**: the TU Delft provides a list of locations as a CSV file. The file is generated from a system of TU Delft Education and Student Affairs (ESA) and emailed to the Spacefinder team. The location data is stored in the codebase (`src/data/studieplekken.csv`) and compiled into useable files (`src/data/buildings.json` and `spaces.json`) during build-time.
 * **Content**: a DatoCMS instance is used for enriching building content and managing the rich text content used in the application. The use of a CMS makes this content easily editable by (TU Delft members of) the Spacefinder team. The content data is dumped during build-time (`src/data/*page.json`), so there's no run-time dependency on the CMS.
-* **Opening hours**: the TU Delft provides opening hours for (some) buildings and spaces via a Microsoft Exchange web service. ~~The Spacefinder app was originally developed as a static generated website. Opening hours were therefore also added to the locations during build-time. Since, the Spacefinder does not receive updates on changes in opening hours, a cron job is used to trigger a nightly build (`.github/workflows/scheduled-build.yml`).~~ ❌ The Exchange web service is currently unavailable due to expired credentials. The Spacefinder team is waiting for TU Delft support. The opening hours are therefore hidden in the UI (`HIDE_OPENING_HOURS=1`) and the nightly build has been disabled.
+* **Opening hours**: the TU Delft provides opening hours for (some) buildings and spaces via a Microsoft Exchange web service. ❌ However the Exchange web service is currently unavailable and the [opening hours are therefore hidden](docs/decision-log/2023-03-15-hide-opening-hours.md).
 * **Occupancy data**: the TU Delft provides real-time data on location occupancy via a Kafka stream. The stream contains device counts for wifi access points on the TU Delft campus. Since the data is continuously updated, it's handled during run-time. The Spacefinder consumes this data every 5 minutes via a serverless function and stores it in a Supabase database. The database contains triggers to convert device counts per wifi access point to device counts per space and per building. The client-side Spacefinder app subscribes to the device counts per space and building and displays them in the UI.
 
 The data sources and data flow is visualised in the diagram below:
@@ -67,7 +67,7 @@ flowchart
     end
 
     subgraph "Static deployment"
-        RawLocationFile("<strong>Raw location file</strong><br>(data/studieplekken.csv)")
+        RawLocationFile("<strong>Raw location file</strong><br>(studieplekken.csv)")
         LocationFiles("<strong>Location files</strong><br>(buildings & spaces.json)")
         ContentFiles("<strong>Content files</strong><br>(src/data/...json)")
         StaticApp("<strong>Static app</strong><br>(Netlify instance)")
