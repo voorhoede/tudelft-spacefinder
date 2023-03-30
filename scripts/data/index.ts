@@ -14,10 +14,7 @@ import {
   validateSpaces,
 } from "./validate/index";
 
-const { CSV_PATH: csvPath } = process.env;
-if (!csvPath) {
-  throw "CSV_PATH missing in env";
-}
+const csvPath = './src/data/studieplekken.csv';
 
 function writeFile(path: string, contents: any) {
   const stringifiedData = JSON.stringify(contents, null, 2);
