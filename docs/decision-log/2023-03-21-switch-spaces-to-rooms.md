@@ -14,11 +14,11 @@ The new version of the Spacefinder aims to show occupancy per location, based on
 
 We implemented the change from spaces to rooms as follows:
 
-- Data from `studieplekken.csv` is converted to `buildings.json` and `rooms.json` (instead of `spaces.json`).
+- The application can now organise locations either by rooms or spaces using an environment variable: `SPACES_MODE=rooms|spaces`.
+- Data from `studieplekken.csv` is converted to `buildings.json`, `spaces.json` and `rooms.json`.
 - Data from spaces with the same room id are combined. Geo coordinates are averaged, services are accumulated.
-- Room detail pages have their own route: `/en/buildings/34-3me/rooms/C-1-801/`.
-- Space detail pages are removed and redirected to the room they are in: `/en/buildings/34-3me/spaces/ssp00001--gang/` → `/en/buildings/34-3me/rooms/C-1-801/`.
+- Room detail pages reuse the spaces route with a new slug: `/en/buildings/34-3me/spaces/C-1-801/`.
 - Occupancy is now calculated per building and per room.
 - The list of locations now lists rooms instead of spaces with occupancy indicator based on room occupancy.
 - The campus map now has a marker for each room instead of spaces and the marker color represents the room occupancy.
-- The Exchange service is currently available. When it's available again, opening hours must be matched per room instead of space.
+- The Exchange service is currently unavailable. When it's available again, opening hours must be matched per room instead of space.
