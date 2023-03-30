@@ -1,15 +1,25 @@
-import { asDictionary, asNestedDictionary } from "../lib/collection-utils";
 import { Database } from "../types/supabase";
 
 export default function useSpacefinderSupabase() {
   const client = useSupabaseClient<Database>();
 
+  function getEarliestTimeConsidered() {
+    const outdateInMinutes = 30;
+    return new Date(
+      new Date().getTime() - outdateInMinutes * 60 * 1000
+    ).toISOString();
+  }
+
   async function getBuildingsOccupancyCurrent() {
-    return (await client.from("buildings_latest_states").select("*")).data;
+    const { data } = await client
+      .from("buildings_latest_states")
+      .select("*")
+      .gte("updated_at", getEarliestTimeConsidered());
+    return data;
   }
 
   function subscribeToBuildingsOccupancy(
-    callback: (buildingNumber: number, deviceCount: number) => void
+    callback: (buildingNumber: number, deviceCount: number | undefined) => void
   ) {
     const buildingsRealtimeChannel = client
       .channel("buildings")
@@ -20,7 +30,7 @@ export default function useSpacefinderSupabase() {
           if (eventType == "UPDATE" || eventType == "INSERT") {
             callback(newData.building_number, newData.device_count);
           } else {
-            callback(old.building_number, 0);
+            callback(old.building_number, undefined);
           }
         }
       );
@@ -28,14 +38,17 @@ export default function useSpacefinderSupabase() {
   }
 
   async function getSpacesOccupancyCurrent() {
-    return (await client.from("spaces_latest_states").select("*")).data;
+    const { data } = await client
+      .from("spaces_latest_states")
+      .select("*")
+      .gte("updated_at", getEarliestTimeConsidered());
+    return data;
   }
 
   function subscribeToSpacesOccupancy(
     callback: (
-      buildingNumber: number,
-      roomId: string,
-      deviceCount: number
+      realEstateNumber: string,
+      deviceCount: number | undefined
     ) => void
   ) {
     const spacesRealtimeChannel = client
@@ -45,13 +58,9 @@ export default function useSpacefinderSupabase() {
         { event: "*", schema: "public", table: "spaces_latest_states" },
         ({ eventType, new: newData, old }) => {
           if (eventType == "UPDATE" || eventType == "INSERT") {
-            callback(
-              newData.building_number,
-              newData.room_id,
-              newData.device_count
-            );
+            callback(newData.room_id, newData.device_count);
           } else {
-            callback(old.building_number, old.room_id, 0);
+            callback(old.room_id, undefined);
           }
         }
       );

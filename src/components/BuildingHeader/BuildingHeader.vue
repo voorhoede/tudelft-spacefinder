@@ -10,19 +10,25 @@
       <div class="building-header__spaces">
         <ul class="flat-list building-header__seating">
           <li>
-            <SvgIcon name="seat-icon" class="building-header__seating-icon" />
+            <SvgIcon
+              name="seat-icon"
+              class="building-header__seating-icon"
+            />
             {{ building.totalSeats }}
           </li>
           <li>
-            <SvgIcon name="door-icon" class="building-header__seating-icon" />
-            {{ building.totalSpaces }}
+            <SvgIcon
+              name="door-icon"
+              class="building-header__seating-icon"
+            />
+            {{ totalSpaces }}
           </li>
         </ul>
         <div>
           <OccupancyIndicator
-            :active-devices="building.activeDevices ?? 0"
+            :active-devices="building.activeDevices"
             :total-seats="building.totalSeats"
-            :occupancy="building.occupancy ?? 'quiet'"
+            :occupancy="building.occupancy"
           />
         </div>
       </div>
@@ -43,7 +49,13 @@
 <script setup lang="ts">
 import type { Building } from "~/types/Building";
 
-defineProps<{ building: Building }>();
+const props = defineProps<{ building: Building }>();
+const runtimeConfig = useRuntimeConfig();
+const totalSpaces = computed(() =>
+  runtimeConfig.public.spacesMode == "rooms"
+    ? props.building.totalRooms
+    : props.building.totalSpaces
+);
 </script>
 
 <style>

@@ -1,7 +1,8 @@
 import { Kafka } from "kafkajs";
 import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
 import { serverSupabaseClient } from "#supabase/server";
-import type { SupabaseClient } from '@supabase/supabase-js';
+import type { SupabaseClient } from "@supabase/supabase-js";
+import { parseMessage } from "../helpers/parse-message";
 
 const { internalSecret, kafkaConfig, schemaRegistry } = useRuntimeConfig();
 
@@ -75,17 +76,10 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
           .filter((message) => message.value)
           .map((message) =>
             registry
-              .decode(message.value)
-              .then((decodedValue) => ({
-                "updated_at": new Date(Number(message.timestamp)).toISOString(),
-                "access_point_name": decodedValue.name,
-                "device_count": decodedValue.clientCount,
-                "building_number": decodedValue.name.split("-").at(1)
-                  || decodedValue.mapLocation.split(".").at(0)
-                  || 0,
-                "floor": decodedValue.locationHierarchy.split(">").at(-1).trim(),
-                "map_location": decodedValue.mapLocation,
-                "location_hierarchy": decodedValue.locationHierarchy,
+              .decode(message.value!)
+              .then((decodedValue) => parseMessage({
+                timestamp: message.timestamp,
+                decodedValue,
               }))
           )
       );

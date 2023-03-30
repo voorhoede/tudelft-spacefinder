@@ -84,7 +84,7 @@ function normalizePathParams(
     if (building) result.buildingSlug = building.i18n[result.locale].slug;
   }
   if (!result.spaceSlug && result.space) {
-    result.spaceSlug = result.space.i18n[result.locale].slug;
+    result.spaceSlug = result.space.slug;
   }
   return result;
 }

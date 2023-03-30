@@ -1,5 +1,9 @@
 <template>
-  <div ref="defaultLayout" class="default-layout">
+  <div
+    ref="defaultLayout"
+    class="default-layout"
+  >
+    <VitePwaManifest />
     <SpriteMap />
     <ClientOnly>
       <PopUp />
@@ -12,8 +16,8 @@
 
     <AppHeader
       :opened-menu="openedMenu"
-      @openAppMenu="openAppMenu"
-      @openFilterMenu="openFilterMenu"
+      @open-app-menu="openAppMenu"
+      @open-filter-menu="openFilterMenu"
     />
 
     <main class="default-layout__main">
@@ -22,9 +26,15 @@
       <MapboxMap class="default-layout__map" />
     </main>
 
-    <AppMenu :is-open="openedMenu === 'app-menu'" @close="closeMenu" />
+    <AppMenu
+      :is-open="openedMenu === 'app-menu'"
+      @close="closeMenu"
+    />
 
-    <FilterMenu :is-open="openedMenu === 'filter-menu'" @close="closeMenu" />
+    <FilterMenu
+      :is-open="openedMenu === 'filter-menu'"
+      @close="closeMenu"
+    />
   </div>
 </template>
 

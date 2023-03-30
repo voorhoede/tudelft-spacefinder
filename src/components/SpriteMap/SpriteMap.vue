@@ -1,35 +1,65 @@
 <template>
-  <svg style="display: none" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="add-icon" viewBox="0 0 24 24">
-      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#333" />
-      <path d="M0 0h24v24H0z" fill="none" />
+  <svg
+    style="display: none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <symbol
+      id="add-icon"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        fill="#333"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
     </symbol>
 
-    <symbol id="back-icon" viewBox="0 0 24 24">
-      <path d="M16.3 17.7L10.5 12l5.8-5.7-1.8-1.8L7 12l7.5 7.5z" fill="#333" />
+    <symbol
+      id="back-icon"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M16.3 17.7L10.5 12l5.8-5.7-1.8-1.8L7 12l7.5 7.5z"
+        fill="#333"
+      />
     </symbol>
 
-    <symbol id="building-icon" viewBox="0 0 20 20">
+    <symbol
+      id="building-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M2.2 0v20h6.7v-3.9h2.2V20h6.7V0H2.2zm2.2 2.2h2.2v2.2H4.4V2.2zm4.5 0h2.2v2.2H8.9V2.2zm4.4 0h2.2v2.2h-2.2V2.2zM4.4 6.7h2.2v2.2H4.4V6.7zm4.5 0h2.2v2.2H8.9V6.7zm4.4 0h2.2v2.2h-2.2V6.7zm-8.9 4.4h2.2v2.2H4.4v-2.2zm4.5 0h2.2v2.2H8.9v-2.2zm4.4 0h2.2v2.2h-2.2v-2.2zm-8.9 4.5h2.2v2.2H4.4v-2.2zm8.9 0h2.2v2.2h-2.2v-2.2z"
         fill="#333"
       />
     </symbol>
 
-    <symbol id="close-icon" viewBox="0 0 18 16">
+    <symbol
+      id="close-icon"
+      viewBox="0 0 18 16"
+    >
       <path
         fill="#fff"
         d="M17.1 1.6L15.5 0 9 6.5 2.5 0 .9 1.6l6.5 6.5-6.5 6.5 1.6 1.6L9 9.7l6.5 6.5 1.6-1.6-6.5-6.5z"
       />
     </symbol>
 
-    <symbol id="copy-icon" viewBox="0 0 24 24">
+    <symbol
+      id="copy-icon"
+      viewBox="0 0 24 24"
+    >
       <path
         d="M17.1 18.1H9.6V8.6h7.5m0-1.4H9.6c-.8 0-1.4.6-1.4 1.4v9.5c0 .8.6 1.4 1.4 1.4h7.5c.8 0 1.4-.6 1.4-1.4V8.6c0-.8-.6-1.4-1.4-1.4m-2-2.7H6.9c-.8 0-1.4.6-1.4 1.4v9.5h1.4V5.9h8.2V4.5z"
       />
     </symbol>
 
-    <symbol id="door-icon" viewBox="0 0 9 13">
+    <symbol
+      id="door-icon"
+      viewBox="0 0 9 13"
+    >
       <path
         d="M1.4 0C.6 0 0 .6 0 1.4V13h8.7V1.4C8.7.6 8 0 7.2 0H1.4zm0 1.4h5.8v10.2H1.4V1.4zm3.7 4.4v1.4h1.4V5.8H5.1z"
         fill="#333"
@@ -37,7 +67,10 @@
       />
     </symbol>
 
-    <symbol id="facility-adjustableChairs-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-adjustableChairs-icon"
+      viewBox="0 0 20 20"
+    >
       <g>
         <path
           d="M13.2 8.8c-.3 0-.5.2-.5.5V11c-.4-2.1-.4-4.4.1-6.5 0-.2 0-.4-.2-.4-.9-.4-1.8-.5-2.8-.5-.9-.1-1.8.1-2.7.4-.2.1-.3.3-.2.5.4 2.1.5 4.3.1 6.5V9.3c0-.3-.3-.5-.5-.5S6 9 6 9.3v2.8c0 .3.2.5.5.5h6.7c.3 0 .5-.2.5-.5V9.3c0-.3-.2-.5-.5-.5z"
@@ -48,19 +81,28 @@
       </g>
     </symbol>
 
-    <symbol id="facility-daylit-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-daylit-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M4.5 14.2l.8.8 1.1-1.1-.8-.8-1.1 1.1zm4.4 2.3h1.2v-1.8H8.9v1.8zm.6-10.1c-2 0-3.6 1.6-3.6 3.6s1.6 3.6 3.6 3.6c.9 0 1.9-.4 2.5-1 .7-.7 1-1.6 1-2.5a3.5 3.5 0 0 0-3.5-3.7zm4.8 4.2h1.8V9.4h-1.8v1.2zM12.6 14l1.1 1.1.8-.8-1.1-1.1-.8.8zm1.9-8.2l-.8-.8-1.1 1 .8.8 1.1-1zm-4.4-2.3H8.9v1.8h1.2V3.5zM4.8 9.4H3v1.2h1.8V9.4zM6.4 6l-1-1-.8.8 1.1 1.1.7-.9z"
       />
     </symbol>
 
-    <symbol id="facility-ethernet-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-ethernet-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M9.2 3v2.9h1.5V3H9.2zM7 3.7v5.2h5.9V3.7h-1.5v2.9H8.5V3.7H7zm1.5 5.9V17h2.9V9.6H8.5z"
       />
     </symbol>
 
-    <symbol id="facility-nearBathroom-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-nearBathroom-icon"
+      viewBox="0 0 20 20"
+    >
       <g>
         <path
           d="M6.8 6.1c.7 0 1.3-.6 1.3-1.3 0-.7-.6-1.3-1.3-1.3s-1.3.6-1.3 1.3c0 .7.6 1.3 1.3 1.3z"
@@ -71,19 +113,28 @@
       </g>
     </symbol>
 
-    <symbol id="facility-nearCoffeeMachine-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-nearCoffeeMachine-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M2.5 16.5h13v-1.4h-13v1.4zm13-9.4h-1.4V4.9h1.4v2.2zm0-3.6H3.9v7.2c0 1.6 1.3 2.9 2.9 2.9h4.3c1.6 0 2.9-1.3 2.9-2.9V8.5h1.4c.8 0 1.4-.6 1.4-1.4V4.9c.1-.8-.5-1.4-1.3-1.4z"
       />
     </symbol>
 
-    <symbol id="facility-nearPrinter-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-nearPrinter-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M14.1 4H5.5v2.6h8.6V4zm.9 6a.9.9 0 0 1-.9-.9c0-.5.4-.9.9-.9s.9.4.9.9-.4.9-.9.9zm-2.6 5.1H7.3v-3.4h5.1v3.4zm2.3-7.7H5.1C4 7.4 3 8.3 3 9.4v4h2.7V16H14v-2.6h2.7v-4a2 2 0 0 0-2-2z"
       />
     </symbol>
 
-    <symbol id="facility-powerOutlets-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-powerOutlets-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M12.7 6.4V3.5h-1.4v2.9H8.4V3.5H7v2.9c-.7 0-1.4.7-1.4 1.4v4l2.5 2.5v2.2h3.6v-2.2l2.5-2.5v-4c0-.7-.8-1.4-1.5-1.4z"
         fill-rule="evenodd"
@@ -91,31 +142,46 @@
       />
     </symbol>
 
-    <symbol id="facility-presentationScreen-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-presentationScreen-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M16 12.8H3.4V4.4H16v8.4zM16 3H3.4C2.6 3 2 3.6 2 4.4v8.4c0 .8.6 1.4 1.4 1.4h4.9v1.4H6.9V17h5.6v-1.4h-1.4v-1.4H16c.8 0 1.4-.6 1.4-1.4V4.4c0-.8-.6-1.4-1.4-1.4z"
       />
     </symbol>
 
-    <symbol id="facility-quietness.noisy-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-quietness.noisy-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M12 3v1.6c2.1.7 3.6 2.8 3.6 5.4s-1.5 4.7-3.6 5.3V17c2.9-.7 5-3.6 5-7s-2.1-6.3-5-7zm2 7c0-1.3-.8-2.5-2-3v6c1.2-.5 2-1.7 2-3zM3 8.1V13h3.1l3.9 4V4L6.1 8.1H3z"
       />
     </symbol>
 
-    <symbol id="facility-quietness.quiet-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-quietness.quiet-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M4 7.4v5.2h3.6L12 17V3L7.6 7.4H4zm12 2.1A4 4 0 0 0 14 6v7a4 4 0 0 0 2-3.5z"
       />
     </symbol>
 
-    <symbol id="facility-quietness.silent-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-quietness.silent-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M10 4L8 5.5 10 7V4zM4 3L3 4l3.7 3.7H3v4.7h3.1l3.9 3.9V11l3.3 3.3a5 5 0 0 1-1.8.9v1.6c1.1-.2 2-.7 2.9-1.4L16 17l1-1-7-7-6-6zm11.6 6.8c0 .7-.1 1.4-.4 2l1.1 1.2c.5-1 .7-2.1.7-3.2 0-3.3-2.1-6.1-5-6.8v1.6c2.1.7 3.6 2.7 3.6 5.2zm-1.6.7A4 4 0 0 0 12 7v1.9l2 2.1v-.5z"
       />
     </symbol>
 
-    <symbol id="facility-smartBoard-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-smartBoard-icon"
+      viewBox="0 0 20 20"
+    >
       <g>
         <path
           d="M14.8 14.5H4.3c-1 0-1.8-.7-1.8-1.8V5.3c0-1 .7-1.8 1.8-1.8h10.5c1 0 1.8.7 1.8 1.8v7.4c-.1 1-.8 1.8-1.8 1.8zM4.3 5c-.2 0-.3.1-.3.3v7.4c0 .2.1.3.3.3h10.5c.2 0 .2-.1.2-.2V5.3c0-.2 0-.3-.2-.3H4.3z"
@@ -124,25 +190,37 @@
       </g>
     </symbol>
 
-    <symbol id="facility-stationaryPC-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-stationaryPC-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M19.1 15.5h-4.5a.9.9 0 0 1-.9-.9V5.5c0-.5.4-.9.9-.9h4.5c.5 0 .9.4.9.9v9.1c0 .4-.4.9-.9.9zm0-9.1h-4.5v.9h4.5v-.9zm0 1.8h-4.5v.9h4.5v-.9zM7.3 12.7v1.8h.9v.9H3.7v-.9h.9v-1.8H1a.9.9 0 0 1-.9-.9V5.4c0-.5.4-.9.9-.9h10c.5 0 .9.4.9.9v6.4c0 .5-.4.9-.9.9H7.3zM10 6.4H1.8v4.5H10V6.4z"
       />
     </symbol>
 
-    <symbol id="facility-studyType.group-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-studyType.group-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M10 5c1.2 0 2.2 1 2.2 2.2s-1 2.2-2.2 2.2-2.2-1-2.2-2.2S8.8 5 10 5zM5.6 6.6c.4 0 .7.1 1 .3-.1.9.2 1.8.7 2.5-.3.6-.9 1-1.7 1a1.9 1.9 0 1 1 0-3.8zm8.8 0c1 0 1.9.8 1.9 1.9s-.8 1.9-1.9 1.9a2 2 0 0 1-1.7-1c.5-.7.8-1.6.7-2.5.3-.2.6-.3 1-.3zM5.9 13c0-1.3 1.8-2.3 4.1-2.3s4.1 1 4.1 2.3v1.1H6V13h-.1zm-3.4 1.1v-.9c0-.9 1.2-1.6 2.8-1.8-.4.4-.6 1-.6 1.7v1.1H2.5v-.1zm15 0h-2.2V13c0-.6-.2-1.2-.6-1.7 1.6.2 2.8.9 2.8 1.8v1z"
       />
     </symbol>
 
-    <symbol id="facility-studyType.self-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-studyType.self-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M10 4c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm0 7.5c3.3 0 6 1.3 6 3V16H4v-1.5c0-1.7 2.7-3 6-3z"
       />
     </symbol>
 
-    <symbol id="facility-whiteBoard-icon" viewBox="0 0 20 20">
+    <symbol
+      id="facility-whiteBoard-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M14.8 15.5H4.3c-1 0-1.8-.7-1.8-1.8V6.3c0-1 .7-1.8 1.8-1.8h10.5c1 0 1.8.7 1.8 1.8v7.4c-.1 1-.8 1.8-1.8 1.8zM4.3 6c-.2 0-.3.1-.3.3v7.4c0 .2.1.3.3.3h10.5c.2 0 .2-.1.2-.2V6.3c0-.2 0-.3-.2-.3H4.3z"
       />
@@ -151,7 +229,10 @@
       />
     </symbol>
 
-    <symbol id="feedback-icon" viewBox="0 0 24 24">
+    <symbol
+      id="feedback-icon"
+      viewBox="0 0 24 24"
+    >
       <path
         fill="#000000"
         d="M13,10H11V6H13V10M13,12H11V14H13V12M22,4V16A2,2 0 0,1 20,18H6L2,22V4A2,2 0 0,1 4,2H20A2,2 0 0,1 22,4M20,4H4V17.2L5.2,16H20V4Z"
@@ -174,57 +255,103 @@
         fill-rule="evenodd"
         clip-rule="evenodd"
       >
-        <circle cx="5" cy="2" r="2" />
-        <circle cx="5" cy="12" r="2" />
-        <circle cx="13" cy="7" r="2" />
+        <circle
+          cx="5"
+          cy="2"
+          r="2"
+        />
+        <circle
+          cx="5"
+          cy="12"
+          r="2"
+        />
+        <circle
+          cx="13"
+          cy="7"
+          r="2"
+        />
       </g>
     </symbol>
 
-    <symbol id="focus-icon" viewBox="0 0 24 24">
-      <path d="M0 0h24v24H0z" fill="none" />
+    <symbol
+      id="focus-icon"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
       <path
         d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-7 7H3v4c0 1.1.9 2 2 2h4v-2H5v-4zM5 5h4V3H5c-1.1 0-2 .9-2 2v4h2V5zm14-2h-4v2h4v4h2V5c0-1.1-.9-2-2-2zm0 16h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4z"
         fill="#333"
       />
     </symbol>
 
-    <symbol id="help-icon" viewBox="0 0 24 24">
+    <symbol
+      id="help-icon"
+      viewBox="0 0 24 24"
+    >
       <path
         fill="#000000"
         d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z"
       />
     </symbol>
 
-    <symbol id="home-icon" viewBox="0 0 20 20">
-      <path fill="#333" d="M8 18.5v-6h4v6h5v-8h3l-10-9-10 9h3v8z" />
+    <symbol
+      id="home-icon"
+      viewBox="0 0 20 20"
+    >
+      <path
+        fill="#333"
+        d="M8 18.5v-6h4v6h5v-8h3l-10-9-10 9h3v8z"
+      />
     </symbol>
 
-    <symbol id="lightbulb-icon" viewBox="0 0 20 20">
+    <symbol
+      id="lightbulb-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M17.3 9.1H20v1.8h-2.7V9.1M0 9.1h2.7v1.8H0V9.1M10.9 0v2.7H9.1V0h1.8M3.6 2.3l1.9 1.9-1.3 1.3-1.9-1.9 1.3-1.3m10.9 1.9l1.9-1.9 1.3 1.3-1.9 1.9-1.3-1.3m-4.5.3a5.5 5.5 0 0 1 2.8 10.2v1.6c0 .5-.4.9-.9.9H8.2a.9.9 0 0 1-.9-.9v-1.6A5.3 5.3 0 0 1 4.5 10C4.5 7 7 4.5 10 4.5m1.8 13.7v.9c0 .5-.4.9-.9.9H9.1a.9.9 0 0 1-.9-.9v-.9h3.6m-2.7-2.7h1.8v-1.9a3.5 3.5 0 0 0 2.7-3.5c0-2-1.6-3.6-3.6-3.6S6.4 8 6.4 10c0 1.7 1.2 3.1 2.7 3.5v2z"
       />
     </symbol>
 
-    <symbol id="list-icon" viewBox="0 0 20 20">
+    <symbol
+      id="list-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M4.9 2.4H20v2.2H4.9V2.4zm0 8.7V8.9H20v2.2H4.9zM1.6 1.9c.9 0 1.6.7 1.6 1.6s-.7 1.6-1.6 1.6S0 4.4 0 3.5s.7-1.6 1.6-1.6zm0 6.5c.9 0 1.6.7 1.6 1.6 0 .9-.7 1.6-1.6 1.6S0 10.9 0 10c0-.9.7-1.6 1.6-1.6zm3.3 9.2v-2.2H20v2.2H4.9zm-3.3-2.7c.9 0 1.6.7 1.6 1.6s-.7 1.6-1.6 1.6S0 17.4 0 16.5s.7-1.6 1.6-1.6z"
         fill="#333"
       />
     </symbol>
 
-    <symbol id="location-closed-icon" viewBox="0 0 11 11">
+    <symbol
+      id="location-closed-icon"
+      viewBox="0 0 11 11"
+    >
       <g
         transform="translate(2 2)"
         stroke-width="2"
         fill="none"
         fill-rule="evenodd"
       >
-        <circle cx="3.5" cy="3.5" r="3.5" />
-        <path d="M0 7l7-7" stroke-linecap="square" />
+        <circle
+          cx="3.5"
+          cy="3.5"
+          r="3.5"
+        />
+        <path
+          d="M0 7l7-7"
+          stroke-linecap="square"
+        />
       </g>
     </symbol>
 
-    <symbol id="location-open-icon" viewBox="0 0 11 11">
+    <symbol
+      id="location-open-icon"
+      viewBox="0 0 11 11"
+    >
       <circle
         cx="36.5"
         cy="8.5"
@@ -235,7 +362,10 @@
       />
     </symbol>
 
-    <symbol id="map-icon" viewBox="0 0 20 20">
+    <symbol
+      id="map-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M19.4 0h-.1l-6 2.3L6.7 0 .4 2.1c-.2 0-.4.3-.4.5v16.8c0 .4.2.6.6.6h.1l6-2.3 6.6 2.3 6.3-2.1c.2 0 .4-.3.4-.5V.6c0-.4-.2-.6-.6-.6zM7.8 2.7l4.4 1.6v13l-4.4-1.6v-13zM2.2 3.8l3.4-1v13L2.2 17V3.8zm15.6 12.4l-3.4 1v-13L17.8 3v13.2z"
         fill="#333"
@@ -243,50 +373,80 @@
       />
     </symbol>
 
-    <symbol id="menu-icon" viewBox="0 0 18 16">
+    <symbol
+      id="menu-icon"
+      viewBox="0 0 18 16"
+    >
       <g fill="#fff">
         <path d="M0 2h18v2H0z" />
         <path d="M0 7h18v2H0zM0 12h18v2H0z" />
       </g>
     </symbol>
 
-    <symbol id="plus-icon" viewBox="0 0 20 20">
+    <symbol
+      id="plus-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M10 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8m0-18C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0m1 5H9v4H5v2h4v4h2v-4h4V9h-4V5z"
       />
     </symbol>
 
-    <symbol id="remove-icon" viewBox="0 0 24 24">
-      <path d="M19 13H5v-2h14v2z" fill="#333" />
-      <path d="M0 0h24v24H0z" fill="none" />
+    <symbol
+      id="remove-icon"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M19 13H5v-2h14v2z"
+        fill="#333"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
     </symbol>
 
-    <symbol id="seat-icon" viewBox="0 0 12 10">
+    <symbol
+      id="seat-icon"
+      viewBox="0 0 12 10"
+    >
       <path
         d="M1.1 8.3V10h1.7V8.3h5.5V10H10V6.7H1.1v1.6zM9.4 4h1.7v1.7H9.4V3.9zM0 3.9h1.7v1.7H0V3.9zm8.3 1.7H2.8V1c0-.6.5-1.1 1-1.1h3.4c.6 0 1.1.5 1.1 1.1v4.5z"
         fill-rule="nonzero"
       />
     </symbol>
 
-    <symbol id="share-icon" viewBox="0 0 24 24">
+    <symbol
+      id="share-icon"
+      viewBox="0 0 24 24"
+    >
       <path
         d="M16.3 15.1a2 2 0 0 0-1.5.6l-5.4-3.1.1-.5-.1-.5 5.3-3.1c.4.4.9.6 1.5.6 1.2 0 2.3-1 2.3-2.3 0-1.2-1-2.3-2.3-2.3s-2.3 1-2.3 2.3l.1.5-5.3 3.1a2 2 0 0 0-1.5-.6c-1.2 0-2.3 1-2.3 2.3 0 1.2 1 2.3 2.3 2.3a2 2 0 0 0 1.5-.6l5.4 3.1-.1.5c0 1.2 1 2.2 2.2 2.2 1.2 0 2.2-1 2.2-2.2.1-1.3-.9-2.3-2.1-2.3z"
       />
     </symbol>
 
-    <symbol id="telegram-icon" viewBox="0 0 24 24">
+    <symbol
+      id="telegram-icon"
+      viewBox="0 0 24 24"
+    >
       <path
         d="M16.3 15.1a2 2 0 0 0-1.5.6l-5.4-3.1.1-.5-.1-.5 5.3-3.1c.4.4.9.6 1.5.6 1.2 0 2.3-1 2.3-2.3 0-1.2-1-2.3-2.3-2.3s-2.3 1-2.3 2.3l.1.5-5.3 3.1a2 2 0 0 0-1.5-.6c-1.2 0-2.3 1-2.3 2.3 0 1.2 1 2.3 2.3 2.3a2 2 0 0 0 1.5-.6l5.4 3.1-.1.5c0 1.2 1 2.2 2.2 2.2 1.2 0 2.2-1 2.2-2.2.1-1.3-.9-2.3-2.1-2.3z"
       />
     </symbol>
 
-    <symbol id="whatsapp-icon" viewBox="0 0 24 24">
+    <symbol
+      id="whatsapp-icon"
+      viewBox="0 0 24 24"
+    >
       <path
         d="M15.6 13.5l.3.2c0 .1 0 .5-.2.9s-.9.8-1.3.8c-.3 0-.4.3-2.2-.5-1.9-.8-3-2.8-3.1-2.9-.1-.1-.7-1-.7-2 0-.9.5-1.4.7-1.5.2-.2.4-.2.5-.2h.4c.1 0 .3 0 .4.3L11 10v.3l-.2.3-.3.3c-.1.1-.2.2-.1.4l1 1.3c.7.7 1.3.9 1.5 1 .2.1.3.1.4 0l.6-.7c.1-.2.3-.1.4-.1l1.3.7m-3.6-9c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5c-1.5 0-2.9-.4-4-1.2l-3.5 1.2L5.7 16a7.8 7.8 0 0 1-1.2-4c0-4.1 3.4-7.5 7.5-7.5M12 6a6 6 0 0 0-4.9 9.5l-.7 2.2 2.2-.7a6 6 0 0 0 9.5-4.9C18.1 8.8 15.3 6 12 6z"
       />
     </symbol>
 
-    <symbol id="world-icon" viewBox="0 0 20 20">
+    <symbol
+      id="world-icon"
+      viewBox="0 0 20 20"
+    >
       <path
         d="M14.4 12a16.5 16.5 0 0 0 0-4h3.3a8.2 8.2 0 0 1 0 4h-3.3zm-1.8 5.6c.6-1.2 1-2.4 1.4-3.6h3a8 8 0 0 1-4.4 3.6zm-.3-5.6H7.7a13.3 13.3 0 0 1 0-4h4.6a14.6 14.6 0 0 1 0 4zM10 18c-.8-1.2-1.5-2.6-2-4h4c-.5 1.4-1.2 2.8-2 4zM6 6H3a8 8 0 0 1 4.4-3.6C6.8 3.5 6.4 4.8 6 6zm-3 8h3c.3 1.3.8 2.4 1.4 3.6A8 8 0 0 1 3.1 14zm-.7-2a8.2 8.2 0 0 1 0-4h3.3a16.5 16.5 0 0 0 0 4H2.3zM10 2c.8 1.2 1.5 2.6 2 4H8c.5-1.4 1.2-2.8 2-4zm7 4h-3c-.3-1.3-.8-2.5-1.4-3.6A8 8 0 0 1 16.9 6zm-7-6a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"
         fill="#333"
@@ -294,128 +454,215 @@
       />
     </symbol>
 
-    <symbol id="facility-occupancy.quiet-icon" viewBox="0 0 60 24">
-      <g fill="none" stroke="#999" stroke-width="1">
-        <g stroke="#4cae4f" stroke-width="1.5">
+    <symbol
+      id="facility-occupancy.quiet-icon"
+      viewBox="0 0 60 24"
+    >
+      <g
+        fill="none"
+        stroke="#999"
+        stroke-width="1"
+      >
+        <g
+          stroke="#4cae4f"
+          stroke-width="1.5"
+        >
           <path
             fill="#e0ebe1"
             stroke-width="0"
             d="M23,23c0-1,0-2.6,0-3.4c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C17.5,3.6,15,1,12,1 S6.5,3.6,6.5,6.9c0,2.5,1.4,5.1,3.4,6.3C4.2,13.7,1,16.5,1,19.6V23"
-          ></path>
-          <path d="M18.5,20.2V23"></path>
-          <path d="M5.5,20.2V23"></path>
+          />
+          <path d="M18.5,20.2V23" />
+          <path d="M5.5,20.2V23" />
           <path
             class="outline"
             d="M23,23c0-1,0-2.6,0-3.4 c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C17.5,3.6,15,1,12,1S6.5,3.6,6.5,6.9c0,2.5,1.4,5.1,3.4,6.3C4.2,13.7,1,16.5,1,19.6 V23"
-          ></path>
+          />
         </g>
         <g class="p2">
           <path
             fill="#0000"
             stroke-width="0"
             d="M31.6,13.2c2-1.2,3.4-3.8,3.4-6.3 C35,3.6,32.6,1,29.5,1c-3,0-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.4,0.2-4.4,0.9-5.9,1.8c1.5,1.3,2.3,2.8,2.3,4.6V23H36v-2.8 V23h4.5c0-1,0-2.6,0-3.4C40.5,16.5,37.3,13.7,31.6,13.2z"
-          ></path>
+          />
           <path
             class="outline"
             d="M40.5,23c0-1,0-2.6,0-3.4 c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C35,3.6,32.6,1,29.5,1S24,3.6,24,6.9c0,2.5,1.4,5.1,3.4,6.3 c-2.5,0.2-4.4,0.9-5.9,1.8"
-          ></path>
-          <path d="M36.1,20.2V23"></path>
+          />
+          <path d="M36.1,20.2V23" />
         </g>
         <g class="p3">
           <path
             fill="#0000"
             stroke-width="0"
             d="M49.3,13.2c2-1.2,3.4-3.8,3.4-6.3 c0-3.3-2.5-5.9-5.5-5.9c-3,0-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.4,0.2-4.4,0.9-5.9,1.8c1.5,1.3,2.3,2.8,2.3,4.6V23h12.2 v-2.8V23h4.5c0-1,0-2.6,0-3.4C58.2,16.5,55,13.7,49.3,13.2z"
-          ></path>
+          />
           <path
             class="outline"
             d="M58.2,23c0-1,0-2.6,0-3.4c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3c0-3.3-2.5-5.9-5.5-5.9 s-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.5,0.2-4.4,0.9-5.9,1.8"
-          ></path>
-          <path d="M53.7,20.2V23"></path>
+          />
+          <path d="M53.7,20.2V23" />
         </g>
       </g>
     </symbol>
 
-    <symbol id="facility-occupancy.busy-icon" viewBox="0 0 60 24">
-      <g fill="none" stroke="#999" stroke-width="1">
-        <g stroke="#ffa600" stroke-width="1.5">
+    <symbol
+      id="facility-occupancy.busy-icon"
+      viewBox="0 0 60 24"
+    >
+      <g
+        fill="none"
+        stroke="#999"
+        stroke-width="1"
+      >
+        <g
+          stroke="#ffa600"
+          stroke-width="1.5"
+        >
           <path
             fill="#f2e9d9"
             stroke-width="0"
             d="M23,23c0-1,0-2.6,0-3.4c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C17.5,3.6,15,1,12,1 S6.5,3.6,6.5,6.9c0,2.5,1.4,5.1,3.4,6.3C4.2,13.7,1,16.5,1,19.6V23"
-          ></path>
-          <path d="M18.5,20.2V23"></path>
-          <path d="M5.5,20.2V23"></path>
+          />
+          <path d="M18.5,20.2V23" />
+          <path d="M5.5,20.2V23" />
           <path
             class="outline"
             d="M23,23c0-1,0-2.6,0-3.4 c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C17.5,3.6,15,1,12,1S6.5,3.6,6.5,6.9c0,2.5,1.4,5.1,3.4,6.3C4.2,13.7,1,16.5,1,19.6 V23"
-          ></path>
+          />
         </g>
-        <g stroke="#ffa600" stroke-width="1.5">
+        <g
+          stroke="#ffa600"
+          stroke-width="1.5"
+        >
           <path
             fill="#f2e9d9"
             stroke-width="0"
             d="M31.6,13.2c2-1.2,3.4-3.8,3.4-6.3 C35,3.6,32.6,1,29.5,1c-3,0-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.4,0.2-4.4,0.9-5.9,1.8c1.5,1.3,2.3,2.8,2.3,4.6V23H36v-2.8 V23h4.5c0-1,0-2.6,0-3.4C40.5,16.5,37.3,13.7,31.6,13.2z"
-          ></path>
+          />
           <path
             class="outline"
             d="M40.5,23c0-1,0-2.6,0-3.4 c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C35,3.6,32.6,1,29.5,1S24,3.6,24,6.9c0,2.5,1.4,5.1,3.4,6.3 c-2.5,0.2-4.4,0.9-5.9,1.8"
-          ></path>
-          <path d="M36.1,20.2V23"></path>
+          />
+          <path d="M36.1,20.2V23" />
         </g>
         <g class="p3">
           <path
             fill="#0000"
             stroke-width="0"
             d="M49.3,13.2c2-1.2,3.4-3.8,3.4-6.3 c0-3.3-2.5-5.9-5.5-5.9c-3,0-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.4,0.2-4.4,0.9-5.9,1.8c1.5,1.3,2.3,2.8,2.3,4.6V23h12.2 v-2.8V23h4.5c0-1,0-2.6,0-3.4C58.2,16.5,55,13.7,49.3,13.2z"
-          ></path>
+          />
           <path
             class="outline"
             d="M58.2,23c0-1,0-2.6,0-3.4c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3c0-3.3-2.5-5.9-5.5-5.9 s-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.5,0.2-4.4,0.9-5.9,1.8"
-          ></path>
-          <path d="M53.7,20.2V23"></path>
+          />
+          <path d="M53.7,20.2V23" />
         </g>
       </g>
     </symbol>
 
-    <symbol id="facility-occupancy.crowded-icon" viewBox="0 0 60 24">
-      <g fill="none" stroke="#999" stroke-width="1">
-        <g stroke="#e00030" stroke-width="1.5">
+    <symbol
+      id="facility-occupancy.crowded-icon"
+      viewBox="0 0 60 24"
+    >
+      <g
+        fill="none"
+        stroke="#999"
+        stroke-width="1"
+      >
+        <g
+          stroke="#e00030"
+          stroke-width="1.5"
+        >
           <path
             fill="#f2d9de"
             stroke-width="0"
             d="M23,23c0-1,0-2.6,0-3.4c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C17.5,3.6,15,1,12,1 S6.5,3.6,6.5,6.9c0,2.5,1.4,5.1,3.4,6.3C4.2,13.7,1,16.5,1,19.6V23"
-          ></path>
-          <path d="M18.5,20.2V23"></path>
-          <path d="M5.5,20.2V23"></path>
+          />
+          <path d="M18.5,20.2V23" />
+          <path d="M5.5,20.2V23" />
           <path
             class="outline"
             d="M23,23c0-1,0-2.6,0-3.4 c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C17.5,3.6,15,1,12,1S6.5,3.6,6.5,6.9c0,2.5,1.4,5.1,3.4,6.3C4.2,13.7,1,16.5,1,19.6 V23"
-          ></path>
+          />
         </g>
-        <g stroke="#e00030" stroke-width="1.5">
+        <g
+          stroke="#e00030"
+          stroke-width="1.5"
+        >
           <path
             fill="#f2d9de"
             stroke-width="0"
             d="M31.6,13.2c2-1.2,3.4-3.8,3.4-6.3 C35,3.6,32.6,1,29.5,1c-3,0-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.4,0.2-4.4,0.9-5.9,1.8c1.5,1.3,2.3,2.8,2.3,4.6V23H36v-2.8 V23h4.5c0-1,0-2.6,0-3.4C40.5,16.5,37.3,13.7,31.6,13.2z"
-          ></path>
+          />
           <path
             class="outline"
             d="M40.5,23c0-1,0-2.6,0-3.4 c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C35,3.6,32.6,1,29.5,1S24,3.6,24,6.9c0,2.5,1.4,5.1,3.4,6.3 c-2.5,0.2-4.4,0.9-5.9,1.8"
-          ></path>
-          <path d="M36.1,20.2V23"></path>
+          />
+          <path d="M36.1,20.2V23" />
         </g>
-        <g stroke="#e00030" stroke-width="1.5">
+        <g
+          stroke="#e00030"
+          stroke-width="1.5"
+        >
           <path
             fill="#f2d9de"
             stroke-width="0"
             d="M49.3,13.2c2-1.2,3.4-3.8,3.4-6.3 c0-3.3-2.5-5.9-5.5-5.9c-3,0-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.4,0.2-4.4,0.9-5.9,1.8c1.5,1.3,2.3,2.8,2.3,4.6V23h12.2 v-2.8V23h4.5c0-1,0-2.6,0-3.4C58.2,16.5,55,13.7,49.3,13.2z"
-          ></path>
+          />
           <path
             class="outline"
             d="M58.2,23c0-1,0-2.6,0-3.4c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3c0-3.3-2.5-5.9-5.5-5.9 s-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.5,0.2-4.4,0.9-5.9,1.8"
-          ></path>
-          <path d="M53.7,20.2V23"></path>
+          />
+          <path d="M53.7,20.2V23" />
+        </g>
+      </g>
+    </symbol>
+    <symbol
+      id="facility-occupancy.unknown-icon"
+      viewBox="0 0 60 24"
+    >
+      <g
+        fill="none"
+        stroke="#999"
+        stroke-width="1"
+      >
+        <g>
+          <path
+            fill="#0000"
+            stroke-width="0"
+            d="M23,23c0-1,0-2.6,0-3.4c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C17.5,3.6,15,1,12,1 S6.5,3.6,6.5,6.9c0,2.5,1.4,5.1,3.4,6.3C4.2,13.7,1,16.5,1,19.6V23"
+          />
+          <path d="M18.5,20.2V23" />
+          <path d="M5.5,20.2V23" />
+          <path
+            class="outline"
+            d="M23,23c0-1,0-2.6,0-3.4 c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C17.5,3.6,15,1,12,1S6.5,3.6,6.5,6.9c0,2.5,1.4,5.1,3.4,6.3C4.2,13.7,1,16.5,1,19.6 V23"
+          />
+        </g>
+        <g class="p2">
+          <path
+            fill="#0000"
+            stroke-width="0"
+            d="M31.6,13.2c2-1.2,3.4-3.8,3.4-6.3 C35,3.6,32.6,1,29.5,1c-3,0-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.4,0.2-4.4,0.9-5.9,1.8c1.5,1.3,2.3,2.8,2.3,4.6V23H36v-2.8 V23h4.5c0-1,0-2.6,0-3.4C40.5,16.5,37.3,13.7,31.6,13.2z"
+          />
+          <path
+            class="outline"
+            d="M40.5,23c0-1,0-2.6,0-3.4 c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3C35,3.6,32.6,1,29.5,1S24,3.6,24,6.9c0,2.5,1.4,5.1,3.4,6.3 c-2.5,0.2-4.4,0.9-5.9,1.8"
+          />
+          <path d="M36.1,20.2V23" />
+        </g>
+        <g class="p3">
+          <path
+            fill="#0000"
+            stroke-width="0"
+            d="M49.3,13.2c2-1.2,3.4-3.8,3.4-6.3 c0-3.3-2.5-5.9-5.5-5.9c-3,0-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.4,0.2-4.4,0.9-5.9,1.8c1.5,1.3,2.3,2.8,2.3,4.6V23h12.2 v-2.8V23h4.5c0-1,0-2.6,0-3.4C58.2,16.5,55,13.7,49.3,13.2z"
+          />
+          <path
+            class="outline"
+            d="M58.2,23c0-1,0-2.6,0-3.4c0-3.1-3.2-5.9-8.9-6.4c2-1.2,3.4-3.8,3.4-6.3c0-3.3-2.5-5.9-5.5-5.9 s-5.5,2.6-5.5,5.9c0,2.5,1.4,5.1,3.4,6.3c-2.5,0.2-4.4,0.9-5.9,1.8"
+          />
+          <path d="M53.7,20.2V23" />
         </g>
       </g>
     </symbol>

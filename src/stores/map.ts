@@ -24,7 +24,8 @@ export const useMapStore = defineStore("map", () => {
       return {
         type: "Feature" as const,
         properties: {
-          spaceId: space.spaceId,
+          spaceSlug: space.slug,
+          buildingSlug: space.building.slug,
           buildingNumber: space.building.number,
           buildingOccupancy: space.building.occupancy,
           isOpen: spaceIsOpen(now, space.openingHours),
@@ -121,7 +122,7 @@ export const useMapStore = defineStore("map", () => {
     let hasSelectedBuilding = false;
 
     if (currentSpace.value)
-      return [["==", "spaceId", currentSpace.value.spaceId]]; // All filters are off if a space is selected
+      return [["==", "spaceSlug", currentSpace.value.slug]]; // All filters are off if a space is selected
 
     if (currentBuilding.value) {
       // If a building is selected, filtering by building should be disabled

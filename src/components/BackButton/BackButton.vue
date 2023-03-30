@@ -8,7 +8,11 @@
     <BackButtonContent />
   </a>
 
-  <NuxtLink v-else :to="to" class="back-button">
+  <NuxtLink
+    v-else
+    :to="to"
+    class="back-button"
+  >
     <BackButtonContent />
   </NuxtLink>
 </template>
