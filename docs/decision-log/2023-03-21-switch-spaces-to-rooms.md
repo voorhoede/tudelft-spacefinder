@@ -16,9 +16,9 @@ We implemented the change from spaces to rooms as follows:
 
 - The application can now organise locations either by rooms or spaces using an environment variable: `SPACES_MODE=rooms|spaces`.
 - Data from `studieplekken.csv` is converted to `buildings.json`, `spaces.json` and `rooms.json`.
-- Data from spaces with the same room id are combined. Geo coordinates are averaged, services are accumulated.
-- Room detail pages reuse the spaces route with a new slug: `/en/buildings/34-3me/spaces/C-1-801/`.
-- Occupancy is now calculated per building and per room.
-- The list of locations now lists rooms instead of spaces with occupancy indicator based on room occupancy.
-- The campus map now has a marker for each room instead of spaces and the marker color represents the room occupancy.
+- For rooms the data from spaces with the same room id are combined. Geo coordinates are averaged, services are accumulated.
+- Room detail pages reuse the spaces route with a new slug based on the "vastgoednr": `/en/buildings/34-3me/spaces/C-1-801/`.
+- Occupancy is now calculated per building and per room and stored in database tables.
+- In `SPACE_MODE=rooms` the list of locations now lists rooms (instead of spaces) with occupancy indicator based on building occupancy.
+- In `SPACE_MODE=rooms` the campus map has a marker for each room (instead of space) and the marker color represents the building occupancy.
 - The Exchange service is currently unavailable. When it's available again, opening hours must be matched per room instead of space.
