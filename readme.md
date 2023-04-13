@@ -1,31 +1,55 @@
-# tudelft-spacefinder
-> App to easily find available spaces on the TU Delft Campus.
+# TU Delft Spacefinder
 
-This app is a universal [Vue.js](https://vuejs.org/) app made with [Nuxt](https://nuxt.com/). The app has multi-language support (English and Dutch).
+**App to easily find available spaces on the TU Delft Campus.**
 
-## Development
+🚀 [spacefinder.tudelft.nl](https://spacefinder.tudelft.nl)
 
-### Requirements
-- [Node.js](http://nodejs.org/)
-- [Docker](https://www.docker.com/) if running Supabase locally
+## Architecture
 
-### Getting started
-* Clone the repository.
-* Run `npm ci` to install the dependencies.
-* Copy `.env.example` to `.env` and set the environment variables. Copy them from the [Netlify settings](https://app.netlify.com/sites/spacefinder/settings/general) or ask a dev team member. 
-* Run app in development mode (`npm run dev`), see all scripts with `npm run`.
+Key technology used in the Spacefinder:
 
-#### Local Supabase
-In order to make changes to the database schema a local Supabase instance is needed.
-* Login with `npx supabase login`.
-* Run `npm run supabase:start` to start a local Supabase instance.
-* Use the output API url and key to set the environment variables `SUPABASE_URL` & `SUPABASE_KEY`.
+* [Nuxt](https://nuxt.com/) + [Mapbox](https://www.mapbox.com/) for an interactive web app including a map of the campus.
+* [Netlify](https://www.netlify.com/) for deployments (CI/CD + hosting).
+* [DatoCMS](https://www.datocms.com/) for content management by TU Delft team (see [data](#data)).
+* [Supabase](https://supabase.com/) to store and aggregate wifi data for locations (see [data](#data)).
 
-#### Migration
-* After changing the database schema run `npm run supabase:db:diff` followed by a migration name, e.g. `npm run supabase:db:diff -- create_xyz`.
-* Possibly alter the seeding data to match the schema changes.
-* Reset the local database to ensure everything works with `npm run supabase:db:reset`.
-* Committed migrations that are merged to the main branch are automatically deployed.
+See `tudelft-spacefinder` in Bitwarden for links to the Netlify, DatoCMS and Supabase instances.
+
+```mermaid
+%%{
+    init: {
+        'theme': 'base',
+        'themeVariables': {
+            'edgeLabelBackground': '#FFFFFF',
+            'lineColor': '#0000FF',
+            'mainBkg': '#FFFFFF',
+            'primaryBorderColor': '#0000FF',
+            'primaryTextColor': '#000000',
+            'tertiaryColor': '#FFFED9'
+        }
+    }
+}%%
+
+flowchart
+    subgraph "Spacefinder back-end"
+        Repository[("<strong>Code repository</strong><br>GitHub")]
+        CMS[("<strong>Content CMS</strong><br>DatoCMS")]
+        CI("<strong>CI + Hosting</strong><br>Netlify")
+        DB[("<strong>Occupancy DB</strong><br>Supabase")]
+    end
+
+    subgraph "TU Delft back-end"
+        WifiData("<strong>Wifi data</strong><br>Kafka")
+    end
+
+    App("<strong>Web app</strong><br>Nuxt + Mapbox")
+
+    Repository -- git commit --> CI
+    CMS -- publish --> CI
+    CI -- serve --> App
+    WifiData -- consume --> DB 
+    DB -- subscribe --> App
+```
 
 ### Data
 The Spacefinder combines data from different sources:
@@ -86,3 +110,29 @@ flowchart
 
 ### Decision log
 Key decisions that are made during the course of the project are documented in [docs/decision-log/](docs/decision-log/). Please read the log so you understand why decisions are made and document key decisions when you make them.
+
+---
+
+## Development
+
+### Requirements
+- [Node.js](http://nodejs.org/) (see [`.nvmrc`](.nvmrc) for correct version).
+- [Docker](https://www.docker.com/) to run Supabase locally.
+
+### Getting started
+* Clone the repository.
+* Run `npm ci` to install the dependencies.
+* Copy `.env.example` to `.env` and set the environment variables. Copy them from `tudelft-spacefinder` in Bitwarden or ask a dev team member. 
+* Run app in development mode (`npm run dev`), see all scripts with `npm run`.
+
+#### Local Supabase
+In order to make changes to the database schema a local Supabase instance is needed.
+* Login with `npx supabase login`.
+* Run `npm run supabase:start` to start a local Supabase instance.
+* Use the output API url and key to set the environment variables `SUPABASE_URL` & `SUPABASE_KEY`.
+
+#### Migration
+* After changing the database schema run `npm run supabase:db:diff` followed by a migration name, e.g. `npm run supabase:db:diff -- create_xyz`.
+* Possibly alter the seeding data to match the schema changes.
+* Reset the local database to ensure everything works with `npm run supabase:db:reset`.
+* Committed migrations that are merged to the main branch are automatically deployed.
