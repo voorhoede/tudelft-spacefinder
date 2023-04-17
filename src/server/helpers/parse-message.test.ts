@@ -29,7 +29,7 @@ test("Parse with common valid data", () => {
   })).toMatchInlineSnapshot(`
     {
       "access_point_name": "A-23-0-007",
-      "building_number": "23",
+      "building_number": 23,
       "device_count": 3,
       "floor": "BG",
       "location_hierarchy": "TUDelft > 23-CITG > BG",
@@ -54,7 +54,7 @@ test("Parse building number", () => {
     "from name with dashes"
   )
     .toContain({
-      "building_number": "24",
+      "building_number": 24,
     });
 
   expect(
@@ -70,7 +70,39 @@ test("Parse building number", () => {
     "from name with dots"
   )
     .toContain({
-      "building_number": "23",
+      "building_number": 23,
+    });
+
+  expect(
+    parseMessage({
+      timestamp: "1679400080000",
+      decodedValue: {
+        clientCount: 20,
+        locationHierarchy: "TUDelft > 34-3ME > 1e Verdieping",
+        mapLocation: "",
+        name: "nope-yes"
+      }
+    }),
+    "fallback with invalid name"
+  )
+    .toContain({
+      "building_number": 0,
+    });
+
+  expect(
+    parseMessage({
+      timestamp: "1679400080000",
+      decodedValue: {
+        clientCount: 20,
+        locationHierarchy: "TUDelft > 34-3ME > 1e Verdieping",
+        mapLocation: "nope.00.01.960 I2A08",
+        name: ""
+      }
+    }),
+    "fallback with invalid mapLocation"
+  )
+    .toContain({
+      "building_number": 0,
     });
 });
 
