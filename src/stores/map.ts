@@ -105,10 +105,6 @@ export const useMapStore = defineStore("map", () => {
 
   async function resizeMap() {
     const map = await getMap();
-
-    // Wait for the next paint of the browser before resizing the map
-    // This prevents grey areas when resizing the browser
-    await delay(0);
     map.resize();
   }
 
