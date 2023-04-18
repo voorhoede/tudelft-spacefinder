@@ -54,6 +54,7 @@ export default defineNuxtConfig({
     },
     public: {
       mapboxToken: process.env.MAPBOX_TOKEN,
+      mapboxStyle: process.env.MAPBOX_STYLE,
       baseUrl: process.env.URL,
       isOpeningHoursEnabled:
         !!process.env.IS_OPENING_HOURS_ENABLED &&

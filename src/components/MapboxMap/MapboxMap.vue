@@ -39,7 +39,7 @@ const mapContainer = ref(null as null | HTMLDivElement);
 const onResizeDebounce = useDebounceFn(onResize, 200);
 
 onMounted(() => {
-  initMap(runtimeConfig.public.mapboxToken);
+  initMap(runtimeConfig.public.mapboxToken, runtimeConfig.public.mapboxStyle);
   mapStore.updateMarkers();
   window.addEventListener("resize", onResizeDebounce, true);
 });
@@ -92,7 +92,7 @@ function fixInsecureLinks() {
   });
 }
 
-function initMap(accessToken: string) {
+function initMap(accessToken: string, mapboxStyle: string = "mapbox://styles/mapbox/streets-v10") {
   mapboxgl.accessToken = accessToken;
   const map = new mapboxgl.Map({
     container: mapContainer.value!,
@@ -102,7 +102,7 @@ function initMap(accessToken: string) {
     ],
     zoom: 13,
     trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
-    style: "mapbox://styles/mapbox/streets-v10",
+    style: mapboxStyle,
     maxBounds: [campusBounds.southWest, campusBounds.northEast],
   });
 
