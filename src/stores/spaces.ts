@@ -62,7 +62,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     filters.value.showOpenLocations = false;
 
   function clearFilters() {
-    filters.value = defaultFilters; //TODO: check if Vue3 reactivity works like that
+    filters.value = { ...defaultFilters };
   }
 
   type Timer = ReturnType<typeof setTimeout>;
