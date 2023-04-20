@@ -32,7 +32,7 @@ const title = computed(() => $t("buildingTitle"));
 useSpacefinderHead({ title });
 
 onMounted(() => {
-  mapStore.zoomToCampus();
+  mapStore.restoreMapState();
 });
 </script>
 
