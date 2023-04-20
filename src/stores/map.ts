@@ -1,6 +1,5 @@
 import { defineStore, storeToRefs } from "pinia";
 import { deferred } from "~/lib/deferred";
-import delay from "~/lib/delay";
 import { spaceIsOpen } from "~/lib/filter-spaces";
 import { Bounds } from "~/types/Bounds";
 import campusBounds from "~/lib/campus-bounds";
