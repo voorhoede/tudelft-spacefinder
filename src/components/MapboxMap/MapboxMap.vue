@@ -176,6 +176,10 @@ function initMap(accessToken: string) {
       );
     }
   });
+
+  map.on("moveend", () => {
+    saveMapState();
+  });
 }
 </script>
 
