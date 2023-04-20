@@ -93,16 +93,6 @@ export const useMapStore = defineStore("map", () => {
     zoomToBounds(bounds, padding);
   }
 
-  async function zoomIn() {
-    const map = await getMap();
-    map.zoomIn();
-  }
-
-  async function zoomOut() {
-    const map = await getMap();
-    map.zoomOut();
-  }
-
   async function resizeMap() {
     const map = await getMap();
     map.resize();
@@ -189,8 +179,6 @@ export const useMapStore = defineStore("map", () => {
     setMap,
     zoomToCampus,
     zoomToSelection,
-    zoomIn,
-    zoomOut,
     zoomAuto,
     resizeMap,
     updateMarkers,

@@ -1,30 +1,21 @@
 <template>
   <ul class="flat-list">
-    <li
-      v-for="action in actions"
-      :key="action.event"
-      class="zoom-controls__item"
-    >
+    <li class="zoom-controls__item">
       <button
         class="button button--round"
-        @click="$emit(action.event)"
+        @click="$emit('auto-focus')"
       >
         <SvgIcon
-          :name="`${action.icon}-icon`"
+          name="focus-icon"
           class="button--round__icon"
         />
-        <span class="a11y-sr-only">{{ $t(action.text) }}</span>
+        <span class="a11y-sr-only">{{ $t('focusMap') }}</span>
       </button>
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
-const actions = [
-  { event: "auto-focus", icon: "focus", text: "focusMap" },
-  { event: "zoom-in", icon: "add", text: "zoomIn" },
-  { event: "zoom-out", icon: "remove", text: "zoomOut" },
-];
 </script>
 
 <style>

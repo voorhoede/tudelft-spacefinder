@@ -13,8 +13,6 @@
       v-if="mapLoaded"
       class="mapbox-map__zoom-controls"
       @auto-focus="autoFocus"
-      @zoom-in="zoomIn"
-      @zoom-out="zoomOut"
     />
   </div>
 </template>
@@ -49,12 +47,6 @@ onBeforeUnmount(() => {
 
 function autoFocus() {
   mapStore.zoomAuto();
-}
-function zoomIn() {
-  mapStore.zoomIn();
-}
-function zoomOut() {
-  mapStore.zoomOut();
 }
 function onResize() {
   mapStore.resizeMap();
