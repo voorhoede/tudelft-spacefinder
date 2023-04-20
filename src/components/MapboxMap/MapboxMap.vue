@@ -59,6 +59,12 @@ function zoomOut() {
 function onResize() {
   mapStore.resizeMap();
 }
+function saveMapState() {
+  mapStore.saveMapState();
+}
+function restoreMapState() {
+  mapStore.restoreMapState();
+}
 
 /**
  * Mapbox renders insecure external links.
@@ -146,6 +152,8 @@ function initMap(accessToken: string) {
           "icon-allow-overlap": true,
         },
       });
+
+      restoreMapState();
       fixInsecureLinks();
       mapStore.setMap(map);
     });
@@ -159,6 +167,7 @@ function initMap(accessToken: string) {
       if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
+      saveMapState();
       router.push(
         $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
           buildingSlug: properties.buildingSlug as string,
