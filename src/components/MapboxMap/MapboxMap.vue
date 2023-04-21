@@ -102,7 +102,7 @@ function initMap(accessToken: string) {
     ],
     zoom: 13,
     trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
-    style: "mapbox://styles/mapbox/streets-v10",
+    style: "mapbox://styles/voorhoede/clgm5v8zx00bd01pj4hm0hvhn",
     maxBounds: [campusBounds.southWest, campusBounds.northEast],
   });
 
