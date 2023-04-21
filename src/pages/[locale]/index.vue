@@ -28,6 +28,6 @@ useSpacefinderHead({
 });
 
 onMounted(() => {
-  mapStore.zoomToCampus();
+  mapStore.restoreMapState();
 });
 </script>
