@@ -59,6 +59,12 @@ function zoomOut() {
 function onResize() {
   mapStore.resizeMap();
 }
+function saveMapState() {
+  mapStore.saveMapState();
+}
+function restoreMapState() {
+  mapStore.restoreMapState();
+}
 
 /**
  * Mapbox renders insecure external links.
@@ -102,7 +108,7 @@ function initMap(accessToken: string) {
     ],
     zoom: 13,
     trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
-    style: "mapbox://styles/mapbox/streets-v10",
+    style: "mapbox://styles/voorhoede/clgm5v8zx00bd01pj4hm0hvhn",
     maxBounds: [campusBounds.southWest, campusBounds.northEast],
   });
 
@@ -146,6 +152,8 @@ function initMap(accessToken: string) {
           "icon-allow-overlap": true,
         },
       });
+
+      restoreMapState();
       fixInsecureLinks();
       mapStore.setMap(map);
     });
@@ -159,6 +167,7 @@ function initMap(accessToken: string) {
       if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
+      saveMapState();
       router.push(
         $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
           buildingSlug: properties.buildingSlug as string,
@@ -166,6 +175,10 @@ function initMap(accessToken: string) {
         })
       );
     }
+  });
+
+  map.on("moveend", () => {
+    saveMapState();
   });
 }
 </script>

@@ -58,7 +58,6 @@
             {{ $t("computerFacilities") }}
           </legend>
           <FilterMenuItem name="powerOutlets" />
-          <FilterMenuItem name="ethernet" />
           <FilterMenuItem name="stationaryPC" />
           <FilterMenuItem name="nearPrinter" />
         </fieldset>
@@ -83,7 +82,6 @@
           <legend class="h3">
             {{ $t("collaborationFacilities") }}
           </legend>
-          <FilterMenuItem name="smartBoard" />
           <FilterMenuItem name="whiteBoard" />
           <FilterMenuItem name="presentationScreen" />
         </fieldset>

@@ -39,7 +39,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     adjustableChairs: false,
     buildings: [],
     daylit: false,
-    ethernet: false,
     studyType: [],
     nearBathroom: false,
     nearCoffeeMachine: false,
@@ -48,7 +47,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     presentationScreen: false,
     quietness: [],
     showOpenLocations: false,
-    smartBoard: false,
     stationaryPC: false,
     whiteBoard: false,
   };

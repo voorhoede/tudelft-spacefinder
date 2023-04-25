@@ -20,6 +20,6 @@ const title = computed(() => $pageContent("infoPage.title"));
 useSpacefinderHead({ title });
 
 onMounted(() => {
-  mapStore.zoomToCampus();
+  mapStore.restoreMapState();
 });
 </script>

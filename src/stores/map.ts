@@ -17,6 +17,9 @@ export const useMapStore = defineStore("map", () => {
 
   const mapLoaded = ref(false);
 
+  const lastZoomLevel = ref<number | null>(null);
+  const lastMapCenter = ref<[number, number] | null>(null);
+
   const geoJsonSpaces = computed(() => {
     const now = new Date();
     const featuresPerSpace = spaces.value.map((space) => {
@@ -108,36 +111,37 @@ export const useMapStore = defineStore("map", () => {
     map.resize();
   }
 
+  async function saveMapState() {
+    const map = await getMap();
+    lastZoomLevel.value = map.getZoom();
+    lastMapCenter.value = map.getCenter().toArray() as [number, number];
+
+  }
+
+  async function restoreMapState() {
+    if (lastZoomLevel.value !== null && lastMapCenter.value !== null) {
+      const map = await getMap();
+      map.setZoom(lastZoomLevel.value);
+      map.setCenter(lastMapCenter.value);
+    } else {
+      zoomToCampus();
+    }
+  }
+
   type EqualsFilter = ["==", string, any];
   type InFilter = ["in", string, ...Array<{}>];
   type AnyFilter = ["any", ...Array<EqualsFilter>];
   type Filter = EqualsFilter | InFilter | AnyFilter;
 
   const activeMarkerFilters = computed(() => {
-    let newValue: Filter[] = [];
-    let hasSelectedBuilding = false;
-
-    if (currentSpace.value)
-      return [["==", "spaceSlug", currentSpace.value.slug]]; // All filters are off if a space is selected
-
-    if (currentBuilding.value) {
-      // If a building is selected, filtering by building should be disabled
-      newValue = [["==", "buildingNumber", currentBuilding.value.number]];
-      hasSelectedBuilding = true;
-    }
-
-    // Go through the enabled filters
     const featureFilters = Object.entries(filters.value).reduce(
       (filters, [key, value]) => {
         if (typeof value === "boolean" && value) {
           const filter = key === "showOpenLocations" ? "isOpen" : key;
           return [...filters, ["==", filter, value] as EqualsFilter];
         }
-        if (Array.isArray(value) && value.length > 0) {
-          if (key === "buildings" && hasSelectedBuilding) {
-            return filters;
-          }
 
+        if (Array.isArray(value) && value.length > 0) {
           if (key === "buildings") {
             const buildingFilters = value.map(
               (v) => ["==", "buildingNumber", v] as EqualsFilter
@@ -147,11 +151,13 @@ export const useMapStore = defineStore("map", () => {
 
           return [...filters, ["in", key, ...value] as InFilter];
         }
+
         return filters;
       },
       [] as Filter[]
     );
-    return [...newValue, ...featureFilters];
+
+    return featureFilters;
   });
 
   // This could be used instead of updateData to set data of individual points, but it does not work atm
@@ -193,6 +199,8 @@ export const useMapStore = defineStore("map", () => {
     zoomOut,
     zoomAuto,
     resizeMap,
+    saveMapState,
+    restoreMapState,
     updateMarkers,
     geoJsonSpaces,
     setBuildingOccupancy,
