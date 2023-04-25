@@ -4,20 +4,6 @@
     xmlns="http://www.w3.org/2000/svg"
   >
     <symbol
-      id="add-icon"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-        fill="#333"
-      />
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-    </symbol>
-
-    <symbol
       id="back-icon"
       viewBox="0 0 24 24"
     >
@@ -274,20 +260,6 @@
     </symbol>
 
     <symbol
-      id="focus-icon"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
-      />
-      <path
-        d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-7 7H3v4c0 1.1.9 2 2 2h4v-2H5v-4zM5 5h4V3H5c-1.1 0-2 .9-2 2v4h2V5zm14-2h-4v2h4v4h2V5c0-1.1-.9-2-2-2zm0 16h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4z"
-        fill="#333"
-      />
-    </symbol>
-
-    <symbol
       id="help-icon"
       viewBox="0 0 24 24"
     >
@@ -389,20 +361,6 @@
     >
       <path
         d="M10 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8m0-18C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0m1 5H9v4H5v2h4v4h2v-4h4V9h-4V5z"
-      />
-    </symbol>
-
-    <symbol
-      id="remove-icon"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M19 13H5v-2h14v2z"
-        fill="#333"
-      />
-      <path
-        d="M0 0h24v24H0z"
-        fill="none"
       />
     </symbol>
 
