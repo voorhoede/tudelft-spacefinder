@@ -9,13 +9,6 @@
     >
       <span class="mapbox-map__loading-message">{{ $t("mapLoading") }}</span>
     </div>
-    <ZoomControls
-      v-if="mapLoaded"
-      class="mapbox-map__zoom-controls"
-      @auto-focus="autoFocus"
-      @zoom-in="zoomIn"
-      @zoom-out="zoomOut"
-    />
   </div>
 </template>
 
@@ -46,16 +39,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("resize", onResizeDebounce, true);
 });
-
-function autoFocus() {
-  mapStore.zoomAuto();
-}
-function zoomIn() {
-  mapStore.zoomIn();
-}
-function zoomOut() {
-  mapStore.zoomOut();
-}
 function onResize() {
   mapStore.resizeMap();
 }
