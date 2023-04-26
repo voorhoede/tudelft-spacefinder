@@ -42,9 +42,9 @@
 
     /* sizing */
     --header-height-mobile: 50px;
-    --header-height-desktop: 75px;
+    --header-height-desktop: 65px;
     --navigation-height-mobile: 50px;
-    --navigation-height-desktop: 60px;
+    --navigation-height-desktop: 55px;
     --column-width-mobile: 310px;
     --column-width-desktop: 360px;
 }

@@ -51,9 +51,30 @@
       </li>
     </ul>
 
-    <button>[FILTER]</button>
+    <button
+      ref="menuButton"
+      type="button"
+      @click="$emit('openFilterMenu')"
+    >
+      [FILTER]
+    </button>
   </nav>
 </template>
+
+<script setup lang="ts">
+const props = defineProps<{ openedMenu: string | null }>();
+let lastOpenedMenu: string | null = null;
+const menuButton = ref(null as null | HTMLButtonElement);
+watch(
+  () => props.openedMenu,
+  (newValue) => {    
+    if (lastOpenedMenu === "filter-menu") {
+      menuButton.value?.focus();
+    }
+    lastOpenedMenu = newValue;
+  }
+);
+</script>
 
 <style>
 @import "../app-core/variables.css";
