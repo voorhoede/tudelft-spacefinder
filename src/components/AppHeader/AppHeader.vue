@@ -102,8 +102,8 @@ watch(
 @media (min-width: 700px) {
   .app-header__logo-text {
     top: 0;
-    margin-left: calc(.75 * var(--spacing-default));
-    padding-left: calc(.75 * var(--spacing-default));
+    margin-left: var(--spacing-three-quarter);
+    padding-left: var(--spacing-three-quarter);
     font-size: var(--font-size-bigger);
   }
 

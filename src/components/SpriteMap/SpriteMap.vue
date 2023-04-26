@@ -206,35 +206,11 @@
     <symbol
       id="filter-icon"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 18 16"
+      viewBox="0 0 14 14"
     >
-      <g fill="#fff">
-        <path d="M0 1h18v2H0z" />
-        <path d="M0 6h18v2H0zM0 11h18v2H0z" />
-      </g>
-      <g
-        fill="#00a6d6"
-        stroke="#fff"
-        stroke-width="2"
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-      >
-        <circle
-          cx="5"
-          cy="2"
-          r="2"
-        />
-        <circle
-          cx="5"
-          cy="12"
-          r="2"
-        />
-        <circle
-          cx="13"
-          cy="7"
-          r="2"
-        />
-      </g>
+      <path
+        d="M6.3 14V9.8h1.119v1.55H14v1.12H7.419V14H6.3ZM0 12.6v-1.4h4.9v1.4H0Zm3.71-3.5V7.576H0V6.461h3.71V4.9H4.9v4.2H3.71ZM6.3 7.7V6.3H14v1.4H6.3Zm2.8-3.5V0h1.19v1.53H14v1.12h-3.71V4.2H9.1ZM0 2.8V1.4h7.7v1.4H0Z"
+      />
     </symbol>
 
     <symbol

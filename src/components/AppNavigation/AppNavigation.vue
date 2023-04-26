@@ -54,9 +54,22 @@
     <button
       ref="menuButton"
       type="button"
+      class="app-menu__filter-button"
       @click="$emit('openFilterMenu')"
     >
-      [FILTER]
+      <SvgIcon
+        name="filter-icon"
+        class="app-menu__filter-button-icon"
+      />
+
+      {{ $t("filter") }}
+
+      <div class="app-menu__filter-indicator">
+        55
+        <span class="a11y-sr-only">
+          {{ $t("filtersSelected") }}
+        </span>
+      </div>
     </button>
   </nav>
 </template>
@@ -110,5 +123,36 @@ watch(
 .app-navigation__item {
   display: flex;
   align-items: center;
+}
+
+.app-menu__filter-button {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing-half) 0;
+  padding-left: var(--spacing-three-quarter);
+  padding-right: var(--spacing-quarter);
+  background: var(--background-color);
+  border: none;
+  border-radius: 2rem;
+}
+
+.app-menu__filter-button-icon {
+  margin-right: var(--spacing-half);
+  width: 16px;
+  height: 16px;
+}
+
+.app-menu__filter-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--spacing-three-quarter);
+  width: 28px;
+  height: 28px;
+  background: var(--brand-secondary-color);
+  border-radius: 50%;
+  font-size: var(--font-size-smaller);
+  font-weight: bold;
+  color: var(--background-color);
 }
 </style>
