@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="!$isMapMode.value || !$isMobile.value"
+    v-if="!$isMobile.value"
     class="default-layout__info"
   >
     <h2 class="a11y-sr-only">

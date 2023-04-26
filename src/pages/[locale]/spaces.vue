@@ -13,6 +13,7 @@
 <script setup lang="ts">
 import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
+definePageMeta({ alias: "/:locale/ruimtes" });
 const { $t } = useNuxtApp();
 const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
