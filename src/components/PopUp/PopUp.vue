@@ -16,12 +16,12 @@
           </h1>
           <button
             type="button"
-            class="button button--header"
+            class="button button--navigation"
             @click="close"
           >
             <SvgIcon
               name="close-icon"
-              class="button--header__icon"
+              class="button--navigation__icon"
             />
             {{ $t("close") }}
           </button>

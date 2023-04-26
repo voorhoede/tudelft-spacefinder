@@ -9,7 +9,7 @@
     >
       <img
         src="~/assets/tu-delft-logo.svg"
-        alt="Home"
+        :alt="$t('home')"
       >
     </NuxtLink>
 
@@ -20,12 +20,12 @@
     <button
       ref="filterButton"
       type="button"
-      class="app-header__button button button--header"
+      class="button button--navigation"
       @click="$emit('openFilterMenu')"
     >
       <SvgIcon
         name="filter-icon"
-        class="button--header__icon"
+        class="button--navigation__icon"
       />
       {{ $t("filter") }}
 
@@ -38,12 +38,12 @@
     <button
       ref="menuButton"
       type="button"
-      class="app-header__button button button--header"
+      class="button button--navigation"
       @click="$emit('openAppMenu')"
     >
       <SvgIcon
         name="menu-icon"
-        class="button--header__icon"
+        class="button--navigation__icon"
       />
       {{ $t("menu") }}
     </button>
@@ -116,11 +116,6 @@ watch(
   .app-header__title {
     line-height: var(--header-height-desktop);
   }
-}
-
-.app-header__button {
-  position: relative;
-  justify-self: flex-end;
 }
 
 @media (min-width: 700px) {

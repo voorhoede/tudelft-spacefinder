@@ -25,12 +25,12 @@
           <button
             ref="closeButton"
             type="button"
-            class="button button--header"
+            class="button button--navigation"
             @click="$emit('close')"
           >
             <SvgIcon
               name="close-icon"
-              class="button--header__icon"
+              class="button--navigation__icon"
             />
 
             {{ $t("close") }}
