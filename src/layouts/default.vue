@@ -26,6 +26,8 @@
       <MapboxMap class="default-layout__map" />
     </main>
 
+    <AppNavigation />
+
     <AppMenu
       :is-open="openedMenu === 'app-menu'"
       @close="closeMenu"

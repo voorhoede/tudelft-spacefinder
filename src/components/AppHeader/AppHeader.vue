@@ -20,7 +20,7 @@
     <button
       ref="filterButton"
       type="button"
-      class="button button--navigation"
+      class="button button--navigation button--spacing"
       @click="$emit('openFilterMenu')"
     >
       <SvgIcon
@@ -38,7 +38,7 @@
     <button
       ref="menuButton"
       type="button"
-      class="button button--navigation"
+      class="button button--navigation button--spacing"
       @click="$emit('openAppMenu')"
     >
       <SvgIcon
@@ -115,12 +115,6 @@ watch(
 @media (min-width: 700px) {
   .app-header__title {
     line-height: var(--header-height-desktop);
-  }
-}
-
-@media (min-width: 700px) {
-  .app-header__button:last-of-type {
-    margin-left: var(--spacing-half);
   }
 }
 
