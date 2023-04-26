@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import {Feature, FeatureCollection, Point} from "geojson";
 
 import campusBounds from "~/lib/campus-bounds";
 import { useMapStore } from "~/stores/map";
@@ -30,6 +31,10 @@ const { mapLoaded } = storeToRefs(mapStore);
 const mapContainer = ref(null as null | HTMLDivElement);
 
 const onResizeDebounce = useDebounceFn(onResize, 200);
+
+const CLUSTERS_LAYER_ID = "clusters";
+const UNCLUSTERED_LAYER_ID = "unclustered-point";
+const VISIBILITY_PROPERTY = "visibility";
 
 onMounted(() => {
   initMap(runtimeConfig.public.mapboxToken);
@@ -81,6 +86,65 @@ function fixInsecureLinks() {
   });
 }
 
+/**
+ * Create manual clusters for a given set of geographic spaces.
+ * @param {FeatureCollection} geoJsonSpaces - A GeoJSON FeatureCollection of spaces.
+ * @returns {FeatureCollection} - A new FeatureCollection containing clustered and original features.
+ */
+function createManualClusters(geoJsonSpaces: FeatureCollection): FeatureCollection {
+  // Group the features by building slug
+  const groupedSpaces = geoJsonSpaces.features.reduce<{ [key: string]: Feature[] }>(
+    (acc, space) => {
+    const buildingSlug = space.properties?.buildingSlug;
+    if (!acc[buildingSlug]) {
+      acc[buildingSlug] = [];
+    }
+    acc[buildingSlug].push(space);
+    return acc;
+  }, {});
+
+  const clusters = Object.entries(groupedSpaces).map(([buildingSlug, spaces]): Feature => {
+    // Calculate the cluster center by averaging the coordinates of all spaces in the cluster
+    const clusterCoordinates = spaces.reduce<[number, number]>(
+      ([sumLon, sumLat], space) => {
+        const coordinates = (space.geometry as Point).coordinates;
+        return [sumLon + coordinates[0], sumLat + coordinates[1]];
+      },
+      [0, 0]
+    );
+
+    const count = spaces.length;
+    const buildingOccupancy = spaces[0].properties?.buildingOccupancy;
+    const modifiedSlug = buildingSlug.slice(buildingSlug.indexOf('-') + 1);
+
+    // Create a cluster feature with the calculated center and properties
+    return {
+      type: "Feature",
+      properties: {
+        buildingSlugModified: modifiedSlug,
+        buildingSlug: buildingSlug,
+        buildingOccupancy: buildingOccupancy,
+        point_count: count,
+        point_count_abbreviated: count,
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [
+          clusterCoordinates[0] / count,
+          clusterCoordinates[1] / count,
+        ],
+      },
+    };
+  });
+
+  // Return a new FeatureCollection containing the clusters and original features
+  return {
+    type: "FeatureCollection",
+    features: clusters.concat(geoJsonSpaces.features),
+  };
+}
+
+
 function initMap(accessToken: string) {
   mapboxgl.accessToken = accessToken;
   const map = new mapboxgl.Map({
@@ -107,27 +171,84 @@ function initMap(accessToken: string) {
     });
   }
 
+  function addBuildingOccupancy(map: mapboxgl.Map, markerName: string) {
+    return new Promise<void>((resolve) => {
+      const img = new Image(145, 33);
+      img.onload = () => {
+        map.addImage(markerName, img);
+        resolve();
+      };
+      img.src = `/icons/clusters/${markerName}.svg`;
+    });
+  }
+
   map.on("load", () => {
     const markerNames = [...OCCUPANCY_RATES, "unknown"] as const;
-    Promise.all(
-      markerNames.map((occupancy) => addMarker(map, `map-marker-${occupancy}`))
-    ).then(() => {
+    Promise.all([
+      markerNames.map((occupancy) => {
+        addMarker(map, `map-marker-${occupancy}`)
+        addBuildingOccupancy(map, `pill-${occupancy}`);
+      }),
+    ]).then(() => {
       const occupancyIconNamePairs = OCCUPANCY_RATES.reduce(
         (acc, occupancy) => [...acc, occupancy, `map-marker-${occupancy}`],
         [] as string[]
       );
+
+      map.addSource("clustered-points", {
+        type: "geojson",
+        data: createManualClusters(mapStore.geoJsonSpaces),
+        promoteId: "spaceSlug",
+      });
+
       map.addLayer({
-        id: "points",
+        id: CLUSTERS_LAYER_ID,
+        type: 'symbol',
+        source: 'clustered-points',
+        filter: ['all', ['has', 'point_count']],
+        layout: {
+          'icon-image': ['concat', 'pill-', ['get', 'buildingOccupancy']],
+          'icon-allow-overlap': true,
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          'text-field': [
+            'format',
+            [
+              'case',
+              ['<', ['get', 'point_count_abbreviated'], 10],
+              ['concat', '0', ['to-string', ['get', 'point_count_abbreviated']]],
+              ['to-string', ['get', 'point_count_abbreviated']],
+            ],
+            {
+              'text-color': '#FFF',
+            },
+            '            ',
+            {},
+            ['get', 'buildingSlugModified'],
+            {
+              'text-color': '#000',
+            },
+          ],
+          'text-size': 15,
+          'text-anchor': 'left',
+          'text-justify': 'left',
+          'text-transform': 'uppercase',
+          'text-offset': [-4.25, 0],
+          'text-allow-overlap': true,
+          'text-optional': true,
+        },
+      });
+
+
+
+      map.addLayer({
+        id: UNCLUSTERED_LAYER_ID,
         interactive: true,
         type: "symbol",
-        source: {
-          type: "geojson",
-          data: mapStore.geoJsonSpaces,
-          promoteId: "spaceSlug",
-        },
+        source: "clustered-points",
+        filter: ["all", ["!", ["has", "point_count"]], [">=", ["zoom"], 17]],
         layout: {
           "icon-image": [
-            "match", // A rule to determine the icon for the point...
+            "match",// A rule to determine the icon for the point...
             ["get", "buildingOccupancy"], // ... is that if the `buildingOccupancy` property matches...
             ...occupancyIconNamePairs, // ... the first element of the pair from this (flat) sequence, the second element defines the name of the icon
             "map-marker-unknown", //And the final element determines the default icon
@@ -135,26 +256,49 @@ function initMap(accessToken: string) {
           "icon-allow-overlap": true,
         },
       });
-
+      
       restoreMapState();
       fixInsecureLinks();
       mapStore.setMap(map);
     });
   });
-  map.on("click", (e: any) => {
+
+  map.on("click", CLUSTERS_LAYER_ID, (e) => {
     const features = map.queryRenderedFeatures(e.point, {
-      layers: ["points"],
+      layers: [CLUSTERS_LAYER_ID],
     });
+
+    if (features.length) {
+      const geometry = features[0].geometry;
+
+      if (geometry.type === "Point" && geometry.coordinates) {
+        const coordinates = geometry.coordinates.slice() as [number, number];
+        map.flyTo({
+          center: coordinates,
+          zoom: 17,
+          essential: true,
+        });
+      }
+    }
+  });
+
+  // Click event handler for unclustered points
+  map.on("click", UNCLUSTERED_LAYER_ID, (e) => {
+    const features = map.queryRenderedFeatures(e.point, {
+      layers: [UNCLUSTERED_LAYER_ID],
+    });
+
     if (features.length) {
       const properties = features[0].properties || {};
-      if (!properties.buildingSlug || !properties.spaceSlug) {
+      if (!properties.buildingSlug || !features[0].id) {
         return;
       }
       saveMapState();
+
       router.push(
         $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
           buildingSlug: properties.buildingSlug as string,
-          spaceSlug: properties.spaceSlug as string,
+          spaceSlug: features[0].id as string,
         })
       );
     }
@@ -162,6 +306,27 @@ function initMap(accessToken: string) {
 
   map.on("moveend", () => {
     saveMapState();
+  });
+
+  map.on("zoom", () => {
+    const currentZoom = map.getZoom();
+
+    switch (true) {
+      case currentZoom >= 17:
+        map.setLayoutProperty(CLUSTERS_LAYER_ID, VISIBILITY_PROPERTY, "none");
+        map.setLayoutProperty(UNCLUSTERED_LAYER_ID, VISIBILITY_PROPERTY, "visible");
+        break;
+
+      case currentZoom < 14:
+        map.setLayoutProperty(CLUSTERS_LAYER_ID, VISIBILITY_PROPERTY, "none");
+        map.setLayoutProperty(UNCLUSTERED_LAYER_ID, VISIBILITY_PROPERTY, "none");
+        break;
+
+      default:
+        map.setLayoutProperty(CLUSTERS_LAYER_ID, VISIBILITY_PROPERTY, "visible");
+        map.setLayoutProperty(UNCLUSTERED_LAYER_ID, VISIBILITY_PROPERTY, "none");
+        break;
+    }
   });
 }
 </script>

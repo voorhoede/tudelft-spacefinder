@@ -156,7 +156,7 @@ export const useMapStore = defineStore("map", () => {
   ) {
     const map = await getMap();
     map.setFeatureState(
-      { source: "points", id: spaceId },
+      { source: "clustered-points", id: spaceId },
       { buildingOccupancy }
     );
   }
@@ -164,18 +164,22 @@ export const useMapStore = defineStore("map", () => {
   // Updates all data for all points
   async function updateData() {
     const map = await getMap();
-    const source = map.getSource("points") as GeoJSONSource;
-    source.setData(geoJsonSpaces.value);
+    const source = map.getSource("unclustered-point") as GeoJSONSource;
+    if (source) {
+      source.setData(geoJsonSpaces.value);
+    }
   }
 
   async function updateMarkers() {
     const map = await getMap();
+
     if (activeMarkerFilters.value.length) {
-      map.setFilter("points", ["all", ...activeMarkerFilters.value]);
+      map.setFilter("unclustered-point", ["all", ["none", ["has", "point_count"]], ...activeMarkerFilters.value]);
     } else {
-      map.setFilter("points");
+      map.setFilter("unclustered-point", ["all", ["none", ["has", "point_count"]]]);
     }
   }
+
 
   watch(activeMarkerFilters, () => updateMarkers());
 
