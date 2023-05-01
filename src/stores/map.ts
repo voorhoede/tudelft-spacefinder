@@ -6,6 +6,7 @@ import campusBounds from "~/lib/campus-bounds";
 import { useSpacesStore } from "./spaces";
 import { GeoJSONSource, Map } from "mapbox-gl";
 import type { Occupancy } from "../types/Filters";
+import {Feature, FeatureCollection, Point} from "geojson";
 
 export const useMapStore = defineStore("map", () => {
   const spacesStore = useSpacesStore();
@@ -22,12 +23,14 @@ export const useMapStore = defineStore("map", () => {
   const geoJsonSpaces = computed(() => {
     const now = new Date();
     const featuresPerSpace = spaces.value.map((space) => {
+      const buildingSlugModified = space.building.slug.slice(space.building.slug.indexOf('-') + 1);
       //TODO: use the raw spacesI18n?
       return {
         type: "Feature" as const,
         properties: {
           spaceSlug: space.slug,
           buildingSlug: space.building.slug,
+          buildingSlugModified: buildingSlugModified,
           buildingNumber: space.building.number,
           buildingOccupancy: space.building.occupancy,
           isOpen: spaceIsOpen(now, space.openingHours),
@@ -117,6 +120,64 @@ export const useMapStore = defineStore("map", () => {
     }
   }
 
+  /**
+   * Create manual clusters for a given set of geographic spaces.
+   * @param {FeatureCollection} geoJsonSpaces - A GeoJSON FeatureCollection of spaces.
+   * @returns {FeatureCollection} - A new FeatureCollection containing clustered and original features.
+   */
+  function createManualClusters(geoJsonSpaces: FeatureCollection): FeatureCollection {
+    // Group the features by building slug
+    const groupedSpaces = geoJsonSpaces.features.reduce<{ [key: string]: Feature[] }>(
+      (acc, space) => {
+        const buildingSlug = space.properties?.buildingSlug;
+        if (!acc[buildingSlug]) {
+          acc[buildingSlug] = [];
+        }
+        acc[buildingSlug].push(space);
+        return acc;
+      }, {});
+
+    const clusters = Object.entries(groupedSpaces).map(([buildingSlug, spaces]): Feature => {
+      // Calculate the cluster center by averaging the coordinates of all spaces in the cluster
+      const clusterCoordinates = spaces.reduce<[number, number]>(
+        ([sumLon, sumLat], space) => {
+          const coordinates = (space.geometry as Point).coordinates;
+          return [sumLon + coordinates[0], sumLat + coordinates[1]];
+        },
+        [0, 0]
+      );
+
+      const count = spaces.length;
+      const buildingOccupancy = spaces[0].properties?.buildingOccupancy;
+      const buildingSlugModified = spaces[0].properties?.buildingSlugModified;
+
+      // Create a cluster feature with the calculated center and properties
+      return {
+        type: "Feature",
+        properties: {
+          buildingSlugModified,
+          buildingSlug,
+          buildingOccupancy,
+          point_count: count,
+          point_count_abbreviated: count,
+        },
+        geometry: {
+          type: "Point",
+          coordinates: [
+            clusterCoordinates[0] / count,
+            clusterCoordinates[1] / count,
+          ],
+        },
+      };
+    });
+
+    // Return a new FeatureCollection containing the clusters and original features
+    return {
+      type: "FeatureCollection",
+      features: clusters.concat(geoJsonSpaces.features),
+    };
+  }
+
   type EqualsFilter = ["==", string, any];
   type InFilter = ["in", string, ...Array<{}>];
   type AnyFilter = ["any", ...Array<EqualsFilter>];
@@ -164,9 +225,10 @@ export const useMapStore = defineStore("map", () => {
   // Updates all data for all points
   async function updateData() {
     const map = await getMap();
-    const source = map.getSource("unclustered-point") as GeoJSONSource;
+    const source = map.getSource("clustered-points") as GeoJSONSource;
     if (source) {
-      source.setData(geoJsonSpaces.value);
+      const updatedData = createManualClusters(geoJsonSpaces.value);
+      source.setData(updatedData);
     }
   }
 
@@ -175,15 +237,20 @@ export const useMapStore = defineStore("map", () => {
 
     if (activeMarkerFilters.value.length) {
       map.setFilter("unclustered-point", ["all", ["none", ["has", "point_count"]], ...activeMarkerFilters.value]);
+      // map.setFilter("clusters", ["all", ["has", "point_count"], ...activeMarkerFilters.value]);
     } else {
       map.setFilter("unclustered-point", ["all", ["none", ["has", "point_count"]]]);
+      // map.setFilter("clusters", ["all", ["has", "point_count"]]);
     }
   }
-
-
-  watch(activeMarkerFilters, () => updateMarkers());
+  
+  watch(activeMarkerFilters, () => {
+    updateMarkers();
+    updateData();
+  });
 
   return {
+    createManualClusters,
     mapLoaded,
     setMap,
     zoomToCampus,

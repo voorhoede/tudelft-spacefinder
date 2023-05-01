@@ -14,7 +14,6 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import {Feature, FeatureCollection, Point} from "geojson";
 
 import campusBounds from "~/lib/campus-bounds";
 import { useMapStore } from "~/stores/map";
@@ -86,64 +85,6 @@ function fixInsecureLinks() {
   });
 }
 
-/**
- * Create manual clusters for a given set of geographic spaces.
- * @param {FeatureCollection} geoJsonSpaces - A GeoJSON FeatureCollection of spaces.
- * @returns {FeatureCollection} - A new FeatureCollection containing clustered and original features.
- */
-function createManualClusters(geoJsonSpaces: FeatureCollection): FeatureCollection {
-  // Group the features by building slug
-  const groupedSpaces = geoJsonSpaces.features.reduce<{ [key: string]: Feature[] }>(
-    (acc, space) => {
-    const buildingSlug = space.properties?.buildingSlug;
-    if (!acc[buildingSlug]) {
-      acc[buildingSlug] = [];
-    }
-    acc[buildingSlug].push(space);
-    return acc;
-  }, {});
-
-  const clusters = Object.entries(groupedSpaces).map(([buildingSlug, spaces]): Feature => {
-    // Calculate the cluster center by averaging the coordinates of all spaces in the cluster
-    const clusterCoordinates = spaces.reduce<[number, number]>(
-      ([sumLon, sumLat], space) => {
-        const coordinates = (space.geometry as Point).coordinates;
-        return [sumLon + coordinates[0], sumLat + coordinates[1]];
-      },
-      [0, 0]
-    );
-
-    const count = spaces.length;
-    const buildingOccupancy = spaces[0].properties?.buildingOccupancy;
-    const modifiedSlug = buildingSlug.slice(buildingSlug.indexOf('-') + 1);
-
-    // Create a cluster feature with the calculated center and properties
-    return {
-      type: "Feature",
-      properties: {
-        buildingSlugModified: modifiedSlug,
-        buildingSlug: buildingSlug,
-        buildingOccupancy: buildingOccupancy,
-        point_count: count,
-        point_count_abbreviated: count,
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [
-          clusterCoordinates[0] / count,
-          clusterCoordinates[1] / count,
-        ],
-      },
-    };
-  });
-
-  // Return a new FeatureCollection containing the clusters and original features
-  return {
-    type: "FeatureCollection",
-    features: clusters.concat(geoJsonSpaces.features),
-  };
-}
-
 
 function initMap(accessToken: string) {
   mapboxgl.accessToken = accessToken;
@@ -197,7 +138,7 @@ function initMap(accessToken: string) {
 
       map.addSource("clustered-points", {
         type: "geojson",
-        data: createManualClusters(mapStore.geoJsonSpaces),
+        data: mapStore.createManualClusters(mapStore.geoJsonSpaces),
         promoteId: "spaceSlug",
       });
 
