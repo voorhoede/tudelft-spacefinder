@@ -39,7 +39,14 @@ onMounted(() => {
 <style>
 .building-overview {
   padding: var(--spacing-default);
+  height: calc(100% - var(--navigation-height-mobile));
   -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 700px) {
+  .building-overview {
+    height: calc(100% - var(--navigation-height-desktop));
+  }
 }
 
 .building-overview .building-card:not(:last-child) {

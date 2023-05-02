@@ -17,7 +17,6 @@
     <AppHeader
       :opened-menu="openedMenu"
       @open-app-menu="openAppMenu"
-      @open-filter-menu="openFilterMenu"
     />
 
     <main class="default-layout__main">
@@ -25,6 +24,11 @@
 
       <MapboxMap class="default-layout__map" />
     </main>
+
+    <AppNavigation
+      :opened-menu="openedMenu"
+      @open-filter-menu="openFilterMenu"
+    />
 
     <AppMenu
       :is-open="openedMenu === 'app-menu'"
