@@ -72,6 +72,11 @@ watch(
   color: var(--background-color);
 }
 
+.app-header__logo:hover,
+.app-header__logo:focus {
+  color: var(--background-color);
+}
+
 .app-header__logo img {
   height: 25px;
 }
