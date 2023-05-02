@@ -65,7 +65,8 @@
       {{ $t("filter") }}
 
       <div class="app-menu__filter-indicator">
-        55
+        {{ spacesStore.numberOfSelectedFilters }}
+
         <span class="a11y-sr-only">
           {{ $t("filtersSelected") }}
         </span>
@@ -75,9 +76,15 @@
 </template>
 
 <script setup lang="ts">
+import { useSpacesStore } from "~/stores/spaces";
+
 const props = defineProps<{ openedMenu: string | null }>();
-let lastOpenedMenu: string | null = null;
+
+const spacesStore = useSpacesStore();
 const menuButton = ref(null as null | HTMLButtonElement);
+
+let lastOpenedMenu: string | null = null;
+
 watch(
   () => props.openedMenu,
   (newValue) => {    
