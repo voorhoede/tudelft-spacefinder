@@ -1,7 +1,10 @@
 <template>
   <nav class="app-navigation">
     <ul class="app-navigation__items flat-list">
-      <li class="app-navigation__item">
+      <li 
+        v-if="$isMobile.value"
+        class="app-navigation__item"
+      >
         <NuxtLink
           to="/"
           class="button button--navigation"
@@ -16,10 +19,7 @@
           </span>
         </NuxtLink>
       </li>
-      <li
-        v-if="$isMobile.value"
-        class="app-navigation__item"
-      >
+      <li class="app-navigation__item">
         <NuxtLink
           :to="$localePath('/spaces')"
           class="button button--navigation"
