@@ -1,8 +1,5 @@
 <template>
-  <section
-    v-if="!$isMobile.value"
-    class="default-layout__info"
-  >
+  <section class="default-layout__info">
     <h2 class="a11y-sr-only">
       {{ allSpacesTitle }}
     </h2>
@@ -16,6 +13,7 @@
 <script setup lang="ts">
 import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
+definePageMeta({ alias: "/:locale/ruimtes" });
 const { $t } = useNuxtApp();
 const spacesStore = useSpacesStore();
 const mapStore = useMapStore();

@@ -1,21 +1,15 @@
 <template>
-  <div
-    ref="mapContainer"
-    class="mapbox-map"
-  >
+  <div>
+    <div
+      ref="mapContainer"
+      class="mapbox-map"
+    />
     <div
       v-if="!mapLoaded"
       class="mapbox-map__placeholder"
     >
       <span class="mapbox-map__loading-message">{{ $t("mapLoading") }}</span>
     </div>
-    <ZoomControls
-      v-if="mapLoaded"
-      class="mapbox-map__zoom-controls"
-      @auto-focus="autoFocus"
-      @zoom-in="zoomIn"
-      @zoom-out="zoomOut"
-    />
   </div>
 </template>
 
@@ -46,18 +40,14 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("resize", onResizeDebounce, true);
 });
-
-function autoFocus() {
-  mapStore.zoomAuto();
-}
-function zoomIn() {
-  mapStore.zoomIn();
-}
-function zoomOut() {
-  mapStore.zoomOut();
-}
 function onResize() {
   mapStore.resizeMap();
+}
+function saveMapState() {
+  mapStore.saveMapState();
+}
+function restoreMapState() {
+  mapStore.restoreMapState();
 }
 
 /**
@@ -102,7 +92,7 @@ function initMap(accessToken: string) {
     ],
     zoom: 13,
     trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
-    style: "mapbox://styles/mapbox/streets-v10",
+    style: "mapbox://styles/voorhoede/clgm5v8zx00bd01pj4hm0hvhn",
     maxBounds: [campusBounds.southWest, campusBounds.northEast],
   });
 
@@ -146,6 +136,8 @@ function initMap(accessToken: string) {
           "icon-allow-overlap": true,
         },
       });
+
+      restoreMapState();
       fixInsecureLinks();
       mapStore.setMap(map);
     });
@@ -159,6 +151,7 @@ function initMap(accessToken: string) {
       if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
+      saveMapState();
       router.push(
         $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
           buildingSlug: properties.buildingSlug as string,
@@ -166,6 +159,10 @@ function initMap(accessToken: string) {
         })
       );
     }
+  });
+
+  map.on("moveend", () => {
+    saveMapState();
   });
 }
 </script>
@@ -182,7 +179,11 @@ function initMap(accessToken: string) {
 }
 
 .mapbox-map__placeholder {
+  position: absolute;
+  z-index: var(--layer-overlay);
   flex: 1 1 auto;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -192,12 +193,5 @@ function initMap(accessToken: string) {
 
 .mapbox-map__loading-message {
   font-size: var(--font-size-default);
-}
-
-.mapbox-map__zoom-controls {
-  position: absolute;
-  bottom: var(--spacing-default);
-  right: var(--spacing-default);
-  z-index: var(--layer--raised);
 }
 </style>

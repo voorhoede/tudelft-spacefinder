@@ -25,12 +25,12 @@
           <button
             ref="closeButton"
             type="button"
-            class="button button--header"
+            class="button button--navigation button--spacing"
             @click="$emit('close')"
           >
             <SvgIcon
               name="close-icon"
-              class="button--header__icon"
+              class="button--navigation__icon"
             />
 
             {{ $t("close") }}
@@ -125,7 +125,7 @@ function focusCloseButton() {
 
 @media (min-width: 700px) {
   .modal-drawer__header {
-    padding: 0 var(--spacing-default) 0 1.5rem;
+    padding: 0 var(--spacing-default) 0 var(--spacing-default-half);
     height: var(--header-height-desktop);
     line-height: var(--header-height-desktop);
   }

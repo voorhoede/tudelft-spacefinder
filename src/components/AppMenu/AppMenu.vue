@@ -8,38 +8,6 @@
       <ul class="flat-list">
         <li class="app-menu__item">
           <NuxtLink
-            to="/"
-            class="app-menu__link"
-            @click="$emit('close')"
-          >
-            <SvgIcon
-              name="home-icon"
-              class="app-menu__icon"
-            />
-
-            <span class="app-menu__link-name">
-              {{ $t("home") }}
-            </span>
-          </NuxtLink>
-        </li>
-        <li class="app-menu__item">
-          <NuxtLink
-            :to="$localePath('/buildings')"
-            class="app-menu__link"
-            @click="$emit('close')"
-          >
-            <SvgIcon
-              name="building-icon"
-              class="app-menu__icon"
-            />
-
-            <span class="app-menu__link-name">
-              {{ $t("buildingTitle") }}
-            </span>
-          </NuxtLink>
-        </li>
-        <li class="app-menu__item">
-          <NuxtLink
             :to="$localePath('/help')"
             class="app-menu__link"
             @click="$emit('close')"
@@ -67,34 +35,6 @@
 
             <span class="app-menu__link-name">
               {{ $t("feedback") }}
-            </span>
-          </NuxtLink>
-        </li>
-        <li class="mobile-only app-menu__item">
-          <NuxtLink
-            to="/"
-            class="app-menu__link"
-            @click="toggleMapMode"
-          >
-            <span v-if="$isMapMode.value">
-              <SvgIcon
-                name="list-icon"
-                class="app-menu__icon"
-              />
-
-              <span class="app-menu__link-name">
-                {{ $t("listToggle") }}
-              </span>
-            </span>
-            <span v-else>
-              <SvgIcon
-                name="map-icon"
-                class="app-menu__icon"
-              />
-
-              <span class="app-menu__link-name">
-                {{ $t("mapToggle") }}
-              </span>
             </span>
           </NuxtLink>
         </li>
@@ -131,19 +71,12 @@ import { useInstallationStore } from "~/stores/installation";
 
 defineProps<{ isOpen?: boolean }>();
 const emit = defineEmits(["close"]);
-//Without local rename $isMapMode overrides the one that is auto-available in the template and since it's a component-local ref it starts being accessible without .value, which is misleading
-const { $isMapMode: isMapMode } = useNuxtApp();
 const installationStore = useInstallationStore();
 
 const { isInstallable } = storeToRefs(installationStore);
 
 function installApp() {
   installationStore.installApp().then(() => emit("close"));
-}
-
-function toggleMapMode() {
-  isMapMode.value = !isMapMode.value;
-  emit("close");
 }
 </script>
 

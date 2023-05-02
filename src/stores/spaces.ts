@@ -39,7 +39,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     adjustableChairs: false,
     buildings: [],
     daylit: false,
-    ethernet: false,
     studyType: [],
     nearBathroom: false,
     nearCoffeeMachine: false,
@@ -48,7 +47,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     presentationScreen: false,
     quietness: [],
     showOpenLocations: false,
-    smartBoard: false,
     stationaryPC: false,
     whiteBoard: false,
   };
@@ -228,8 +226,12 @@ export const useSpacesStore = defineStore("spaces", () => {
     spaceFilter(spaces.value, filters.value)
   );
 
-  const isFiltered = computed(
-    () => filteredSpaces.value.length < spaces.value.length
+  const numberOfSelectedFilters = computed(
+    () => {
+      return Object.values(filters.value).reduce((acc, item) => {
+        return acc + (item === true ? 1 : item.length > 0 ? item.length : 0)
+      }, 0)
+    }
   );
 
   function getBuildingByNumber(number: number) {
@@ -270,7 +272,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     spaces,
     filteredSpaces,
     clearFilters,
-    isFiltered,
+    numberOfSelectedFilters,
     buildingsI18n, //These need to be exported to be passed as payload from server to client
     roomsI18n,
     spacesI18n,

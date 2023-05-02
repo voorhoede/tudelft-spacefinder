@@ -16,12 +16,12 @@
           </h1>
           <button
             type="button"
-            class="button button--header"
+            class="button button--navigation button--spacing"
             @click="close"
           >
             <SvgIcon
               name="close-icon"
-              class="button--header__icon"
+              class="button--navigation__icon"
             />
             {{ $t("close") }}
           </button>
@@ -101,7 +101,7 @@ function close() {
 
 @media (min-width: 700px) {
   .pop-up__heading {
-    padding: 0 var(--spacing-default) 0 1.5rem;
+    padding: 0 var(--spacing-default) 0 var(--spacing-default-half);
     height: var(--header-height-desktop);
     line-height: var(--header-height-desktop);
   }

@@ -36,10 +36,8 @@ export default {
     null,
     "daylit",
     "powerOutlets",
-    "ethernet",
     "stationaryPC",
     "whiteBoard",
-    "smartBoard",
     "presentationScreen",
     "nearCoffeeMachine",
     "nearPrinter",
@@ -64,7 +62,6 @@ function cast(value: string, context: { column: string | number }) {
     // conversion to booleans
     case "daylit":
     case "whiteBoard":
-    case "smartBoard":
     case "presentationScreen":
     case "stationaryPC":
     case "nearCoffeeMachine":
@@ -77,7 +74,6 @@ function cast(value: string, context: { column: string | number }) {
       return quietness(value);
     // power outlets
     case "powerOutlets":
-    case "ethernet":
       return maybeDutchBooleanAmount(value);
     case "adjustableChairs":
       return value !== "0";
