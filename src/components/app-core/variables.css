@@ -24,8 +24,10 @@
 
     /* spacing */
     --spacing-double: 2rem;
+    --spacing-default-half: 1.5rem;
     --spacing-default: 1rem;
     --spacing-default-negative: -1rem;
+    --spacing-three-quarter: .75rem;
     --spacing-half: .5rem;
     --spacing-half-negative: -.5rem;
     --spacing-quarter: .25rem;
@@ -41,7 +43,9 @@
 
     /* sizing */
     --header-height-mobile: 50px;
-    --header-height-desktop: 75px;
+    --header-height-desktop: 65px;
+    --navigation-height-mobile: 50px;
+    --navigation-height-desktop: 55px;
     --column-width-mobile: 310px;
     --column-width-desktop: 360px;
 }

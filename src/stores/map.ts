@@ -10,7 +10,7 @@ import {Feature, FeatureCollection, Point} from "geojson";
 
 export const useMapStore = defineStore("map", () => {
   const spacesStore = useSpacesStore();
-  const { currentBuilding, currentSpace, spaces, filters } =
+  const { currentBuilding, spaces, filters } =
     storeToRefs(spacesStore);
 
   const mapDeferred = deferred<Map>();

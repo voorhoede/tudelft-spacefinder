@@ -51,10 +51,16 @@ defineProps<{ spaces: Space[]; showBuildingOccupancy: boolean }>();
 @import "../app-core/variables.css";
 
 .space-list {
-  height: 100%;
+  height: calc(100% - var(--navigation-height-mobile));
   padding: var(--spacing-default) var(--spacing-default) 0
     var(--spacing-default);
   -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 700px){
+  .space-list {
+    height: calc(100% - var(--navigation-height-desktop));
+  }
 }
 
 .space-list__header {

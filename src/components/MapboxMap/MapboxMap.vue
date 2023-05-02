@@ -1,8 +1,9 @@
 <template>
-  <div
-    ref="mapContainer"
-    class="mapbox-map"
-  >
+  <div>
+    <div
+      ref="mapContainer"
+      class="mapbox-map"
+    />
     <div
       v-if="!mapLoaded"
       class="mapbox-map__placeholder"
@@ -284,7 +285,11 @@ function initMap(accessToken: string) {
 }
 
 .mapbox-map__placeholder {
+  position: absolute;
+  z-index: var(--layer-overlay);
   flex: 1 1 auto;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -294,12 +299,5 @@ function initMap(accessToken: string) {
 
 .mapbox-map__loading-message {
   font-size: var(--font-size-default);
-}
-
-.mapbox-map__zoom-controls {
-  position: absolute;
-  bottom: var(--spacing-default);
-  right: var(--spacing-default);
-  z-index: var(--layer--raised);
 }
 </style>

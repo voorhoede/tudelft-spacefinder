@@ -10,7 +10,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   return {
     provide: {
       isMobile: computed(() => isMobile.value),
-      isMapMode: ref(false),
     },
   };
 });
