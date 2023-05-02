@@ -1,0 +1,17 @@
+<template>
+  <a
+    :href="to"
+    target="_blank"
+    class="button button--round"
+  >
+    <SvgIcon
+      name="route-icon"
+      class="button--round__icon"
+    />
+    <span class="a11y-sr-only">{{ $t("route") }}</span>
+  </a>
+</template>
+
+<script setup lang="ts">
+defineProps<{ to: string }>();
+</script>
