@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :href="to"
+    :to="to"
     target="_blank"
     class="button button--round"
   >
