@@ -1,5 +1,5 @@
 <template>
-  <a
+  <NuxtLink
     :href="to"
     target="_blank"
     class="button button--round"
@@ -9,7 +9,7 @@
       class="button--round__icon"
     />
     <span class="a11y-sr-only">{{ $t("route") }}</span>
-  </a>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
