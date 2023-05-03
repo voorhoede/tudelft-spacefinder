@@ -2,18 +2,26 @@
   <a
     v-if="useHistory && history.previousPageUrl"
     :href="history.previousPageUrl"
-    class="back-button"
     @click.prevent="history.goBack()"
+    class="button button--round"
   >
-    <BackButtonContent />
+    <SvgIcon
+      name="back-icon"
+      class="button--round__icon"
+    />
+    <span class="a11y-sr-only">{{ $t("back") }}</span>
   </a>
 
   <NuxtLink
     v-else
     :to="to"
-    class="back-button"
+    class="button button--round"
   >
-    <BackButtonContent />
+    <SvgIcon
+      name="back-icon"
+      class="button--round__icon"
+    />
+    <span class="a11y-sr-only">{{ $t("back") }}</span>
   </NuxtLink>
 </template>
 
@@ -31,21 +39,3 @@ withDefaults(defineProps<Props>(), {
 
 const history = useHistoryStore();
 </script>
-
-<style>
-@import "../app-core/variables.css";
-
-.back-button {
-  z-index: var(--layer--popup);
-  position: fixed;
-  top: calc(var(--header-height-mobile) + var(--spacing-default));
-  left: var(--spacing-default);
-}
-
-@media (min-width: 700px) {
-  .back-button {
-    top: calc(var(--header-height-desktop) + var(--spacing-default));
-    left: calc(var(--column-width-desktop) + var(--spacing-default));
-  }
-}
-</style>

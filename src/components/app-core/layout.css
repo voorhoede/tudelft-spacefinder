@@ -58,7 +58,7 @@ body {
 @media (max-width: 699px) {
     .default-layout__info--space-detail {
         top: auto;
-        bottom: var(--spacing-default);
+        bottom: calc(var(--navigation-height-mobile) + var(--spacing-default));
         left: var(--spacing-default);
         right: var(--spacing-default);
         padding: 0;

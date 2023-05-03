@@ -1,10 +1,15 @@
 <template>
   <section v-if="space">
-    <BackButton :to="$localePath('/buildings/:buildingSlug', { space })" />
+    <BackButton
+      :to="$localePath('/buildings/:buildingSlug', { space })"
+      class="button--back"
+    />
 
-    <div class="space-detail__share-button">
-      <SocialShare :url="shareUrl" />
-    </div>
+    <RouteButton
+      v-if="routeUrl"
+      :to="routeUrl"
+      class="button--route"
+    />
 
     <div class="default-layout__info default-layout__info--space-detail">
       <SpaceDetailCard
@@ -27,7 +32,6 @@ definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 const { $t, $isMobile } = useNuxtApp();
 const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
-const route = useRoute();
 
 const card = ref<InstanceType<typeof SpaceDetailCard> | null>(null);
 
@@ -35,8 +39,10 @@ const { currentSpace: space } = storeToRefs(spacesStore);
 
 const runtimeConfig = useRuntimeConfig();
 
-const shareUrl = computed(
-  () => `${runtimeConfig.public.baseUrl}${route.fullPath}`
+const routeUrl = computed(
+  () => space.value
+        ? `https://www.google.com/maps/place/${space.value.latitude},${space.value.longitude}`
+        : ''
 );
 
 onMounted(() => {
@@ -67,20 +73,6 @@ useSpacefinderHead(
     ~ .default-layout__map
     .mapbox-map__zoom-controls {
     display: none;
-  }
-}
-
-.space-detail__share-button {
-  z-index: var(--layer--popup);
-  position: fixed;
-  top: calc(var(--header-height-mobile) + var(--spacing-default));
-  left: calc(var(--spacing-double) + 50px);
-}
-
-@media (min-width: 700px) {
-  .space-detail__share-button {
-    top: calc(var(--header-height-desktop) + var(--spacing-default));
-    left: calc(var(--column-width-desktop) + var(--spacing-double) + 50px);
   }
 }
 </style>
