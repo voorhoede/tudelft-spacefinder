@@ -2,13 +2,13 @@
   <section v-if="space">
     <BackButton
       :to="$localePath('/buildings/:buildingSlug', { space })"
-      class="space-detail__back-button"
+      class="button--back"
     />
 
     <RouteButton
       v-if="routeUrl"
       :to="routeUrl"
-      class="space-detail__route-button"
+      class="button--route"
     />
 
     <div class="default-layout__info default-layout__info--space-detail">
@@ -73,36 +73,6 @@ useSpacefinderHead(
     ~ .default-layout__map
     .mapbox-map__zoom-controls {
     display: none;
-  }
-}
-
-.space-detail__back-button,
-.space-detail__route-button {
-  z-index: var(--layer--popup);
-  position: fixed;
-}
-
-.space-detail__back-button {
-  top: calc(var(--header-height-mobile) + var(--spacing-default));
-  left: var(--spacing-default);
-}
-
-@media (min-width: 700px) {
-  .space-detail__back-button {
-    top: calc(var(--header-height-desktop) + var(--spacing-default));
-    left: calc(var(--column-width-desktop) + var(--spacing-default));
-  }
-}
-
-.space-detail__route-button {
-  top: calc(var(--header-height-mobile) + var(--spacing-default));
-  left: calc(5 * var(--spacing-default));
-}
-
-@media (min-width: 700px) {
-  .space-detail__route-button {
-    top: calc(var(--header-height-desktop) + var(--spacing-default));
-    left: calc(var(--column-width-desktop) + 5 * var(--spacing-default));
   }
 }
 </style>

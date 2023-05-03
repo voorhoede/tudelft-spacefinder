@@ -3,6 +3,7 @@
     <BackButton
       :use-history="false"
       :to="$localePath('/buildings')"
+      class="button--back"
     />
     <div class="default-layout__info building-layout">
       <BuildingHeader

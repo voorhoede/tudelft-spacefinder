@@ -92,3 +92,33 @@
   height: 24px;
   width: 24px;
 }
+
+.button--back,
+.button--route {
+  z-index: var(--layer--popup);
+  position: fixed;
+}
+
+.button--back {
+  top: calc(var(--header-height-mobile) + var(--spacing-default));
+  left: var(--spacing-default);
+}
+
+@media (min-width: 700px) {
+  .button--back {
+    top: calc(var(--header-height-desktop) + var(--spacing-default));
+    left: calc(var(--column-width-desktop) + var(--spacing-default));
+  }
+}
+
+.button--route {
+  top: calc(var(--header-height-mobile) + var(--spacing-default));
+  left: calc(5 * var(--spacing-default));
+}
+
+@media (min-width: 700px) {
+  .button--route {
+    top: calc(var(--header-height-desktop) + var(--spacing-default));
+    left: calc(var(--column-width-desktop) + 5 * var(--spacing-default));
+  }
+}
