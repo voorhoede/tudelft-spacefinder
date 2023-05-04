@@ -18,7 +18,7 @@ async function getFromDato(query: string, rootProp: string) {
 export function getBuildingsDataFromCms() {
   if (mockDataEnabled) {
     console.info("Serving mock data from mock/cms/data.json");
-    return import("../../../mock/cms/data.json").then((data) => data.default);
+    return import("../../../mock/cms/buildings.json").then((data) => data.default);
   }
   return getFromDato(
     `{
@@ -53,6 +53,23 @@ export function getPageFromCms(pageName: string): Promise<DatoInfoPage> {
       }
     }`,
     pageName
+  );
+}
+
+export function getSpacesDataFromCms() {
+  if (mockDataEnabled)
+    return import("../../../mock/cms/spaces.json").then((info) => info.default);
+
+  return getFromDato(
+    `{
+      allSpaces {
+        spaceId
+        image {
+          url
+        }
+      }
+    }`,
+    "allSpaces"
   );
 }
 

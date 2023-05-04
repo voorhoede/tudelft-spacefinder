@@ -19,6 +19,9 @@
         "longitude": { "type": "number", "description": "geospatial longitude" },
         "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "Opening hours for space" },
         "facilities": { "$ref": "#/definitions/facilities" },
+        "image": {
+          "$ref": "#/definitions/image"
+        },
         "i18n": {
           "type": "object",
           "properties": {
@@ -98,6 +101,16 @@
         "nearPrinter",
         "nearBathroom"
       ]
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [ "url" ],
+      "additionalProperties": false
     }
   }
 }

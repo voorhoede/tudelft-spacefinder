@@ -43,12 +43,19 @@ export interface RoomBaseRaw {
   tables: number;
   facilities: SpaceFeatures;
   openingHours: OpeningHours[];
-  imageUrl?: string | undefined; //It is currently not provided by any source, but some frontend code is ready to consume it
+  image?: {
+    url: string;
+  };
   activeDevices?: number;
   occupancy?: Occupancy | undefined;
 }
 
 export type CsvSpaceData = Omit<
   SpaceI18n,
-  "openingHours" | "imageUrl" | "activeDevices"
+  "openingHours" | "activeDevices"
 > & { exchangeBuildingId: string; exchangeRoomId: string };
+
+export type CmsSpaceData = Pick<
+  SpaceI18n,
+  "spaceId" | "image"
+>;

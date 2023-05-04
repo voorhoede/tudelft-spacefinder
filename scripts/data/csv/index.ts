@@ -10,6 +10,9 @@ import {
   CsvAndCmsBuildingData,
   CmsBuildingData,
 } from "./../../../src/types/Building";
+import {
+  CmsSpaceData
+} from "./../../../src/types/Space"
 import { FACILITIES } from "../../../src/types/Filters";
 
 export function buildingNumberFromId(buildingId: string) {
@@ -25,7 +28,8 @@ export function getData(csvPath: string) {
 
 export function transform(
   dataFromCsv: Record<string, any>[],
-  dataFromCms: CmsBuildingData[]
+  buildingDataFromCms: CmsBuildingData[],
+  spacesDataFromCms: CmsSpaceData[]
 ) {
   const spaces: CsvSpaceData[] = [];
   const buildings = {} as Record<number, CsvBuildingData>;
@@ -42,6 +46,8 @@ export function transform(
       continue;
     }
     const space = getSpace(buildingNumber, source);
+    const cmsSpace = spacesDataFromCms.find(cmsSpace => cmsSpace.spaceId === space.spaceId);
+    space.image = cmsSpace?.image    
     spaces.push(space);
 
     if (!(buildingNumber in buildings)) {
@@ -123,7 +129,7 @@ export function transform(
       room.facilities[facility] ||= source[facility];
   }
 
-  for (const cmsBuilding of dataFromCms) {
+  for (const cmsBuilding of buildingDataFromCms) {
     const building = buildings[cmsBuilding.number] as CsvAndCmsBuildingData;
     if (!building) continue;
     building.occupancyLimit = cmsBuilding.occupancyLimit;
