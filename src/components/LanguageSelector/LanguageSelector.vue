@@ -7,7 +7,7 @@
         :to="getLocalePath(locale)"
         :hreflang="locale"
         class="app-menu__link"
-        @click="handleLanguageLinkClick()"
+        @click="$emit('close')"
       >
         <SvgIcon
           name="world-icon"
@@ -23,7 +23,6 @@
 
 <script setup lang="ts">
 import { useSpacesStore } from "~/stores/spaces";
-import { useMapStore } from "~/stores/map";
 
 const languages = [
   { locale: "en", name: "english" },
@@ -31,10 +30,8 @@ const languages = [
 ];
 
 const spacesStore = useSpacesStore();
-const mapStore = useMapStore();
 const { $localePath } = useNuxtApp();
 const { name: routeName } = useRoute();
-const emit = defineEmits(['close'])
 
 function getLocalePath(locale: string) {
   if (spacesStore.currentBuilding) {
@@ -52,11 +49,5 @@ function getLocalePath(locale: string) {
 
   const [, rootSegment] = (routeName as string).split("-");
   return $localePath(`/${rootSegment ?? ""}`, { locale });
-}
-
-async function handleLanguageLinkClick() {
-  mapStore.updateData();
-  // emit an event
-  emit('close');
 }
 </script>

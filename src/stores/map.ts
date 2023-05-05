@@ -17,6 +17,9 @@ export const useMapStore = defineStore("map", () => {
 
   const mapLoaded = ref(false);
 
+  const nuxtApp = useNuxtApp();
+  const locale = nuxtApp.$locale;
+
   const lastZoomLevel = ref<number | null>(null);
   const lastMapCenter = ref<[number, number] | null>(null);
 
@@ -233,15 +236,17 @@ export const useMapStore = defineStore("map", () => {
 
     if (activeMarkerFilters.value.length) {
       map.setFilter("unclustered-point", ["all", ["none", ["has", "point_count"]], ...activeMarkerFilters.value]);
-      // map.setFilter("clusters", ["all", ["has", "point_count"], ...activeMarkerFilters.value]);
     } else {
       map.setFilter("unclustered-point", ["all", ["none", ["has", "point_count"]]]);
-      // map.setFilter("clusters", ["all", ["has", "point_count"]]);
     }
   }
   
   watch(activeMarkerFilters, () => {
     updateMarkers();
+    updateData();
+  });
+
+  watch(locale, () => {
     updateData();
   });
 
