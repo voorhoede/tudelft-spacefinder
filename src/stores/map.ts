@@ -178,8 +178,7 @@ export const useMapStore = defineStore("map", () => {
           buildingAbbreviation,
           buildingSlug,
           buildingOccupancy,
-          point_count: count,
-          point_count_abbreviated: count,
+          pointCount: count,
         },
         geometry: {
           type: "Point",
@@ -252,9 +251,9 @@ export const useMapStore = defineStore("map", () => {
     const map = await getMap();
 
     if (activeMarkerFilters.value.length) {
-      map.setFilter("unclustered-point", ["all", ["none", ["has", "point_count"]], ...activeMarkerFilters.value]);
+      map.setFilter("unclustered-point", ["all", ["none", ["has", "pointCount"]], ...activeMarkerFilters.value]);
     } else {
-      map.setFilter("unclustered-point", ["all", ["none", ["has", "point_count"]]]);
+      map.setFilter("unclustered-point", ["all", ["none", ["has", "pointCount"]]]);
     }
   }
   

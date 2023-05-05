@@ -148,7 +148,7 @@ function initMap(accessToken: string) {
         id: CLUSTERS_LAYER_ID,
         type: 'symbol',
         source: 'clustered-points',
-        filter: ['all', ['has', 'point_count']],
+        filter: ['all', ['has', 'pointCount']],
         layout: {
           'icon-image': ['concat', 'pill-', ['get', 'buildingOccupancy']],
           'icon-allow-overlap': true,
@@ -157,9 +157,9 @@ function initMap(accessToken: string) {
             'format',
             [
               'case',
-              ['<', ['get', 'point_count_abbreviated'], 10], // get all point_count_abbreviated that are less than 10
-              ['concat', '0', ['to-string', ['get', 'point_count_abbreviated']]], // add a 0 in front of the number
-              ['to-string', ['get', 'point_count_abbreviated']], // else just return the number
+              ['<', ['get', 'pointCount'], 10], // get all pointCount that are less than 10
+              ['concat', '0', ['to-string', ['get', 'pointCount']]], // add a 0 in front of the number
+              ['to-string', ['get', 'pointCount']], // else just return the number
             ],
             {
               'text-color': '#FFF',
@@ -188,7 +188,7 @@ function initMap(accessToken: string) {
         interactive: true,
         type: "symbol",
         source: "clustered-points",
-        filter: ["all", ["!", ["has", "point_count"]], [">=", ["zoom"], 17]],
+        filter: ["all", ["!", ["has", "pointCount"]], [">=", ["zoom"], 17]],
         layout: {
           "icon-image": [
             "match",// A rule to determine the icon for the point...
