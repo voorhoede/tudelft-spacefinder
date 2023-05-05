@@ -102,19 +102,21 @@ defineExpose({
 
 .space-detail-card__header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  gap: var(--spacing-half);
   font-weight: bold;
 }
 
 .space-detail-card__title {
-  margin-bottom: 0;
+  margin-bottom: .2rem;
   font-size: var(--font-size-default);
   font-weight: bold;
+  line-height: 1.1;
 }
 
 .space-detail-card__seating {
-  margin-top: .1rem;
+  margin-top: -.1rem;
+  white-space: nowrap;
 }
 
 .space-detail-card__seating-icon {
