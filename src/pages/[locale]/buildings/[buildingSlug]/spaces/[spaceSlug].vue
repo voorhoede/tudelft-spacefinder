@@ -11,12 +11,11 @@
       class="button--route"
     />
 
-    <div class="default-layout__info default-layout__info--space-detail">
-      <SpaceDetailCard
-        ref="card"
-        :space="space"
-      />
-    </div>
+    <SpaceDetailCard
+      ref="card"
+      :space="space"
+      class="space-detail__card"
+    />
   </section>
 </template>
 
@@ -68,11 +67,23 @@ useSpacefinderHead(
 <style>
 @import "@/components/app-core/variables.css";
 
-@media (max-width: 699px) {
-  .default-layout__info--space-detail
-    ~ .default-layout__map
-    .mapbox-map__zoom-controls {
-    display: none;
+.space-detail__card {
+  z-index: var(--layer--overlay);
+  position: absolute;
+  left: var(--spacing-default);
+  bottom: calc(var(--navigation-height-mobile) + var(--spacing-default));
+  width: calc(100% - var(--spacing-double));
+}
+
+@media (min-width: 700px) {
+  .space-detail__card {
+    bottom: calc(var(--navigation-height-desktop) + var(--spacing-default));
+    width: 600px;
   }
+
+  /* .default-layout__map.default-layout__map {
+    margin-left: 0;
+    width: 100%;
+  } */
 }
 </style>
