@@ -1,12 +1,13 @@
 import { defineStore, storeToRefs } from "pinia";
+import { Feature, FeatureCollection, Point } from "geojson";
 import { deferred } from "~/lib/deferred";
 import { spaceIsOpen } from "~/lib/filter-spaces";
 import { Bounds } from "~/types/Bounds";
+import { Space } from "~/types/Space";
+import { Occupancy } from "~/types/Filters";
 import campusBounds from "~/lib/campus-bounds";
 import { useSpacesStore } from "./spaces";
 import { GeoJSONSource, Map } from "mapbox-gl";
-import type { Occupancy } from "../types/Filters";
-import {Feature, FeatureCollection, Point} from "geojson";
 
 export const useMapStore = defineStore("map", () => {
   const spacesStore = useSpacesStore();
@@ -23,10 +24,9 @@ export const useMapStore = defineStore("map", () => {
   const lastZoomLevel = ref<number | null>(null);
   const lastMapCenter = ref<[number, number] | null>(null);
 
-  const geoJsonSpaces = computed(() => {
+  function createGeoJsonFeatures(spaces: Space[]): Feature[] {
     const now = new Date();
-    const featuresPerSpace = spaces.value.map((space) => {
-      //TODO: use the raw spacesI18n?
+    return spaces.map((space) => {
       return {
         type: "Feature" as const,
         properties: {
@@ -44,10 +44,19 @@ export const useMapStore = defineStore("map", () => {
         },
       };
     });
+  }
 
+  const geoJsonSpaces = computed(() => {
     return {
       type: "FeatureCollection" as const,
-      features: featuresPerSpace,
+      features: createGeoJsonFeatures(spaces.value),
+    };
+  });
+
+  const filteredGeoJsonSpaces = computed(() => {
+    return {
+      type: "FeatureCollection" as const,
+      features: createGeoJsonFeatures(spacesStore.filteredSpaces),
     };
   });
 
@@ -123,6 +132,24 @@ export const useMapStore = defineStore("map", () => {
   }
 
   /**
+   * Calculate the center of a cluster by averaging the coordinates of all spaces in the cluster.
+   * @param {Feature[]} spaces - An array of GeoJSON features representing spaces.
+   * @returns {[number, number]} - The calculated center coordinates as [longitude, latitude].
+   */
+  function calculateClusterCenter(spaces: Feature[]): [number, number] {
+    const count = spaces.length;
+    const [sumLon, sumLat] = spaces.reduce<[number, number]>(
+      ([sumLon, sumLat], space) => {
+        const [lon, lat] = (space.geometry as Point).coordinates;
+        return [sumLon + lon, sumLat + lat];
+      },
+      [0, 0]
+    );
+
+    return [sumLon / count, sumLat / count];
+  }
+
+  /**
    * Create manual clusters for a given set of geographic spaces.
    * @param {FeatureCollection} geoJsonSpaces - A GeoJSON FeatureCollection of spaces.
    * @returns {FeatureCollection} - A new FeatureCollection containing clustered and original features.
@@ -132,22 +159,14 @@ export const useMapStore = defineStore("map", () => {
     const groupedSpaces = geoJsonSpaces.features.reduce<{ [key: string]: Feature[] }>(
       (acc, space) => {
         const buildingSlug = space.properties?.buildingSlug;
-        if (!acc[buildingSlug]) {
-          acc[buildingSlug] = [];
-        }
+        acc[buildingSlug] = acc[buildingSlug] ?? [];
         acc[buildingSlug].push(space);
         return acc;
       }, {});
 
     const clusters = Object.entries(groupedSpaces).map(([buildingSlug, spaces]): Feature => {
-      // Calculate the cluster center by averaging the coordinates of all spaces in the cluster
-      const clusterCoordinates = spaces.reduce<[number, number]>(
-        ([sumLon, sumLat], space) => {
-          const coordinates = (space.geometry as Point).coordinates;
-          return [sumLon + coordinates[0], sumLat + coordinates[1]];
-        },
-        [0, 0]
-      );
+      // Calculate the cluster center
+      const clusterCoordinates = calculateClusterCenter(spaces);
 
       const count = spaces.length;
       const { buildingOccupancy, buildingAbbreviation } = spaces[0].properties ?? {};
@@ -164,10 +183,7 @@ export const useMapStore = defineStore("map", () => {
         },
         geometry: {
           type: "Point",
-          coordinates: [
-            clusterCoordinates[0] / count,
-            clusterCoordinates[1] / count,
-          ],
+          coordinates: clusterCoordinates,
         },
       };
     });
@@ -175,7 +191,7 @@ export const useMapStore = defineStore("map", () => {
     // Return a new FeatureCollection containing the clusters and original features
     return {
       type: "FeatureCollection",
-      features: clusters.concat(geoJsonSpaces.features),
+      features: [...clusters, ...geoJsonSpaces.features],
     };
   }
 
@@ -227,7 +243,8 @@ export const useMapStore = defineStore("map", () => {
   async function updateData() {
     const map = await getMap();
     const source = map.getSource("clustered-points") as GeoJSONSource;
-    const updatedData = createManualClusters(geoJsonSpaces.value);
+    const updatedData = createManualClusters(filteredGeoJsonSpaces.value ?? geoJsonSpaces.value);
+    
     source.setData(updatedData);
   }
 

@@ -157,14 +157,14 @@ function initMap(accessToken: string) {
             'format',
             [
               'case',
-              ['<', ['get', 'point_count_abbreviated'], 10],
-              ['concat', '0', ['to-string', ['get', 'point_count_abbreviated']]],
-              ['to-string', ['get', 'point_count_abbreviated']],
+              ['<', ['get', 'point_count_abbreviated'], 10], // get all point_count_abbreviated that are less than 10
+              ['concat', '0', ['to-string', ['get', 'point_count_abbreviated']]], // add a 0 in front of the number
+              ['to-string', ['get', 'point_count_abbreviated']], // else just return the number
             ],
             {
               'text-color': '#FFF',
             },
-            '            ',
+            '           ', // this space is being used to align the text with the icon
             {},
             ['get', 'buildingAbbreviation'],
             {
@@ -176,8 +176,8 @@ function initMap(accessToken: string) {
           'text-justify': 'left',
           'text-transform': 'uppercase',
           'text-offset': [-4.25, 0],
-          'text-allow-overlap': true,
-          'text-optional': true,
+          'text-allow-overlap': true, // allow text to go over icons else icons will be removed from the map because the text gets collided out
+          'text-optional': true, // this is needed for the icons to display when text gets collided out
         },
       });
 
