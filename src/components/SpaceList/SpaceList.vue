@@ -57,7 +57,7 @@ defineProps<{ spaces: Space[]; showBuildingOccupancy: boolean }>();
   -webkit-overflow-scrolling: touch;
 }
 
-@media (min-width: 700px){
+@media (min-width: 700px) {
   .space-list {
     height: calc(100% - var(--navigation-height-desktop));
   }
