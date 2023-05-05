@@ -165,7 +165,7 @@ function initMap(accessToken: string) {
             },
             '            ',
             {},
-            ['get', 'buildingSlugModified'],
+            ['get', 'buildingAbbreviation'],
             {
               'text-color': '#000',
             },
@@ -214,9 +214,9 @@ function initMap(accessToken: string) {
       const geometry = features[0].geometry;
 
       if (geometry.type === "Point" && geometry.coordinates) {
-        const coordinates = geometry.coordinates.slice() as [number, number];
+        const [longitude, latitude] = geometry.coordinates;
         map.flyTo({
-          center: coordinates,
+          center: [longitude, latitude],
           zoom: 17,
           essential: true,
         });
@@ -232,7 +232,7 @@ function initMap(accessToken: string) {
 
     if (features.length) {
       const properties = features[0].properties || {};
-      if (!properties.buildingSlug || !features[0].id) {
+      if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
       saveMapState();
@@ -240,7 +240,7 @@ function initMap(accessToken: string) {
       router.push(
         $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
           buildingSlug: properties.buildingSlug as string,
-          spaceSlug: features[0].id as string,
+          spaceSlug: properties.spaceSlug as string,
         })
       );
     }

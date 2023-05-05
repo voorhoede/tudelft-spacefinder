@@ -23,14 +23,13 @@ export const useMapStore = defineStore("map", () => {
   const geoJsonSpaces = computed(() => {
     const now = new Date();
     const featuresPerSpace = spaces.value.map((space) => {
-      const buildingSlugModified = space.building.slug.slice(space.building.slug.indexOf('-') + 1);
       //TODO: use the raw spacesI18n?
       return {
         type: "Feature" as const,
         properties: {
           spaceSlug: space.slug,
           buildingSlug: space.building.slug,
-          buildingSlugModified: buildingSlugModified,
+          buildingAbbreviation: space.building.abbreviation,
           buildingNumber: space.building.number,
           buildingOccupancy: space.building.occupancy,
           isOpen: spaceIsOpen(now, space.openingHours),
@@ -148,14 +147,13 @@ export const useMapStore = defineStore("map", () => {
       );
 
       const count = spaces.length;
-      const buildingOccupancy = spaces[0].properties?.buildingOccupancy;
-      const buildingSlugModified = spaces[0].properties?.buildingSlugModified;
+      const { buildingOccupancy, buildingAbbreviation } = spaces[0].properties ?? {};
 
       // Create a cluster feature with the calculated center and properties
       return {
         type: "Feature",
         properties: {
-          buildingSlugModified,
+          buildingAbbreviation,
           buildingSlug,
           buildingOccupancy,
           point_count: count,
