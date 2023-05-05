@@ -224,10 +224,8 @@ export const useMapStore = defineStore("map", () => {
   async function updateData() {
     const map = await getMap();
     const source = map.getSource("clustered-points") as GeoJSONSource;
-    if (source) {
-      const updatedData = createManualClusters(geoJsonSpaces.value);
-      source.setData(updatedData);
-    }
+    const updatedData = createManualClusters(geoJsonSpaces.value);
+    source.setData(updatedData);
   }
 
   async function updateMarkers() {
