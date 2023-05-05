@@ -126,16 +126,17 @@ function initMap(accessToken: string) {
 
   map.on("load", () => {
     const markerNames = [...OCCUPANCY_RATES, "unknown"] as const;
-    Promise.all([
-      markerNames.map((occupancy) => {
-        addMarker(map, `map-marker-${occupancy}`)
-        addBuildingOccupancy(map, `pill-${occupancy}`);
-      }),
-    ]).then(() => {
-      const occupancyIconNamePairs = OCCUPANCY_RATES.reduce(
-        (acc, occupancy) => [...acc, occupancy, `map-marker-${occupancy}`],
-        [] as string[]
-      );
+
+    for (const occupancy of markerNames) {
+      addMarker(map, `map-marker-${occupancy}`);
+      addBuildingOccupancy(map, `pill-${occupancy}`);
+    }
+
+    const occupancyIconNamePairs = OCCUPANCY_RATES.reduce(
+      (acc, occupancy) => [...acc, occupancy, `map-marker-${occupancy}`],
+      [] as string[]
+    );
+    
 
       map.addSource("clustered-points", {
         type: "geojson",
@@ -203,7 +204,6 @@ function initMap(accessToken: string) {
       fixInsecureLinks();
       mapStore.setMap(map);
     });
-  });
 
   map.on("click", CLUSTERS_LAYER_ID, (e) => {
     const features = map.queryRenderedFeatures(e.point, {
