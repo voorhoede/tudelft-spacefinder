@@ -24,6 +24,8 @@ export const useMapStore = defineStore("map", () => {
   const lastZoomLevel = ref<number | null>(null);
   const lastMapCenter = ref<[number, number] | null>(null);
 
+  const clusterCoordinates = ref<{ [key: string]: [number, number] } | null>(null);
+
   function createGeoJsonFeatures(spaces: Space[]): Feature[] {
     const now = new Date();
     return spaces.map((space) => {
@@ -165,8 +167,15 @@ export const useMapStore = defineStore("map", () => {
       }, {});
 
     const clusters = Object.entries(groupedSpaces).map(([buildingSlug, spaces]): Feature => {
-      // Calculate the cluster center
-      const clusterCoordinates = calculateClusterCenter(spaces);
+      // Calculate the cluster center only if it's not already available
+      if (!clusterCoordinates.value) {
+        clusterCoordinates.value = {};
+      }
+
+      // Calculate the cluster center and only do this once because calculating clusters every single time with filtered unclustered points will jump positions on the map
+      if (!clusterCoordinates.value[buildingSlug]) {
+        clusterCoordinates.value[buildingSlug] = calculateClusterCenter(spaces);
+      }
 
       const count = spaces.length;
       const { buildingOccupancy, buildingAbbreviation } = spaces[0].properties ?? {};
@@ -182,7 +191,7 @@ export const useMapStore = defineStore("map", () => {
         },
         geometry: {
           type: "Point",
-          coordinates: clusterCoordinates,
+          coordinates: clusterCoordinates.value[buildingSlug],
         },
       };
     });
