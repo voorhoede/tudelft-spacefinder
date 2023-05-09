@@ -134,12 +134,59 @@ export const useMapStore = defineStore("map", () => {
   }
 
   /**
+   * Applies the given offset to the input coordinates and returns the updated coordinates.
+   * @param coordinates - The input coordinates as an array of [x, y].
+   * @param offset - The offset to be applied as an array of [x, y].
+   * @returns The updated coordinates after applying the offset.
+   */
+  function applyOffsetToCoordinates(coordinates: [number, number], offset: [number, number]): [number, number] {
+    return [coordinates[0] + offset[0], coordinates[1] + offset[1]];
+  }
+
+  /**
+   * Updates the offset for the given buildingSlug with the specified new offset.
+   * @param buildingSlug - The building identifier.
+   * @param newOffset - The new offset to be applied as an array of [x, y].
+   */
+  function updateOffsetForBuildingSlug(buildingSlug: string, newOffset: [number, number]) {
+    if (clusterCoordinates.value && clusterCoordinates.value[buildingSlug]) {
+      clusterCoordinates.value[buildingSlug] = applyOffsetToCoordinates(clusterCoordinates.value[buildingSlug], newOffset);
+    }
+  }
+
+  /**
+   * A collection of initial cluster coordinates indexed by building slugs.
+   */
+  const initialClusterCoordinates: { [key: string]: [number, number] } = {
+    "28-eemcs-28": [0.00025, 0.00005],
+    "28-ewi-28": [0.00025, 0.00005],
+    "22-as": [0.0002, -0.00009],
+    "22-tnw": [0.0002, -0.00009],
+    "36-eemcs-36": [0.00008, -0.00009],
+    "36-ewi-36": [0.00008, -0.00009],
+    "33-pulse": [0, -0.00002],
+    "34-3me": [0, -0.00005],
+    "32-ide": [-0.00002, 0.000025],
+    "32-io": [-0.00002, 0.000025],
+  };
+
+  /**
+   * Applies the initial cluster offsets to the building slugs in clusterCoordinates.
+   */
+  function applyInitialClusterOffsets() {
+    for (const [buildingSlug, offset] of Object.entries(initialClusterCoordinates)) {
+      updateOffsetForBuildingSlug(buildingSlug, offset);
+    }
+  }
+
+  /**
    * Calculate the center of a cluster by averaging the coordinates of all spaces in the cluster.
    * @param {Feature[]} spaces - An array of GeoJSON features representing spaces.
    * @returns {[number, number]} - The calculated center coordinates as [longitude, latitude].
    */
   function calculateClusterCenter(spaces: Feature[]): [number, number] {
     const count = spaces.length;
+    
     const [sumLon, sumLat] = spaces.reduce<[number, number]>(
       ([sumLon, sumLat], space) => {
         const [lon, lat] = (space.geometry as Point).coordinates;
@@ -167,7 +214,7 @@ export const useMapStore = defineStore("map", () => {
       }, {});
 
     const clusters = Object.entries(groupedSpaces).map(([buildingSlug, spaces]): Feature => {
-      // Calculate the cluster center only if it's not already available
+// Calculate the cluster center only if it's not already available
       if (!clusterCoordinates.value) {
         clusterCoordinates.value = {};
       }
@@ -175,8 +222,9 @@ export const useMapStore = defineStore("map", () => {
       // Calculate the cluster center and only do this once because calculating clusters every single time with filtered unclustered points will jump positions on the map
       if (!clusterCoordinates.value[buildingSlug]) {
         clusterCoordinates.value[buildingSlug] = calculateClusterCenter(spaces);
+        applyInitialClusterOffsets();
       }
-
+      
       const count = spaces.length;
       const { buildingOccupancy, buildingAbbreviation } = spaces[0].properties ?? {};
 
