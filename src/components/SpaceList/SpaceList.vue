@@ -23,10 +23,9 @@
             {{ $t("spacesSubTitle") }}
           </p>
         </header>
-        <SpaceCard
-          :space="item"
-          :show-building-occupancy="showBuildingOccupancy"
-        />
+        <NuxtLink :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space: item })">
+          <SpaceCard :space="item" />
+        </NuxtLink>
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>

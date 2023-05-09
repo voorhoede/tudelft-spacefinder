@@ -11,7 +11,7 @@
       class="button--route"
     />
 
-    <SpaceDetailCard
+    <SpaceCard
       ref="card"
       :space="space"
       class="space-detail__card"
@@ -24,7 +24,7 @@ import spaceMapImage from "~/lib/space-map-image";
 import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
-import SpaceDetailCard from "~/components/SpaceDetailCard/SpaceDetailCard.vue";
+import SpaceCard from "~/components/SpaceCard/SpaceCard.vue";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 
@@ -32,7 +32,7 @@ const { $t, $isMobile } = useNuxtApp();
 const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 
-const card = ref<InstanceType<typeof SpaceDetailCard> | null>(null);
+const card = ref<InstanceType<typeof SpaceCard> | null>(null);
 
 const { currentSpace: space } = storeToRefs(spacesStore);
 
