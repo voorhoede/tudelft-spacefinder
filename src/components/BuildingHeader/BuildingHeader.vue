@@ -24,7 +24,7 @@
             {{ totalSpaces }}
           </li>
         </ul>
-        <div>
+        <div class="building-header__occupancy">
           <OccupancyIndicator
             :active-devices="building.activeDevices"
             :total-seats="building.totalSeats"
@@ -94,13 +94,17 @@ const totalSpaces = computed(() =>
   height: 15px;
 }
 
+.building-header__occupancy {
+  margin-top: var(--spacing-quarter);
+}
+
 .building-header__open-status {
   font-size: var(--font-size-smaller);
 }
 
 .building-header__opening-hours {
   flex: 0 0 100%;
-  margin-top: -1.2rem;
+  margin-top: -1.5rem;
   font-size: var(--font-size-smaller);
 }
 </style>

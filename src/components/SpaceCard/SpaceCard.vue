@@ -99,6 +99,9 @@ defineExpose({
 .space-detail-card__right-column {
   position: relative;
   flex: 0 0 30%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
 .space-detail-card__header {
@@ -148,8 +151,9 @@ defineExpose({
 }
 
 .space-detail-card__image {
-  position: relative;
+  position: absolute;
   height: 100%;
+  width: 100%;
 }
 
 .space-detail-card__image img {
@@ -161,16 +165,19 @@ defineExpose({
 }
 
 .space-detail-card__occupancy-indicator {
-  position: absolute;
-  display: flex;
+  position: relative;
+  z-index: var(--layer--raised);
+  display: inline-flex;
   align-items: center;
   gap: var(--spacing-half);
-  padding: .13rem var(--spacing-three-quarter) 0 var(--spacing-three-quarter);
-  top: var(--spacing-half);
-  right: var(--spacing-half);
+  margin-left: var(--spacing-default);
+  padding: .3rem var(--spacing-three-quarter);
   border-radius: 2rem;
   background: var(--background-color);
+  font-size: var(--font-size-smaller);
   font-weight: bold;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .space-detail-card svg {

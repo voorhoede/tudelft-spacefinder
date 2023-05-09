@@ -23,7 +23,10 @@
             {{ $t("spacesSubTitle") }}
           </p>
         </header>
-        <NuxtLink :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space: item })">
+        <NuxtLink
+          :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space: item })"
+          class="space-list__link"
+        >
           <SpaceCard :space="item" />
         </NuxtLink>
       </DynamicScrollerItem>
@@ -72,6 +75,10 @@ defineProps<{ spaces: Space[]; showBuildingOccupancy: boolean }>();
 
 .space-list__item {
   padding-bottom: var(--spacing-default);
+}
+
+.space-list__link {
+  text-decoration: none;
 }
 
 .space-list__message {

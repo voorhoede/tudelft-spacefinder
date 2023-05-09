@@ -51,6 +51,7 @@ const totalSpaces = computed(() =>
 .building-card__meta {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: var(--font-size-smaller);
 }
 
@@ -66,11 +67,13 @@ const totalSpaces = computed(() =>
 
 .building-card__status {
   flex: 0 0 auto;
+  margin-left: auto;
 }
 
 .building-card__occupancy {
-  flex: 0 0 auto;
-  width: 60px;
+  flex: 0 0 14px;
+  margin-top: var(--spacing-quarter);
+  margin-left: var(--spacing-three-quarter);
   height: 24px;
 }
 </style>
