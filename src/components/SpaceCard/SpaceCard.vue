@@ -44,9 +44,20 @@
         class="space-detail-card__image"
       >
         <img
+          v-if="space.image"
           :src="space.image.url"
           alt=""
         >
+      </div>
+
+      <div
+        v-else
+        class="space-detail-card__image-placeholder"
+      >
+        <SvgIcon
+          name="flame-icon"
+          class="space-detail-card__image-placeholder-icon"
+        />
       </div>
 
       <div class="space-detail-card__occupancy-indicator">
@@ -134,6 +145,7 @@ defineExpose({
   margin-bottom: var(--spacing-half);
   font-size: var(--font-size-smaller);
   font-weight: bold;
+  line-height: 1.1;
 }
 
 .space-detail-card__facilities {
@@ -162,6 +174,23 @@ defineExpose({
   width: calc(100% + var(--spacing-default));
   height: calc(100% + var(--spacing-double));
   object-fit: cover;
+}
+
+.space-detail-card__image-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: var(--spacing-default-negative);
+  right: var(--spacing-default-negative);
+  width: calc(100% + var(--spacing-default));
+  height: calc(100% + var(--spacing-double));
+  background: var(--neutral-color);
+}
+
+.space-detail-card__image-placeholder-icon {
+  width: 30px;
+  height: 30px;
 }
 
 .space-detail-card__occupancy-indicator {

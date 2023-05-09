@@ -74,7 +74,7 @@ defineProps<{ spaces: Space[]; showBuildingOccupancy: boolean }>();
 }
 
 .space-list__item {
-  padding-bottom: var(--spacing-default);
+  padding: 0 .1rem var(--spacing-default) .1rem;
 }
 
 .space-list__link {
