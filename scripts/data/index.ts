@@ -5,6 +5,7 @@ import { getData as getDataFromCsv, transform } from "./csv/index";
 import {
   getBuildingsDataFromCms,
   getPageFromCms,
+  getSpacesDataFromCms,
   convertCmsInfo,
 } from "./cms/index";
 import addOpeningHours from "./exchange/index";
@@ -23,9 +24,9 @@ function writeFile(path: string, contents: any) {
 }
 
 function prepareSpaces(csvPath: string) {
-  return Promise.all([getDataFromCsv(csvPath), getBuildingsDataFromCms()])
-    .then(([csvData, cmsBuildings]) => {
-      const { spaces, rooms, buildings } = transform(csvData, cmsBuildings);
+  return Promise.all([getDataFromCsv(csvPath), getBuildingsDataFromCms(), getSpacesDataFromCms()])
+    .then(([csvData, cmsBuildings, cmsSpaces]) => {
+      const { spaces, rooms, buildings } = transform(csvData, cmsBuildings, cmsSpaces);
       return addOpeningHours({ spaces, rooms, buildings });
     })
     .then(({ spaces, rooms, buildings }) => {

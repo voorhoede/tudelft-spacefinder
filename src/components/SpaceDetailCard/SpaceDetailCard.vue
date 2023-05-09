@@ -2,11 +2,11 @@
   <div
     ref="root"
     class="space-detail-card"
-    :class="{ 'space-detail-card--image': space.imageUrl }"
+    :class="{ 'space-detail-card--image': space.image?.url }"
   >
     <img
-      v-if="space.imageUrl"
-      :src="space.imageUrl"
+      v-if="space.image"
+      :src="space.image.url"
       alt=""
       class="space-detail-card__image"
     >
