@@ -1,14 +1,16 @@
 import type { Occupancy } from "../types/Filters";
 
+type Location = {
+  occupancyLimit?: number | null;
+  seats?: number;
+  totalSeats?: number;
+};
+
 export default function calculateOccupancy(
   deviceCount: number | null | undefined,
-  location: {
-    occupancyLimit?: number | null;
-    seats?: number;
-    totalSeats?: number;
-  }
+  location: Location
 ): Occupancy | undefined {
-  if (deviceCount == undefined) return undefined;
+  if (deviceCount == undefined) return "unknown";
   const visitorCountEstimate = deviceCount / 2.5;
   const capacity =
     location.occupancyLimit || location.seats || location.totalSeats;
