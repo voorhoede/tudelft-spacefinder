@@ -8,29 +8,16 @@
 
     <div class="building-header__meta">
       <div class="building-header__spaces">
-        <ul class="flat-list building-header__seating">
-          <li>
-            <SvgIcon
-              name="seat-icon"
-              class="building-header__seating-icon"
-            />
-            {{ building.totalSeats }}
-          </li>
-          <li>
-            <SvgIcon
-              name="door-icon"
-              class="building-header__seating-icon"
-            />
-            {{ totalSpaces }}
-          </li>
-        </ul>
-        <div class="building-header__occupancy">
-          <OccupancyIndicator
-            :active-devices="building.activeDevices"
-            :total-seats="building.totalSeats"
-            :occupancy="building.occupancy"
-          />
-        </div>
+        <BuildingMeta
+          :spaces="totalSpaces"
+          :seats="building.totalSeats"
+        />
+        <OccupancyIndicator
+          :active-devices="building.activeDevices"
+          :total-seats="building.totalSeats"
+          :occupancy="building.occupancy"
+          class="building-header__occupancy"
+        />
       </div>
 
       <CardStatus
@@ -61,14 +48,6 @@ const totalSpaces = computed(() =>
 <style>
 @import "../app-core/variables.css";
 
-.building-header__seating {
-  font-size: var(--font-size-smaller);
-  font-weight: bold;
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-default);
-}
-
 .building-header__meta {
   display: flex;
   justify-content: space-between;
@@ -80,18 +59,7 @@ const totalSpaces = computed(() =>
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--spacing-half);
-}
-
-.building-header__seating li {
-  display: flex;
-  align-items: center;
-}
-
-.building-header__seating-icon {
-  margin-right: var(--spacing-half);
-  width: 15px;
-  height: 15px;
+  margin-bottom: var(--spacing-quarter);
 }
 
 .building-header__occupancy {

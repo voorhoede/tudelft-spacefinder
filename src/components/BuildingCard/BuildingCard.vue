@@ -9,15 +9,16 @@
     />
 
     <div class="building-card__meta">
-      <ul class="flat-list building-card__seating">
-        <li>{{ totalSpaces }} {{ $t("locations") }}</li>
-        <li>{{ building.totalSeats }} {{ $t("seats") }}</li>
-      </ul>
+      <BuildingMeta
+        :spaces="totalSpaces"
+        :seats="building.totalSeats"
+      />
 
       <CardStatus
         :opening-hours="building.openingHours"
         class="building-card__status"
       />
+
       <div class="building-card__occupancy">
         <OccupancyIndicator
           :active-devices="building.activeDevices"
@@ -53,16 +54,6 @@ const totalSpaces = computed(() =>
   justify-content: space-between;
   align-items: center;
   font-size: var(--font-size-smaller);
-}
-
-.building-card__seating {
-  display: flex;
-}
-
-.building-card__seating li:not(:last-child):after {
-  content: "|";
-  display: inline-block;
-  margin: 0 var(--spacing-quarter);
 }
 
 .building-card__status {
