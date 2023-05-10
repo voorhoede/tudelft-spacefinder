@@ -6,11 +6,11 @@
     :min-item-size="114"
     class="space-list"
   >
-    <template #default="{ item, index, active }">
+    <template #default="{ item: space, index, active }">
       <DynamicScrollerItem
-        :item="item"
+        :item="space"
         :active="active"
-        :size-dependencies="[item.name, item.building.name, item.slug]"
+        :size-dependencies="[space.name, space.building.name, space.slug]"
         :data-index="index"
         class="space-list__item"
       >
@@ -24,10 +24,10 @@
           </p>
         </header>
         <NuxtLink
-          :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space: item })"
+          :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space })"
           class="space-list__link"
         >
-          <SpaceCard :space="item" />
+          <SpaceCard :space="space" />
         </NuxtLink>
       </DynamicScrollerItem>
     </template>
