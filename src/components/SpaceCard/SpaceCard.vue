@@ -109,7 +109,7 @@ defineExpose({
 
 .space-detail-card__right-column {
   position: relative;
-  flex: 0 0 30%;
+  flex: 0 0 39%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
@@ -123,10 +123,11 @@ defineExpose({
 }
 
 .space-detail-card__title {
-  margin-bottom: .2rem;
+  margin-bottom: var(--spacing-quarter);
   font-size: var(--font-size-default);
   font-weight: bold;
   line-height: 1.1;
+  word-break: break-all;
 }
 
 .space-detail-card__seating {
@@ -142,8 +143,8 @@ defineExpose({
 }
 
 .space-detail-card__description {
-  margin-bottom: var(--spacing-half);
-  font-size: var(--font-size-smaller);
+  margin-bottom: var(--spacing-three-quarter);
+  font-size: var(--font-size-medium);
   font-weight: bold;
   line-height: 1.1;
 }
@@ -206,7 +207,7 @@ defineExpose({
   font-size: var(--font-size-smaller);
   font-weight: bold;
   line-height: 1;
-  white-space: nowrap;
+  word-break: break-all;
 }
 
 .space-detail-card svg {

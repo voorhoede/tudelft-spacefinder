@@ -79,6 +79,7 @@ function getIconName(facilityValue: string) {
 <style>
 .space-facility__list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .space-facility__item {
@@ -102,7 +103,6 @@ function getIconName(facilityValue: string) {
   display: block;
   width: 16px;
   height: 16px;
-  vertical-align: middle;
 }
 
 .v-popper--theme-tooltip .v-popper__inner {
