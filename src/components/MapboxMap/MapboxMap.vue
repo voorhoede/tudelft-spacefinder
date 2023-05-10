@@ -32,6 +32,10 @@ const mapContainer = ref(null as null | HTMLDivElement);
 
 const onResizeDebounce = useDebounceFn(onResize, 200);
 
+const CLUSTERS_LAYER_ID = "clusters";
+const UNCLUSTERED_LAYER_ID = "unclustered-point";
+const VISIBILITY_PROPERTY = "visibility";
+
 onMounted(() => {
   initMap(runtimeConfig.public.mapboxToken);
   mapStore.updateMarkers();
@@ -82,6 +86,7 @@ function fixInsecureLinks() {
   });
 }
 
+
 function initMap(accessToken: string) {
   mapboxgl.accessToken = accessToken;
   const map = new mapboxgl.Map({
@@ -91,6 +96,7 @@ function initMap(accessToken: string) {
       (campusBounds.north + campusBounds.south) / 2,
     ],
     zoom: 13,
+    minZoom: 14,
     trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
     style: "mapbox://styles/voorhoede/clgm5v8zx00bd01pj4hm0hvhn",
     maxBounds: [campusBounds.southWest, campusBounds.northEast],
@@ -108,50 +114,142 @@ function initMap(accessToken: string) {
     });
   }
 
-  map.on("load", () => {
-    const markerNames = [...OCCUPANCY_RATES, "unknown"] as const;
-    Promise.all(
-      markerNames.map((occupancy) => addMarker(map, `map-marker-${occupancy}`))
-    ).then(() => {
-      const occupancyIconNamePairs = OCCUPANCY_RATES.reduce(
-        (acc, occupancy) => [...acc, occupancy, `map-marker-${occupancy}`],
-        [] as string[]
-      );
-      map.addLayer({
-        id: "points",
-        interactive: true,
-        type: "symbol",
-        source: {
-          type: "geojson",
-          data: mapStore.geoJsonSpaces,
-          promoteId: "spaceSlug",
-        },
-        layout: {
-          "icon-image": [
-            "match", // A rule to determine the icon for the point...
-            ["get", "buildingOccupancy"], // ... is that if the `buildingOccupancy` property matches...
-            ...occupancyIconNamePairs, // ... the first element of the pair from this (flat) sequence, the second element defines the name of the icon
-            "map-marker-unknown", //And the final element determines the default icon
-          ],
-          "icon-allow-overlap": true,
-        },
-      });
+  function addBuildingOccupancy(map: mapboxgl.Map, markerName: string) {
+    return new Promise<void>((resolve) => {
+      const img = new Image(145, 33);
+      img.onload = () => {
+        map.addImage(markerName, img);
+        resolve();
+      };
+      img.src = `/icons/clusters/${markerName}.svg`;
+    });
+  }
 
-      restoreMapState();
-      fixInsecureLinks();
-      mapStore.setMap(map);
+  function updateLayerVisibility() {
+    const currentZoom = map.getZoom();
+
+    const clustersVisibility = currentZoom >= 14 && currentZoom < 17 ? "visible" : "none";
+    const unclusteredVisibility = currentZoom >= 17 ? "visible" : "none";
+
+    map.setLayoutProperty(CLUSTERS_LAYER_ID, VISIBILITY_PROPERTY, clustersVisibility);
+    map.setLayoutProperty(UNCLUSTERED_LAYER_ID, VISIBILITY_PROPERTY, unclusteredVisibility);
+  }
+
+  map.on("load", async () => {
+    const markerNames = [...OCCUPANCY_RATES, "unknown"] as const;
+
+    await Promise.all(
+      markerNames.flatMap((occupancy) => [
+        addMarker(map, `map-marker-${occupancy}`),
+        addBuildingOccupancy(map, `pill-${occupancy}`),
+      ])
+    );
+
+    const occupancyIconNamePairs = OCCUPANCY_RATES.reduce(
+      (acc, occupancy) => [...acc, occupancy, `map-marker-${occupancy}`],
+      [] as string[]
+    );
+
+
+    map.addSource("clustered-points", {
+      type: "geojson",
+      data: mapStore.createManualClusters(mapStore.geoJsonSpaces),
+      promoteId: "spaceSlug",
     });
+
+    map.addLayer({
+      id: CLUSTERS_LAYER_ID,
+      type: 'symbol',
+      source: 'clustered-points',
+      filter: ['all', ['has', 'pointCount']],
+      layout: {
+        'icon-image': ['concat', 'pill-', ['get', 'buildingOccupancy']],
+        'icon-allow-overlap': true,
+        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+        'text-field': [
+          'format',
+          [
+            'case',
+            ['<', ['get', 'pointCount'], 10], // get all pointCount that are less than 10
+            ['concat', '0', ['to-string', ['get', 'pointCount']]], // add a 0 in front of the number
+            ['to-string', ['get', 'pointCount']], // else just return the number
+          ],
+          {
+            'text-color': '#FFF',
+          },
+          '           ', // this space is being used to align the text with the icon
+          {},
+          ['get', 'buildingAbbreviation'],
+          {
+            'text-color': '#000',
+          },
+        ],
+        'text-size': 15,
+        'text-anchor': 'left',
+        'text-justify': 'left',
+        'text-transform': 'uppercase',
+        'text-offset': [-4.25, 0],
+        'text-allow-overlap': true, // allow text to go over icons else icons will be removed from the map because the text gets collided out
+        'text-optional': true, // this is needed for the icons to display when text gets collided out
+      },
+    });
+
+
+    map.addLayer({
+      id: UNCLUSTERED_LAYER_ID,
+      interactive: true,
+      type: "symbol",
+      source: "clustered-points",
+      filter: ["all", ["!", ["has", "pointCount"]], [">=", ["zoom"], 17]],
+      layout: {
+        "icon-image": [
+          "match",// A rule to determine the icon for the point...
+          ["get", "buildingOccupancy"], // ... is that if the `buildingOccupancy` property matches...
+          ...occupancyIconNamePairs, // ... the first element of the pair from this (flat) sequence, the second element defines the name of the icon
+          "map-marker-unknown", //And the final element determines the default icon
+        ],
+        "icon-allow-overlap": true,
+      },
+    });
+
+    restoreMapState();
+    fixInsecureLinks();
+    updateLayerVisibility();
+    mapStore.setMap(map);
   });
-  map.on("click", (e: any) => {
+
+  map.on("click", CLUSTERS_LAYER_ID, (e) => {
     const features = map.queryRenderedFeatures(e.point, {
-      layers: ["points"],
+      layers: [CLUSTERS_LAYER_ID],
     });
+
+    if (features.length) {
+      const geometry = features[0].geometry;
+
+      if (geometry.type === "Point" && geometry.coordinates) {
+        const [longitude, latitude] = geometry.coordinates;
+        map.flyTo({
+          center: [longitude, latitude],
+          zoom: 17,
+          essential: true,
+        });
+      }
+    }
+  });
+
+  // Click event handler for unclustered points
+  map.on("click", UNCLUSTERED_LAYER_ID, (e) => {
+    const features = map.queryRenderedFeatures(e.point, {
+      layers: [UNCLUSTERED_LAYER_ID],
+    });
+
     if (features.length) {
       const properties = features[0].properties || {};
       if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
       saveMapState();
+
       router.push(
         $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
           buildingSlug: properties.buildingSlug as string,
@@ -164,6 +262,11 @@ function initMap(accessToken: string) {
   map.on("moveend", () => {
     saveMapState();
   });
+
+  map.on("zoom", () => {
+    updateLayerVisibility();
+  });
+
 }
 </script>
 
