@@ -155,9 +155,9 @@ export const useMapStore = defineStore("map", () => {
   }
 
   /**
-   * A collection of initial cluster coordinates indexed by building slugs.
+   * A collection of initial cluster offsets coordinates indexed by building slugs.
    */
-  const initialClusterCoordinates: { [key: string]: [number, number] } = {
+  const initialClusterOffsets: { [key: string]: [number, number] } = {
     "28-eemcs-28": [0.00025, 0.00005],
     "28-ewi-28": [0.00025, 0.00005],
     "22-as": [0.0002, -0.00009],
@@ -174,7 +174,7 @@ export const useMapStore = defineStore("map", () => {
    * Applies the initial cluster offsets to the building slugs in clusterCoordinates.
    */
   function applyInitialClusterOffsets() {
-    for (const [buildingSlug, offset] of Object.entries(initialClusterCoordinates)) {
+    for (const [buildingSlug, offset] of Object.entries(initialClusterOffsets)) {
       updateOffsetForBuildingSlug(buildingSlug, offset);
     }
   }
