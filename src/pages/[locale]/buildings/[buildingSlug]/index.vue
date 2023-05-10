@@ -68,6 +68,13 @@ onMounted(() => {
 .building-layout {
   display: flex;
   flex-direction: column;
+  height: calc(100% - var(--navigation-height-mobile));
+}
+
+@media (min-width: 700px) {
+  .building-layout {
+    height: calc(100% - var(--navigation-height-desktop));
+  }
 }
 
 .building-layout__header {
