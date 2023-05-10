@@ -224,7 +224,7 @@ export const useMapStore = defineStore("map", () => {
         clusterCoordinates.value[buildingSlug] = calculateClusterCenter(spaces);
         applyInitialClusterOffsets();
       }
-      
+
       const count = spaces.length;
       const { buildingOccupancy, buildingAbbreviation } = spaces[0].properties ?? {};
 

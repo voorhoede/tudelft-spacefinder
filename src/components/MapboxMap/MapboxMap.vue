@@ -15,20 +15,28 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { Point } from "geojson";
+import { useRoute } from "vue-router";
 
 import campusBounds from "~/lib/campus-bounds";
 import { useMapStore } from "~/stores/map";
+import { useSpacesStore } from "~/stores/spaces";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { OCCUPANCY_RATES } from "~/types/Filters";
 const mapboxgl = (await import("mapbox-gl")).default;
 
 const runtimeConfig = useRuntimeConfig();
 const { $localePath } = useNuxtApp();
-const router = useRouter();
+const router = useRouter();     
+const route = useRoute();
 const mapStore = useMapStore();
+const spacesStore = useSpacesStore();
 const { mapLoaded } = storeToRefs(mapStore);
 
 const mapContainer = ref(null as null | HTMLDivElement);
+const currentSpace = ref(spacesStore.currentSpace ?? null);
+const previousHighlightedMarker = ref(null as null | mapboxgl.Marker);
+const selectedSpaceSlug = ref<string | string[] | null>(null);
 
 const onResizeDebounce = useDebounceFn(onResize, 200);
 
@@ -105,6 +113,11 @@ function initMap(accessToken: string) {
   // After we settle with nice images we may remove one of the if branches
   function addMarker(map: mapboxgl.Map, markerName: string) {
     return new Promise<void>((resolve) => {
+      if (map.hasImage(markerName)) {
+        resolve();
+        return;
+      }
+
       const img = new Image(40, 40);
       img.onload = () => {
         map.addImage(markerName, img);
@@ -116,6 +129,11 @@ function initMap(accessToken: string) {
 
   function addBuildingOccupancy(map: mapboxgl.Map, markerName: string) {
     return new Promise<void>((resolve) => {
+      if (map.hasImage(markerName)) {
+        resolve();
+        return;
+      }
+
       const img = new Image(145, 33);
       img.onload = () => {
         map.addImage(markerName, img);
@@ -125,6 +143,41 @@ function initMap(accessToken: string) {
     });
   }
 
+  function setHighlightedMarker(spaceSlug: string | string[] | null, iconImage: string) {
+    const zoom = map.getZoom();
+    const unclusteredVisibility = zoom >= 17 ? "visible" : "none";
+
+    // Remove the previous highlighted marker
+    if (previousHighlightedMarker.value) {
+      previousHighlightedMarker.value.remove();
+      previousHighlightedMarker.value = null;
+    }
+
+    if (unclusteredVisibility === "visible" && spaceSlug) {
+      const features = map.querySourceFeatures("clustered-points", {
+        filter: ["==", ["get", "spaceSlug"], spaceSlug],
+      });
+
+      if (features.length > 0) {
+        const feature = features[0];
+        const coordinates = (feature.geometry as Point)?.coordinates as mapboxgl.LngLatLike;
+
+        const marker = new mapboxgl.Marker({
+          element: (() => {
+            const img = new Image(40, 40);
+            img.src = `/icons/${iconImage}.svg`;
+            return img;
+          })(),
+        })
+          .setLngLat(coordinates)
+          .addTo(map);
+
+        // Set the new highlighted marker
+        previousHighlightedMarker.value = marker;
+      }
+    }
+  }
+  
   function updateLayerVisibility() {
     const currentZoom = map.getZoom();
 
@@ -135,9 +188,18 @@ function initMap(accessToken: string) {
     map.setLayoutProperty(UNCLUSTERED_LAYER_ID, VISIBILITY_PROPERTY, unclusteredVisibility);
   }
 
+  watch(route, (newRoute) => {
+    const { spaceSlug } = newRoute.params;
+    selectedSpaceSlug.value = spaceSlug;
+  });
+
+  watch(selectedSpaceSlug, (newSpaceSlug) => {
+    setHighlightedMarker(newSpaceSlug, "map-marker-selected");
+  });
+
   map.on("load", async () => {
     const markerNames = [...OCCUPANCY_RATES, "unknown"] as const;
-
+    
     await Promise.all(
       markerNames.flatMap((occupancy) => [
         addMarker(map, `map-marker-${occupancy}`),
@@ -215,6 +277,11 @@ function initMap(accessToken: string) {
     restoreMapState();
     fixInsecureLinks();
     updateLayerVisibility();
+
+    if (currentSpace) {
+      setHighlightedMarker(currentSpace?.value?.slug ?? null, "map-marker-selected");
+    }
+    
     mapStore.setMap(map);
   });
 
@@ -248,6 +315,7 @@ function initMap(accessToken: string) {
       if (!properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
+      setHighlightedMarker(properties.spaceSlug, "map-marker-selected");
       saveMapState();
 
       router.push(
