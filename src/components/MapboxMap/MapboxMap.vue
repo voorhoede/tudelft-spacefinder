@@ -300,6 +300,12 @@ function initMap(accessToken: string) {
           zoom: 17,
           essential: true,
         });
+
+        const buildingSlug = features[0].properties?.buildingSlug ?? null as string | null;
+        
+        router.push($localePath("/buildings/:buildingSlug", {
+          buildingSlug,
+        }))
       }
     }
   });
