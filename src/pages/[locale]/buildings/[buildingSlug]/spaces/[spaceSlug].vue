@@ -80,10 +80,5 @@ useSpacefinderHead(
     bottom: calc(var(--navigation-height-desktop) + var(--spacing-default));
     width: 600px;
   }
-
-  /* .default-layout__map.default-layout__map {
-    margin-left: 0;
-    width: 100%;
-  } */
 }
 </style>
