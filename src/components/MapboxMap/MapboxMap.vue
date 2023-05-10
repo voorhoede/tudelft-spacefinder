@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { Point } from "geojson";
+import {Geometry, Point} from "geojson";
 import { useRoute } from "vue-router";
 
 import campusBounds from "~/lib/campus-bounds";
@@ -188,6 +188,18 @@ function initMap(accessToken: string) {
     map.setLayoutProperty(UNCLUSTERED_LAYER_ID, VISIBILITY_PROPERTY, unclusteredVisibility);
   }
 
+  function flyToCoordinates(coordinates: mapboxgl.LngLatLike, zoomLevel: number) {
+    map.flyTo({
+      center: coordinates,
+      zoom: zoomLevel,
+      essential: true,
+    });
+  }
+
+  function isPoint(geometry: Geometry): geometry is Point {
+    return geometry.type === "Point";
+  }
+
   watch(route, (newRoute) => {
     const { spaceSlug } = newRoute.params;
     selectedSpaceSlug.value = spaceSlug;
@@ -292,35 +304,37 @@ function initMap(accessToken: string) {
 
     if (features.length) {
       const geometry = features[0].geometry;
+      const properties = features[0].properties;
 
-      if (geometry.type === "Point" && geometry.coordinates) {
-        const [longitude, latitude] = geometry.coordinates;
-        map.flyTo({
-          center: [longitude, latitude],
-          zoom: 17,
-          essential: true,
-        });
+      if (isPoint(geometry)) {
+        flyToCoordinates(geometry.coordinates, 19);
 
-        const buildingSlug = features[0].properties?.buildingSlug ?? null as string | null;
-        
+        const buildingSlug = properties?.buildingSlug ?? null as string | null;
+
         router.push($localePath("/buildings/:buildingSlug", {
           buildingSlug,
-        }))
+        }));
       }
     }
   });
 
-  // Click event handler for unclustered points
   map.on("click", UNCLUSTERED_LAYER_ID, (e) => {
     const features = map.queryRenderedFeatures(e.point, {
       layers: [UNCLUSTERED_LAYER_ID],
     });
 
     if (features.length) {
-      const properties = features[0].properties || {};
-      if (!properties.buildingSlug || !properties.spaceSlug) {
+      const geometry = features[0].geometry;
+      const properties = features[0].properties;
+
+      if (!properties || !properties.buildingSlug || !properties.spaceSlug) {
         return;
       }
+
+      if (isPoint(geometry)) {
+        flyToCoordinates(geometry.coordinates, 19);
+      }
+
       setHighlightedMarker(properties.spaceSlug, "map-marker-selected");
       saveMapState();
 
