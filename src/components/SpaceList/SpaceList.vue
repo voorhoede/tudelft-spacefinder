@@ -27,7 +27,10 @@
           :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space })"
           class="space-list__link"
         >
-          <SpaceCard :space="space" />
+          <SpaceCard
+            :space="space"
+            :hide-opening-hours="true"
+          />
         </NuxtLink>
       </DynamicScrollerItem>
     </template>
