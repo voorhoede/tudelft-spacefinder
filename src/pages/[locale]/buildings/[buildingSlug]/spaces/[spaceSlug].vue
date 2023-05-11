@@ -78,7 +78,7 @@ useSpacefinderHead(
 @media (min-width: 700px) {
   .space-detail__card {
     bottom: calc(var(--navigation-height-desktop) + var(--spacing-default));
-    width: 600px;
+    width: calc(var(--column-width-desktop) - var(--spacing-double));
   }
 }
 </style>
