@@ -47,7 +47,7 @@
       >
         <img
           v-if="space.image"
-          :src="space.image.url"
+          :src="`${space.image.url}?&fm=jpg&w=300&auto=quality&auto=format&auto=compress`"
           alt=""
         >
       </div>
