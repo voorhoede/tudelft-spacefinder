@@ -1,6 +1,5 @@
 export interface Filters extends Facilities {
   buildings: number[];
-  studyType: StudyType[];
   quietness: Quietness[];
   buildingOccupancy: Occupancy[];
   showOpenLocations: boolean;
@@ -27,7 +26,7 @@ export type SpaceFeatures = Facilities & {
   quietness: Quietness;
 };
 
-export type StudyType = "group" | "self";
+export type StudyType = "self";
 export type Quietness = "silent" | "quiet" | "noisy";
 
 export const OCCUPANCY_RATES = ["quiet", "busy", "crowded", "unknown"] as const;
