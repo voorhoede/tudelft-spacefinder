@@ -167,7 +167,7 @@ export const useMapStore = defineStore("map", () => {
       map.setZoom(lastZoomLevel.value);
       map.setCenter(lastMapCenter.value);
     } else if (currentSpace.value) {
-      zoomToSpace([currentSpace.value.longitude, currentSpace.value.latitude], 19);
+      zoomToSpace([currentSpace.value.longitude, currentSpace.value.latitude], 18);
     } else if (currentBuilding.value) {
       zoomToBuilding(currentBuilding.value.bounds, 17);
     } else {
