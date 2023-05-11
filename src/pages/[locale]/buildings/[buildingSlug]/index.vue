@@ -13,6 +13,7 @@
       <SpaceList
         class="building-layout__spaces"
         :spaces="spaces"
+        :hide-title="true"
       />
     </div>
   </section>

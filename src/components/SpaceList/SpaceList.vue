@@ -18,7 +18,9 @@
           v-if="index === 0"
           class="space-list__header"
         >
-          <h2>{{ $t("spacesTitle") }}</h2>
+          <h2 v-if="!hideTitle">
+            {{ $t("spacesTitle") }}
+          </h2>
           <p class="space-list__header-text">
             {{ $t("spacesSubTitle") }}
           </p>
@@ -49,7 +51,7 @@ import type { Space } from "~/types/Space";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
-defineProps<{ spaces: Space[] }>();
+defineProps<{ spaces: Space[]; hideTitle: boolean }>();
 </script>
 
 <style>
