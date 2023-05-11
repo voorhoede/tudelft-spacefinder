@@ -81,6 +81,11 @@ body {
         width: calc(100% - var(--column-width-desktop));
     }
 
+    .default-layout__map--space-detail-page.default-layout__map {
+        margin-left: 0;
+        width: 100%;
+    }
+
     .mobile-only {
       display: none!important;
     }

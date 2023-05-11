@@ -22,6 +22,7 @@ defineProps<{ building: Building }>();
 
 .building-image__title {
   position: relative;
+  margin-bottom: 0;
   height: 150px;
   background-size: cover;
   background-position: center;
