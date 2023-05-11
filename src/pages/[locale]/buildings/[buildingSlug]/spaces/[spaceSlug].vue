@@ -24,6 +24,7 @@
 
 <script setup lang="ts">
 import spaceMapImage from "~/lib/space-map-image";
+import zoomLevels from "~/lib/zoom-levels";
 import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
@@ -48,7 +49,7 @@ const routeUrl = computed(
 );
 
 onMounted(() => {
-  mapStore.zoomToSpace([space.value!.longitude, space.value!.latitude], 19);
+  mapStore.zoomToSpace([space.value!.longitude, space.value!.latitude], zoomLevels.spaceZoom);
 });
 
 useSpacefinderHead(

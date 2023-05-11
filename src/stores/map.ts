@@ -7,6 +7,7 @@ import { Bounds } from "~/types/Bounds";
 import { Space } from "~/types/Space";
 import { Occupancy } from "~/types/Filters";
 import campusBounds from "~/lib/campus-bounds";
+import zoomLevels from "~/lib/zoom-levels";
 import { useSpacesStore } from "./spaces";
 
 export const useMapStore = defineStore("map", () => {
@@ -85,7 +86,7 @@ export const useMapStore = defineStore("map", () => {
   
   async function zoomToBoundsAndZoomLevel(bounds: Bounds, zoomLevel: number) {
     const map = await getMap();
-    const defaultZoomLevel = 17;
+    const defaultZoomLevel = zoomLevels.defaultZoom;
 
     map.fitBounds(
       [
@@ -100,7 +101,7 @@ export const useMapStore = defineStore("map", () => {
   
   async function zoomToCoordinatesAndZoomLevel(coordinates: LngLatLike, zoomLevel: number) {
     const map = await getMap();
-    const defaultZoomLevel = 17;
+    const defaultZoomLevel = zoomLevels.defaultZoom;
 
     map.flyTo({
       center: coordinates,
@@ -167,9 +168,12 @@ export const useMapStore = defineStore("map", () => {
       map.setZoom(lastZoomLevel.value);
       map.setCenter(lastMapCenter.value);
     } else if (currentSpace.value) {
-      zoomToSpace([currentSpace.value.longitude, currentSpace.value.latitude], 18);
+      zoomToSpace(
+        [currentSpace.value.longitude, currentSpace.value.latitude], 
+        zoomLevels.spaceZoom
+      );
     } else if (currentBuilding.value) {
-      zoomToBuilding(currentBuilding.value.bounds, 17);
+      zoomToBuilding(currentBuilding.value.bounds, zoomLevels.buildingZoom);
     } else {
       zoomToCampus();
     }

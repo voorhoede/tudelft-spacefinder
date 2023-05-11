@@ -19,6 +19,7 @@ import { Point } from "geojson";
 import { useRoute } from "vue-router";
 
 import campusBounds from "~/lib/campus-bounds";
+import zoomLevels from "~/lib/zoom-levels";
 import { useMapStore } from "~/stores/map";
 import { useSpacesStore } from "~/stores/spaces";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -103,8 +104,8 @@ function initMap(accessToken: string) {
       (campusBounds.west + campusBounds.east) / 2,
       (campusBounds.north + campusBounds.south) / 2,
     ],
-    zoom: 13,
-    minZoom: 14,
+    zoom: zoomLevels.zoom,
+    minZoom: zoomLevels.minZoom,
     trackResize: false, // prevent triggering a resize in mapbox, as we do it ourselves now (see store)
     style: "mapbox://styles/voorhoede/clgm5v8zx00bd01pj4hm0hvhn",
     maxBounds: [campusBounds.southWest, campusBounds.northEast],
@@ -134,7 +135,7 @@ function initMap(accessToken: string) {
         return;
       }
 
-      const img = new Image(145, 33);
+      const img = new Image(120, 27);
       img.onload = () => {
         map.addImage(markerName, img);
         resolve();
@@ -191,8 +192,8 @@ function initMap(accessToken: string) {
   function updateLayerVisibility() {
     const currentZoom = map.getZoom();
 
-    const clustersVisibility = currentZoom >= 14 && currentZoom < 17 ? "visible" : "none";
-    const unclusteredVisibility = currentZoom >= 17 ? "visible" : "none";
+    const clustersVisibility = currentZoom >= zoomLevels.minZoom && currentZoom < zoomLevels.unClusterZoom ? "visible" : "none";
+    const unclusteredVisibility = currentZoom >= zoomLevels.unClusterZoom ? "visible" : "none";
 
     map.setLayoutProperty(CLUSTERS_LAYER_ID, VISIBILITY_PROPERTY, clustersVisibility);
     map.setLayoutProperty(UNCLUSTERED_LAYER_ID, VISIBILITY_PROPERTY, unclusteredVisibility);
@@ -248,18 +249,18 @@ function initMap(accessToken: string) {
           {
             'text-color': '#FFF',
           },
-          '           ', // this space is being used to align the text with the icon
+          '          ', // this space is being used to align the text with the icon
           {},
           ['get', 'buildingAbbreviation'],
           {
             'text-color': '#000',
           },
         ],
-        'text-size': 15,
+        'text-size': 13,
         'text-anchor': 'left',
         'text-justify': 'left',
         'text-transform': 'uppercase',
-        'text-offset': [-4.25, 0],
+        'text-offset': [-4.1, 0],
         'text-allow-overlap': true, // allow text to go over icons else icons will be removed from the map because the text gets collided out
         'text-optional': true, // this is needed for the icons to display when text gets collided out
       },
@@ -271,7 +272,7 @@ function initMap(accessToken: string) {
       interactive: true,
       type: "symbol",
       source: "clustered-points",
-      filter: ["all", ["!", ["has", "pointCount"]], [">=", ["zoom"], 17]],
+      filter: ["all", ["!", ["has", "pointCount"]], [">=", ["zoom"], zoomLevels.unClusterZoom]],
       layout: {
         "icon-image": [
           "match",// A rule to determine the icon for the point...
