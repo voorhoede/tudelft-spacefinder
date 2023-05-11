@@ -34,7 +34,7 @@ const occupancyKey = computed(() => props.occupancy ?? "unknown");
 
 <style>
 .occupancy-indicator__icon {
-  height: 24px;
-  width: 60px;
+  width: 15px;
+  height: 19px;
 }
 </style>

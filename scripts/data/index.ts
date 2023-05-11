@@ -49,7 +49,7 @@ function preparePage(name: string) {
 
 Promise.all([
   prepareSpaces(csvPath),
-  ...["infoPage", "feedbackPage", "onboarding"].map(preparePage),
+  ...["infoPage", "feedbackPage"].map(preparePage),
 ])
   .then(() => console.info("Wrote data for spaces, buildings and CMS"))
   .catch(({ message }) =>

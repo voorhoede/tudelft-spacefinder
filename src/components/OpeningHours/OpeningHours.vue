@@ -137,6 +137,7 @@ const timeSlots = computed(() => {
 @import "../app-core/variables.css";
 
 .opening-hours {
+  font-size: var(--font-size-smaller);
   text-align: right;
 }
 
@@ -149,6 +150,7 @@ const timeSlots = computed(() => {
   padding-left: var(--spacing-quarter);
   margin-right: var(--spacing-half-negative);
   overflow: hidden;
+  font-size: var(--font-size-smaller);
 }
 
 .opening-hours__toggle-label {
@@ -156,7 +158,6 @@ const timeSlots = computed(() => {
 }
 
 .opening-hours__toggle-icon {
-  margin-right: var(--spacing-quarter-negative);
   width: 20px;
   height: 20px;
   vertical-align: middle;
@@ -170,6 +171,7 @@ const timeSlots = computed(() => {
 
 .opening-hours__title {
   margin-top: var(--spacing-half);
+  font-size: var(--font-size-default);
   text-align: left;
 }
 

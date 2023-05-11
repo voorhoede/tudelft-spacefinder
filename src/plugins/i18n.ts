@@ -1,6 +1,5 @@
 import en from "../data/en/messages.json";
 import nl from "../data/nl/messages.json";
-import onboarding from "../data/onboarding.json";
 import infoPage from "../data/infopage.json";
 import feedbackPage from "~/data/feedbackpage.json";
 import type { Building } from "../types/Building";
@@ -10,8 +9,6 @@ const messages: Record<string, Record<string, string>> = { en, nl }; //TODO: bet
 const content: Record<string, Record<string, string>> = {};
 for (const locale of ["en", "nl"] as const) {
   content[locale] = {};
-  for (const prop of ["title", "body"] as const)
-    content[locale][`onboarding.${prop}`] = onboarding[locale][prop];
   for (const prop of ["title", "body"] as const)
     content[locale][`infoPage.${prop}`] = infoPage[locale][prop];
   for (const prop of ["title", "body"] as const)

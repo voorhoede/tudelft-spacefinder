@@ -5,9 +5,6 @@
   >
     <VitePwaManifest />
     <SpriteMap />
-    <ClientOnly>
-      <PopUp />
-    </ClientOnly>
 
     <NotificationBar
       class="default-layout__notification-bar"
@@ -22,7 +19,10 @@
     <main class="default-layout__main">
       <slot />
 
-      <MapboxMap class="default-layout__map" />
+      <MapboxMap
+        class="default-layout__map"
+        :class="{ 'default-layout__map--space-detail-page': isSpaceDetailPage}"
+      />
     </main>
 
     <AppNavigation
@@ -43,20 +43,43 @@
 </template>
 
 <script setup lang="ts">
+import { useMapStore } from "~/stores/map";
+
+const route = useRoute();
+const mapStore = useMapStore();
+
 const defaultLayout = ref<null | HTMLDivElement>(null);
 const openedMenu = ref<null | string>(null);
+
+let spaceSlug: string | string[];
+
+watch(route,
+  value => {
+    const previousSpaceSlug = spaceSlug
+    spaceSlug = value.params.spaceSlug
+
+    if (previousSpaceSlug !== spaceSlug) {
+      mapStore.resizeMap();
+    }
+  }
+);
+
+const isSpaceDetailPage = computed(() => route.params.spaceSlug !== undefined)
 
 const onResizeDebounce = useDebounceFn(onResize, 200);
 
 function openAppMenu() {
   openedMenu.value = "app-menu";
 }
+
 function openFilterMenu() {
   openedMenu.value = "filter-menu";
 }
+
 function closeMenu() {
   openedMenu.value = null;
 }
+
 function onResize() {
   const windowHeight = window.innerHeight * 0.01;
   defaultLayout.value!.style.setProperty(
@@ -92,6 +115,7 @@ useHead({
 .default-layout__notification-bar {
   display: none;
 }
+
 .old-ie .default-layout__notification-bar {
   display: block;
 }

@@ -20,6 +20,7 @@
     --font-size-bigger: 1.3rem;
     --font-size-default: 1rem;
     --font-size-smaller: .9rem;
+    --font-size-medium: .7rem;
     --font-size-small: .5rem;
 
     /* spacing */
@@ -48,4 +49,10 @@
     --navigation-height-desktop: 55px;
     --column-width-mobile: 310px;
     --column-width-desktop: 360px;
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --column-width-desktop: 420px;
+    }
 }
