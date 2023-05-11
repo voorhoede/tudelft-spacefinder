@@ -60,7 +60,7 @@ useSpacefinderHead(
 );
 
 onMounted(() => {
-  mapStore.zoomToSelection();
+  mapStore.zoomToBuilding(building.value?.bounds,17.5);
 });
 </script>
 

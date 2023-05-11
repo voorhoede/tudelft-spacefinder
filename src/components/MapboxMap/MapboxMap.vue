@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import {Geometry, Point} from "geojson";
+import { Point } from "geojson";
 import { useRoute } from "vue-router";
 
 import campusBounds from "~/lib/campus-bounds";
@@ -188,18 +188,6 @@ function initMap(accessToken: string) {
     map.setLayoutProperty(UNCLUSTERED_LAYER_ID, VISIBILITY_PROPERTY, unclusteredVisibility);
   }
 
-  function flyToCoordinates(coordinates: mapboxgl.LngLatLike, zoomLevel: number) {
-    map.flyTo({
-      center: coordinates,
-      zoom: zoomLevel,
-      essential: true,
-    });
-  }
-
-  function isPoint(geometry: Geometry): geometry is Point {
-    return geometry.type === "Point";
-  }
-
   watch(route, (newRoute) => {
     const { spaceSlug } = newRoute.params;
     selectedSpaceSlug.value = spaceSlug;
@@ -223,7 +211,6 @@ function initMap(accessToken: string) {
       (acc, occupancy) => [...acc, occupancy, `map-marker-${occupancy}`],
       [] as string[]
     );
-
 
     map.addSource("clustered-points", {
       type: "geojson",
@@ -303,19 +290,13 @@ function initMap(accessToken: string) {
     });
 
     if (features.length) {
-      const geometry = features[0].geometry;
       const properties = features[0].properties;
-
-      if (isPoint(geometry)) {
-        flyToCoordinates(geometry.coordinates, 19);
-
         const buildingSlug = properties?.buildingSlug ?? null as string | null;
-
+        saveMapState();
         router.push($localePath("/buildings/:buildingSlug", {
           buildingSlug,
         }));
       }
-    }
   });
 
   map.on("click", UNCLUSTERED_LAYER_ID, (e) => {
@@ -324,15 +305,10 @@ function initMap(accessToken: string) {
     });
 
     if (features.length) {
-      const geometry = features[0].geometry;
       const properties = features[0].properties;
 
       if (!properties || !properties.buildingSlug || !properties.spaceSlug) {
         return;
-      }
-
-      if (isPoint(geometry)) {
-        flyToCoordinates(geometry.coordinates, 19);
       }
 
       setHighlightedMarker(properties.spaceSlug, "map-marker-selected");

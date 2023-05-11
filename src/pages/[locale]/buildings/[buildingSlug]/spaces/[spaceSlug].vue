@@ -29,7 +29,7 @@ import SpaceDetailCard from "~/components/SpaceDetailCard/SpaceDetailCard.vue";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 
-const { $t, $isMobile } = useNuxtApp();
+const { $t } = useNuxtApp();
 const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 
@@ -46,10 +46,7 @@ const routeUrl = computed(
 );
 
 onMounted(() => {
-  const padding = $isMobile.value
-    ? { bottom: card.value!.getClientHeight()! + 2 * 20 }
-    : {};
-  mapStore.zoomToSelection(padding);
+  mapStore.zoomToSpace([space.value!.longitude, space.value!.latitude], 19);
 });
 
 useSpacefinderHead(

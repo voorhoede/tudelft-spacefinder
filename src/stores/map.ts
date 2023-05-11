@@ -1,5 +1,6 @@
 import { defineStore, storeToRefs } from "pinia";
 import { Feature, FeatureCollection, Point } from "geojson";
+import {GeoJSONSource, LngLatLike, Map} from "mapbox-gl";
 import { deferred } from "~/lib/deferred";
 import { spaceIsOpen } from "~/lib/filter-spaces";
 import { Bounds } from "~/types/Bounds";
@@ -7,11 +8,10 @@ import { Space } from "~/types/Space";
 import { Occupancy } from "~/types/Filters";
 import campusBounds from "~/lib/campus-bounds";
 import { useSpacesStore } from "./spaces";
-import { GeoJSONSource, Map } from "mapbox-gl";
 
 export const useMapStore = defineStore("map", () => {
   const spacesStore = useSpacesStore();
-  const { currentBuilding, spaces, filters } =
+  const { currentBuilding, currentSpace, spaces, filters } =
     storeToRefs(spacesStore);
 
   const mapDeferred = deferred<Map>();
@@ -82,6 +82,31 @@ export const useMapStore = defineStore("map", () => {
     left: number;
     right: number;
   }
+  
+  async function zoomToBoundsAndZoomLevel(bounds: Bounds, zoomLevel: number) {
+    const map = await getMap();
+    const defaultZoomLevel = 17;
+
+    map.fitBounds(
+      [
+        [bounds.west, bounds.south],
+        [bounds.east, bounds.north],
+      ],
+      {
+        zoom: zoomLevel || defaultZoomLevel,
+      },
+    );
+  }
+  
+  async function zoomToCoordinatesAndZoomLevel(coordinates: LngLatLike, zoomLevel: number) {
+    const map = await getMap();
+    const defaultZoomLevel = 17;
+
+    map.flyTo({
+      center: coordinates,
+      zoom: zoomLevel || defaultZoomLevel,
+    });
+  }
 
   async function zoomToBounds(bounds: Bounds, padding: Partial<Padding>) {
     const map = await getMap();
@@ -111,6 +136,20 @@ export const useMapStore = defineStore("map", () => {
     zoomToBounds(bounds, padding);
   }
 
+  function zoomToBuilding(bounds: Bounds, zoomLevel: number) {
+    const currentBuildingBounds = currentBuilding.value?.bounds;
+
+    if (currentBuildingBounds) {
+      zoomToBoundsAndZoomLevel(currentBuildingBounds, zoomLevel);
+    } else {
+      zoomToBoundsAndZoomLevel(bounds, zoomLevel);
+    }
+  }
+  
+  function zoomToSpace(coordinates: LngLatLike, zoomLevel: number) {
+    zoomToCoordinatesAndZoomLevel(coordinates, zoomLevel);
+  }
+
   async function resizeMap() {
     const map = await getMap();
     map.resize();
@@ -120,7 +159,6 @@ export const useMapStore = defineStore("map", () => {
     const map = await getMap();
     lastZoomLevel.value = map.getZoom();
     lastMapCenter.value = map.getCenter().toArray() as [number, number];
-
   }
 
   async function restoreMapState() {
@@ -128,6 +166,10 @@ export const useMapStore = defineStore("map", () => {
       const map = await getMap();
       map.setZoom(lastZoomLevel.value);
       map.setCenter(lastMapCenter.value);
+    } else if (currentSpace.value) {
+      zoomToSpace([currentSpace.value.longitude, currentSpace.value.latitude], 19);
+    } else if (currentBuilding.value) {
+      zoomToBuilding(currentBuilding.value.bounds, 17);
     } else {
       zoomToCampus();
     }
@@ -327,9 +369,8 @@ export const useMapStore = defineStore("map", () => {
     createManualClusters,
     mapLoaded,
     setMap,
-    zoomToCampus,
-    zoomToSelection,
-    zoomAuto,
+    zoomToBuilding,
+    zoomToSpace,
     resizeMap,
     saveMapState,
     restoreMapState,
