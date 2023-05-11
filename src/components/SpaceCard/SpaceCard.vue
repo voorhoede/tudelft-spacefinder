@@ -10,11 +10,22 @@
         </h2>
 
         <div class="space-detail-card__seating">
-          <SvgIcon
-            name="seat-icon"
-            class="space-detail-card__seating-icon"
-          />
-          {{ space.seats }}
+          <Tooltip
+            :delay="0"
+            :overflow-padding="4"
+            :instant-move="true"
+          >
+            <div>
+              <SvgIcon
+                name="seat-icon"
+                class="space-detail-card__seating-icon"
+              />
+              {{ space.seats }}
+            </div>
+            <template #popper>
+              {{ $t('capacity') }}: {{ space.seats }} {{ $t('seats') }}
+            </template>
+          </Tooltip>
         </div>
       </div>
       
@@ -76,6 +87,7 @@
 </template>
 
 <script setup lang="ts">
+import { Tooltip } from "floating-vue";
 import type { Space } from "~/types/Space";
 defineProps<{ space: Space, hideOpeningHours: boolean }>();
 
