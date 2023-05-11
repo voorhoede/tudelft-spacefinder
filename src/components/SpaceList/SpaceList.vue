@@ -49,7 +49,7 @@ import type { Space } from "~/types/Space";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
-defineProps<{ spaces: Space[]; showBuildingOccupancy: boolean }>();
+defineProps<{ spaces: Space[] }>();
 </script>
 
 <style>

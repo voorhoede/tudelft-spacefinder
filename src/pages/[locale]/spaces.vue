@@ -3,10 +3,7 @@
     <h2 class="a11y-sr-only">
       {{ allSpacesTitle }}
     </h2>
-    <SpaceList
-      :spaces="spacesStore.filteredSpaces"
-      :show-building-occupancy="true"
-    />
+    <SpaceList :spaces="spacesStore.filteredSpaces" />
   </section>
 </template>
 

@@ -13,7 +13,6 @@
       <SpaceList
         class="building-layout__spaces"
         :spaces="spaces"
-        :show-building-occupancy="false"
       />
     </div>
   </section>
