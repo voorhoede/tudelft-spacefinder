@@ -5,9 +5,6 @@
   >
     <VitePwaManifest />
     <SpriteMap />
-    <ClientOnly>
-      <PopUp />
-    </ClientOnly>
 
     <NotificationBar
       class="default-layout__notification-bar"
