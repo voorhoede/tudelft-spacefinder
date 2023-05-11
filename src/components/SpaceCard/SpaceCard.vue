@@ -30,9 +30,11 @@
       <CardStatus
         :opening-hours="space.openingHours"
         class="space-detail-card__open-status"
+        :class="{ 'space-detail-card__open-status--visible': !hideOpeningHours }"
       />
 
       <OpeningHours
+        v-if="!hideOpeningHours"
         :opening-hours-building="space.building.openingHours"
         :opening-hours-space="space.openingHours"
         :show-toggle-on-desktop="false"
@@ -45,7 +47,7 @@
       >
         <img
           v-if="space.image"
-          :src="space.image.url"
+          :src="`${space.image.url}?&fm=jpg&w=300&auto=quality&auto=format&auto=compress`"
           alt=""
         >
       </div>
@@ -75,7 +77,7 @@
 
 <script setup lang="ts">
 import type { Space } from "~/types/Space";
-defineProps<{ space: Space }>();
+defineProps<{ space: Space, hideOpeningHours: boolean }>();
 
 const root = ref(null as null | HTMLDivElement);
 
@@ -154,7 +156,11 @@ defineExpose({
 }
 
 .space-detail-card__open-status {
-  margin: var(--spacing-default) 0 -1.4rem 0;
+  margin-top: var(--spacing-half);
+}
+
+.space-detail-card__open-status--visible {
+  margin-bottom: -1.4rem;
 }
 
 @media (min-width: 700px) {
