@@ -1,5 +1,8 @@
 <template>
-  <section v-if="space">
+  <section
+    v-if="space"
+    class="space-detail"
+  >
     <BackButton
       :to="$localePath('/buildings/:buildingSlug', { space })"
       class="button--back"
@@ -78,7 +81,15 @@ useSpacefinderHead(
 @media (min-width: 700px) {
   .space-detail__card {
     bottom: calc(var(--navigation-height-desktop) + var(--spacing-default));
-    width: 600px;
+    width: calc(var(--column-width-desktop) - var(--spacing-double));
+  }
+
+  .space-detail .button--back {
+    left: var(--spacing-default);
+  }
+
+  .space-detail .button--route {
+    left: calc(5 * var(--spacing-default))
   }
 }
 </style>
