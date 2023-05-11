@@ -143,38 +143,48 @@ function initMap(accessToken: string) {
     });
   }
 
-  function setHighlightedMarker(spaceSlug: string | string[] | null, iconImage: string) {
-    const zoom = map.getZoom();
-    const unclusteredVisibility = zoom >= 17 ? "visible" : "none";
+  function createMarker(iconImage: string, coordinates: mapboxgl.LngLatLike) {
+    const img = new Image(40, 40);
+    img.src = `/icons/${iconImage}.svg`;
 
+    return new mapboxgl.Marker({
+      element: img,
+    })
+      .setLngLat(coordinates)
+      .addTo(map);
+  }
+
+  function setHighlightedMarker(
+    spaceSlug: string | string[] | null,
+    iconImage: string,
+    coordinates?: mapboxgl.LngLatLike | undefined
+  ) {
     // Remove the previous highlighted marker
     if (previousHighlightedMarker.value) {
       previousHighlightedMarker.value.remove();
       previousHighlightedMarker.value = null;
     }
 
-    if (unclusteredVisibility === "visible" && spaceSlug) {
+    let markerCoordinates: mapboxgl.LngLatLike | null = null;
+
+    // If coordinates are supplied, use them directly
+    if (coordinates) {
+      markerCoordinates = coordinates;
+    } else if (spaceSlug) {
       const features = map.querySourceFeatures("clustered-points", {
         filter: ["==", ["get", "spaceSlug"], spaceSlug],
       });
 
       if (features.length > 0) {
         const feature = features[0];
-        const coordinates = (feature.geometry as Point)?.coordinates as mapboxgl.LngLatLike;
-
-        const marker = new mapboxgl.Marker({
-          element: (() => {
-            const img = new Image(40, 40);
-            img.src = `/icons/${iconImage}.svg`;
-            return img;
-          })(),
-        })
-          .setLngLat(coordinates)
-          .addTo(map);
-
-        // Set the new highlighted marker
-        previousHighlightedMarker.value = marker;
+        markerCoordinates = (feature.geometry as Point)?.coordinates as mapboxgl.LngLatLike;
       }
+    }
+
+    if (markerCoordinates) {
+      const marker = createMarker(iconImage, markerCoordinates);
+      // Set the new highlighted marker
+      previousHighlightedMarker.value = marker;
     }
   }
   
@@ -277,8 +287,15 @@ function initMap(accessToken: string) {
     fixInsecureLinks();
     updateLayerVisibility();
 
-    if (currentSpace) {
-      setHighlightedMarker(currentSpace?.value?.slug ?? null, "map-marker-selected");
+    if (currentSpace.value) {
+      // show the marker after the map is zoomed in
+      setTimeout(() => {
+        setHighlightedMarker(
+          currentSpace.value!.slug, 
+          "map-marker-selected", 
+          [currentSpace.value!.longitude, currentSpace.value!.latitude]);
+      }, 1000);
+      
     }
     
     mapStore.setMap(map);
