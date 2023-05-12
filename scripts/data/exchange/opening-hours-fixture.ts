@@ -24,7 +24,7 @@ export default {
         nearCoffeeMachine: true,
         nearPrinter: false,
         nearBathroom: true,
-        studyType: "group" as const,
+        studyType: "self" as const,
         quietness: "quiet" as const,
       },
       buildingNumber: 31,
