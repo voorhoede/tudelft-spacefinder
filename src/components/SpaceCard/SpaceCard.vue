@@ -89,7 +89,7 @@
 <script setup lang="ts">
 import { Tooltip } from "floating-vue";
 import type { Space } from "~/types/Space";
-defineProps<{ space: Space, hideOpeningHours: boolean }>();
+defineProps<{ space: Space, hideOpeningHours?: boolean }>();
 
 const root = ref(null as null | HTMLDivElement);
 
