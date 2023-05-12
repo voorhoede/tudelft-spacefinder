@@ -51,7 +51,7 @@ import type { Space } from "~/types/Space";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
-defineProps<{ spaces: Space[]; hideTitle: boolean }>();
+defineProps<{ spaces: Space[]; hideTitle?: boolean }>();
 </script>
 
 <style>

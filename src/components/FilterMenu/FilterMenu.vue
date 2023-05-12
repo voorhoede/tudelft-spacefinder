@@ -41,20 +41,6 @@
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
-            {{ $t("studyType") }}
-          </legend>
-          <FilterMenuItem
-            name="studyType"
-            option="self"
-          />
-          <FilterMenuItem
-            name="studyType"
-            option="group"
-          />
-        </fieldset>
-
-        <fieldset class="filter-menu__filter-group">
-          <legend class="h3">
             {{ $t("computerFacilities") }}
           </legend>
           <FilterMenuItem name="powerOutlets" />

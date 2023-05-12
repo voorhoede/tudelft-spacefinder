@@ -57,8 +57,6 @@ function filterSpace(
       return filters.buildings.includes(space.buildingNumber);
     if (activeFilterKey == "quietness")
       return filters.quietness.includes(space.facilities.quietness);
-    if (activeFilterKey == "studyType")
-      return filters.studyType.includes(space.facilities.studyType);
     if (activeFilterKey == "buildingOccupancy")
       return (
         space.building.occupancy &&
