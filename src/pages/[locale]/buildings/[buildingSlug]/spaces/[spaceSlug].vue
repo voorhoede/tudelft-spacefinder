@@ -24,6 +24,7 @@
 
 <script setup lang="ts">
 import spaceMapImage from "~/lib/space-map-image";
+import zoomLevels from "~/lib/zoom-levels";
 import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
@@ -31,7 +32,7 @@ import SpaceCard from "~/components/SpaceCard/SpaceCard.vue";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 
-const { $t, $isMobile } = useNuxtApp();
+const { $t } = useNuxtApp();
 const spacesStore = useSpacesStore();
 const mapStore = useMapStore();
 
@@ -48,10 +49,7 @@ const routeUrl = computed(
 );
 
 onMounted(() => {
-  const padding = $isMobile.value
-    ? { bottom: card.value!.getClientHeight()! + 2 * 20 }
-    : {};
-  mapStore.zoomToSelection(padding);
+  mapStore.zoomToSpace([space.value!.longitude, space.value!.latitude], zoomLevels.spaceZoom);
 });
 
 useSpacefinderHead(

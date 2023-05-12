@@ -23,6 +23,7 @@
 import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
+import zoomLevels from "~/lib/zoom-levels";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug" });
 
@@ -60,7 +61,7 @@ useSpacefinderHead(
 );
 
 onMounted(() => {
-  mapStore.zoomToSelection();
+  mapStore.zoomToBuilding(building.value!.bounds, zoomLevels.buildingZoom);
 });
 </script>
 
