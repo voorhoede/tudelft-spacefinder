@@ -157,7 +157,7 @@ function initMap(accessToken: string) {
   }
 
   function createMarker(iconImage: string, coordinates: mapboxgl.LngLatLike) {
-    const img = new Image(40, 40);
+    const img = new Image(42, 42);
     img.src = `/icons/${iconImage}.svg`;
 
     return new mapboxgl.Marker({
