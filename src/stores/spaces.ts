@@ -17,8 +17,17 @@ export type Selection =
     }
   | undefined;
 
+export type AssociatedSpace = {
+  id: string,
+  spaceSlug: string,
+  buildingSlug: string,
+  long: number,
+  lat: number
+}
+
 export const useSpacesStore = defineStore("spaces", () => {
   const currentSelection = ref<Selection>(undefined);
+  const currentAssociatedSpaces = ref<AssociatedSpace[]>([]);
 
   const currentSpace = computed(() =>
     currentSelection.value && currentSelection.value.level == "space"
@@ -33,6 +42,8 @@ export const useSpacesStore = defineStore("spaces", () => {
         : currentSpace.value?.building
       : undefined
   );
+  
+  const associatedSpaces = computed(() => currentAssociatedSpaces.value);
 
   const defaultFilters: Filters = {
     buildingOccupancy: [],
@@ -196,6 +207,10 @@ export const useSpacesStore = defineStore("spaces", () => {
       //mapStore.updateData(); //TODO: DECIDE IF WE NEED TO DO THAT
     }
   }
+  
+  function setAssociatedSpaces(spaces: AssociatedSpace[]) {
+    currentAssociatedSpaces.value = spaces;
+  }
 
   const spaces = computed(() => {
     const { $locale } = useNuxtApp();
@@ -268,6 +283,8 @@ export const useSpacesStore = defineStore("spaces", () => {
     setSpaces,
     bulkSetRoomOccupancy,
     setRoomOccupancy,
+    associatedSpaces,
+    setAssociatedSpaces,
     spaces,
     filteredSpaces,
     clearFilters,

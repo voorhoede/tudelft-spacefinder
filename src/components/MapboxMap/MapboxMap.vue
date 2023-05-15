@@ -15,13 +15,13 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { Point } from "geojson";
+import {Feature, Point} from "geojson";
 import { useRoute } from "vue-router";
 
 import campusBounds from "~/lib/campus-bounds";
 import zoomLevels from "~/lib/zoom-levels";
 import { useMapStore } from "~/stores/map";
-import { useSpacesStore } from "~/stores/spaces";
+import {AssociatedSpace, useSpacesStore} from "~/stores/spaces";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { OCCUPANCY_RATES } from "~/types/Filters";
 const mapboxgl = (await import("mapbox-gl")).default;
@@ -61,6 +61,17 @@ function saveMapState() {
 }
 function restoreMapState() {
   mapStore.restoreMapState();
+}
+function setAssociatedSpaces(spaces: Feature[]) {
+  const newSpaces = spaces.map(space => ({
+    id: space.id,
+    spaceSlug: space.properties!.spaceSlug,
+    buildingSlug: space.properties!.buildingSlug,
+    long: space.geometry.coordinates[0],
+    lat: space.geometry.coordinates[1]
+  }));
+
+  spacesStore.setAssociatedSpaces(newSpaces as AssociatedSpace[]);
 }
 
 /**
@@ -318,27 +329,39 @@ function initMap(accessToken: string) {
   });
 
   map.on("click", UNCLUSTERED_LAYER_ID, (e) => {
-    const features = map.queryRenderedFeatures(e.point, {
-      layers: [UNCLUSTERED_LAYER_ID],
-    });
+    let properties;
+    const CLICK_RADIUS = 3;
 
-    if (features.length) {
-      const properties = features[0].properties;
+    const features = map.queryRenderedFeatures(
+      [
+        [e.point.x - CLICK_RADIUS, e.point.y - CLICK_RADIUS],
+        [e.point.x + CLICK_RADIUS, e.point.y + CLICK_RADIUS],
+      ],
+      { layers: [UNCLUSTERED_LAYER_ID] }
+    );
 
-      if (!properties || !properties.buildingSlug || !properties.spaceSlug) {
-        return;
-      }
-
-      setHighlightedMarker(properties.spaceSlug, "map-marker-selected");
-      saveMapState();
-
-      router.push(
-        $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
-          buildingSlug: properties.buildingSlug as string,
-          spaceSlug: properties.spaceSlug as string,
-        })
-      );
+    if (features.length > 1) {
+      setAssociatedSpaces(features);
+      const [ firstFeature ] = features;
+      properties = firstFeature.properties || {};
+    } else if (features.length === 1) {
+      setAssociatedSpaces([]);
+      properties = features[0].properties || {};
     }
+
+    if (!properties || !properties.buildingSlug || !properties.spaceSlug) {
+      return;
+    }
+
+    setHighlightedMarker(properties.spaceSlug, "map-marker-selected");
+    saveMapState();
+
+    router.push(
+      $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+        buildingSlug: properties.buildingSlug as string,
+        spaceSlug: properties.spaceSlug as string,
+      })
+    );
   });
 
   map.on("moveend", () => {
