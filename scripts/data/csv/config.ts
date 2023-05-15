@@ -36,7 +36,6 @@ export default {
     null,
     "daylit",
     "powerOutlets",
-    "stationaryPC",
     "whiteBoard",
     "presentationScreen",
     "nearCoffeeMachine",
@@ -63,7 +62,6 @@ function cast(value: string, context: { column: string | number }) {
     case "daylit":
     case "whiteBoard":
     case "presentationScreen":
-    case "stationaryPC":
     case "nearCoffeeMachine":
       return distanceToBoolean(value);
     case "nearPrinter":

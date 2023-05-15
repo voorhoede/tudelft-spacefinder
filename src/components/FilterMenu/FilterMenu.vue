@@ -44,7 +44,6 @@
             {{ $t("computerFacilities") }}
           </legend>
           <FilterMenuItem name="powerOutlets" />
-          <FilterMenuItem name="stationaryPC" />
           <FilterMenuItem name="nearPrinter" />
         </fieldset>
 

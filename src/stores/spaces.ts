@@ -46,7 +46,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     presentationScreen: false,
     quietness: [],
     showOpenLocations: false,
-    stationaryPC: false,
     whiteBoard: false,
   };
 
