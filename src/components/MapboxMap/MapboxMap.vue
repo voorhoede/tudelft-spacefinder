@@ -44,6 +44,7 @@ const onResizeDebounce = useDebounceFn(onResize, 200);
 const CLUSTERS_LAYER_ID = "clusters";
 const UNCLUSTERED_LAYER_ID = "unclustered-point";
 const VISIBILITY_PROPERTY = "visibility";
+const POINT_RADIUS = 1;
 
 onMounted(() => {
   initMap(runtimeConfig.public.mapboxToken);
@@ -300,14 +301,29 @@ function initMap(accessToken: string) {
     updateLayerVisibility();
 
     if (currentSpace.value) {
-      // show the marker after the map is zoomed in
+      // show the marker after the map is zoomed in have to wait 1.5 sec because the markers are being load in after zooming in the map
+      // if we don't wait there aren't any features to query...
       setTimeout(() => {
         setHighlightedMarker(
-          currentSpace.value!.slug, 
-          "map-marker-selected", 
+          currentSpace.value!.slug,
+          "map-marker-selected",
           [currentSpace.value!.longitude, currentSpace.value!.latitude]);
-      }, 1000);
-      
+        
+        const screenPoint = map.project([currentSpace.value!.longitude, currentSpace.value!.latitude]);
+        const features = map.queryRenderedFeatures(
+          [
+            [screenPoint.x - POINT_RADIUS, screenPoint.y - POINT_RADIUS],
+            [screenPoint.x + POINT_RADIUS, screenPoint.y + POINT_RADIUS],
+          ],
+          { layers: [UNCLUSTERED_LAYER_ID] }
+        );
+
+        if (features.length > 1) {
+          setAssociatedSpaces(features);
+        } else {
+          setAssociatedSpaces([]);
+        }
+      }, 1500)
     }
     
     mapStore.setMap(map);
@@ -330,12 +346,11 @@ function initMap(accessToken: string) {
 
   map.on("click", UNCLUSTERED_LAYER_ID, (e) => {
     let properties;
-    const CLICK_RADIUS = 3;
 
     const features = map.queryRenderedFeatures(
       [
-        [e.point.x - CLICK_RADIUS, e.point.y - CLICK_RADIUS],
-        [e.point.x + CLICK_RADIUS, e.point.y + CLICK_RADIUS],
+        [e.point.x - POINT_RADIUS, e.point.y - POINT_RADIUS],
+        [e.point.x + POINT_RADIUS, e.point.y + POINT_RADIUS],
       ],
       { layers: [UNCLUSTERED_LAYER_ID] }
     );

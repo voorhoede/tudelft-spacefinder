@@ -14,7 +14,10 @@
           :disabled="currentIndex === 0"
           :aria-label="currentIndex === 0 ? 'This is the first location' : 'Go to previous location'"
         >
-          &lt;
+          <SvgIcon
+            name="back-icon"
+            class="space-detail-card__left-icon"
+          />
         </button>
         <span class="space-detail-card__location-count">
           {{ currentIndex + 1 }}/{{ associatedSpaces.length }} {{ $t('locations') }}
@@ -25,7 +28,10 @@
           :disabled="currentIndex === associatedSpaces.length - 1"
           :aria-label="currentIndex === associatedSpaces.length - 1 ? 'This is the last location' : 'Go to next location'"
         >
-          &gt;
+          <SvgIcon
+            name="back-icon"
+            class="space-detail-card__right-icon"
+          />
         </button>
       </div>
     </div>
@@ -160,9 +166,13 @@ const goToNextSpace = () => {
   }
 }
 
-watch(() => props.space, (newSpace) => {
-  currentIndex.value = props.associatedSpaces?.findIndex(space => space.spaceSlug === newSpace.slug) ?? 0;
-}, { immediate: true });
+watch(
+  [() => props.space, () => props.associatedSpaces],
+  ([newSpace, newAssociatedSpaces]) => {
+    currentIndex.value = newAssociatedSpaces?.findIndex(space => space.spaceSlug === newSpace.slug) ?? 0;
+  },
+  { immediate: true }
+);
 
 defineExpose({
   getClientHeight: () => root.value?.clientHeight,
@@ -220,6 +230,17 @@ defineExpose({
 .space-detail-card__nav-button:disabled {
   color: #ccc;
   cursor: not-allowed;
+}
+
+.space-detail-card__left-icon,
+.space-detail-card__right-icon {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+.space-detail-card__right-icon {
+  rotate: 180deg;
 }
 
 .space-detail-card__location-count {
