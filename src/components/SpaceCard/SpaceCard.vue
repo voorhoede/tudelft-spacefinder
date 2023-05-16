@@ -1,50 +1,50 @@
 <template>
   <div 
     ref="root"
-    class="space-detail-card-container" 
+    class="space-card-container" 
   >
     <div
       v-if="hasAssociatedSpaces"
-      class="space-detail-card__top-row"
+      class="space-card__top-row"
     >
-      <div class="space-detail-card__navigation">
+      <div class="space-card__navigation">
         <button
-          class="space-detail-card__nav-button"
+          class="space-card__nav-button"
           @click="goToPreviousSpace"
           :disabled="currentIndex === 0"
           :aria-label="currentIndex === 0 ? 'This is the first location' : 'Go to previous location'"
         >
           <SvgIcon
             name="back-icon"
-            class="space-detail-card__left-icon"
+            class="space-card__left-icon"
           />
         </button>
-        <span class="space-detail-card__location-count">
+        <span class="space-card__location-count">
           {{ currentIndex + 1 }}/{{ associatedSpaces.length }} {{ $t('locations') }}
         </span>
         <button
-          class="space-detail-card__nav-button"
+          class="space-card__nav-button"
           @click="goToNextSpace"
           :disabled="currentIndex === associatedSpaces.length - 1"
           :aria-label="currentIndex === associatedSpaces.length - 1 ? 'This is the last location' : 'Go to next location'"
         >
           <SvgIcon
             name="back-icon"
-            class="space-detail-card__right-icon"
+            class="space-card__right-icon"
           />
         </button>
       </div>
     </div>
     <div
-      class="space-detail-card"
+      class="space-card"
     >
-      <div class="space-detail-card__left-column">
-        <div class="space-detail-card__header">
-          <h2 class="space-detail-card__title">
+      <div class="space-card__left-column">
+        <div class="space-card__header">
+          <h2 class="space-card__title">
             {{ space.name }}
           </h2>
 
-          <div class="space-detail-card__seating">
+          <div class="space-card__seating">
             <Tooltip
               :delay="0"
               :overflow-padding="4"
@@ -53,7 +53,7 @@
               <div>
                 <SvgIcon
                   name="seat-icon"
-                  class="space-detail-card__seating-icon"
+                  class="space-card__seating-icon"
                 />
                 {{ space.seats }}
               </div>
@@ -64,19 +64,19 @@
           </div>
         </div>
 
-        <p class="space-detail-card__description">
+        <p class="space-card__description">
           {{ space.roomId }} | {{ space.floor }}
         </p>
 
         <SpaceFacilities
           :facilities="space.facilities"
-          class="space-detail-card__facilities"
+          class="space-card__facilities"
         />
 
         <CardStatus
           :opening-hours="space.openingHours"
-          class="space-detail-card__open-status"
-          :class="{ 'space-detail-card__open-status--visible': !hideOpeningHours }"
+          class="space-card__open-status"
+          :class="{ 'space-card__open-status--visible': !hideOpeningHours }"
         />
 
         <OpeningHours
@@ -86,10 +86,10 @@
           :show-toggle-on-desktop="false"
         />
       </div>
-      <div class="space-detail-card__right-column">
+      <div class="space-card__right-column">
         <div
           v-if="space.image"
-          class="space-detail-card__image"
+          class="space-card__image"
         >
           <img
             v-if="space.image"
@@ -100,15 +100,15 @@
 
         <div
           v-else
-          class="space-detail-card__image-placeholder"
+          class="space-card__image-placeholder"
         >
           <SvgIcon
             name="flame-icon"
-            class="space-detail-card__image-placeholder-icon"
+            class="space-card__image-placeholder-icon"
           />
         </div>
 
-        <div class="space-detail-card__occupancy-indicator">
+        <div class="space-card__occupancy-indicator">
           {{ space.building.abbreviation }}
 
           <OccupancyIndicator
@@ -182,7 +182,7 @@ defineExpose({
 <style>
 @import "../app-core/variables.css";
 
-.space-detail-card {
+.space-card {
   display: flex;
   gap: var(--spacing-default);
   padding: var(--spacing-default);
@@ -193,16 +193,16 @@ defineExpose({
 }
 
 @media (min-width: 700px) {
-  .space-detail-card {
+  .space-card {
     padding: var(--spacing-default);
   }
 }
 
-.space-detail-card-container {
+.space-card-container {
   position: relative;
 }
 
-.space-detail-card__top-row {
+.space-card__top-row {
   position: absolute;
   display: flex;
   align-items: center;
@@ -215,44 +215,43 @@ defineExpose({
   box-shadow: var(--shadow-small);
 }
 
-.space-detail-card__navigation {
+.space-card__navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.space-detail-card__nav-button {
+.space-card__nav-button {
   background: none;
   border: none;
   cursor: pointer;
   padding: 0 var(--spacing-half);
 }
 
-.space-detail-card__nav-button:disabled {
-  color: #ccc;
+.space-card__nav-button:disabled {
   cursor: not-allowed;
 }
 
-.space-detail-card__left-icon,
-.space-detail-card__right-icon {
+.space-card__left-icon,
+.space-card__right-icon {
   width: 22px;
   height: 22px;
   vertical-align: middle;
 }
 
-.space-detail-card__right-icon {
+.space-card__right-icon {
   rotate: 180deg;
 }
 
-.space-detail-card__location-count {
+.space-card__location-count {
   font-size: var(--font-size-default);
 }
 
-.space-detail-card__left-column {
+.space-card__left-column {
   flex: 1;
 }
 
-.space-detail-card__right-column {
+.space-card__right-column {
   position: relative;
   flex: 0 0 39%;
   display: flex;
@@ -260,14 +259,14 @@ defineExpose({
   justify-content: flex-end;
 }
 
-.space-detail-card__header {
+.space-card__header {
   display: flex;
   justify-content: space-between;
   gap: var(--spacing-half);
   font-weight: bold;
 }
 
-.space-detail-card__title {
+.space-card__title {
   margin-bottom: var(--spacing-quarter);
   font-size: var(--font-size-default);
   font-weight: bold;
@@ -275,50 +274,50 @@ defineExpose({
   word-break: break-all;
 }
 
-.space-detail-card__seating {
+.space-card__seating {
   margin-top: -.1rem;
   white-space: nowrap;
 }
 
-.space-detail-card__seating-icon {
+.space-card__seating-icon {
   margin: -2px 1px 0 0;
   width: 16px;
   height: 16px;
   vertical-align: middle;
 }
 
-.space-detail-card__description {
+.space-card__description {
   margin-bottom: var(--spacing-three-quarter);
   font-size: var(--font-size-medium);
   font-weight: bold;
   line-height: 1.1;
 }
 
-.space-detail-card__facilities {
+.space-card__facilities {
   margin-left: -0.2rem;
 }
 
-.space-detail-card__open-status {
+.space-card__open-status {
   margin-top: var(--spacing-half);
 }
 
-.space-detail-card__open-status--visible {
+.space-card__open-status--visible {
   margin-bottom: -1.4rem;
 }
 
 @media (min-width: 700px) {
-  .space-detail-card__open-status {
+  .space-card__open-status {
     margin-bottom: 0;
   }
 }
 
-.space-detail-card__image {
+.space-card__image {
   position: absolute;
   height: 100%;
   width: 100%;
 }
 
-.space-detail-card__image img {
+.space-card__image img {
   position: absolute;
   margin-top: var(--spacing-default-negative);
   width: calc(100% + var(--spacing-default));
@@ -326,7 +325,7 @@ defineExpose({
   object-fit: cover;
 }
 
-.space-detail-card__image-placeholder {
+.space-card__image-placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -338,12 +337,12 @@ defineExpose({
   background: var(--neutral-color);
 }
 
-.space-detail-card__image-placeholder-icon {
+.space-card__image-placeholder-icon {
   width: 30px;
   height: 30px;
 }
 
-.space-detail-card__occupancy-indicator {
+.space-card__occupancy-indicator {
   position: relative;
   z-index: var(--layer--raised);
   display: inline-flex;
@@ -359,11 +358,11 @@ defineExpose({
   word-break: break-all;
 }
 
-.space-detail-card svg {
+.space-card svg {
   fill: var(--text-color);
 }
 
-.space-detail-card__occupancy-indicator svg {
+.space-card__occupancy-indicator svg {
   margin-top: .3rem;
 }
 </style>
