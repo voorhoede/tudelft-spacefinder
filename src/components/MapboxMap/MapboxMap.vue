@@ -15,13 +15,13 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { Point } from "geojson";
+import {Feature, Point} from "geojson";
 import { useRoute } from "vue-router";
 
 import campusBounds from "~/lib/campus-bounds";
 import zoomLevels from "~/lib/zoom-levels";
 import { useMapStore } from "~/stores/map";
-import { useSpacesStore } from "~/stores/spaces";
+import {AssociatedSpace, useSpacesStore} from "~/stores/spaces";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { OCCUPANCY_RATES } from "~/types/Filters";
 const mapboxgl = (await import("mapbox-gl")).default;
@@ -44,6 +44,7 @@ const onResizeDebounce = useDebounceFn(onResize, 200);
 const CLUSTERS_LAYER_ID = "clusters";
 const UNCLUSTERED_LAYER_ID = "unclustered-point";
 const VISIBILITY_PROPERTY = "visibility";
+const POINT_RADIUS = 1;
 
 onMounted(() => {
   initMap(runtimeConfig.public.mapboxToken);
@@ -61,6 +62,17 @@ function saveMapState() {
 }
 function restoreMapState() {
   mapStore.restoreMapState();
+}
+function setAssociatedSpaces(spaces: Feature[]) {
+  const newSpaces = spaces.map(space => ({
+    id: space.id,
+    spaceSlug: space.properties!.spaceSlug,
+    buildingSlug: space.properties!.buildingSlug,
+    long: space.geometry.coordinates[0],
+    lat: space.geometry.coordinates[1]
+  }));
+
+  spacesStore.setAssociatedSpaces(newSpaces as AssociatedSpace[]);
 }
 
 /**
@@ -145,7 +157,7 @@ function initMap(accessToken: string) {
   }
 
   function createMarker(iconImage: string, coordinates: mapboxgl.LngLatLike) {
-    const img = new Image(40, 40);
+    const img = new Image(42, 42);
     img.src = `/icons/${iconImage}.svg`;
 
     return new mapboxgl.Marker({
@@ -289,14 +301,29 @@ function initMap(accessToken: string) {
     updateLayerVisibility();
 
     if (currentSpace.value) {
-      // show the marker after the map is zoomed in
+      // show the marker after the map is zoomed in have to wait 1.5 sec because the markers are being load in after zooming in the map
+      // if we don't wait there aren't any features to query...
       setTimeout(() => {
         setHighlightedMarker(
-          currentSpace.value!.slug, 
-          "map-marker-selected", 
+          currentSpace.value!.slug,
+          "map-marker-selected",
           [currentSpace.value!.longitude, currentSpace.value!.latitude]);
-      }, 1000);
-      
+        
+        const screenPoint = map.project([currentSpace.value!.longitude, currentSpace.value!.latitude]);
+        const features = map.queryRenderedFeatures(
+          [
+            [screenPoint.x - POINT_RADIUS, screenPoint.y - POINT_RADIUS],
+            [screenPoint.x + POINT_RADIUS, screenPoint.y + POINT_RADIUS],
+          ],
+          { layers: [UNCLUSTERED_LAYER_ID] }
+        );
+
+        if (features.length > 1) {
+          setAssociatedSpaces(features);
+        } else {
+          setAssociatedSpaces([]);
+        }
+      }, 1500)
     }
     
     mapStore.setMap(map);
@@ -318,27 +345,38 @@ function initMap(accessToken: string) {
   });
 
   map.on("click", UNCLUSTERED_LAYER_ID, (e) => {
-    const features = map.queryRenderedFeatures(e.point, {
-      layers: [UNCLUSTERED_LAYER_ID],
-    });
+    let properties;
 
-    if (features.length) {
-      const properties = features[0].properties;
+    const features = map.queryRenderedFeatures(
+      [
+        [e.point.x - POINT_RADIUS, e.point.y - POINT_RADIUS],
+        [e.point.x + POINT_RADIUS, e.point.y + POINT_RADIUS],
+      ],
+      { layers: [UNCLUSTERED_LAYER_ID] }
+    );
 
-      if (!properties || !properties.buildingSlug || !properties.spaceSlug) {
-        return;
-      }
-
-      setHighlightedMarker(properties.spaceSlug, "map-marker-selected");
-      saveMapState();
-
-      router.push(
-        $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
-          buildingSlug: properties.buildingSlug as string,
-          spaceSlug: properties.spaceSlug as string,
-        })
-      );
+    if (features.length > 1) {
+      setAssociatedSpaces(features);
+      const [ firstFeature ] = features;
+      properties = firstFeature.properties || {};
+    } else if (features.length === 1) {
+      setAssociatedSpaces([]);
+      properties = features[0].properties || {};
     }
+
+    if (!properties || !properties.buildingSlug || !properties.spaceSlug) {
+      return;
+    }
+
+    setHighlightedMarker(properties.spaceSlug, "map-marker-selected");
+    saveMapState();
+
+    router.push(
+      $localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+        buildingSlug: properties.buildingSlug as string,
+        spaceSlug: properties.spaceSlug as string,
+      })
+    );
   });
 
   map.on("moveend", () => {

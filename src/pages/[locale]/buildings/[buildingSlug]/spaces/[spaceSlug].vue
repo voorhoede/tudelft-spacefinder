@@ -17,6 +17,7 @@
     <SpaceCard
       ref="card"
       :space="space"
+      :associated-spaces="associatedSpaces"
       class="space-detail__card"
     />
   </section>
@@ -38,7 +39,7 @@ const mapStore = useMapStore();
 
 const card = ref<InstanceType<typeof SpaceCard> | null>(null);
 
-const { currentSpace: space } = storeToRefs(spacesStore);
+const { currentSpace: space, associatedSpaces } = storeToRefs(spacesStore);
 
 const runtimeConfig = useRuntimeConfig();
 
