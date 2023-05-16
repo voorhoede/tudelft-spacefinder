@@ -21,11 +21,9 @@ export type Facilities = {
 };
 
 export type SpaceFeatures = Facilities & {
-  studyType: StudyType;
   quietness: Quietness;
 };
 
-export type StudyType = "self";
 export type Quietness = "silent" | "quiet" | "noisy";
 
 export const OCCUPANCY_RATES = ["quiet", "busy", "crowded", "unknown"] as const;

@@ -4,7 +4,6 @@ import { CsvSpaceData } from "./../../../src/types/Space";
 
 const facilityProperties = [
   "adjustableChairs",
-  "studyType",
   "quietness",
   "daylit",
   "powerOutlets",

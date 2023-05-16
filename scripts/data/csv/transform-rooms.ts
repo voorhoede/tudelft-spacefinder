@@ -31,7 +31,6 @@ export function getRoom(
       nearPrinter: false,
       nearBathroom: false,
       quietness: source.quietness,
-      studyType: source.studyType,
     },
     seats: 0,
     tables: 0,
