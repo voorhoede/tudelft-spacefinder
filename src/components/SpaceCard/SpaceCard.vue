@@ -211,7 +211,7 @@ defineExpose({
   top: -60px;
   margin-bottom: var(--spacing-double);
   background: white;
-  padding: var(--spacing-three-quarter);
+  padding: var(--spacing-three-quarter) 0;
   box-shadow: var(--shadow-small);
 }
 
@@ -225,6 +225,7 @@ defineExpose({
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0 var(--spacing-half);
 }
 
 .space-detail-card__nav-button:disabled {
