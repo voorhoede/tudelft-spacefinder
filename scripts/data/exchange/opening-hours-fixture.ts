@@ -18,7 +18,6 @@ export default {
         adjustableChairs: true,
         daylit: false,
         powerOutlets: true,
-        stationaryPC: true,
         whiteBoard: false,
         presentationScreen: false,
         nearCoffeeMachine: true,

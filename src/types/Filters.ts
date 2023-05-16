@@ -9,7 +9,6 @@ export const FACILITIES = [
   "adjustableChairs",
   "daylit",
   "powerOutlets",
-  "stationaryPC",
   "whiteBoard",
   "presentationScreen",
   "nearCoffeeMachine",

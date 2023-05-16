@@ -25,7 +25,6 @@ export function getRoom(
       adjustableChairs: false,
       daylit: false,
       powerOutlets: false,
-      stationaryPC: false,
       whiteBoard: false,
       presentationScreen: false,
       nearCoffeeMachine: false,

@@ -8,7 +8,6 @@ const facilityProperties = [
   "quietness",
   "daylit",
   "powerOutlets",
-  "stationaryPC",
   "whiteBoard",
   "presentationScreen",
   "nearCoffeeMachine",
