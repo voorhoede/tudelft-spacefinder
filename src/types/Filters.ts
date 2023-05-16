@@ -14,10 +14,19 @@ export const FACILITIES = [
   "nearCoffeeMachine",
   "nearPrinter",
   "nearBathroom",
+  "numberOfSeats",
 ] as const;
 
 export type Facilities = {
-  [P in typeof FACILITIES[number]]: boolean;
+  "adjustableChairs": boolean,
+  "daylit": boolean,
+  "powerOutlets": boolean,
+  "whiteBoard": boolean,
+  "presentationScreen": boolean,
+  "nearCoffeeMachine": boolean,
+  "nearPrinter": boolean,
+  "nearBathroom": boolean,
+  "numberOfSeats": number,
 };
 
 export type SpaceFeatures = Facilities & {

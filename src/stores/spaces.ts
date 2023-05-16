@@ -53,6 +53,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     nearBathroom: false,
     nearCoffeeMachine: false,
     nearPrinter: false,
+    numberOfSeats: 10,
     powerOutlets: false,
     presentationScreen: false,
     quietness: [],
