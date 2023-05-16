@@ -36,7 +36,10 @@ export default {
     null,
     "daylit",
     "powerOutlets",
+    null, // this was the ethernet field in the csv which is permanently removed as filter
+    null, // this was the stationaryPC field in the csv which is permanently removed as filter and will be replaced for dockingstations
     "whiteBoard",
+    null, // this was the smartBoard field in the csv which is permanently removed as filter 
     "presentationScreen",
     "nearCoffeeMachine",
     "nearPrinter",
