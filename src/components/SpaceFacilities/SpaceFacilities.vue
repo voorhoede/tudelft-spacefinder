@@ -63,7 +63,7 @@ const facilitiesPresent = computed(() =>
   Object.entries(props.facilities)
     .filter(([, value]) => Boolean(value))
     .map(([key, value]) =>
-      ["studyType", "quietness"].includes(key) ? `${key}.${value}` : key
+      ["quietness"].includes(key) ? `${key}.${value}` : key
     )
 );
 const { $t } = useNuxtApp();

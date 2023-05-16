@@ -70,10 +70,6 @@
       "type": "object",
       "properties": {
         "adjustableChairs": { "type": "boolean" },
-        "studyType": {
-          "type": "string",
-          "enum": ["self", "group"]
-        },
         "quietness": {
           "type": "string",
           "enum": ["silent", "quiet", "noisy"]
@@ -89,7 +85,6 @@
       "additionalProperties": false,
       "required":[
         "adjustableChairs",
-        "studyType",
         "quietness",
         "daylit",
         "powerOutlets",

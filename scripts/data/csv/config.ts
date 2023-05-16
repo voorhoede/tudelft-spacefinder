@@ -31,7 +31,7 @@ export default {
     null,
     null,
     null,
-    "studyType",
+    null,
     "quietness",
     null,
     "daylit",
@@ -78,20 +78,8 @@ function cast(value: string, context: { column: string | number }) {
       return maybeDutchBooleanAmount(value);
     case "adjustableChairs":
       return value !== "0";
-    case "studyType":
-      return studyType(value);
     default:
       return value;
-  }
-}
-
-function studyType(value: string | null | undefined) {
-  if (value === "1") {
-    return "self";
-  } else if (value === "2") {
-    return "group";
-  } else {
-    return value;
   }
 }
 

@@ -90,11 +90,6 @@ export function transform(
           `Found zones with different room IDS for room ${source.realEstateNumber}: ${room.roomId}, ${source.roomId}`
         );
 
-      if (room.facilities.studyType != source.studyType)
-        console.warn(
-          `Found zones with different study types for room ${source.realEstateNumber}: ${room.facilities.studyType}, ${source.studyType}`
-        );
-
       if (room.facilities.quietness != source.quietness)
         console.warn(
           `Found zones with different quietness for room ${source.realEstateNumber}: ${room.facilities.quietness}, ${source.quietness}`

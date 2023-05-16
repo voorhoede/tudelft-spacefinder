@@ -27,7 +27,6 @@ describe("Space transformation", () => {
         longitude: 4.371567,
         roomId: "C-1-801",
         adjustableChairs: false,
-        studyType: "self",
         quietness: "quiet",
         daylit: true,
         powerOutlets: true,
@@ -50,7 +49,6 @@ describe("Space transformation", () => {
       },
       facilities: {
         adjustableChairs: false,
-        studyType: "self",
         quietness: "quiet",
         daylit: true,
         powerOutlets: true,
