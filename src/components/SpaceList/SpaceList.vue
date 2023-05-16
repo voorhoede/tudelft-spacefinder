@@ -86,6 +86,16 @@ defineProps<{ spaces: Space[]; hideTitle?: boolean }>();
   text-decoration: none;
 }
 
+.space-list__link:hover svg,
+.space-list__link:focus svg {
+  fill: var(--brand-primary-color-dark);
+}
+
+.space-list__link:hover .card-status svg,
+.space-list__link:focus .card-status svg {
+  stroke: var(--brand-primary-color-dark);
+}
+
 .space-list__message {
   padding: var(--spacing-default);
   text-align: center;
