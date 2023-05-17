@@ -8,15 +8,15 @@
 
     <input
       :id="inputId"
-      v-model="spacesStore.filters[name]"
+      v-model.number="spacesStore.filters[name]"
       type="range"
-      min="1"
+      min="0"
       :max="maxValue"
       class="filter-menu-item-range__input"
     >
 
     <label :for="inputId">
-      {{ labelValue }}
+      {{ labelValue ?? $t('noSeatsFilterLabel') }}
       <span class="a11y-sr-only">
         {{ label ?? $t(i18nKey) }}
       </span>
@@ -60,9 +60,13 @@ const i18nKey = computed(() =>
 const iconName = computed(() => `facility-${i18nKey.value}-icon`);
 
 const labelValue = computed(() => {
-  return spacesStore.filters[props.name]
-    ? spacesStore.filters[props.name] < 10 ?  spacesStore.filters[props.name] : `${spacesStore.filters[props.name]}+`
-    : '1';
+  if (spacesStore.filters[props.name] == 0) {
+    return null
+  } else if (spacesStore.filters[props.name] == 10) {
+    return `${spacesStore.filters[props.name]}+`
+  } else {
+    return spacesStore.filters[props.name]
+  }
 });
 
 const spacesStore = useSpacesStore();

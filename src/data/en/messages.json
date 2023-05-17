@@ -54,6 +54,7 @@
   "nearCoffeeMachine": "coffee corner",
   "nearPrinter": "printer",
   "noFilterResults": "There are no locations found",
+  "noSeatsFilterLabel": "all",
   "numberOfSeats": "Number of seats",
   "powerOutlets": "sockets",
   "quietness": "Noise level",
