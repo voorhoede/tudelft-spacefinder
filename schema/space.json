@@ -80,7 +80,8 @@
         "presentationScreen": { "type": "boolean" },
         "nearCoffeeMachine": { "type": "boolean" },
         "nearPrinter": { "type": "boolean" },
-        "nearBathroom": { "type": "boolean" }
+        "nearBathroom": { "type": "boolean" },
+        "numberOfSeats": { "type": "number" }
       },
       "additionalProperties": false,
       "required":[

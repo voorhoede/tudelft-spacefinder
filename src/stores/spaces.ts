@@ -53,6 +53,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     nearBathroom: false,
     nearCoffeeMachine: false,
     nearPrinter: false,
+    numberOfSeats: 0,
     powerOutlets: false,
     presentationScreen: false,
     quietness: [],
@@ -241,8 +242,10 @@ export const useSpacesStore = defineStore("spaces", () => {
 
   const numberOfSelectedFilters = computed(
     () => {
-      return Object.values(filters.value).reduce((acc, item) => {
-        return acc + (item === true ? 1 : item.length > 0 ? item.length : 0)
+      // Filter out numberOfSeats when that value is 0, i.e. not selected
+      const selectedFilters = Object.values(filters.value).filter(item => item !== 0)
+      return selectedFilters.reduce((acc, item) => {
+        return acc + (item === true || item > 0 ? 1 : item.length > 0 ? item.length : 0)
       }, 0)
     }
   );

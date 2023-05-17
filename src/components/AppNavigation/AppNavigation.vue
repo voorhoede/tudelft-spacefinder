@@ -141,6 +141,7 @@ watch(
   background: var(--background-color);
   border: none;
   border-radius: 2rem;
+  cursor: pointer;
 }
 
 .app-menu__filter-button-icon {

@@ -54,6 +54,8 @@
   "nearCoffeeMachine": "coffee corner",
   "nearPrinter": "printer",
   "noFilterResults": "Er zijn geen locaties gevonden",
+  "noSeatsFilterLabel": "alles",
+  "numberOfSeats": "Aantal zitplaatsen",
   "powerOutlets": "stopcontact",
   "quietness": "Geluidsniveau",
   "quietness.silent": "stil",
