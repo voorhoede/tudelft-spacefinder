@@ -45,7 +45,7 @@ const runtimeConfig = useRuntimeConfig();
 
 const routeUrl = computed(
   () => space.value
-        ? `https://www.google.com/maps/place/${space.value.latitude},${space.value.longitude}`
+        ? `https://www.google.com/maps/dir//${space.value.latitude},${space.value.longitude}` // There is a double // behind dir, that gives you the direction from your current location to the space otherwise it will give you the direction from the space to current location or other place
         : ''
 );
 
