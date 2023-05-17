@@ -20,6 +20,8 @@ export const NUMBER_FACILITIES = [
   "numberOfSeats",
 ] as const;
 
+export const FACILITIES = BOOLEAN_FACILITIES.concat(NUMBER_FACILITIES)
+
 export type Facilities = {
   [P in typeof BOOLEAN_FACILITIES[number]]: boolean;
 } & {
