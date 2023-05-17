@@ -5,7 +5,7 @@ export interface Filters extends Facilities {
   showOpenLocations: boolean;
 }
 
-export const FACILITIES = [
+export const BOOLEAN_FACILITIES = [
   "adjustableChairs",
   "daylit",
   "powerOutlets",
@@ -14,19 +14,16 @@ export const FACILITIES = [
   "nearCoffeeMachine",
   "nearPrinter",
   "nearBathroom",
+] as const;
+
+export const NUMBER_FACILITIES = [
   "numberOfSeats",
 ] as const;
 
 export type Facilities = {
-  "adjustableChairs": boolean,
-  "daylit": boolean,
-  "powerOutlets": boolean,
-  "whiteBoard": boolean,
-  "presentationScreen": boolean,
-  "nearCoffeeMachine": boolean,
-  "nearPrinter": boolean,
-  "nearBathroom": boolean,
-  "numberOfSeats": number,
+  [P in typeof BOOLEAN_FACILITIES[number]]: boolean;
+} & {
+  [P in typeof NUMBER_FACILITIES[number]]: number;
 };
 
 export type SpaceFeatures = Facilities & {
