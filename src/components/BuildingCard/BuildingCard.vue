@@ -44,6 +44,11 @@ const totalSpaces = computed(() =>
 <style>
 @import "../app-core/variables.css";
 
+.building-card:hover svg,
+.building-card:hover svg {
+  fill: var(--brand-primary-color-dark);
+}
+
 .building-card__image {
   margin: var(--spacing-half-negative) var(--spacing-half-negative)
     var(--spacing-half) var(--spacing-half-negative);
