@@ -77,6 +77,8 @@ function getIconName(facilityValue: string) {
 </script>
 
 <style>
+@import "../app-core/variables.css";
+
 .space-facility__list {
   display: flex;
   flex-wrap: wrap;
@@ -107,14 +109,14 @@ function getIconName(facilityValue: string) {
 
 .v-popper--theme-tooltip .v-popper__inner {
   padding: var(--spacing-quarter) var(--spacing-half);
-  background: var(--brand-secondary-color);
+  background: var(--brand-secondary-color)!important;
   font-size: var(--font-size-smaller);
   color: var(--background-color);
   border-radius: 0;
 }
 
 .v-popper--theme-tooltip .v-popper__arrow-outer {
-  border-color: var(--brand-secondary-color) !important;
+  border-color: var(--brand-secondary-color)!important;
 }
 
 .tooltip {
