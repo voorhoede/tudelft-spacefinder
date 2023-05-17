@@ -18,6 +18,7 @@
             name="buildingOccupancy"
             display-key="occupancy"
             :option="occupancy"
+            :icon="`facility-occupancy.${occupancy}-dark-icon`"
             :key="occupancy"
           />
         </fieldset>
