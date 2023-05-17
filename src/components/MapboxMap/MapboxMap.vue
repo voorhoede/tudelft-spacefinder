@@ -200,6 +200,24 @@ function initMap(accessToken: string) {
       previousHighlightedMarker.value = marker;
     }
   }
+
+  function setAssociatedSpacesAndQueryFeatures(longitude: number, latitude: number) {
+    // Query the features and determine the associated spaces
+    const screenPoint = map.project([longitude, latitude]);
+    const features = map.queryRenderedFeatures(
+      [
+        [screenPoint.x - POINT_RADIUS, screenPoint.y - POINT_RADIUS],
+        [screenPoint.x + POINT_RADIUS, screenPoint.y + POINT_RADIUS],
+      ],
+      { layers: [UNCLUSTERED_LAYER_ID] }
+    );
+
+    if (features.length > 1) {
+      setAssociatedSpaces(features);
+    } else {
+      setAssociatedSpaces([]);
+    }
+  }
   
   function updateLayerVisibility() {
     const currentZoom = map.getZoom();
@@ -217,7 +235,21 @@ function initMap(accessToken: string) {
   });
 
   watch(selectedSpaceSlug, (newSpaceSlug) => {
+    if (!newSpaceSlug) {
+      return;
+    }
+    
     setHighlightedMarker(newSpaceSlug, "map-marker-selected");
+
+    const [feature] = map.querySourceFeatures("clustered-points", {
+      filter: ["==", ["get", "spaceSlug"], newSpaceSlug],
+    });
+
+    if (feature && feature.geometry) {
+      setTimeout(() => {
+        setAssociatedSpacesAndQueryFeatures(feature.geometry.coordinates[0], feature.geometry.coordinates[1]);
+      }, 1500)
+    }
   });
 
   map.on("load", async () => {
@@ -301,28 +333,12 @@ function initMap(accessToken: string) {
     updateLayerVisibility();
 
     if (currentSpace.value) {
-      // show the marker after the map is zoomed in have to wait 1.5 sec because the markers are being load in after zooming in the map
-      // if we don't wait there aren't any features to query...
       setTimeout(() => {
         setHighlightedMarker(
           currentSpace.value!.slug,
           "map-marker-selected",
           [currentSpace.value!.longitude, currentSpace.value!.latitude]);
-        
-        const screenPoint = map.project([currentSpace.value!.longitude, currentSpace.value!.latitude]);
-        const features = map.queryRenderedFeatures(
-          [
-            [screenPoint.x - POINT_RADIUS, screenPoint.y - POINT_RADIUS],
-            [screenPoint.x + POINT_RADIUS, screenPoint.y + POINT_RADIUS],
-          ],
-          { layers: [UNCLUSTERED_LAYER_ID] }
-        );
-
-        if (features.length > 1) {
-          setAssociatedSpaces(features);
-        } else {
-          setAssociatedSpaces([]);
-        }
+        setAssociatedSpacesAndQueryFeatures(currentSpace.value!.longitude, currentSpace.value!.latitude);
       }, 1500)
     }
     
@@ -354,6 +370,8 @@ function initMap(accessToken: string) {
       ],
       { layers: [UNCLUSTERED_LAYER_ID] }
     );
+    
+    setAssociatedSpaces([]);
 
     if (features.length > 1) {
       setAssociatedSpaces(features);
