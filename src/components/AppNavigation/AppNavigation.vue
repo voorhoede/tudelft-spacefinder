@@ -21,21 +21,6 @@
       </li>
       <li class="app-navigation__item">
         <NuxtLink
-          :to="$localePath('/spaces')"
-          class="button button--navigation"
-        >
-          <SvgIcon
-            name="list-icon"
-            class="button--navigation__icon"
-          />
-
-          <span class="app-menu__link-name">
-            {{ $t("spaces") }}
-          </span>
-        </NuxtLink>
-      </li>
-      <li class="app-navigation__item">
-        <NuxtLink
           :to="$localePath('/buildings')"
           class="button button--navigation"
         >
@@ -46,6 +31,21 @@
 
           <span class="app-menu__link-name">
             {{ $t("buildings") }}
+          </span>
+        </NuxtLink>
+      </li>
+      <li class="app-navigation__item">
+        <NuxtLink
+          :to="$localePath('/spaces')"
+          class="button button--navigation"
+        >
+          <SvgIcon
+            name="list-icon"
+            class="button--navigation__icon"
+          />
+
+          <span class="app-menu__link-name">
+            {{ $t("spaces") }}
           </span>
         </NuxtLink>
       </li>
