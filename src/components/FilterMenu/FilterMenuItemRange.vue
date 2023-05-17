@@ -60,9 +60,12 @@ const i18nKey = computed(() =>
 const iconName = computed(() => `facility-${i18nKey.value}-icon`);
 
 const labelValue = computed(() => {
-  if (spacesStore.filters[props.name] == 0) {
+  const DEFAULT_VALUE = 0;
+  const MAX_VALUE = 10;
+
+  if (spacesStore.filters[props.name] == DEFAULT_VALUE) {
     return null
-  } else if (spacesStore.filters[props.name] == 10) {
+  } else if (spacesStore.filters[props.name] == MAX_VALUE) {
     return `${spacesStore.filters[props.name]}+`
   } else {
     return spacesStore.filters[props.name]
