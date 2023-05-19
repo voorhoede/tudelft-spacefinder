@@ -49,7 +49,7 @@ const inputId = computed(() =>
 const i18nKey = computed(() =>
   [props.displayKey ?? props.name, props.option].filter(Boolean).join(".")
 );
-const iconName = computed(() => props.icon ? props.icon : `facility-${i18nKey.value}-icon`);
+const iconName = computed(() => props.icon ?? `facility-${i18nKey.value}-icon`);
 
 const spacesStore = useSpacesStore();
 </script>
