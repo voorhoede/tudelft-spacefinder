@@ -1,23 +1,14 @@
 <template>
   <div class="building-image">
-    <h3
-      v-if="isHeader"
+    <component
+      :is="isHeader ? 'h3' : 'h2'"
       class="building-image__title"
       :style="`background-image: url('${building.image.url}?&fm=jpg&w=700&h=150&fit=crop&auto=quality&auto=format&auto=compress');`"
     >
       <span class="building-image__name">
         {{ building.name }} ({{ building.abbreviation }})
       </span>
-    </h3>
-    <h2
-      v-else
-      class="building-image__title"
-      :style="`background-image: url('${building.image.url}?&fm=jpg&w=700&h=150&fit=crop&auto=quality&auto=format&auto=compress');`"
-    >
-      <span class="building-image__name">
-        {{ building.name }} ({{ building.abbreviation }})
-      </span>
-    </h2>
+    </component>
   </div>
 </template>
 

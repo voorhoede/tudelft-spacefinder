@@ -19,7 +19,7 @@
       :space="space"
       :associated-spaces="associatedSpaces"
       class="space-detail__card"
-      :is-header="true"
+      is-header
     />
   </section>
 </template>

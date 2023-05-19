@@ -40,18 +40,13 @@
     >
       <div class="space-card__left-column">
         <div class="space-card__header">
-          <h2
+          <component
             v-if="isHeader"
+            :is="isHeader ? 'h2' : 'h3'"
             class="space-card__title"
           >
             {{ space.name }}
-          </h2>
-          <h3
-            v-else
-            class="space-card__title"
-          >
-            {{ space.name }}
-          </h3>
+          </component>
 
           <div class="space-card__seating">
             <Tooltip
