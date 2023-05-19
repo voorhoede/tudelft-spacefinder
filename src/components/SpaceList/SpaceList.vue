@@ -28,6 +28,7 @@
         <NuxtLink
           :to="$localePath('/buildings/:buildingSlug/spaces/:spaceSlug', { space })"
           class="space-list__link"
+          :aria-label="`${space.name} (${space.roomId})`"
         >
           <SpaceCard
             :space="space"
