@@ -6,6 +6,11 @@
     <VitePwaManifest />
     <SpriteMap />
 
+    <div
+      tabindex="-1"
+      ref="topOfPage"
+    />
+
     <NotificationBar
       class="default-layout__notification-bar"
       :message="$t('ieNotification')"
@@ -46,11 +51,13 @@
 import { useMapStore } from "~/stores/map";
 
 const route = useRoute();
+const { afterEach } = useRouter();
 const mapStore = useMapStore();
 const { $locale } = useNuxtApp();
 
 const defaultLayout = ref<null | HTMLDivElement>(null);
 const openedMenu = ref<null | string>(null);
+const topOfPage = ref(null);
 
 let spaceSlug: string | string[];
 
@@ -64,6 +71,12 @@ watch(route,
     }
   }
 );
+
+afterEach((from, to) => {
+  if (from.path !== to.path) {
+    topOfPage.value.focus();
+  }
+});
 
 const isSpaceDetailPage = computed(() => route.params.spaceSlug !== undefined)
 
