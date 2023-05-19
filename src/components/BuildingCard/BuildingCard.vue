@@ -5,6 +5,7 @@
   >
     <BuildingImage
       :building="building"
+      :is-header="isHeader"
       class="building-card__image"
     />
 
@@ -32,7 +33,7 @@
 
 <script setup lang="ts">
 import type { Building } from "~/types/Building";
-const props = defineProps<{ building: Building }>();
+const props = defineProps<{ building: Building, isHeader?: boolean }>();
 const runtimeConfig = useRuntimeConfig();
 const totalSpaces = computed(() =>
   runtimeConfig.public.spacesMode == "rooms"

@@ -2,10 +2,6 @@
   <div class="building-header">
     <BuildingImage :building="building" />
 
-    <h3 class="a11y-sr-only">
-      {{ $t("seating") }}
-    </h3>
-
     <div class="building-header__meta">
       <div class="building-header__spaces">
         <BuildingMeta
