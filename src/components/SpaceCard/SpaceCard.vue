@@ -49,6 +49,7 @@
               :delay="0"
               :overflow-padding="4"
               :instant-move="true"
+              :triggers="['hover', 'click']"
             >
               <div>
                 <SvgIcon
