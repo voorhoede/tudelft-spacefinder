@@ -19,6 +19,7 @@
       :space="space"
       :associated-spaces="associatedSpaces"
       class="space-detail__card"
+      is-header
     />
   </section>
 </template>

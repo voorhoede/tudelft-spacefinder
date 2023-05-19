@@ -1,8 +1,5 @@
 <template>
   <section class="default-layout__info">
-    <h2 class="a11y-sr-only">
-      {{ allSpacesTitle }}
-    </h2>
     <SpaceList :spaces="spacesStore.filteredSpaces" />
   </section>
 </template>

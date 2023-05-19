@@ -40,9 +40,13 @@
     >
       <div class="space-card__left-column">
         <div class="space-card__header">
-          <h2 class="space-card__title">
+          <component
+            v-if="isHeader"
+            :is="isHeader ? 'h2' : 'h3'"
+            class="space-card__title"
+          >
             {{ space.name }}
-          </h2>
+          </component>
 
           <div class="space-card__seating">
             <Tooltip
@@ -132,6 +136,7 @@ import type { AssociatedSpace } from "~/stores/spaces";
 const props = defineProps<{
   space: Space,
   hideOpeningHours?: boolean,
+  isHeader?: boolean,
   associatedSpaces?: AssociatedSpace[]
 }>();
 

@@ -8,6 +8,7 @@
       v-for="building in buildingsOrdered"
       :key="building.number"
       :building="building"
+      is-header
     />
   </section>
 </template>
