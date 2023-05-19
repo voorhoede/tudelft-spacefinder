@@ -47,6 +47,7 @@ import { useMapStore } from "~/stores/map";
 
 const route = useRoute();
 const mapStore = useMapStore();
+const { $locale } = useNuxtApp();
 
 const defaultLayout = ref<null | HTMLDivElement>(null);
 const openedMenu = ref<null | string>(null);
@@ -108,6 +109,7 @@ useHead({
       `,
     },
   ],
+  htmlAttrs: { lang: $locale }
 });
 </script>
 
