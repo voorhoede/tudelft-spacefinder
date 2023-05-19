@@ -48,8 +48,6 @@
     >
       <path
         d="M1.4 0C.6 0 0 .6 0 1.4V13h8.7V1.4C8.7.6 8 0 7.2 0H1.4zm0 1.4h5.8v10.2H1.4V1.4zm3.7 4.4v1.4h1.4V5.8H5.1z"
-        fill="#333"
-        fill-rule="nonzero"
       />
     </symbol>
 

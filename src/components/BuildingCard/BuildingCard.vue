@@ -45,7 +45,7 @@ const totalSpaces = computed(() =>
 @import "../app-core/variables.css";
 
 .building-card:hover svg,
-.building-card:hover svg {
+.building-card:focus svg {
   fill: var(--brand-primary-color-dark);
 }
 
