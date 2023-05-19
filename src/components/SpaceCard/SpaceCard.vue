@@ -12,7 +12,7 @@
           class="space-card__nav-button"
           @click="goToPreviousSpace"
           :disabled="currentIndex === 0"
-          :aria-label="currentIndex === 0 ? 'This is the first location' : 'Go to previous location'"
+          :aria-label="currentIndex === 0 ? $t('spaceNavigationFirst') : $t('spaceNavigationPrevious')"
         >
           <SvgIcon
             name="back-icon"
@@ -26,7 +26,7 @@
           class="space-card__nav-button"
           @click="goToNextSpace"
           :disabled="currentIndex === associatedSpaces.length - 1"
-          :aria-label="currentIndex === associatedSpaces.length - 1 ? 'This is the last location' : 'Go to next location'"
+          :aria-label="currentIndex === associatedSpaces.length - 1 ? $t('spaceNavigationLast') : $t('spaceNavigationNext')"
         >
           <SvgIcon
             name="back-icon"
