@@ -30,6 +30,8 @@ const props = withDefaults(
     displayKey?: string;
     /** Allows to override the label text */
     label?: string;
+    /** Specify a specific icon to display in the item, which overwrites the computed iconName */
+    icon?: string;
     /** False if you do not want to display an icon */
     showIcon?: boolean;
   }>(),
@@ -37,6 +39,7 @@ const props = withDefaults(
     option: undefined,
     displayKey: undefined,
     label: undefined,
+    icon: undefined,
     showIcon: true,
   }
 );
@@ -46,7 +49,7 @@ const inputId = computed(() =>
 const i18nKey = computed(() =>
   [props.displayKey ?? props.name, props.option].filter(Boolean).join(".")
 );
-const iconName = computed(() => `facility-${i18nKey.value}-icon`);
+const iconName = computed(() => props.icon ?? `facility-${i18nKey.value}-icon`);
 
 const spacesStore = useSpacesStore();
 </script>
