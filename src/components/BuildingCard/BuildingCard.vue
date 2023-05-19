@@ -2,6 +2,7 @@
   <NuxtLink
     :to="$localePath('/buildings/:buildingSlug', { building })"
     class="building-card card"
+    :aria-label="`${building.name} (${building.abbreviation})`"
   >
     <BuildingImage
       :building="building"
