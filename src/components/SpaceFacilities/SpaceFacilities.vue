@@ -9,15 +9,14 @@
         :delay="0"
         :overflow-padding="4"
         :instant-move="true"
+        :triggers="['hover', 'click']"
       >
         <SvgIcon
           :name="getIconName(facility)"
           class="space-facility__icon"
-          :alt="$t(facility)"
         />
         <template #popper>
           {{ $t(facility) }}
-          <!-- trigger: 'hover click focus', -->
         </template>
       </Tooltip>
 

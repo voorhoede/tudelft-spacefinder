@@ -5,11 +5,11 @@
         :delay="0"
         :overflow-padding="4"
         :instant-move="true"
+        :triggers="['hover', 'click']"
       >
         <SvgIcon
           :name="`facility-occupancy.${occupancyKey}-icon`"
           class="occupancy-indicator__icon"
-          :alt="$t(`occupancy.${occupancyKey}`)"
         />
         <template #popper>
           {{ $t("occupancy") }}: {{ $t(`occupancy.${occupancyKey}`) }}
