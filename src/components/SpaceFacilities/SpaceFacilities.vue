@@ -13,7 +13,6 @@
         <SvgIcon
           :name="getIconName(facility)"
           class="space-facility__icon"
-          :alt="$t(facility)"
         />
         <template #popper>
           {{ $t(facility) }}
