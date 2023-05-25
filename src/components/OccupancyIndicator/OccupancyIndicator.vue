@@ -5,6 +5,7 @@
         :delay="0"
         :overflow-padding="4"
         :instant-move="true"
+        :triggers="['hover', 'click']"
       >
         <SvgIcon
           :name="`facility-occupancy.${occupancyKey}-icon`"

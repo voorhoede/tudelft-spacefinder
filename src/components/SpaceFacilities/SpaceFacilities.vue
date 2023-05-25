@@ -9,6 +9,7 @@
         :delay="0"
         :overflow-padding="4"
         :instant-move="true"
+        :triggers="['hover', 'click']"
       >
         <SvgIcon
           :name="getIconName(facility)"
@@ -16,7 +17,6 @@
         />
         <template #popper>
           {{ $t(facility) }}
-          <!-- trigger: 'hover click focus', -->
         </template>
       </Tooltip>
 
@@ -35,6 +35,7 @@
         :delay="0"
         :overflow-padding="4"
         :instant-move="true"
+        :triggers="['hover', 'click']"
       >
         <SvgIcon
           name="seat-icon"
@@ -43,7 +44,6 @@
         />
         <template #popper>
           {{ seatsDescription }}
-          <!-- trigger: 'hover click focus', -->
         </template>
       </Tooltip>
     </li>
