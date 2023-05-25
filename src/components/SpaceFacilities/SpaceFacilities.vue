@@ -24,29 +24,6 @@
         {{ $t(facility) }}
       </span>
     </li>
-    <li
-      v-if="seats"
-      class="space-facility__item space-facility__seating"
-    >
-      <h4 class="a11y-sr-only">
-        {{ $t("seating") }}
-      </h4>
-      <Tooltip
-        :delay="0"
-        :overflow-padding="4"
-        :instant-move="true"
-        :triggers="['hover', 'click']"
-      >
-        <SvgIcon
-          name="seat-icon"
-          class="space-facility__seating-icon"
-          :alt="seatsDescription"
-        />
-        <template #popper>
-          {{ seatsDescription }}
-        </template>
-      </Tooltip>
-    </li>
   </ul>
 </template>
 
@@ -55,7 +32,7 @@ import type { SpaceFeatures } from "~/types/Filters";
 import { Tooltip } from "floating-vue";
 import "floating-vue/dist/style.css";
 
-const props = defineProps<{ facilities: SpaceFeatures; seats?: number }>();
+const props = defineProps<{ facilities: SpaceFeatures }>();
 //TODO: inpredictable order?
 //TODO: these should come as props
 const facilitiesPresent = computed(() =>
@@ -64,10 +41,6 @@ const facilitiesPresent = computed(() =>
     .map(([key, value]) =>
       ["quietness"].includes(key) ? `${key}.${value}` : key
     )
-);
-const { $t } = useNuxtApp();
-const seatsDescription = computed(
-  () => `${props.seats} ${$t("seatsDescription")}`
 );
 
 function getIconName(facilityValue: string) {

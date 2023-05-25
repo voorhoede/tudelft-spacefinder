@@ -15,6 +15,9 @@
           {{ $t("occupancy") }}: {{ $t(`occupancy.${occupancyKey}`) }}
         </template>
       </Tooltip>
+      <span class="a11y-sr-only">
+        {{ $t("occupancy") }}: {{ $t(`occupancy.${occupancyKey}`) }}
+      </span>
     </div>
   </ClientOnly>
 </template>
