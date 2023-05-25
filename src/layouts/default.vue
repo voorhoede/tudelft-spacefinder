@@ -57,7 +57,7 @@ const { $locale } = useNuxtApp();
 
 const defaultLayout = ref<null | HTMLDivElement>(null);
 const openedMenu = ref<null | string>(null);
-const topOfPage = ref(null);
+const topOfPage = ref<null | HTMLDivElement>(null);
 
 let spaceSlug: string | string[];
 
