@@ -41,6 +41,7 @@
     "moment-timezone": "^0.5.26",
     "normalize.css": "^8.0.1",
     "nuxt": "^3.2.2",
+    "openai": "^3.3.0",
     "pinia": "^2.0.32",
     "sitemap": "^7.1.1",
     "slugify": "^1.3.4",

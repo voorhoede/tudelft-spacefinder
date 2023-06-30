@@ -17,3 +17,6 @@ src/data/rooms.json
 src/data/spaces.json
 src/data/infopage.json
 src/data/feedbackpage.json
+
+# Local Netlify folder
+.netlify
