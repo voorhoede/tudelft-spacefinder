@@ -39,6 +39,9 @@ export default defineNuxtConfig({
     transpile: ["floating-vue"],
   },
   runtimeConfig: {
+    openAi: {
+      secretKey: process.env.OPEN_AI_API_KEY,
+    },
     internalSecret: process.env.INTERNAL_SECRET,
     kafkaConfig: {
       url: process.env.KAFKA_URL,
