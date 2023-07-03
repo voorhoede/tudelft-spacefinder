@@ -1,8 +1,4 @@
-import {
-  ChatCompletionResponseMessage,
-  Configuration,
-  OpenAIApi,
-} from "openai";
+import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
 const config = useRuntimeConfig();
 
 const configuration = new Configuration({
@@ -26,18 +22,18 @@ export default defineEventHandler(async (event) => {
           content: `
                   filter criteria: {
                     occupancy: quiet/busy/crowded,
-                    adjustableChair: yes/no,
+                    adjustableChair: true/false,
                     buildings: string | number,
-                    daylit: yes/no,
-                    bathroom: yes/no,
-                    coffee: yes/no,
-                    printer: yes/no,
+                    daylit: true/false,
+                    bathroom: true/false,
+                    coffee: true/false,
+                    printer: true/false,
                     availablePlaces: number,
-                    powerOutlet: yes/no,
-                    presentationScreen: yes/no,
+                    powerOutlet: true/false,
+                    presentationScreen: true/false,
                     quietness: silent/quiet/noisy,
-                    // showOpenLocations: yes/no,
-                    whiteBoard: yes/no,
+                    showOpenLocations: true/false,
+                    whiteBoard: true/false,
                   }
               `,
         },
@@ -69,6 +65,10 @@ export default defineEventHandler(async (event) => {
         },
         {
           role: "user",
+          content: `Remember the previous query and if it match just update the values.`,
+        },
+        {
+          role: "user",
           content: `
                 Your response should only be a json object without any other text and must match the given response format
             `,
@@ -76,41 +76,52 @@ export default defineEventHandler(async (event) => {
       ],
     });
 
-    const { content } = response.data.choices[0].message;
-    const filters = JSON.parse(content);
+    const { content } = response.data.choices[0]!
+      .message as ChatCompletionRequestMessage;
+    const filters = JSON.parse(content!);
 
-    const mappedFilters = Object.entries(filters).reduce((acc, [key, value]) => {
-      let updatedKey
+    const mappedFilters = Object.entries(filters).reduce(
+      (acc, [key, value]) => {
+        let updatedKey;
 
-      switch (key) {
-        case "occupancy":
-         updatedKey = 'buildingOccupancy';
-         break;
-        case "coffee":
-         updatedKey = 'nearCoffeeMachine';
-         break;
-        case "bathroom":
-         updatedKey = 'nearBathroom';
-         break;
-        case "printer":
-         updatedKey = 'nearPrinter';
-         break;
-        case "availablePlaces":
-         updatedKey = 'numberOfSeats';
-         break;
-        case "powerOutlet":
-         updatedKey = 'powerOutlets';
-         break;
-        default:
-          updatedKey = key;
-      }
+        switch (key) {
+          case "occupancy":
+            updatedKey = "buildingOccupancy";
+            value = [value]
+            break;
+          case "coffee":
+            updatedKey = "nearCoffeeMachine";
+            break;
+          case "bathroom":
+            updatedKey = "nearBathroom";
+            break;
+          case "printer":
+            updatedKey = "nearPrinter";
+            break;
+          case "availablePlaces":
+            updatedKey = "numberOfSeats";
+            break;
+          case "powerOutlet":
+            updatedKey = "powerOutlets";
+            break;
+          default:
+            updatedKey = key;
+        }
 
-      return { ...acc, [updatedKey]: value }
-    }, {})
+        return { ...acc, [updatedKey]: value };
+      },
+      {}
+    );
 
     return mappedFilters;
-  } catch (error) {
+  } catch (error: any) {
+    if (!error.message) return;
+
     console.error(`Error in chat.post: ${error.message}`);
-    throw createError(500, error.message);
+
+    throw createError({
+      statusCode: 500,
+      statusMessage: error.message,
+    });
   }
 });

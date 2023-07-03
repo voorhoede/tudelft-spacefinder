@@ -1,77 +1,80 @@
 <template>
   <nav class="app-navigation">
-    <ul class="app-navigation__items flat-list">
-      <li 
-        v-if="$isMobile.value"
-        class="app-navigation__item"
+    <search-field />
+    <div class="app-navigation__wrapper">
+      <ul class="app-navigation__items flat-list">
+        <li
+          v-if="$isMobile.value"
+          class="app-navigation__item"
+        >
+          <NuxtLink
+            to="/"
+            class="button button--navigation"
+          >
+            <SvgIcon
+              name="map-icon"
+              class="button--navigation__icon"
+            />
+
+            <span class="app-menu__link-name">
+              {{ $t("map") }}
+            </span>
+          </NuxtLink>
+        </li>
+        <li class="app-navigation__item">
+          <NuxtLink
+            :to="$localePath('/buildings')"
+            class="button button--navigation"
+          >
+            <SvgIcon
+              name="building-icon"
+              class="button--navigation__icon"
+            />
+
+            <span class="app-menu__link-name">
+              {{ $t("buildings") }}
+            </span>
+          </NuxtLink>
+        </li>
+        <li class="app-navigation__item">
+          <NuxtLink
+            :to="$localePath('/spaces')"
+            class="button button--navigation"
+          >
+            <SvgIcon
+              name="list-icon"
+              class="button--navigation__icon"
+            />
+
+            <span class="app-menu__link-name">
+              {{ $t("spaces") }}
+            </span>
+          </NuxtLink>
+        </li>
+      </ul>
+
+      <button
+        ref="menuButton"
+        type="button"
+        class="app-menu__filter-button"
+        @click="$emit('openFilterMenu')"
       >
-        <NuxtLink
-          to="/"
-          class="button button--navigation"
-        >
-          <SvgIcon
-            name="map-icon"
-            class="button--navigation__icon"
-          />
+        <SvgIcon
+          name="filter-icon"
+          class="app-menu__filter-button-icon"
+        />
 
-          <span class="app-menu__link-name">
-            {{ $t("map") }}
+        {{ $t("filter") }}
+
+        <div class="app-menu__filter-indicator">
+          {{ spacesStore.numberOfSelectedFilters }}
+
+          <span class="a11y-sr-only">
+            {{ $t("filtersSelected") }}
           </span>
-        </NuxtLink>
-      </li>
-      <li class="app-navigation__item">
-        <NuxtLink
-          :to="$localePath('/buildings')"
-          class="button button--navigation"
-        >
-          <SvgIcon
-            name="building-icon"
-            class="button--navigation__icon"
-          />
-
-          <span class="app-menu__link-name">
-            {{ $t("buildings") }}
-          </span>
-        </NuxtLink>
-      </li>
-      <li class="app-navigation__item">
-        <NuxtLink
-          :to="$localePath('/spaces')"
-          class="button button--navigation"
-        >
-          <SvgIcon
-            name="list-icon"
-            class="button--navigation__icon"
-          />
-
-          <span class="app-menu__link-name">
-            {{ $t("spaces") }}
-          </span>
-        </NuxtLink>
-      </li>
-    </ul>
-
-    <button
-      ref="menuButton"
-      type="button"
-      class="app-menu__filter-button"
-      @click="$emit('openFilterMenu')"
-    >
-      <SvgIcon
-        name="filter-icon"
-        class="app-menu__filter-button-icon"
-      />
-
-      {{ $t("filter") }}
-
-      <div class="app-menu__filter-indicator">
-        {{ spacesStore.numberOfSelectedFilters }}
-
-        <span class="a11y-sr-only">
-          {{ $t("filtersSelected") }}
-        </span>
-      </div>
-    </button>
+        </div>
+      </button>
+    </div>
   </nav>
 </template>
 
@@ -87,7 +90,7 @@ let lastOpenedMenu: string | null = null;
 
 watch(
   () => props.openedMenu,
-  (newValue) => {    
+  (newValue) => {
     if (lastOpenedMenu === "filter-menu") {
       menuButton.value?.focus();
     }
@@ -102,21 +105,25 @@ watch(
 .app-navigation {
   z-index: var(--layer--overlay);
   position: absolute;
-  display: flex;
-  justify-content: space-between;
+  
   left: 0;
   bottom: 0;
   padding: 0 var(--spacing-default);
-  height: var(--navigation-height-mobile);
+  /* height: var(--navigation-height-mobile); */
   width: 100%;
   background-color: var(--brand-primary-color);
   color: var(--background-color);
 }
 
+.app-navigation__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (min-width: 700px) {
   .app-navigation {
     width: var(--column-width-desktop);
-    height: var(--navigation-height-desktop);
+    /* height: var(--navigation-height-desktop); */
   }
 }
 

@@ -294,5 +294,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     buildingsI18n, //These need to be exported to be passed as payload from server to client
     roomsI18n,
     spacesI18n,
+    defaultFilters,
   };
 });
