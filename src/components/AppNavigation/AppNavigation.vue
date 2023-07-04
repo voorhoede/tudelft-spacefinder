@@ -65,8 +65,10 @@
         />
 
         {{ $t("filter") }}
-
-        <div class="app-menu__filter-indicator">
+        <div
+          class="app-menu__filter-indicator"
+          :class="{ 'app-menu__filter-indicator--updated': filterTotalUpdated }"
+        >
           {{ spacesStore.numberOfSelectedFilters }}
 
           <span class="a11y-sr-only">
@@ -87,6 +89,20 @@ const spacesStore = useSpacesStore();
 const menuButton = ref(null as null | HTMLButtonElement);
 
 let lastOpenedMenu: string | null = null;
+const filterTotalUpdated = ref(false);
+
+watch(
+  () => spacesStore.numberOfSelectedFilters,
+  (newValue, oldValue) => {
+    if (newValue !== oldValue) {
+      console.log(newValue, oldValue);
+      filterTotalUpdated.value = true;
+    }
+    setTimeout(() => {
+      filterTotalUpdated.value = false;
+    }, 1000);
+  }
+);
 
 watch(
   () => props.openedMenu,
@@ -170,4 +186,21 @@ watch(
   font-weight: bold;
   color: var(--background-color);
 }
+
+  .app-menu__filter-indicator--updated {
+    animation: scale-up 0.5s ease-in-out forwards;
+  }
+
+  @keyframes scale-up {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+    
 </style>
