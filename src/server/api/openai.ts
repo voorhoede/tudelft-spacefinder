@@ -9,13 +9,12 @@ const openai = new OpenAIApi(configuration);
 
 export default defineEventHandler(async (event) => {
   try {
-    const { query } = await readBody(event);
-    console.log(query);
+    const { query, defaultFilters } = await readBody(event);
 
     const response = await openai.createChatCompletion({
       max_tokens: 900,
       model: "gpt-3.5-turbo",
-      temperature: 0.5,
+      temperature: 0,
       messages: [
         {
           role: "user",
@@ -65,13 +64,13 @@ export default defineEventHandler(async (event) => {
         },
         {
           role: "user",
-          content: `Remember the previous query and if it match just update the values.`,
-        },
-        {
-          role: "user",
           content: `
                 Your response should only be a json object without any other text and must match the given response format
             `,
+        },
+        {
+          role: "user",
+          content: `If you can't find any data for this query ${query} please return an empty json object`,
         },
       ],
     });
@@ -87,7 +86,10 @@ export default defineEventHandler(async (event) => {
         switch (key) {
           case "occupancy":
             updatedKey = "buildingOccupancy";
-            value = [value]
+            value = [value];
+            break;
+          case "quietness":
+            updatedKey = "quietness";
             break;
           case "coffee":
             updatedKey = "nearCoffeeMachine";
@@ -113,12 +115,11 @@ export default defineEventHandler(async (event) => {
       {}
     );
 
-    return mappedFilters;
+    return { ...defaultFilters, ...mappedFilters };
   } catch (error: any) {
     if (!error.message) return;
-
+    console.log(error);
     console.error(`Error in chat.post: ${error.message}`);
-
     throw createError({
       statusCode: 500,
       statusMessage: error.message,
