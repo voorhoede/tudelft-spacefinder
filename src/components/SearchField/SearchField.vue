@@ -1,6 +1,6 @@
 <template>
   <form
-    @submit.prevent="chatbot"
+    @submit.prevent="handleSearch"
     class="search-field__form"
   >
     <label
@@ -11,7 +11,7 @@
     <input
       id="search-field__input"
       type="text"
-      v-model="question"
+      v-model="query"
       class="search-field__input"
       placeholder="I want a coffee, a quiet place to study..."
     >
@@ -37,57 +37,46 @@ import type { Filters } from "~/types/Filters";
 
 const spacesStore = useSpacesStore();
 
-const question = ref("");
-const messages = ref([] as { role: string; content: string }[]);
-const answers = ref([] as { role: string; content: string }[]);
+const query = ref("");
 const isLoading = ref(false);
 const flyAway = ref(false);
 
-async function chatbot() {
-  const input = question.value;
-  messages.value.push({ role: "You", content: input });
-  question.value = "";
+async function handleSearch() {
   isLoading.value = true;
 
-  const response = (await $fetch("/api/openai", {
-    method: "POST",
-    body: { query: input },
-  })) as any;
+  const searchFilters = await getSearchFiltersFromQuery();
+  applySearchFilters(searchFilters);
 
-  answers.value.push({ role: "Spacefinder", content: response });
-  filterChatResult(response);
-}
-
-const filterChatResult = (response: Filters) => {
-  spacesStore.clearFilters();
-
-  spacesStore.filters = {
-    ...spacesStore.defaultFilters,
-    ...response,
-  };
-
+  query.value = "";
   isLoading.value = false;
   flyAway.value = true;
-  answers.value = [];
 
   setTimeout(() => {
     flyAway.value = false;
   }, 500);
-};
+}
+
+async function getSearchFiltersFromQuery() {
+  const searchFilters = (await $fetch("/api/openai", {
+    method: "POST",
+    body: { query: query.value },
+  })) as any;
+
+  return searchFilters;
+}
+
+function applySearchFilters(searchFilters: Filters) {
+  spacesStore.clearFilters();
+
+  spacesStore.filters = {
+    ...spacesStore.defaultFilters,
+    ...searchFilters,
+  };
+}
 </script>
 
 <style>
 @import "../app-core/variables.css";
-
-:root {
-  --search-field-loader-size: 5px;
-}
-
-.search-field__messages {
-  position: absolute;
-  bottom: 100%;
-  background-color: var(--brand-primary-color);
-}
 
 .search-field__form {
   display: flex;
