@@ -60,12 +60,12 @@ async function getSearchFiltersFromQuery() {
   const searchFilters = (await $fetch("/api/openai", {
     method: "POST",
     body: { query: query.value },
-  })) as any;
+  })) as Partial<Filters>;
 
   return searchFilters;
 }
 
-function applySearchFilters(searchFilters: Filters) {
+function applySearchFilters(searchFilters: Partial<Filters>) {
   spacesStore.clearFilters();
 
   spacesStore.filters = {
