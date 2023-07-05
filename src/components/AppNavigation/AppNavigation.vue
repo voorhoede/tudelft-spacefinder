@@ -95,7 +95,6 @@ watch(
   () => spacesStore.numberOfSelectedFilters,
   (newValue, oldValue) => {
     if (newValue !== oldValue) {
-      console.log(newValue, oldValue);
       filterTotalUpdated.value = true;
     }
     setTimeout(() => {
