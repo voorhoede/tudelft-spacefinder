@@ -9,7 +9,7 @@ const openai = new OpenAIApi(configuration);
 
 export default defineEventHandler(async (event) => {
   try {
-    const { query, defaultFilters } = await readBody(event);
+    const { query } = await readBody(event);
 
     const response = await openai.createChatCompletion({
       max_tokens: 900,
@@ -115,11 +115,11 @@ export default defineEventHandler(async (event) => {
       {}
     );
 
-    return { ...defaultFilters, ...mappedFilters };
+    return mappedFilters;
   } catch (error: any) {
     if (!error.message) return;
     console.log(error);
-    console.error(`Error in chat.post: ${error.message}`);
+
     throw createError({
       statusCode: 500,
       statusMessage: error.message,

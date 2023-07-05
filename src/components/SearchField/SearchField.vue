@@ -51,10 +51,7 @@ async function chatbot() {
 
   const response = (await $fetch("/api/openai", {
     method: "POST",
-    body: {
-      query: input,
-      defaultFilters: spacesStore.defaultFilters,
-    },
+    body: { query: input },
   })) as any;
 
   answers.value.push({ role: "Spacefinder", content: response });
@@ -78,6 +75,7 @@ const filterChatResult = (response: Filters) => {
   }, 500);
 };
 </script>
+
 <style>
 @import "../app-core/variables.css";
 
