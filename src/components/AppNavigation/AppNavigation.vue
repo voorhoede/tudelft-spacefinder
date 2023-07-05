@@ -121,11 +121,10 @@ watch(
 .app-navigation {
   z-index: var(--layer--overlay);
   position: absolute;
-  
   left: 0;
   bottom: 0;
   padding: 0 var(--spacing-default);
-  /* height: var(--navigation-height-mobile); */
+  height: var(--navigation-height-mobile);
   width: 100%;
   background-color: var(--brand-primary-color);
   color: var(--background-color);
@@ -139,7 +138,7 @@ watch(
 @media (min-width: 700px) {
   .app-navigation {
     width: var(--column-width-desktop);
-    /* height: var(--navigation-height-desktop); */
+    height: var(--navigation-height-desktop);
   }
 }
 
@@ -187,20 +186,19 @@ watch(
   color: var(--background-color);
 }
 
-  .app-menu__filter-indicator--updated {
-    animation: scale-up 0.5s ease-in-out forwards;
-  }
+.app-menu__filter-indicator--updated {
+  animation: scale-up 0.5s ease-in-out forwards;
+}
 
-  @keyframes scale-up {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
+@keyframes scale-up {
+  0% {
+    transform: scale(1);
   }
-    
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 </style>
