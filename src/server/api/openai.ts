@@ -1,11 +1,11 @@
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
-const config = useRuntimeConfig();
 
-const configuration = new Configuration({
+const config = useRuntimeConfig();
+const openAiConfiguration = new Configuration({
   apiKey: config.openAi.secretKey,
 });
 
-const openai = new OpenAIApi(configuration);
+const openai = new OpenAIApi(openAiConfiguration);
 
 export default defineEventHandler(async (event) => {
   try {
@@ -110,19 +110,21 @@ export default defineEventHandler(async (event) => {
             updatedKey = key;
         }
 
-        return { ...acc, [updatedKey]: value };
+        return {
+          ...acc,
+          [updatedKey]: value
+        };
       },
       {}
     );
 
     return mappedFilters;
   } catch (error: any) {
-    if (!error.message) return;
-    console.log(error);
+    console.error(error);
 
     throw createError({
       statusCode: 500,
-      statusMessage: error.message,
+      statusMessage: error?.message,
     });
   }
 });

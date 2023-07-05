@@ -67,7 +67,7 @@
         {{ $t("filter") }}
         <div
           class="app-menu__filter-indicator"
-          :class="{ 'app-menu__filter-indicator--updated': filterTotalUpdated }"
+          :class="{ 'app-menu__filter-indicator--animating': filterTotalIsUpdated }"
         >
           {{ spacesStore.numberOfSelectedFilters }}
 
@@ -89,16 +89,17 @@ const spacesStore = useSpacesStore();
 const menuButton = ref(null as null | HTMLButtonElement);
 
 let lastOpenedMenu: string | null = null;
-const filterTotalUpdated = ref(false);
+const filterTotalIsUpdated = ref(false);
 
 watch(
   () => spacesStore.numberOfSelectedFilters,
   (newValue, oldValue) => {
     if (newValue !== oldValue) {
-      filterTotalUpdated.value = true;
+      filterTotalIsUpdated.value = true;
     }
+
     setTimeout(() => {
-      filterTotalUpdated.value = false;
+      filterTotalIsUpdated.value = false;
     }, 1000);
   }
 );
@@ -109,6 +110,7 @@ watch(
     if (lastOpenedMenu === "filter-menu") {
       menuButton.value?.focus();
     }
+
     lastOpenedMenu = newValue;
   }
 );
@@ -185,7 +187,7 @@ watch(
   color: var(--background-color);
 }
 
-.app-menu__filter-indicator--updated {
+.app-menu__filter-indicator--animating {
   animation: scale-up 0.5s ease-in-out forwards;
 }
 
