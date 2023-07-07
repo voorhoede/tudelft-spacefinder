@@ -67,9 +67,11 @@
         {{ $t("filter") }}
         <div
           class="app-menu__filter-indicator"
-          :class="{ 'app-menu__filter-indicator--animating': filterTotalIsUpdated }"
+          :class="{ 'app-menu__filter-indicator--animating': filterTotalIsUpdating }"
         >
-          {{ spacesStore.numberOfSelectedFilters }}
+          <client-only>
+            {{ spacesStore.numberOfSelectedFilters }}
+          </client-only>
 
           <span class="a11y-sr-only">
             {{ $t("filtersSelected") }}
@@ -89,17 +91,17 @@ const spacesStore = useSpacesStore();
 const menuButton = ref(null as null | HTMLButtonElement);
 
 let lastOpenedMenu: string | null = null;
-const filterTotalIsUpdated = ref(false);
+const filterTotalIsUpdating = ref(false);
 
 watch(
   () => spacesStore.numberOfSelectedFilters,
   (newValue, oldValue) => {
     if (newValue !== oldValue) {
-      filterTotalIsUpdated.value = true;
+      filterTotalIsUpdating.value = true;
     }
 
     setTimeout(() => {
-      filterTotalIsUpdated.value = false;
+      filterTotalIsUpdating.value = false;
     }, 1000);
   }
 );
