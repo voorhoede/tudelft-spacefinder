@@ -13,6 +13,7 @@ src/public/sw.js
 
 # Data related
 src/data/buildings.json
+src/data/building-index.json
 src/data/rooms.json
 src/data/spaces.json
 src/data/infopage.json
