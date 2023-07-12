@@ -45,7 +45,10 @@ export default defineNuxtConfig({
       username: process.env.KAFKA_USERNAME,
       password: process.env.KAFKA_PASSWORD,
       groupId: "tud_wifi_jasper_moelker",
-      topic: "tud_wifi_access_point_details",
+      topics: [
+        "tud_aruba_access_point_client_counts",
+        "tud_wifi_access_point_details",
+      ],
     },
     schemaRegistry: {
       url: process.env.SCHEMA_REGISTRY_URL,

@@ -2,7 +2,7 @@ import { Kafka } from "kafkajs";
 import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
 import { serverSupabaseClient } from "#supabase/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { parseMessage } from "../helpers/parse-message";
+import { parseMessageCisco, parseMessageAruba } from "../helpers/parse-message";
 
 const { internalSecret, kafkaConfig, schemaRegistry } = useRuntimeConfig();
 
@@ -31,6 +31,11 @@ console.timeEnd("Initialize");
 
 let seeked = false;
 
+const topicMessageParserMapping = {
+  "tud_aruba_access_point_client_counts": parseMessageAruba,
+  "tud_wifi_access_point_details": parseMessageCisco,
+}
+
 export default defineEventHandler(async (event) => {
   if (getQuery(event)?.secret !== internalSecret) {
     event.node.res.statusCode = 401;
@@ -56,21 +61,26 @@ export default defineEventHandler(async (event) => {
 async function consumeLastBatch({ client }: { client: SupabaseClient }) {
   console.time("Consumer setup");
   await consumer.connect();
-  await consumer.subscribe({ topic: kafkaConfig.topic });
+  await consumer.subscribe({ topics: kafkaConfig.topics });
   console.timeEnd("Consumer setup");
 
   consumer.run({
     eachBatch: async ({ batch }) => {
+      const parseMessage = topicMessageParserMapping[
+        batch.topic as keyof typeof topicMessageParserMapping
+      ];
+
       if (!seeked) {
         seeked = true;
+
         consumer.seek({
-          topic: kafkaConfig.topic,
+          topic: batch.topic,
           offset: batch.highWatermark,
           partition: batch.partition,
         });
       }
 
-      console.time("Parse messages");
+      console.time(`Parse messages from ${batch.topic}`);
       const parsedMessages = await Promise.all(
         batch.messages
           .filter((message) => message.value)
@@ -82,8 +92,13 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
                 decodedValue,
               }))
           )
-      );
-      console.timeEnd("Parse messages");
+      )
+        .then((parsedMessages) => parsedMessages.filter(
+          <T>(parsedMessage: T): parsedMessage is NonNullable<T> => (
+            Boolean(parsedMessage)
+          )
+        ));
+      console.timeEnd(`Parse messages from ${batch.topic}`);
 
       // filter out duplicate older messages, Map constructor uses last entry
       const uniqueMessages = Array.from(
