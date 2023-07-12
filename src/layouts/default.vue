@@ -11,6 +11,11 @@
       ref="topOfPage"
     />
 
+    <NotificationPanel
+      v-if="notification.showNotification"
+      :message="notificationBody"
+    />
+
     <NotificationBar
       class="default-layout__notification-bar"
       :message="$t('ieNotification')"
@@ -49,6 +54,7 @@
 
 <script setup lang="ts">
 import { useMapStore } from "~/stores/map";
+import notification from "../data/notification.json";
 
 const route = useRoute();
 const { afterEach } = useRouter();
@@ -79,6 +85,8 @@ afterEach((from, to) => {
 });
 
 const isSpaceDetailPage = computed(() => route.params.spaceSlug !== undefined)
+
+const notificationBody = computed(() => notification[$locale.value].body)
 
 const onResizeDebounce = useDebounceFn(onResize, 200);
 

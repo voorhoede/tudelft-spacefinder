@@ -1,0 +1,9 @@
+{
+  "showNotification": false,
+  "nl": {
+    "body": "<p>De Spacefinder is nog in ontwikkeling.</p>"
+  },
+  "en": {
+    "body": "<p>The Spacefinder is currently in development.</p>"
+  }
+}

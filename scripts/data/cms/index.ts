@@ -56,6 +56,24 @@ export function getPageFromCms(pageName: string): Promise<DatoInfoPage> {
   );
 }
 
+export function getNotificationFromCms(): Promise<DatoNotification> {
+  if (mockDataEnabled)
+    return import("../../../mock/cms/notification.json").then((info) => info.default);
+
+  return getFromDato(
+    `{
+      notification {
+        showNotification
+        _allBodyLocales {
+          locale,
+          value
+        }
+      }
+    }`,
+    'notification'
+  );
+}
+
 export function getSpacesDataFromCms() {
   if (mockDataEnabled)
     return import("../../../mock/cms/spaces.json").then((info) => info.default);
@@ -83,6 +101,11 @@ export interface DatoInfoPage {
   _allBodyLocales: DatoLocalizedContent[];
 }
 
+export interface DatoNotification {
+  showNotification: Boolean[];
+  _allBodyLocales: DatoLocalizedContent[];
+}
+
 export function convertCmsInfo(info: DatoInfoPage) {
   return {
     nl: {
@@ -98,4 +121,18 @@ export function convertCmsInfo(info: DatoInfoPage) {
         info._allBodyLocales.find((item) => item.locale === "en")?.value ?? "",
     },
   };
+}
+
+export function convertCmsNotification(info: DatoNotification) {
+  return {
+    showNotification: info.showNotification,
+    nl: {
+      body:
+        info._allBodyLocales.find((item) => item.locale === "nl")?.value ?? "",
+    },
+    en: {
+      body:
+        info._allBodyLocales.find((item) => item.locale === "en")?.value ?? "",
+    },
+  }
 }
