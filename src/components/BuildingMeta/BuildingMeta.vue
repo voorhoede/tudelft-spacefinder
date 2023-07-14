@@ -1,23 +1,13 @@
 <template>
   <ul class="flat-list building-meta">
     <li class="building-meta__item">
-      <Tooltip
-        :delay="0"
-        :overflow-padding="4"
-        :instant-move="true"
-        :triggers="['hover', 'click']"
-      >
-        <div class="building-meta__item-content">
-          <SvgIcon
-            name="seat-icon"
-            class="building-meta__seating-icon"
-          />
-          {{ props.seats }} {{ $t('seats') }}
-        </div>
-        <template #popper>
-          {{ $t('capacity') }}: {{ props.seats }} {{ $t('seats') }}
-        </template>
-      </Tooltip>
+      <div class="building-meta__item-content">
+        <SvgIcon
+          name="seat-icon"
+          class="building-meta__seating-icon"
+        />
+        {{ props.seats }} {{ $t('total') }} {{ $t('seats') }}
+      </div>
     </li>
     <li class="building-meta__item">
       <SvgIcon
@@ -30,7 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { Tooltip } from "floating-vue";
 const props = defineProps<{ seats: number, spaces: number }>();
 </script>
 
