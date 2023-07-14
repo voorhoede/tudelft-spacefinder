@@ -39,39 +39,25 @@
       class="space-card"
     >
       <div class="space-card__left-column">
-        <div class="space-card__header">
-          <component
-            v-if="isHeader"
-            :is="isHeader ? 'h2' : 'h3'"
-            class="space-card__title"
-          >
-            {{ space.name }}
-          </component>
-
-          <div class="space-card__seating">
-            <Tooltip
-              :delay="0"
-              :overflow-padding="4"
-              :instant-move="true"
-              :triggers="['hover', 'click']"
-            >
-              <div>
-                <SvgIcon
-                  name="seat-icon"
-                  class="space-card__seating-icon"
-                />
-                {{ space.seats }}
-              </div>
-              <template #popper>
-                {{ $t('capacity') }}: {{ space.seats }} {{ $t('seats') }}
-              </template>
-            </Tooltip>
-          </div>
-        </div>
+        <component
+          :is="isHeader ? 'h2' : 'h3'"
+          class="space-card__title"
+        >
+          {{ space.name }}
+        </component>
 
         <p class="space-card__description">
           {{ space.roomId }} | {{ space.floor }}
         </p>
+
+        <div class="space-card__seating">
+          <SvgIcon
+            name="seat-icon"
+            class="space-card__seating-icon"
+          />
+          <span class="space-card__seating-number">{{ space.seats }}</span>
+          <span class="space-card__seating-label">{{ $t('total') }} {{ $t('seats') }}</span>
+        </div>
 
         <SpaceFacilities
           :facilities="space.facilities"
@@ -128,7 +114,6 @@
 </template>
 
 <script setup lang="ts">
-import { Tooltip } from "floating-vue";
 import { useRouter } from 'vue-router';
 import { watch } from 'vue';
 
@@ -265,13 +250,6 @@ defineExpose({
   justify-content: flex-end;
 }
 
-.space-card__header {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--spacing-half);
-  font-weight: bold;
-}
-
 .space-card__title {
   margin-bottom: var(--spacing-quarter);
   font-size: var(--font-size-default);
@@ -282,6 +260,7 @@ defineExpose({
 
 .space-card__seating {
   margin-top: -.1rem;
+  font-weight: bold;
   white-space: nowrap;
 }
 
@@ -290,6 +269,16 @@ defineExpose({
   width: 16px;
   height: 16px;
   vertical-align: middle;
+}
+
+.space-card__seating-number {
+  margin-left: calc(.5 * var(--spacing-quarter));
+  margin-right: var(--spacing-quarter);
+}
+
+.space-card__seating-label {
+  font-size: var(--font-size-smaller);
+  font-weight: normal;
 }
 
 .space-card__description {
