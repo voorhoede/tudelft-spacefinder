@@ -92,7 +92,12 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
                 decodedValue,
               }))
           )
-      );
+      )
+        .then((parsedMessages) => parsedMessages.filter(
+          <T>(parsedMessage: T): parsedMessage is NonNullable<T> => (
+            Boolean(parsedMessage)
+          )
+        ));
       console.timeEnd("Parse messages");
 
       // filter out duplicate older messages, Map constructor uses last entry
