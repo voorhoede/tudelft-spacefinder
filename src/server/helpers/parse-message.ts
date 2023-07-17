@@ -1,6 +1,6 @@
 export function parseMessageWifi(
   { timestamp, decodedValue }:
-  { timestamp: string; decodedValue: Record<string, any> }
+  { timestamp: string; decodedValue: Record<string, string> }
 ) {
   return {
     "updated_at": new Date(Number(timestamp)).toISOString(),
@@ -9,7 +9,7 @@ export function parseMessageWifi(
     "building_number": Number(decodedValue.name.split("-").at(1))
       || Number(decodedValue.mapLocation.split(".").at(0))
       || 0,
-    "floor": decodedValue.locationHierarchy.split(">").at(-1).trim(),
+    "floor": decodedValue.locationHierarchy.split(">").at(-1)?.trim() || null,
     "room_id": decodedValue.mapLocation.split(" ").at(0),
     "map_location": decodedValue.mapLocation,
     "location_hierarchy": decodedValue.locationHierarchy,
@@ -18,7 +18,7 @@ export function parseMessageWifi(
 
 export function parseMessageAruba(
   { timestamp, decodedValue }:
-  { timestamp: string; decodedValue: Record<string, any> }
+  { timestamp: string; decodedValue: Record<string, string> }
 ) {
   return {
     "updated_at": new Date(Number(timestamp)).toISOString(),

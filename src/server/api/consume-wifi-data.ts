@@ -66,6 +66,10 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
 
   consumer.run({
     eachBatch: async ({ batch }) => {
+      const parseMessage = topicMessageParserMapping[
+        batch.topic as keyof typeof topicMessageParserMapping
+      ];
+
       if (!seeked) {
         seeked = true;
 
@@ -83,7 +87,7 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
           .map((message) =>
             registry
               .decode(message.value!)
-              .then((decodedValue) => topicMessageParserMapping[batch.topic]({
+              .then((decodedValue) => parseMessage({
                 timestamp: message.timestamp,
                 decodedValue,
               }))
