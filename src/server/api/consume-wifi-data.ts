@@ -80,7 +80,7 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
         });
       }
 
-      console.time("Parse messages");
+      console.time(`Parse messages from ${batch.topic}`);
       const parsedMessages = await Promise.all(
         batch.messages
           .filter((message) => message.value)
@@ -98,7 +98,7 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
             Boolean(parsedMessage)
           )
         ));
-      console.timeEnd("Parse messages");
+      console.timeEnd(`Parse messages from ${batch.topic}`);
 
       // filter out duplicate older messages, Map constructor uses last entry
       const uniqueMessages = Array.from(
