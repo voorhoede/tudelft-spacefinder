@@ -2,7 +2,7 @@ import { Kafka } from "kafkajs";
 import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
 import { serverSupabaseClient } from "#supabase/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { parseMessage } from "../helpers/parse-message";
+import { parseMessageWifi, parseMessageAruba } from "../helpers/parse-message";
 
 const { internalSecret, kafkaConfig, schemaRegistry } = useRuntimeConfig();
 
@@ -31,6 +31,11 @@ console.timeEnd("Initialize");
 
 let seeked = false;
 
+const topicMessageParserMapping = {
+  "tud_aruba_access_point_client_counts": parseMessageAruba,
+  "tud_wifi_access_point_details": parseMessageWifi,
+}
+
 export default defineEventHandler(async (event) => {
   if (getQuery(event)?.secret !== internalSecret) {
     event.node.res.statusCode = 401;
@@ -56,15 +61,16 @@ export default defineEventHandler(async (event) => {
 async function consumeLastBatch({ client }: { client: SupabaseClient }) {
   console.time("Consumer setup");
   await consumer.connect();
-  await consumer.subscribe({ topic: kafkaConfig.topic });
+  await consumer.subscribe({ topics: kafkaConfig.topics });
   console.timeEnd("Consumer setup");
 
   consumer.run({
     eachBatch: async ({ batch }) => {
       if (!seeked) {
         seeked = true;
+
         consumer.seek({
-          topic: kafkaConfig.topic,
+          topic: batch.topic,
           offset: batch.highWatermark,
           partition: batch.partition,
         });
@@ -77,7 +83,7 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
           .map((message) =>
             registry
               .decode(message.value!)
-              .then((decodedValue) => parseMessage({
+              .then((decodedValue) => topicMessageParserMapping[batch.topic]({
                 timestamp: message.timestamp,
                 decodedValue,
               }))
