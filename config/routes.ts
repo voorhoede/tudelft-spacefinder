@@ -12,10 +12,12 @@ export function generateRoutes(
   const routes = [
     "/en/",
     "/en/buildings/",
+    "/en/spaces/",
     "/en/help/",
     "/en/feedback/",
     "/nl/",
     "/nl/gebouwen/",
+    "/nl/ruimtes/",
     "/nl/hulp/",
     "/nl/feedback/",
   ];
