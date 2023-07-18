@@ -4,9 +4,11 @@ import fs from "node:fs/promises";
 import { getData as getDataFromCsv, transform } from "./csv/index";
 import {
   getBuildingsDataFromCms,
+  getNotificationFromCms,
   getPageFromCms,
   getSpacesDataFromCms,
   convertCmsInfo,
+  convertCmsNotification,
 } from "./cms/index";
 import addOpeningHours from "./exchange/index";
 import {
@@ -47,9 +49,16 @@ function preparePage(name: string) {
   );
 }
 
+function prepareNotification() {
+  return getNotificationFromCms().then((content) =>
+    writeFile('notification', convertCmsNotification(content))
+  );
+}
+
 Promise.all([
   prepareSpaces(csvPath),
   ...["infoPage", "feedbackPage"].map(preparePage),
+  prepareNotification(),
 ])
   .then(() => console.info("Wrote data for spaces, buildings and CMS"))
   .catch(({ message }) =>
