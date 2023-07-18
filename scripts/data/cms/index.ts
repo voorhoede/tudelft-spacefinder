@@ -64,6 +64,7 @@ export function getNotificationFromCms(): Promise<DatoNotification> {
     `{
       notification {
         showNotification
+        updatedAt
         _allBodyLocales {
           locale,
           value
@@ -102,7 +103,8 @@ export interface DatoInfoPage {
 }
 
 export interface DatoNotification {
-  showNotification: Boolean[];
+  showNotification: boolean;
+  updatedAt: string;
   _allBodyLocales: DatoLocalizedContent[];
 }
 
@@ -126,6 +128,7 @@ export function convertCmsInfo(info: DatoInfoPage) {
 export function convertCmsNotification(info: DatoNotification) {
   return {
     showNotification: info.showNotification,
+    updatedAt: info.updatedAt,
     nl: {
       body:
         info._allBodyLocales.find((item) => item.locale === "nl")?.value ?? "",

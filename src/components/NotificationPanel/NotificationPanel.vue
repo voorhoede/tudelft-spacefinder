@@ -1,5 +1,8 @@
 <template>
-  <div class="notification-panel">
+  <div
+    v-if="showPanel"
+    class="notification-panel"
+  >
     <div
       v-html="message"
       class="notification-panel__content"
@@ -21,10 +24,23 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ message: string }>();
+import Cookie from "js-cookie";
+
+const props = defineProps<{ showNotification: boolean, timestamp: string, message: string, }>();
+
+const showPanel = ref(false);
+
+onMounted(() => {
+  const cookieNotificationTimestamp = Cookie.get('notification-timestamp');
+
+  if (props.showNotification && cookieNotificationTimestamp !== props.timestamp) {
+    showPanel.value = true;
+  }
+});
 
 function closePanel() {
-  console.log('close panel');
+  Cookie.set('notification-timestamp', props.timestamp);
+  showPanel.value = false;
 }
 </script>
 

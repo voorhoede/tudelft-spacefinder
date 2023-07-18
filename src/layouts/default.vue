@@ -11,14 +11,15 @@
       ref="topOfPage"
     />
 
-    <NotificationPanel
-      v-if="notification.showNotification"
-      :message="notificationBody"
-    />
-
     <NotificationBar
       class="default-layout__notification-bar"
       :message="$t('ieNotification')"
+    />
+
+    <NotificationPanel
+      :show-notification="notification.showNotification"
+      :timestamp="notification.updatedAt"
+      :message="notificationBody"
     />
 
     <AppHeader
