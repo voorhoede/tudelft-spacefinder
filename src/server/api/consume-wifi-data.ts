@@ -1,6 +1,6 @@
 import { Kafka } from "kafkajs";
 import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
-import { serverSupabaseClient } from "#supabase/server";
+import { serverSupabaseServiceRole } from "#supabase/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { parseMessageCisco, parseMessageAruba } from "../helpers/parse-message";
 
@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
     return;
   }
 
-  const client = serverSupabaseClient(event);
+  const client = serverSupabaseServiceRole(event);
 
   consumeLastBatch({ client });
 
