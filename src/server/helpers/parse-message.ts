@@ -1,4 +1,4 @@
-export function parseMessageWifi(
+export function parseMessageCisco(
   { timestamp, decodedValue }:
   { timestamp: string; decodedValue: Record<string, string | number> }
 ) {

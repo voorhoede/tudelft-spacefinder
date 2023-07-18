@@ -1,9 +1,9 @@
 import { describe, test, expect } from "vitest";
-import { parseMessageAruba, parseMessageWifi } from "./parse-message";
+import { parseMessageAruba, parseMessageCisco } from "./parse-message";
 
-describe("parseMessageWifi", () => {
+describe("parseMessageCisco", () => {
   test("Parse with common valid data", () => {
-    expect(parseMessageWifi({
+    expect(parseMessageCisco({
       timestamp: "1679400080000",
       decodedValue: {
         displayName: "8024886886",
@@ -43,7 +43,7 @@ describe("parseMessageWifi", () => {
 
   test("Parse building number", () => {
     expect(
-      parseMessageWifi({
+      parseMessageCisco({
         timestamp: "1679400080000",
         decodedValue: {
           clientCount: 20,
@@ -59,7 +59,7 @@ describe("parseMessageWifi", () => {
       });
 
     expect(
-      parseMessageWifi({
+      parseMessageCisco({
         timestamp: "1679400080000",
         decodedValue: {
           clientCount: 20,
@@ -75,7 +75,7 @@ describe("parseMessageWifi", () => {
       });
 
     expect(
-      parseMessageWifi({
+      parseMessageCisco({
         timestamp: "1679400080000",
         decodedValue: {
           clientCount: 20,
@@ -91,7 +91,7 @@ describe("parseMessageWifi", () => {
       });
 
     expect(
-      parseMessageWifi({
+      parseMessageCisco({
         timestamp: "1679400080000",
         decodedValue: {
           clientCount: 20,
@@ -109,7 +109,7 @@ describe("parseMessageWifi", () => {
 
   test("Parse floor", () => {
     expect(
-      parseMessageWifi({
+      parseMessageCisco({
         timestamp: "1679400080000",
         decodedValue: {
           clientCount: 20,
@@ -125,7 +125,7 @@ describe("parseMessageWifi", () => {
       });
 
     expect(
-      parseMessageWifi({
+      parseMessageCisco({
         timestamp: "1679400080000",
         decodedValue: {
           clientCount: 20,
@@ -143,7 +143,7 @@ describe("parseMessageWifi", () => {
 
   test("Parse room id", () => {
     expect(
-      parseMessageWifi({
+      parseMessageCisco({
         timestamp: "1679400080000",
         decodedValue: {
           clientCount: 20,
@@ -159,7 +159,7 @@ describe("parseMessageWifi", () => {
       });
 
     expect(
-      parseMessageWifi({
+      parseMessageCisco({
         timestamp: "1679400080000",
         decodedValue: {
           clientCount: 20,
