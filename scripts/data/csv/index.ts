@@ -47,7 +47,15 @@ export function transform(
     }
     const space = getSpace(buildingNumber, source);
     const cmsSpace = spacesDataFromCms.find(cmsSpace => cmsSpace.spaceId === space.spaceId);
-    space.image = cmsSpace?.image    
+    space.image = cmsSpace?.image
+
+    if (cmsSpace?._allMessageLocales.every((message) => message.value !== '')) {
+      space.message = {
+        en: cmsSpace?._allMessageLocales?.find(item => item.locale === 'en')!.value,
+        nl: cmsSpace?._allMessageLocales?.find(item => item.locale === 'nl')!.value,
+      }
+    }
+
     spaces.push(space);
 
     if (!(buildingNumber in buildings)) {

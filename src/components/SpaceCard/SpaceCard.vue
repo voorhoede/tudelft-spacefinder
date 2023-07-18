@@ -64,6 +64,12 @@
           class="space-card__facilities"
         />
 
+        <div
+          v-if="spaceMessage"
+          class="space-card__message"
+          v-html="spaceMessage"
+        />
+
         <CardStatus
           :opening-hours="space.openingHours"
           class="space-card__open-status"
@@ -129,11 +135,13 @@ const props = defineProps<{
 
 const root = ref(null as null | HTMLDivElement);
 const router = useRouter();
-const { $localePath } = useNuxtApp();
+const { $locale, $localePath } = useNuxtApp();
 
 const currentIndex = ref(0);
+
 const hasAssociatedSpaces = computed(() => props.associatedSpaces && props.associatedSpaces.length > 0);
 
+const spaceMessage = computed(() => props.space.message && props.space.message[$locale.value]);
 
 const goToPreviousSpace = () => {
   if (currentIndex.value > 0) {
@@ -290,6 +298,13 @@ defineExpose({
 
 .space-card__facilities {
   margin-left: -0.2rem;
+}
+
+.space-card__message {
+  margin: var(--spacing-default) 0;
+  padding: var(--spacing-quarter) var(--spacing-half);
+  background-color: var(--neutral-color);
+  font-size: var(--font-size-smaller); 
 }
 
 .space-card__open-status {
