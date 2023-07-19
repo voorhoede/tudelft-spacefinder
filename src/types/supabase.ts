@@ -66,46 +66,23 @@ export interface Database {
           updated_at?: string
         }
       }
+    }
+    Views: {
       buildings_latest_states: {
         Row: {
-          building_number: number
-          device_count: number
-          updated_at: string
-        }
-        Insert: {
-          building_number: number
-          device_count: number
-          updated_at: string
-        }
-        Update: {
-          building_number?: number
-          device_count?: number
-          updated_at?: string
+          building_number: number | null
+          device_count: number | null
+          updated_at: string | null
         }
       }
       spaces_latest_states: {
         Row: {
-          building_number: number
-          device_count: number
-          room_id: string
-          updated_at: string
-        }
-        Insert: {
-          building_number: number
-          device_count: number
-          room_id: string
-          updated_at: string
-        }
-        Update: {
-          building_number?: number
-          device_count?: number
-          room_id?: string
-          updated_at?: string
+          building_number: number | null
+          device_count: number | null
+          room_id: string | null
+          updated_at: string | null
         }
       }
-    }
-    Views: {
-      [_ in never]: never
     }
     Functions: {
       [_ in never]: never
