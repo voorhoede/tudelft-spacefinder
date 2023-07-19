@@ -83,6 +83,10 @@ export function getSpacesDataFromCms() {
     `{
       allSpaces {
         spaceId
+        _allMessageLocales {
+          locale
+          value
+        }
         image {
           url
         }

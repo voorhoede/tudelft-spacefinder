@@ -53,9 +53,21 @@ export interface RoomBaseRaw {
 export type CsvSpaceData = Omit<
   SpaceI18n,
   "openingHours" | "activeDevices"
-> & { exchangeBuildingId: string; exchangeRoomId: string };
+> & {
+  exchangeBuildingId: string;
+  exchangeRoomId: string;
+  message?: {
+    en: string;
+    nl: string;
+  };
+};
 
 export type CmsSpaceData = Pick<
   SpaceI18n,
   "spaceId" | "image"
->;
+> & {
+  _allMessageLocales: {
+    locale: string;
+    value: string;
+  }[];
+};

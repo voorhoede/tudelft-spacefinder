@@ -1,110 +1,114 @@
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "space.json",
-  "description": "A study space at TU Delft",
-  "$ref": "#/definitions/space",
-  "definitions": {
-    "space": {
-      "type":"object",
-      "properties": {
-        "spaceId": { "type": "string" },
-        "buildingNumber": { "type":"integer" },
-        "realEstateNumber": { "type": "string" },
-        "roomId": { "type": "string" },
-        "slug": { "type": "string" },
-        "floor": { "type": "string" },
-        "seats": { "type": "integer" },
-        "tables": { "type": "integer" },
-        "latitude": { "type": "number", "description": "geospatial latitude" },
-        "longitude": { "type": "number", "description": "geospatial longitude" },
-        "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "Opening hours for space" },
-        "facilities": { "$ref": "#/definitions/facilities" },
-        "image": {
-          "$ref": "#/definitions/image"
-        },
-        "i18n": {
-          "type": "object",
-          "properties": {
-            "nl": {
-              "$ref": "#/definitions/dictionary"
-            },
-            "en": {
-              "$ref": "#/definitions/dictionary"
-            }
+  {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "space.json",
+    "description": "A study space at TU Delft",
+    "$ref": "#/definitions/space",
+    "definitions": {
+      "space": {
+        "type":"object",
+        "properties": {
+          "spaceId": { "type": "string" },
+          "buildingNumber": { "type":"integer" },
+          "realEstateNumber": { "type": "string" },
+          "roomId": { "type": "string" },
+          "slug": { "type": "string" },
+          "floor": { "type": "string" },
+          "seats": { "type": "integer" },
+          "tables": { "type": "integer" },
+          "latitude": { "type": "number", "description": "geospatial latitude" },
+          "longitude": { "type": "number", "description": "geospatial longitude" },
+          "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "Opening hours for space" },
+          "facilities": { "$ref": "#/definitions/facilities" },
+          "image": {
+            "$ref": "#/definitions/image"
           },
-          "required": [
-            "nl",
-            "en"
-          ],
-          "additionalProperties": false
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "spaceId",
-        "buildingNumber",
-        "facilities",
-        "floor",
-        "i18n",
-        "latitude",
-        "longitude",
-        "openingHours",
-        "realEstateNumber",
-        "roomId",
-        "slug",
-        "seats",
-        "tables"
-      ]
-    },
-    "dictionary": {
-      "type": "object",
-      "properties": {
-        "name": { "type": "string" }
-      },
-      "required": [
-        "name"
-      ],
-      "additionalProperties": false
-    },
-    "facilities": {
-      "type": "object",
-      "properties": {
-        "adjustableChairs": { "type": "boolean" },
-        "quietness": {
-          "type": "string",
-          "enum": ["silent", "quiet", "noisy"]
+          "message": {
+            "en": { "type": "string" },
+            "nl": { "type": "string" }
+          },
+          "i18n": {
+            "type": "object",
+            "properties": {
+              "nl": {
+                "$ref": "#/definitions/dictionary"
+              },
+              "en": {
+                "$ref": "#/definitions/dictionary"
+              }
+            },
+            "required": [
+              "nl",
+              "en"
+            ],
+            "additionalProperties": false
+          }
         },
-        "daylit": { "type": "boolean" },
-        "powerOutlets": { "type": "boolean" },
-        "whiteBoard": { "type": "boolean" },
-        "presentationScreen": { "type": "boolean" },
-        "nearCoffeeMachine": { "type": "boolean" },
-        "nearPrinter": { "type": "boolean" },
-        "nearBathroom": { "type": "boolean" },
-        "numberOfSeats": { "type": "number" }
+        "additionalProperties": false,
+        "required": [
+          "spaceId",
+          "buildingNumber",
+          "facilities",
+          "floor",
+          "i18n",
+          "latitude",
+          "longitude",
+          "openingHours",
+          "realEstateNumber",
+          "roomId",
+          "slug",
+          "seats",
+          "tables"
+        ]
       },
-      "additionalProperties": false,
-      "required":[
-        "adjustableChairs",
-        "quietness",
-        "daylit",
-        "powerOutlets",
-        "whiteBoard",
-        "presentationScreen",
-        "nearCoffeeMachine",
-        "nearPrinter",
-        "nearBathroom"
-      ]
-    },
-    "image": {
-      "type": "object",
-      "properties": {
-        "url": {
-          "type": "string"
-        }
+      "dictionary": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
       },
-      "required": [ "url" ],
-      "additionalProperties": false
+      "facilities": {
+        "type": "object",
+        "properties": {
+          "adjustableChairs": { "type": "boolean" },
+          "quietness": {
+            "type": "string",
+            "enum": ["silent", "quiet", "noisy"]
+          },
+          "daylit": { "type": "boolean" },
+          "powerOutlets": { "type": "boolean" },
+          "whiteBoard": { "type": "boolean" },
+          "presentationScreen": { "type": "boolean" },
+          "nearCoffeeMachine": { "type": "boolean" },
+          "nearPrinter": { "type": "boolean" },
+          "nearBathroom": { "type": "boolean" },
+          "numberOfSeats": { "type": "number" }
+        },
+        "additionalProperties": false,
+        "required":[
+          "adjustableChairs",
+          "quietness",
+          "daylit",
+          "powerOutlets",
+          "whiteBoard",
+          "presentationScreen",
+          "nearCoffeeMachine",
+          "nearPrinter",
+          "nearBathroom"
+        ]
+      },
+      "image": {
+        "type": ["object", "null"],
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [ "url" ],
+        "additionalProperties": false
+      }
     }
   }
-}

@@ -3,6 +3,16 @@
         "spaceId": "SSP00040",
         "image": {
             "url": "https://www.datocms-assets.com/13828/1683031456-1000.jpeg"
-        }
+        },
+        "_allMessageLocales": [
+          {
+            "locale": "en",
+            "value": "<p><span>EN: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus magna a mollis fermentum. Vestibulum non dignissim velit, a semper odio.</span></p>"
+          },
+          {
+            "locale": "nl",
+            "value": "<p><span>NL: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus magna a mollis fermentum. Vestibulum non dignissim velit, a semper odio.</span></p>"
+          }
+        ]
     }
 ]
