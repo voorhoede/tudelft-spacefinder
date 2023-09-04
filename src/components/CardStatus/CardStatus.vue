@@ -40,9 +40,10 @@ const runtimeConfig = useRuntimeConfig();
 const { isOpeningHoursEnabled } = runtimeConfig.public;
 
 const isOpen = computed(() => {
-  const indexToday = 0;
-  const openingHoursToday = props.openingHours[indexToday].time; //TODO: will we still rely on daily deploys to determine the meaning of "today"?
   const now = new Date();
+  const dayNames = ["su", "mo", "tu", "we", "th", "fr", "sa"];
+  const indexToday = dayNames[now.getDay()];
+  const openingHoursToday = props.openingHours.find(({ day }) => day === indexToday).time;
 
   return openingHoursToday.some(([startTime, endTime]) => {
     return now >= new Date(startTime) && now <= new Date(endTime);

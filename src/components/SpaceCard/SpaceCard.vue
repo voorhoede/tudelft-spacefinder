@@ -69,19 +69,6 @@
           class="space-card__message"
           v-html="spaceMessage"
         />
-
-        <CardStatus
-          :opening-hours="space.openingHours"
-          class="space-card__open-status"
-          :class="{ 'space-card__open-status--visible': !hideOpeningHours }"
-        />
-
-        <OpeningHours
-          v-if="!hideOpeningHours"
-          :opening-hours-building="space.building.openingHours"
-          :opening-hours-space="space.openingHours"
-          :show-toggle-on-desktop="false"
-        />
       </div>
       <div class="space-card__right-column">
         <div

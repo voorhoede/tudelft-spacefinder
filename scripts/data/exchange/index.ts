@@ -1,7 +1,8 @@
-// const getRoomAvailability = require('./room-availability')
-// const getEmails = require('./get-unique-emails')
-// const mapRoomsToTimes = require('./rooms-to-times')
-// const openingHours = require('./opening-hours')
+import getRoomAvailability from './room-availability'
+import getEmails from './get-unique-emails'
+import { buildingOpeningHours } from './opening-hours';
+import mapRoomsToTimes from './rooms-to-times'
+
 import type {
   CsvSpaceData,
   SpaceI18n,
@@ -54,7 +55,7 @@ const placeholderOpeningHours = [
   },
 ];
 
-export default ({
+export default async ({
   spaces,
   rooms,
   buildings,
@@ -63,11 +64,13 @@ export default ({
   rooms: CsvRoomData[];
   buildings: CsvAndCmsBuildingData[];
 }): { spaces: SpaceI18n[]; rooms: RoomI18n[]; buildings: BuildingI18n[] } => {
+  const emails = getEmails(spaces)
+  const availability = await getRoomAvailability(emails)
+  const roomsToTimesMap = mapRoomsToTimes(emails, availability)
+  const openingHours = buildingOpeningHours(roomsToTimesMap, buildings)
+
   return {
-    buildings: buildings.map((building) => {
-      const { exchangeBuildingId, ...otherBuildingProps } = building;
-      return { ...otherBuildingProps, openingHours: placeholderOpeningHours };
-    }),
+    buildings: openingHours,
     rooms: rooms.map((room) => {
       const { exchangeBuildingId, exchangeRoomId, ...otherRoomProps } = room;
       return { ...otherRoomProps, openingHours: placeholderOpeningHours };
