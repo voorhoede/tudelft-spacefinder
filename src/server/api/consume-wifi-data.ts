@@ -2,7 +2,7 @@ import { Kafka } from "kafkajs";
 import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
 import { serverSupabaseServiceRole } from "#supabase/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { parseMessageCisco, parseMessageAruba } from "../helpers/parse-message";
+import { parseMessageAruba } from "../helpers/parse-message";
 
 const { internalSecret, kafkaConfig, schemaRegistry } = useRuntimeConfig();
 
@@ -33,7 +33,6 @@ let seeked = false;
 
 const topicMessageParserMapping = {
   "tud_aruba_access_point_client_counts": parseMessageAruba,
-  "tud_wifi_access_point_details": parseMessageCisco,
 }
 
 export default defineEventHandler(async (event) => {
