@@ -9,7 +9,6 @@ const kafkaConfig = {
   groupId: "tud_wifi_jasper_moelker",
   topics: [
     "tud_aruba_access_point_client_counts",
-    "tud_wifi_access_point_details",
   ],
 };
 const schemaRegistry = {
