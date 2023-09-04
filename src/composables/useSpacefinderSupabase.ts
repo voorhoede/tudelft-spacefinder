@@ -11,18 +11,22 @@ export default function useSpacefinderSupabase() {
   }
 
   async function getBuildingsOccupancyCurrent() {
+    console.time('getBuildingsOccupancyCurrent');
     const { data } = await client
       .from("buildings_latest_states")
       .select("*")
       .gte("updated_at", getEarliestTimeConsidered());
+    console.timeEnd('getBuildingsOccupancyCurrent');
     return data;
   }
 
   async function getSpacesOccupancyCurrent() {
+    console.time('getSpacesOccupancyCurrent')
     const { data } = await client
       .from("spaces_latest_states")
       .select("*")
       .gte("updated_at", getEarliestTimeConsidered());
+    console.timeEnd('getSpacesOccupancyCurrent')
     return data;
   }
 
