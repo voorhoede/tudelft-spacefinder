@@ -28,6 +28,7 @@ export type AssociatedSpace = {
 export const useSpacesStore = defineStore("spaces", () => {
   const currentSelection = ref<Selection>(undefined);
   const currentAssociatedSpaces = ref<AssociatedSpace[]>([]);
+  const updatedAt = ref();
 
   const currentSpace = computed(() =>
     currentSelection.value && currentSelection.value.level == "space"
@@ -114,6 +115,7 @@ export const useSpacesStore = defineStore("spaces", () => {
       return { ...building, activeDevices, occupancy };
     });
     mapStore.updateData();
+    updatedAt.value = new Date();
   }
 
   function setBuildingOccupancy(
@@ -294,5 +296,6 @@ export const useSpacesStore = defineStore("spaces", () => {
     buildingsI18n, //These need to be exported to be passed as payload from server to client
     roomsI18n,
     spacesI18n,
+    updatedAt,
   };
 });
