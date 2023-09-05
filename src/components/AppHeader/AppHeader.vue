@@ -3,8 +3,8 @@
     role="banner"
     class="app-header default-layout__header"
   >
-    <NuxtLink
-      to="/"
+    <a
+      href="/"
       class="app-header__logo"
     >
       <img
@@ -15,7 +15,7 @@
       <h1 class="app-header__logo-text">
         {{ $t("title") }}
       </h1>
-    </NuxtLink>
+    </a>
 
     <button
       ref="menuButton"
