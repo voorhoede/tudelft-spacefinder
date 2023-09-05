@@ -146,7 +146,7 @@ const spaceMessage = computed(() => props.space.message && props.space.message[$
 const goToPreviousSpace = () => {
   if (currentIndex.value > 0) {
     const previousSpace = props.associatedSpaces![currentIndex.value - 1];
-    router.push($localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+    router.replace($localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
       buildingSlug: previousSpace.buildingSlug,
       spaceSlug: previousSpace.spaceSlug,
     }));
@@ -157,7 +157,7 @@ const goToPreviousSpace = () => {
 const goToNextSpace = () => {
   if (currentIndex.value < props.associatedSpaces!.length - 1) {
     const nextSpace = props.associatedSpaces![currentIndex.value + 1];
-    router.push($localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
+    router.replace($localePath("/buildings/:buildingSlug/spaces/:spaceSlug", {
       buildingSlug: nextSpace.buildingSlug,
       spaceSlug: nextSpace.spaceSlug,
     }));
