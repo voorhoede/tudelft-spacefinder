@@ -12,6 +12,13 @@
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
             {{ $t("occupancy") }}
+            <span
+              v-if="updatedAt"
+              class="filter-menu__legend-meta"
+            >
+              {{ $t('updated') }}:
+              {{ updatedAt }}
+            </span>
           </legend>
           <FilterMenuItem
             v-for="occupancy in OCCUPANCY_RATES"
@@ -133,7 +140,9 @@
 </template>
 
 <script setup lang="ts">
+const { $locale } = useNuxtApp();
 import { storeToRefs } from "pinia";
+import { useIntervalFn } from "@vueuse/core"
 import { useSpacesStore } from "~/stores/spaces";
 import { OCCUPANCY_RATES } from "~/types/Filters";
 
@@ -149,10 +158,34 @@ const { filters, buildings } = storeToRefs(spacesStore);
 const spaceCount = computed(() =>
   spacesStore.currentSelection?.level == "building"
     ? spacesStore.filteredSpaces.filter(
-        (space) => space.buildingNumber === spacesStore.currentBuilding!.number
-      ).length
+      (space) => space.buildingNumber === spacesStore.currentBuilding!.number
+    ).length
     : spacesStore.filteredSpaces.length
 );
+
+function getRelativeTimeString(date: Date): string {
+  const deltaSeconds = Math.round((date.getTime() - Date.now()) / 1000);
+
+  const cutoffs = [60, 3600, 86400, Infinity];
+  // Array equivalent to the above but in the string representation of the units
+  const units: Intl.RelativeTimeFormatUnit[] = ["second", "minute", "hour"];
+
+  const unitIndex = cutoffs.findIndex(cutoff => cutoff > Math.abs(deltaSeconds));
+  // Get the divisor to divide from the seconds. E.g. if our unit is "day" our divisor
+  // is one day in seconds, so we can divide our seconds by this to get the # of days
+  const divisor = unitIndex ? cutoffs[unitIndex - 1] : 1;
+
+  const rtf = new Intl.RelativeTimeFormat($locale.value, { numeric: "auto" });
+  return rtf.format(Math.floor(deltaSeconds / divisor), units[unitIndex]);
+}
+
+const updatedAt = ref();
+const { resume, pause } = useIntervalFn(() => {
+  updatedAt.value = getRelativeTimeString(spacesStore.updatedAt)
+}, 5000);
+
+onMounted(() => { resume(); })
+onUnmounted(() => { pause(); })
 
 function clearFilters() {
   spacesStore.clearFilters();
@@ -261,5 +294,11 @@ function clearFilters() {
 
 .filter-menu__buttons .button--primary {
   margin: 0 0 0 var(--spacing-half);
+}
+
+.filter-menu__legend-meta {
+  display: block;
+  font-family: var(--font-body);
+  margin-bottom: var(--spacing-quarter);
 }
 </style>
