@@ -171,8 +171,7 @@ function getRelativeTimeString(date: Date): string {
   const units: Intl.RelativeTimeFormatUnit[] = ["second", "minute", "hour"];
 
   const unitIndex = cutoffs.findIndex(cutoff => cutoff > Math.abs(deltaSeconds));
-  // Get the divisor to divide from the seconds. E.g. if our unit is "day" our divisor
-  // is one day in seconds, so we can divide our seconds by this to get the # of days
+  // Get the divisor to divide from the seconds.
   const divisor = unitIndex ? cutoffs[unitIndex - 1] : 1;
 
   const rtf = new Intl.RelativeTimeFormat($locale.value, { numeric: "auto" });
