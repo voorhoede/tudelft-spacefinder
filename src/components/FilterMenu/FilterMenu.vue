@@ -180,6 +180,9 @@ function getRelativeTimeString(date: Date): string {
 
 const updatedAt = ref();
 const { resume, pause } = useIntervalFn(() => {
+  if (!spacesStore.updatedAt)
+    return;
+
   updatedAt.value = getRelativeTimeString(spacesStore.updatedAt)
 }, 5000);
 

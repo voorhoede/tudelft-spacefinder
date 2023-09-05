@@ -18,6 +18,11 @@ import { storeToRefs } from "pinia";
 import {Feature, Point} from "geojson";
 import { useRoute } from "vue-router";
 
+import iconPillBusy from "../../assets/icons/map/pill-busy.png";
+import iconPillCrowded from "../../assets/icons/map/pill-crowded.png";
+import iconPillQuiet from "../../assets/icons/map/pill-quiet.png";
+import iconPillUnknown from "../../assets/icons/map/pill-unknown.png";
+
 import campusBounds from "~/lib/campus-bounds";
 import zoomLevels from "~/lib/zoom-levels";
 import { useMapStore } from "~/stores/map";
@@ -104,22 +109,6 @@ function initMap(accessToken: string) {
         resolve();
       };
       img.src = `/icons/${markerName}.svg`;
-    });
-  }
-
-  function addBuildingOccupancy(map: mapboxgl.Map, markerName: string) {
-    return new Promise<void>((resolve) => {
-      if (map.hasImage(markerName)) {
-        resolve();
-        return;
-      }
-
-      const img = new Image(120, 27);
-      img.onload = () => {
-        map.addImage(markerName, img);
-        resolve();
-      };
-      img.src = `/icons/clusters/${markerName}.svg`;
     });
   }
 
@@ -220,12 +209,27 @@ function initMap(accessToken: string) {
   });
 
   map.on("load", async () => {
-    const markerNames = [...OCCUPANCY_RATES, "unknown"] as const;
-    
+    const mapIcons = [
+      [iconPillBusy, 'pill-busy'],
+      [iconPillCrowded, 'pill-crowded'],
+      [iconPillQuiet, 'pill-quiet'],
+      [iconPillUnknown, 'pill-unknown'],
+    ];
+
+    mapIcons.forEach(([iconPath, iconName]) => {
+      map.loadImage(iconPath, (error, image) => {
+        if (error) {
+          console.error(error);
+          return;
+        }
+
+        map.addImage(iconName, image);
+      });
+    })
+
     await Promise.all(
-      markerNames.flatMap((occupancy) => [
+      OCCUPANCY_RATES.flatMap((occupancy) => [
         addMarker(map, `map-marker-${occupancy}`),
-        addBuildingOccupancy(map, `pill-${occupancy}`),
       ])
     );
 
