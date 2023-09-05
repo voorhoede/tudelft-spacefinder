@@ -75,39 +75,6 @@ function setAssociatedSpaces(spaces: Feature[]) {
   spacesStore.setAssociatedSpaces(newSpaces as AssociatedSpace[]);
 }
 
-/**
- * Mapbox renders insecure external links.
- * To fix these `[rel="noreferrer"]` is added when the links are rendered.
- * @see https://developers.google.com/web/tools/lighthouse/audits/noopener
- */
-function fixInsecureLinks() {
-  //TODO: this doesn't work:
-  // - The leftmost "mapbox" link doesn't get selected to be fixed.
-  // - The last link gets fixed but immediately restores its previous "rel" value
-  // - Upon initial map render nothing happens (this seems to be fixed now)
-  // - In production (on Nuxt 2) nothing works at all
-  if (!("MutationObserver" in window)) {
-    return;
-  }
-  const selector = `a:not([href^="${window.location.origin}"]):not([rel*="noreferrer"])`;
-  const observer = new MutationObserver(() => {
-    const element = mapContainer.value!.querySelector(".mapboxgl-ctrl-attrib");
-    if (element) {
-      observer.disconnect();
-      Array.from(element.querySelectorAll(selector)).forEach((insecureLink) => {
-        const rel = insecureLink.getAttribute("rel") || "";
-        insecureLink.setAttribute("rel", `${rel} noreferrer`);
-      });
-    }
-  });
-  observer.observe(mapContainer.value!, {
-    attributes: false,
-    childList: true,
-    subtree: true,
-  });
-}
-
-
 function initMap(accessToken: string) {
   mapboxgl.accessToken = accessToken;
   const map = new mapboxgl.Map({
@@ -329,7 +296,6 @@ function initMap(accessToken: string) {
     });
 
     restoreMapState();
-    fixInsecureLinks();
     updateLayerVisibility();
 
     if (currentSpace.value) {
