@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@kafkajs/confluent-schema-registry": "^3.3.0",
-    "@nuxtjs/supabase": "^0.3.1",
+    "@nuxtjs/supabase": "^1.0.2",
     "@pinia/nuxt": "^0.4.7",
     "@vite-pwa/nuxt": "^0.0.7",
     "@vueuse/core": "^9.13.0",
