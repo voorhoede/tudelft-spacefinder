@@ -83,6 +83,9 @@ export default defineNuxtConfig({
       });
     },
   },
+  supabase: {
+    redirect: false,
+  },
   pwa: {
     registerType: "autoUpdate",
     useCredentials: true,
