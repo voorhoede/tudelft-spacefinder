@@ -3,7 +3,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json }
+  | { [key: string]: Json | undefined }
   | Json[]
 
 export interface Database {
@@ -65,6 +65,7 @@ export interface Database {
           room_id?: string | null
           updated_at?: string
         }
+        Relationships: []
       }
     }
     Views: {
@@ -74,6 +75,7 @@ export interface Database {
           device_count: number | null
           updated_at: string | null
         }
+        Relationships: []
       }
       spaces_latest_states: {
         Row: {
@@ -82,6 +84,7 @@ export interface Database {
           room_id: string | null
           updated_at: string | null
         }
+        Relationships: []
       }
     }
     Functions: {
@@ -130,6 +133,14 @@ export interface Database {
           public?: boolean | null
           updated_at?: string | null
         }
+        Relationships: [
+          {
+            foreignKeyName: "buckets_owner_fkey"
+            columns: ["owner"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       migrations: {
         Row: {
@@ -150,6 +161,7 @@ export interface Database {
           id?: number
           name?: string
         }
+        Relationships: []
       }
       objects: {
         Row: {
@@ -162,6 +174,7 @@ export interface Database {
           owner: string | null
           path_tokens: string[] | null
           updated_at: string | null
+          version: string | null
         }
         Insert: {
           bucket_id?: string | null
@@ -173,6 +186,7 @@ export interface Database {
           owner?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
+          version?: string | null
         }
         Update: {
           bucket_id?: string | null
@@ -184,13 +198,31 @@ export interface Database {
           owner?: string | null
           path_tokens?: string[] | null
           updated_at?: string | null
+          version?: string | null
         }
+        Relationships: [
+          {
+            foreignKeyName: "objects_bucketId_fkey"
+            columns: ["bucket_id"]
+            referencedRelation: "buckets"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      can_insert_object: {
+        Args: {
+          bucketid: string
+          name: string
+          owner: string
+          metadata: Json
+        }
+        Returns: undefined
+      }
       extension: {
         Args: {
           name: string
@@ -207,7 +239,7 @@ export interface Database {
         Args: {
           name: string
         }
-        Returns: string[]
+        Returns: unknown
       }
       get_size_by_bucket: {
         Args: Record<PropertyKey, never>
