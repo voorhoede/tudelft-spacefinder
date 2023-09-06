@@ -13,7 +13,7 @@ export default function useSpacefinderSupabase() {
   async function getBuildingsOccupancyCurrent() {
     console.time('getBuildingsOccupancyCurrent');
     const { data } = await client
-      .from("buildings_latest_states")
+      .from("mat_buildings_latest_states")
       .select("*")
       .gte("updated_at", getEarliestTimeConsidered());
     console.timeEnd('getBuildingsOccupancyCurrent');
