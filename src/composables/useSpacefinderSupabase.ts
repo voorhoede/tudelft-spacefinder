@@ -1,4 +1,4 @@
-import { Database } from "../types/supabase";
+import type { Database } from "../types/supabase";
 
 export default function useSpacefinderSupabase() {
   const client = useSupabaseClient<Database>();
@@ -26,8 +26,22 @@ export default function useSpacefinderSupabase() {
     return data;
   }
 
+  function getBuildings() {
+    return client
+      .from("buildings")
+      .select("number, opening_hours")
+      .then(({ data, error }) => {
+        if (error) {
+          console.error("Supabase buildings fetch", error);
+        }
+
+        return data;
+      });
+  }
+
   return {
     getBuildingsOccupancyCurrent,
     getSpacesOccupancyCurrent,
+    getBuildings,
   };
 }

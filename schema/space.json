@@ -12,12 +12,13 @@
           "realEstateNumber": { "type": "string" },
           "roomId": { "type": "string" },
           "slug": { "type": "string" },
+          "exchangeBuildingId": { "type": "string" },
+          "exchangeRoomId": { "type": "string" },
           "floor": { "type": "string" },
           "seats": { "type": "integer" },
           "tables": { "type": "integer" },
           "latitude": { "type": "number", "description": "geospatial latitude" },
           "longitude": { "type": "number", "description": "geospatial longitude" },
-          "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "Opening hours for space" },
           "facilities": { "$ref": "#/definitions/facilities" },
           "image": {
             "$ref": "#/definitions/image"
@@ -52,7 +53,6 @@
           "i18n",
           "latitude",
           "longitude",
-          "openingHours",
           "realEstateNumber",
           "roomId",
           "slug",

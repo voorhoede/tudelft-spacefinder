@@ -1,4 +1,4 @@
-export default (exchangeIds: string[], availabilityResponse: any) => {
+export function roomstoTimes(exchangeIds: string[], availabilityResponse: any) {
   const calendarList: any[] =
     availabilityResponse.FreeBusyResponseArray?.FreeBusyResponse ?? [];
   const events = calendarList.map(

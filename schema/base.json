@@ -22,14 +22,6 @@
            }
         }
       }
-    },
-    "openingHours": {
-      "type":"array",
-      "items": {
-        "$ref": "#/definitions/weekDay"
-      },
-      "minItems": 7,
-      "maxItems": 7
     }
   }
 }

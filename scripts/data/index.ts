@@ -1,6 +1,5 @@
-import * as dotenv from "dotenv";
-dotenv.config();
 import fs from "node:fs/promises";
+import * as dotenv from "dotenv";
 import { getData as getDataFromCsv, transform } from "./csv/index";
 import {
   getBuildingsDataFromCms,
@@ -10,12 +9,13 @@ import {
   convertCmsInfo,
   convertCmsNotification,
 } from "./cms/index";
-import addOpeningHours from "./exchange/index";
 import {
   validateBuildings,
   validateRooms,
   validateSpaces,
 } from "./validate/index";
+
+dotenv.config();
 
 const csvPath = './src/data/studieplekken.csv';
 
@@ -29,9 +29,6 @@ function prepareSpaces(csvPath: string) {
   return Promise.all([getDataFromCsv(csvPath), getBuildingsDataFromCms(), getSpacesDataFromCms()])
     .then(([csvData, cmsBuildings, cmsSpaces]) => {
       const { spaces, rooms, buildings } = transform(csvData, cmsBuildings, cmsSpaces);
-      return addOpeningHours({ spaces, rooms, buildings });
-    })
-    .then(({ spaces, rooms, buildings }) => {
       const validatedBuildings = validateBuildings(buildings);
       const validatedRooms = validateRooms(rooms);
       const validatedSpaces = validateSpaces(spaces);

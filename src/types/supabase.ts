@@ -67,6 +67,24 @@ export interface Database {
         }
         Relationships: []
       }
+      buildings: {
+        Row: {
+          created_at: string | null
+          number: number
+          opening_hours: Json | null
+        }
+        Insert: {
+          created_at?: string | null
+          number: number
+          opening_hours?: Json | null
+        }
+        Update: {
+          created_at?: string | null
+          number?: number
+          opening_hours?: Json | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       buildings_latest_states: {

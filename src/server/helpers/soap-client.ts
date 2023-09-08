@@ -1,5 +1,4 @@
-// @ts-ignore
-import { post } from "httpntlm";
+import httpntlm from "httpntlm";
 import { XMLParser } from "fast-xml-parser";
 
 export function parseReponse(responseBody: string) {
@@ -9,14 +8,14 @@ export function parseReponse(responseBody: string) {
   return parsed?.["s:Envelope"]?.["s:Body"]?.GetUserAvailabilityResponse;
 }
 
-export default function getSoapClient(config: {
+export function getSoapClient(config: {
   username: string;
   password: string;
   url: string;
 }) {
   return (xml: string) => {
     return new Promise((resolve, reject) => {
-      post(
+      httpntlm.post(
         {
           ...config,
           headers: { "Content-type": "text/xml" },

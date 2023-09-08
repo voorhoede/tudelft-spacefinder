@@ -6,7 +6,7 @@ type Location = {
   totalSeats?: number;
 };
 
-export default function calculateOccupancy(
+export function calculateOccupancy(
   deviceCount: number | null | undefined,
   location: Location
 ): Occupancy | undefined {

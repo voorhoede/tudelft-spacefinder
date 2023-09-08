@@ -1,8 +1,5 @@
 <template>
-  <ClientOnly
-    v-if="isOpeningHoursEnabled"
-    placeholder="..."
-  >
+  <ClientOnly>
     <p
       class="card-status"
       :class="{ 'card-status--open': isOpen }"
@@ -36,16 +33,14 @@ export default {
 import type { OpeningHours } from "~/types/OpeningHours";
 
 const props = defineProps<{ openingHours: OpeningHours[] }>();
-const runtimeConfig = useRuntimeConfig();
-const { isOpeningHoursEnabled } = runtimeConfig.public;
 
 const isOpen = computed(() => {
   const now = new Date();
   const dayNames = ["su", "mo", "tu", "we", "th", "fr", "sa"];
   const indexToday = dayNames[now.getDay()];
-  const openingHoursToday = props.openingHours.find(({ day }) => day === indexToday).time;
+  const openingHoursToday = props.openingHours?.find(({ day }) => day === indexToday).time;
 
-  return openingHoursToday.some(([startTime, endTime]) => {
+  return openingHoursToday?.some(([startTime, endTime]) => {
     return now >= new Date(startTime) && now <= new Date(endTime);
   });
 });

@@ -52,7 +52,7 @@ function filterSpace(
 
   return activeFilterKeys.every((activeFilterKey) => {
     if (activeFilterKey == "showOpenLocations")
-      return spaceIsOpen(now, space.openingHours);
+      return spaceIsOpen(now, space.building.openingHours);
     if (activeFilterKey == "buildings")
       return filters.buildings.includes(space.buildingNumber);
     if (activeFilterKey == "quietness")

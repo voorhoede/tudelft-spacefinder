@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="opening-hours"
-    v-if="isOpeningHoursEnabled"
-  >
+  <div class="opening-hours">
     <button
       v-if="$isMobile.value || showToggleOnDesktop"
       :aria-label="isExpanded ? $t('hideOpeningHours') : $t('showOpeningHours')"
@@ -64,8 +61,6 @@ export interface Props {
   showToggleOnDesktop?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), { showToggleOnDesktop: true });
-const runtimeConfig = useRuntimeConfig();
-const { isOpeningHoursEnabled } = runtimeConfig.public;
 
 const isExpanded = ref(false);
 

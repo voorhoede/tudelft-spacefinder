@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "data": "jiti scripts/data/index.ts",
-    "data:mock": "jiti scripts/mock/exchange.ts",
     "prebuild": "npm run data",
     "build": "nuxt build",
     "predev": "npm run data",
