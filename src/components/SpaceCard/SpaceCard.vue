@@ -114,7 +114,6 @@ import type { Space } from "~/types/Space";
 import type { AssociatedSpace } from "~/stores/spaces";
 const props = defineProps<{
   space: Space,
-  hideOpeningHours?: boolean,
   isHeader?: boolean,
   associatedSpaces?: AssociatedSpace[]
 }>();

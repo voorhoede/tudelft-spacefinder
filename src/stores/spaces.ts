@@ -1,10 +1,10 @@
 import { defineStore, skipHydrate } from "pinia";
 import { spaceFilter } from "~/lib/filter-spaces";
+import { calculateOccupancy } from "../lib/calculate-occupancy";
+import { useMapStore } from "./map";
 import type { BuildingI18n } from "~/types/Building";
 import type { Filters } from "~/types/Filters";
 import type { Space, SpaceI18n, Room, RoomI18n } from "~/types/Space";
-import calculateOccupancy from "../lib/calculate-occupancy";
-import { useMapStore } from "./map";
 
 export type Selection =
   | {
@@ -26,6 +26,7 @@ export type AssociatedSpace = {
 }
 
 export const useSpacesStore = defineStore("spaces", () => {
+  const runtimeConfig = useRuntimeConfig();
   const currentSelection = ref<Selection>(undefined);
   const currentAssociatedSpaces = ref<AssociatedSpace[]>([]);
   const updatedAt = ref();
@@ -65,10 +66,6 @@ export const useSpacesStore = defineStore("spaces", () => {
   const filters = useLocalStorage("filters", defaultFilters, {
     mergeDefaults: true,
   });
-  const runtimeConfig = useRuntimeConfig();
-  // To not get a filter applied without the user knowing
-  if (!runtimeConfig.public.isOpeningHoursEnabled)
-    filters.value.showOpenLocations = false;
 
   function clearFilters() {
     filters.value = { ...defaultFilters };
@@ -116,6 +113,19 @@ export const useSpacesStore = defineStore("spaces", () => {
     });
     mapStore.updateData();
     updatedAt.value = new Date();
+  }
+
+  function bulkSetBuildingOpeningHours(data: Array<unknown>) {
+    buildingsI18n.value = buildingsI18n.value.map((building) => {
+      const matchedBuilding = data.find(({ number }) => number === building.number);
+
+      return matchedBuilding
+        ? {
+          ...building,
+          openingHours: matchedBuilding.opening_hours,
+        }
+        : building;
+    });
   }
 
   function setBuildingOccupancy(
@@ -281,6 +291,7 @@ export const useSpacesStore = defineStore("spaces", () => {
     filters: skipHydrate(filters),
     setBuildings,
     bulkSetBuildingOccupancy,
+    bulkSetBuildingOpeningHours,
     setBuildingOccupancy,
     buildings,
     setRooms,

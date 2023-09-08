@@ -40,6 +40,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     internalSecret: process.env.INTERNAL_SECRET,
+    datoApiToken: process.env.DATO_API_TOKEN,
     kafkaConfig: {
       url: process.env.KAFKA_URL,
       username: process.env.KAFKA_USERNAME,
@@ -57,9 +58,6 @@ export default defineNuxtConfig({
     public: {
       mapboxToken: process.env.MAPBOX_TOKEN,
       baseUrl: process.env.URL,
-      isOpeningHoursEnabled:
-        !!process.env.IS_OPENING_HOURS_ENABLED &&
-        process.env.IS_OPENING_HOURS_ENABLED != "0",
       spacesMode: process.env.SPACES_MODE ?? "spaces",
     },
   },

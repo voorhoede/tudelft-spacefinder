@@ -11,6 +11,8 @@
         "realEstateNumber": { "type":"string" },
         "roomId": { "type": "string" },
         "slug": { "type": "string" },
+        "exchangeBuildingId": { "type": "string" },
+        "exchangeRoomId": { "type": "string" },
         "i18n": {
           "type": "object",
           "properties": {
@@ -33,7 +35,6 @@
         "spaces": { "type": "integer" },
         "latitude": { "type": "number", "description": "geospatial latitude" },
         "longitude": { "type": "number", "description": "geospatial longitude" },
-        "openingHours": { "$ref": "base.json#/definitions/openingHours", "description": "Opening hours for space" },
         "facilities": { "$ref": "#/definitions/facilities" }
       },
       "additionalProperties": false,
@@ -44,7 +45,6 @@
         "floor",
         "latitude",
         "longitude",
-        "openingHours",
         "roomId",
         "slug",
         "seats",

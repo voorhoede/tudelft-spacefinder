@@ -11,7 +11,7 @@ function getMailboxData(emails: string[]) {
     .join("\n");
 }
 
-export default function soapTemplate({
+export function soapTemplate({
   emails = [],
   start,
   end,

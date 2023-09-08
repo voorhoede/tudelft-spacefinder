@@ -38,7 +38,7 @@ export const useMapStore = defineStore("map", () => {
           buildingAbbreviation: space.building.abbreviation,
           buildingNumber: space.building.number,
           buildingOccupancy: space.building.occupancy,
-          isOpen: spaceIsOpen(now, space.openingHours),
+          isOpen: true,
           ...space.facilities,
         },
         geometry: {

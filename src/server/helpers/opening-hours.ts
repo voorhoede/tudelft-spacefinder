@@ -1,13 +1,10 @@
-import type {
-  BuildingI18n,
-  CsvAndCmsBuildingData,
-} from "./../../../src/types/Building";
 import type { CsvSpaceData, SpaceI18n } from "./../../../src/types/Space";
 
-import { DateRange, extendMoment } from "moment-range";
+import type { DateRange } from "moment-range";
+import momentRange from "moment-range"
 import Moment from "moment-timezone";
 import type { OpeningHours } from "./../../../src/types/OpeningHours";
-const moment = extendMoment(Moment);
+const moment = momentRange.extendMoment(Moment);
 moment.tz.setDefault("Europe/Amsterdam");
 
 interface Availability {
@@ -142,15 +139,11 @@ export function roomOpeningHours(
 
 export function buildingOpeningHours(
   availability: Record<string, any>,
-  buildings: CsvAndCmsBuildingData[] = []
-): BuildingI18n[] {
-  return buildings.map((building) => {
-    const { exchangeBuildingId, ...otherProps } = building;
-    return {
-      ...otherProps,
-      openingHours: getOpeningHoursForBuildings(
-        availability[exchangeBuildingId]
-      ),
-    };
-  });
+): unknown {
+  return Object
+    .entries(availability)
+    .map(([key, value]) => ({
+      exchangeBuildingId: key,
+      openingHours: getOpeningHoursForBuildings(value)
+    }))
 }
