@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
     <p
+      v-if="openingHours"
       class="card-status"
       :class="{ 'card-status--open': isOpen }"
       v-bind="$attrs"
@@ -32,13 +33,13 @@ export default {
 <script setup lang="ts">
 import type { OpeningHours } from "~/types/OpeningHours";
 
-const props = defineProps<{ openingHours: OpeningHours[] }>();
+const props = defineProps<{ openingHours?: OpeningHours[] }>();
 
 const isOpen = computed(() => {
   const now = new Date();
   const dayNames = ["su", "mo", "tu", "we", "th", "fr", "sa"];
   const indexToday = dayNames[now.getDay()];
-  const openingHoursToday = props.openingHours?.find(({ day }) => day === indexToday).time;
+  const openingHoursToday = props.openingHours?.find(({ day }) => day === indexToday)?.time;
 
   return openingHoursToday?.some(([startTime, endTime]) => {
     return now >= new Date(startTime) && now <= new Date(endTime);
