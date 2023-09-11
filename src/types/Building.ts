@@ -20,10 +20,11 @@ export interface BuildingI18n {
   totalSeats: number;
   totalSpaces: number;
   totalRooms: number;
-  openingHours: OpeningHours[];
-
   activeDevices?: number;
+
+  // Client-side loading
   occupancy?: Occupancy | undefined;
+  openingHours?: OpeningHours[];
 }
 
 export type CsvAndCmsBuildingData = Omit<
