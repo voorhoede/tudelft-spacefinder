@@ -48,6 +48,8 @@ export default defineEventHandler(async (event) => {
 
   if (error) {
     console.error("Failed to upsert buildings to Supabase", error);
+    event.node.res.statusCode = 503;
+    return event.node.res.end();
   }
 
   event.node.res.statusCode = 202;
