@@ -2,7 +2,6 @@ import { defineStore, storeToRefs } from "pinia";
 import { Feature, FeatureCollection, Point } from "geojson";
 import {GeoJSONSource, LngLatLike, Map} from "mapbox-gl";
 import { deferred } from "~/lib/deferred";
-import { spaceIsOpen } from "~/lib/filter-spaces";
 import { Bounds } from "~/types/Bounds";
 import { Space } from "~/types/Space";
 import { Occupancy } from "~/types/Filters";
@@ -38,7 +37,6 @@ export const useMapStore = defineStore("map", () => {
           buildingAbbreviation: space.building.abbreviation,
           buildingNumber: space.building.number,
           buildingOccupancy: space.building.occupancy,
-          isOpen: true,
           ...space.facilities,
         },
         geometry: {
