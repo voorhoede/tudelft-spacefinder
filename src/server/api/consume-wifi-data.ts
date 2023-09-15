@@ -107,13 +107,19 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
       );
 
       console.time(`Upsert ${uniqueMessages.length} messages`);
-      const { error } = await client
+      const { error: upsertError } = await client
         .from("access_points_latest_states")
         .upsert(uniqueMessages);
       console.timeEnd(`Upsert ${uniqueMessages.length} messages`);
+      if (upsertError) {
+        return console.error(upsertError);
+      }
 
-      if (error) {
-        console.error(error);
+      console.time("Update buildings_latest_states");
+      const { error: rpcError } = await client.rpc("update_buildings_latest_states");
+      console.timeEnd("Update buildings_latest_states");
+      if (rpcError) {
+        return console.error(rpcError);
       }
     },
   });
