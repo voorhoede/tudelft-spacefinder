@@ -1,5 +1,6 @@
 import { Kafka } from "kafkajs";
 import { SchemaRegistry } from "@kafkajs/confluent-schema-registry";
+import { useDebounceFn } from "@vueuse/core";
 import { serverSupabaseServiceRole } from "#supabase/server";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { parseMessageAruba } from "../helpers/parse-message";
@@ -63,6 +64,10 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
   await consumer.subscribe({ topics: kafkaConfig.topics });
   console.timeEnd("Consumer setup");
 
+  const debouncedRefresh = useDebounceFn(() => {
+    client.rpc("refresh_materialized_access_point_data");
+  }, 1000);
+
   consumer.run({
     eachBatch: async ({ batch }) => {
       const parseMessage = topicMessageParserMapping[
@@ -111,6 +116,8 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
         .from("access_points_latest_states")
         .upsert(uniqueMessages);
       console.timeEnd(`Upsert ${uniqueMessages.length} messages`);
+
+      debouncedRefresh();
 
       if (error) {
         console.error(error);
