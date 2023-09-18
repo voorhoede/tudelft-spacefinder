@@ -61,6 +61,7 @@ const totalSpaces = computed(() =>
   justify-content: space-between;
   align-items: center;
   font-size: var(--font-size-smaller);
+  column-gap: var(--spacing-half);
 }
 
 .building-card__status {
