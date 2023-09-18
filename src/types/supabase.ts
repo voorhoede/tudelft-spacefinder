@@ -39,9 +39,6 @@ export interface Database {
           access_point_name: string
           building_number: number | null
           device_count: number
-          floor: string | null
-          location_hierarchy: string | null
-          map_location: string | null
           room_id: string | null
           updated_at: string
         }
@@ -49,9 +46,6 @@ export interface Database {
           access_point_name: string
           building_number?: number | null
           device_count: number
-          floor?: string | null
-          location_hierarchy?: string | null
-          map_location?: string | null
           room_id?: string | null
           updated_at: string
         }
@@ -59,9 +53,6 @@ export interface Database {
           access_point_name?: string
           building_number?: number | null
           device_count?: number
-          floor?: string | null
-          location_hierarchy?: string | null
-          map_location?: string | null
           room_id?: string | null
           updated_at?: string
         }
