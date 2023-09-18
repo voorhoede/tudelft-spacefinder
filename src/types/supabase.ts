@@ -97,7 +97,10 @@ export interface Database {
       }
     }
     Functions: {
-      [_ in never]: never
+      refresh_materialized_access_point_data: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
