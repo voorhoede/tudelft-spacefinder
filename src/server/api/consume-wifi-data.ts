@@ -65,7 +65,10 @@ async function consumeLastBatch({ client }: { client: SupabaseClient }) {
   console.timeEnd("Consumer setup");
 
   const debouncedRefresh = useDebounceFn(() => {
-    client.rpc("refresh_materialized_access_point_data");
+    client
+      .rpc("refresh_materialized_access_point_data")
+      // RPC call creates a lazy promise
+      .then();
   }, 1000);
 
   consumer.run({
