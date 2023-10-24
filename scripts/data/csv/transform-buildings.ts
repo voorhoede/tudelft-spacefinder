@@ -23,28 +23,28 @@ function getBuildingName(sourceName: string) {
   return (dashPos >= 0 ? sourceName.substring(dashPos + 1) : sourceName).trim();
 }
 
-export function getBuilding(
-  number: number,
-  source: Record<string, any>
-): CsvBuildingData {
+export function getBuilding(source: Record<string, any>): CsvBuildingData {
   return {
-    buildingId: source.buildingId,
-    number: number,
-    exchangeBuildingId: source.exchangeBuildingId,
+    buildingId: `${source.number} - ${source.nameEN}`,
+    number: source.number,
+    exchangeBuildingId: `Building-${source.number}@tudelft.nl`,
     i18n: {
       nl: getBuildingI18n(
-        number,
-        source.buildingNameNL,
-        source.buildingAbbreviationNL
+        source.number,
+        source.nameNL,
+        source.abbreviationNL
       ),
       en: getBuildingI18n(
-        number,
-        source.buildingNameEN,
-        source.buildingAbbreviationEN
+        source.number,
+        source.nameEN,
+        source.abbreviationEN
       ),
     },
-    totalSeats: 0,
-    totalSpaces: 0,
+    totalSeats: source.spaces.reduce((totalSeats, space) => totalSeats + space.seats, 0),
+    totalSpaces: source.spaces.length,
     totalRooms: 0,
+    occupancyLimit: source.occupancyLimit,
+    bounds: source.bounds,
+    image: source.image,
   };
 }

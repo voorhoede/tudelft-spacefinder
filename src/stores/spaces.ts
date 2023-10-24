@@ -117,7 +117,7 @@ export const useSpacesStore = defineStore("spaces", () => {
 
   function bulkSetBuildingOpeningHours(data: Array<unknown>) {
     buildingsI18n.value = buildingsI18n.value.map((building) => {
-      const matchedBuilding = data.find(({ number }) => number === building.number);
+      const matchedBuilding = data.find(({ number }) => number === Number(building.number));
 
       return matchedBuilding
         ? {
