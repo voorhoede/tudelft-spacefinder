@@ -40,21 +40,38 @@ export function getSpaceI18n(spaceId: string, sourceName: string) {
   };
 }
 
-export function getSpace(
-  buildingNumber: number,
-  source: Record<string, any>
-): CsvSpaceData {
-  const facilities: Partial<SpaceFeatures> = {};
-  for (const prop of facilityProperties) facilities[prop] = source[prop];
-  const space: Partial<CsvSpaceData> = {
-    buildingNumber,
+export function getSpace(source: Record<string, any>): CsvSpaceData {
+  return source.spaces.map((space) => ({
+    buildingNumber: source.number,
     i18n: {
-      nl: { name: source.spaceNameNL.trim() },
-      en: { name: source.spaceNameNL.trim() },
+      en: { name: space.nameEN },
+      nl: { name: space.nameNL },
     },
-    slug: getSpaceSlug(source.spaceId, source.spaceNameNL.trim()),
-    facilities: facilities as SpaceFeatures,
-  };
-  for (const prop of spaceRootProperties) space[prop] = source[prop];
-  return space as CsvSpaceData;
+    slug: getSpaceSlug(space.spaceId, space.nameEN.trim()),
+    facilities: {
+      adjustableChairs: space.adjustableChairs,
+      quietness: space.quietness,
+      daylit: space.daylit,
+      powerOutlets: space.powerOutlets,
+      whiteBoard: space.whiteBoard,
+      presentationScreen: space.presentationScreen,
+      nearCoffeeMachine: space.nearCoffeeMachine,
+      nearPrinter: space.nearPrinter,
+      nearBathroom: space.nearBathroom,
+    },
+    spaceId: space.spaceId,
+    floor: space.floor,
+    seats: space.seats,
+    exchangeBuildingId: `Building-${source.number}@tudelft.nl`,
+    exchangeRoomId: '',
+    latitude: space.location.latitude,
+    longitude: space.location.longitude,
+    roomId: space.roomId,
+    realEstateNumber: space.spaceId,
+    image: space.image,
+    message: {
+      en: '',
+      nl: '',
+    },
+  }));
 }

@@ -1,3 +1,4 @@
+import { datocmsEnvironment } from "../../../src/constants";
 import * as dotenv from "dotenv";
 dotenv.config();
 const { DATO_API_TOKEN } = process.env;
@@ -8,6 +9,7 @@ async function getFromDato(query: string, rootProp: string) {
     method: "POST",
     headers: {
       Authorization: `Bearer ${DATO_API_TOKEN}`,
+      "X-Environment": datocmsEnvironment,
     },
     body: JSON.stringify({ query }),
   })
@@ -21,16 +23,46 @@ export function getBuildingsDataFromCms() {
     return import("../../../mock/cms/buildings.json").then((data) => data.default);
   }
   return getFromDato(
-    `{
-      allBuildings {
-        image {
-          url
+    `
+      {
+        allBuildings(first: 100) {
+          number
+          nameEN: name(locale: en)
+          nameNL: name(locale: nl)
+          abbreviationEN: abbreviation(locale: en)
+          abbreviationNL: abbreviation(locale: nl)
+          occupancyLimit
+          bounds
+          image {
+            url
+          }
+          spaces: _allReferencingSpaces {
+            spaceId
+            roomId
+            nameEN: name(locale: en)
+            nameNL: name(locale: nl)
+            floor
+            location {
+              latitude
+              longitude
+            }
+            image {
+              url
+            }
+            seats
+            quietness
+            adjustableChairs
+            daylit
+            powerOutlets
+            whiteBoard
+            presentationScreen
+            nearCoffeeMachine
+            nearPrinter
+            nearBathroom
+          }
         }
-        number
-        occupancyLimit
-        bounds
       }
-    }`,
+    `,
     "allBuildings"
   );
 }
@@ -72,27 +104,6 @@ export function getNotificationFromCms(): Promise<DatoNotification> {
       }
     }`,
     'notification'
-  );
-}
-
-export function getSpacesDataFromCms() {
-  if (mockDataEnabled)
-    return import("../../../mock/cms/spaces.json").then((info) => info.default);
-
-  return getFromDato(
-    `{
-      allSpaces {
-        spaceId
-        _allMessageLocales {
-          locale
-          value
-        }
-        image {
-          url
-        }
-      }
-    }`,
-    "allSpaces"
   );
 }
 

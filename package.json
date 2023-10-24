@@ -47,17 +47,19 @@
     "vue-virtual-scroller": "^2.0.0-beta.8"
   },
   "devDependencies": {
+    "@datocms/cma-client-node": "^2.0.0",
     "@types/js-cookie": "^3.0.3",
     "@types/mapbox-gl": "^2.7.10",
     "@types/node": "^18.14.1",
     "@typescript-eslint/parser": "^5.54.0",
     "cypress": "^12.7.0",
+    "dotenv": "^16.3.1",
     "eslint": "^8.35.0",
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
     "nano-staged": "^0.8.0",
     "supabase": "^1.41.6",
-    "vitest": "^0.29.2"
+    "vitest": "^0.34.4"
   },
   "overrides": {
     "vue": "latest"

@@ -1,19 +1,13 @@
 import fs from "node:fs/promises";
 import * as dotenv from "dotenv";
-import { getData as getDataFromCsv, transform } from "./csv/index";
+import { transform } from "./csv/index";
 import {
   getBuildingsDataFromCms,
   getNotificationFromCms,
   getPageFromCms,
-  getSpacesDataFromCms,
   convertCmsInfo,
   convertCmsNotification,
 } from "./cms/index";
-import {
-  validateBuildings,
-  validateRooms,
-  validateSpaces,
-} from "./validate/index";
 
 dotenv.config();
 
@@ -26,16 +20,13 @@ function writeFile(path: string, contents: any) {
 }
 
 function prepareSpaces(csvPath: string) {
-  return Promise.all([getDataFromCsv(csvPath), getBuildingsDataFromCms(), getSpacesDataFromCms()])
-    .then(([csvData, cmsBuildings, cmsSpaces]) => {
-      const { spaces, rooms, buildings } = transform(csvData, cmsBuildings, cmsSpaces);
-      const validatedBuildings = validateBuildings(buildings);
-      const validatedRooms = validateRooms(rooms);
-      const validatedSpaces = validateSpaces(spaces);
+  return getBuildingsDataFromCms()
+    .then((cmsBuildings) => {
+      const { spaces, rooms, buildings } = transform(cmsBuildings);
       Promise.all([
-        writeFile("spaces", validatedSpaces),
-        writeFile("rooms", validatedRooms),
-        writeFile("buildings", validatedBuildings),
+        writeFile("spaces", spaces),
+        writeFile("rooms", rooms),
+        writeFile("buildings", buildings),
       ]);
     });
 }
