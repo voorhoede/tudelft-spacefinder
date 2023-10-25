@@ -20,11 +20,14 @@
         :opening-hours="building.openingHours"
         class="building-header__open-status"
       />
-      <OpeningHours
-        :opening-hours-building="building.openingHours"
-        :opening-hours-space="building.openingHours"
-        class="building-header__opening-hours"
-      />
+      <ClientOnly>
+        <OpeningHours
+          v-if="building.openingHours"
+          :opening-hours-building="building.openingHours"
+          :opening-hours-space="building.openingHours"
+          class="building-header__opening-hours"
+        />
+      </ClientOnly>
     </div>
   </div>
 </template>

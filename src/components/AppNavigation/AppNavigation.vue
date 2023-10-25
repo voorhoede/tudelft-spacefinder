@@ -65,7 +65,9 @@
       {{ $t("filter") }}
 
       <div class="app-menu__filter-indicator">
-        {{ spacesStore.numberOfSelectedFilters }}
+        <ClientOnly fallback="...">
+          {{ spacesStore.numberOfSelectedFilters }}
+        </ClientOnly>
 
         <span class="a11y-sr-only">
           {{ $t("filtersSelected") }}
