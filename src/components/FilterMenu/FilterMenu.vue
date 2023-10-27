@@ -49,17 +49,6 @@
 
         <fieldset class="filter-menu__filter-group">
           <legend class="h3">
-            {{ $t("numberOfSeats") }}
-          </legend>
-
-          <FilterMenuItemRange
-            name="numberOfSeats"
-            :label="$t('seats')"
-          />
-        </fieldset>
-
-        <fieldset class="filter-menu__filter-group">
-          <legend class="h3">
             {{ $t("computerFacilities") }}
           </legend>
           <FilterMenuItem name="powerOutlets" />
@@ -71,6 +60,7 @@
           </legend>
           <FilterMenuItem name="adjustableChairs" />
           <FilterMenuItem name="daylit" />
+          <FilterMenuItem name="grouptables" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">

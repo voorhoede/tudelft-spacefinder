@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "data": "jiti scripts/data/index.ts",
+    "data:import": "jiti scripts/import-spaces.ts",
     "prebuild": "npm run data",
     "build": "nuxt build",
     "predev": "npm run data",

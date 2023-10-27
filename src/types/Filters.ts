@@ -14,18 +14,13 @@ export const BOOLEAN_FACILITIES = [
   "nearCoffeeMachine",
   "nearPrinter",
   "nearBathroom",
+  "grouptables",
 ] as const;
 
-export const NUMBER_FACILITIES = [
-  "numberOfSeats",
-] as const;
-
-export const FACILITIES = BOOLEAN_FACILITIES.concat(NUMBER_FACILITIES)
+export const FACILITIES = BOOLEAN_FACILITIES
 
 export type Facilities = {
   [P in typeof BOOLEAN_FACILITIES[number]]: boolean;
-} & {
-  [P in typeof NUMBER_FACILITIES[number]]: number;
 };
 
 export type SpaceFeatures = Facilities & {

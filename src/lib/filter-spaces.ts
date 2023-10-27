@@ -63,13 +63,7 @@ function filterSpace(
         space.building.occupancy &&
         filters.buildingOccupancy.includes(space.building.occupancy)
       );
-    if (activeFilterKey == "numberOfSeats") {
-      if (filters.numberOfSeats < 10) {
-        return space.seats == filters.numberOfSeats
-      } else {
-        return space.seats >= filters.numberOfSeats
-      }
-    }
+
     return space.facilities[activeFilterKey];
   });
 }
