@@ -58,7 +58,7 @@ useSpacefinderHead(
   computed(() =>
     space.value
       ? {
-          title: `${space.value.name} (${space.value.roomId}) @ ${space.value.building.name} (${space.value.building.abbreviation})`,
+          title: `${space.value.name} (${space.value.roomName}) @ ${space.value.building.name} (${space.value.building.abbreviation})`,
           description: `${space.value.seats} ${$t("seatsDescription")}`,
           image: spaceMapImage(space.value, runtimeConfig.public.mapboxToken),
         }

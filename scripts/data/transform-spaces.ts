@@ -33,7 +33,7 @@ export function getSpace(source: Record<string, any>): CsvSpaceData {
     exchangeBuildingId: `Building-${source.number}@tudelft.nl`,
     latitude: space.location.latitude,
     longitude: space.location.longitude,
-    roomId: space.roomId,
+    roomName: space.roomName,
     realEstateNumber: space.spaceId,
     image: space.image,
   }));

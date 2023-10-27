@@ -1,4 +1,4 @@
-Ref,Building ID,Space ID,Room ID,Space name NL,Space name EN,Floor,Latitude,Longitude,Seats,Adjustable Chairs,Quietness,Light,Power outlets,Whiteboard,Presentation screen,Coffee machine distance,Printer distance,Bathroom distance,Space type
+Space ID,Building ID,Room ID,Room Name,Space name NL,Space name EN,Floor,Latitude,Longitude,Seats,Adjustable Chairs,Quietness,Light,Power outlets,Whiteboard,Presentation screen,Coffee machine distance,Printer distance,Bathroom distance,Space type
 23SSP001,08 - Bouwkunde,08.01.01.010,01.Mid.010,BK Library - with Monitors,BK Library - with Monitors,1e verdieping,52.005665,4.370518,31,25,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
 SSP00042,08 - Bouwkunde,08.01.01.010,01.Mid.010,BK Library,BK Library,1e verdieping,52.005665,4.370518,68,68,stil,daglicht,ja (<1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
 SSP00056,08 - Bouwkunde,08.02.00.760,BG.Oost.760,Espressobar BK Sterk,Espressobar BK Sterk,begane grond,52.006259,4.371339,39,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,horeca
