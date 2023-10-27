@@ -63,7 +63,6 @@
             {{ $t("computerFacilities") }}
           </legend>
           <FilterMenuItem name="powerOutlets" />
-          <FilterMenuItem name="nearPrinter" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
@@ -80,6 +79,7 @@
           </legend>
           <FilterMenuItem name="nearBathroom" />
           <FilterMenuItem name="nearCoffeeMachine" />
+          <FilterMenuItem name="nearPrinter" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
