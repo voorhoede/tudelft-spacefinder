@@ -9,18 +9,13 @@ export function getBuildingI18n(
   const abbreviation = sourceAbbreviation.trim();
   return {
     abbreviation,
-    name: getBuildingName(sourceName),
+    name: sourceName,
     slug: getBuildingSlug(number, abbreviation),
   };
 }
 
 function getBuildingSlug(number: number, abbreviation: string) {
   return slugify([number, abbreviation].join("-")).toLowerCase();
-}
-
-function getBuildingName(sourceName: string) {
-  const dashPos = sourceName.indexOf("-");
-  return (dashPos >= 0 ? sourceName.substring(dashPos + 1) : sourceName).trim();
 }
 
 export function getBuilding(source: Record<string, any>): CsvBuildingData {
