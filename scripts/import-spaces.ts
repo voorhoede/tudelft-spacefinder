@@ -50,6 +50,7 @@ fs.readFile("./src/data/studieplekken.csv")
           case "daylit":
             return value === "daglicht";
           case "powerOutlets":
+            return value === "ja (>/= 1 pp)" ? true : false;
           case "whiteBoard":
           case "presentationScreen":
             return maybeDutchBooleanAmount(value);
