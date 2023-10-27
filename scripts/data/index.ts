@@ -13,7 +13,7 @@ dotenv.config();
 
 const csvPath = './src/data/studieplekken.csv';
 
-function writeFile(path: string, contents: any) {
+function writeFile(path: string, contents: unknown) {
   const stringifiedData = JSON.stringify(contents, null, 2);
 
   return fs.writeFile(`./src/data/${path}.json`, stringifiedData);

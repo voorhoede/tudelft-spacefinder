@@ -9,23 +9,11 @@ To manually test getting data from a source, just invoke the module.
 node -e "require('./scripts/data/cms')().then(console.log)"
 ```
 
-## Mock data
-Mock data for cms and exchange is in `./mock`
-
 ### Use
 Set environment variables to enable mock data. This prevents calling out to the 
 actual external sources:
 
 ```sh
-# enable mock data for Dato CMS
-USE_MOCK_DATA_CMS=1
 # enable mock data for TU Delft Exchange
 USE_MOCK_DATA_EXCHANGE=1
-```
-
-### Update
-To update mock data for TU Delft Exchange:
-
-```sh
-npm run mock:exchange
 ```
