@@ -17,10 +17,10 @@ fs.readFile("./src/data/studieplekken.csv")
       relaxColumnCount: true,
       fromLine: 2,
       columns: [
-        "ref",
+        "spaceId",
         "buildingNumber",
-        "id",
         "roomId",
+        "roomName",
         "nameNL",
         "nameEN",
         "floor",
@@ -78,11 +78,9 @@ fs.readFile("./src/data/studieplekken.csv")
         .create({
           item_type: { type: "item_type", id: spaceModelId },
           name: { en: space.nameEN, nl: space.nameNL },
-          space_id:
-            parsedData.find(({ ref, id }) => space.id === id && space.ref !== ref)
-              ? `${space.id}--${space.ref}`
-              : space.id,
+          space_id: space.spaceId,
           room_id: space.roomId,
+          room_name: space.roomName,
           floor: { en: space.floor, nl: space.floor },
           location: { latitude: space.latitude, longitude: space.longitude },
           seats: space.seats,

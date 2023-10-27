@@ -15,7 +15,7 @@ export function getRoom(
     slug: getRoomSlug(source.realEstateNumber),
     exchangeBuildingId: source.exchangeBuildingId,
     exchangeRoomId: source.exchangeRoomId,
-    roomId: source.roomId,
+    roomName: source.roomName,
     realEstateNumber: source.realEstateNumber,
     i18n: {
       nl: { name: source.spaceNameNL.trim() },

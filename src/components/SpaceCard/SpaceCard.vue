@@ -47,7 +47,7 @@
         </component>
 
         <p class="space-card__description">
-          {{ space.roomId }} | {{ space.floor }}
+          {{ space.roomName }} | {{ space.floor }}
         </p>
 
         <div class="space-card__seating">

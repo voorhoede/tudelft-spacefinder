@@ -30,7 +30,7 @@ export function getBuildingsDataFromCms() {
           }
           spaces: _allReferencingSpaces(first: 100) {
             spaceId
-            roomId
+            roomName
             nameEN: name(locale: en)
             nameNL: name(locale: nl)
             floor
