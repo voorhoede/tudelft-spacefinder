@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import * as dotenv from "dotenv";
-import { transform } from "./csv/index";
+import { getBuilding } from "./transform-buildings";
+import { getSpace } from "./transform-spaces";
 import {
   getBuildingsDataFromCms,
   getNotificationFromCms,
@@ -21,14 +22,13 @@ function writeFile(path: string, contents: unknown) {
 
 function prepareSpaces(csvPath: string) {
   return getBuildingsDataFromCms()
-    .then((cmsBuildings) => {
-      const { spaces, rooms, buildings } = transform(cmsBuildings);
+    .then((cmsBuildings) => (
       Promise.all([
-        writeFile("spaces", spaces),
-        writeFile("rooms", rooms),
-        writeFile("buildings", buildings),
-      ]);
-    });
+        writeFile("spaces", cmsBuildings.flatMap(getSpace)),
+        writeFile("rooms", []),
+        writeFile("buildings", cmsBuildings.map(getBuilding)),
+      ])
+    ));
 }
 
 function preparePage(name: string) {
