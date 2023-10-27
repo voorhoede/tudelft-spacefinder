@@ -1,10 +1,10 @@
 import fs from "node:fs/promises";
 import { parse } from "csv-parse/sync";
 import { buildClient } from "@datocms/cma-client-node";
-import { config } from "dotenv";
+import * as dotenv from "dotenv";
 import { datocmsEnvironment } from "../src/constants";
 
-config();
+dotenv.config();
 
 const client = buildClient({
   apiToken: process.env.DATO_API_TOKEN!,

@@ -63,12 +63,6 @@
           :facilities="space.facilities"
           class="space-card__facilities"
         />
-
-        <div
-          v-if="spaceMessage"
-          class="space-card__message"
-          v-html="spaceMessage"
-        />
       </div>
       <div class="space-card__right-column">
         <div
@@ -121,13 +115,11 @@ const props = defineProps<{
 
 const root = ref(null as null | HTMLDivElement);
 const router = useRouter();
-const { $locale, $localePath } = useNuxtApp();
+const { $localePath } = useNuxtApp();
 
 const currentIndex = ref(0);
 
 const hasAssociatedSpaces = computed(() => props.associatedSpaces && props.associatedSpaces.length > 0);
-
-const spaceMessage = computed(() => props.space.message && props.space.message[$locale.value]);
 
 const goToPreviousSpace = () => {
   if (currentIndex.value > 0) {

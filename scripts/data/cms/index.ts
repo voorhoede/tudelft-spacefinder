@@ -1,14 +1,10 @@
 import { datocmsEnvironment } from "../../../src/constants";
-import * as dotenv from "dotenv";
-dotenv.config();
-const { DATO_API_TOKEN } = process.env;
-const mockDataEnabled = process.env.USE_MOCK_DATA_CMS === "1";
 
 async function getFromDato(query: string, rootProp: string) {
   return fetch("https://graphql.datocms.com/", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${DATO_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.DATO_API_TOKEN}`,
       "X-Environment": datocmsEnvironment,
     },
     body: JSON.stringify({ query }),
@@ -18,10 +14,6 @@ async function getFromDato(query: string, rootProp: string) {
 }
 
 export function getBuildingsDataFromCms() {
-  if (mockDataEnabled) {
-    console.info("Serving mock data from mock/cms/data.json");
-    return import("../../../mock/cms/buildings.json").then((data) => data.default);
-  }
   return getFromDato(
     `
       {
@@ -68,9 +60,6 @@ export function getBuildingsDataFromCms() {
 }
 
 export function getPageFromCms(pageName: string): Promise<DatoInfoPage> {
-  if (mockDataEnabled)
-    return import("../../../mock/cms/info.json").then((info) => info.default);
-
   return getFromDato(
     `{
       ${pageName} {
@@ -89,9 +78,6 @@ export function getPageFromCms(pageName: string): Promise<DatoInfoPage> {
 }
 
 export function getNotificationFromCms(): Promise<DatoNotification> {
-  if (mockDataEnabled)
-    return import("../../../mock/cms/notification.json").then((info) => info.default);
-
   return getFromDato(
     `{
       notification {

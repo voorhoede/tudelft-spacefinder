@@ -37,7 +37,7 @@ export function getBuilding(source: Record<string, any>): CsvBuildingData {
     },
     totalSeats: source.spaces.reduce((totalSeats, space) => totalSeats + space.seats, 0),
     totalSpaces: source.spaces.length,
-    totalRooms: 0,
+    totalRooms: 0, // @todo: rooms
     occupancyLimit: source.occupancyLimit,
     bounds: source.bounds,
     image: source.image,
