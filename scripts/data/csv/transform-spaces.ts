@@ -25,6 +25,7 @@ export function getSpace(source: Record<string, any>): CsvSpaceData {
       nearCoffeeMachine: space.nearCoffeeMachine,
       nearPrinter: space.nearPrinter,
       nearBathroom: space.nearBathroom,
+      grouptables: space.grouptables,
     },
     spaceId: space.spaceId,
     floor: space.floor,

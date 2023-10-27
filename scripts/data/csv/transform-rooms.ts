@@ -30,6 +30,7 @@ export function getRoom(
       nearCoffeeMachine: false,
       nearPrinter: false,
       nearBathroom: false,
+      grouptables: false,
       quietness: source.quietness,
     },
     seats: 0,

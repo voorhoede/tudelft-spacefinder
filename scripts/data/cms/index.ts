@@ -51,6 +51,7 @@ export function getBuildingsDataFromCms() {
             nearCoffeeMachine
             nearPrinter
             nearBathroom
+            grouptables
           }
         }
       }

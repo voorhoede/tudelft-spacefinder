@@ -36,6 +36,7 @@ fs.readFile("./src/data/studieplekken.csv")
         "nearCoffeeMachine",
         "nearPrinter",
         "nearBathroom",
+        "grouptables",
       ],
       cast: (value, context) => {
         switch (context.column) {
@@ -58,6 +59,8 @@ fs.readFile("./src/data/studieplekken.csv")
           case "nearPrinter":
           case "nearBathroom":
             return value === "0-25m";
+          case "grouptables":
+            return value === "groepsruimte" || value === "aanlandplek/groepswerkplek";
           default:
             return value;
         }
@@ -93,6 +96,7 @@ fs.readFile("./src/data/studieplekken.csv")
           near_coffee_machine: space.nearCoffeeMachine,
           near_printer: space.nearPrinter,
           near_bathroom: space.nearBathroom,
+          grouptables: space.grouptables,
           building: buildings.find(
             (building) => space.buildingNumber === building.number,
           )?.id,
