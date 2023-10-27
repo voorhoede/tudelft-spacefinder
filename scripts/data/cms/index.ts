@@ -36,7 +36,7 @@ export function getBuildingsDataFromCms() {
           image {
             url
           }
-          spaces: _allReferencingSpaces {
+          spaces: _allReferencingSpaces(first: 100) {
             spaceId
             roomId
             nameEN: name(locale: en)
