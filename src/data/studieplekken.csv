@@ -1,219 +1,219 @@
 Space ID,Building ID,Room ID,Room Name,Space name NL,Space name EN,Floor,Latitude,Longitude,Seats,Adjustable Chairs,Quietness,Light,Power outlets,Whiteboard,Presentation screen,Coffee machine distance,Printer distance,Bathroom distance,Space type
-23SSP001,08 - Bouwkunde,08.01.01.010,01.Mid.010,BK Library - with Monitors,BK Library - with Monitors,1e verdieping,52.005665,4.370518,31,25,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-SSP00042,08 - Bouwkunde,08.01.01.010,01.Mid.010,BK Library,BK Library,1e verdieping,52.005665,4.370518,68,68,stil,daglicht,ja (<1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00056,08 - Bouwkunde,08.02.00.760,BG.Oost.760,Espressobar BK Sterk,Espressobar BK Sterk,begane grond,52.006259,4.371339,39,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,horeca
-SSP00057,08 - Bouwkunde,08.04.00.300,BG.Zuid.300,Restaurant,Restaurant,begane grond,52.005366,4.37116,168,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,horeca
-SSP00035,20 - Aula,20.00.01.255,1255,Projectruimte Noord 1,Projectruimte Noord 1,1e verdieping,52.002325,4.373297,6,0,rustig,daglicht,ja (<1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
-SSP00036,20 - Aula,20.00.01.260,1260,Projectruimte Noord 2,Projectruimte Noord 2,1e verdieping,52.002325,4.373297,4,0,rustig,daglicht,ja (<1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
-SSP00037,20 - Aula,20.00.01.270,1270,Projectruimte Noord 3,Projectruimte Noord 3,1e verdieping,52.002325,4.373297,16,0,rustig,daglicht,ja (<1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
-SSP00039,20 - Aula,20.00.00.270,0.27,Restaurant,Restaurant,begane grond,52.002304,4.373861,93,14,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,horeca
-SSP00240,21 - Library ,21.00.00.060,0.06,Red Room,Red Room,begane grond,52.002941,4.375635,38,38,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,>50m,>25m,concentratie studieplek
-23SSP002,21 - Library ,21.00.01.010,1.01,Main Hall,Main Hall,1e verdieping,52.002686,4.375248,202,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,aanlandplek
-23SSP003,21 - Library ,21.00.01.010,1.01,Main Hall - Reading Table,Main Hall - Reading Table,1e verdieping,52.002686,4.375248,10,0,rustig,daglicht,nee,nee,nee,nvt,0-50 m,0-25m,aanlandplek
-23SSP004,21 - Library ,21.00.01.010,1.01,Coffee Star - Seats Main Hall,Coffee Star - Seats Main Hall,1e verdieping,52.002686,4.375248,40,0,rustig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,horeca
-SSP00205,21 - Library ,21.00.01.050,1.05,Blue Room,Blue Room,1e verdieping,52.002812,4.375346,30,0,stil,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek
-SSP00221,21 - Library ,21.00.01.060,1.06,Living Room,Living Room,1e verdieping,52.002812,4.375346,29,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,>25m,ontmoetingsplek
-SSP00210,21 - Library ,21.00.01.090,1.09,Glass Room,Glass Room,1e verdieping,52.002941,4.375635,87,28,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00211,21 - Library ,21.00.01.090,1.09,Glass Room - with Monitor,Glass Room - with Monitor,1e verdieping,52.002941,4.375635,112,112,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00235,21 - Library ,21.00.01.120,1.12,Orange Room,Orange Room,1e verdieping,52.002998,4.375912,53,0,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00207,21 - Library ,21.00.01.700,1.7,Project Room - Thomas A. Edison,Project Room - Thomas A. Edison,1e verdieping,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,groepsruimte
-SSP00206,21 - Library ,21.00.01.720,1.72,Project Room - Marie Curie,Project Room - Marie Curie,1e verdieping,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00209,21 - Library ,21.00.01.740,1.74,Project Room - Albert Einstein,Project Room - Albert Einstein,1e verdieping,52.002437,4.375626,10,0,rustig,daglicht,ja (>/= 1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
-SSP00222,21 - Library ,21.00.01.780,1.78,Project Room - Steve Jobs,Project Room - Steve Jobs,1e verdieping,52.002437,4.375626,10,0,rustig,daglicht,ja (>/= 1 pp),ja,ja,>25m,0-50m,>25m,groepsruimte
-SSP00241,21 - Library ,21.00.01.820,1.82,Project Room - Gertrude Stein,Project Room - Gertrude Stein,1e verdieping,52.002437,4.375626,10,0,rustig,daglicht,ja (>/= 1 pp),ja,ja,>25m,0-50m,0-25m,groepsruimte
-SSP00228,21 - Library ,21.00.01.860,1.86,Project Room - John F. Kennedy,Project Room - John F. Kennedy,1e verdieping,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,0-25m,groepsruimte
-SSP00238,21 - Library ,21.00.01.930,1.93,Project Room - South America,Project Room - South America,1e verdieping,52.002568,4.375236,8,8,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,0-25m,0-50m,0-25m,groepsruimte
-SSP00236,21 - Library ,21.00.01.950,1.95,Project Room - Australia,Project Room - Australia,1e verdieping,52.002568,4.375236,8,8,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,0-25m,0-50m,0-25m,groepsruimte
-SSP00239,21 - Library ,21.00.01.960,1.96,Coffee Star,Coffee Star,1e verdieping,52.002568,4.375236,44,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,horeca
-SSP00237,21 - Library ,21.00.01.970,1.97,Project Room - Europe,Project Room - Europe,1e verdieping,52.002568,4.375236,8,8,rustig,kunstmatig licht,ja (>/= 1 pp),ja,ja,0-25m,0-50m,0-25m,groepsruimte
-SSP00227,21 - Library,21.00.02.700,2.7,Quiet Space 2.70,Quiet Space 2.70,2e verdieping,52.002437,4.375626,4,4,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00226,21 - Library,21.00.02.720,2.72,Quiet Space 2.72,Quiet Space 2.72,2e verdieping,52.002437,4.375626,6,6,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00225,21 - Library,21.00.02.740,2.74,Quiet Space 3.74,Quiet Space 3.74,2e verdieping,52.002437,4.375626,6,6,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00224,21 - Library,21.00.02.760,2.76,Quiet Space 2.76,Quiet Space 2.76,2e verdieping,52.002437,4.375626,6,6,stil,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00223,21 - Library,21.00.02.780,2.78,Quiet Space 2.78,Quiet Space 2.78,2e verdieping,52.002437,4.375626,6,6,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00249,21 - Library,21.00.02.800,2.8,Project Room - Sun,Project Room - Sun,2e verdieping,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),ja,ja,>25m,0-50m,>25m,groepsruimte
-SSP00250,21 - Library,21.00.02.820,2.82,Project Room - Water,Project Room - Water,2e verdieping,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
-SSP00251,21 - Library,21.00.02.840,2.84,Project Room - Wind,Project Room - Wind,2e verdieping,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
-SSP00204,21 - Library,21.00.02.860,2.86,Project Room - Bio,Project Room - Bio,2e verdieping,52.002437,4.375626,6,0,rustig,onbekend,onbekend,onbekend,onbekend,>25m,0-50m,onbekend,groepsruimte
-SSP00229,21 - Library ,21.00.03.010,3.01,Cone One,Cone One,3e verdieping,52.002714,4.375651,142,142,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-23SSP005,21 - Library ,21.00.03.720,3.72,Quiet Space 3.72,Quiet Space 3.72,3e verdieping,52.002686,4.375248,12,12,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-SSP00243,21 - Library,21.00.03.740,3.74,Quiet Space 3.74,Quiet Space 3.74,3e verdieping,52.002437,4.375626,12,12,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00244,21 - Library,21.00.03.780,3.78,Quiet Space 3.78,Quiet Space 3.78,3e verdieping,52.002437,4.375626,9,9,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00232,21 - Library ,21.00.04.010,4.01,Cone Two,Cone Two,4e verdieping,52.002714,4.375651,116,116,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00245,21 - Library ,21.00.05.010,5.01,Cone Three,Cone Three,5e verdieping,52.002714,4.375651,84,84,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00247,21 - Library ,21.00.06.010,6.01,Cone Sky,Cone Sky,6e verdieping,52.002714,4.375651,64,64,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
-SSP00320,22 - Technische Natuurkunde,22.01.00.500,A 050,Side Entrance,Side Entrance,begane grond,52.00171,4.374222,10,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00335,22 - Technische Natuurkunde,22.01.01.020,A 102,Study Area,Study Area,1e verdieping,52.001637,4.373938,72,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00318,22 - Technische Natuurkunde,22.01.01.500,A 150,Hallway,Hallway,1e verdieping,52.00171,4.374222,18,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
-SSP00316,22 - Technische Natuurkunde,22.01.02.010,A 201,Study Room - Low-Stimulus,Study Room - Low-Stimulus,2e verdieping,52.001548,4.373703,30,30,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,prikkelarme studieplek
-SSP00319,22 - Technische Natuurkunde,22.01.02.500,A 250,Study Area,Study Area,2e verdieping,52.00171,4.374222,24,0,rustig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek
-SSP00321,22 - Technische Natuurkunde,22.00.00.010,F 001,Hallway,Hallway,begane grond,52.001548,4.373703,11,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP006,22 - Technische Natuurkunde,22.00.00.025,F 025,Hallway,Hallway,begane grond,52.000881,4.374046,8,0,rumoerig,kunstmatig licht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00323,22 - Technische Natuurkunde,22.00.00.750,F 075,Hallway,Hallway,begane grond,52.000576,4.37435,32,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00324,22 - Technische Natuurkunde,22.00.00.990,F 099,Hallway,Hallway,begane grond,52.000287,4.374516,4,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
-SSP00325,22 - Technische Natuurkunde,22.00.01.010,F 101,Hallway,Hallway,1e verdieping,52.001548,4.373703,12,0,rumoerig,kunstmatig licht,ja (<1 pp),onbekend,onbekend,0-25m,onbekend,0-25m,aanlandplek/groepswerkplek
-SSP00326,22 - Technische Natuurkunde,22.00.01.250,F 125,Hallway,Hallway,1e verdieping,52.001226,4.373895,10,0,rumoerig,daglicht,ja (<1 pp),onbekend,onbekend,0-25m,onbekend,0-25m,ontmoetingsplek
-SSP00327,22 - Technische Natuurkunde,22.00.01.500,F 150,Hallway,Hallway,1e verdieping,52.000887,4.374163,4,0,rumoerig,kunstmatig licht,nee,onbekend,onbekend,0-25m,onbekend,0-25m,ontmoetingsplek
-SSP00328,22 - Technische Natuurkunde,22.00.01.750,F 175,Hallway,Hallway,1e verdieping,52.000576,4.37435,12,0,rumoerig,daglicht,nee,onbekend,onbekend,0-25m,onbekend,0-25m,ontmoetingsplek
-SSP00329,22 - Technische Natuurkunde,22.00.02.010,F 201,Hallway,Hallway,2e verdieping,52.001548,4.373703,6,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
-SSP00330,22 - Technische Natuurkunde,22.00.02.250,F 225,Hallway,Hallway,2e verdieping,52.001226,4.373895,24,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00331,22 - Technische Natuurkunde,22.00.02.500,F 250,Hallway,Hallway,2e verdieping,52.000887,4.374163,8,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00332,22 - Technische Natuurkunde,22.00.02.750,F 275,Chillout Lounge,Chillout Lounge,2e verdieping,52.000576,4.37435,24,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
-SSP00337,22 - Technische Natuurkunde,22.00.03.040,F 304,Silent Study Room,Silent Study Room,3e verdieping,52.001374,4.373798,48,0,stil,kunstmatig licht,ja (>/= 1 pp),ja,nee,>25m,0-50m,0-25m,concentratie studieplek
-SSP00339,22 - Technische Natuurkunde,22.00.03.050,F 305,Study Room,Study Room,3e verdieping,52.001374,4.373798,32,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,0-25m,concentratie studieplek
-SSP00333,22 - Technische Natuurkunde,22.00.03.250,F 325,Hallway,Hallway,3e verdieping,52.001226,4.373895,9,0,rumoerig,daglicht,nee,nee,nee,>25m,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP007,22 - Technische Natuurkunde,22.00.03.350,F 350,Hallway,Hallway,3e verdieping,52.000881,4.374046,8,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00334,22 - Technische Natuurkunde,22.00.03.750,F 375,Hallway,Hallway,3e verdieping,52.000576,4.37435,18,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00094,23 - Civiele Techniek en Geowetenschappen,23.00.00.450,HG 00.450,Study Area,Study Area,begane grond,51.999208,4.375291,52,52,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00126,23 - Civiele Techniek en Geowetenschappen,23.00.00.720,HG 00.720,Silent Study Room,Silent Study Room,begane grond,51.998427,4.375832,10,10,stil,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,>50m,0-25m,concentratie studieplek
-SSP00128,23 - Civiele Techniek en Geowetenschappen,23.00.00.740,HG 00.740,Silent Study Room,Silent Study Room,begane grond,51.998427,4.375832,8,8,stil,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,>50m,0-25m,concentratie studieplek
-SSP00095,23 - Civiele Techniek en Geowetenschappen,23.00.01.270,HG 01.270,Hallway,Hallway,1e verdieping,51.999208,4.375291,72,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP008,23 - Civiele Techniek en Geowetenschappen,23.00.01.510,HG 01.510,Coffee Bar Lemon & Beans,Coffee Bar Lemon & Beans,1e verdieping,51.998795,4.375579,27,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,horeca
-23SSP009,23 - Civiele Techniek en Geowetenschappen,23.00.01.722,HG 01.722,Study Area - with Computers,Study Area - with Computers,1e verdieping,51.998795,4.375579,10,0,rumoerig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek
-SSP00143,23 - Civiele Techniek en Geowetenschappen,23.00.01.722,HG 01.722,Study Area,Study Area,1e verdieping,51.998191,4.376007,20,20,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00140,23 - Civiele Techniek en Geowetenschappen,23.00.01.770,HG 01.770,Studoc,Studoc,1e verdieping,51.998191,4.376007,38,38,stil,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00141,23 - Civiele Techniek en Geowetenschappen,23.00.01.770,HG 01.770,Studoc - with Computers,Studoc - with Computers,1e verdieping,51.998191,4.376007,42,42,stil,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00108,23 - Civiele Techniek en Geowetenschappen,23.00.02.240,HG 02.240,Study Area - Staircase B,Study Area - Staircase B,2e verdieping,51.999058,4.375404,10,10,rustig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-23SSP010,23 - Civiele Techniek en Geowetenschappen,23.00.02.500,HG 02.500,Study Area - Staircase B,Study Area - Staircase B,2e verdieping,51.998704,4.375644,8,0,rustig,kunstmatig licht,nee,nee,nee,nvt,0-50m,0-25m,ontmoetingsplek
-SSP00099,23 - Civiele Techniek en Geowetenschappen,23.00.02.500,HG 02.500,Study Area - Staircase B,Study Area - Staircase B,2e verdieping,51.998704,4.375644,10,0,rustig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
-SSP00109,23 - Civiele Techniek en Geowetenschappen,23.00.02.506,HG 02.506,Study Area - Staircase C,Study Area - Staircase C,2e verdieping,51.998704,4.375644,8,8,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00110,23 - Civiele Techniek en Geowetenschappen,23.00.02.707,HG 02.707,Study Area - Staircase D,Study Area - Staircase D,2e verdieping,51.998427,4.375832,14,0,rustig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP011,23 - Civiele Techniek en Geowetenschappen,23.00.02.945,HG 02.945,Study Area - Staircase E,Study Area - Staircase E,2e verdieping,51.998795,4.375579,8,0,rustig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00112,23 - Civiele Techniek en Geowetenschappen,23.00.03.242,HG 03.242,Study Area - Staircase B,Study Area - Staircase B,3e verdieping,51.999208,4.375291,10,10,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-23SSP012,23 - Civiele Techniek en Geowetenschappen,23.00.03.262,HG 03.262,Study Area - Staircase A,Study Area - Staircase A,3e verdieping,51.998795,4.375579,8,0,rustig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00113,23 - Civiele Techniek en Geowetenschappen,23.00.03.725,HG 03.725,Study Area - Staircase D,Study Area - Staircase D,3e verdieping,51.998427,4.375832,7,0,rustig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00114,23 - Civiele Techniek en Geowetenschappen,23.00.03.904,HG 03.904,Study Area - Staircase E,Study Area - Staircase E,3e verdieping,51.997993,4.376141,10,10,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00115,23 - Civiele Techniek en Geowetenschappen,23.00.04.262,HG 04.262,Study Area - Staircase A,Study Area - Staircase A,4e verdieping,51.999208,4.375291,8,0,rustig,kunstmatig licht,nee,nee,nee,0-25m,onbekend,0-25m,concentratie studieplek
-SSP00102,23 - Civiele Techniek en Geowetenschappen,23.00.04.905,HG 04.905,Study Area - Staircase E,Study Area - Staircase E,4e verdieping,51.998427,4.375832,8,8,rustig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek
-SSP00103,23 - Civiele Techniek en Geowetenschappen,23.00.06.135,HG 06.135,Study Area - Staircase D,Study Area - Staircase D,6e verdieping,51.998427,4.375832,12,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek
-SSP00121,23 - Civiele Techniek en Geowetenschappen,23.00.06.372,HG 06.372,Study Area - Staircase B,Study Area - Staircase B,6e verdieping,51.999058,4.375404,6,6,stil,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00123,23 - Civiele Techniek en Geowetenschappen,23.00.06.530,HG 06.530,Study Area - Staircase C,Study Area - Staircase C,6e verdieping,51.998704,4.375644,10,0,stil,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek
-SSP00138,23 - Civiele Techniek en Geowetenschappen,23.00.06.760,HG 06.760,Restaurant,Restaurant,6e verdieping,51.998191,4.376007,224,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,horeca
-SSP00092,23 - Civiele Techniek en Geowetenschappen,23.03.00.010,S3.00.010,Study Area - Stevin 3,Study Area - Stevin 3,begane grond,51.998096,4.376591,28,20,rustig,daglicht,ja (<1 pp),nee,nee,0-25m,onbekend,0-25m,aanlandplek/groepswerkplek
-SSP00390,28 - Wiskunde & Informatica,28.00.00.140,0.C140,Main Hall,Main Hall,begane grond,51.999097,4.377981,16,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00393,28 - Wiskunde & Informatica,28.00.00.460,0.C460,Study Area,Study Area,begane grond,51.998844,4.37816,20,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-23SSP013,28 - Wiskunde & Informatica,28.00.00.020,0.W020,Restaurant,Restaurant,begane grond,51.999075,4.378323,73,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,horeca
-23SSP014,28 - Wiskunde & Informatica,28.00.00.600,0.W600,Study Area,Study Area,begane grond,51.999075,4.378323,16,16,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-23SSP063,28 - Wiskunde & Informatica,28.00.01.460,1.C460,Study Area,Study Area,1e verdieping,51.999075,4.378323,16,16,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-SSP00394,28 - Wiskunde & Informatica,28.00.02.460,2.C460,Study Area,Study Area,2e verdieping,51.99886,4.378192,16,16,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-23SSP064,28 - Wiskunde & Informatica,28.00.02.960,2.C960,Study Area,Study Area,2e verdieping,51.999075,4.378323,12,12,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-23SSP065,28 - Wiskunde & Informatica,28.00.03.460,3.C460,Study Area,Study Area,3e verdieping,51.999075,4.378323,12,12,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-SSP00397,28 - Wiskunde & Informatica,28.00.04.460,4.C460,Study Area,Study Area,4e verdieping,51.99886,4.378192,12,12,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00398,28 - Wiskunde & Informatica,28.00.06.960,6.C960,Study Area,Study Area,6e verdieping,51.999097,4.377981,6,6,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-23SSP021,29 - ECHO,29.00.01.300,1300,Silent Study Room,Silent Study Room,1e verdieping,51.999496,4.377407,36,36,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,>50m,0-25m,concentratie studieplek
-23SSP019,29 - ECHO,29.00.01.400,1400,Study Area,Study Area,1e verdieping,51.999496,4.377407,34,0,rustig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP020,29 - ECHO,29.00.01.401,1401,Cubicles,Cubicles,1e verdieping,51.999496,4.377407,12,0,rustig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP018,29 - ECHO,29.00.01.805,1805,Lounge spot,Lounge spot,1e verdieping,51.999496,4.377407,0,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,ontmoetingsplek
-23SSP017,29 - ECHO,29.00.00.100,0.1,Restaurant,Restaurant,begane grond,51.999496,4.377407,82,0,rumoerig,daglicht,nee,nee,nee,nvt,>50m,>25m,horeca
-23SSP015,29 - ECHO,29.00.00.300,0.3,Silent Study Room,Silent Study Room,begane grond,51.999496,4.377407,70,70,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-23SSP016,29 - ECHO,29.00.00.400,0.4,Echo-plein,Echo-plein,begane grond,51.999496,4.377407,66,0,rustig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP023,29 - ECHO,29.00.02.215,02.015 / 02.055,Study Area,Study Area,2e verdieping,51.999496,4.377407,48,48,rustig,daglicht,ja (<1 pp),ja,nee,nvt,>50m,0-25m,aanlandplek/groepswerkplek
-23SSP021,29 - ECHO,29.00.02.090,02.090 / 02.210,Silent Study Room,Silent Study Room,2e verdieping,51.999496,4.377407,54,54,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-23SSP022,29 - ECHO,29.00.02.090,02.090 / 02.210,Silent Study Room - with Monitors,Silent Study Room - with Monitors,2e verdieping,51.999496,4.377407,20,20,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-SSP00285,"31 - Techniek, Bestuur en Management",31.01.00.240,A0.240,Project Room 1,Project Room 1,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00289,"31 - Techniek, Bestuur en Management",31.01.00.260,A0.260,Project Room 2,Project Room 2,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00290,"31 - Techniek, Bestuur en Management",31.01.00.280,A0.280,Project Room 3,Project Room 3,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00291,"31 - Techniek, Bestuur en Management",31.01.00.300,A0.300,Project Room 4,Project Room 4,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00292,"31 - Techniek, Bestuur en Management",31.01.00.320,A0.320,Project Room 5,Project Room 5,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00293,"31 - Techniek, Bestuur en Management",31.01.00.330,A0.330,Project Room 6,Project Room 6,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00294,"31 - Techniek, Bestuur en Management",31.01.00.340,A0.340,Project Room 7,Project Room 7,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00295,"31 - Techniek, Bestuur en Management",31.01.00.350,A0.350,Project Room 8,Project Room 8,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00296,"31 - Techniek, Bestuur en Management",31.01.00.370,A0.370,Project Room 9,Project Room 9,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00286,"31 - Techniek, Bestuur en Management",31.01.00.380,A0.380,Project Room 10,Project Room 10,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00287,"31 - Techniek, Bestuur en Management",31.01.00.390,A0.390,Project Room 11,Project Room 11,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-SSP00288,"31 - Techniek, Bestuur en Management",31.01.00.400,A0.400,Project Room 12,Project Room 12,begane grond,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
-23SSP024,"31 - Techniek, Bestuur en Management",31.01.00.520,A0.520,Hallway - Cubicles,Hallway - Cubicles,begane grond,52.002552,4.369433,16,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-50m,aanlandplek/groepswerkplek
-SSP00280,"31 - Techniek, Bestuur en Management",31.02.01.821,A1.821,Hallway,Hallway,1e verdieping,52.002574,4.369456,5,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek
-SSP00279,"31 - Techniek, Bestuur en Management",31.01.01.841,A1.841,Hallway - Cubicles,Hallway - Cubicles,1e verdieping,52.002639,4.369808,36,0,rustig,daglicht,ja (<1 pp),nee,ja,0-25m,0-50m,0-25m,aanlandplek
-SSP00282,"31 - Techniek, Bestuur en Management",31.03.00.060,B0.060,Hallway - Cubicles,Hallway - Cubicles,begane grond,52.002467,4.369293,15,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00297,"31 - Techniek, Bestuur en Management",31.03.00.140,B0.140,TB-Café,TB-Café,begane grond,52.002409,4.369041,76,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,horeca
-23SSP025,"31 - Techniek, Bestuur en Management",31.03.00.260,B0.260,Restaurant,Restaurant,begane grond,52.002552,4.369433,71,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,horeca
-SSP00283,"31 - Techniek, Bestuur en Management",31.05.00.010,D0.010,Computer Room A,Computer Room A,begane grond,52.00212,4.369109,70,70,stil,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-23SSP027,"31 - Techniek, Bestuur en Management",31.05.01.010,D1.010,Silent Study Room,Silent Study Room,1e verdieping,52.002552,4.369433,60,60,stil,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-23SSP028,"31 - Techniek, Bestuur en Management",31.05.01.010,D1.010,Silent Study Room - Cubicles,Silent Study Room - Cubicles,1e verdieping,52.002552,4.369433,24,0,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-23SSP029,"31 - Techniek, Bestuur en Management",31.05.01.010,D1.010,Silent Study Room - with Computers,Silent Study Room - with Computers,1e verdieping,52.002552,4.369433,20,20,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-SSP00199,32 - Industrieel Ontwerpen,32.01.00.100,A-0-100,Restaurant,Restaurant,begane grond,52.00144,4.369694,188,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,horeca
-23SSP031,32 - Industrieel Ontwerpen,32.01.00.300,A-0-300,Main Hall,Main Hall,begane grond,52.001678,4.369999,188,96,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00192,32 - Industrieel Ontwerpen,32.01.00.300,A-0-300,Main Hall - tribune,Main Hall - tribune,begane grond,52.001644,4.369478,48,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
-SSP00193,32 - Industrieel Ontwerpen,32.01.00.600,A-0-600,Main Hall - Cubicles,Main Hall - Cubicles,begane grond,52.001879,4.369848,32,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP032,32 - Industrieel Ontwerpen,32.01.00.801,A-0-801,Main Hall - next tot Service Desk,Main Hall - next tot Service Desk,begane grond,52.001678,4.369999,24,0,rumoerig,kunstmatig licht,nee,nee,nee,nvt,0-50m,>25m,ontmoetingsplek
-SSP00197,32 - Industrieel Ontwerpen,32.01.00.801,A-0-801,Main Hall - Vending Machines,Main Hall - Vending Machines,Begane grond,52.001677,4.369711,32,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
-SSP00183,32 - Industrieel Ontwerpen,32.01.01.110,A-1-110,Entresol 1,Entresol 1,tussenverdieping bg,52.00144,4.369694,84,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek/groepswerkplek
-SSP00184,32 - Industrieel Ontwerpen,32.01.01.190,A-1-190,Entresol 2 - Group Tables,Entresol 2 - Group Tables,tussenverdieping bg,52.00144,4.369694,48,0,rumoerig,kunstmatig licht,nee,nee,nee,>25m,0-50m,>25m,aanlandplek/groepswerkplek
-SSP00185,32 - Industrieel Ontwerpen,32.01.01.190,A-1-190,Entresol 2 - Individual Spots,Entresol 2 - Individual Spots,tussenverdieping bg,52.00144,4.369694,45,45,rumoerig,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek
-SSP00187,32 - Industrieel Ontwerpen,32.01.01.801,A-1-801,Balustrade,Balustrade,1e verdieping,52.001429,4.369398,16,16,rumoerig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,aanlandplek
-SSP00188,32 - Industrieel Ontwerpen,32.01.01.801,A-1-801,Balustrade - with Computers,Balustrade - with Computers,1e verdieping,52.001429,4.369398,24,24,rumoerig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,aanlandplek
-23SSP030,32 - Industrieel Ontwerpen,32.01.K1.150,A-K-150,Study Area - Basement,Study Area - Basement,kelder,52.001678,4.369999,40,0,rumoerig,kunstmatig licht,nee,nee,nee,nvt,0-50m,>25m,aanlandplek
-SSP00203,32 - Industrieel Ontwerpen,32.03.K1.010,C-K-010,Study Room - Basement,Study Room - Basement,kelder,52.001696,4.368919,24,24,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,>50m,>25m,aanlandplek/groepswerkplek
-23SSP033,33 - PULSE,33.01.00.100,A0.100,Main Hall,Main Hall,begane grond,52.001605,4.370929,50,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP034,33 - PULSE,33.01.00.100,A0.100,Food Market,Food Market,begane grond,52.001605,4.370929,186,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,horeca
-23SSP036,33 - PULSE,33.01.01.100,A1.100,Study Area,Study Area,1e verdieping,52.001605,4.370929,24,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP037,33 - PULSE,33.01.01.100,A1.100,Coffee corner + lounge,Coffee corner + lounge,1e verdieping,52.001605,4.370929,28,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,>50m,0-25m,horeca
-23SSP038,33 - PULSE,33.01.02.100,A2.100,Study Area,Study Area,2e verdieping,52.001605,4.370929,52,32,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP039,33 - PULSE,33.01.02.100,A2.100,Balustrade,Balustrade,2e verdieping,52.001605,4.370929,11,11,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,>50m,0-25m,aanlandplek
-23SSP040,33 - PULSE,33.01.02.100,A2.100,Coffee corner + lounge,Coffee corner + lounge,2e verdieping,52.001605,4.370929,32,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,horeca
-23SSP035,33 - PULSE,33.01.T0.100,AT0.100,Study Area,Study Area,tussenverdieping bg,52.001605,4.370929,24,18,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,>50m,0-25m,aanlandplek/groepswerkplek
-23SSP041,34 - 3mE,34.01.00.802,A-0-802,Coffeebar Lemon & Beans,Coffeebar Lemon & Beans,begane grond,52.001605,4.370929,20,0,rumoerig,daglicht,nee,ja,nee,nvt,onbekend,0-25m,horeca
-SSP00004,34 - 3mE,34.01.00.805,A-0-805,Study Area A-0,Study Area A-0,begane grond,52.000799,4.371138,25,0,rumoerig,daglicht,nee,ja,nee,0-25m,onbekend,0-25m,aanlandplek/groepswerkplek
-SSP00029,34 - 3mE,34.02.00.170,B-0-170,Project Room 7,Project Room 7,begane grond,52.001299,4.371912,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,0-25m,0-50m,0-25m,groepsruimte
-23SSP045,34 - 3mE,34.02.00.200,B-0-200,Project Room 8,Project Room 8,begane grond,52.00099,4.371937,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
-23SSP042,34 - 3mE,34.02.00.210,B-0-210,Project Room 14,Project Room 14,begane grond,52.00099,4.371937,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
-23SSP046,34 - 3mE,34.02.00.240,B-0-240,Project Room 13,Project Room 13,begane grond,52.00099,4.371937,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
-23SSP043,34 - 3mE,34.02.00.250,B-0-250,Project Room 9,Project Room 9,begane grond,52.00099,4.371937,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
-23SSP047,34 - 3mE,34.02.00.280,B-0-280,Project Room 12,Project Room 12,begane grond,52.00099,4.371937,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
-23SSP044,34 - 3mE,34.02.00.290,B-0-290,Project Room 10,Project Room 10,begane grond,52.00099,4.371937,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
-23SSP048,34 - 3mE,34.02.00.320,B-0-320,Project Room 11,Project Room 11,begane grond,52.00099,4.371937,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
-SSP00021,34 - 3mE,34.03.01.010,C-1-010,Study Area C-1,Study Area C-1,1e verdieping,52.001591,4.371567,16,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
-23SSP050,34 - 3mE,34.03.04.170,C-4-170,Study Room Master Students,Study Room Master Students,4e verdieping,52.00099,4.371937,80,40,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-23SSP051,34 - 3mE,34.03.04.170,C-4-170,Study Room Master Students - with Monitors,Study Room Master Students - with Monitors,4e verdieping,52.00099,4.371937,32,32,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-SSP00024,34 - 3mE,34.03.T0.010,C-T0-010,Study Area C-0,Study Area C-0,tussenverdieping bg,52.001591,4.371567,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00025,34 - 3mE,34.03.T1.010,C-T1-010,Study Area C-1,Study Area C-1,tussenverdieping 1e,52.001591,4.371567,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
-SSP00022,34 - 3mE,34.05.01.450,E-1-450,Study Area E-1,Study Area E-1,1e verdieping,52.000461,4.372337,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
-23SSP052,34 - 3mE,34.05.04.170,E-4-170,Study Landscape Students,Study Landscape Students,4e verdieping,52.00099,4.371937,24,24,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-23SSP053,34 - 3mE,34.05.04.170,E-4-170,Study Landscape Students - with Monitors,Study Landscape Students - with Monitors,4e verdieping,52.00099,4.371937,48,48,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
-SSP00007,34 - 3mE,34.05.04.330,E-4-330,Project Room 15,Project Room 15,4e verdieping,52.000799,4.372466,8,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,groepsruimte
-SSP00008,34 - 3mE,34.05.04.340,E-4-340,Project Room 16,Project Room 16,4e verdieping,52.000799,4.372466,8,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,groepsruimte
-23SSP049,34 - 3mE,34.05.T0.450,E-T0-450,Study Area E-0,Study Area E-0,tussenverdieping bg,52.00099,4.371937,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-SSP00020,34 - 3mE,34.05.T1.450,E-T1-450,Study Area E-1,Study Area E-1,tussenverdieping 1e,52.000461,4.372337,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
-SSP00009,34 - 3mE,34.07.00.080,G-0-080,Designstudio 1,Designstudio 1,begane grond,52.000166,4.371881,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,ja,>25m,onbekend,0-25m,groepsruimte
-SSP00010,34 - 3mE,34.07.00.100,G-0-100,Designstudio 2,Designstudio 2,begane grond,52.000166,4.371881,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,>25m,onbekend,0-25m,groepsruimte
-SSP00011,34 - 3mE,34.07.00.120,G-0-120,Designstudio 3,Designstudio 3,begane grond,52.000166,4.371881,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,>25m,onbekend,0-25m,groepsruimte
-SSP00012,34 - 3mE,34.07.00.140,G-0-140,Designstudio 4,Designstudio 4,begane grond,52.000166,4.371881,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,>25m,onbekend,0-25m,groepsruimte
-SSP00156,35 - Drebbelweg,35.00.01.800,1800,Study Area - Entresol,Study Area - Entresol,tussenverdieping bg,51.999086,4.371394,35,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00144,35 - Drebbelweg,35.00.01.807,1807,Hallway,Hallway,1e verdieping,51.9991,4.371846,23,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00163,36 - EWI,36.01.00.130,HB 00.130,Main Hall,Main Hall,begane grond,51.998987,4.373433,52,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP055,36 - EWI,36.01.00.510,HB 00.510,Hallway,Hallway,begane grond,51.998794,4.373653,16,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,ontmoetingsplek
-SSP00165,36 - EWI,36.01.00.511,HB 00.511,Study Area,Study Area,begane grond,51.99875,4.373232,36,18,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00166,36 - EWI,36.01.00.512,HB 00.512,Study Area - Computers,Study Area - Computers,begane grond,51.998819,4.372975,16,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00160,36 - EWI,36.01.01.030,HB 01.030,Restaurant,Restaurant,1e verdieping,51.998987,4.373433,199,0,rumoerig,daglicht,nee,nee,nee,0-25m,>50m,0-25m,horeca
-SSP00158,36 - EWI,36.01.01.513,HB 01.513,GANG - losse tafels hoog laag,GANG - losse tafels hoog laag,1e verdieping,51.99875,4.373232,52,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00159,36 - EWI,36.01.01.513,HB 01.513,Hallway,Hallway,1e verdieping,51.99875,4.373232,20,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP062,36 - EWI,36.01.01.516,HB 01.516,Hallway,Hallway,1e verdieping,51.998794,4.373653,20,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP056,36 - EWI,36.01.02.100,HB 02.100,Silent Study Room,Silent Study Room,2e verdieping,51.998794,4.373653,15,15,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-23SSP055,36 - EWI,36.01.02.230,HB 02.230,Silent Study Room - with Computers,Silent Study Room - with Computers,2e verdieping,51.998794,4.373653,36,36,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
-SSP00168,36 - EWI,36.01.02.230,HB 02.230,Silent Study Room,Silent Study Room,2e verdieping,51.998613,4.373536,43,39,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
-23SSP054,36 - EWI,36.01.00.340,HB.00.340,Hallway,Hallway,begane grond,51.998794,4.373653,8,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00374,58 - TNW,58.01.00.080,A0.080,Silent Study Room,Silent Study Room,begane grond,51.990018,4.379951,42,0,stil,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
-SSP00373,58 - TNW,58.01.01.010,A1.010,Restaurant,Restaurant,1e verdieping,51.989932,4.379586,37,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,horeca
-SSP00376,58 - TNW,58.01.01.803,A1.803,Gang,Gang,1e verdieping,51.990018,4.379951,16,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
-SSP00377,58 - TNW,58.01.01.804,A1.804,Cubicles,Cubicles,1e verdieping,51.989831,4.379745,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00378,58 - TNW,58.01.01.805,A1.805,Cubicles,Cubicles,1e verdieping,51.989865,4.379947,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00379,58 - TNW,58.01.01.806,A1.806,Cubicles,Cubicles,1e verdieping,51.990067,4.379789,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00380,58 - TNW,58.01.01.807,A1.807,Cubicles,Cubicles,1e verdieping,51.99002,4.379634,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00381,58 - TNW,58.01.02.803,A2.803,Balustrade,Balustrade,2e verdieping,51.989932,4.379586,10,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek
-SSP00382,58 - TNW,58.01.02.804,A2.804,Cubicles,Cubicles,2e verdieping,51.989831,4.379745,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek/groepswerkplek
-SSP00383,58 - TNW,58.01.02.805,A2.805,Cubicles,Cubicles,2e verdieping,51.989865,4.379947,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek/groepswerkplek
-SSP00384,58 - TNW,58.01.02.806,A2.806,Cubicles,Cubicles,2e verdieping,51.99002,4.379634,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek/groepswerkplek
-SSP00385,58 - TNW,58.01.02.807,A2.807,Cubicles,Cubicles,2e verdieping,51.990067,4.379789,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek/groepswerkplek
-SSP00386,58 - TNW,58.01.03.010,A3.010,Silent Study Room,Silent Study Room,3e verdieping,51.990018,4.379951,30,0,stil,daglicht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,concentratie studieplek
-SSP00253,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.01.800,1800,Leonardo da Vinci square,Leonardo da Vinci square,1e verdieping,51.990188,4.375309,7,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek/groepswerkplek
-SSP00255,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.01.800,1800,Jan Siebring square,Jan Siebring square,1e verdieping,51.989906,4.375405,8,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,>25m,0-50m,>25m,aanlandplek
-23SSP057,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.00.010,0.01,Restaurant,Restaurant,begane grond,51.989924,4.375534,119,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,horeca
-SSP00258,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.00.510,0.51,Study Area,Study Area,begane grond,51.989906,4.375405,54,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
-SSP00254,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.00.800,T0.800,Balustrade,Balustrade,tussenverdieping bg,51.989906,4.375405,16,0,rumoerig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek
-23SSP059,66 - The Fellowship,62.00.01.130,1130,Restaurant - 1st floor,Restaurant - 1st floor,1e verdieping,51.990604,4.377517,105,0,rumoerig,daglicht,nee,nee,nee,nvt,>50m,0-25m,horeca
-23SSP061,66 - The Fellowship,62.00.01.620,1620,Coffee Corner,Coffee Corner,1e verdieping,51.990604,4.377517,10,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,ontmoetingsplek
-SSP00342,66 - The Fellowship,62.00.01.802,1802,Balustrade,Balustrade,1e verdieping,51.99062,4.377527,9,9,rumoerig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek
-23SSP060,66 - The Fellowship,62.00.02.420,2420,Study Area,Study Area,2e verdieping,51.990604,4.377517,24,0,rustig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
-23SSP058,66 - The Fellowship,62.00.00.200,0.2,Restaurant,Restaurant,begane grond,51.990604,4.377517,80,0,rumoerig,daglicht,nee,nee,nee,nvt,>50m,0-25m,horeca
-SSP00340,66 - The Fellowship,62.00.00.802,0.802,Main Hall,Main Hall,begane grond,51.99062,4.377527,22,0,rumoerig,daglicht,nee,nee,nee,0-25m,>50m,0-25m,ontmoetingsplek
+23SSP001,08 - Bouwkunde,08.01.01.010,01.Mid.010,BK Library - with Monitors,BK Library - with Monitors,1st floor,52.005665,4.370518,31,25,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP002,21 - Library,21.00.01.010,1.01,Main Hall,Main Hall,1st floor,52.002686,4.375248,202,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,aanlandplek
+23SSP003,21 - Library,21.00.01.010,1.01,Main Hall - Reading Table,Main Hall - Reading Table,1st floor,52.002686,4.375248,10,0,rustig,daglicht,nee,nee,nee,nvt,0-50 m,0-25m,aanlandplek
+23SSP004,21 - Library,21.00.01.010,1.01,Coffee Star - Seats Main Hall,Coffee Star - Seats Main Hall,1st floor,52.002686,4.375248,40,0,rustig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,horeca
+23SSP005,21 - Library,21.00.03.720,3.72,Quiet Space 3.72,Quiet Space 3.72,3rd floor,52.002686,4.375248,12,12,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP006,22 - Technische Natuurkunde,22.00.00.025,F 025,Hallway,Hallway,ground floor,52.000881,4.374046,8,0,rumoerig,kunstmatig licht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP007,22 - Technische Natuurkunde,22.00.03.350,F 350,Hallway,Hallway,3rd floor,52.000881,4.374046,8,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP008,23 - Civiele Techniek en Geowetenschappen,23.00.01.510,HG 01.510,Coffee Bar Lemon & Beans,Coffee Bar Lemon & Beans,1st floor,51.998795,4.375579,27,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,horeca
+23SSP009,23 - Civiele Techniek en Geowetenschappen,23.00.01.722,HG 01.722,Study Area - with Computers,Study Area - with Computers,1st floor,51.998795,4.375579,10,0,rumoerig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek
+23SSP010,23 - Civiele Techniek en Geowetenschappen,23.00.02.500,HG 02.500,Study Area - Staircase B,Study Area - Staircase B,2nd floor,51.998704,4.375644,8,0,rustig,kunstmatig licht,nee,nee,nee,nvt,0-50m,0-25m,ontmoetingsplek
+23SSP011,23 - Civiele Techniek en Geowetenschappen,23.00.02.945,HG 02.945,Study Area - Staircase E,Study Area - Staircase E,2nd floor,51.998795,4.375579,8,0,rustig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP012,23 - Civiele Techniek en Geowetenschappen,23.00.03.262,HG 03.262,Study Area - Staircase A,Study Area - Staircase A,3rd floor,51.998795,4.375579,8,0,rustig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP013,28 - Wiskunde & Informatica,28.00.00.020,0.W020,Restaurant,Restaurant,ground floor,51.999075,4.378323,73,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,horeca
+23SSP014,28 - Wiskunde & Informatica,28.00.00.600,0.W600,Study Area,Study Area,ground floor,51.999075,4.378323,16,16,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP015,29 - Echo,29.00.00.300,0.3,Silent Study Room,Silent Study Room,ground floor,51.999496,4.377407,70,70,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP016,29 - Echo,29.00.00.400,0.4,Echo-plein,Echo-plein,ground floor,51.999496,4.377407,66,0,rustig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP017,29 - Echo,29.00.00.100,0.1,Restaurant,Restaurant,ground floor,51.999496,4.377407,82,0,rumoerig,daglicht,nee,nee,nee,nvt,>50m,>25m,horeca
+23SSP018,29 - Echo,29.00.01.805,1.805,Lounge spot,Lounge spot,1st floor,51.999496,4.377407,0,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,ontmoetingsplek
+23SSP019,29 - Echo,29.00.01.400,1.4,Study Area,Study Area,1st floor,51.999424,4.377693,34,0,rustig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP020,29 - Echo,29.00.01.401,1.401,Cubicles,Cubicles,1st floor,51.999424,4.377693,12,0,rustig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP021,29 - Echo,29.00.01.300,1.3,Silent Study Room,Silent Study Room,1st floor,51.999424,4.377693,36,36,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,>50m,0-25m,concentratie studieplek
+23SSP021,29 - Echo,29.00.02.090,02.090 / 02.210,Silent Study Room,Silent Study Room,2nd floor,51.999496,4.377407,54,54,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP022,29 - Echo,29.00.02.090,02.090 / 02.210,Silent Study Room - with Monitors,Silent Study Room - with Monitors,2nd floor,51.999496,4.377407,20,20,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP023,29 - Echo,29.00.02.215,02.015 / 02.055,Study Area,Study Area,2nd floor,51.999496,4.377407,48,48,rustig,daglicht,ja (<1 pp),ja,nee,nvt,>50m,0-25m,aanlandplek/groepswerkplek
+23SSP024,"31 - Techniek, Bestuur en Management",31.01.00.520,A0.520,Hallway - Cubicles,Hallway - Cubicles,ground floor,52.002552,4.369433,16,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-50m,aanlandplek/groepswerkplek
+23SSP025,"31 - Techniek, Bestuur en Management",31.03.00.260,B0.260,Restaurant,Restaurant,ground floor,52.002552,4.369433,71,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,horeca
+23SSP027,"31 - Techniek, Bestuur en Management",31.05.01.010,D1.010,Silent Study Room,Silent Study Room,1st floor,52.002552,4.369433,60,60,stil,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP028,"31 - Techniek, Bestuur en Management",31.05.01.010,D1.010,Silent Study Room - Cubicles,Silent Study Room - Cubicles,1st floor,52.002552,4.369433,24,0,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP029,"31 - Techniek, Bestuur en Management",31.05.01.010,D1.010,Silent Study Room - with Computers,Silent Study Room - with Computers,1st floor,52.002552,4.369433,20,20,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP030,32 - Industrieel Ontwerpen,32.01.K1.150,A-K-150,Study Area - Basement,Study Area - Basement,basement,52.001678,4.369999,40,0,rumoerig,kunstmatig licht,nee,nee,nee,nvt,0-50m,>25m,aanlandplek
+23SSP031,32 - Industrieel Ontwerpen,32.01.00.300,A-0-300,Main Hall,Main Hall,ground floor,52.001678,4.369999,188,96,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP032,32 - Industrieel Ontwerpen,32.01.00.801,A-0-801,Main Hall - next tot Service Desk,Main Hall - next tot Service Desk,ground floor,52.001678,4.369999,24,0,rumoerig,kunstmatig licht,nee,nee,nee,nvt,0-50m,>25m,ontmoetingsplek
+23SSP033,33 - PULSE,33.01.00.100,A0.100,Main Hall,Main Hall,ground floor,52.001716,4.370716,50,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP034,33 - PULSE,33.01.00.100,A0.100,Food Market,Food Market,ground floor,52.001716,4.370716,186,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,horeca
+23SSP035,33 - PULSE,33.01.T0.100,AT0.100,Study Area,Study Area,mezzanine ground,52.001605,4.370929,24,18,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,>50m,0-25m,aanlandplek/groepswerkplek
+23SSP036,33 - PULSE,33.01.01.100,A1.100,Study Area,Study Area,1st floor,52.001553,4.370832,24,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP037,33 - PULSE,33.01.01.100,A1.100,Coffee corner + lounge,Coffee corner + lounge,1st floor,52.001553,4.370832,28,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,>50m,0-25m,horeca
+23SSP038,33 - PULSE,33.01.02.100,A2.100,Study Area,Study Area,2nd floor,52.001618,4.370897,52,32,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP039,33 - PULSE,33.01.02.100,A2.100,Balustrade,Balustrade,2nd floor,52.001618,4.370897,11,11,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,>50m,0-25m,aanlandplek
+23SSP040,33 - PULSE,33.01.02.100,A2.100,Coffee corner + lounge,Coffee corner + lounge,2nd floor,52.001618,4.370897,32,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,horeca
+23SSP041,34 - ME,34.01.00.802,A-0-802,Coffeebar Lemon & Beans,Coffeebar Lemon & Beans,ground floor,52.000942,4.37196,20,0,rumoerig,daglicht,nee,ja,nee,nvt,onbekend,0-25m,horeca
+23SSP042,34 - ME,34.02.00.210,B-0-210,Project Room 14,Project Room 14,ground floor,52.0015,4.372093,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
+23SSP043,34 - ME,34.02.00.250,B-0-250,Project Room 9,Project Room 9,ground floor,52.0015,4.372093,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
+23SSP044,34 - ME,34.02.00.290,B-0-290,Project Room 10,Project Room 10,ground floor,52.0015,4.372093,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
+23SSP045,34 - ME,34.02.00.200,B-0-200,Project Room 8,Project Room 8,ground floor,52.0015,4.372093,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
+23SSP046,34 - ME,34.02.00.240,B-0-240,Project Room 13,Project Room 13,ground floor,52.0015,4.372093,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
+23SSP047,34 - ME,34.02.00.280,B-0-280,Project Room 12,Project Room 12,ground floor,52.0015,4.372093,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
+23SSP048,34 - ME,34.02.00.320,B-0-320,Project Room 11,Project Room 11,ground floor,52.0015,4.372093,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,nvt,0-50m,0-25m,groepsruimte
+23SSP049,34 - ME,34.05.T0.450,E-T0-450,Study Area E-0,Study Area E-0,mezzanine ground,52.00099,4.371937,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP050,34 - ME,34.03.04.170,C-4-170,Study Room Master Students,Study Room Master Students,4th floor,52.002,4.371514,80,40,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP051,34 - ME,34.03.04.170,C-4-170,Study Room Master Students - with Monitors,Study Room Master Students - with Monitors,4th floor,52.002,4.371514,32,32,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP052,34 - ME,34.05.04.170,E-4-170,Study Landscape Students,Study Landscape Students,4th floor,52.000777,4.372357,24,24,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP053,34 - ME,34.05.04.170,E-4-170,Study Landscape Students - with Monitors,Study Landscape Students - with Monitors,4th floor,52.000777,4.372357,48,48,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,>25m,concentratie studieplek
+23SSP054,36 - EWI,36.01.00.340,HB.00.340,Hallway,Hallway,ground floor,51.998794,4.373653,8,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP055,36 - EWI,36.01.00.510,HB 00.510,Hallway,Hallway,ground floor,51.998794,4.373653,16,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,ontmoetingsplek
+23SSP055,36 - EWI,36.01.02.230,HB 02.230,Silent Study Room - with Computers,Silent Study Room - with Computers,2nd floor,51.998794,4.373653,36,36,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP056,36 - EWI,36.01.02.100,HB 02.100,Silent Study Room,Silent Study Room,2nd floor,51.998794,4.373653,15,15,stil,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP057,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.00.010,0.01,Restaurant,Restaurant,ground floor,51.989924,4.375534,119,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,horeca
+23SSP058,66 - The Fellowship,62.00.00.200,0.2,Restaurant,Restaurant,ground floor,51.990604,4.377517,80,0,rumoerig,daglicht,nee,nee,nee,nvt,>50m,0-25m,horeca
+23SSP059,66 - The Fellowship,62.00.01.130,1.13,Restaurant - 1st floor,Restaurant - 1st floor,1st floor,51.990604,4.377517,105,0,rumoerig,daglicht,nee,nee,nee,nvt,>50m,0-25m,horeca
+23SSP060,66 - The Fellowship,62.00.02.420,2.42,Study Area,Study Area,2nd floor,51.990604,4.377517,24,0,rustig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP061,66 - The Fellowship,62.00.01.620,1.62,Coffee Corner,Coffee Corner,1st floor,51.990604,4.377517,10,0,rumoerig,daglicht,nee,nee,nee,nvt,0-50m,0-25m,ontmoetingsplek
+23SSP062,36 - EWI,36.01.01.516,HB 01.516,Hallway,Hallway,1st floor,51.998794,4.373653,20,0,rumoerig,daglicht,ja (<1 pp),nee,nee,nvt,0-50m,0-25m,aanlandplek/groepswerkplek
+23SSP063,28 - Wiskunde & Informatica,28.00.01.460,1.C460,Study Area,Study Area,1st floor,51.999075,4.378323,16,16,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP064,28 - Wiskunde & Informatica,28.00.02.960,2.C960,Study Area,Study Area,2nd floor,51.999075,4.378323,12,12,rustig,daglicht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+23SSP065,28 - Wiskunde & Informatica,28.00.03.460,3.C460,Study Area,Study Area,3rd floor,51.999075,4.378323,12,12,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,nvt,0-50m,0-25m,concentratie studieplek
+SSP00004,34 - ME,34.01.00.805,A-0-805,Study Area A-0,Study Area A-0,ground floor,52.000799,4.371138,25,0,rumoerig,daglicht,nee,ja,nee,0-25m,onbekend,0-25m,aanlandplek/groepswerkplek
+SSP00007,34 - ME,34.05.04.330,E-4-330,Project Room 15,Project Room 15,4th floor,52.000799,4.372466,8,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,groepsruimte
+SSP00008,34 - ME,34.05.04.340,E-4-340,Project Room 16,Project Room 16,4th floor,52.000799,4.372466,8,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,groepsruimte
+SSP00009,34 - ME,34.07.00.080,G-0-080,Designstudio 1,Designstudio 1,ground floor,52.000166,4.371881,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,ja,>25m,onbekend,0-25m,groepsruimte
+SSP00010,34 - ME,34.07.00.100,G-0-100,Designstudio 2,Designstudio 2,ground floor,52.000166,4.371881,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,>25m,onbekend,0-25m,groepsruimte
+SSP00011,34 - ME,34.07.00.120,G-0-120,Designstudio 3,Designstudio 3,ground floor,52.000166,4.371881,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,>25m,onbekend,0-25m,groepsruimte
+SSP00012,34 - ME,34.07.00.140,G-0-140,Designstudio 4,Designstudio 4,ground floor,52.000166,4.371881,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,>25m,onbekend,0-25m,groepsruimte
+SSP00020,34 - ME,34.05.T1.450,E-T1-450,Study Area E-1,Study Area E-1,mezzanine 1st,52.000461,4.372337,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
+SSP00021,34 - ME,34.03.01.010,C-1-010,Study Area C-1,Study Area C-1,1st floor,52.001591,4.371567,16,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
+SSP00022,34 - ME,34.05.01.450,E-1-450,Study Area E-1,Study Area E-1,1st floor,52.000461,4.372337,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
+SSP00024,34 - ME,34.03.T0.010,C-T0-010,Study Area C-0,Study Area C-0,mezzanine ground,52.001591,4.371567,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00025,34 - ME,34.03.T1.010,C-T1-010,Study Area C-1,Study Area C-1,mezzanine 1st,52.001591,4.371567,16,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
+SSP00029,34 - ME,34.02.00.170,B-0-170,Project Room 7,Project Room 7,ground floor,52.001299,4.371912,8,0,rustig,kunstmatig licht,ja (>/= 1 pp),ja,nee,0-25m,0-50m,0-25m,groepsruimte
+SSP00035,20 - Aula,20.00.01.255,1.255,Projectruimte Noord 1,Projectruimte Noord 1,1st floor,52.002325,4.373297,6,0,rustig,daglicht,ja (<1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
+SSP00036,20 - Aula,20.00.01.260,1.26,Projectruimte Noord 2,Projectruimte Noord 2,1st floor,52.002325,4.373297,4,0,rustig,daglicht,ja (<1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
+SSP00037,20 - Aula,20.00.01.270,1.27,Projectruimte Noord 3,Projectruimte Noord 3,1st floor,52.002325,4.373297,16,0,rustig,daglicht,ja (<1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
+SSP00039,20 - Aula,20.00.00.270,0.27,Restaurant,Restaurant,ground floor,52.002304,4.373861,93,14,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,horeca
+SSP00042,08 - Bouwkunde,08.01.01.010,01.Mid.010,BK Library,BK Library,1st floor,52.005665,4.370518,68,68,stil,daglicht,ja (<1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00056,08 - Bouwkunde,08.02.00.760,BG.Oost.760,Espressobar BK Sterk,Espressobar BK Sterk,ground floor,52.006259,4.371339,39,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,horeca
+SSP00057,08 - Bouwkunde,08.04.00.300,BG.Zuid.300,Restaurant,Restaurant,ground floor,52.005366,4.37116,168,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,horeca
+SSP00092,23 - Civiele Techniek en Geowetenschappen,23.03.00.010,S3.00.010,Study Area - Stevin 3,Study Area - Stevin 3,ground floor,51.998096,4.376591,28,20,rustig,daglicht,ja (<1 pp),nee,nee,0-25m,onbekend,0-25m,aanlandplek/groepswerkplek
+SSP00094,23 - Civiele Techniek en Geowetenschappen,23.00.00.450,HG 00.450,Study Area,Study Area,ground floor,51.999208,4.375291,52,52,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00095,23 - Civiele Techniek en Geowetenschappen,23.00.01.270,HG 01.270,Hallway,Hallway,1st floor,51.999208,4.375291,72,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00099,23 - Civiele Techniek en Geowetenschappen,23.00.02.500,HG 02.500,Study Area - Staircase B,Study Area - Staircase B,2nd floor,51.998704,4.375644,10,0,rustig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
+SSP00102,23 - Civiele Techniek en Geowetenschappen,23.00.04.905,HG 04.905,Study Area - Staircase E,Study Area - Staircase E,4th floor,51.998427,4.375832,8,8,rustig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek
+SSP00103,23 - Civiele Techniek en Geowetenschappen,23.00.06.135,HG 06.135,Study Area - Staircase D,Study Area - Staircase D,6th floor,51.998427,4.375832,12,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek
+SSP00108,23 - Civiele Techniek en Geowetenschappen,23.00.02.240,HG 02.240,Study Area - Staircase B,Study Area - Staircase B,2nd floor,51.999058,4.375404,10,10,rustig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00109,23 - Civiele Techniek en Geowetenschappen,23.00.02.506,HG 02.506,Study Area - Staircase C,Study Area - Staircase C,2nd floor,51.998704,4.375644,8,8,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00110,23 - Civiele Techniek en Geowetenschappen,23.00.02.707,HG 02.707,Study Area - Staircase D,Study Area - Staircase D,2nd floor,51.998427,4.375832,14,0,rustig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00112,23 - Civiele Techniek en Geowetenschappen,23.00.03.242,HG 03.242,Study Area - Staircase B,Study Area - Staircase B,3rd floor,51.999208,4.375291,10,10,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00113,23 - Civiele Techniek en Geowetenschappen,23.00.03.725,HG 03.725,Study Area - Staircase D,Study Area - Staircase D,3rd floor,51.998427,4.375832,7,0,rustig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00114,23 - Civiele Techniek en Geowetenschappen,23.00.03.904,HG 03.904,Study Area - Staircase E,Study Area - Staircase E,3rd floor,51.997993,4.376141,10,10,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00115,23 - Civiele Techniek en Geowetenschappen,23.00.04.262,HG 04.262,Study Area - Staircase A,Study Area - Staircase A,4th floor,51.999208,4.375291,8,0,rustig,kunstmatig licht,nee,nee,nee,0-25m,onbekend,0-25m,concentratie studieplek
+SSP00121,23 - Civiele Techniek en Geowetenschappen,23.00.06.372,HG 06.372,Study Area - Staircase B,Study Area - Staircase B,6th floor,51.999058,4.375404,6,6,stil,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00123,23 - Civiele Techniek en Geowetenschappen,23.00.06.530,HG 06.530,Study Area - Staircase C,Study Area - Staircase C,6th floor,51.998704,4.375644,10,0,stil,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek
+SSP00126,23 - Civiele Techniek en Geowetenschappen,23.00.00.720,HG 00.720,Silent Study Room,Silent Study Room,ground floor,51.998427,4.375832,10,10,stil,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,>50m,0-25m,concentratie studieplek
+SSP00128,23 - Civiele Techniek en Geowetenschappen,23.00.00.740,HG 00.740,Silent Study Room,Silent Study Room,ground floor,51.998427,4.375832,8,8,stil,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,>50m,0-25m,concentratie studieplek
+SSP00138,23 - Civiele Techniek en Geowetenschappen,23.00.06.760,HG 06.760,Restaurant,Restaurant,6th floor,51.998191,4.376007,224,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,horeca
+SSP00140,23 - Civiele Techniek en Geowetenschappen,23.00.01.770,HG 01.770,Studoc,Studoc,1st floor,51.998191,4.376007,38,38,stil,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00141,23 - Civiele Techniek en Geowetenschappen,23.00.01.770,HG 01.770,Studoc - with Computers,Studoc - with Computers,1st floor,51.998191,4.376007,42,42,stil,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00143,23 - Civiele Techniek en Geowetenschappen,23.00.01.722,HG 01.722,Study Area,Study Area,1st floor,51.998191,4.376007,20,20,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00144,35 - Drebbelweg,35.00.01.807,1.807,Hallway,Hallway,1st floor,51.9991,4.371846,23,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00156,35 - Drebbelweg,35.00.01.800,1.8,Study Area - Entresol,Study Area - Entresol,mezzanine ground,51.999086,4.371394,35,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00158,36 - EWI,36.01.01.513,HB 01.513,GANG - losse tafels hoog laag,GANG - losse tafels hoog laag,1st floor,51.99875,4.373232,52,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00159,36 - EWI,36.01.01.513,HB 01.513,Hallway,Hallway,1st floor,51.99875,4.373232,20,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00160,36 - EWI,36.01.01.030,HB 01.030,Restaurant,Restaurant,1st floor,51.998987,4.373433,199,0,rumoerig,daglicht,nee,nee,nee,0-25m,>50m,0-25m,horeca
+SSP00163,36 - EWI,36.01.00.130,HB 00.130,Main Hall,Main Hall,ground floor,51.998987,4.373433,52,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00165,36 - EWI,36.01.00.511,HB 00.511,Study Area,Study Area,ground floor,51.99875,4.373232,36,18,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00166,36 - EWI,36.01.00.512,HB 00.512,Study Area - Computers,Study Area - Computers,ground floor,51.998819,4.372975,16,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00168,36 - EWI,36.01.02.230,HB 02.230,Silent Study Room,Silent Study Room,2nd floor,51.998613,4.373536,43,39,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,concentratie studieplek
+SSP00183,32 - Industrieel Ontwerpen,32.01.01.110,A-1-110,Entresol 1,Entresol 1,mezzanine ground,52.00144,4.369694,84,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek/groepswerkplek
+SSP00184,32 - Industrieel Ontwerpen,32.01.01.190,A-1-190,Entresol 2 - Group Tables,Entresol 2 - Group Tables,mezzanine ground,52.00144,4.369694,48,0,rumoerig,kunstmatig licht,nee,nee,nee,>25m,0-50m,>25m,aanlandplek/groepswerkplek
+SSP00185,32 - Industrieel Ontwerpen,32.01.01.190,A-1-190,Entresol 2 - Individual Spots,Entresol 2 - Individual Spots,mezzanine ground,52.00144,4.369694,45,45,rumoerig,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek
+SSP00187,32 - Industrieel Ontwerpen,32.01.01.801,A-1-801,Balustrade,Balustrade,1st floor,52.001429,4.369398,16,16,rumoerig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,aanlandplek
+SSP00188,32 - Industrieel Ontwerpen,32.01.01.801,A-1-801,Balustrade - with Computers,Balustrade - with Computers,1st floor,52.001429,4.369398,24,24,rumoerig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,aanlandplek
+SSP00192,32 - Industrieel Ontwerpen,32.01.00.300,A-0-300,Main Hall - tribune,Main Hall - tribune,ground floor,52.001644,4.369478,48,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
+SSP00193,32 - Industrieel Ontwerpen,32.01.00.600,A-0-600,Main Hall - Cubicles,Main Hall - Cubicles,ground floor,52.001879,4.369848,32,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00197,32 - Industrieel Ontwerpen,32.01.00.801,A-0-801,Main Hall - Vending Machines,Main Hall - Vending Machines,ground floor,52.001677,4.369711,32,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
+SSP00199,32 - Industrieel Ontwerpen,32.01.00.100,A-0-100,Restaurant,Restaurant,ground floor,52.00144,4.369694,188,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,horeca
+SSP00203,32 - Industrieel Ontwerpen,32.03.K1.010,C-K-010,Study Room - Basement,Study Room - Basement,basement,52.001696,4.368919,24,24,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,>50m,>25m,aanlandplek/groepswerkplek
+SSP00204,21 - Library,21.00.02.860,2.86,Project Room - Bio,Project Room - Bio,2nd floor,52.002437,4.375626,6,0,rustig,onbekend,onbekend,onbekend,onbekend,>25m,0-50m,onbekend,groepsruimte
+SSP00205,21 - Library,21.00.01.050,1.05,Blue Room,Blue Room,1st floor,52.002812,4.375346,30,0,stil,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek
+SSP00206,21 - Library,21.00.01.720,1.72,Project Room - Marie Curie,Project Room - Marie Curie,1st floor,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00207,21 - Library,21.00.01.700,1.7,Project Room - Thomas A. Edison,Project Room - Thomas A. Edison,1st floor,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,groepsruimte
+SSP00209,21 - Library,21.00.01.740,1.74,Project Room - Albert Einstein,Project Room - Albert Einstein,1st floor,52.002437,4.375626,10,0,rustig,daglicht,ja (>/= 1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
+SSP00210,21 - Library,21.00.01.090,1.09,Glass Room,Glass Room,1st floor,52.002941,4.375635,87,28,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00211,21 - Library,21.00.01.090,1.09,Glass Room - with Monitor,Glass Room - with Monitor,1st floor,52.002941,4.375635,112,112,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00221,21 - Library,21.00.01.060,1.06,Living Room,Living Room,1st floor,52.002812,4.375346,29,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,>25m,ontmoetingsplek
+SSP00222,21 - Library,21.00.01.780,1.78,Project Room - Steve Jobs,Project Room - Steve Jobs,1st floor,52.002437,4.375626,10,0,rustig,daglicht,ja (>/= 1 pp),ja,ja,>25m,0-50m,>25m,groepsruimte
+SSP00223,21 - Library,21.00.02.780,2.78,Quiet Space 2.78,Quiet Space 2.78,2nd floor,52.002437,4.375626,6,6,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00224,21 - Library,21.00.02.760,2.76,Quiet Space 2.76,Quiet Space 2.76,2nd floor,52.002437,4.375626,6,6,stil,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00225,21 - Library,21.00.02.740,2.74,Quiet Space 3.74,Quiet Space 3.74,2nd floor,52.002437,4.375626,6,6,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00226,21 - Library,21.00.02.720,2.72,Quiet Space 2.72,Quiet Space 2.72,2nd floor,52.002437,4.375626,6,6,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00227,21 - Library,21.00.02.700,2.7,Quiet Space 2.70,Quiet Space 2.70,2nd floor,52.002437,4.375626,4,4,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00228,21 - Library,21.00.01.860,1.86,Project Room - John F. Kennedy,Project Room - John F. Kennedy,1st floor,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,0-25m,groepsruimte
+SSP00229,21 - Library,21.00.03.010,3.01,Cone One,Cone One,3rd floor,52.002714,4.375651,142,142,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00232,21 - Library,21.00.04.010,4.01,Cone Two,Cone Two,4th floor,52.002714,4.375651,116,116,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00235,21 - Library,21.00.01.120,1.12,Orange Room,Orange Room,1st floor,52.002998,4.375912,53,0,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00236,21 - Library,21.00.01.950,1.95,Project Room - Australia,Project Room - Australia,1st floor,52.002568,4.375236,8,8,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,0-25m,0-50m,0-25m,groepsruimte
+SSP00237,21 - Library,21.00.01.970,1.97,Project Room - Europe,Project Room - Europe,1st floor,52.002568,4.375236,8,8,rustig,kunstmatig licht,ja (>/= 1 pp),ja,ja,0-25m,0-50m,0-25m,groepsruimte
+SSP00238,21 - Library,21.00.01.930,1.93,Project Room - South America,Project Room - South America,1st floor,52.002568,4.375236,8,8,rustig,kunstmatig licht,ja (>/= 1 pp),nee,ja,0-25m,0-50m,0-25m,groepsruimte
+SSP00239,21 - Library,21.00.01.960,1.96,Coffee Star,Coffee Star,1st floor,52.002568,4.375236,44,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,horeca
+SSP00240,21 - Library,21.00.00.060,0.06,Red Room,Red Room,ground floor,52.002941,4.375635,38,38,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,>50m,>25m,concentratie studieplek
+SSP00241,21 - Library,21.00.01.820,1.82,Project Room - Gertrude Stein,Project Room - Gertrude Stein,1st floor,52.002437,4.375626,10,0,rustig,daglicht,ja (>/= 1 pp),ja,ja,>25m,0-50m,0-25m,groepsruimte
+SSP00243,21 - Library,21.00.03.740,3.74,Quiet Space 3.74,Quiet Space 3.74,3rd floor,52.002437,4.375626,12,12,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00244,21 - Library,21.00.03.780,3.78,Quiet Space 3.78,Quiet Space 3.78,3rd floor,52.002437,4.375626,9,9,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00245,21 - Library,21.00.05.010,5.01,Cone Three,Cone Three,5th floor,52.002714,4.375651,84,84,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00247,21 - Library,21.00.06.010,6.01,Cone Sky,Cone Sky,6th floor,52.002714,4.375651,64,64,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,>25m,0-50m,>25m,concentratie studieplek
+SSP00249,21 - Library,21.00.02.800,2.8,Project Room - Sun,Project Room - Sun,2nd floor,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),ja,ja,>25m,0-50m,>25m,groepsruimte
+SSP00250,21 - Library,21.00.02.820,2.82,Project Room - Water,Project Room - Water,2nd floor,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
+SSP00251,21 - Library,21.00.02.840,2.84,Project Room - Wind,Project Room - Wind,2nd floor,52.002437,4.375626,6,0,rustig,daglicht,ja (>/= 1 pp),nee,ja,>25m,0-50m,>25m,groepsruimte
+SSP00253,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.01.800,1.8,Leonardo da Vinci square,Leonardo da Vinci square,1st floor,51.990188,4.375309,7,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek/groepswerkplek
+SSP00254,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.00.800,T0.800,Balustrade,Balustrade,mezzanine ground,51.989906,4.375405,16,0,rumoerig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,>25m,aanlandplek
+SSP00255,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.01.800,1.8,Jan Siebring square,Jan Siebring square,1st floor,51.989906,4.375405,8,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,>25m,0-50m,>25m,aanlandplek
+SSP00258,62 - Luchtvaart- en Ruimtevaarttechniek,62.00.00.510,0.51,Study Area,Study Area,ground floor,51.989906,4.375405,54,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00279,"31 - Techniek, Bestuur en Management",31.01.01.841,A1.841,Hallway - Cubicles,Hallway - Cubicles,1st floor,52.002639,4.369808,36,0,rustig,daglicht,ja (<1 pp),nee,ja,0-25m,0-50m,0-25m,aanlandplek
+SSP00280,"31 - Techniek, Bestuur en Management",31.02.01.821,A1.821,Hallway,Hallway,1st floor,52.002574,4.369456,5,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek
+SSP00282,"31 - Techniek, Bestuur en Management",31.03.00.060,B0.060,Hallway - Cubicles,Hallway - Cubicles,ground floor,52.002467,4.369293,15,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00283,"31 - Techniek, Bestuur en Management",31.05.00.010,D0.010,Computer Room A,Computer Room A,ground floor,52.00212,4.369109,70,70,stil,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00285,"31 - Techniek, Bestuur en Management",31.01.00.240,A0.240,Project Room 1,Project Room 1,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00286,"31 - Techniek, Bestuur en Management",31.01.00.380,A0.380,Project Room 10,Project Room 10,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00287,"31 - Techniek, Bestuur en Management",31.01.00.390,A0.390,Project Room 11,Project Room 11,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00288,"31 - Techniek, Bestuur en Management",31.01.00.400,A0.400,Project Room 12,Project Room 12,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00289,"31 - Techniek, Bestuur en Management",31.01.00.260,A0.260,Project Room 2,Project Room 2,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00290,"31 - Techniek, Bestuur en Management",31.01.00.280,A0.280,Project Room 3,Project Room 3,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00291,"31 - Techniek, Bestuur en Management",31.01.00.300,A0.300,Project Room 4,Project Room 4,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00292,"31 - Techniek, Bestuur en Management",31.01.00.320,A0.320,Project Room 5,Project Room 5,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00293,"31 - Techniek, Bestuur en Management",31.01.00.330,A0.330,Project Room 6,Project Room 6,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00294,"31 - Techniek, Bestuur en Management",31.01.00.340,A0.340,Project Room 7,Project Room 7,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00295,"31 - Techniek, Bestuur en Management",31.01.00.350,A0.350,Project Room 8,Project Room 8,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00296,"31 - Techniek, Bestuur en Management",31.01.00.370,A0.370,Project Room 9,Project Room 9,ground floor,52.00238,4.369973,6,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,>25m,groepsruimte
+SSP00297,"31 - Techniek, Bestuur en Management",31.03.00.140,B0.140,TB-Café,TB-Café,ground floor,52.002409,4.369041,76,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,horeca
+SSP00316,22 - Technische Natuurkunde,22.01.02.010,A 201,Study Room - Low-Stimulus,Study Room - Low-Stimulus,2nd floor,52.001548,4.373703,30,30,stil,daglicht,ja (>/= 1 pp),nee,nee,>25m,0-50m,0-25m,prikkelarme studieplek
+SSP00318,22 - Technische Natuurkunde,22.01.01.500,A 150,Hallway,Hallway,1st floor,52.00171,4.374222,18,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
+SSP00319,22 - Technische Natuurkunde,22.01.02.500,A 250,Study Area,Study Area,2nd floor,52.00171,4.374222,24,0,rustig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek
+SSP00320,22 - Technische Natuurkunde,22.01.00.500,A 050,Side Entrance,Side Entrance,ground floor,52.00171,4.374222,10,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00321,22 - Technische Natuurkunde,22.00.00.010,F 001,Hallway,Hallway,ground floor,52.001548,4.373703,11,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00323,22 - Technische Natuurkunde,22.00.00.750,F 075,Hallway,Hallway,ground floor,52.000576,4.37435,32,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00324,22 - Technische Natuurkunde,22.00.00.990,F 099,Hallway,Hallway,ground floor,52.000287,4.374516,4,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
+SSP00325,22 - Technische Natuurkunde,22.00.01.010,F 101,Hallway,Hallway,1st floor,52.001548,4.373703,12,0,rumoerig,kunstmatig licht,ja (<1 pp),onbekend,onbekend,0-25m,onbekend,0-25m,aanlandplek/groepswerkplek
+SSP00326,22 - Technische Natuurkunde,22.00.01.250,F 125,Hallway,Hallway,1st floor,52.001226,4.373895,10,0,rumoerig,daglicht,ja (<1 pp),onbekend,onbekend,0-25m,onbekend,0-25m,ontmoetingsplek
+SSP00327,22 - Technische Natuurkunde,22.00.01.500,F 150,Hallway,Hallway,1st floor,52.000887,4.374163,4,0,rumoerig,kunstmatig licht,nee,onbekend,onbekend,0-25m,onbekend,0-25m,ontmoetingsplek
+SSP00328,22 - Technische Natuurkunde,22.00.01.750,F 175,Hallway,Hallway,1st floor,52.000576,4.37435,12,0,rumoerig,daglicht,nee,onbekend,onbekend,0-25m,onbekend,0-25m,ontmoetingsplek
+SSP00329,22 - Technische Natuurkunde,22.00.02.010,F 201,Hallway,Hallway,2nd floor,52.001548,4.373703,6,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
+SSP00330,22 - Technische Natuurkunde,22.00.02.250,F 225,Hallway,Hallway,2nd floor,52.001226,4.373895,24,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00331,22 - Technische Natuurkunde,22.00.02.500,F 250,Hallway,Hallway,2nd floor,52.000887,4.374163,8,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00332,22 - Technische Natuurkunde,22.00.02.750,F 275,Chillout Lounge,Chillout Lounge,2nd floor,52.000576,4.37435,24,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
+SSP00333,22 - Technische Natuurkunde,22.00.03.250,F 325,Hallway,Hallway,3rd floor,52.001226,4.373895,9,0,rumoerig,daglicht,nee,nee,nee,>25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00334,22 - Technische Natuurkunde,22.00.03.750,F 375,Hallway,Hallway,3rd floor,52.000576,4.37435,18,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00335,22 - Technische Natuurkunde,22.01.01.020,A 102,Study Area,Study Area,1st floor,52.001637,4.373938,72,0,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00337,22 - Technische Natuurkunde,22.00.03.040,F 304,Silent Study Room,Silent Study Room,3rd floor,52.001374,4.373798,48,0,stil,kunstmatig licht,ja (>/= 1 pp),ja,nee,>25m,0-50m,0-25m,concentratie studieplek
+SSP00339,22 - Technische Natuurkunde,22.00.03.050,F 305,Study Room,Study Room,3rd floor,52.001374,4.373798,32,0,rustig,daglicht,ja (>/= 1 pp),ja,nee,>25m,0-50m,0-25m,concentratie studieplek
+SSP00340,66 - The Fellowship,62.00.00.802,0.802,Main Hall,Main Hall,ground floor,51.99062,4.377527,22,0,rumoerig,daglicht,nee,nee,nee,0-25m,>50m,0-25m,ontmoetingsplek
+SSP00342,66 - The Fellowship,62.00.01.802,1.802,Balustrade,Balustrade,1st floor,51.99062,4.377527,9,9,rumoerig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek
+SSP00373,58 - TNW,58.01.01.010,A1.010,Restaurant,Restaurant,1st floor,51.989932,4.379586,37,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,horeca
+SSP00374,58 - TNW,58.01.00.080,A0.080,Silent Study Room,Silent Study Room,ground floor,51.990018,4.379951,42,0,stil,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00376,58 - TNW,58.01.01.803,A1.803,Gang,Gang,1st floor,51.990018,4.379951,16,0,rumoerig,kunstmatig licht,nee,nee,nee,0-25m,0-50m,0-25m,ontmoetingsplek
+SSP00377,58 - TNW,58.01.01.804,A1.804,Cubicles,Cubicles,1st floor,51.989831,4.379745,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00378,58 - TNW,58.01.01.805,A1.805,Cubicles,Cubicles,1st floor,51.989865,4.379947,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00379,58 - TNW,58.01.01.806,A1.806,Cubicles,Cubicles,1st floor,51.990067,4.379789,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00380,58 - TNW,58.01.01.807,A1.807,Cubicles,Cubicles,1st floor,51.99002,4.379634,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00381,58 - TNW,58.01.02.803,A2.803,Balustrade,Balustrade,2nd floor,51.989932,4.379586,10,0,rumoerig,daglicht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek
+SSP00382,58 - TNW,58.01.02.804,A2.804,Cubicles,Cubicles,2nd floor,51.989831,4.379745,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek/groepswerkplek
+SSP00383,58 - TNW,58.01.02.805,A2.805,Cubicles,Cubicles,2nd floor,51.989865,4.379947,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek/groepswerkplek
+SSP00384,58 - TNW,58.01.02.806,A2.806,Cubicles,Cubicles,2nd floor,51.99002,4.379634,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek/groepswerkplek
+SSP00385,58 - TNW,58.01.02.807,A2.807,Cubicles,Cubicles,2nd floor,51.990067,4.379789,12,0,rumoerig,kunstmatig licht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,aanlandplek/groepswerkplek
+SSP00386,58 - TNW,58.01.03.010,A3.010,Silent Study Room,Silent Study Room,3rd floor,51.990018,4.379951,30,0,stil,daglicht,ja (<1 pp),nee,nee,0-25m,>50m,0-25m,concentratie studieplek
+SSP00390,28 - Wiskunde & Informatica,28.00.00.140,0.C140,Main Hall,Main Hall,ground floor,51.999097,4.377981,16,0,rumoerig,daglicht,nee,nee,nee,0-25m,0-50m,0-25m,aanlandplek/groepswerkplek
+SSP00393,28 - Wiskunde & Informatica,28.00.00.460,0.C460,Study Area,Study Area,ground floor,51.998844,4.37816,20,16,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00394,28 - Wiskunde & Informatica,28.00.02.460,2.C460,Study Area,Study Area,2nd floor,51.99886,4.378192,16,16,rustig,kunstmatig licht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00397,28 - Wiskunde & Informatica,28.00.04.460,4.C460,Study Area,Study Area,4th floor,51.99886,4.378192,12,12,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
+SSP00398,28 - Wiskunde & Informatica,28.00.06.960,6.C960,Study Area,Study Area,6th floor,51.999097,4.377981,6,6,rustig,daglicht,ja (>/= 1 pp),nee,nee,0-25m,0-50m,0-25m,concentratie studieplek
