@@ -2,8 +2,11 @@
 https://spacefinder.netlify.com/* https://spacefinder.tudelft.nl/:splat 301!
 
 # Redirect to preferred locale, default to English:
-/ /nl/ 302 Language=nl
-/ /en/ 302
+/ /nl/ruimtes/ 302 Language=nl
+/ /en/spaces/ 302
+
+/nl/ /nl/ruimtes/ 302
+/en/ /en/spaces/ 302
 
 # This slug has been generated incorrectly before
 /nl/gebouwen/lr/* /nl/gebouwen/62-lr/:splat
