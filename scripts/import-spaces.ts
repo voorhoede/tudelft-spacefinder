@@ -56,9 +56,10 @@ fs.readFile("./src/data/studieplekken.csv")
           case "presentationScreen":
             return maybeDutchBooleanAmount(value);
           case "nearCoffeeMachine":
-          case "nearPrinter":
           case "nearBathroom":
             return value === "0-25m";
+          case "nearPrinter":
+            return value === "0-25m" || value === "0-50m";
           case "grouptables":
             return value === "groepsruimte" || value === "aanlandplek/groepswerkplek";
           default:
