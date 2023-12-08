@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@vite-pwa/nuxt",
   ],
-  css: ["normalize.css", "@/components/app-core/index.css"],
+  css: ["@/components/app-core/index.css"],
   app: {
     head: {
       title: "TU Delft Spacefinder",
