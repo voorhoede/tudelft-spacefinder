@@ -1,4 +1,6 @@
 import fs from "node:fs/promises";
+import * as readline from "node:readline/promises";
+import { stderr, stdin, stdout } from "node:process";
 import { parse } from "csv-parse/sync";
 import { buildClient } from "@datocms/cma-client-node";
 import * as dotenv from "dotenv";
@@ -69,6 +71,13 @@ fs.readFile("./src/data/studieplekken.csv")
     }),
   )
   .then(async (parsedData) => {
+    const terminalInterface = readline.createInterface({ input: stdin, output: stdout });
+    await terminalInterface.question(`
+      Are you sure you want to import all CSV data to the environment "${datocmsEnvironment}"?
+      Press Enter to continue.
+    `);
+    terminalInterface.close();
+
     const spaceModelId = "2040795";
     const buildings = await client.items.list({
       filter: { type: "building" },
