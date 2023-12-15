@@ -32,7 +32,6 @@
 
       <MapboxMap
         class="default-layout__map"
-        :class="{ 'default-layout__map--space-detail-page': isSpaceDetailPage}"
       />
     </main>
 
@@ -84,8 +83,6 @@ afterEach((from, to) => {
     topOfPage.value.focus();
   }
 });
-
-const isSpaceDetailPage = computed(() => route.params.spaceSlug !== undefined)
 
 const notificationBody = computed(() => notification[$locale.value].body)
 

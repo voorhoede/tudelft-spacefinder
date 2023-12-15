@@ -75,18 +75,4 @@ body {
         width: var(--column-width-desktop);
         height: calc(100vh - var(--header-height-desktop));
     }
-
-    .default-layout__map.default-layout__map {
-        margin-left: var(--column-width-desktop);
-        width: calc(100% - var(--column-width-desktop));
-    }
-
-    .default-layout__map--space-detail-page.default-layout__map {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .mobile-only {
-      display: none!important;
-    }
 }
