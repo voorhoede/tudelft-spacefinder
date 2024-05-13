@@ -90,16 +90,6 @@
             class="space-card__image-placeholder-icon"
           />
         </div>
-
-        <div class="space-card__occupancy-indicator">
-          {{ space.building.abbreviation }}
-
-          <OccupancyIndicator
-            :active-devices="space.building.activeDevices"
-            :total-seats="space.building.totalSeats"
-            :occupancy="space.building.occupancy"
-          />
-        </div>
       </div>
     </div>
   </div>
@@ -335,29 +325,5 @@ defineExpose({
 .space-card__image-placeholder-icon {
   width: 30px;
   height: 30px;
-}
-
-.space-card__occupancy-indicator {
-  position: relative;
-  z-index: var(--layer--raised);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-half);
-  margin-left: var(--spacing-default);
-  padding: .3rem var(--spacing-three-quarter);
-  border-radius: 2rem;
-  background: var(--background-color);
-  font-size: var(--font-size-smaller);
-  font-weight: bold;
-  line-height: 1;
-  word-break: break-all;
-}
-
-.space-card svg {
-  fill: var(--text-color);
-}
-
-.space-card__occupancy-indicator svg {
-  margin-top: .3rem;
 }
 </style>
