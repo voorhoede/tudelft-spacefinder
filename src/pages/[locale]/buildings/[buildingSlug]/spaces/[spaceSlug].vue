@@ -14,13 +14,20 @@
       class="button--route"
     />
 
-    <SpaceCard
-      ref="card"
-      :space="space"
-      :associated-spaces="associatedSpaces"
-      class="space-detail__card"
-      is-header
-    />
+    <div class="space-detail__card">
+      <SpaceCard
+        ref="card"
+        :space="space"
+        :associated-spaces="associatedSpaces"
+        is-header
+      />
+      <p
+        v-if="space.remark"
+        class="space-detail__remark"
+      >
+        {{ space.remark }}
+      </p>
+    </div>
   </section>
 </template>
 
@@ -44,14 +51,17 @@ const { currentSpace: space, associatedSpaces } = storeToRefs(spacesStore);
 
 const runtimeConfig = useRuntimeConfig();
 
-const routeUrl = computed(
-  () => space.value
-        ? `https://www.google.com/maps/dir//${space.value.latitude},${space.value.longitude}` // There is a double // behind dir, that gives you the direction from your current location to the space otherwise it will give you the direction from the space to current location or other place
-        : ''
+const routeUrl = computed(() =>
+  space.value
+    ? `https://www.google.com/maps/dir//${space.value.latitude},${space.value.longitude}` // There is a double // behind dir, that gives you the direction from your current location to the space otherwise it will give you the direction from the space to current location or other place
+    : ""
 );
 
 onMounted(() => {
-  mapStore.zoomToSpace([space.value!.longitude, space.value!.latitude], zoomLevels.spaceZoom);
+  mapStore.zoomToSpace(
+    [space.value!.longitude, space.value!.latitude],
+    zoomLevels.spaceZoom
+  );
 });
 
 useSpacefinderHead(
@@ -78,6 +88,12 @@ useSpacefinderHead(
   width: calc(100% - var(--spacing-double));
 }
 
+.space-detail__remark {
+  padding: var(--spacing-default);
+  box-shadow: var(--shadow-small);
+  background-color: var(--neutral-color);
+}
+
 @media (min-width: 700px) {
   .space-detail__card {
     bottom: calc(var(--navigation-height-desktop) + var(--spacing-default));
@@ -89,7 +105,7 @@ useSpacefinderHead(
   }
 
   .space-detail .button--route {
-    left: calc(5 * var(--spacing-default))
+    left: calc(5 * var(--spacing-default));
   }
 }
 </style>

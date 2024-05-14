@@ -41,6 +41,8 @@ export function getBuildingsDataFromCms() {
             image {
               url
             }
+            remarkEN: remark(locale: en)
+            remarkNL: remark(locale: nl)
             seats
             quietness
             adjustableChairs

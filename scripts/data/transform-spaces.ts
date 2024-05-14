@@ -11,8 +11,8 @@ export function getSpace(source: Record<string, any>): CsvSpaceData {
   return source.spaces.map((space) => ({
     buildingNumber: source.number,
     i18n: {
-      en: { name: space.nameEN },
-      nl: { name: space.nameNL },
+      en: { name: space.nameEN, remark: space.remarkEN },
+      nl: { name: space.nameNL, remark: space.remarkNL },
     },
     slug: getSpaceSlug(space.spaceId, space.nameEN.trim()),
     facilities: {

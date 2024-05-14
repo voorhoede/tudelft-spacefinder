@@ -1,58 +1,58 @@
 :root {
-    /* colors */
-    --brand-primary-color: #00a6d6;
-    --brand-primary-color-dark: #1e6188;
-    --brand-primary-color-light: #a8d4e5;
-    --brand-secondary-color: #8d17ab;
-    --mapbox-background-color: #e6e4e0;
+  /* colors */
+  --brand-primary-color: #00a6d6;
+  --brand-primary-color-dark: #1e6188;
+  --brand-primary-color-light: #a8d4e5;
+  --brand-secondary-color: #8d17ab;
+  --mapbox-background-color: #e6e4e0;
 
-    --text-color: #333333;
-    --text-color-muted:#8C8C8C;
-    --highlight-color: #dbdcde;
-    --neutral-color: #f7f7f7;
-    --background-color: #ffffff;
+  --text-color: #333333;
+  --text-color-muted: #8C8C8C;
+  --highlight-color: #dbdcde;
+  --neutral-color: #f7f7f7;
+  --background-color: #ffffff;
 
-    /* fonts */
-    --font-heading: Roboto, sans-serif;
-    --font-body: Arial, sans-serif;
+  /* fonts */
+  --font-heading: Roboto, sans-serif;
+  --font-body: Arial, sans-serif;
 
-    --font-size-big: 1.5rem;
-    --font-size-bigger: 1.3rem;
-    --font-size-default: 1rem;
-    --font-size-smaller: .9rem;
-    --font-size-medium: .7rem;
-    --font-size-small: .5rem;
+  --font-size-big: 1.5rem;
+  --font-size-bigger: 1.3rem;
+  --font-size-default: 1rem;
+  --font-size-smaller: 0.875rem;
+  --font-size-medium: .7rem;
+  --font-size-small: .5rem;
 
-    /* spacing */
-    --spacing-double: 2rem;
-    --spacing-default-half: 1.5rem;
-    --spacing-default: 1rem;
-    --spacing-default-negative: -1rem;
-    --spacing-three-quarter: .75rem;
-    --spacing-half: .5rem;
-    --spacing-half-negative: -.5rem;
-    --spacing-quarter: .25rem;
-    --spacing-quarter-negative: -.25rem;
+  /* spacing */
+  --spacing-double: 2rem;
+  --spacing-default-half: 1.5rem;
+  --spacing-default: 1rem;
+  --spacing-default-negative: -1rem;
+  --spacing-three-quarter: .75rem;
+  --spacing-half: .5rem;
+  --spacing-half-negative: -.5rem;
+  --spacing-quarter: .25rem;
+  --spacing-quarter-negative: -.25rem;
 
-    /* layers */
-    --layer--raised: 1;
-    --layer--overlay: 5;
-    --layer--popup: 10;
+  /* layers */
+  --layer--raised: 1;
+  --layer--overlay: 5;
+  --layer--popup: 10;
 
-    /* shadows */
-    --shadow-small: 0 1px 2px rgba(0, 0, 0, .4);
+  /* shadows */
+  --shadow-small: 0 1px 2px rgba(0, 0, 0, .4);
 
-    /* sizing */
-    --header-height-mobile: 50px;
-    --header-height-desktop: 65px;
-    --navigation-height-mobile: 50px;
-    --navigation-height-desktop: 55px;
-    --column-width-mobile: 310px;
-    --column-width-desktop: 360px;
+  /* sizing */
+  --header-height-mobile: 50px;
+  --header-height-desktop: 65px;
+  --navigation-height-mobile: 50px;
+  --navigation-height-desktop: 55px;
+  --column-width-mobile: 310px;
+  --column-width-desktop: 380px;
 }
 
 @media (min-width: 1280px) {
-    :root {
-        --column-width-desktop: 420px;
-    }
+  :root {
+    --column-width-desktop: 440px;
+  }
 }
