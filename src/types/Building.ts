@@ -1,6 +1,5 @@
 import { Bounds } from "./Bounds";
 import type { Occupancy } from "./Filters";
-import type { OpeningHours } from "./OpeningHours";
 
 export interface Building extends BuildingI18n {
   slug: string;
@@ -24,12 +23,17 @@ export interface BuildingI18n {
 
   // Client-side loading
   occupancy?: Occupancy | undefined;
-  openingHours?: OpeningHours[];
+  openingHoursPerDay?: {
+    [key: string]: {
+      start: string;
+      end: string;
+    };
+  };
 }
 
 export type CsvAndCmsBuildingData = Omit<
   BuildingI18n,
-  "openingHours" | "activeDevices" | "occupancy"
+  "activeDevices" | "occupancy"
 > & { exchangeBuildingId: string };
 
 export type CmsBuildingData = Pick<

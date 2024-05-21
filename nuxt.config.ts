@@ -41,6 +41,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     internalSecret: process.env.INTERNAL_SECRET,
     datoApiToken: process.env.DATO_API_TOKEN,
+    microsoftGraph: {
+      tenantId: '096e524d-6929-4030-8cd3-8ab42de0887b',
+      clientId: process.env.MICROSOFT_GRAPH_CLIENT_ID,
+      clientSecret: process.env.MICROSOFT_GRAPH_CLIENT_SECRET,
+    },
     kafkaConfig: {
       url: process.env.KAFKA_URL,
       username: process.env.KAFKA_USERNAME,

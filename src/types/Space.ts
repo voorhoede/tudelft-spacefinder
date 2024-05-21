@@ -1,5 +1,4 @@
 import type { SpaceFeatures, Occupancy } from "./Filters";
-import type { OpeningHours } from "./OpeningHours";
 import type { Building } from "./Building";
 
 export type Space = Room | RoomZone;
@@ -15,7 +14,7 @@ export interface RoomI18n extends RoomBaseRaw {
 
 export type CsvRoomData = Omit<
   RoomI18n,
-  "openingHours" | "imageUrl" | "activeDevices"
+  "imageUrl" | "activeDevices"
 > & {
   exchangeBuildingId: string;
   exchangeRoomId: string;
@@ -42,7 +41,6 @@ export interface RoomBaseRaw {
   seats: number;
   tables: number;
   facilities: SpaceFeatures;
-  openingHours: OpeningHours[];
   image?: {
     url: string;
   };
@@ -52,7 +50,7 @@ export interface RoomBaseRaw {
 
 export type CsvSpaceData = Omit<
   SpaceI18n,
-  "openingHours" | "activeDevices"
+  "activeDevices"
 > & {
   exchangeBuildingId: string;
   exchangeRoomId: string;

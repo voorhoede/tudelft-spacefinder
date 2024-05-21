@@ -1,14 +1,13 @@
 <template>
   <div class="opening-hours">
     <button
-      v-if="$isMobile.value || showToggleOnDesktop"
       :aria-label="isExpanded ? $t('hideOpeningHours') : $t('showOpeningHours')"
       class="opening-hours__toggle button"
       :class="{ 'opening-hours__toggle--open': isExpanded }"
       @click="toggleOpeningHours"
     >
       <SvgIcon
-        name="back-icon"
+        name="chevron-icon"
         class="opening-hours__toggle-icon"
       />
 
@@ -17,29 +16,31 @@
       </span>
     </button>
 
-    <div v-if="isExpanded || (!$isMobile.value && !showToggleOnDesktop)">
+    <div v-if="isExpanded">
       <h3 class="opening-hours__title">
         {{ $t("comingWeek") }}
       </h3>
 
       <dl class="opening-hours__overview">
         <template
-          v-for="(timeSlot, index) in timeSlots"
-          :key="index"
+          v-for="(day, dayIndex) in comingWeek"
+          :key="dayIndex"
         >
           <dt class="opening-hours__day">
-            {{ index === 0 ? $t("today") : $t(timeSlot.day) }}
+            {{ intlFormatDay.format(day.date) }}
           </dt>
           <dd class="opening-hours__time">
-            <template v-if="timeSlot.times.length">
+            <template v-if="day.events">
               <p
-                v-for="(time, timeIndex) in timeSlot.times"
-                :key="timeIndex"
-                :class="{
-                  'opening-hours__busy': time.busy,
-                }"
+                v-for="(event, index) in day.events"
+                :key="`${dayIndex}-${index}`"
               >
-                {{ renderTime(time.time[0]) }} - {{ renderTime(time.time[1]) }}
+                {{
+                  intlFormatTime.formatRange(
+                    new Date(event.start),
+                    new Date(event.end)
+                  )
+                }}
               </p>
             </template>
             <template v-else>
@@ -53,84 +54,41 @@
 </template>
 
 <script setup lang="ts">
-import type { OpeningHours } from "~/types/OpeningHours";
-
-export interface Props {
-  openingHoursBuilding: OpeningHours[];
-  openingHoursSpace: OpeningHours[];
-  showToggleOnDesktop?: boolean;
-}
-const props = withDefaults(defineProps<Props>(), { showToggleOnDesktop: true });
+const props = defineProps<{
+  openingHoursPerDay: unknown;
+}>();
 
 const isExpanded = ref(false);
+const route = useRoute();
+
+const intlFormatDay = Intl.DateTimeFormat(route.params.locale, {
+  weekday: "long",
+});
+
+const intlFormatTime = Intl.DateTimeFormat(route.params.locale, {
+  hour: "numeric",
+  minute: "numeric",
+  hour12: false,
+});
+
+const comingWeek = computed(() => {
+  const week = [0, 1, 2, 3, 4, 5, 6, 7].map((index) => {
+    const date = new Date();
+    date.setDate(date.getDate() + index);
+    return date;
+  });
+
+  return week.map((day) => {
+    return { date: day, events: props.openingHoursPerDay[day.getUTCDate()] };
+  });
+});
 
 function toggleOpeningHours() {
   isExpanded.value = !isExpanded.value;
 }
-
-function renderTime(dateStamp: string) {
-  const date = new Date(dateStamp);
-  const time = date.toLocaleString("nl-NL", {
-    hour: "numeric",
-    minute: "2-digit",
-  });
-  return time;
-}
-
-const timeSlots = computed(() => {
-  return props.openingHoursSpace.map((openingHour, dayIndex) => {
-    const buildingHoursThisDay = props.openingHoursBuilding[dayIndex].time;
-
-    const buildingStart = buildingHoursThisDay.length
-      ? buildingHoursThisDay[buildingHoursThisDay.length - 1][0]
-      : "";
-    const buildingEnd = buildingHoursThisDay.length
-      ? buildingHoursThisDay[buildingHoursThisDay.length - 1][1]
-      : "";
-    return {
-      day: openingHour.day,
-      times: openingHour.time.reduce((timeslots, timeslot, slotIndex) => {
-        // Check if there is a busy slot before the first open time slot
-        if (
-          slotIndex === 0 &&
-          new Date(timeslot[0]) > new Date(buildingStart)
-        ) {
-          const start = buildingStart;
-          const end = timeslot[0];
-          timeslots.push({ time: [start, end], busy: true });
-        }
-
-        // Always add open time slot to array
-        timeslots.push({ time: timeslot, busy: false });
-
-        // Check if there is a busy slot between two open time slots
-        const nextTimeslot = openingHour.time[slotIndex + 1];
-        if (nextTimeslot && new Date(nextTimeslot[0]) > new Date(timeslot[1])) {
-          const start = timeslot[1];
-          const end = nextTimeslot[0];
-          timeslots.push({ time: [start, end], busy: true });
-        }
-
-        // Check if there is a busy slot after the last open time slot
-        if (
-          slotIndex === openingHour.time.length - 1 &&
-          new Date(buildingEnd) > new Date(timeslot[1])
-        ) {
-          const start = timeslot[1];
-          const end = buildingEnd;
-          timeslots.push({ time: [start, end], busy: true });
-        }
-
-        return timeslots;
-      }, [] as Array<{ time: [string, string]; busy: boolean }>),
-    };
-  });
-});
 </script>
 
 <style>
-@import "../app-core/variables.css";
-
 .opening-hours {
   font-size: var(--font-size-smaller);
   text-align: right;
@@ -142,9 +100,10 @@ const timeSlots = computed(() => {
 }
 
 .opening-hours__toggle {
-  padding-left: var(--spacing-quarter);
-  margin-right: var(--spacing-half-negative);
-  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
   font-size: var(--font-size-smaller);
 }
 
@@ -156,18 +115,23 @@ const timeSlots = computed(() => {
   width: 20px;
   height: 20px;
   vertical-align: middle;
-  transform: rotate(270deg);
-  transition: transform 0.3s;
+  margin-block-start: calc(1ex - 1cap);
+  transition: transform 0.2s;
+  transform-origin: center 54%;
 }
 
 .opening-hours__toggle--open .opening-hours__toggle-icon {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }
 
 .opening-hours__title {
   margin-top: var(--spacing-half);
   font-size: var(--font-size-default);
   text-align: left;
+}
+
+.opening-hours__day:first-child {
+  font-weight: bold;
 }
 
 .opening-hours__day,
@@ -183,10 +147,5 @@ const timeSlots = computed(() => {
 .opening-hours__time {
   font-weight: bold;
   text-align: right;
-}
-
-.opening-hours__busy {
-  text-decoration: line-through;
-  color: var(--text-color-muted);
 }
 </style>

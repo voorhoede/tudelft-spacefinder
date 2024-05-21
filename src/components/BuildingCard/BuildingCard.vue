@@ -17,8 +17,8 @@
       />
 
       <CardStatus
-        :opening-hours="building.openingHours"
         class="building-card__status"
+        :opening-hours-per-day="building.openingHoursPerDay"
       />
 
       <div class="building-card__occupancy">
@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import type { Building } from "~/types/Building";
-const props = defineProps<{ building: Building, isHeader?: boolean }>();
+const props = defineProps<{ building: Building; isHeader?: boolean }>();
 const runtimeConfig = useRuntimeConfig();
 const totalSpaces = computed(() =>
   runtimeConfig.public.spacesMode == "rooms"

@@ -1,6 +1,5 @@
 import type { Filters } from "~/types/Filters";
 import type { Space } from "~/types/Space";
-import { OpeningHours } from "~/types/OpeningHours";
 
 export function spaceFilter(spaces: Space[], filters: Filters) {
   const filterKeys = Object.keys(filters) as Array<keyof Filters>;
@@ -30,17 +29,20 @@ function filterSpaces(
   If the current time falls in any of the time ranges for today, we're in
   business
 */
-export function spaceIsOpen(now: Date, openingHours: OpeningHours[]) {
-  // first item in openingHours array is today
-  const [{ time: timeRanges }] = openingHours;
-  return (
-    timeRanges
-      // parse to date objects for comparison
-      .map((range) => range.map((item) => new Date(item)))
-      .some(([start, end]) => {
-        return now >= start && now <= end;
-      })
-  );
+export function spaceIsOpen(now: Date, openingHours: any) {
+  const hoursToday = openingHours[now.getUTCDate()]
+
+  if (!hoursToday)
+    return false
+
+  return hoursToday
+    .map((timeRange) => ({
+      start: new Date(timeRange.start),
+      end: new Date(timeRange.end),
+    }))
+    .some((timeRange) => (
+      now >= timeRange.start && now <= timeRange.end
+    ))
 }
 
 function filterSpace(
@@ -52,8 +54,8 @@ function filterSpace(
 
   return activeFilterKeys.every((activeFilterKey) => {
     if (activeFilterKey == "showOpenLocations")
-      return space.building.openingHours
-        && spaceIsOpen(now, space.building.openingHours);
+      return space.building.openingHoursPerDay
+        && spaceIsOpen(now, space.building.openingHoursPerDay);
     if (activeFilterKey == "buildings")
       return filters.buildings.includes(space.buildingNumber);
     if (activeFilterKey == "quietness")
