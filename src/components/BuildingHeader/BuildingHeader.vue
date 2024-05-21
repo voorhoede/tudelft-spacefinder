@@ -12,22 +12,21 @@
           :active-devices="building.activeDevices"
           :total-seats="building.totalSeats"
           :occupancy="building.occupancy"
-          class="building-header__occupancy"
         />
       </div>
 
-      <CardStatus
-        :opening-hours="building.openingHours"
-        class="building-header__open-status"
-      />
-      <ClientOnly>
-        <OpeningHours
-          v-if="building.openingHours"
-          :opening-hours-building="building.openingHours"
-          :opening-hours-space="building.openingHours"
-          class="building-header__opening-hours"
-        />
-      </ClientOnly>
+      <div class="building-header__open-wrapper">
+        <ClientOnly>
+          <CardStatus
+            v-if="building.openingHoursPerDay"
+            :opening-hours-per-day="building.openingHoursPerDay"
+          />
+          <OpeningHours
+            v-if="building.openingHoursPerDay"
+            :opening-hours-per-day="building.openingHoursPerDay"
+          />
+        </ClientOnly>
+      </div>
     </div>
   </div>
 </template>
@@ -49,29 +48,21 @@ const totalSpaces = computed(() =>
 
 .building-header__meta {
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  flex-wrap: wrap;
   padding: var(--spacing-default);
+  font-size: var(--font-size-smaller);
+  justify-content: space-between;
 }
 
 .building-header__spaces {
   display: flex;
-  align-items: center;
+  width: 100%;
   justify-content: space-between;
   margin-bottom: var(--spacing-quarter);
 }
 
-.building-header__occupancy {
-  margin-top: var(--spacing-quarter);
-}
-
-.building-header__open-status {
-  font-size: var(--font-size-smaller);
-}
-
-.building-header__opening-hours {
-  flex: 0 0 100%;
-  margin-top: -1.5rem;
-  font-size: var(--font-size-smaller);
+.building-header__open-wrapper {
+  position: relative;
+  width: 100%;
 }
 </style>

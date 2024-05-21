@@ -8,13 +8,13 @@ import type { Space, SpaceI18n, Room, RoomI18n } from "~/types/Space";
 
 export type Selection =
   | {
-      level: "building";
-      buildingSlug: string;
-    }
+    level: "building";
+    buildingSlug: string;
+  }
   | {
-      level: "space";
-      spaceSlug: string;
-    }
+    level: "space";
+    spaceSlug: string;
+  }
   | undefined;
 
 export type AssociatedSpace = {
@@ -44,7 +44,7 @@ export const useSpacesStore = defineStore("spaces", () => {
         : currentSpace.value?.building
       : undefined
   );
-  
+
   const associatedSpaces = computed(() => currentAssociatedSpaces.value);
 
   const defaultFilters: Filters = {
@@ -117,12 +117,18 @@ export const useSpacesStore = defineStore("spaces", () => {
 
   function bulkSetBuildingOpeningHours(data: Array<unknown>) {
     buildingsI18n.value = buildingsI18n.value.map((building) => {
-      const matchedBuilding = data.find(({ number }) => number === Number(building.number));
+      const matchedBuilding = data.find(({ number }) => number === building.number);
 
       return matchedBuilding
         ? {
           ...building,
-          openingHours: matchedBuilding.opening_hours,
+          ...(matchedBuilding.opening_hours.length && {
+            // @ts-expect-error groupBy method exists but has no type yet
+            openingHoursPerDay: Object.groupBy(matchedBuilding.opening_hours, ({ start }) => {
+              const startDate = new Date(start);
+              return startDate.getUTCDate();
+            })
+          }),
         }
         : building;
     });
@@ -219,7 +225,7 @@ export const useSpacesStore = defineStore("spaces", () => {
       //mapStore.updateData(); //TODO: DECIDE IF WE NEED TO DO THAT
     }
   }
-  
+
   function setAssociatedSpaces(spaces: AssociatedSpace[]) {
     currentAssociatedSpaces.value = spaces;
   }
@@ -254,7 +260,7 @@ export const useSpacesStore = defineStore("spaces", () => {
 
   const numberOfSelectedFilters = computed(
     () => {
-      return  Object.values(filters.value).reduce((acc, item) => {
+      return Object.values(filters.value).reduce((acc, item) => {
         return acc + (item === true || item > 0 ? 1 : item.length > 0 ? item.length : 0)
       }, 0)
     }

@@ -12,9 +12,9 @@
           name="seat-icon"
           class="space-card__seating-icon"
         />
-        <span> {{ " " }}{{ space.seats }}{{ " " }} </span>
+        <span>{{ " " }}{{ space.seats }}{{ " " }}</span>
         <span class="space-card__seating-label">
-          {{ $t("total") }} {{ $t("seats") }}
+          {{ $t("seats") }}
         </span>
       </div>
 

@@ -61,17 +61,17 @@ export interface Database {
       buildings: {
         Row: {
           created_at: string | null
-          number: number
+          number: string
           opening_hours: Json | null
         }
         Insert: {
           created_at?: string | null
-          number: number
+          number: string
           opening_hours?: Json | null
         }
         Update: {
           created_at?: string | null
-          number?: number
+          number?: string
           opening_hours?: Json | null
         }
         Relationships: []

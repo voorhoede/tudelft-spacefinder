@@ -1,49 +1,41 @@
 <template>
   <ClientOnly>
     <p
-      v-if="openingHours"
       class="card-status"
       :class="{ 'card-status--open': isOpen }"
       v-bind="$attrs"
     >
       <template v-if="isOpen">
-        {{ $t("open") }}
         <SvgIcon
           name="location-open-icon"
           class="card-status__icon"
         />
+        {{ $t("open") }}
       </template>
       <template v-else>
-        {{ $t("closed") }}
         <SvgIcon
           name="location-closed-icon"
           class="card-status__icon"
         />
+        {{ $t("closed") }}
       </template>
     </p>
   </ClientOnly>
 </template>
 
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-};
-</script>
+<script lang="ts"></script>
 
 <script setup lang="ts">
-import type { OpeningHours } from "~/types/OpeningHours";
+import { spaceIsOpen } from "~/lib/filter-spaces";
 
-const props = defineProps<{ openingHours?: OpeningHours[] }>();
+const props = defineProps<{
+  openingHoursPerDay: unknown;
+}>();
+
+const now = new Date();
 
 const isOpen = computed(() => {
-  const now = new Date();
-  const dayNames = ["su", "mo", "tu", "we", "th", "fr", "sa"];
-  const indexToday = dayNames[now.getDay()];
-  const openingHoursToday = props.openingHours?.find(({ day }) => day === indexToday)?.time;
-
-  return openingHoursToday?.some(([startTime, endTime]) => {
-    return now >= new Date(startTime) && now <= new Date(endTime);
-  });
+  return spaceIsOpen(now, props.openingHoursPerDay);
 });
 </script>
 
@@ -57,6 +49,7 @@ const isOpen = computed(() => {
 }
 
 .card-status__icon {
+  vertical-align: middle;
   width: 11px;
   height: 11px;
   stroke: var(--text-color);
