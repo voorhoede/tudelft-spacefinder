@@ -15,10 +15,14 @@
     />
 
     <div class="space-detail__card">
+      <AssociatedCard
+        v-if="associatedSpaces"
+        :spaces="associatedSpaces"
+        :current-space-slug="space.slug"
+      />
       <SpaceCard
         ref="card"
         :space="space"
-        :associated-spaces="associatedSpaces"
         is-header
       />
       <p
@@ -38,6 +42,7 @@ import { useSpacesStore } from "~/stores/spaces";
 import { useMapStore } from "~/stores/map";
 import { storeToRefs } from "pinia";
 import SpaceCard from "~/components/SpaceCard/SpaceCard.vue";
+import AssociatedCard from "~/components/SpaceCard/AssociatedCard.vue";
 
 definePageMeta({ alias: "/:locale/gebouwen/:buildingSlug/ruimtes/:spaceSlug" });
 

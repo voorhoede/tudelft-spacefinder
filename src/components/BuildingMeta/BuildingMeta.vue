@@ -2,14 +2,14 @@
   <ul class="flat-list building-meta">
     <li>
       <SvgIcon
-        name="seat-icon"
+        name="seat-icon--micro"
         class="building-meta__icon"
       />
       <span>{{ " " }}{{ props.seats }} {{ $t("seats") }}</span>
     </li>
     <li>
       <SvgIcon
-        name="door-icon"
+        name="door-icon--micro"
         class="building-meta__icon"
       />
       <span>{{ " " }}{{ props.spaces }} {{ $t("spaces") }}</span>

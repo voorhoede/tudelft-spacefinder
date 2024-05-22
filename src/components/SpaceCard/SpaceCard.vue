@@ -9,7 +9,7 @@
       </p>
       <div class="space-card__seating">
         <SvgIcon
-          name="seat-icon"
+          name="seat-icon--micro"
           class="space-card__seating-icon"
         />
         <span>{{ " " }}{{ space.seats }}{{ " " }}</span>

@@ -7,7 +7,7 @@
       @click="toggleOpeningHours"
     >
       <SvgIcon
-        name="chevron-icon"
+        name="chevron-icon--mini"
         class="opening-hours__toggle-icon"
       />
 
