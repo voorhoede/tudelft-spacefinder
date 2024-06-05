@@ -21,7 +21,7 @@ describe("parseMessageAruba", () => {
     })).toMatchInlineSnapshot(`
     {
       "access_point_name": "A-23-0-007",
-      "building_number": 23,
+      "building_number": "23",
       "device_count": 3,
       "updated_at": "2023-03-21T12:01:20.000Z",
     }
@@ -41,7 +41,22 @@ describe("parseMessageAruba", () => {
       "from name with dashes"
     )
       .toContain({
-        "building_number": 66,
+        "building_number": "66",
+      });
+
+    expect(
+      parseMessageAruba({
+        timestamp: "1679400080000",
+        decodedValue: {
+          name: "AP-08-00-01-350-03",
+          site: "",
+          status: "Up",
+        }
+      }),
+      "start single digits with zero"
+    )
+      .toContain({
+        "building_number": "08",
       });
 
     expect(
