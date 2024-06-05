@@ -17,9 +17,6 @@ const authProvider = new TokenCredentialAuthenticationProvider(credential, {
 
 const graphClient = Client.initWithMiddleware({
   authProvider: authProvider,
-  fetchOptions: {
-    headers: { 'Prefer': 'outlook.timezone="Europe/Amsterdam"' },
-  },
 });
 
 export default defineEventHandler(async (event) => {
