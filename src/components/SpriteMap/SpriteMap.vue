@@ -55,6 +55,15 @@
     </symbol>
 
     <symbol
+      id="group-table--mini"
+      viewBox="0 0 20 20"
+    >
+      <path
+        d="M9 3A2.3 2.3 0 007 5V15A2.3 2.3 0 009 17H11A2.3 2.3 0 0013 15V5A2.3 2.3 0 0011 3ZM5 6 2 6 2 9 5 9ZM5 11 2 11 2 14 5 14ZM15 11 18 11 18 14 15 14ZM18 6 15 6 15 9 18 9Z"
+      />
+    </symbol>
+
+    <symbol
       id="battery-100--mini"
       viewBox="0 0 20 20"
     >
