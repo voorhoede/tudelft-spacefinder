@@ -1,24 +1,6 @@
 <template>
   <nav class="app-navigation">
     <ul class="app-navigation__items flat-list">
-      <li 
-        v-if="$isMobile.value"
-        class="app-navigation__item"
-      >
-        <NuxtLink
-          to="/"
-          class="button button--navigation"
-        >
-          <SvgIcon
-            name="map-icon"
-            class="button--navigation__icon"
-          />
-
-          <span class="app-menu__link-name">
-            {{ $t("map") }}
-          </span>
-        </NuxtLink>
-      </li>
       <li class="app-navigation__item">
         <NuxtLink
           :to="$localePath('/buildings')"
@@ -89,7 +71,7 @@ let lastOpenedMenu: string | null = null;
 
 watch(
   () => props.openedMenu,
-  (newValue) => {    
+  (newValue) => {
     if (lastOpenedMenu === "filter-menu") {
       menuButton.value?.focus();
     }
