@@ -10,7 +10,10 @@
     <SvgIcon
       v-if="showIcon"
       :name="iconName"
-      class="filter-menu__filter-icon"
+      :class="{
+        'filter-menu__filter-icon--legacy': iconStyle === 'legacy',
+        'filter-menu__filter-icon--new': iconStyle === 'new',
+      }"
     />
     {{ label ?? $t(i18nKey) }}
   </label>
@@ -34,6 +37,7 @@ const props = withDefaults(
     icon?: string;
     /** False if you do not want to display an icon */
     showIcon?: boolean;
+    iconStyle: "legacy" | "new";
   }>(),
   {
     option: undefined,
@@ -41,6 +45,7 @@ const props = withDefaults(
     label: undefined,
     icon: undefined,
     showIcon: true,
+    iconStyle: "legacy",
   }
 );
 const inputId = computed(() =>
@@ -80,11 +85,19 @@ const spacesStore = useSpacesStore();
   background: var(--brand-primary-color-light);
 }
 
-.filter-menu__filter-icon {
+.filter-menu__filter-icon--legacy {
   margin-top: -2px;
   margin-left: var(--spacing-half-negative);
   width: 25px;
   height: 25px;
   vertical-align: middle;
+}
+
+.filter-menu__filter-icon--new {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-block-start: calc(1ex - 1cap);
+  margin-left: var(--spacing-quarter-negative);
 }
 </style>
