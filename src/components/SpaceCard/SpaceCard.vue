@@ -5,7 +5,8 @@
         {{ space.name }}
       </h3>
       <p class="space-card__description">
-        {{ space.roomName }} | {{ space.floor }}
+        {{ space.building.abbreviation }} | {{ space.roomName }} |
+        {{ space.floor }}
       </p>
       <div class="space-card__seating">
         <SvgIcon
@@ -54,6 +55,9 @@ defineProps<{
     facilities: SpaceFeatures;
     image?: {
       url: string;
+    };
+    building: {
+      abbreviation: string;
     };
   };
 }>();
