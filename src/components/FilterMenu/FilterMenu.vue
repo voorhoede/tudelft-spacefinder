@@ -70,7 +70,11 @@
           </legend>
           <FilterMenuItem name="adjustableChairs" />
           <FilterMenuItem name="daylit" />
-          <FilterMenuItem name="grouptables" />
+          <FilterMenuItem
+            name="grouptables"
+            icon="group-table--mini"
+            icon-style="new"
+          />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
