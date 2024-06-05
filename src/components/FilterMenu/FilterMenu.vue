@@ -16,7 +16,7 @@
               v-if="updatedAt"
               class="filter-menu__legend-meta"
             >
-              {{ $t('updated') }}:
+              {{ $t("updated") }}:
               {{ updatedAt }}
             </span>
           </legend>
@@ -52,6 +52,16 @@
             {{ $t("computerFacilities") }}
           </legend>
           <FilterMenuItem name="powerOutlets" />
+          <FilterMenuItem
+            name="computer"
+            icon="computer-desktop--mini"
+            icon-style="new"
+          />
+          <FilterMenuItem
+            name="dockingStation"
+            icon="battery-100--mini"
+            icon-style="new"
+          />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
@@ -128,7 +138,7 @@
 <script setup lang="ts">
 const { $locale } = useNuxtApp();
 import { storeToRefs } from "pinia";
-import { useIntervalFn } from "@vueuse/core"
+import { useIntervalFn } from "@vueuse/core";
 import { useSpacesStore } from "~/stores/spaces";
 import { OCCUPANCY_RATES } from "~/types/Filters";
 
@@ -141,8 +151,8 @@ const { filters, buildings } = storeToRefs(spacesStore);
 const spaceCount = computed(() =>
   spacesStore.currentSelection?.level == "building"
     ? spacesStore.filteredSpaces.filter(
-      (space) => space.buildingNumber === spacesStore.currentBuilding!.number
-    ).length
+        (space) => space.buildingNumber === spacesStore.currentBuilding!.number
+      ).length
     : spacesStore.filteredSpaces.length
 );
 
@@ -153,7 +163,9 @@ function getRelativeTimeString(date: Date): string {
   // Array equivalent to the above but in the string representation of the units
   const units: Intl.RelativeTimeFormatUnit[] = ["second", "minute", "hour"];
 
-  const unitIndex = cutoffs.findIndex(cutoff => cutoff > Math.abs(deltaSeconds));
+  const unitIndex = cutoffs.findIndex(
+    (cutoff) => cutoff > Math.abs(deltaSeconds)
+  );
   // Get the divisor to divide from the seconds.
   const divisor = unitIndex ? cutoffs[unitIndex - 1] : 1;
 
@@ -163,14 +175,17 @@ function getRelativeTimeString(date: Date): string {
 
 const updatedAt = ref();
 const { resume, pause } = useIntervalFn(() => {
-  if (!spacesStore.updatedAt)
-    return;
+  if (!spacesStore.updatedAt) return;
 
-  updatedAt.value = getRelativeTimeString(spacesStore.updatedAt)
+  updatedAt.value = getRelativeTimeString(spacesStore.updatedAt);
 }, 5000);
 
-onMounted(() => { resume(); })
-onUnmounted(() => { pause(); })
+onMounted(() => {
+  resume();
+});
+onUnmounted(() => {
+  pause();
+});
 
 function clearFilters() {
   spacesStore.clearFilters();

@@ -15,6 +15,8 @@ export const BOOLEAN_FACILITIES = [
   "nearPrinter",
   "nearBathroom",
   "grouptables",
+  "dockingStation",
+  "computer",
 ] as const;
 
 export const FACILITIES = BOOLEAN_FACILITIES

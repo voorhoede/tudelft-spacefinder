@@ -14,6 +14,7 @@
         <SvgIcon
           :name="getIconName(facility)"
           class="space-facility__icon"
+          :class="{ 'space-facility__icon--new': iconMapping[facility] }"
         />
         <template #popper>
           {{ $t(facility) }}
@@ -43,7 +44,16 @@ const facilitiesPresent = computed(() =>
     )
 );
 
+const iconMapping = {
+  computer: "computer-desktop--mini",
+  dockingStation: "battery-100--mini",
+};
+
 function getIconName(facilityValue: string) {
+  if (iconMapping[facilityValue]) {
+    return iconMapping[facilityValue];
+  }
+
   return `facility-${facilityValue}-icon`;
 }
 </script>
@@ -54,18 +64,26 @@ function getIconName(facilityValue: string) {
 .space-facility__list {
   display: flex;
   flex-wrap: wrap;
+  column-gap: 0.1rem;
 }
 
 .space-facility__item {
-  position: relative;
-  display: inline-block;
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
 }
 
 .space-facility__icon {
   display: block;
   width: 25px;
   height: 25px;
+}
+
+.space-facility__icon--new {
+  width: 20px;
+  height: 20px;
 }
 
 .space-facility__seating {
@@ -81,14 +99,14 @@ function getIconName(facilityValue: string) {
 
 .v-popper--theme-tooltip .v-popper__inner {
   padding: var(--spacing-quarter) var(--spacing-half);
-  background: var(--brand-secondary-color)!important;
+  background: var(--brand-secondary-color) !important;
   font-size: var(--font-size-smaller);
   color: var(--background-color);
   border-radius: 0;
 }
 
 .v-popper--theme-tooltip .v-popper__arrow-outer {
-  border-color: var(--brand-secondary-color)!important;
+  border-color: var(--brand-secondary-color) !important;
 }
 
 .tooltip {

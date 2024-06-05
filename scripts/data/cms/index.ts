@@ -54,6 +54,8 @@ export function getBuildingsDataFromCms() {
             nearPrinter
             nearBathroom
             grouptables
+            computer
+            dockingStation
           }
         }
       }

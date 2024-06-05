@@ -61,6 +61,8 @@ export const useSpacesStore = defineStore("spaces", () => {
     showOpenLocations: false,
     whiteBoard: false,
     grouptables: false,
+    dockingStation: false,
+    computer: false,
   };
 
   const filters = useLocalStorage("filters", defaultFilters, {
