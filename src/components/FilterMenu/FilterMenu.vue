@@ -59,7 +59,7 @@
           />
           <FilterMenuItem
             name="dockingStation"
-            icon="battery-100--mini"
+            icon="computer-desktop--mini"
             icon-style="new"
           />
         </fieldset>
