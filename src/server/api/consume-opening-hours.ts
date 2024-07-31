@@ -86,22 +86,19 @@ export default defineEventHandler(async (event) => {
           }&$select=subject,start,end`
         )
         .get()
-        .then((calendarView) => {
-          console.info(`Fetched opening hours of ${buildingsOpeningDates.length} buildings`);
-          return {
-            number: building.number,
-            openEvents: calendarView.value
-              .filter((event: CalendarEvent) => event.subject === 'Open')
-              .map((event: CalendarEvent) => ({
-                start: fromZonedTime(event.start.dateTime, timezone).toISOString(),
-                end: fromZonedTime(event.end.dateTime, timezone).toISOString(),
-              })),
-          }
-        })
+        .then((calendarView) => ({
+          number: building.number,
+          openEvents: calendarView.value
+            .filter((event: CalendarEvent) => event.subject === 'Open')
+            .map((event: CalendarEvent) => ({
+              start: fromZonedTime(event.start.dateTime, timezone).toISOString(),
+              end: fromZonedTime(event.end.dateTime, timezone).toISOString(),
+            })),
+        }))
         .catch((error) => {
           console.warn(
             `Failed to fetch data for building ${building.number}:`,
-            error.body,
+            error,
           );
 
           return {
@@ -111,6 +108,7 @@ export default defineEventHandler(async (event) => {
         }),
     ),
   );
+  console.info(`Fetched opening hours of ${buildingsOpeningDates.length} buildings`);
 
   const { error } = await client.from('buildings').upsert(
     // @ts-expect-error
