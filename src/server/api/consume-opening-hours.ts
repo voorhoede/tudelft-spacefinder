@@ -1,7 +1,10 @@
+import { fromZonedTime } from 'date-fns-tz';
 import { Client } from '@microsoft/microsoft-graph-client';
 import { ClientSecretCredential } from '@azure/identity';
 import { TokenCredentialAuthenticationProvider } from '@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials/index.js';
 import { serverSupabaseServiceRole } from '#supabase/server';
+
+const timezone = 'Europe/Amsterdam';
 
 const { internalSecret, datoApiToken, microsoftGraph } = useRuntimeConfig();
 
@@ -18,7 +21,7 @@ const authProvider = new TokenCredentialAuthenticationProvider(credential, {
 const graphClient = Client.initWithMiddleware({
   authProvider: authProvider,
   fetchOptions: {
-    headers: { 'Prefer': 'outlook.timezone="Europe/Amsterdam"' },
+    headers: { 'Prefer': `outlook.timezone="${timezone}"` },
   },
 });
 
@@ -83,15 +86,18 @@ export default defineEventHandler(async (event) => {
           }&$select=subject,start,end`
         )
         .get()
-        .then((calendarView) => ({
-          number: building.number,
-          openEvents: calendarView.value
-            .filter((event: CalendarEvent) => event.subject === 'Open')
-            .map((event: CalendarEvent) => ({
-              start: new Date(event.start.dateTime).toISOString(),
-              end: new Date(event.end.dateTime).toISOString(),
-            })),
-        }))
+        .then((calendarView) => {
+          console.info(`Fetched opening hours of ${buildingsOpeningDates.length} buildings`);
+          return {
+            number: building.number,
+            openEvents: calendarView.value
+              .filter((event: CalendarEvent) => event.subject === 'Open')
+              .map((event: CalendarEvent) => ({
+                start: fromZonedTime(event.start.dateTime, timezone).toISOString(),
+                end: fromZonedTime(event.end.dateTime, timezone).toISOString(),
+              })),
+          }
+        })
         .catch((error) => {
           console.warn(
             `Failed to fetch data for building ${building.number}:`,
