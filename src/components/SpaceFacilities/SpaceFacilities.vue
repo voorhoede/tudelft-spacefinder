@@ -46,7 +46,7 @@ const facilitiesPresent = computed(() =>
 
 const iconMapping = {
   computer: "computer-desktop--mini",
-  dockingStation: "battery-100--mini",
+  dockingStation: "computer-desktop--mini",
   grouptables: "group-table--mini",
 };
 
