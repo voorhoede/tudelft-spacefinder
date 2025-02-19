@@ -25,20 +25,26 @@
       />
     </div>
 
-    <img
-      v-if="space.image"
-      class="space-card__image"
-      :src="`${space.image.url}?&fm=jpg&w=300&auto=quality&auto=format&auto=compress`"
-      alt=""
-    >
-    <div
-      v-else
-      class="space-card__image space-card__image--placeholder"
-    >
-      <SvgIcon
-        name="flame-icon"
-        class="space-card__image-placeholder-icon"
+    <div class="space-card__image-wrapper">
+      <DatoImage
+        v-if="space.image && true"
+        class="space-card__image"
+        :src="space.image.url"
+        alt=""
+        :width="210"
+        :height="158"
+        loading="eager"
+        :modifiers="{ fit: 'crop', ar: 1.33 }"
       />
+      <div
+        v-else
+        class="space-card__image space-card__image--placeholder"
+      >
+        <SvgIcon
+          name="flame-icon"
+          class="space-card__image-placeholder-icon"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -69,6 +75,7 @@ defineProps<{
   justify-content: space-between;
   background-color: var(--background-color);
   box-shadow: var(--shadow-small);
+  align-items: stretch;
 }
 
 .space-card__info {
@@ -102,10 +109,14 @@ defineProps<{
   font-weight: normal;
 }
 
-.space-card__image {
+.space-card__image-wrapper {
   width: clamp(32%, 30vw, 44%);
   flex-shrink: 0;
+}
+
+.space-card__image {
   object-fit: cover;
+  height: 100%;
 }
 
 .space-card__image--placeholder {
