@@ -6,7 +6,7 @@ const kafkaConfig = {
   url: process.env.KAFKA_URL,
   username: process.env.KAFKA_USERNAME,
   password: process.env.KAFKA_PASSWORD,
-  groupId: "tud_wifi_jasper_moelker",
+  groupId: "tud_dvoorhoede",
   topics: [
     "tud_aruba_access_point_client_counts",
   ],
