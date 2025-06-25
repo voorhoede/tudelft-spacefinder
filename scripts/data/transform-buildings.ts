@@ -4,13 +4,15 @@ import { CsvBuildingData } from "./../../../src/types/Building";
 export function getBuildingI18n(
   number: number,
   sourceName: string,
-  sourceAbbreviation: string
+  sourceAbbreviation: string,
+  sourceRemark: string,
 ) {
   const abbreviation = sourceAbbreviation.trim();
   return {
     abbreviation,
     name: sourceName,
     slug: getBuildingSlug(number, abbreviation),
+    remark: sourceRemark,
   };
 }
 
@@ -27,12 +29,14 @@ export function getBuilding(source: Record<string, any>): CsvBuildingData {
       nl: getBuildingI18n(
         source.number,
         source.nameNL,
-        source.abbreviationNL
+        source.abbreviationNL,
+        source.remarkNL,
       ),
       en: getBuildingI18n(
         source.number,
         source.nameEN,
-        source.abbreviationEN
+        source.abbreviationEN,
+        source.remarkEN,
       ),
     },
     totalSeats: source.spaces.reduce((totalSeats, space) => totalSeats + space.seats, 0),

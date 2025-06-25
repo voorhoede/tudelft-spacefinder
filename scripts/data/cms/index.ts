@@ -23,6 +23,8 @@ export function getBuildingsDataFromCms() {
           nameNL: name(locale: nl)
           abbreviationEN: abbreviation(locale: en)
           abbreviationNL: abbreviation(locale: nl)
+          remarkEN: remark(locale: en, markdown: true)
+          remarkNL: remark(locale: nl, markdown: true)
           occupancyLimit
           bounds
           image {
