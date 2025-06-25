@@ -27,7 +27,7 @@
 
     <div class="space-card__image-wrapper">
       <DatoImage
-        v-if="space.image && true"
+        v-if="space.image"
         class="space-card__image"
         :src="space.image.url"
         alt=""

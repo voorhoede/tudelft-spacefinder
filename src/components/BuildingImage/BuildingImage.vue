@@ -3,8 +3,15 @@
     <component
       :is="isHeader ? 'h3' : 'h2'"
       class="building-image__title"
-      :style="`background-image: url('${building.image.url}?&fm=jpg&w=700&h=150&fit=crop&auto=quality&auto=format&auto=compress');`"
     >
+      <DatoImage
+        class="building-image__image"
+        :src="building.image.url"
+        alt=""
+        :width="700"
+        :height="150"
+        loading="eager"
+      />
       <span class="building-image__name">
         {{ building.name }} ({{ building.abbreviation }})
       </span>
@@ -25,8 +32,6 @@ defineProps<{ building: Building, isHeader?: boolean }>();
   position: relative;
   margin-bottom: 0;
   height: 150px;
-  background-size: cover;
-  background-position: center;
 }
 
 .building-image__title:after {
@@ -37,7 +42,14 @@ defineProps<{ building: Building, isHeader?: boolean }>();
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.34);
+}
+
+.building-image__image {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .building-image__name {
