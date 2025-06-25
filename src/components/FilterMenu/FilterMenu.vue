@@ -53,12 +53,12 @@
           </legend>
           <FilterMenuItem name="powerOutlets" />
           <FilterMenuItem
-            name="computer"
+            name="dockingStation"
             icon="computer-desktop--mini"
             icon-style="new"
           />
           <FilterMenuItem
-            name="dockingStation"
+            name="computer"
             icon="computer-desktop--mini"
             icon-style="new"
           />
@@ -68,13 +68,13 @@
           <legend class="h3">
             {{ $t("locationFacilities") }}
           </legend>
-          <FilterMenuItem name="adjustableChairs" />
-          <FilterMenuItem name="daylit" />
           <FilterMenuItem
             name="grouptables"
             icon="group-table--mini"
             icon-style="new"
           />
+          <FilterMenuItem name="adjustableChairs" />
+          <FilterMenuItem name="daylit" />
         </fieldset>
 
         <fieldset class="filter-menu__filter-group">
