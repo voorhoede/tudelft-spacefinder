@@ -37,16 +37,6 @@
         />
         <span v-html="building.remark" />
       </div>
-      <div
-        class="building-header__remark"
-        v-if="building.remark"
-      >
-        <SvgIcon
-          class="building-header__remark-icon"
-          name="information-circle"
-        />
-        <span v-html="'<p>Hallo</p>'" />
-      </div>
     </div>
   </div>
 </template>
