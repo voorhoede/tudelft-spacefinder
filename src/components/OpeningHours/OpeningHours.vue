@@ -38,7 +38,7 @@
                 {{
                   intlFormatTime.formatRange(
                     new Date(event.start),
-                    new Date(event.end)
+                    adjustEndTimeIfMidnight(event.end)
                   )
                 }}
               </p>
@@ -85,6 +85,16 @@ const comingWeek = computed(() => {
 
 function toggleOpeningHours() {
   isExpanded.value = !isExpanded.value;
+}
+
+function adjustEndTimeIfMidnight(endTime: string) {
+  const endDate = new Date(endTime);
+    if (endDate.getHours() === 0 && endDate.getMinutes() === 0) {
+    // Subtract one minute so date falls on same day as the start date
+    endDate.setMinutes(endDate.getMinutes() - 1);
+  }
+  
+  return endDate;
 }
 </script>
 
