@@ -22,8 +22,8 @@
       />
       <SpaceCard
         ref="card"
+        :can-zoom="true"
         :space="space"
-        is-header
       />
       <p
         v-if="space.remark"
