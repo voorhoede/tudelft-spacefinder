@@ -35,12 +35,7 @@
                 v-for="(event, index) in day.events"
                 :key="`${dayIndex}-${index}`"
               >
-                {{
-                  intlFormatTime.formatRange(
-                    new Date(event.start),
-                    adjustEndTimeIfMidnight(event.end)
-                  )
-                }}
+                {{ formatEventTime(event.start, event.end) }}
               </p>
             </template>
             <template v-else>
@@ -83,18 +78,22 @@ const comingWeek = computed(() => {
   });
 });
 
-function toggleOpeningHours() {
-  isExpanded.value = !isExpanded.value;
+// Client wants to show 00:00 as closing time
+// technically this is the next day so have to force the displayed parts
+function formatEventTime(start: string, end: string) {
+  const timeParts = intlFormatTime
+    .formatRangeToParts(new Date(start), new Date(end))
+    .filter((part) => part.type === "hour" || part.type === "minute");
+  const groupedTimeParts = Object.groupBy(timeParts, ({ source }) => source);
+
+  return [
+    groupedTimeParts.startRange.map((part) => part.value).join(":"),
+    groupedTimeParts.endRange.map((part) => part.value).join(":"),
+  ].join(" – ");
 }
 
-function adjustEndTimeIfMidnight(endTime: string) {
-  const endDate = new Date(endTime);
-    if (endDate.getHours() === 0 && endDate.getMinutes() === 0) {
-    // Subtract one minute so date falls on same day as the start date
-    endDate.setMinutes(endDate.getMinutes() - 1);
-  }
-  
-  return endDate;
+function toggleOpeningHours() {
+  isExpanded.value = !isExpanded.value;
 }
 </script>
 
