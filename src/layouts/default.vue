@@ -30,9 +30,7 @@
     <main class="default-layout__main">
       <slot />
 
-      <MapboxMap
-        class="default-layout__map"
-      />
+      <MapboxMap class="default-layout__map" />
     </main>
 
     <AppNavigation
@@ -67,16 +65,14 @@ const topOfPage = ref<null | HTMLDivElement>(null);
 
 let spaceSlug: string | string[];
 
-watch(route,
-  value => {
-    const previousSpaceSlug = spaceSlug
-    spaceSlug = value.params.spaceSlug
+watch(route, (value) => {
+  const previousSpaceSlug = spaceSlug;
+  spaceSlug = value.params.spaceSlug;
 
-    if (previousSpaceSlug !== spaceSlug) {
-      mapStore.resizeMap();
-    }
+  if (previousSpaceSlug !== spaceSlug) {
+    mapStore.resizeMap();
   }
-);
+});
 
 afterEach((from, to) => {
   if (from.path !== to.path) {
@@ -84,7 +80,7 @@ afterEach((from, to) => {
   }
 });
 
-const notificationBody = computed(() => notification[$locale.value].body)
+const notificationBody = computed(() => notification[$locale.value].body);
 
 const onResizeDebounce = useDebounceFn(onResize, 200);
 
@@ -104,7 +100,7 @@ function onResize() {
   const windowHeight = window.innerHeight * 0.01;
   defaultLayout.value!.style.setProperty(
     "--window-height",
-    `${windowHeight}px`
+    `${windowHeight}px`,
   );
 }
 
@@ -128,7 +124,7 @@ useHead({
       `,
     },
   ],
-  htmlAttrs: { lang: $locale }
+  htmlAttrs: { lang: $locale },
 });
 </script>
 

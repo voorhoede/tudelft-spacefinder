@@ -31,7 +31,6 @@ const languages = [
 
 const spacesStore = useSpacesStore();
 const { $localePath } = useNuxtApp();
-const { name: routeName } = useRoute();
 
 function getLocalePath(locale: string) {
   if (spacesStore.currentBuilding) {
@@ -47,7 +46,6 @@ function getLocalePath(locale: string) {
     });
   }
 
-  const [, rootSegment] = (routeName as string).split("-");
-  return $localePath(`/${rootSegment ?? ""}`, { locale });
+  return `/${locale}/map/`;
 }
 </script>
