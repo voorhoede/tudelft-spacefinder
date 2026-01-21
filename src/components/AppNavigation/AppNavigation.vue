@@ -1,12 +1,12 @@
 <template>
   <nav class="app-navigation">
     <ul class="app-navigation__items flat-list">
-      <li 
+      <li
         v-if="$isMobile.value"
         class="app-navigation__item"
       >
         <NuxtLink
-          to="/"
+          :to="`/${$locale}/map/`"
           class="button button--navigation"
         >
           <SvgIcon
@@ -81,6 +81,7 @@
 import { useSpacesStore } from "~/stores/spaces";
 
 const props = defineProps<{ openedMenu: string | null }>();
+const { $locale } = useNuxtApp();
 
 const spacesStore = useSpacesStore();
 const menuButton = ref(null as null | HTMLButtonElement);
@@ -89,12 +90,12 @@ let lastOpenedMenu: string | null = null;
 
 watch(
   () => props.openedMenu,
-  (newValue) => {    
+  (newValue) => {
     if (lastOpenedMenu === "filter-menu") {
       menuButton.value?.focus();
     }
     lastOpenedMenu = newValue;
-  }
+  },
 );
 </script>
 
