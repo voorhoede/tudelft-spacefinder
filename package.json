@@ -59,7 +59,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
     "nano-staged": "^0.8.0",
-    "supabase": "^1.167.4",
+    "supabase": "^2.106.0",
     "vitest": "^0.34.4"
   },
   "overrides": {
